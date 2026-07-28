@@ -1,0 +1,786 @@
+[
+  {
+    "key": "compare",
+    "path": "/concepts/compare.webp",
+    "meaning": "Two approaches balanced for comparison",
+    "source_atlas": "a",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "model",
+    "path": "/concepts/model.webp",
+    "meaning": "An intelligent agent with sensors, internal model, goal, and action",
+    "source_atlas": "a",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "classify",
+    "path": "/concepts/classify.webp",
+    "meaning": "Mixed objects sorted into distinct groups",
+    "source_atlas": "a",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "explain",
+    "path": "/concepts/explain.webp",
+    "meaning": "A technical AI diagram translated into a simple explanation",
+    "source_atlas": "a",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "predict",
+    "path": "/concepts/predict.webp",
+    "meaning": "Observed data continuing into a forecast",
+    "source_atlas": "a",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "generate",
+    "path": "/concepts/generate.webp",
+    "meaning": "A model producing text, image, sound, and code",
+    "source_atlas": "a",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "retrieve",
+    "path": "/concepts/retrieve.webp",
+    "meaning": "Relevant evidence found in a document collection",
+    "source_atlas": "a",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "act",
+    "path": "/concepts/act.webp",
+    "meaning": "An agent choosing an action that changes its environment",
+    "source_atlas": "a",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "world",
+    "path": "/concepts/world.webp",
+    "meaning": "A complex changing real-world environment",
+    "source_atlas": "a",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "data",
+    "path": "/concepts/data.webp",
+    "meaning": "Incomplete, uneven, and changing data",
+    "source_atlas": "a",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "goals",
+    "path": "/concepts/goals.webp",
+    "meaning": "Conflicting goals pulling a decision in different directions",
+    "source_atlas": "a",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "people",
+    "path": "/concepts/people.webp",
+    "meaning": "People adapting around an AI system",
+    "source_atlas": "a",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "evidence-source",
+    "path": "/concepts/evidence-source.webp",
+    "meaning": "A claim connected to measurements and a checked source",
+    "source_atlas": "a",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "consequences",
+    "path": "/concepts/consequences.webp",
+    "meaning": "A decision producing different impacts",
+    "source_atlas": "a",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "adapt",
+    "path": "/concepts/adapt.webp",
+    "meaning": "A system changing strategy after feedback",
+    "source_atlas": "a",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "perception",
+    "path": "/concepts/perception.webp",
+    "meaning": "Sensors converting sights and sounds into signals",
+    "source_atlas": "a",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "representation",
+    "path": "/concepts/representation.webp",
+    "meaning": "A real scene encoded into a structured representation",
+    "source_atlas": "b",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "reasoning",
+    "path": "/concepts/reasoning.webp",
+    "meaning": "Premises connected through logic to a conclusion",
+    "source_atlas": "b",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "learning",
+    "path": "/concepts/learning.webp",
+    "meaning": "An agent improving from examples and feedback",
+    "source_atlas": "b",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "communication",
+    "path": "/concepts/communication.webp",
+    "meaning": "People and an AI exchanging meaningful messages",
+    "source_atlas": "b",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "creation",
+    "path": "/concepts/creation.webp",
+    "meaning": "An empty workspace becoming a new artifact",
+    "source_atlas": "b",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "planning",
+    "path": "/concepts/planning.webp",
+    "meaning": "An ordered route through future checkpoints",
+    "source_atlas": "b",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "reflection",
+    "path": "/concepts/reflection.webp",
+    "meaning": "An agent inspecting and correcting its own output",
+    "source_atlas": "b",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "thinking-humanly",
+    "path": "/concepts/thinking-humanly.webp",
+    "meaning": "A human cognitive process modeled by a computer",
+    "source_atlas": "b",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "thinking-rationally",
+    "path": "/concepts/thinking-rationally.webp",
+    "meaning": "Formal logic forming a valid conclusion",
+    "source_atlas": "b",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "acting-humanly",
+    "path": "/concepts/acting-humanly.webp",
+    "meaning": "Human and machine behavior compared behind a screen",
+    "source_atlas": "b",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "acting-rationally",
+    "path": "/concepts/acting-rationally.webp",
+    "meaning": "An agent selecting the best expected outcome",
+    "source_atlas": "b",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "perceive",
+    "path": "/concepts/perceive.webp",
+    "meaning": "Sensors gathering evidence from a scene",
+    "source_atlas": "b",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "consider",
+    "path": "/concepts/consider.webp",
+    "meaning": "Possible actions branching into simulated futures",
+    "source_atlas": "b",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "evaluate",
+    "path": "/concepts/evaluate.webp",
+    "meaning": "Outcomes measured against a performance scale",
+    "source_atlas": "b",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "action",
+    "path": "/concepts/action.webp",
+    "meaning": "A selected action changing the world",
+    "source_atlas": "b",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "performance",
+    "path": "/concepts/performance.webp",
+    "meaning": "Safety, accuracy, time, and inclusion balanced together",
+    "source_atlas": "b",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "environment",
+    "path": "/concepts/environment.webp",
+    "meaning": "An AI agent situated among people, objects, weather, and rules",
+    "source_atlas": "c",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "actuators",
+    "path": "/concepts/actuators.webp",
+    "meaning": "Wheels, arm, speaker, and signal light carrying out commands",
+    "source_atlas": "c",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "sensors",
+    "path": "/concepts/sensors.webp",
+    "meaning": "Camera, microphone, lidar, and touch sensors collecting signals",
+    "source_atlas": "c",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "simple-reflex",
+    "path": "/concepts/simple-reflex.webp",
+    "meaning": "One stimulus triggering one direct response",
+    "source_atlas": "c",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "model-based",
+    "path": "/concepts/model-based.webp",
+    "meaning": "A partially hidden world reconstructed as an internal map",
+    "source_atlas": "c",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "goal-based",
+    "path": "/concepts/goal-based.webp",
+    "meaning": "An agent simulating paths toward a target",
+    "source_atlas": "c",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "utility-based",
+    "path": "/concepts/utility-based.webp",
+    "meaning": "Goal-reaching outcomes compared across tradeoffs",
+    "source_atlas": "c",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "learning-agent",
+    "path": "/concepts/learning-agent.webp",
+    "meaning": "Feedback improving an agent's future behavior",
+    "source_atlas": "c",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "sense",
+    "path": "/concepts/sense.webp",
+    "meaning": "Vision, sound, and range signals entering a system",
+    "source_atlas": "c",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "represent-learn",
+    "path": "/concepts/represent-learn.webp",
+    "meaning": "Observations becoming an updating knowledge network",
+    "source_atlas": "c",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "decide",
+    "path": "/concepts/decide.webp",
+    "meaning": "Several options scored and one selected",
+    "source_atlas": "c",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "act-interact",
+    "path": "/concepts/act-interact.webp",
+    "meaning": "An agent changing the world with human coordination",
+    "source_atlas": "c",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "single-task",
+    "path": "/concepts/single-task.webp",
+    "meaning": "A narrow machine optimized for one target",
+    "source_atlas": "c",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "conditions",
+    "path": "/concepts/conditions.webp",
+    "meaning": "The same AI system operating in different conditions",
+    "source_atlas": "c",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "cost-risk",
+    "path": "/concepts/cost-risk.webp",
+    "meaning": "Money, time, safety, and harm balanced in a decision",
+    "source_atlas": "c",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "human-oversight",
+    "path": "/concepts/human-oversight.webp",
+    "meaning": "A person approving, correcting, or stopping AI action",
+    "source_atlas": "c",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "claim",
+    "path": "/concepts/claim.webp",
+    "meaning": "A strong assertion emerging from an AI tutor",
+    "source_atlas": "d",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "evidence-comparison",
+    "path": "/concepts/evidence-comparison.webp",
+    "meaning": "Two study results compared and checked",
+    "source_atlas": "d",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "boundary",
+    "path": "/concepts/boundary.webp",
+    "meaning": "An AI system inside a defined operating boundary",
+    "source_atlas": "d",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "risk",
+    "path": "/concepts/risk.webp",
+    "meaning": "Privacy, incorrect feedback, dependence, and access risks",
+    "source_atlas": "d",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "decision",
+    "path": "/concepts/decision.webp",
+    "meaning": "Evidence flowing into use, monitor, restrict, redesign, or reject",
+    "source_atlas": "d",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "audience-age-five",
+    "path": "/concepts/audience-age-five.webp",
+    "meaning": "A student explaining image classification with toys",
+    "source_atlas": "d",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "audience-family",
+    "path": "/concepts/audience-family.webp",
+    "meaning": "A student explaining recommendations with familiar choices",
+    "source_atlas": "d",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "audience-community",
+    "path": "/concepts/audience-community.webp",
+    "meaning": "A student explaining evidence and oversight to community leaders",
+    "source_atlas": "d",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "foundations",
+    "path": "/concepts/foundations.webp",
+    "meaning": "Agents, search, and representation supporting later AI systems",
+    "source_atlas": "d",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "machine-learning",
+    "path": "/concepts/machine-learning.webp",
+    "meaning": "Examples training a model and evaluated predictions",
+    "source_atlas": "d",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "generative-ai",
+    "path": "/concepts/generative-ai.webp",
+    "meaning": "A multimodal model producing language, image, sound, and code",
+    "source_atlas": "d",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "ai-systems",
+    "path": "/concepts/ai-systems.webp",
+    "meaning": "A model connected to retrieval, tools, interface, policy, and people",
+    "source_atlas": "d",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "evidence-communication",
+    "path": "/concepts/evidence-communication.webp",
+    "meaning": "A paper becoming an evidence card and public explanation",
+    "source_atlas": "d",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "define",
+    "path": "/concepts/define.webp",
+    "meaning": "A fuzzy idea becoming a precise bounded definition",
+    "source_atlas": "d",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "bound",
+    "path": "/concepts/bound.webp",
+    "meaning": "A capability map with a working region and failure edge",
+    "source_atlas": "d",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "explain-public",
+    "path": "/concepts/explain-public.webp",
+    "meaning": "A mechanism translated into analogy, example, and limitation",
+    "source_atlas": "d",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "calculator",
+    "path": "/concepts/calculator.webp",
+    "meaning": "A calculator executing fixed arithmetic rules",
+    "source_atlas": "e",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "spam-filter",
+    "path": "/concepts/spam-filter.webp",
+    "meaning": "Email sorted into legitimate and unwanted messages",
+    "source_atlas": "e",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "chatbot",
+    "path": "/concepts/chatbot.webp",
+    "meaning": "A conversational AI responding through speech bubbles",
+    "source_atlas": "e",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "thermostat",
+    "path": "/concepts/thermostat.webp",
+    "meaning": "A controller sensing temperature and switching heating",
+    "source_atlas": "e",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "turing-judge",
+    "path": "/concepts/turing-judge.webp",
+    "meaning": "A 1950s evaluator comparing hidden conversational participants",
+    "source_atlas": "e",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "machine-participant",
+    "path": "/concepts/machine-participant.webp",
+    "meaning": "A computer terminal responding behind a screen",
+    "source_atlas": "e",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "human-participant",
+    "path": "/concepts/human-participant.webp",
+    "meaning": "A person typing responses behind a separate screen",
+    "source_atlas": "e",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "agent-loop",
+    "path": "/concepts/agent-loop.webp",
+    "meaning": "Perception, decision, and action forming a closed loop",
+    "source_atlas": "e",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "history-turing",
+    "path": "/concepts/history-turing.webp",
+    "meaning": "Turing's 1950 paper, early computer, and imitation game",
+    "source_atlas": "e",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "history-dartmouth",
+    "path": "/concepts/history-dartmouth.webp",
+    "meaning": "The 1956 Dartmouth summer research workshop",
+    "source_atlas": "e",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "history-mycin",
+    "path": "/concepts/history-mycin.webp",
+    "meaning": "An early medical expert system applying rules",
+    "source_atlas": "e",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "history-deep-blue",
+    "path": "/concepts/history-deep-blue.webp",
+    "meaning": "A chess champion facing a powerful computer",
+    "source_atlas": "e",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "history-alexnet",
+    "path": "/concepts/history-alexnet.webp",
+    "meaning": "Image examples training a deep visual network",
+    "source_atlas": "e",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "history-alphago",
+    "path": "/concepts/history-alphago.webp",
+    "meaning": "Learned Go patterns combined with search",
+    "source_atlas": "e",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "history-chatgpt",
+    "path": "/concepts/history-chatgpt.webp",
+    "meaning": "A conversational generative AI interface",
+    "source_atlas": "e",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "history-ai-systems",
+    "path": "/concepts/history-ai-systems.webp",
+    "meaning": "A multimodal model connected to tools, robots, and people",
+    "source_atlas": "e",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "task-environment",
+    "path": "/concepts/task-environment.webp",
+    "meaning": "An agent acting in an external world that defines its task",
+    "source_atlas": "f",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "not-task-environment",
+    "path": "/concepts/not-task-environment.webp",
+    "meaning": "Internal code and hardware that belong to the agent rather than its environment",
+    "source_atlas": "f",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "relevant-environment",
+    "path": "/concepts/relevant-environment.webp",
+    "meaning": "External conditions that can affect a delivery robot's success",
+    "source_atlas": "f",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "irrelevant-environment",
+    "path": "/concepts/irrelevant-environment.webp",
+    "meaning": "External details that do not affect the task being analyzed",
+    "source_atlas": "f",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "fully-observable",
+    "path": "/concepts/fully-observable.webp",
+    "meaning": "A board state whose relevant information is visible to the agent",
+    "source_atlas": "f",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "partially-observable",
+    "path": "/concepts/partially-observable.webp",
+    "meaning": "A driving scene with hidden and occluded information",
+    "source_atlas": "f",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "deterministic",
+    "path": "/concepts/deterministic.webp",
+    "meaning": "One action leading predictably to one next state",
+    "source_atlas": "f",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "stochastic",
+    "path": "/concepts/stochastic.webp",
+    "meaning": "One action branching into uncertain possible outcomes",
+    "source_atlas": "f",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "episodic",
+    "path": "/concepts/episodic.webp",
+    "meaning": "Independent cases that can be handled one at a time",
+    "source_atlas": "f",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "sequential",
+    "path": "/concepts/sequential.webp",
+    "meaning": "A decision whose result changes later decisions",
+    "source_atlas": "f",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "static",
+    "path": "/concepts/static.webp",
+    "meaning": "A task world that waits while the agent deliberates",
+    "source_atlas": "f",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "dynamic",
+    "path": "/concepts/dynamic.webp",
+    "meaning": "A task world that changes while the agent deliberates",
+    "source_atlas": "f",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "discrete",
+    "path": "/concepts/discrete.webp",
+    "meaning": "A task represented by distinct states and actions",
+    "source_atlas": "f",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "continuous",
+    "path": "/concepts/continuous.webp",
+    "meaning": "A task represented by smoothly changing position, time, and speed",
+    "source_atlas": "f",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "known",
+    "path": "/concepts/known.webp",
+    "meaning": "An agent operating with known action and outcome rules",
+    "source_atlas": "f",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "unknown",
+    "path": "/concepts/unknown.webp",
+    "meaning": "An agent learning unfamiliar action and outcome rules",
+    "source_atlas": "f",
+    "source_tile": "r4c4"
+  },
+  {
+    "key": "single-agent",
+    "path": "/concepts/single-agent.webp",
+    "meaning": "One agent solving a task without strategic opponents",
+    "source_atlas": "g",
+    "source_tile": "r1c1"
+  },
+  {
+    "key": "multi-agent",
+    "path": "/concepts/multi-agent.webp",
+    "meaning": "Several agents cooperating or competing in one environment",
+    "source_atlas": "g",
+    "source_tile": "r1c2"
+  },
+  {
+    "key": "soccer-environment",
+    "path": "/concepts/soccer-environment.webp",
+    "meaning": "A soccer player acting in a dynamic multi-agent task environment",
+    "source_atlas": "g",
+    "source_tile": "r1c3"
+  },
+  {
+    "key": "taxi-environment",
+    "path": "/concepts/taxi-environment.webp",
+    "meaning": "An autonomous taxi operating amid traffic, people, signals, and weather",
+    "source_atlas": "g",
+    "source_tile": "r1c4"
+  },
+  {
+    "key": "vacuum-environment",
+    "path": "/concepts/vacuum-environment.webp",
+    "meaning": "A robot vacuum sensing and acting in a household",
+    "source_atlas": "g",
+    "source_tile": "r2c1"
+  },
+  {
+    "key": "chess-environment",
+    "path": "/concepts/chess-environment.webp",
+    "meaning": "Two strategic agents acting on a visible board",
+    "source_atlas": "g",
+    "source_tile": "r2c2"
+  },
+  {
+    "key": "spam-task",
+    "path": "/concepts/spam-task.webp",
+    "meaning": "A classifier handling one email as a task instance",
+    "source_atlas": "g",
+    "source_tile": "r2c3"
+  },
+  {
+    "key": "medical-task",
+    "path": "/concepts/medical-task.webp",
+    "meaning": "A diagnostic system reasoning from incomplete clinical evidence",
+    "source_atlas": "g",
+    "source_tile": "r2c4"
+  },
+  {
+    "key": "quiz-correct",
+    "path": "/concepts/quiz-correct.webp",
+    "meaning": "A learner receiving confirmation after a correct classification",
+    "source_atlas": "g",
+    "source_tile": "r3c1"
+  },
+  {
+    "key": "quiz-incorrect",
+    "path": "/concepts/quiz-incorrect.webp",
+    "meaning": "A learner revising a classification after feedback",
+    "source_atlas": "g",
+    "source_tile": "r3c2"
+  },
+  {
+    "key": "guided-practice",
+    "path": "/concepts/guided-practice.webp",
+    "meaning": "Students collaborating to classify an AI task environment",
+    "source_atlas": "g",
+    "source_tile": "r3c3"
+  },
+  {
+    "key": "exit-ticket",
+    "path": "/concepts/exit-ticket.webp",
+    "meaning": "A concise written assessment submitted at the end of class",
+    "source_atlas": "g",
+    "source_tile": "r3c4"
+  },
+  {
+    "key": "agent-function",
+    "path": "/concepts/agent-function.webp",
+    "meaning": "A mapping from percept history to an action",
+    "source_atlas": "g",
+    "source_tile": "r4c1"
+  },
+  {
+    "key": "agent-program",
+    "path": "/concepts/agent-program.webp",
+    "meaning": "A program implementing an agent function",
+    "source_atlas": "g",
+    "source_tile": "r4c2"
+  },
+  {
+    "key": "agent-architecture",
+    "path": "/concepts/agent-architecture.webp",
+    "meaning": "Sensors, processor, and actuators running an agent program",
+    "source_atlas": "g",
+    "source_tile": "r4c3"
+  },
+  {
+    "key": "peas-task",
+    "path": "/concepts/peas-task.webp",
+    "meaning": "Performance, environment, actuators, and sensors framing an agent task",
+    "source_atlas": "g",
+    "source_tile": "r4c4"
+  }
+]
