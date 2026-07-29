@@ -29,7 +29,12 @@ export function sites(): Plugin {
       const hostingConfig = resolve(root, ".openai", "hosting.json");
       const drizzleSource = resolve(root, "drizzle");
 
-      await rm(outputDirectory, { recursive: true, force: true });
+      await rm(outputDirectory, {
+        recursive: true,
+        force: true,
+        maxRetries: process.platform === "win32" ? 12 : 0,
+        retryDelay: 150,
+      });
       await mkdir(outputDirectory, { recursive: true });
 
       if (await exists(hostingConfig)) {

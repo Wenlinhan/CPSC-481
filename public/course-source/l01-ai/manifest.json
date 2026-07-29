@@ -1,0 +1,79 @@
+{
+  "source": "L01_AI.pptx",
+  "authoritativeSlideCount": 32,
+  "usage": "Instructional images are preserved at their source aspect ratios and are not cropped.",
+  "assets": [
+    {
+      "file": "peanut-oil.png",
+      "sourceMedia": "image1.tiff",
+      "sourceSlides": [5],
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 1"
+    },
+    {
+      "file": "coconut-oil.png",
+      "sourceMedia": "image2.tiff",
+      "sourceSlides": [5],
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 2"
+    },
+    {
+      "file": "corn-oil.png",
+      "sourceMedia": "image3.tiff",
+      "sourceSlides": [5],
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 3"
+    },
+    {
+      "file": "baby.png",
+      "sourceMedia": "image4.tiff",
+      "sourceSlides": [5],
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal"
+    },
+    {
+      "file": "baby-oil.png",
+      "sourceMedia": "image5.tiff",
+      "sourceSlides": [5],
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal"
+    },
+    {
+      "file": "agent-environment-loop.png",
+      "sourceMedia": "image6.png",
+      "sourceSlides": [11],
+      "knowledgeRole": "Agent, environment, percept, sensor, action, and actuator relationships"
+    },
+    {
+      "file": "agent-simple-reflex.png",
+      "sourceMedia": "image7.png",
+      "sourceSlides": [15],
+      "knowledgeRole": "Simple reflex agent architecture"
+    },
+    {
+      "file": "agent-model-based.png",
+      "sourceMedia": "image8.png",
+      "sourceSlides": [15, 16],
+      "knowledgeRole": "Model-based reflex agent architecture and internal state"
+    },
+    {
+      "file": "agent-goal-based.png",
+      "sourceMedia": "image9.png",
+      "sourceSlides": [16, 17],
+      "knowledgeRole": "Goal-based agent architecture and predicted future state"
+    },
+    {
+      "file": "agent-utility-based.png",
+      "sourceMedia": "image10.png",
+      "sourceSlides": [17],
+      "knowledgeRole": "Utility-based agent architecture and outcome preference"
+    },
+    {
+      "file": "turing-test-diagram.png",
+      "sourceMedia": "image11.png",
+      "sourceSlides": [22],
+      "knowledgeRole": "Imitation-game participants, hiding, and communication channels"
+    },
+    {
+      "file": "turing-behavior-venn.png",
+      "sourceMedia": "image12.png",
+      "sourceSlides": [24],
+      "knowledgeRole": "Human behavior and intelligent behavior are overlapping, non-equivalent sets"
+    }
+  ]
+}

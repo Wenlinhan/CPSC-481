@@ -1,163 +1,359 @@
 "use client";
 
-import { type ReactNode, type TouchEvent, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useState } from "react";
+import { L01DeckShell, type LessonSlide } from "./L01DeckShell";
 
-type Slide = { eyebrow: string; title: string; subtitle?: string; content: ReactNode; note: string };
-type CardItem = [title: string, detail: string, visualKey: string];
+const sourceRoot = "/course-source/l01-ai";
 
-const ConceptImage = ({ visualKey, alt, className = "" }: { visualKey: string; alt: string; className?: string }) =>
-  <figure className={`concept-visual ${className}`}><img alt={alt} loading="eager" src={`/concepts/${visualKey}.webp`} /></figure>;
-
-const Callout = ({ title, children }: { title: string; children: ReactNode }) =>
-  <div className="callout callout-gold"><strong>{title}</strong><div>{children}</div></div>;
-
-const Cards = ({ items, className = "" }: { items: CardItem[]; className?: string }) =>
-  <div className={`lesson-cards ${className}`.trim()}>{items.map((item, index) =>
-    <article key={item[0]}><ConceptImage alt={`${item[0]} concept illustration`} visualKey={item[2]} />
-      <span>{String(index + 1).padStart(2, "0")}</span><h3>{item[0]}</h3><p>{item[1]}</p>
-    </article>)}</div>;
-
-function AiOrNot() {
-  const cases = [
-    ["Calculator", "Usually automation", "Its rules and outputs are specified in advance.", "calculator"],
-    ["Spam filter", "AI system", "It learns patterns and predicts a label under uncertainty.", "spam-filter"],
-    ["Chatbot", "AI-enabled system", "A model generates language inside a larger product.", "chatbot"],
-    ["Thermostat", "It depends", "Fixed control is automation; adaptive control may count as AI.", "thermostat"],
-  ];
-  const [active, setActive] = useState(0);
-  return <div className="ai-lab"><div className="case-selector">{cases.map((item, index) =>
-    <button className={active === index ? "active" : ""} key={item[0]} onClick={() => setActive(index)} type="button">
-      <ConceptImage alt={`${item[0]} illustration`} visualKey={item[3]} /><span>0{index + 1}</span><strong>{item[0]}</strong>
-    </button>)}</div><div className="verdict-card"><ConceptImage alt={`${cases[active][0]} illustration`} visualKey={cases[active][3]} />
-      <span className="micro-label">A defensible classification</span><h3>{cases[active][1]}</h3><p>{cases[active][2]}</p>
-      <Callout title="Do not stop at the label">Name the mechanism, the task, and the evidence.</Callout></div></div>;
+function ConceptImage({ name, alt }: { name: string; alt: string }) {
+  return <figure className="source-concept"><img alt={alt} src={`/concepts/${name}.webp`} /></figure>;
 }
 
-function QuickCheck({ question, options, correct, explanation }: { question: string; options: string[]; correct: number; explanation: string }) {
+function CourseImage({ name, alt, className = "" }: { name: string; alt: string; className?: string }) {
+  return <figure className={`source-figure ${className}`.trim()}><img alt={alt} src={`${sourceRoot}/${name}`} /></figure>;
+}
+
+function SourceCallout({ title, children }: { title: string; children: ReactNode }) {
+  return <aside className="source-callout"><strong>{title}</strong><div>{children}</div></aside>;
+}
+
+type AppItem = [title: string, detail: string, visual: string];
+
+function ApplicationGrid({ items }: { items: AppItem[] }) {
+  return (
+    <div className="source-app-grid">
+      {items.map(([title, detail, visual], index) => (
+        <article key={title}>
+          <ConceptImage alt={`${title} AI application`} name={visual} />
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{title}</h3>
+          <p>{detail}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function OilPuzzle() {
+  const [step, setStep] = useState(0);
+  const cookingOils = [
+    ["peanut-oil.png", "Product image 1"],
+    ["coconut-oil.png", "Product image 2"],
+    ["corn-oil.png", "Product image 3"],
+  ];
+  return (
+    <div className="oil-puzzle">
+      <div className="oil-sequence" aria-live="polite">
+        {cookingOils.map(([name, alt], index) => (
+          <div className={step > index ? "revealed" : "waiting"} key={name}>
+            {step > index ? <CourseImage alt={alt} name={name} /> : <span>{index + 1}</span>}
+          </div>
+        ))}
+        <div className={step >= 4 ? "revealed final-pair" : "waiting final-pair"}>
+          {step >= 4 ? (
+            <>
+              <CourseImage alt="Product image 4" name="baby-oil.png" />
+              <b>???</b>
+              <CourseImage alt="Photograph 5" name="baby.png" />
+            </>
+          ) : <span>4</span>}
+        </div>
+      </div>
+      <div className="oil-controls">
+        <p>{step === 0 ? "Study each image as it appears. What relationship do you infer?"
+          : step < 4 ? "Update your hypothesis before the next image."
+          : "Why does the final pair make the pattern difficult for a machine?"}</p>
+        <div>
+          <button disabled={step >= 4} onClick={() => setStep(value => Math.min(4, value + 1))} type="button">
+            {step === 0 ? "Begin reveal" : "Reveal next"}
+          </button>
+          <button onClick={() => setStep(step === 4 ? 0 : 4)} type="button">{step === 4 ? "Reset" : "Reveal all"}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function QuickCheck({
+  question,
+  options,
+  correct,
+  explanation,
+}: {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}) {
   const [choice, setChoice] = useState<number | null>(null);
-  return <div className="quick-check"><div className="check-prompt"><ConceptImage alt="Students checking an AI claim" visualKey="guided-practice" />
-    <span className="micro-label">Check for understanding</span><h3>{question}</h3><p>Choose independently, then justify your criterion.</p></div>
-    <div className="check-options">{options.map((option, index) => <button className={choice === index ? (index === correct ? "correct" : "incorrect") : ""} key={option} onClick={() => setChoice(index)} type="button">
-      <span>{String.fromCharCode(65 + index)}</span>{option}</button>)}
-      {choice !== null && <div className={choice === correct ? "feedback correct" : "feedback incorrect"}><strong>{choice === correct ? "Yes." : "Reconsider."}</strong> {explanation}</div>}
-    </div></div>;
+  return (
+    <div className="source-quick-check">
+      <section><span>Check for understanding</span><h3>{question}</h3><p>Choose first. Then explain the criterion you used.</p></section>
+      <div>
+        {options.map((option, index) => (
+          <button
+            className={choice === index ? (index === correct ? "correct" : "incorrect") : ""}
+            key={option}
+            onClick={() => setChoice(index)}
+            type="button"
+          >
+            <span>{String.fromCharCode(65 + index)}</span>{option}
+          </button>
+        ))}
+        {choice !== null && <p className="source-feedback"><strong>{choice === correct ? "Defensible." : "Reconsider."}</strong> {explanation}</p>}
+      </div>
+    </div>
+  );
 }
 
-function DefinitionPair({ left, right, prompt }: { left: [string, string, string]; right: [string, string, string]; prompt: string }) {
-  return <div className="definition-pair">{[left, right].map((item, index) => <article key={item[0]}><ConceptImage alt={`${item[0]} illustration`} visualKey={item[2]} />
-    <div><span>{index ? "CONTRAST" : "CONCEPT"}</span><h3>{item[0]}</h3><p>{item[1]}</p></div></article>)}
-    <Callout title="Discussion prompt">{prompt}</Callout></div>;
+function TheoryColumns() {
+  return (
+    <div className="source-theory-columns">
+      <article>
+        <span>Single intelligence</span>
+        <h3>One general intelligence</h3>
+        <p>Psychometric testing uses <strong>IQ</strong> to estimate a general level of intelligence.</p>
+        <SourceCallout title="Core assumption">Performance across cognitive tasks reflects a shared general capability.</SourceCallout>
+      </article>
+      <article>
+        <span>Multiple intelligence</span>
+        <h3>Several distinct capabilities</h3>
+        <p>Different forms of intelligence may not reduce to one score. Emotional intelligence is often discussed through <strong>EQ</strong>.</p>
+        <SourceCallout title="Evidence question">Are the proposed abilities independent, measurable intelligences—or useful descriptions?</SourceCallout>
+      </article>
+    </div>
+  );
 }
 
-function CognitiveLab() {
-  const [model, setModel] = useState<"rules" | "memory" | "strategy">("memory");
-  const content = {
-    rules: ["Production rules", "IF the previous card was red, THEN expect a black card.", "A symbolic hypothesis about the learner’s decision process."],
-    memory: ["Working-memory model", "The learner retains the last two cards and compares the current pattern.", "A computational hypothesis about limited internal state."],
-    strategy: ["Strategy model", "The learner tests one hypothesis, notices errors, and switches strategies.", "A computational hypothesis about adaptation over time."],
-  };
-  const item = content[model];
-  return <div className="cognitive-lab"><div className="stimulus-stream"><ConceptImage alt="Human cognitive process represented as a computational model" visualKey="thinking-humanly" />
-    <div><i>red</i><i>black</i><i>red</i><i>?</i></div><p>Observed behavior: predict the next card.</p></div>
-    <section><nav>{(Object.keys(content) as Array<keyof typeof content>).map(key => <button className={model === key ? "active" : ""} key={key} onClick={() => setModel(key)} type="button">{content[key][0]}</button>)}</nav>
-      <span className="micro-label">Candidate cognitive model</span><h3>{item[1]}</h3><p>{item[2]}</p><Callout title="Evidence question">What new observation would distinguish this model from the others?</Callout></section></div>;
-}
-
-function LogicLab() {
-  const [valid, setValid] = useState(false);
-  return <div className="logic-lab"><div className="logic-chain"><article><span>Premise 1</span><strong>All autonomous taxis are agents.</strong></article>
-    <i>+</i><article><span>Premise 2</span><strong>Car A is an autonomous taxi.</strong></article><i>→</i>
-    <article className={valid ? "active" : ""}><span>Conclusion</span><strong>Car A is an agent.</strong></article></div>
-    <button onClick={() => setValid(value => !value)} type="button">{valid ? "Valid form: modus ponens" : "Test the inference"}</button>
-    <p>{valid ? "If both premises are true, the conclusion must be true." : "Logical validity concerns the relation between premises and conclusion—not whether the premises match reality."}</p></div>;
-}
-
-function TuringLab() {
-  const [revealed, setRevealed] = useState(false);
-  return <div className="turing-lab"><div className="chat-transcript"><div className="turing-visuals">
-    <ConceptImage alt="A judge comparing hidden participants" visualKey="turing-judge" /><ConceptImage alt="A machine participant" visualKey="machine-participant" /><ConceptImage alt="A human participant" visualKey="human-participant" /></div>
-    <div><strong>Judge</strong><p>Describe rain without using the word “water.”</p></div>
-    <div><strong>Player A</strong><p>A soft percussion on rooftops, leaving streets reflective.</p></div>
-    <div><strong>Player B</strong><p>Atmospheric precipitation in liquid form reaches the ground.</p></div></div>
-    <div className="judge-card"><span className="micro-label">Mini imitation game</span><h3>Which player is the machine?</h3>
-      <div><button onClick={() => setRevealed(true)} type="button">Player A</button><button onClick={() => setRevealed(true)} type="button">Player B</button></div>
-      <p className={revealed ? "visible" : ""}>The transcript is insufficient. Human-like language does not establish truth, understanding, perception, or reliable action.</p></div></div>;
-}
-
-function ApproachPractice() {
-  const scenarios = [
-    ["Thinking humanly", "Predict a learner’s errors from a computational model of memory.", "thinking-humanly"],
-    ["Thinking rationally", "Prove that a conclusion follows from formal premises.", "thinking-rationally"],
-    ["Acting humanly", "Make a conversational system indistinguishable from a person.", "acting-humanly"],
-    ["Acting rationally", "Choose the action with the highest expected performance.", "acting-rationally"],
-  ];
+function TriarchicOverview() {
   const [active, setActive] = useState(0);
-  return <div className="approach-practice"><nav>{scenarios.map((item, index) => <button className={active === index ? "active" : ""} key={item[0]} onClick={() => setActive(index)} type="button">{item[0]}</button>)}</nav>
-    <section><ConceptImage alt={`${scenarios[active][0]} example`} visualKey={scenarios[active][2]} /><div><span className="micro-label">Evaluation target</span><h3>{scenarios[active][1]}</h3>
-      <p>What evidence would count as success? What important property would this criterion miss?</p></div></section></div>;
+  const dimensions = [
+    ["Analytical / componential", "Take apart problems and see solutions that are not often seen.", "“Book smart”"],
+    ["Creative / experiential", "Perform in novel situations and automate processes through experience.", "Novelty + automation"],
+    ["Practical / contextual", "Adapt mental activity to attain a fit with the surrounding context.", "“Street smarts”"],
+  ];
+  return (
+    <div className="triarchic-overview">
+      <nav>{dimensions.map((item, index) => <button className={active === index ? "active" : ""} key={item[0]} onClick={() => setActive(index)} type="button">{item[0]}</button>)}</nav>
+      <section><span>Robert J. Sternberg</span><h3>{dimensions[active][0]}</h3><p>{dimensions[active][1]}</p><strong>{dimensions[active][2]}</strong></section>
+    </div>
+  );
 }
 
-function VideoStudy() {
-  return <div className="video-study"><div className="video-frame"><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen src="https://www.youtube-nocookie.com/embed/Qbp3LJvcX38" title="The Turing Test - Computerphile" /></div>
-    <aside><span className="micro-label">Watch 4 selected minutes</span><h3>Extract the test—not the story</h3><ol><li>Who is the evaluator?</li><li>What evidence is observable?</li><li>What counts as success?</li><li>Which claims are not justified?</li></ol>
-      <a href="https://www.youtube.com/watch?v=Qbp3LJvcX38" target="_blank" rel="noreferrer">Open the full Computerphile video ↗</a></aside></div>;
-}
+const slides: LessonSlide[] = [
+  {
+    eyebrow: "Week 1 · Meeting 1",
+    title: "Artificial Intelligence",
+    subtitle: "Applications, history, intelligence, and definitions",
+    content: <div className="source-hero"><div><p>What is Artificial Intelligence?</p><span>CPSC 481 · Introduction to Artificial Intelligence</span></div><ConceptImage alt="A connected landscape of AI systems" name="ai-systems" /></div>,
+    note: "Open with the central course question. Ask students for one system they consider intelligent and one reason. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Ch. 1.",
+    sourceSlides: [1],
+  },
+  {
+    eyebrow: "Course orientation",
+    title: "Introduction and syllabus",
+    content: <div className="orientation-layout"><div><h3>Today</h3><ul><li>Waitlist, roster, and introductions</li><li>Syllabus and course overview</li></ul><SourceCallout title="Introduce yourself">Name, preferred name, one AI system you have used, and one question you have about it.</SourceCallout></div><aside><span>Related courses</span><p>CPSC 483 · Introduction to Machine Learning</p><p>CPSC 485 · Computational Bioinformatics</p><p>CPSC 583 · Expert System Design</p><p>CPSC 585 · Artificial Neural Network</p></aside></div>,
+    note: "Complete required enrollment and syllabus items, then use introductions as a first inventory of AI conceptions. [Sources] CPSC course orientation materials.",
+    sourceSlides: [2],
+  },
+  {
+    eyebrow: "Knowledge point 1 · State-of-the-art applications",
+    title: "AI acts in games, mobility, security, and robots",
+    content: <ApplicationGrid items={[
+      ["Board games", "AlphaGo and AlphaZero", "history-alphago"],
+      ["Autonomous cars", "Google Waymo; Tesla Autopilot; Audi summon feature; etc.", "taxi-environment"],
+      ["Security", "Generative Adversarial Network (GAN): deepfake", "risk"],
+      ["Robots", "Sophia; Boston Dynamics; Erica (anthropomorphic)", "agent-architecture"],
+    ]} />,
+    note: "For each example, ask students to name the task, input, output, and evidence of success. Preserve the distinction between an application and the AI methods inside it. [Sources] Course examples; Luger 6e, Ch. 1.",
+    sourceSlides: [3],
+  },
+  {
+    eyebrow: "Knowledge point 1 · State-of-the-art applications",
+    title: "AI also works through language, environments, expertise, and play",
+    content: <ApplicationGrid items={[
+      ["Natural language processing", "Voice assistants: Google Duplex; Amazon Alexa; Apple Siri; etc.", "communication"],
+      ["Internet of Things (IoT)", "Amazon cashierless store", "environment"],
+      ["Expert systems", "IBM Watson", "history-mycin"],
+      ["Video games", "OpenAI-Dota 2", "decision"],
+    ]} />,
+    note: "Retain every named application. Ask which systems learn, which reason from encoded knowledge, and which coordinate several methods. [Sources] Course examples; Luger 6e, Ch. 1.",
+    sourceSlides: [3],
+  },
+  {
+    eyebrow: "Applications · in-class practice",
+    title: "An application name does not explain where the intelligence is",
+    content: <div className="source-practice-grid"><ConceptImage alt="Students decomposing an AI system" name="guided-practice" /><div><h3>Choose one application from the previous two pages.</h3><ol><li>What task is being performed?</li><li>What information enters the system?</li><li>What action or prediction leaves it?</li><li>Which intelligent capability is required?</li><li>What evidence would demonstrate success?</li></ol><SourceCallout title="Share-out rule">Name the mechanism or capability—not only the product.</SourceCallout></div></div>,
+    note: "Pairs analyze for two minutes; cold-call one pair for each prompt. This prepares students to distinguish products, models, and agent behavior.",
+    sourceSlides: [3],
+  },
+  {
+    eyebrow: "Knowledge point 2 · History",
+    title: "Chess, language, learning, and the imitation game shaped the early agenda",
+    content: <div className="source-timeline">
+      <article><span>1950</span><h3>Claude Shannon</h3><p>“Programming a Computer for Playing Chess” is the first published article on developing a chess-playing computer program.</p></article>
+      <article><span>1950</span><h3>Alan Turing</h3><p>“Computing Machinery and Intelligence” proposes the “imitation game,” later known as the Turing Test.</p></article>
+      <article><span>1956</span><h3>First AI Conference at Dartmouth</h3><p>Machine simulation; language use; neuron networks; self-improvement through learning and reasoning.</p></article>
+    </div>,
+    note: "Emphasize the research questions, not only the dates. Students should connect chess to search, language to representation, and self-improvement to learning. [Sources] Shannon 1950; Turing 1950; Dartmouth proposal.",
+    sourceSlides: [4],
+  },
+  {
+    eyebrow: "Knowledge point 2 · History",
+    title: "Robotics and expert systems produced important—but bounded—successes",
+    content: <div className="source-timeline">
+      <article><span>1970</span><h3>WABOT-1</h3><p>The first anthropomorphic robot at Waseda University: limb-control, vision, and conversation systems.</p></article>
+      <article><span>1972</span><h3>MYCIN</h3><p>An early Stanford expert system identified bacteria causing severe infections and recommended antibiotics.</p></article>
+      <article><span>1997</span><h3>Deep Blue</h3><p>The first computer chess-playing program to defeat a reigning world chess champion.</p></article>
+      <aside><strong>Historical tension</strong><p>No major breakthroughs in many years…</p></aside>
+    </div>,
+    note: "Ask what each system could do and what it could not generalize to. Use “no major breakthroughs” to introduce cycles of expectations and setbacks. [Sources] Course timeline; Russell & Norvig 3e, Ch. 1.",
+    sourceSlides: [4],
+  },
+  {
+    eyebrow: "History · current bridge",
+    title: "New methods broadened capability without removing the old questions",
+    content: <div className="source-comparison"><article><span>Earlier emphasis</span><h3>Symbols, search, rules, and explicit knowledge</h3><p>Programs were designed around formal representations and carefully specified domains.</p></article><i>+</i><article><span>Later emphasis</span><h3>Learning from data, large models, and deployed systems</h3><p>Statistical learning and foundation models expanded pattern recognition and generation.</p></article><SourceCallout title="Continuity">Representation, reasoning, learning, evaluation, and the meaning of intelligence remain central.</SourceCallout></div>,
+    note: "This is a bridge, not a replacement history. Modern systems still face the foundational questions introduced in the historical sequence. [Sources] Russell & Norvig 3e, Ch. 1; course modernization.",
+    sourceSlides: [3, 4],
+  },
+  {
+    eyebrow: "Knowledge point 3 · Why AI is difficult",
+    title: "Can a machine infer the intended concept?",
+    subtitle: "Advance the sequence one image at a time",
+    content: <OilPuzzle />,
+    note: "Do not name the objects before the final reveal. Reveal peanut oil, coconut oil, and corn oil on separate clicks; then reveal the baby-oil bottle, baby photograph, and question marks together. Ask students to state how their hypothesis changed. [Sources] Course concept exercise.",
+    sourceSlides: [5],
+  },
+  {
+    eyebrow: "Why AI is difficult · debrief",
+    title: "Words inherit meaning from context and world knowledge",
+    content: <div className="oil-debrief"><div className="oil-debrief-images"><CourseImage alt="Peanut oil bottle" name="peanut-oil.png" /><CourseImage alt="Coconut oil jar" name="coconut-oil.png" /><CourseImage alt="Corn oil bottle" name="corn-oil.png" /><CourseImage alt="Baby oil bottle" name="baby-oil.png" /><CourseImage alt="Baby photograph" name="baby.png" /></div><div><h3>“Peanut oil” names oil derived from peanuts. “Baby oil” names oil intended for babies.</h3><p>The same grammatical form does not guarantee the same semantic relation.</p><ul><li>Recognition: identify each object.</li><li>Language: interpret a compound noun.</li><li>World knowledge: reject an implausible relation.</li><li>Context: choose the intended meaning.</li></ul></div></div>,
+    note: "Connect the exercise to ambiguity, commonsense knowledge, semantic composition, and the limits of pattern matching. The exact objects are part of the knowledge point. [Sources] Course concept exercise.",
+    sourceSlides: [5],
+  },
+  {
+    eyebrow: "Knowledge point 4 · What is intelligence?",
+    title: "Intelligence is a general mental capability",
+    content: <div className="intelligence-overview"><div><strong>Intelligence</strong><p>is a general mental capability.</p><small>It is different from being merely “smart” in the sense of quickly adapting to the environment.</small></div><ul><li>learning</li><li>recognition and understanding</li><li>reasoning</li><li>imagination or abstract thinking</li><li>creativity</li><li>communication</li><li>planning</li><li>decision making</li><li>problem solving</li></ul></div>,
+    note: "Keep the definition and all nine capabilities visible. Ask whether each capability is necessary, sufficient, or one contributor to intelligence. [Sources] Course definition; Luger 6e, Ch. 1.",
+    sourceSlides: [6],
+  },
+  {
+    eyebrow: "Intelligent capabilities · perceive and infer",
+    title: "Learning, recognition, understanding, and reasoning turn experience into conclusions",
+    content: <ApplicationGrid items={[
+      ["Learning", "Change behavior or a model through data or experience.", "learning"],
+      ["Recognition", "Identify a pattern, object, event, or category.", "perception"],
+      ["Understanding", "Connect a representation to context, relations, and consequences.", "representation"],
+      ["Reasoning", "Derive conclusions from evidence, knowledge, or assumptions.", "reasoning"],
+    ]} />,
+    note: "Provide one counterexample for each capability: recognition without understanding, memorization without transfer, and logically valid reasoning from false premises.",
+    sourceSlides: [6],
+  },
+  {
+    eyebrow: "Intelligent capabilities · imagine and communicate",
+    title: "Imagination, abstract thinking, creativity, and communication extend beyond recognition",
+    content: <ApplicationGrid items={[
+      ["Imagination", "Represent possibilities that are not currently perceived.", "predict"],
+      ["Abstract thinking", "Retain relevant structure while ignoring incidental detail.", "model"],
+      ["Creativity", "Produce ideas or artifacts that are novel and useful in context.", "creation"],
+      ["Communication", "Exchange meaning with another agent or person.", "communication"],
+    ]} />,
+    note: "Ask whether generating a novel-looking artifact establishes creativity. Require a criterion for novelty, usefulness, and context.",
+    sourceSlides: [6],
+  },
+  {
+    eyebrow: "Intelligent capabilities · choose and act",
+    title: "Planning, decision making, and problem solving organize action",
+    content: <ApplicationGrid items={[
+      ["Planning", "Choose a sequence of future actions toward a goal.", "planning"],
+      ["Decision making", "Select among alternatives under goals, costs, and uncertainty.", "decision"],
+      ["Problem solving", "Represent a problem and search for a satisfactory solution.", "reasoning"],
+      ["Adaptation", "Revise behavior when conditions or evidence change.", "adapt"],
+    ]} />,
+    note: "Distinguish a plan from a decision: a plan is an action sequence; a decision chooses among alternatives. Adaptation is the source definition's contrast with being “smart.”",
+    sourceSlides: [6],
+  },
+  {
+    eyebrow: "Intelligence · formative assessment",
+    title: "A capability claim needs observable evidence",
+    content: <QuickCheck question="A system labels a photograph correctly but cannot explain the object, use it, or recognize it from a new angle. Which claim is best supported?" options={["General intelligence", "Recognition on the tested examples", "Understanding", "Creative reasoning"]} correct={1} explanation="The evidence supports bounded recognition. Broader claims require transfer, explanation, use, and additional tests." />,
+    note: "Ask students to name one additional test that would support understanding rather than recognition alone.",
+    sourceSlides: [6],
+  },
+  {
+    eyebrow: "Knowledge point 5 · Theories of intelligence",
+    title: "One theory seeks a general factor; another separates kinds of ability",
+    content: <TheoryColumns />,
+    note: "Introduce single general intelligence, multiple intelligence, IQ, and EQ exactly as distinct theoretical perspectives—not settled engineering specifications. [Sources] Course theory summary.",
+    sourceSlides: [7],
+  },
+  {
+    eyebrow: "Theories of intelligence · multiple intelligence",
+    title: "Gardner proposed several forms of intelligence",
+    content: <div className="multiple-intelligences"><div><span>logical</span><span>linguistic</span><span>spatial</span><span>musical</span><span>kinesthetic</span><span>interpersonal</span><span>intrapersonal</span><span>naturalist</span></div><aside><h3>Naturalist intelligence</h3><p>Sensing patterns and making connections to elements in nature.</p><h3>Emotional intelligence</h3><p>Associated with Daniel Goleman and others; often discussed using EQ.</p><SourceCallout title="Claim to evaluate">“Gardner’s theory has never been tested.” What would count as a fair test? The independence and measurement of the proposed intelligences remain contested.</SourceCallout></aside></div>,
+    note: "Retain every named intelligence and the course's empirical caution. Frame the caution as a research question about independent measurement and predictive evidence. [Sources] Gardner; Goleman; course theory summary.",
+    sourceSlides: [7],
+  },
+  {
+    eyebrow: "Knowledge point 6 · Triarchic theory",
+    title: "Sternberg connects analytical, creative, and practical intelligence",
+    content: <TriarchicOverview />,
+    note: "Use the tabs to preview the three parts before treating each one in depth. [Sources] Robert J. Sternberg's triarchic theory.",
+    sourceSlides: [8],
+  },
+  {
+    eyebrow: "Triarchic theory · analytical/componential",
+    title: "Analytical intelligence takes problems apart",
+    content: <div className="source-focus"><ConceptImage alt="A structured reasoning problem being decomposed" name="reasoning" /><div><span>“Book smart”</span><h3>Take apart problems and see solutions that are not often seen.</h3><p>The emphasis is on analysis, evaluation, comparison, and the components of problem solving.</p><SourceCallout title="Example">Given two search strategies, identify their assumptions and predict when each will fail.</SourceCallout></div></div>,
+    note: "Ask for evidence that distinguishes analysis from memorized recall. [Sources] Sternberg triarchic theory; course definition.",
+    sourceSlides: [8],
+  },
+  {
+    eyebrow: "Triarchic theory · creative/experiential",
+    title: "Creative intelligence combines novelty with automation",
+    content: <div className="source-comparison"><article><span>Novelty</span><h3>A situation never experienced before</h3><p>The learner must construct or transfer a strategy rather than retrieve a routine.</p></article><i>+</i><article><span>Automation</span><h3>A process performed many times</h3><p>It can now be carried out with little or no extra thought.</p></article><SourceCallout title="Key relationship">How well a task is performed depends partly on how familiar the task is.</SourceCallout></div>,
+    note: "Use a programming example: first recursive problem versus a practiced loop pattern. Preserve both novelty and automation. [Sources] Sternberg triarchic theory; course definition.",
+    sourceSlides: [8],
+  },
+  {
+    eyebrow: "Triarchic theory · practical/contextual",
+    title: "Practical intelligence seeks a fit with context",
+    content: <div className="source-focus"><ConceptImage alt="A person adapting a plan to a changing real-world context" name="adapt" /><div><span>“Street smarts”</span><h3>It “deals with the mental activity involved in attaining fit to context.”</h3><p>Practical performance requires reading a situation, adapting behavior, and acting under real constraints.</p><SourceCallout title="Example">A technically correct explanation fails if the audience cannot understand or use it.</SourceCallout></div></div>,
+    note: "Connect practical intelligence to the course's AI-literacy goal: explain a technical idea to a nontechnical audience age 5 and up. [Sources] Sternberg triarchic theory; course definition.",
+    sourceSlides: [8],
+  },
+  {
+    eyebrow: "Knowledge point 7 · Other aspects of intelligence",
+    title: "Intelligence may not be exclusively human",
+    content: <div className="other-intelligence"><ConceptImage alt="Biological organisms and an artificial agent compared" name="compare" /><div><h3>Questions and influences</h3><ul><li>Animal or plant intelligence</li><li>Is human intelligence different from animal or plant intelligence?</li><li>Biological factors</li><li>Environmental factors</li><li>Evolution of intelligence</li></ul><SourceCallout title="Comparison rule">State the capability and evidence before deciding whether the same word “intelligence” applies.</SourceCallout></div></div>,
+    note: "Do not resolve this as a vocabulary vote. Ask students to operationalize one capability across human, animal, plant, and machine cases. [Sources] Course questions on intelligence.",
+    sourceSlides: [9],
+  },
+  {
+    eyebrow: "Other aspects · open problems",
+    title: "Many cognitive processes remain only partly understood",
+    content: <div className="open-questions"><article><span>01</span><p>Exactly what happens when learning occurs?</p></article><article><span>02</span><p>How is knowledge represented in the nervous system—or brain?</p></article><article><span>03</span><p>What is intuition or skepticism?</p></article><article><span>04</span><p>What is self-awareness?</p></article><aside>These are scientific questions and design questions. An AI implementation may model a capability without settling how biological intelligence works.</aside></div>,
+    note: "Preserve all open questions. Ask which can be studied through behavior, which require internal measurements, and which first need an operational definition. [Sources] Course questions on cognition.",
+    sourceSlides: [9],
+  },
+  {
+    eyebrow: "Knowledge point 8 · Definition of AI",
+    title: "Artificial Intelligence is both an interdisciplinary idea and a field of study",
+    content: <div className="definition-stack"><article><span>Influences</span><p>AI has been shaped by philosophers, psychologists, mathematicians, computer scientists, and others.</p></article><article><span>Literal construction</span><p>“AI is Artificial Intelligence using computer.” In literal terms: <strong>artificially made intelligence.</strong></p></article><article><span>John McCarthy</span><p>“The science and engineering of making intelligent machines.”</p></article><article><span>Agent-centered definition</span><p>The study and design of intelligent agents—systems that perceive their environment and take actions that maximize their chances of success.</p></article></div>,
+    note: "Keep every definition visible and compare what each emphasizes: origin, engineering, mechanism, behavior, environment, or success. [Sources] John McCarthy; Russell & Norvig 3e, Chs. 1–2; Luger 6e, Ch. 1.",
+    sourceSlides: [10],
+  },
+  {
+    eyebrow: "Meeting 1 · exit assessment",
+    title: "Define AI without losing intelligence, mechanism, or evidence",
+    content: <div className="source-exit"><div><span>Individual response · 4 minutes</span><h3>Choose one named AI application.</h3><ol><li>Define AI in one sentence.</li><li>Name two intelligent capabilities the system requires.</li><li>Give one piece of evidence for each capability.</li><li>Name one claim the evidence does <em>not</em> support.</li></ol></div><aside><h3>Prepare for Meeting 2</h3><p>The agent-centered definition introduces four questions:</p><p><strong>What does the system perceive? What can it do? What counts as success? What kind of environment constrains it?</strong></p><small>Reading: Russell & Norvig 3e, Chapter 2; Luger 6e, Chapter 1.</small></aside></div>,
+    note: "Collect responses or use pair critique. Score definition, capability, evidence, and boundary from 0–2 each. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Chs. 1–2.",
+    sourceSlides: [1, 10],
+  },
+];
 
 export function AiFoundationsDeck() {
-  const [current, setCurrent] = useState(0);
-  const [overview, setOverview] = useState(false);
-  const [notes, setNotes] = useState(false);
-  const [motion, setMotion] = useState(true);
-  const [touch, setTouch] = useState<number | null>(null);
-  const slides: Slide[] = useMemo(() => [
-    { eyebrow: "Week 1 · Meeting 1", title: "Artificial Intelligence: Applications, History, and Intelligence", subtitle: "What AI can do, why it is difficult, and what we mean by intelligence", content: <div className="hero-layout"><div className="hero-copy"><p className="big-question">AI began as a question about intelligence and became an engineering field for complex problem solving.</p><div className="hero-rule"/><p className="quiet">Opening question: Which current AI application would have seemed impossible twenty years ago?</p></div><ConceptImage className="hero-concept" alt="Artificial intelligence applications connected across society" visualKey="ai-systems"/></div>, note: "Use responses to surface applications, capabilities, and expectations. [Sources] Luger 6e Ch. 1; Russell and Norvig 3e Ch. 1." },
-    { eyebrow: "Learning targets", title: "Trace the field from applications to definitions", content: <Cards className="objective-grid" items={[["Recognize","Explain major historical and contemporary AI applications.","ai-systems"],["Trace","Connect milestones, setbacks, and renewed progress.","history-ai-systems"],["Analyze","Explain why intelligence is difficult to define and implement.","reasoning"],["Compare","Evaluate theories and definitions of intelligence and AI.","compare"]]}/>, note: "Meeting 1 follows the original sequence: applications, history, difficulty, intelligence, theories, and definitions." },
-    { eyebrow: "Knowledge point 1 · State of the art", title: "AI applications span games, mobility, security, robots, and language", content: <div className="synthesis-flow">{[["Game playing","AlphaGo, AlphaZero, and OpenAI Five select actions in enormous search spaces.","history-alphago"],["Autonomous mobility","Waymo and driver-assistance systems combine perception, prediction, and control.","taxi-environment"],["Synthetic media","GANs and generative models create realistic images, audio, and video.","generative-ai"],["Robotics","Humanoid and mobile robots integrate sensing, planning, and physical action.","agent-architecture"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} application`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Retain the original examples while identifying the AI capability in each. [Sources] Stanford AI Index 2026." },
-    { eyebrow: "Knowledge point 1 · State of the art", title: "Expert systems, smart environments, and science extend the application map", content: <div className="synthesis-flow">{[["Language assistants","Voice assistants and large language models interpret and generate language.","chatbot"],["Expert systems","Rule- and knowledge-based systems support diagnosis and specialized decisions.","history-mycin"],["Smart environments","Cashierless stores and connected devices fuse sensing with automated action.","environment"],["Scientific discovery","Machine learning helps predict structures, analyze data, and propose candidates.","learning"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} application`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Ask students to classify each application by perception, reasoning, learning, language, or action." },
-    { eyebrow: "Application analysis · worked example", title: "An AI application is a coordinated system—not one algorithm", content: <div className="definition-scene"><ConceptImage alt="Autonomous vehicle AI system" visualKey="taxi-environment"/><div><span className="micro-label">Autonomous driving</span><h3>Perceive lanes and objects → predict motion → plan a route → control the vehicle → monitor risk.</h3><p>Different AI methods solve different subproblems. System performance depends on their coordination.</p><Callout title="Student prompt">Which component is hardest to test before deployment, and what evidence would you collect?</Callout></div></div>, note: "Apply the same decomposition to a voice assistant or game-playing system." },
-    { eyebrow: "Knowledge point 2 · History", title: "AI began with computation, chess, and the imitation game", content: <div className="timeline"><div/>{[["1950","Shannon: computer chess","history-turing"],["1950","Turing: imitation game","turing-judge"],["1956","Dartmouth names AI","history-dartmouth"],["1970","WABOT-1 humanoid robot","agent-architecture"],["1972","MYCIN expert system","history-mycin"],["1997","Deep Blue defeats Kasparov","history-deep-blue"],["2012","AlexNet advances deep learning","history-alexnet"],["2016","AlphaGo defeats Lee Sedol","history-alphago"]].map((item,index)=><article className={index%2?"down":"up"} key={item[0]+item[1]}><ConceptImage alt={item[1]} visualKey={item[2]}/><span>{item[0]}</span><strong>{item[1]}</strong><i/></article>)}</div>, note: "Explain what technical idea each milestone demonstrated. [Sources] Stanford AI100 history; Luger 6e Ch. 1." },
-    { eyebrow: "Knowledge point 2 · History", title: "Progress alternates between ambitious promises and engineering breakthroughs", content: <div className="definition-scene"><ConceptImage alt="Cycles of progress and setbacks in AI history" visualKey="history-ai-systems"/><div><span className="micro-label">Boom → limitation → renewed method</span><h3>Symbolic systems exposed representation and scaling limits; statistical learning benefited from data and compute; foundation models broadened generative capabilities.</h3><p>“AI winter” describes periods when expectations, funding, and practical results diverged.</p><Callout title="Historical lesson">A successful demonstration does not guarantee robust, affordable, general deployment.</Callout></div></div>, note: "Discuss expert systems, AI winters, deep learning, and foundation models as changing emphases rather than clean replacements." },
-    { eyebrow: "Knowledge point 2 · Contemporary milestone", title: "Generative and multimodal models changed how people access AI", content: <DefinitionPair left={["Earlier interfaces","Specialized systems exposed one narrow capability through a dedicated product.","single-task"]} right={["Foundation-model interfaces","One model can generate and transform text, images, audio, and code across many tasks.","generative-ai"]} prompt="Does a broader interface imply general intelligence? Identify evidence for and against." />, note: "Distinguish broad task coverage from reliable general competence. [Sources] Stanford AI Index 2026." },
-    { eyebrow: "History check · pair discussion", title: "A milestone matters because it changes what is technically possible", content: <QuickCheck question="Why was Deep Blue historically important?" options={["It proved human-like general intelligence","It showed specialized computation could outperform a world chess champion","It created the first neural network","It passed the Turing Test"]} correct={1} explanation="Deep Blue established extraordinary performance in a bounded domain; it did not establish general intelligence." />, note: "Ask students to state both the achievement and its boundary." },
-    { eyebrow: "Knowledge point 3 · Why AI is difficult", title: "The difficulty begins with an incomplete theory of intelligence", content: <div className="difficulty"><div><span>?</span><strong>build intelligence</strong><small>without a complete specification</small></div><Cards items={[["Definition","We disagree about what intelligence includes.","define"],["World","Relevant situations are too numerous to enumerate.","world"],["Knowledge","Common sense is vast, contextual, and often implicit.","representation"],["Uncertainty","Sensors, data, and outcomes are incomplete or noisy.","data"],["Goals","Real objectives can conflict or remain underspecified.","goals"],["Evaluation","Success on one benchmark may not transfer.","evidence-source"]]}/></div>, note: "Turn the original question-mark slide into six engineering obstacles." },
-    { eyebrow: "Why AI is difficult · representation", title: "A system must represent the right things before it can reason", content: <div className="definition-scene"><ConceptImage alt="World information encoded into an internal representation" visualKey="representation"/><div><span className="micro-label">Representation problem</span><h3>A useful model keeps task-relevant structure while discarding distracting detail.</h3><p>A driving map needs roads, lanes, signals, and obstacles—not every atom in the city.</p><Callout title="Failure mode">If the representation omits a relevant variable, correct reasoning can still produce the wrong action.</Callout></div></div>, note: "Connect to symbols, features, graphs, embeddings, and latent state without teaching algorithms yet." },
-    { eyebrow: "Why AI is difficult · search", title: "Possible states and actions grow explosively", content: <div className="definition-scene"><ConceptImage alt="Many branching future actions in a search space" visualKey="planning"/><div><span className="micro-label">Combinatorial explosion</span><h3>Looking ahead only a few steps can create more possibilities than a system can examine.</h3><p>AI relies on heuristics, abstraction, pruning, learning, and approximate decisions.</p><div className="formula">branching factorᵈ → rapidly expanding search</div></div></div>, note: "Use chess and route planning. Ask why faster hardware alone is insufficient." },
-    { eyebrow: "Why AI is difficult · people and values", title: "Human environments contain context, adaptation, and consequences", content: <div className="synthesis-flow">{[["Context","The same words or actions can mean different things in different settings.","communication"],["Adaptation","People change behavior in response to an AI system.","people"],["Values","Accuracy, safety, fairness, privacy, and cost may conflict.","goals"],["Consequences","Errors have unequal effects across tasks and groups.","consequences"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} challenge`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Compare a game mistake with a medical or transportation error." },
-    { eyebrow: "Knowledge point 4 · What is intelligence?", title: "Intelligence is a general mental capability expressed through many abilities", content: <div className="capabilities"><div><strong>adapt</strong><span>learn and act toward goals</span></div><Cards items={[["Learning","Improve with experience.","learning"],["Recognition","Identify meaningful patterns.","perception"],["Understanding","Construct usable meaning.","representation"],["Reasoning","Draw conclusions.","reasoning"],["Imagination","Consider hypothetical states.","creation"],["Communication","Exchange meaning.","communication"],["Planning","Choose future actions.","planning"],["Problem solving","Transform a situation toward a goal.","decision"]]}/></div>, note: "Preserve the original capability inventory. Distinguish intelligence from one display of being quick or 'smart.' [Sources] Luger 6e Ch. 1." },
-    { eyebrow: "Intelligence · capability analysis", title: "Different systems display different capability profiles", content: <div className="definition-matrix"><div className="matrix-top"><span>Specialized capability</span><span>Integrated capability</span></div><Cards items={[["Chess engine","Plans in a formal game but does not perceive or communicate broadly.","history-deep-blue"],["Image classifier","Recognizes learned categories without general reasoning.","classify"],["Language model","Generates language across many tasks with uneven reliability.","chatbot"],["Human learner","Integrates perception, social context, memory, goals, and embodied experience.","people"]]}/></div>, note: "Ask which capabilities are present, absent, or supplied by the surrounding system." },
-    { eyebrow: "Knowledge point 5 · Theory of intelligence", title: "The single-intelligence view proposes a general cognitive factor", content: <DefinitionPair left={["General intelligence","Performance across cognitive tasks may share a common underlying factor, often called g.","reasoning"]} right={["IQ measurement","Psychometric tests estimate selected cognitive abilities relative to a reference population.","evaluate"]} prompt="What does an IQ score measure well, and what important abilities might it omit?" />, note: "Explain construct and measurement. Do not present IQ as a complete definition of intelligence." },
-    { eyebrow: "Theory of intelligence", title: "Multiple-intelligences theory broadens what counts as ability", content: <div className="synthesis-flow">{[["Logical–linguistic","Reason with symbols and language.","thinking-rationally"],["Spatial–kinesthetic","Understand space and coordinate action.","perception"],["Interpersonal–intrapersonal","Understand others and oneself.","communication"],["Musical–naturalist","Recognize patterns in sound and nature.","world"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} intelligence`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Present Gardner's categories and the criticism that the theory has limited psychometric support." },
-    { eyebrow: "Theory of intelligence", title: "Emotional intelligence concerns perceiving and regulating emotion", content: <div className="definition-scene"><ConceptImage alt="People recognizing and responding to emotional cues" visualKey="communication"/><div><span className="micro-label">Emotional intelligence</span><h3>Recognize emotion, use emotional information, regulate responses, and navigate social interaction.</h3><p>EQ instruments attempt to measure these abilities, but definitions and measurements vary.</p><Callout title="AI question">Does detecting sentiment demonstrate emotional intelligence, or only pattern recognition?</Callout></div></div>, note: "Connect to affective computing while distinguishing recognition from lived emotion." },
-    { eyebrow: "Theory of intelligence", title: "Sternberg separates analytical, creative, and practical intelligence", content: <div className="synthesis-flow">{[["Analytical","Decompose problems, compare alternatives, and justify solutions.","reasoning"],["Creative","Handle novelty and generate useful possibilities.","creation"],["Practical","Adapt to, shape, or select a real-world context.","adapt"],["Integrated performance","Coordinate all three for a purpose.","decision"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} intelligence`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Use 'book smart,' novelty, automation, and 'street smart' as accessible anchors. [Sources] Sternberg's triarchic theory." },
-    { eyebrow: "Other aspects of intelligence", title: "Human intelligence is not the only biological comparison", content: <div className="definition-matrix"><div className="matrix-top"><span>What varies?</span><span>What remains unknown?</span></div><Cards items={[["Species","Animals and plants solve adaptive problems through different mechanisms.","world"],["Biology","Nervous systems, bodies, and inherited traits shape capability.","perception"],["Environment","Education, culture, experience, and tools affect performance.","environment"],["Open questions","Learning, representation, intuition, skepticism, and self-awareness remain incompletely explained.","reflection"]]}/></div>, note: "Invite examples without equating every biological adaptation with human cognition." },
-    { eyebrow: "Theory application · in-class practice", title: "One behavior can support several interpretations of intelligence", content: <div className="practice-sheet"><ConceptImage alt="A service robot helping a person in an unfamiliar setting" visualKey="guided-practice"/><div><h3>Scenario: a robot helps a visitor navigate an unfamiliar hospital</h3><ol><li>Name three capabilities it needs.</li><li>Analyze it using one intelligence theory.</li><li>State one observation that supports your claim.</li><li>State one alternative explanation for the same behavior.</li></ol></div></div>, note: "Require theory, evidence, and limitation. Compare groups using different theories." },
-    { eyebrow: "Knowledge point 6 · Definition of AI", title: "AI is an interdisciplinary science and engineering field", content: <div className="synthesis-flow">{[["Philosophy","What is knowledge, mind, and rational action?","thinking-humanly"],["Psychology","How do people perceive, learn, and reason?","people"],["Mathematics","How can logic, probability, and optimization formalize problems?","thinking-rationally"],["Computer science","How can representations and algorithms produce useful behavior?","ai-systems"]].map((item,index)=><article key={item[0]}><ConceptImage alt={`${item[0]} contribution`} visualKey={item[2]}/><span>0{index+1}</span><h3>{item[0]}</h3><p>{item[1]}</p></article>)}</div>, note: "Add neuroscience, linguistics, economics, and control theory verbally." },
-    { eyebrow: "Definition of AI", title: "Classic definitions emphasize machines, agents, behavior, or reasoning", content: <div className="definition-matrix"><div className="matrix-top"><span>Human standard</span><span>Rational standard</span></div><Cards items={[["McCarthy","The science and engineering of making intelligent machines.","ai-systems"],["Intelligent agents","Systems perceive environments and act to improve their chance of success.","agent-loop"],["Thinking or acting humanly","Model human cognition or produce human-like behavior.","acting-humanly"],["Thinking or acting rationally","Reason correctly or choose actions that maximize expected performance.","acting-rationally"]]}/></div>, note: "Compare McCarthy's engineering definition, the intelligent-agent definition, and the four classic approaches. [Sources] John McCarthy; Russell and Norvig 3e Ch. 1." },
-    { eyebrow: "Definition check · interactive", title: "Is it AI—or automation?", subtitle: "Classify the mechanism, task, and evidence", content: <AiOrNot/>, note: "The goal is a defensible criterion, not universal agreement." },
-    { eyebrow: "Meeting 1 assessment and preparation", title: "Connect application, history, intelligence, and definition", content: <div className="closing-layout"><div className="assessment-scene mini"><ConceptImage alt="Students constructing an evidence-based explanation of an AI system" visualKey="exit-ticket"/><div><span className="micro-label">Individual response</span><h3>Select one AI application.</h3><p>Name its capabilities, one historical connection, one difficulty, and the AI definition you would use to evaluate it.</p></div></div><div className="sources-card"><span className="micro-label">Required and supplemental reading</span><p><strong>Required:</strong> Luger 6e Ch. 1; Russell & Norvig 3e Ch. 1.</p><a href="https://ai100.stanford.edu/2016-report/appendix-i-short-history-ai" target="_blank" rel="noreferrer">Stanford AI100: A Short History of AI ↗</a><a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noreferrer">Stanford HAI: AI Index 2026 ↗</a><a href="https://aima.cs.berkeley.edu/" target="_blank" rel="noreferrer">AIMA official resources ↗</a></div></div>, note: "Preview Meeting 2: agents, environments, agent types, AI fields, weak/strong AI, AGI, and the Turing Test." },
-  ], []);
-
-  const total = slides.length;
-  const go = (n: number) => { const next = Math.max(0, Math.min(total - 1, n)); setCurrent(next); setOverview(false); history.replaceState(null, "", `#slide-${next + 1}`); };
-  useEffect(() => { const match = location.hash.match(/slide-(\d+)/); if (match) setCurrent(Math.max(0, Math.min(total - 1, Number(match[1]) - 1))); }, [total]);
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (["INPUT","TEXTAREA","SELECT","BUTTON","A","IFRAME"].includes((event.target as HTMLElement).tagName)) return;
-      if (["ArrowRight","PageDown"," "].includes(event.key)) { event.preventDefault(); go(current + 1); }
-      else if (["ArrowLeft","PageUp"].includes(event.key)) { event.preventDefault(); go(current - 1); }
-      else if (event.key === "Home") go(0); else if (event.key === "End") go(total - 1);
-      else if (event.key.toLowerCase() === "o") setOverview(value => !value); else if (event.key.toLowerCase() === "n") setNotes(value => !value);
-      else if (event.key.toLowerCase() === "f") document.documentElement.requestFullscreen?.(); else if (event.key === "Escape") { setOverview(false); setNotes(false); }
-    };
-    addEventListener("keydown", onKey); return () => removeEventListener("keydown", onKey);
-  }, [current, total]);
-  const touchEnd = (event: TouchEvent) => { if (touch === null) return; const delta = (event.changedTouches[0]?.clientX ?? touch) - touch; if (Math.abs(delta) > 55) go(delta < 0 ? current + 1 : current - 1); setTouch(null); };
-  const slide = slides[current];
-  return <main className={motion ? "deck ai-deck" : "deck ai-deck motion-off"} onTouchStart={event => setTouch(event.touches[0]?.clientX ?? null)} onTouchEnd={touchEnd}>
-    <header className="deck-header"><div className="brand"><span className="brand-mark">481</span><div><strong>CPSC 481</strong><small>Introduction to Artificial Intelligence</small></div></div><div className="header-actions"><button onClick={() => setMotion(value => !value)} type="button">Motion {motion ? "on" : "off"}</button><button onClick={() => setNotes(value => !value)} type="button">Notes</button><button onClick={() => setOverview(true)} type="button">Overview</button><button onClick={() => print()} type="button">Print</button></div></header>
-    <section className="slide" key={current}><div className="slide-heading"><span className="eyebrow">{slide.eyebrow}</span><h1>{slide.title}</h1>{slide.subtitle && <p>{slide.subtitle}</p>}</div><div className="slide-content">{slide.content}</div></section>
-    {notes && <aside className="speaker-notes"><div><span>Instructor note · Slide {current + 1}</span><button onClick={() => setNotes(false)} type="button">×</button></div><p>{slide.note}</p></aside>}
-    <footer className="deck-footer"><button disabled={!current} onClick={() => go(current - 1)} type="button">←</button><div className="progress-wrap"><div className="progress-meta"><span>AI Applications, History, and Intelligence</span><span>{current + 1} / {total}</span></div><div className="progress"><i style={{width:`${(current+1)/total*100}%`}}/></div></div><button disabled={current === total-1} onClick={() => go(current + 1)} type="button">→</button></footer>
-    {overview && <div className="overview-backdrop"><aside className="overview"><div className="overview-heading"><div><span>Week 1 · Meeting 1</span><h2>AI Applications, History, and Intelligence</h2></div><button onClick={() => setOverview(false)} type="button">×</button></div><nav>{slides.map((item,index)=><button aria-current={index===current?"page":undefined} key={`${item.title}-${index}`} onClick={()=>go(index)} type="button"><span>{String(index+1).padStart(2,"0")}</span><div><small>{item.eyebrow}</small><strong>{item.title}</strong></div></button>)}</nav></aside></div>}
-  </main>;
+  return <L01DeckShell meetingLabel="Week 1 · Meeting 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
 }

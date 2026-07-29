@@ -66,3 +66,56 @@ test("preserves custom Meetings 1, 2, 21, and 22 and their visual assets", async
   await access(new URL("../public/og.png", import.meta.url));
   await access(new URL("../public/concepts/visual-usage-manifest.json", import.meta.url));
 });
+
+test("Meetings 1 and 2 account for every authoritative L01 source slide and image", async () => {
+  const [meeting1, meeting2, manifestText] = await Promise.all([
+    readFile(new URL("../app/components/Meeting01Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting02Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/course-source/l01-ai/manifest.json", import.meta.url), "utf8"),
+  ]);
+  const extractCoverage = (source) => [...source.matchAll(/sourceSlides:\s*\[([^\]]+)\]/g)]
+    .flatMap((match) => [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])));
+  const coverage = [...new Set([...extractCoverage(meeting1), ...extractCoverage(meeting2)])].sort((a, b) => a - b);
+  assert.equal((meeting1.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting2.match(/sourceSlides:\s*\[/g) ?? []).length, 28);
+  assert.deepEqual(coverage, Array.from({ length: 32 }, (_, index) => index + 1));
+
+  const combined = `${meeting1}\n${meeting2}`;
+  for (const knowledgePoint of [
+    "AlphaGo and AlphaZero",
+    "Intelligence is a general mental capability",
+    "Gardner’s theory has never been tested",
+    "AI is Artificial Intelligence using computer",
+    "The science and engineering of making intelligent machines",
+    "agent = architecture + program",
+    "Fully observable",
+    "Partially observable",
+    "Episodic",
+    "Stochastic",
+    "Continuous",
+    "Multi-agent",
+    "AGI",
+    "How happy I will be in such a state",
+    "The imitation game",
+    "Collective intelligence",
+    "Understand and explain",
+    "What is the Turing Test",
+    "George F. Luger",
+  ]) {
+    assert.match(combined, new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+  assert.doesNotMatch(combined, /\b(?:original|old)\s+slides?\b/i);
+
+  const manifest = JSON.parse(manifestText);
+  assert.equal(manifest.authoritativeSlideCount, 32);
+  assert.equal(manifest.assets.length, 12);
+  for (const asset of manifest.assets) {
+    await access(new URL(`../public/course-source/l01-ai/${asset.file}`, import.meta.url));
+  }
+  for (const match of combined.matchAll(/<ConceptImage\b[^>]*\bname="([^"]+)"/g)) {
+    await access(new URL(`../public/concepts/${match[1]}.webp`, import.meta.url));
+  }
+  for (const match of combined.matchAll(/<CourseImage\b[^>]*\bname="([^"]+)"/g)) {
+    await access(new URL(`../public/course-source/l01-ai/${match[1]}`, import.meta.url));
+  }
+});
