@@ -1,0 +1,2940 @@
+{
+  "source": "L12_StochasticMethods - Part B.pptx",
+  "sourceFilename": "L12_StochasticMethods - Part B.pptx",
+  "sourceSha256": "3728337b4ab2fc532b1c332b9c6a21f0c01a2345ce4f83a0e71fe01a5882e737",
+  "slideCount": 53,
+  "mediaCount": 133,
+  "media": [
+    {
+      "file": "image1.png",
+      "archivePath": "ppt/media/image1.png",
+      "bytes": 1704,
+      "sha256": "1b84fcfff03b70f06ac0a7f78b543b0aed65921b02a1962e778dac931716321c",
+      "width": 773,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "bytes": 724,
+      "sha256": "0f7e82033749649564325171094be709af96be5d281c120147eae04caacc3634",
+      "width": 223,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image100.png",
+      "archivePath": "ppt/media/image100.png",
+      "bytes": 2856,
+      "sha256": "17706f12b41369f00c5132cf2848565403838d3447bfcee9434378011b39b04d",
+      "width": 270,
+      "height": 49,
+      "format": "PNG"
+    },
+    {
+      "file": "image101.png",
+      "archivePath": "ppt/media/image101.png",
+      "bytes": 4319,
+      "sha256": "472680e0ab6b25fe70daef5dbc4077b3af1a0ffab641a5de8ddf49a7d1be39fa",
+      "width": 417,
+      "height": 83,
+      "format": "PNG"
+    },
+    {
+      "file": "image102.png",
+      "archivePath": "ppt/media/image102.png",
+      "bytes": 4211,
+      "sha256": "1171022f3e48e99f02ce45120a442951dfb6e582878c452d73d7f95d96134664",
+      "width": 397,
+      "height": 83,
+      "format": "PNG"
+    },
+    {
+      "file": "image103.png",
+      "archivePath": "ppt/media/image103.png",
+      "bytes": 37059,
+      "sha256": "a07bf2802264b6ab56d6a99cb8b46c1c2d8ebec1b1d949a2ab55ef9022e9d681",
+      "width": 418,
+      "height": 385,
+      "format": "PNG"
+    },
+    {
+      "file": "image104.png",
+      "archivePath": "ppt/media/image104.png",
+      "bytes": 35635,
+      "sha256": "c110da8e2ca9ec257b068c1d413fd7e056ac9ff07b7ae3f939dc5e6a42e29f85",
+      "width": 399,
+      "height": 365,
+      "format": "PNG"
+    },
+    {
+      "file": "image105.png",
+      "archivePath": "ppt/media/image105.png",
+      "bytes": 9382,
+      "sha256": "deff9c3bb114739d6c97b6b95a175c0ddb83b963590bdf3c00ee77bd75d51d80",
+      "width": 443,
+      "height": 50,
+      "format": "PNG"
+    },
+    {
+      "file": "image106.emf",
+      "archivePath": "ppt/media/image106.emf",
+      "bytes": 77428,
+      "sha256": "b65ffa76f5d177fb588b35db337ad3c3c529084d9f7db8d3d1027e521a2010b9",
+      "width": 467,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image107.emf",
+      "archivePath": "ppt/media/image107.emf",
+      "bytes": 82428,
+      "sha256": "580de2fe442071d9265986346375322e3bd7f5b3b60f58eb1881b3d54ae91237",
+      "width": 676,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image108.emf",
+      "archivePath": "ppt/media/image108.emf",
+      "bytes": 79932,
+      "sha256": "d6e4480bf156443a02b95ca9456acd92b5b9c8c3440429460831cd69ad2fdd4b",
+      "width": 581,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image109.emf",
+      "archivePath": "ppt/media/image109.emf",
+      "bytes": 88816,
+      "sha256": "a74598e4ccbfd5bcea4ad7d86193be77ba28bc0e6183e49baf3392f22c934ca5",
+      "width": 664,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "bytes": 718,
+      "sha256": "9c5905f7b73dd0b11a96ffbd15ccfbaeac0434f24bce964d52447fcb252cb0d9",
+      "width": 219,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image110.emf",
+      "archivePath": "ppt/media/image110.emf",
+      "bytes": 56904,
+      "sha256": "85771817d1f026761d350175ff176eec3a5d01058f5f9b3fd0e53d3aa8e6cf1c",
+      "width": 266,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image111.png",
+      "archivePath": "ppt/media/image111.png",
+      "bytes": 8161,
+      "sha256": "5a8aaffde3499b98e90b4d177ab0e2ae752b6cc4c571562f14d75a33294ed019",
+      "width": 509,
+      "height": 341,
+      "format": "PNG"
+    },
+    {
+      "file": "image112.png",
+      "archivePath": "ppt/media/image112.png",
+      "bytes": 10201,
+      "sha256": "6ac252045e11c6cbff66f04694d173a298bca58be19845207929edfe46438aea",
+      "width": 511,
+      "height": 347,
+      "format": "PNG"
+    },
+    {
+      "file": "image113.png",
+      "archivePath": "ppt/media/image113.png",
+      "bytes": 16400,
+      "sha256": "9e30f46d721bb958c233a5d71e5e04615a4f29e46a483f91da9552b5e53b8b6f",
+      "width": 515,
+      "height": 349,
+      "format": "PNG"
+    },
+    {
+      "file": "image114.png",
+      "archivePath": "ppt/media/image114.png",
+      "bytes": 157562,
+      "sha256": "cb85deb223d02d2442d8a5e37fbf486aad81b0f057d6642b19055033f648e8ec",
+      "width": 1333,
+      "height": 433,
+      "format": "PNG"
+    },
+    {
+      "file": "image115.emf",
+      "archivePath": "ppt/media/image115.emf",
+      "bytes": 70308,
+      "sha256": "c07fd048a80efedc76ce991a23f6dbb9f31a63d9ba1b948ccf7946f1664cb6f9",
+      "width": 534,
+      "height": 53,
+      "format": "WMF"
+    },
+    {
+      "file": "image116.emf",
+      "archivePath": "ppt/media/image116.emf",
+      "bytes": 58676,
+      "sha256": "7b6fa606010c0112c17ec3dbee57e7f62ff709b89ca017d9a7b58f9426d793d0",
+      "width": 372,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image117.emf",
+      "archivePath": "ppt/media/image117.emf",
+      "bytes": 65692,
+      "sha256": "e2e766f47f3c753cd93bdcd62edaad265d48aa2e4da58e1caeabbeeac0bccb25",
+      "width": 659,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image118.emf",
+      "archivePath": "ppt/media/image118.emf",
+      "bytes": 87296,
+      "sha256": "65abef69e251ebd66b1b8601859cb17ba229daab629de91417b6fb24617f3f9a",
+      "width": 525,
+      "height": 54,
+      "format": "WMF"
+    },
+    {
+      "file": "image119.emf",
+      "archivePath": "ppt/media/image119.emf",
+      "bytes": 63924,
+      "sha256": "8c3a2d87ca1c70c6f5af855035535b289d381d369ec644bdb5592c58d139615f",
+      "width": 610,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "bytes": 194,
+      "sha256": "c0adab8e0ac07469895d802fbcaca0452f7c05e7c2e30b4421cdf22bd2732f89",
+      "width": 113,
+      "height": 21,
+      "format": "PNG"
+    },
+    {
+      "file": "image120.emf",
+      "archivePath": "ppt/media/image120.emf",
+      "bytes": 66448,
+      "sha256": "eea92b81c308a38aa8e4297677df130097ae806a9a98019fce68b86c2be3c069",
+      "width": 705,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image121.emf",
+      "archivePath": "ppt/media/image121.emf",
+      "bytes": 101508,
+      "sha256": "80f3dcf509a6281ea2a59818671ee2282817caac1323daf9515a13615f748301",
+      "width": 837,
+      "height": 57,
+      "format": "WMF"
+    },
+    {
+      "file": "image122.png",
+      "archivePath": "ppt/media/image122.png",
+      "bytes": 12626,
+      "sha256": "59463b9dc09d356b5fdd5e2828e6e0f9d94e28a43d194bbdd6d6c6b35b33ba5c",
+      "width": 499,
+      "height": 337,
+      "format": "PNG"
+    },
+    {
+      "file": "image123.png",
+      "archivePath": "ppt/media/image123.png",
+      "bytes": 5956,
+      "sha256": "4dc20f6f90d510017b6e7da0cda05d353e5985edd1d6873e9a74ec2e9a635607",
+      "width": 515,
+      "height": 349,
+      "format": "PNG"
+    },
+    {
+      "file": "image124.png",
+      "archivePath": "ppt/media/image124.png",
+      "bytes": 12840,
+      "sha256": "9b568592fe1b48e0206469ecf8018cb4540400218b534e505cfdf12f09dad829",
+      "width": 499,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image125.png",
+      "archivePath": "ppt/media/image125.png",
+      "bytes": 96345,
+      "sha256": "200feb49c157bebb2df267b4d9e1809381a69f82d081b188a465a8f41ba72739",
+      "width": 401,
+      "height": 415,
+      "format": "PNG"
+    },
+    {
+      "file": "image126.png",
+      "archivePath": "ppt/media/image126.png",
+      "bytes": 143224,
+      "sha256": "00182485f1698506126721d46e23e7f9a82c0501f4540f7db120438943291d3b",
+      "width": 421,
+      "height": 415,
+      "format": "PNG"
+    },
+    {
+      "file": "image127.png",
+      "archivePath": "ppt/media/image127.png",
+      "bytes": 1798,
+      "sha256": "6cc259842cc7ad0677eb3ac1ed6665705daf45b211e054a02cc2ca905afdfe65",
+      "width": 759,
+      "height": 148,
+      "format": "PNG"
+    },
+    {
+      "file": "image128.png",
+      "archivePath": "ppt/media/image128.png",
+      "bytes": 14266,
+      "sha256": "ddb0d064092279315009a5817d6ea64f245f80fcbb93c6726373929acc37794e",
+      "width": 627,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image129.png",
+      "archivePath": "ppt/media/image129.png",
+      "bytes": 22805,
+      "sha256": "803dcf04835dad0ef0893a06aa8eb6e0828263ab7c22f7a19a504dbf08e4f5a4",
+      "width": 1044,
+      "height": 111,
+      "format": "PNG"
+    },
+    {
+      "file": "image13.png",
+      "archivePath": "ppt/media/image13.png",
+      "bytes": 1348,
+      "sha256": "445d2720894b7cad1eb0205c233f6e3f0378184d198883ecb3c7807cedbc187a",
+      "width": 593,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image130.png",
+      "archivePath": "ppt/media/image130.png",
+      "bytes": 22752,
+      "sha256": "2dfd6df492a094dde082e76426747ea1937a713362620e3d502d41cd9216b7cb",
+      "width": 1055,
+      "height": 111,
+      "format": "PNG"
+    },
+    {
+      "file": "image131.png",
+      "archivePath": "ppt/media/image131.png",
+      "bytes": 5093,
+      "sha256": "a22fe97bd644b4ffbf8597f03fa02b34717517deaf75ef0c436071550d421643",
+      "width": 510,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image132.png",
+      "archivePath": "ppt/media/image132.png",
+      "bytes": 24916,
+      "sha256": "40322fa19b2ac778de52d223ed625cc91560f55e15c403ba705dbbc2161412a9",
+      "width": 1198,
+      "height": 111,
+      "format": "PNG"
+    },
+    {
+      "file": "image133.png",
+      "archivePath": "ppt/media/image133.png",
+      "bytes": 20773,
+      "sha256": "ca984c0f8f8113669a550d3e5242c6d9a3ff1c2e9a2186a14dc6610c905815d2",
+      "width": 924,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image14.png",
+      "archivePath": "ppt/media/image14.png",
+      "bytes": 378,
+      "sha256": "9b0dba761a6cdf77d47474b3a3827a377ababf5516ea2b3027301c7b17b24dc1",
+      "width": 79,
+      "height": 61,
+      "format": "PNG"
+    },
+    {
+      "file": "image15.png",
+      "archivePath": "ppt/media/image15.png",
+      "bytes": 92291,
+      "sha256": "33effff41f2e039df707d3320b1e448269588c7f87fab3996112650a678b0571",
+      "width": 560,
+      "height": 535,
+      "format": "PNG"
+    },
+    {
+      "file": "image16.png",
+      "archivePath": "ppt/media/image16.png",
+      "bytes": 62531,
+      "sha256": "d171d1b41ee8ea7bbd9cad94599f4548f2759eeff17ae2d2f293ce7a9925c7f1",
+      "width": 752,
+      "height": 340,
+      "format": "PNG"
+    },
+    {
+      "file": "image17.png",
+      "archivePath": "ppt/media/image17.png",
+      "bytes": 119689,
+      "sha256": "c2c4f2794c4f1e0bfce11f103c2b72ebf7824a9fa09f5a846a713dded086cfe6",
+      "width": 895,
+      "height": 588,
+      "format": "PNG"
+    },
+    {
+      "file": "image18.png",
+      "archivePath": "ppt/media/image18.png",
+      "bytes": 110374,
+      "sha256": "f43cf4fadce9299d1589c4de307c6f8b21c10d59cbd30e7d23beda2d4544eaf9",
+      "width": 801,
+      "height": 479,
+      "format": "PNG"
+    },
+    {
+      "file": "image19.png",
+      "archivePath": "ppt/media/image19.png",
+      "bytes": 3166,
+      "sha256": "5348c29641ffd54b219c68840c3ae227721f86ee2f861aebc83a4cb84a625f48",
+      "width": 874,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image2.png",
+      "archivePath": "ppt/media/image2.png",
+      "bytes": 2045,
+      "sha256": "1b3bcdabeba43d37833529ca58d04165455de15caf29bdf37159e0d7a97eea0f",
+      "width": 864,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image20.png",
+      "archivePath": "ppt/media/image20.png",
+      "bytes": 1045,
+      "sha256": "d7e94719751448c82dd49fd608e31402e1bcbbc0aa959657e2d4a20c002cde9b",
+      "width": 253,
+      "height": 66,
+      "format": "PNG"
+    },
+    {
+      "file": "image21.png",
+      "archivePath": "ppt/media/image21.png",
+      "bytes": 2492,
+      "sha256": "b85a0a4faea28712824a3641c5feae45cc7490e45557caad5894bf98c9ca8550",
+      "width": 701,
+      "height": 57,
+      "format": "PNG"
+    },
+    {
+      "file": "image22.png",
+      "archivePath": "ppt/media/image22.png",
+      "bytes": 178744,
+      "sha256": "99e9a5ca2f86dc08d05425bb734b765b1576339d0be982ae5432e39968636bab",
+      "width": 1109,
+      "height": 575,
+      "format": "PNG"
+    },
+    {
+      "file": "image23.png",
+      "archivePath": "ppt/media/image23.png",
+      "bytes": 78357,
+      "sha256": "78b61f5688e6e50264cdd4bfc31a17c96085705ef076c984ee0db1fc653dda95",
+      "width": 606,
+      "height": 398,
+      "format": "PNG"
+    },
+    {
+      "file": "image24.png",
+      "archivePath": "ppt/media/image24.png",
+      "bytes": 76616,
+      "sha256": "341bcbdd10a6f9a36ac2da8c5ea2c4766b54837a8d31818dd73a62dd012333b8",
+      "width": 901,
+      "height": 601,
+      "format": "PNG"
+    },
+    {
+      "file": "image25.png",
+      "archivePath": "ppt/media/image25.png",
+      "bytes": 1971,
+      "sha256": "88da4703cf050131f8ff31d644edcdf7ac5be39463ffd9a78cc01e26b5c302d3",
+      "width": 589,
+      "height": 176,
+      "format": "PNG"
+    },
+    {
+      "file": "image26.png",
+      "archivePath": "ppt/media/image26.png",
+      "bytes": 1705,
+      "sha256": "7bd55ef7efe0498af468e49d4ea9f39e87208d965d61bf561350cdeb2c545158",
+      "width": 747,
+      "height": 75,
+      "format": "PNG"
+    },
+    {
+      "file": "image27.png",
+      "archivePath": "ppt/media/image27.png",
+      "bytes": 2047,
+      "sha256": "666aef5f1125654272b28bfbf42933124a9cf8a688bbabe6b5d2ba2dca3395c6",
+      "width": 913,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image28.png",
+      "archivePath": "ppt/media/image28.png",
+      "bytes": 2705,
+      "sha256": "a30d1ce9ae6972abade99eb55402a27fa63fb77e400f661785585cd190e484d1",
+      "width": 1165,
+      "height": 75,
+      "format": "PNG"
+    },
+    {
+      "file": "image29.png",
+      "archivePath": "ppt/media/image29.png",
+      "bytes": 821,
+      "sha256": "169433f65ad4943d16f66400244ba7700898e59e544da9c120c9155d55f07ff3",
+      "width": 337,
+      "height": 89,
+      "format": "PNG"
+    },
+    {
+      "file": "image3.png",
+      "archivePath": "ppt/media/image3.png",
+      "bytes": 566,
+      "sha256": "ea107cb153afee6bfc972b3222df3e7893bd3824d55bef61f4955f5bb5c6b4db",
+      "width": 245,
+      "height": 63,
+      "format": "PNG"
+    },
+    {
+      "file": "image30.png",
+      "archivePath": "ppt/media/image30.png",
+      "bytes": 4694,
+      "sha256": "1678537c12a45978ba52072817e4ca3f2869cedfd914c99575d37c98246d1436",
+      "width": 1599,
+      "height": 233,
+      "format": "PNG"
+    },
+    {
+      "file": "image31.png",
+      "archivePath": "ppt/media/image31.png",
+      "bytes": 1089,
+      "sha256": "cde0c2b8fc0fa67dce670883c765078b0a7b8decd2f7bd94ca66c77199b22fdf",
+      "width": 416,
+      "height": 87,
+      "format": "PNG"
+    },
+    {
+      "file": "image32.png",
+      "archivePath": "ppt/media/image32.png",
+      "bytes": 767,
+      "sha256": "aa24f358848b606bd1c8084cea8d469a00ba19e66de2ab7b50a21349604ca076",
+      "width": 243,
+      "height": 83,
+      "format": "PNG"
+    },
+    {
+      "file": "image33.emf",
+      "archivePath": "ppt/media/image33.emf",
+      "bytes": 66736,
+      "sha256": "3033b04e2f27b1e89f57f579a49633cf6226b4f80e13b9f8a8f8139302562739",
+      "width": 1257,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image34.emf",
+      "archivePath": "ppt/media/image34.emf",
+      "bytes": 105136,
+      "sha256": "25529cb4447cb4e05610dc1b099a4e569e902e02b4804bb72ea33d81be1fc112",
+      "width": 1412,
+      "height": 225,
+      "format": "WMF"
+    },
+    {
+      "file": "image35.emf",
+      "archivePath": "ppt/media/image35.emf",
+      "bytes": 54972,
+      "sha256": "0309297c1b9fea4e00c9e73fb71d51966bd5495d7475f6098e59ee80945bf991",
+      "width": 317,
+      "height": 43,
+      "format": "WMF"
+    },
+    {
+      "file": "image36.emf",
+      "archivePath": "ppt/media/image36.emf",
+      "bytes": 71700,
+      "sha256": "bdc8e072158c48f13ead14980c4d6cec2986d7b7b23a9b7d103ba4ef0af40a2a",
+      "width": 1513,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image37.emf",
+      "archivePath": "ppt/media/image37.emf",
+      "bytes": 50116,
+      "sha256": "798dccddcb8929f98cfea2c4cd90808b9b791d634b503cfa42cd4d18eb9178c4",
+      "width": 397,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image38.emf",
+      "archivePath": "ppt/media/image38.emf",
+      "bytes": 48060,
+      "sha256": "a5ff65466a6cc249dfe6a5502148f2587d7467af6489a338a9ad747d5c256e60",
+      "width": 311,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image39.emf",
+      "archivePath": "ppt/media/image39.emf",
+      "bytes": 68628,
+      "sha256": "a8e94a2a6d1a623abafd596f1b7c2806ed44f73ddaa7737905c31d2b193f225c",
+      "width": 571,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image4.png",
+      "archivePath": "ppt/media/image4.png",
+      "bytes": 56481,
+      "sha256": "177247a5cc3fdf19e02dbfec99795abe49b2112e31acbf6a926436f1db8b5026",
+      "width": 447,
+      "height": 394,
+      "format": "PNG"
+    },
+    {
+      "file": "image40.emf",
+      "archivePath": "ppt/media/image40.emf",
+      "bytes": 86312,
+      "sha256": "f10eaee4a7b654fb79cf09ac0817409ac3470b3800e93f16e16d6d631c35cd2a",
+      "width": 954,
+      "height": 145,
+      "format": "WMF"
+    },
+    {
+      "file": "image41.emf",
+      "archivePath": "ppt/media/image41.emf",
+      "bytes": 90504,
+      "sha256": "7cbd5f15a2a182f867f7aee755296544b59a04cd43150551967e4519920b3fee",
+      "width": 1214,
+      "height": 145,
+      "format": "WMF"
+    },
+    {
+      "file": "image42.emf",
+      "archivePath": "ppt/media/image42.emf",
+      "bytes": 40568,
+      "sha256": "550ef4b18265f6f61f860b07a998e75d5a67894c056805f499440a84548b1b40",
+      "width": 327,
+      "height": 43,
+      "format": "WMF"
+    },
+    {
+      "file": "image43.emf",
+      "archivePath": "ppt/media/image43.emf",
+      "bytes": 50116,
+      "sha256": "a08ea4e6459506f24a213c0502abe1e9c3c70fe4de7b7b996b655bf79a2faf94",
+      "width": 397,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image44.emf",
+      "archivePath": "ppt/media/image44.emf",
+      "bytes": 135396,
+      "sha256": "90af7dcc494bae376fd37c15e39e91e4695ec4929400d5bdba4ee05ccc9aee69",
+      "width": 818,
+      "height": 264,
+      "format": "WMF"
+    },
+    {
+      "file": "image45.emf",
+      "archivePath": "ppt/media/image45.emf",
+      "bytes": 57788,
+      "sha256": "e3080f3f1a01775fe3a7587dda90ca758966407b1d251991494ca20a2981654a",
+      "width": 196,
+      "height": 28,
+      "format": "WMF"
+    },
+    {
+      "file": "image46.emf",
+      "archivePath": "ppt/media/image46.emf",
+      "bytes": 30824,
+      "sha256": "da8048bd7acd3c9d00bde2163b7e14d86d691d61213a2c652efc621f32adcbf7",
+      "width": 139,
+      "height": 23,
+      "format": "WMF"
+    },
+    {
+      "file": "image47.emf",
+      "archivePath": "ppt/media/image47.emf",
+      "bytes": 30824,
+      "sha256": "4b8a5eb87ea2de999598d42267d48c9c9b549537c4be62545f5d3513a044b0cb",
+      "width": 139,
+      "height": 23,
+      "format": "WMF"
+    },
+    {
+      "file": "image48.emf",
+      "archivePath": "ppt/media/image48.emf",
+      "bytes": 63420,
+      "sha256": "09e0c593cb3737d891f7475301d22f687c502de793bae1098a9e13a011a05199",
+      "width": 159,
+      "height": 28,
+      "format": "WMF"
+    },
+    {
+      "file": "image49.png",
+      "archivePath": "ppt/media/image49.png",
+      "bytes": 76475,
+      "sha256": "4adf9c466165e43247799a278615a455c6ea19d843c032e9e5a30f5248d61086",
+      "width": 1026,
+      "height": 226,
+      "format": "PNG"
+    },
+    {
+      "file": "image5.png",
+      "archivePath": "ppt/media/image5.png",
+      "bytes": 875,
+      "sha256": "634d96c123912ab1c359f9bc7cb603a26ee2e2e0e687656f697ccdef8e32693f",
+      "width": 312,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image50.png",
+      "archivePath": "ppt/media/image50.png",
+      "bytes": 106650,
+      "sha256": "f252149678e8ac9411bb02cacc772c46d98369e7941ec314b286dd910a06d59d",
+      "width": 949,
+      "height": 406,
+      "format": "PNG"
+    },
+    {
+      "file": "image51.png",
+      "archivePath": "ppt/media/image51.png",
+      "bytes": 36658,
+      "sha256": "1d062e112ef569ce041b1f518906d80c4fcdeaea51af29a89494e2cc53b6610d",
+      "width": 1535,
+      "height": 141,
+      "format": "PNG"
+    },
+    {
+      "file": "image52.png",
+      "archivePath": "ppt/media/image52.png",
+      "bytes": 10932,
+      "sha256": "8d2689e65198d5fd2dff4ddbe6a147e513ffd4f88ad059917c2e4c1ed24bd701",
+      "width": 656,
+      "height": 46,
+      "format": "PNG"
+    },
+    {
+      "file": "image53.png",
+      "archivePath": "ppt/media/image53.png",
+      "bytes": 7191,
+      "sha256": "a6a0376b8787695f1b88516512e1a5ffb4347913e538a131c0548bd6626f2077",
+      "width": 2533,
+      "height": 333,
+      "format": "PNG"
+    },
+    {
+      "file": "image54.png",
+      "archivePath": "ppt/media/image54.png",
+      "bytes": 109011,
+      "sha256": "2e7f208bb538e6f1db6f15f3384cdd5b2efb10ced28cacbff50571569e0785b6",
+      "width": 808,
+      "height": 495,
+      "format": "PNG"
+    },
+    {
+      "file": "image55.emf",
+      "archivePath": "ppt/media/image55.emf",
+      "bytes": 37556,
+      "sha256": "b0148e948a037735efa3ecc5d61c8e553d4e4d037e62d78615d2483a058846d2",
+      "width": 172,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image56.emf",
+      "archivePath": "ppt/media/image56.emf",
+      "bytes": 90112,
+      "sha256": "4a6254043639fb7bd47e3032608fe9bdd5a8e9b37a287d5b0499160c1e7f8d1d",
+      "width": 329,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image57.emf",
+      "archivePath": "ppt/media/image57.emf",
+      "bytes": 101780,
+      "sha256": "7585b298e9b7f1f1d18cd5254eda535846f3d36ffdb4e40d679d1605efa73c22",
+      "width": 580,
+      "height": 111,
+      "format": "WMF"
+    },
+    {
+      "file": "image58.png",
+      "archivePath": "ppt/media/image58.png",
+      "bytes": 7671,
+      "sha256": "0e8e6aaaab9382b41e08680679f46e3532a102242daa7e97cec9eee1db352f58",
+      "width": 189,
+      "height": 143,
+      "format": "PNG"
+    },
+    {
+      "file": "image59.png",
+      "archivePath": "ppt/media/image59.png",
+      "bytes": 12064,
+      "sha256": "4dec9dfc944924d9a396a92c2a232f3be3a2c93a8e77b4bc39a601791d3f8751",
+      "width": 222,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image6.png",
+      "archivePath": "ppt/media/image6.png",
+      "bytes": 556,
+      "sha256": "481b205dcaf64f4d1ff546ffb1aad3095b45da3256da545bac7346511d22b078",
+      "width": 176,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image60.png",
+      "archivePath": "ppt/media/image60.png",
+      "bytes": 10099,
+      "sha256": "687812608a3f9cff4569356f5d51bee94cc81a366fb4621e249d5f0f6bad8c58",
+      "width": 190,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image61.png",
+      "archivePath": "ppt/media/image61.png",
+      "bytes": 12457,
+      "sha256": "e5400efc102f3f2f0cc2e8b38b659d26dbad54e1cc549b8ab4d160ba704c12f6",
+      "width": 222,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image62.png",
+      "archivePath": "ppt/media/image62.png",
+      "bytes": 11531,
+      "sha256": "2902644b890cc50ae13013523319222748c453156e9fc31882bebb53bec3a7bb",
+      "width": 260,
+      "height": 143,
+      "format": "PNG"
+    },
+    {
+      "file": "image63.png",
+      "archivePath": "ppt/media/image63.png",
+      "bytes": 9774,
+      "sha256": "759e202f60ef81b0ad277a9b4b67c979ab364a500e82da02b0e099e9f4323835",
+      "width": 190,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image64.png",
+      "archivePath": "ppt/media/image64.png",
+      "bytes": 10193,
+      "sha256": "ea6e11aa744aa3ada55c85b5ee26b52e726aab0da31e0a6a6ddd349a678583ff",
+      "width": 190,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image65.png",
+      "archivePath": "ppt/media/image65.png",
+      "bytes": 12670,
+      "sha256": "1f77cb64cf8e2fa1375e0bae75a3de416a457de1ed615d661bec64e5865ca16e",
+      "width": 222,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image66.png",
+      "archivePath": "ppt/media/image66.png",
+      "bytes": 14836,
+      "sha256": "099eecd302e579337ca153ce5ed3f8a4934c7c84e4a87ff603469a51e64064f6",
+      "width": 260,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image67.png",
+      "archivePath": "ppt/media/image67.png",
+      "bytes": 8675,
+      "sha256": "372691e551e504bd13a9849a4116bf035ee1a258553200dca07c37bf4d403d2a",
+      "width": 239,
+      "height": 144,
+      "format": "PNG"
+    },
+    {
+      "file": "image68.png",
+      "archivePath": "ppt/media/image68.png",
+      "bytes": 69437,
+      "sha256": "f960a430e3301a04c4de7f9f416323acfba4827fa6ae5a3a77107abd6c42460a",
+      "width": 1200,
+      "height": 307,
+      "format": "PNG"
+    },
+    {
+      "file": "image69.emf",
+      "archivePath": "ppt/media/image69.emf",
+      "bytes": 81424,
+      "sha256": "347b43aae4d7084e33ac833cf3f52afba9f6649fb162caab9c94f4d7e2880fd0",
+      "width": 880,
+      "height": 105,
+      "format": "WMF"
+    },
+    {
+      "file": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "bytes": 697,
+      "sha256": "24a876a09aac4d3aefa46daa974cf4b05d5a10b1e725bc4ab4f1777277534824",
+      "width": 205,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image70.emf",
+      "archivePath": "ppt/media/image70.emf",
+      "bytes": 28136,
+      "sha256": "fd0723a14add117a501ead420ad08980fe1d5d16089082d9faeb3365be9bbb15",
+      "width": 67,
+      "height": 42,
+      "format": "WMF"
+    },
+    {
+      "file": "image71.png",
+      "archivePath": "ppt/media/image71.png",
+      "bytes": 89050,
+      "sha256": "f97884619e35320975afb416a6617c1e368afc0bc0d0fb5687cefc54ab141c54",
+      "width": 719,
+      "height": 440,
+      "format": "PNG"
+    },
+    {
+      "file": "image72.emf",
+      "archivePath": "ppt/media/image72.emf",
+      "bytes": 90952,
+      "sha256": "cd58470df5cb36cbc635f2c4f59829095c331c2a6d4b8f5e2d90a4bc1362fbd7",
+      "width": 1293,
+      "height": 125,
+      "format": "WMF"
+    },
+    {
+      "file": "image73.emf",
+      "archivePath": "ppt/media/image73.emf",
+      "bytes": 67996,
+      "sha256": "0f39e2ae2247f0840828fa03acceca8099c99bb5f28903957d9d7308ca0d71c8",
+      "width": 863,
+      "height": 125,
+      "format": "WMF"
+    },
+    {
+      "file": "image74.emf",
+      "archivePath": "ppt/media/image74.emf",
+      "bytes": 55596,
+      "sha256": "1295f8f2f577272087e570ab4651f7289a39c8d721fa5029d49aa0a76932ba2d",
+      "width": 540,
+      "height": 125,
+      "format": "WMF"
+    },
+    {
+      "file": "image75.emf",
+      "archivePath": "ppt/media/image75.emf",
+      "bytes": 45652,
+      "sha256": "4697253b6bc359cef1762a26214d5f607a42b0678971dc96dae93a21668ef7cd",
+      "width": 551,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image76.emf",
+      "archivePath": "ppt/media/image76.emf",
+      "bytes": 49040,
+      "sha256": "f237022fc5ab54ece5638f64a12e8b47775f3492e0d6ef85de2b961295c49ccf",
+      "width": 348,
+      "height": 125,
+      "format": "WMF"
+    },
+    {
+      "file": "image77.png",
+      "archivePath": "ppt/media/image77.png",
+      "bytes": 77214,
+      "sha256": "269de2d9971e0ea81ad0113554d365dd13e43aeed35b495136a40ae676d4f693",
+      "width": 819,
+      "height": 404,
+      "format": "PNG"
+    },
+    {
+      "file": "image78.png",
+      "archivePath": "ppt/media/image78.png",
+      "bytes": 101371,
+      "sha256": "5eee5516b54c74d946f640e9ce8271db196c6067b458323d539d7930653967c7",
+      "width": 717,
+      "height": 568,
+      "format": "PNG"
+    },
+    {
+      "file": "image79.png",
+      "archivePath": "ppt/media/image79.png",
+      "bytes": 107838,
+      "sha256": "fcff6cd809eeeb6a5488d55cde47ceba03ae02629d8f748004515484835a9f7f",
+      "width": 706,
+      "height": 640,
+      "format": "PNG"
+    },
+    {
+      "file": "image8.emf",
+      "archivePath": "ppt/media/image8.emf",
+      "bytes": 43704,
+      "sha256": "c4b40cc3031ded5fcc8b42d20333a12bf2727f7e07a7586b66f17dadd41b3448",
+      "width": 507,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image80.png",
+      "archivePath": "ppt/media/image80.png",
+      "bytes": 799,
+      "sha256": "59d0956b53c1f173bd6ba6b27c2bb3913c73d7a937076e1b43c48cb22a9d0468",
+      "width": 252,
+      "height": 83,
+      "format": "PNG"
+    },
+    {
+      "file": "image81.emf",
+      "archivePath": "ppt/media/image81.emf",
+      "bytes": 63412,
+      "sha256": "f4c3702034ac34e4230074959b8c3b9e32bbf9d7285e40a3d9130ae104979656",
+      "width": 159,
+      "height": 28,
+      "format": "WMF"
+    },
+    {
+      "file": "image82.emf",
+      "archivePath": "ppt/media/image82.emf",
+      "bytes": 47320,
+      "sha256": "0fbd5f75804dc1b4e78b0c38abf392eb897075cc09809fe2f11e48cffa233aef",
+      "width": 129,
+      "height": 28,
+      "format": "WMF"
+    },
+    {
+      "file": "image83.png",
+      "archivePath": "ppt/media/image83.png",
+      "bytes": 49499,
+      "sha256": "c4dbb8a52820afa335bf55ec5507901ad9d4881961febc1f264a842fa4306116",
+      "width": 433,
+      "height": 147,
+      "format": "PNG"
+    },
+    {
+      "file": "image84.emf",
+      "archivePath": "ppt/media/image84.emf",
+      "bytes": 80424,
+      "sha256": "34d6ad2f1e3f1948a12390c8e070d9476313fd2a60a1ed2e558057c36e1a47e0",
+      "width": 1838,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image85.emf",
+      "archivePath": "ppt/media/image85.emf",
+      "bytes": 98760,
+      "sha256": "0ed6580962947c7914d86329b83a223f3fe0274acc64f5c5801508c328d2b5ac",
+      "width": 1459,
+      "height": 145,
+      "format": "WMF"
+    },
+    {
+      "file": "image86.emf",
+      "archivePath": "ppt/media/image86.emf",
+      "bytes": 37484,
+      "sha256": "8e3e8abf229f172710d5df5fe09727cef1d198d79fa6e64d71b14812bfa9e523",
+      "width": 474,
+      "height": 43,
+      "format": "WMF"
+    },
+    {
+      "file": "image87.emf",
+      "archivePath": "ppt/media/image87.emf",
+      "bytes": 98732,
+      "sha256": "e8402e6c560af074f457dab008752fbde03c9b5d55a8a8ea9b8208a3e64e329e",
+      "width": 1640,
+      "height": 125,
+      "format": "WMF"
+    },
+    {
+      "file": "image88.emf",
+      "archivePath": "ppt/media/image88.emf",
+      "bytes": 77728,
+      "sha256": "da513ac6645b8264ff50bf449ec8e7de63aa14cddf7ae00e2afc79a31540b9b4",
+      "width": 1960,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image89.emf",
+      "archivePath": "ppt/media/image89.emf",
+      "bytes": 43360,
+      "sha256": "00dba6203ef60883c59fb59769686a4c50fd2f4d55d7a2a1dc8dacb09516b0d0",
+      "width": 413,
+      "height": 43,
+      "format": "WMF"
+    },
+    {
+      "file": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "bytes": 662,
+      "sha256": "d6e01b4b33dcec257d475696084ec77f7d0846553be72e0ea8e5f1505501398a",
+      "width": 219,
+      "height": 72,
+      "format": "PNG"
+    },
+    {
+      "file": "image90.emf",
+      "archivePath": "ppt/media/image90.emf",
+      "bytes": 116272,
+      "sha256": "3ee94e27d4ee1e99149152547720bc7971b9bc5cd6d445222ce6b8c85ac84c26",
+      "width": 2357,
+      "height": 145,
+      "format": "WMF"
+    },
+    {
+      "file": "image91.emf",
+      "archivePath": "ppt/media/image91.emf",
+      "bytes": 76644,
+      "sha256": "14e321f39ee80c7a554db0b5f20fbf8af49daf1e30470cc027caa7ec7283138f",
+      "width": 908,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image92.emf",
+      "archivePath": "ppt/media/image92.emf",
+      "bytes": 78684,
+      "sha256": "1f1442984a29d49242986f6ade1d76f5cd047f6dfa0bbf7bc65cc01ec70ea293",
+      "width": 985,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image93.emf",
+      "archivePath": "ppt/media/image93.emf",
+      "bytes": 76476,
+      "sha256": "9a9db1d2842f4918a7b51dc5addebb2626797ed74d2f51860f048b70f7f191ae",
+      "width": 552,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image94.emf",
+      "archivePath": "ppt/media/image94.emf",
+      "bytes": 38556,
+      "sha256": "ddaab1060f8fe6475ea278a275129563e0e7f86c66eefed79319a5576fba35ec",
+      "width": 254,
+      "height": 50,
+      "format": "WMF"
+    },
+    {
+      "file": "image95.png",
+      "archivePath": "ppt/media/image95.png",
+      "bytes": 53316,
+      "sha256": "2c3079b0b0d49b0a8ea9b0112081ea498bfcd82d3da114d5a20293434159a46a",
+      "width": 638,
+      "height": 409,
+      "format": "PNG"
+    },
+    {
+      "file": "image96.png",
+      "archivePath": "ppt/media/image96.png",
+      "bytes": 968,
+      "sha256": "42348a8504380c6476966a0a71e519a701b78e2fa3346f00af0b10107003dcc1",
+      "width": 363,
+      "height": 87,
+      "format": "PNG"
+    },
+    {
+      "file": "image97.png",
+      "archivePath": "ppt/media/image97.png",
+      "bytes": 874,
+      "sha256": "b54b508085104d03c916ccb191014e38722d64351afa8dc3423d951f04339d7d",
+      "width": 252,
+      "height": 83,
+      "format": "PNG"
+    },
+    {
+      "file": "image98.png",
+      "archivePath": "ppt/media/image98.png",
+      "bytes": 4898,
+      "sha256": "80aa172f567f26eee7ad130ed8ad4e8d5dc37695c76b7348c3371d5df9b70827",
+      "width": 547,
+      "height": 43,
+      "format": "PNG"
+    },
+    {
+      "file": "image99.png",
+      "archivePath": "ppt/media/image99.png",
+      "bytes": 3261,
+      "sha256": "56ae9d97362962dfdac722a91e90bd10126f369a843d21ce74a76e36ea440a2c",
+      "width": 336,
+      "height": 43,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "Artificial Intelligence\u000bCPSC 481",
+        "Stochastic Methods for Reasoning in Uncertain Situations\nPart B"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "2",
+        "Lecture Overview",
+        "Independence\nReasoning over Time or Space\nMarkov Models\nHidden Markov Models (HMM)\nHMM examples"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "Independence",
+        "Two variables are independent in a joint distribution if:\n\n\n\n\n\nSays the joint distribution factors into a product of two simple ones\nUsually variables aren’t independent!\n\nCan use independence as a modeling assumption\nIndependence can be a simplifying assumption\nEmpirical  joint distributions: at best “close” to independent\nWhat could we assume for {Weather, Traffic, Cavity}?",
+        "3"
+      ],
+      "notes": "",
+      "media": [
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 30,
+        "effectCount": 9,
+        "clickGroupCount": 5,
+        "clickEffectCount": 5,
+        "withEffectCount": 4,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 9,
+        "targetShapeIds": [
+          "7",
+          "9",
+          "23556",
+          "1014787"
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "Example: Independence?",
+        "4"
+      ],
+      "notes": "",
+      "media": [
+        "image5.png",
+        "image6.png",
+        "image7.png",
+        "image8.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 20,
+        "effectCount": 6,
+        "clickGroupCount": 3,
+        "clickEffectCount": 3,
+        "withEffectCount": 3,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 6,
+        "targetShapeIds": [
+          "2",
+          "27732",
+          "27733",
+          "1041438",
+          "1041464",
+          "1041478"
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "Example: Independence",
+        "N fair, independent coin flips:",
+        "5"
+      ],
+      "notes": "",
+      "media": [
+        "image10.png",
+        "image11.png",
+        "image12.png",
+        "image13.png",
+        "image14.png",
+        "image15.png",
+        "image16.png",
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "Conditional Independence",
+        "6"
+      ],
+      "notes": "",
+      "media": [
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "Conditional Independence",
+        "P(Toothache, Cavity, Catch)\n\nIf I have a cavity, the probability that the probe catches in it doesn't depend on whether I have a toothache:\nP(+catch | +toothache, +cavity) = P(+catch | +cavity)\nThe same independence holds if I don’t have a cavity:\nP(+catch | +toothache, -cavity) = P(+catch| -cavity)\n\nCatch is conditionally independent of Toothache given Cavity:\nP(Catch | Toothache, Cavity) = P(Catch | Cavity)",
+        "Equivalent statements:\nP(Toothache | Catch , Cavity) = P(Toothache | Cavity)\nP(Toothache, Catch | Cavity) = P(Toothache | Cavity) P(Catch | Cavity)\nOne can be derived from the other easily",
+        "7"
+      ],
+      "notes": "",
+      "media": [
+        "image18.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 30,
+        "effectCount": 10,
+        "clickGroupCount": 3,
+        "clickEffectCount": 4,
+        "withEffectCount": 6,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 10,
+        "targetShapeIds": [
+          "5",
+          "1045507"
+        ]
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Conditional Independence",
+        "Unconditional (absolute) independence very rare (why?)\n\nConditional independence is our most basic and robust form of knowledge about uncertain environments.\n\nX is conditionally independent of Y given Z\n\n      if and only if:\n\n\n      or, equivalently, if and only if",
+        "8"
+      ],
+      "notes": "",
+      "media": [
+        "image19.png",
+        "image20.png",
+        "image21.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "Conditional Independence",
+        "What about this domain:\n\nTraffic\nUmbrella\nRaining",
+        "9"
+      ],
+      "notes": "",
+      "media": [
+        "image22.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "Conditional Independence",
+        "What about this domain:\n\nFire\nSmoke\nAlarm",
+        "10"
+      ],
+      "notes": "",
+      "media": [
+        "image23.png",
+        "image24.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 6,
+        "effectCount": 1,
+        "clickGroupCount": 0,
+        "clickEffectCount": 1,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 1,
+        "targetShapeIds": [
+          "6"
+        ]
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "Probability Recap",
+        "Conditional probability\n\nProduct rule\n\nChain rule \n\n\n\nX, Y independent if and only if:\n\nX and Y are conditionally independent given Z if and only if:",
+        "11"
+      ],
+      "notes": "",
+      "media": [
+        "image25.png",
+        "image26.png",
+        "image27.png",
+        "image28.png",
+        "image29.png",
+        "image30.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "Reasoning over Time or Space",
+        "Often, we want to reason about a sequence of observations\n\nSpeech recognition\n\nRobot localization\n\nUser attention\n\nMedical monitoring\n\nNeed to introduce time (or space) into our models",
+        "12"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-12.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-12.png",
+        "bytes": 35266,
+        "sha256": "d479070dbaf050037949281c402067392867b23a6f824c2727462d70ffd18925",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Markov Models",
+        "Value of X at a given time is called the state\n\n\n\n\n\n\nParameters: called transition probabilities or dynamics, specify how the state evolves over time (also, initial state probabilities)\nStationarity assumption: transition probabilities the same at all times",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "13"
+      ],
+      "notes": "",
+      "media": [
+        "image31.png",
+        "image32.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 16,
+        "effectCount": 4,
+        "clickGroupCount": 2,
+        "clickEffectCount": 3,
+        "withEffectCount": 1,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 4,
+        "targetShapeIds": [
+          "2",
+          "6147",
+          "6158"
+        ]
+      },
+      "render": {
+        "file": "slide-13.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-13.png",
+        "bytes": 75465,
+        "sha256": "95e3c48992768c315b97b42f6472e9f7777a160bf9076c4206e168fcd3238eb0",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "Joint Distribution of a Markov Model",
+        "Joint distribution:\n\n\nMore generally:\n\n\nQuestions to be resolved:\nDoes this indeed define a joint distribution?\nCan every joint distribution be factored this way, or are we making some assumptions about the joint distribution by using this factorization?",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "14"
+      ],
+      "notes": "",
+      "media": [
+        "image31.png",
+        "image32.png",
+        "image33.emf",
+        "image34.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 14,
+        "effectCount": 3,
+        "clickGroupCount": 0,
+        "clickEffectCount": 3,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 3,
+        "targetShapeIds": [
+          "6147"
+        ]
+      },
+      "render": {
+        "file": "slide-14.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-14.png",
+        "bytes": 113755,
+        "sha256": "a4c01fd8504ed1d6f435f54649f131bea9e01e596606e9e6089ac316d0860f2b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Chain Rule and Markov Models",
+        "From the chain rule, every joint distribution over                                 can be written as:\n\n\n\nAssuming that\n\t                                                       and\n\n    results in the expression posited on the previous slide:",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "15"
+      ],
+      "notes": "",
+      "media": [
+        "image33.emf",
+        "image35.emf",
+        "image36.emf",
+        "image37.emf",
+        "image38.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 28,
+        "effectCount": 9,
+        "clickGroupCount": 0,
+        "clickEffectCount": 4,
+        "withEffectCount": 5,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 9,
+        "targetShapeIds": [
+          "3",
+          "4",
+          "7",
+          "10",
+          "11",
+          "6147"
+        ]
+      },
+      "render": {
+        "file": "slide-15.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-15.png",
+        "bytes": 93371,
+        "sha256": "0b7d47144f25c2bfe1d4960583d7427b451376a6d07ad0b4a2a231ec5d25545b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "Chain Rule and Markov Models",
+        "From the chain rule, every joint distribution over                                         can be written as:\n\n\n\nAssuming that for all t: \n\n\n    gives us the expression posited on the earlier slide:",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "16"
+      ],
+      "notes": "",
+      "media": [
+        "image39.emf",
+        "image40.emf",
+        "image41.emf",
+        "image42.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-16.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-16.png",
+        "bytes": 48000,
+        "sha256": "326da5f3dbb942b6030be9eacf4ba0107f7fad5faf291b3ddb10caef04354a0b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "Implied Conditional Independencies",
+        "We assumed:                   and\n\nDo we also have\t\t\t\t\t?\nYes! \nProof:",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "17"
+      ],
+      "notes": "",
+      "media": [
+        "image37.emf",
+        "image38.emf",
+        "image43.emf",
+        "image44.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 12,
+        "effectCount": 3,
+        "clickGroupCount": 0,
+        "clickEffectCount": 2,
+        "withEffectCount": 1,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 3,
+        "targetShapeIds": [
+          "3",
+          "15"
+        ]
+      },
+      "render": {
+        "file": "slide-17.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-17.png",
+        "bytes": 100632,
+        "sha256": "f460bc795cabcedcb130f2adbb89a33bc6b1a713be077f4620b7b828e640b4dd",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "Markov Models Recap",
+        "Explicit assumption for all   t :\n\nConsequence, joint distribution can be written as: \n\n\n\nImplied conditional independencies:  (try to prove this!)\nPast variables independent of future variables given the present\ni.e., if                or                      then:\nAdditional explicit assumption:                         is the same for all t",
+        "18"
+      ],
+      "notes": "",
+      "media": [
+        "image34.emf",
+        "image39.emf",
+        "image45.emf",
+        "image46.emf",
+        "image47.emf",
+        "image48.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-18.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-18.png",
+        "bytes": 66105,
+        "sha256": "5b41eea83d8b6f9fd903abcac15cf2e1bda25b186592605a290e5ab57b11c024",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Conditional Independence",
+        "Basic conditional independence:\nPast and future independent of the present\nEach time step only depends on the previous\nThis is called the (first order) Markov property\n\nNote that the chain is just a (growable) BN\nWe can always use generic BN reasoning on it if we truncate the chain at a fixed length",
+        "19"
+      ],
+      "notes": "",
+      "media": [
+        "image49.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-19.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-19.png",
+        "bytes": 167601,
+        "sha256": "111e836c16538f42dc838d93a0a3f5eef518e55d59c989ed2de0662183a92b8b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "Example Markov Chain: Weather",
+        "States: X = {rain, sun}",
+        "rain",
+        "sun",
+        "0.9",
+        "0.7",
+        "0.3",
+        "0.1",
+        "Two new ways of representing the same CPT",
+        "0.1",
+        "0.9",
+        "0.7",
+        "0.3",
+        "Initial distribution: 1.0 sun\n\nCPT P(Xt | Xt-1):",
+        "20"
+      ],
+      "notes": "",
+      "media": [
+        "image50.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 45,
+        "effectCount": 17,
+        "clickGroupCount": 3,
+        "clickEffectCount": 3,
+        "withEffectCount": 14,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 17,
+        "targetShapeIds": [
+          "29",
+          "28675",
+          "28676",
+          "28677",
+          "28678",
+          "28679",
+          "28680",
+          "28681",
+          "28682",
+          "28683",
+          "28684",
+          "28685",
+          "28687",
+          "28688",
+          "28689",
+          "28690",
+          "28691"
+        ]
+      },
+      "render": {
+        "file": "slide-20.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-20.png",
+        "bytes": 212232,
+        "sha256": "5fc357e9e82e336b093df0fe83cd8f6deec711f05ca6f457be923ade5d1485cc",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "Example Markov Chain: Weather",
+        "Initial distribution: 1.0 sun\n\n\n\nWhat is the probability distribution after one step?",
+        "rain",
+        "sun",
+        "0.9",
+        "0.7",
+        "0.3",
+        "0.1",
+        "21"
+      ],
+      "notes": "",
+      "media": [
+        "image51.png",
+        "image52.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 10,
+        "effectCount": 2,
+        "clickGroupCount": 0,
+        "clickEffectCount": 2,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 2,
+        "targetShapeIds": [
+          "16",
+          "22"
+        ]
+      },
+      "render": {
+        "file": "slide-21.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-21.png",
+        "bytes": 107590,
+        "sha256": "077bfc21f6c0d54c7b8c04089c34c19a944c4f54a6cbcebe9c9790da2666e7f0",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "Mini-Forward Algorithm",
+        "Question: What’s P(X) on some day t?",
+        "Forward simulation",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "22"
+      ],
+      "notes": "",
+      "media": [
+        "image53.png",
+        "image54.png",
+        "image55.emf",
+        "image56.emf",
+        "image57.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 22,
+        "effectCount": 6,
+        "clickGroupCount": 1,
+        "clickEffectCount": 4,
+        "withEffectCount": 2,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 6,
+        "targetShapeIds": [
+          "3",
+          "4",
+          "5",
+          "10265",
+          "10266",
+          "10267"
+        ]
+      },
+      "render": {
+        "file": "slide-22.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-22.png",
+        "bytes": 173331,
+        "sha256": "e0d42201032dc25e10577b8ad504691ab746ee0224620401bfe6871ff4374d5c",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 23,
+      "textBlocks": [
+        "Example Run of Mini-Forward Algorithm",
+        "From initial observation of sun\n\n\n\t\nFrom initial observation of rain\n\n\n\nFrom yet another initial distribution P(X1):",
+        "P(X1)",
+        "P(X2)",
+        "P(X3)",
+        "P(X)",
+        "P(X4)",
+        "P(X1)",
+        "P(X2)",
+        "P(X3)",
+        "P(X)",
+        "P(X4)",
+        "P(X1)",
+        "P(X)",
+        "…",
+        "23"
+      ],
+      "notes": "",
+      "media": [
+        "image58.png",
+        "image59.png",
+        "image60.png",
+        "image61.png",
+        "image62.png",
+        "image63.png",
+        "image64.png",
+        "image65.png",
+        "image66.png",
+        "image67.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 84,
+        "effectCount": 28,
+        "clickGroupCount": 0,
+        "clickEffectCount": 13,
+        "withEffectCount": 15,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 28,
+        "targetShapeIds": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "50",
+          "30722",
+          "30725",
+          "30727",
+          "30730",
+          "30731",
+          "30734",
+          "30739",
+          "30740",
+          "30741",
+          "30742",
+          "30743",
+          "30745",
+          "30748",
+          "30749",
+          "30750",
+          "30751"
+        ]
+      },
+      "render": {
+        "file": "slide-23.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-23.png",
+        "bytes": 148615,
+        "sha256": "3649e36da9f2b84fc5f7527be6c813deb5eaa53939aa3265080a28fa1c7e955f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 24,
+      "textBlocks": [
+        "Stationary distribution:\nThe distribution we end up with is called the stationary distribution           of the chain\nIt satisfies",
+        "Stationary Distributions",
+        "For most chains:\nInfluence of the initial distribution gets less and less over time.\nThe distribution we end up in is independent of the initial distribution",
+        "24"
+      ],
+      "notes": "",
+      "media": [
+        "image68.png",
+        "image69.emf",
+        "image70.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-24.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-24.png",
+        "bytes": 204865,
+        "sha256": "b19dcdd7071ebe00d88dcad1087ea1c33c558c1f5b4a77524184edc16636cefe",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 25,
+      "textBlocks": [
+        "Example: Stationary Distributions",
+        "Question: What’s P(X) at time t = infinity?",
+        "X2",
+        "X1",
+        "X3",
+        "X4",
+        "Also:",
+        "25"
+      ],
+      "notes": "",
+      "media": [
+        "image71.png",
+        "image72.emf",
+        "image73.emf",
+        "image74.emf",
+        "image75.emf",
+        "image76.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 31,
+        "effectCount": 8,
+        "clickGroupCount": 0,
+        "clickEffectCount": 5,
+        "withEffectCount": 3,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 8,
+        "targetShapeIds": [
+          "5",
+          "6",
+          "8",
+          "9",
+          "11",
+          "12",
+          "13",
+          "18"
+        ]
+      },
+      "render": {
+        "file": "slide-25.png",
+        "path": "public/course-source/l12-mdp/slide-renders/slide-25.png",
+        "bytes": 214885,
+        "sha256": "c55620e6e507fecca15761ce88aafdc0934b16ba326b06a2215d17d5e3f48c04",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 26,
+      "textBlocks": [
+        "Application of Stationary Distribution: Web Link Analysis",
+        "PageRank over a web graph\nEach web page is a state\n\nInitial distribution: uniform over pages\n\nTransitions:\n\nWith prob. c, uniform jump to a\n\trandom page (dotted lines, not all shown)\nWith prob. 1-c, follow a random\n\toutlink (solid lines)\n\nStationary distribution\nWill spend more time on highly reachable pages\nE.g. many ways to get to the Acrobat Reader download page\nSomewhat robust to link spam\nGoogle 1.0 returned the set of pages containing all your keywords in decreasing rank, now all search engines use link analysis along with many other factors (rank actually getting less important over time)",
+        "26"
+      ],
+      "notes": "Before: most search engines were merely based on how well a page matches your search words.\nNote: currently dominated by clickstreams",
+      "media": [
+        "image77.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 14,
+        "effectCount": 5,
+        "clickGroupCount": 0,
+        "clickEffectCount": 1,
+        "withEffectCount": 4,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 5,
+        "targetShapeIds": [
+          "32770"
+        ]
+      }
+    },
+    {
+      "number": 27,
+      "textBlocks": [
+        "Application of Stationary Distributions: Gibbs Sampling*",
+        "Each joint instantiation over all hidden and query variables is a state: {X1, …, Xn} = H U Q\n\nTransitions:\nWith probability 1/n resample variable Xj according to \t\n\n\tP(Xj | x1, x2, …, xj-1, xj+1, …, xn, e1, …, em)\n\nStationary distribution:\nConditional distribution P(X1, X2 , … , Xn|e1, …, em)\nMeans that when running Gibbs sampling long enough we get a sample from the desired distribution\nRequires some proof to show this is true!",
+        "27"
+      ],
+      "notes": "With re-ordering\nof topics, can’t cover this here yet, need to wait till after sampling.",
+      "media": [
+        "image78.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 28,
+      "textBlocks": [
+        "Hidden Markov Models",
+        "28"
+      ],
+      "notes": "",
+      "media": [
+        "image79.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 29,
+      "textBlocks": [
+        "Hidden Markov Models",
+        "Markov chains not so useful for most agents\nNeed observations to update your beliefs\n\nHidden Markov models (HMMs)\nUnderlying Markov chain over states X\nYou observe outputs (effects) at each time step",
+        "X5",
+        "X2",
+        "E1",
+        "X1",
+        "X3",
+        "X4",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "29"
+      ],
+      "notes": "",
+      "media": [
+        "image79.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 30,
+      "textBlocks": [
+        "Example: Weather HMM",
+        "Umbrellat-1",
+        "Umbrellat",
+        "Umbrellat+1",
+        "Raint-1",
+        "Raint",
+        "Raint+1",
+        "An HMM is defined by:\nInitial distribution:\nTransitions:\nEmissions:",
+        "30"
+      ],
+      "notes": "demo",
+      "media": [
+        "image80.png",
+        "image81.emf",
+        "image82.emf",
+        "image83.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 10,
+        "effectCount": 2,
+        "clickGroupCount": 1,
+        "clickEffectCount": 2,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 2,
+        "targetShapeIds": [
+          "23",
+          "44"
+        ]
+      }
+    },
+    {
+      "number": 31,
+      "textBlocks": [
+        "Joint Distribution of an HMM",
+        "Joint distribution:\n\n\n\nMore generally:\n\n\nQuestions to be resolved:\nDoes this indeed define a joint distribution?\nCan every joint distribution be factored this way, or are we making some assumptions about the joint distribution by using this factorization?",
+        "X5",
+        "X2",
+        "E1",
+        "X1",
+        "X3",
+        "E2",
+        "E3",
+        "E5",
+        "31"
+      ],
+      "notes": "",
+      "media": [
+        "image84.emf",
+        "image85.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 22,
+        "effectCount": 5,
+        "clickGroupCount": 0,
+        "clickEffectCount": 5,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 5,
+        "targetShapeIds": [
+          "6147"
+        ]
+      }
+    },
+    {
+      "number": 32,
+      "textBlocks": [
+        "From the chain rule, every joint distribution over                                           can be written as:\n\n\n\n\nAssuming that\n\t\n\n    \ngives us the expression posited on the previous slide:",
+        "Chain Rule and HMMs",
+        "32"
+      ],
+      "notes": "",
+      "media": [
+        "image84.emf",
+        "image86.emf",
+        "image87.emf",
+        "image88.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 22,
+        "effectCount": 5,
+        "clickGroupCount": 0,
+        "clickEffectCount": 5,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 5,
+        "targetShapeIds": [
+          "6147"
+        ]
+      }
+    },
+    {
+      "number": 33,
+      "textBlocks": [
+        "Chain Rule and HMMs",
+        "From the chain rule, every joint distribution over                                         can be written as:\n\n\n\nAssuming that for all t: \nState independent of all past states and all past evidence given the previous state, i.e.: \n\n\nEvidence is independent of all past states and all past evidence given the current state, i.e.:\n    \n\n      gives us the expression posited on the earlier slide:",
+        "33"
+      ],
+      "notes": "",
+      "media": [
+        "image85.emf",
+        "image89.emf",
+        "image90.emf",
+        "image91.emf",
+        "image92.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 26,
+        "effectCount": 6,
+        "clickGroupCount": 0,
+        "clickEffectCount": 6,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 6,
+        "targetShapeIds": [
+          "6147"
+        ]
+      }
+    },
+    {
+      "number": 34,
+      "textBlocks": [
+        "Implied Conditional Independencies",
+        "Many implied conditional independencies, e.g.,\n\nTo prove them\nApproach 1: follow similar (algebraic) approach to what we did in the Markov models lecture\nApproach 2: directly from the graph structure (3 lectures from now)\nIntuition: If path between U and V goes through W, then",
+        "34"
+      ],
+      "notes": "",
+      "media": [
+        "image93.emf",
+        "image94.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 35,
+      "textBlocks": [
+        "HMMs Recap",
+        "Explicit assumption for all   t :\nConsequence, joint distribution can be written as: \n\n\n\n\nImplied conditional independencies:\nPast variables independent of future variables given the present\ni.e., if                     or                      then:\nAdditional explicit assumption:                         is the same for all t",
+        "35"
+      ],
+      "notes": "",
+      "media": [
+        "image34.emf",
+        "image39.emf",
+        "image45.emf",
+        "image46.emf",
+        "image47.emf",
+        "image48.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 36,
+      "textBlocks": [
+        "Conditional Independence",
+        "HMMs have two important independence properties:\n\nMarkov hidden process: future depends on past via the present\n\nCurrent observation independent of all else given current state",
+        "X5",
+        "X2",
+        "E1",
+        "X1",
+        "X3",
+        "X4",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "36"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 37,
+      "textBlocks": [
+        "Real HMM Examples",
+        "Speech recognition HMMs:\nObservations are acoustic signals (continuous valued)\nStates are specific positions in specific words (so, tens of thousands)\n\nMachine translation HMMs:\nObservations are words (tens of thousands)\nStates are translation options\n\nRobot tracking:\nObservations are range readings (continuous)\nStates are positions on a map (continuous)",
+        "37"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 38,
+      "textBlocks": [
+        "Filtering / Monitoring",
+        "Filtering, or monitoring, is the task of tracking the distribution Bt(X) = Pt(Xt | e1, …, et) (the belief state) over time\n\nWe start with B1(X) in an initial setting, usually uniform\n\nAs time passes, or we get observations, we update B(X)\n\nThe Kalman filter was invented in the 60’s and first implemented as a method of trajectory estimation for the Apollo program",
+        "38"
+      ],
+      "notes": "Dan has some demo for this",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 39,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=0\nSensor model: can read in which directions there is a wall, never more than 1 mistake\nMotion model: may not execute action with small prob.",
+        "1",
+        "0",
+        "Prob",
+        "Example from Michael Pfeiffer",
+        "39"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 40,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=1\nLighter grey: was possible to get the reading, but less likely b/c required 1 mistake",
+        "1",
+        "0",
+        "Prob",
+        "40"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 6,
+        "effectCount": 1,
+        "clickGroupCount": 1,
+        "clickEffectCount": 1,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 1,
+        "targetShapeIds": [
+          "1199142"
+        ]
+      }
+    },
+    {
+      "number": 41,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=2",
+        "1",
+        "0",
+        "Prob",
+        "41"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 6,
+        "effectCount": 1,
+        "clickGroupCount": 1,
+        "clickEffectCount": 1,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 1,
+        "targetShapeIds": [
+          "1201190"
+        ]
+      }
+    },
+    {
+      "number": 42,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=3",
+        "1",
+        "0",
+        "Prob",
+        "42"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 6,
+        "effectCount": 1,
+        "clickGroupCount": 1,
+        "clickEffectCount": 1,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 1,
+        "targetShapeIds": [
+          "1203238"
+        ]
+      }
+    },
+    {
+      "number": 43,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=4",
+        "1",
+        "0",
+        "Prob",
+        "43"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 6,
+        "effectCount": 1,
+        "clickGroupCount": 1,
+        "clickEffectCount": 1,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 1,
+        "targetShapeIds": [
+          "1205286"
+        ]
+      }
+    },
+    {
+      "number": 44,
+      "textBlocks": [
+        "Example: Robot Localization",
+        "t=5",
+        "1",
+        "0",
+        "Prob",
+        "44"
+      ],
+      "notes": "",
+      "media": [
+        "image95.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 45,
+      "textBlocks": [
+        "Inference: Base Cases",
+        "E1",
+        "X1",
+        "X2",
+        "X1",
+        "45"
+      ],
+      "notes": "",
+      "media": [
+        "image100.png",
+        "image101.png",
+        "image102.png",
+        "image103.png",
+        "image104.png",
+        "image96.png",
+        "image97.png",
+        "image98.png",
+        "image99.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 28,
+        "effectCount": 10,
+        "clickGroupCount": 0,
+        "clickEffectCount": 3,
+        "withEffectCount": 7,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 10,
+        "targetShapeIds": [
+          "3",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29"
+        ]
+      }
+    },
+    {
+      "number": 46,
+      "textBlocks": [
+        "Passage of Time",
+        "Assume we have current belief P(X | evidence to date)\n\n\nThen, after one time step passes:\n\n\n\n\n\n\nBasic idea: beliefs get “pushed” through the transitions\nWith the “B” notation, we have to be careful about what time step t the belief is about, and what evidence it includes",
+        "Or compactly:",
+        "46"
+      ],
+      "notes": "TODO: intermediate step in\nderivation!",
+      "media": [
+        "image105.png",
+        "image106.emf",
+        "image107.emf",
+        "image108.emf",
+        "image109.emf",
+        "image110.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 34,
+        "effectCount": 9,
+        "clickGroupCount": 0,
+        "clickEffectCount": 7,
+        "withEffectCount": 2,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 9,
+        "targetShapeIds": [
+          "3",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ]
+      }
+    },
+    {
+      "number": 47,
+      "textBlocks": [
+        "Example: Passage of Time",
+        "As time passes, uncertainty “accumulates”",
+        "T = 1",
+        "T = 2",
+        "T = 5",
+        "(Transition model: ghosts usually go clockwise)",
+        "47"
+      ],
+      "notes": "",
+      "media": [
+        "image111.png",
+        "image112.png",
+        "image113.png",
+        "image114.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 18,
+        "effectCount": 5,
+        "clickGroupCount": 2,
+        "clickEffectCount": 3,
+        "withEffectCount": 2,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 5,
+        "targetShapeIds": [
+          "2",
+          "1210373",
+          "1210374",
+          "1210376",
+          "1210377"
+        ]
+      }
+    },
+    {
+      "number": 48,
+      "textBlocks": [
+        "Observation",
+        "Assume we have current belief P(X | previous evidence):\n\n\nThen, after evidence comes in:\n\n\n\n\n\n\n\nOr, compactly:",
+        "Basic idea: beliefs “reweighted” by likelihood of evidence\nUnlike passage of time, we have to renormalize",
+        "48"
+      ],
+      "notes": "Basic idea: beliefs “reweighted” by likelihood of evidence\nUnlike passage of time, we have to renormalize",
+      "media": [
+        "image104.png",
+        "image115.emf",
+        "image116.emf",
+        "image117.emf",
+        "image118.emf",
+        "image119.emf",
+        "image120.emf",
+        "image121.emf"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 38,
+        "effectCount": 9,
+        "clickGroupCount": 0,
+        "clickEffectCount": 9,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 9,
+        "targetShapeIds": [
+          "3",
+          "15",
+          "16",
+          "17",
+          "19",
+          "20",
+          "22",
+          "23"
+        ]
+      }
+    },
+    {
+      "number": 49,
+      "textBlocks": [
+        "Example: Observation",
+        "As we get observations, beliefs get reweighted, uncertainty “decreases”",
+        "Before observation",
+        "After observation",
+        "49"
+      ],
+      "notes": "",
+      "media": [
+        "image122.png",
+        "image123.png",
+        "image124.png",
+        "image125.png",
+        "image126.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 50,
+      "textBlocks": [
+        "Example: Weather HMM",
+        "Umbrella1",
+        "Umbrella2",
+        "Rain0",
+        "Rain1",
+        "Rain2",
+        "B(+r) = 0.5\nB(-r)  = 0.5",
+        "B’(+r) = 0.5\nB’(-r)  = 0.5",
+        "B(+r) = 0.818\nB(-r)  = 0.182",
+        "B’(+r) = 0.627\nB’(-r)  = 0.373",
+        "B(+r) = 0.883\nB(-r)  = 0.117",
+        "50"
+      ],
+      "notes": "demo",
+      "media": [
+        "image83.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 10,
+        "effectCount": 2,
+        "clickGroupCount": 1,
+        "clickEffectCount": 2,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 2,
+        "targetShapeIds": [
+          "23",
+          "44"
+        ]
+      }
+    },
+    {
+      "number": 51,
+      "textBlocks": [
+        "The Forward Algorithm",
+        "We are given evidence at each time and want to know\n\n\nWe can derive the following updates",
+        "We can normalize as we go if we want to have P(x|e) at each time step, or just once at the end…",
+        "51"
+      ],
+      "notes": "TODO: explain\npropto\nand it’s\nX_t\n, not X",
+      "media": [
+        "image127.png",
+        "image128.png",
+        "image129.png",
+        "image130.png",
+        "image131.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 14,
+        "effectCount": 3,
+        "clickGroupCount": 3,
+        "clickEffectCount": 3,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 3,
+        "targetShapeIds": [
+          "1216516",
+          "1216518",
+          "1216519"
+        ]
+      }
+    },
+    {
+      "number": 52,
+      "textBlocks": [
+        "Online Belief Updates",
+        "Every time step, we start with current P(X | evidence)\nWe update for time:\n\n\n\n\nWe update for evidence:\n\n\n\nThe forward algorithm does both at once (and doesn’t normalize)",
+        "52"
+      ],
+      "notes": "",
+      "media": [
+        "image132.png",
+        "image133.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 53,
+      "textBlocks": [
+        "References",
+        "George Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapters 5, 9, and 13, Addison Wesley, 2009.\nRussel and Norvig, Artificial Intelligence: A Modern Approach, 3rd edition, Prentice Hall, 2010.\nSome of slides are revised based on Dan Klein and Pieter Abbeel for CS188 Intro to AI at UC Berkeley",
+        "53"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    }
+  ]
+}

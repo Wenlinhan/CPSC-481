@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "source": "L10_MachineLearning Part B.pptx",
+  "sourceFilename": "L10_MachineLearning Part B.pptx",
+  "sourceSha256": "AFB85A8365CF49BAC114D362E78552503A1D771F84B6FA85A0D0827775FADC7D",
+  "sourceBytes": 963006,
+  "authoritativeSlideCount": 36,
+  "sourcePage": {
+    "widthPoints": 720,
+    "heightPoints": 540,
+    "aspectRatio": "4:3"
+  },
+  "selectedSlides": [
+    30,
+    32,
+    33,
+    36
+  ],
+  "intendedMeetings": [
+    12
+  ],
+  "meetingCoverage": {
+    "12": [
+      30,
+      32,
+      33,
+      36
+    ]
+  },
+  "slideToMeeting": {
+    "30": 12,
+    "32": 12,
+    "33": 12,
+    "36": 12
+  },
+  "scope": "Meeting 12 reinforcement-learning evidence from the historical Machine Learning Part B deck. Slide 30 is the only substantive reinforcement-learning slide; slides 32 and 33 preserve the source comparison with online learning and the broader learning taxonomy; slide 36 preserves the deck's cited textbook references.",
+  "selectionRationale": "The entire 36-slide deck was audited. Slides 1-29 teach genetic programming, neural networks, backpropagation, unsupervised learning, clustering, and classification, while slides 31, 34, and 35 cover domain knowledge, general applications, and general challenges. Those topics are not direct reinforcement-learning evidence. The four selected slides retain every reinforcement-learning, exploration, online-learning comparison, category, and textbook-reference point that the deck provides.",
+  "auditSummary": {
+    "auditedSlideCount": 36,
+    "inventoryTextBlocks": 162,
+    "notesSlideParts": 26,
+    "slidesWithSpeakerNotes": 17,
+    "speakerNoteSlides": [
+      3,
+      4,
+      6,
+      7,
+      8,
+      10,
+      11,
+      14,
+      15,
+      18,
+      19,
+      20,
+      21,
+      24,
+      29,
+      30,
+      35
+    ],
+    "embeddedMediaFiles": 29,
+    "slidesWithEmbeddedMedia": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      24,
+      25,
+      27,
+      32
+    ],
+    "oleEmbeddingFiles": 5,
+    "oleEmbeddingSlides": [
+      9,
+      14,
+      22,
+      24,
+      25
+    ],
+    "slidesWithNativeTiming": [],
+    "slidesWithNativeBuilds": [],
+    "slidesWithTransitions": [],
+    "selectedSlideCount": 4,
+    "selectedNotesPartSlides": [
+      30,
+      32,
+      33
+    ],
+    "selectedSlidesWithSpeakerNotes": [
+      30
+    ],
+    "selectedSlidesWithEmbeddedMedia": [
+      32
+    ],
+    "selectedEmbeddedMediaFiles": 1,
+    "selectedSlidesWithNativeTiming": [],
+    "selectedSlidesWithNativeBuilds": [],
+    "selectedSlidesWithTransitions": [],
+    "fullSlideRenders": 4,
+    "renderDimensions": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  "inventoryProvenance": {
+    "file": "source-inventory.json",
+    "sha256": "ED6C78B513BCEE5A135AD95D937064EC56C1F432D3DDC1FAAA73CFF808EE0375",
+    "bytes": 42394,
+    "generator": "scripts/inventory_pptx.py",
+    "sourceSlideCount": 36,
+    "textBlockCount": 162,
+    "embeddedMediaCount": 29,
+    "speakerNotes": {
+      "count": 17,
+      "slides": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        24,
+        29,
+        30,
+        35
+      ]
+    },
+    "nativeTiming": {
+      "count": 0,
+      "slides": [],
+      "conditionCount": 0,
+      "effectCount": 0
+    },
+    "captures": [
+      "source filename and SHA-256",
+      "all 36 slides and all 162 source text blocks",
+      "speaker notes resolved through slide relationships",
+      "all 29 embedded-media byte records and slide relationships",
+      "native timing presence and counts",
+      "selected full-slide render bytes, hashes, dimensions, and paths"
+    ],
+    "statement": "The inventory was generated read-only from the authoritative PPTX and is the machine-verifiable deck-wide index for this selected source package."
+  },
+  "renderProvenance": {
+    "directory": "source-slides",
+    "count": 4,
+    "format": "PNG",
+    "dimensions": {
+      "width": 1600,
+      "height": 1200
+    },
+    "sourceDimensionsPoints": {
+      "width": 720,
+      "height": 540
+    },
+    "application": "Microsoft PowerPoint",
+    "api": "COM Slide.Export",
+    "statement": "Each PNG is a complete 4:3 visual composite of one selected authoritative slide. The renders preserve composed text, layout, source shapes, and the exact embedded image on slide 32; they supplement rather than replace searchable text and notes.",
+    "renders": [
+      {
+        "slide": 30,
+        "meeting": 12,
+        "file": "slide-30.png",
+        "bytes": 149592,
+        "sha256": "E9BC0A4874DE133497EFC52DBF08E280D7599D06B858939ADACABC284347B6FF",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "slide": 32,
+        "meeting": 12,
+        "file": "slide-32.png",
+        "bytes": 425750,
+        "sha256": "01AE8DB212313CE2E7B55DB1C83806CE8BD0CA02B1773BF37E0D07663D913CF1",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "slide": 33,
+        "meeting": 12,
+        "file": "slide-33.png",
+        "bytes": 95016,
+        "sha256": "EF6F2D395888205A7C993CBB8D36F0FF19BD2F31E3CD8C49AE6966A2202FF219",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "slide": 36,
+        "meeting": 12,
+        "file": "slide-36.png",
+        "bytes": 38882,
+        "sha256": "86A595998AD66B556FC1F8629DDE0E5745C4121D3B394212E1796F0FAC819FC5",
+        "width": 1600,
+        "height": 1200
+      }
+    ]
+  },
+  "selectedSlideEvidence": [
+    {
+      "slide": 30,
+      "title": "Reinforcement Learning",
+      "slideXmlBytes": 5129,
+      "slideXmlSha256": "87255D6FD3FA975A41F1038E93615327CB7FFB434802B2B58AB0308C1A774D18",
+      "evidenceRole": "The deck's only substantive reinforcement-learning explanation and the only source location that mentions Q-Learning.",
+      "visibleKnowledgePoints": [
+        "A learning agent uses trial and error, receives feedback or reward, and learns a policy for accomplishing goals in an environment.",
+        "The source frames the objective as choosing actions that maximize cumulative reward.",
+        "The source states that reinforcement learning is useful when an environment is large or cannot be described precisely.",
+        "Unlike supervised learning, the agent is not told the correct action directly; it explores to discover actions associated with greater reward.",
+        "The source relates reinforcement learning to control theory, operations research or approximate dynamic programming, information theory, and simulation-based optimization.",
+        "The source relates reinforcement learning to equilibrium under bounded rationality in economics and game theory.",
+        "The footer names Monte Carlo Tree Search, AlphaGo, and Monte Carlo reinforcement learning as supplemental material."
+      ],
+      "speakerNotes": {
+        "notesPart": "ppt/notesSlides/notesSlide22.xml",
+        "notesXmlBytes": 4078,
+        "notesXmlSha256": "C42BD3AB0EF64F5DEE5E75005177C666FBC7DC2ED670329F21CF11BA86442969",
+        "knowledgePoints": [
+          "Game playing is presented as a large-state-space setting in which reinforcement-learning agents can learn by playing instead of relying on a large manually specified rule base.",
+          "The notes mention training against humans or other reinforcement-learning agents, including two-player games such as backgammon.",
+          "Elevator scheduling is used as a control example learned in simulation.",
+          "The notes identify retraining after environment changes and continued online improvement as advantages for control.",
+          "The notes contain only the standalone term 'Q-Learning'; they provide no definition, algorithm, equation, example, or distinction from other temporal-difference methods."
+        ]
+      },
+      "embeddedMedia": [],
+      "nativeTiming": false,
+      "nativeBuilds": false,
+      "transition": false
+    },
+    {
+      "slide": 32,
+      "title": "Online Learning as a Promising Method for Big Data Analysis",
+      "slideXmlBytes": 8922,
+      "slideXmlSha256": "3E6DCC44D989B42F520F53D8A16FB27B3D6CC84FDAF2D62281163CE333AEA8AB",
+      "evidenceRole": "Source context needed to evaluate the online-learning comparison made on slide 33.",
+      "visibleKnowledgePoints": [
+        "Batch or offline learning observes a fixed batch of labeled examples, learns a model, and predicts new samples.",
+        "Online learning observes a sequence of examples, learns incrementally as instances arrive, and makes sequential predictions.",
+        "The source illustration shows a true response returning after a prediction and updating the model."
+      ],
+      "speakerNotes": {
+        "notesPart": "ppt/notesSlides/notesSlide24.xml",
+        "notesXmlBytes": 5283,
+        "notesXmlSha256": "4C9668896CCB1E1D7A682D3DDD9C04108470A6DD267B80FC4CE438290ABA8776",
+        "knowledgePoints": [],
+        "statement": "The notes part contains only the slide-number placeholder and no instructional speaker note."
+      },
+      "embeddedMedia": [
+        "media/image25.png"
+      ],
+      "nativeTiming": false,
+      "nativeBuilds": false,
+      "transition": false
+    },
+    {
+      "slide": 33,
+      "title": "Categories of Machine Learning",
+      "slideXmlBytes": 4942,
+      "slideXmlSha256": "571CA542DCE97AC2FD086858A8DCEE0E4B17DD649E13E314E665A02877A8289D",
+      "evidenceRole": "Taxonomy and an explicit historical comparison between online learning and reinforcement learning.",
+      "visibleKnowledgePoints": [
+        "The source contrasts symbolic with non-symbolic learning, supervised with unsupervised learning, and batch with online learning.",
+        "The source states that the difference between online learning and reinforcement learning is very small.",
+        "The source lists analogical learning, deep learning, reinforcement learning, and hybrid or universal learning as other categories.",
+        "The source identifies reinforcement learning as important for robots."
+      ],
+      "speakerNotes": {
+        "notesPart": "ppt/notesSlides/notesSlide25.xml",
+        "notesXmlBytes": 1693,
+        "notesXmlSha256": "0A8E622B33935E9E9A1D17B6EE79E165BBC1D1326CE2D0268E916B86F9967FD7",
+        "knowledgePoints": [],
+        "statement": "The notes part contains only the slide-number placeholder and no instructional speaker note."
+      },
+      "embeddedMedia": [],
+      "nativeTiming": false,
+      "nativeBuilds": false,
+      "transition": false
+    },
+    {
+      "slide": 36,
+      "title": "References",
+      "slideXmlBytes": 2481,
+      "slideXmlSha256": "E3EBFB081B3A8B3145D1FB11A311F3F1AEF1899630BF02F286F44649A7452788",
+      "evidenceRole": "The historical deck's own textbook provenance.",
+      "visibleKnowledgePoints": [
+        "The deck cites George F. Luger's Artificial Intelligence: Structures and Strategies for Complex Problem Solving, sixth edition, chapters 10 and 12, Addison Wesley, 2009.",
+        "The deck cites Tom M. Mitchell's Machine Learning, McGraw-Hill, 1997."
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [],
+      "nativeTiming": false,
+      "nativeBuilds": false,
+      "transition": false
+    }
+  ],
+  "extractionPolicy": "Only media parts directly referenced by selected source slides are copied into this package. The selected block references one media part, ppt/media/image25.png on slide 32, and it is preserved byte-for-byte under its original package filename. Full-slide PNG renders are retained only for slides 30, 32, 33, and 36.",
+  "assets": [
+    {
+      "file": "media/image25.png",
+      "originalFile": "image25.png",
+      "archivePath": "ppt/media/image25.png",
+      "sha256": "03D5DB6FB9F96AD1ECE52CFFBD74F95764B0CEFA7313C598245675026E49373F",
+      "bytes": 68128,
+      "format": "PNG",
+      "dimensions": {
+        "width": 632,
+        "height": 387
+      },
+      "sourceSlides": [
+        32
+      ],
+      "sourceRelationships": [
+        {
+          "slide": 32,
+          "relationshipId": "rId3",
+          "target": "../media/image25.png"
+        }
+      ],
+      "knowledgeRole": "Batch or offline learning compared with incremental online learning, including the prediction, true-response, and model-update loop.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        30
+      ],
+      "sourceIssue": "The phrase 'learns an optimal policy' can imply that training is guaranteed to reach a globally optimal policy.",
+      "correction": "State the learning objective as finding a policy that maximizes expected return. Whether an optimal policy is reached depends on the problem representation, algorithm, exploration, data, function approximation, and convergence assumptions."
+    },
+    {
+      "sourceSlides": [
+        30
+      ],
+      "sourceIssue": "The claim that reinforcement learning is most successful when an environment is large or cannot be precisely described is too broad.",
+      "correction": "Reinforcement learning is a framework for sequential decision-making from interaction. Large or unknown dynamics may motivate model-free learning, but they do not by themselves make reinforcement learning effective or sample-efficient."
+    },
+    {
+      "sourceSlides": [
+        33
+      ],
+      "sourceIssue": "The source says the difference between online learning and reinforcement learning is very small.",
+      "correction": "Online learning describes incremental updating as data arrive. Reinforcement learning describes sequential action under reward feedback, delayed consequences, and action-dependent data. A reinforcement-learning system may learn online or offline, so the concepts overlap but are not equivalent."
+    },
+    {
+      "sourceSlides": [
+        36
+      ],
+      "sourceIssue": "The reference slide spells George F. Luger's surname as 'Fluger' and writes the publisher of Mitchell's book as 'McGraw-Hills.'",
+      "correction": "Use George F. Luger and McGraw-Hill in the rebuilt meeting while preserving the exact source slide in the evidence view."
+    }
+  ],
+  "provenanceGaps": [
+    {
+      "topic": "Formal reinforcement-learning problem",
+      "finding": "The source has no Markov decision process definition and does not define states, actions, transition dynamics, reward functions, terminal states, episodes, trajectories, return, or discount factor.",
+      "meetingAction": "Add a clearly labeled modern textbook supplement that defines an MDP and maps each term to a small finite environment."
+    },
+    {
+      "topic": "Policies, values, and Bellman relationships",
+      "finding": "The source uses the terms policy, cumulative reward, and optimal policy but gives no policy notation, state-value function, action-value function, expected return, or Bellman expectation and optimality equations.",
+      "meetingAction": "Add policy, V, Q, return, and Bellman foundations before introducing an update rule."
+    },
+    {
+      "topic": "Q-learning",
+      "finding": "The speaker notes on slide 30 contain only the term 'Q-Learning.' There is no temporal-difference target, update equation, learning rate, discount factor, terminal-state handling, worked table, pseudocode, or convergence condition.",
+      "meetingAction": "Add the Q-learning update, identify every term, work one numerical update, and provide a small tabular gridworld or equivalent demonstration. Label this content as a supplement rather than as historical-slide content."
+    },
+    {
+      "topic": "Exploration versus exploitation",
+      "finding": "Slide 30 says that an agent discovers rewarding actions through exploration, but the deck supplies no exploration-exploitation tradeoff, epsilon-greedy policy, decay schedule, optimistic initialization, softmax exploration, or assessment example.",
+      "meetingAction": "Add an exploration-exploitation explanation and an interactive comparison of greedy and epsilon-greedy behavior."
+    },
+    {
+      "topic": "Algorithm relationships and limits",
+      "finding": "The deck does not distinguish on-policy from off-policy learning, Q-learning from SARSA, model-free from model-based reinforcement learning, or tabular from function-approximation methods. It also omits sample inefficiency, instability, reward design, reward hacking, safety, and evaluation.",
+      "meetingAction": "Add a compact comparison and a limitations section appropriate for an introductory course; reserve deep reinforcement learning implementation details for optional enrichment."
+    },
+    {
+      "topic": "Demonstration and assessment",
+      "finding": "The slide notes mention games and elevator scheduling, but the deck contains no observable agent-environment loop, step-by-step episode, computed return, policy improvement demo, practice prompt, or in-class assessment.",
+      "meetingAction": "Use one small environment throughout the meeting for explanation, a live or animated Q-table update, guided practice, and an exit check."
+    }
+  ]
+}

@@ -1,0 +1,860 @@
+{
+  "schemaVersion": 2,
+  "source": "L12_StochasticMethods - Part B.pptx",
+  "sourceFilename": "L12_StochasticMethods - Part B.pptx",
+  "sourceSha256": "3728337B4AB2FC532B1C332B9C6A21F0C01A2345CE4F83A0E71FE01A5882E737",
+  "sourceBytes": 5417912,
+  "authoritativeSlideCount": 53,
+  "sourcePage": {
+    "widthPoints": 720,
+    "heightPoints": 540,
+    "aspectRatio": "4:3"
+  },
+  "selectedSlides": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "intendedMeetings": [
+    11
+  ],
+  "meetingCoverage": {
+    "11": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ]
+  },
+  "slideToMeeting": {
+    "12": 11,
+    "13": 11,
+    "14": 11,
+    "15": 11,
+    "16": 11,
+    "17": 11,
+    "18": 11,
+    "19": 11,
+    "20": 11,
+    "21": 11,
+    "22": 11,
+    "23": 11,
+    "24": 11,
+    "25": 11
+  },
+  "scope": "Exact historical evidence for the Markov-chain foundations that can support Meeting 11. The selected sequence begins with temporal or spatial reasoning, derives the first-order Markov factorization, works a two-state weather chain, propagates distributions, and ends with stationary distributions.",
+  "selectionRationale": "Slides 12-25 are the only contiguous source sequence that directly supports state, transition dynamics, the Markov property, prediction, and limiting behavior. Slides 1-11 duplicate the independence material already packaged for Meeting 10; slides 26-27 are optional PageRank and Gibbs-sampling applications; slides 28-52 begin a separate HMM and filtering unit; slide 53 is the source reference list.",
+  "provenanceGap": {
+    "finding": "The 53-slide deck contains Markov chains and hidden Markov models, but it does not teach a Markov decision process.",
+    "missingFromSource": [
+      "actions or action-conditioned transitions P(s'|s,a)",
+      "reward functions",
+      "discount factor gamma and discounted return",
+      "policies pi(a|s) or pi(s)",
+      "state-value and action-value functions",
+      "Bellman expectation or optimality equations",
+      "policy evaluation or policy improvement",
+      "value iteration or convergence criteria for Bellman backups"
+    ],
+    "courseAction": "Use slides 12-25 only as the exact Markov foundation. Label MDP components, policies, Bellman equations, and value iteration as a modern or textbook supplement; do not attribute them to this deck."
+  },
+  "auditSummary": {
+    "wholeDeckSlidesInspected": 53,
+    "wholeDeckTextBlocks": 292,
+    "wholeDeckEmbeddedMediaFiles": 133,
+    "wholeDeckNotesPartCount": 25,
+    "wholeDeckNotesPartSlides": [
+      1,
+      2,
+      8,
+      13,
+      14,
+      15,
+      16,
+      21,
+      26,
+      27,
+      30,
+      31,
+      32,
+      33,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      46,
+      48,
+      50,
+      51
+    ],
+    "wholeDeckSpeakerNoteSlides": [
+      26,
+      27,
+      30,
+      38,
+      46,
+      48,
+      50,
+      51
+    ],
+    "wholeDeckNativeTimingSlides": [
+      3,
+      4,
+      7,
+      10,
+      13,
+      14,
+      15,
+      17,
+      20,
+      21,
+      22,
+      23,
+      25,
+      26,
+      30,
+      31,
+      32,
+      33,
+      40,
+      41,
+      42,
+      43,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51
+    ],
+    "wholeDeckNativeBuildSlides": [
+      20,
+      22,
+      23,
+      25,
+      40,
+      41,
+      42,
+      43,
+      45,
+      46,
+      47,
+      48
+    ],
+    "wholeDeckTransitionSlides": [
+      19,
+      22,
+      25,
+      51
+    ],
+    "selectedSlideCount": 14,
+    "selectedTextBlocks": 104,
+    "selectedEmbeddedMediaFiles": 46,
+    "selectedMediaFormats": {
+      "PNG": 20,
+      "EMF": 26
+    },
+    "selectedNotesPartSlides": [
+      13,
+      14,
+      15,
+      16,
+      21
+    ],
+    "selectedSlidesWithNonemptySpeakerNotes": [],
+    "selectedNativeTimingSlides": [
+      13,
+      14,
+      15,
+      17,
+      20,
+      21,
+      22,
+      23,
+      25
+    ],
+    "selectedNativeBuildSlides": [
+      20,
+      22,
+      23,
+      25
+    ],
+    "selectedTransitionSlides": [
+      19,
+      22,
+      25
+    ],
+    "selectedTimingConditionCount": 262,
+    "selectedTimingEffectCount": 80,
+    "fullSlideRenders": 14,
+    "renderDimensions": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  "inventoryProvenance": {
+    "file": "source-inventory.json",
+    "sha256": "9D229D1B780834F2D064D7BB2BDBEADDC6D6A66258D22DDB787CA30B6941D016",
+    "bytes": 84775,
+    "generator": "scripts/inventory_pptx.py",
+    "statement": "The read-only inventory covers all 53 source slides and all 133 embedded media parts. It preserves source hashes, slide text blocks, nonempty speaker notes, media relationships, native timing counts and targets, and metadata for the 14 selected full-slide renders."
+  },
+  "extractionPolicy": "Only media referenced by slides 12-25 are copied into this package. All 46 selected ppt/media parts retain their original package filenames and are byte-identical to the authoritative PPTX. Native EMF equations and diagrams are retained rather than rasterized; the complete PowerPoint PNG render preserves their composed appearance.",
+  "selectedMedia": {
+    "directory": "media",
+    "count": 46,
+    "aggregateNameAndSha256Digest": "068C99C84B4599AD465263AB430100A045DD45E69EDFF82E94EDB5EE48C9D244",
+    "files": [
+      "image31.png",
+      "image32.png",
+      "image33.emf",
+      "image34.emf",
+      "image35.emf",
+      "image36.emf",
+      "image37.emf",
+      "image38.emf",
+      "image39.emf",
+      "image40.emf",
+      "image41.emf",
+      "image42.emf",
+      "image43.emf",
+      "image44.emf",
+      "image45.emf",
+      "image46.emf",
+      "image47.emf",
+      "image48.emf",
+      "image49.png",
+      "image50.png",
+      "image51.png",
+      "image52.png",
+      "image53.png",
+      "image54.png",
+      "image55.emf",
+      "image56.emf",
+      "image57.emf",
+      "image58.png",
+      "image59.png",
+      "image60.png",
+      "image61.png",
+      "image62.png",
+      "image63.png",
+      "image64.png",
+      "image65.png",
+      "image66.png",
+      "image67.png",
+      "image68.png",
+      "image69.emf",
+      "image70.emf",
+      "image71.png",
+      "image72.emf",
+      "image73.emf",
+      "image74.emf",
+      "image75.emf",
+      "image76.emf"
+    ],
+    "knowledgeRoles": [
+      {
+        "sourceSlides": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "role": "Initial-state, transition, factorization, and conditional-independence equations plus the X1-to-X4 chain."
+      },
+      {
+        "sourceSlides": [
+          19,
+          20,
+          21
+        ],
+        "role": "First-order Markov-chain illustration, weather states, transition CPT, transition graph, matrix representation, and one-step prediction."
+      },
+      {
+        "sourceSlides": [
+          22,
+          23
+        ],
+        "role": "Forward-prediction recursion, forecast illustration, and successive state-distribution vectors showing loss of initial-state influence in the weather example."
+      },
+      {
+        "sourceSlides": [
+          24,
+          25
+        ],
+        "role": "Stationary-distribution fixed-point equations, limiting-distribution illustration, and the algebraic weather-chain solution."
+      }
+    ]
+  },
+  "renderProvenance": {
+    "directory": "slide-renders",
+    "count": 14,
+    "application": "Microsoft PowerPoint",
+    "api": "COM Presentation.Export",
+    "format": "PNG",
+    "dimensions": {
+      "width": 1600,
+      "height": 1200
+    },
+    "sourceDimensionsPoints": {
+      "width": 720,
+      "height": 540
+    },
+    "statement": "Each render is the complete final composite of one selected source slide at its native 4:3 aspect ratio. The source timing inventory is retained separately because a static render shows the fully revealed state rather than the original click sequence.",
+    "renders": [
+      {
+        "slide": 12,
+        "file": "slide-12.png",
+        "bytes": 35266,
+        "sha256": "D479070DBAF050037949281C402067392867B23A6F824C2727462D70FFD18925"
+      },
+      {
+        "slide": 13,
+        "file": "slide-13.png",
+        "bytes": 75465,
+        "sha256": "95E3C48992768C315B97B42F6472E9F7777A160BF9076C4206E168FCD3238EB0"
+      },
+      {
+        "slide": 14,
+        "file": "slide-14.png",
+        "bytes": 113755,
+        "sha256": "A4C01FD8504ED1D6F435F54649F131BEA9E01E596606E9E6089AC316D0860F2B"
+      },
+      {
+        "slide": 15,
+        "file": "slide-15.png",
+        "bytes": 93371,
+        "sha256": "0B7D47144F25C2BFE1D4960583D7427B451376A6D07AD0B4A2A231EC5D25545B"
+      },
+      {
+        "slide": 16,
+        "file": "slide-16.png",
+        "bytes": 48000,
+        "sha256": "326DA5F3DBB942B6030BE9EACF4BA0107F7FAD5FAF291B3DDB10CAEF04354A0B"
+      },
+      {
+        "slide": 17,
+        "file": "slide-17.png",
+        "bytes": 100632,
+        "sha256": "F460BC795CABCEDCB130F2ADBB89A33BC6B1A713BE077F4620B7B828E640B4DD"
+      },
+      {
+        "slide": 18,
+        "file": "slide-18.png",
+        "bytes": 66105,
+        "sha256": "5B41EEA83D8B6F9FD903ABCAC15CF2E1BDA25B186592605A290E5AB57B11C024"
+      },
+      {
+        "slide": 19,
+        "file": "slide-19.png",
+        "bytes": 167601,
+        "sha256": "111E836C16538F42DC838D93A0A3F5EEF518E55D59C989ED2DE0662183A92B8B"
+      },
+      {
+        "slide": 20,
+        "file": "slide-20.png",
+        "bytes": 212232,
+        "sha256": "5FC357E9E82E336B093DF0FE83CD8F6DEEC711F05CA6F457BE923ADE5D1485CC"
+      },
+      {
+        "slide": 21,
+        "file": "slide-21.png",
+        "bytes": 107590,
+        "sha256": "077BFC21F6C0D54C7B8C04089C34C19A944C4F54A6CBCEBE9C9790DA2666E7F0"
+      },
+      {
+        "slide": 22,
+        "file": "slide-22.png",
+        "bytes": 173331,
+        "sha256": "E0D42201032DC25E10577B8AD504691AB746EE0224620401BFE6871FF4374D5C"
+      },
+      {
+        "slide": 23,
+        "file": "slide-23.png",
+        "bytes": 148615,
+        "sha256": "3649E36DA9F2B84FC5F7527BE6C813DEB5EAA53939AA3265080A28FA1C7E955F"
+      },
+      {
+        "slide": 24,
+        "file": "slide-24.png",
+        "bytes": 204865,
+        "sha256": "B19DCDD7071EBE00D88DCAD1087EA1C33C558C1F5B4A77524184EDC16636CEFE"
+      },
+      {
+        "slide": 25,
+        "file": "slide-25.png",
+        "bytes": 214885,
+        "sha256": "C55620E6E507FECCA15761CE88AAFDC0934B16BA326B06A2215D17D5E3F48C04"
+      }
+    ]
+  },
+  "selectedTimingInventory": [
+    {
+      "slide": 13,
+      "conditionCount": 16,
+      "effectCount": 4,
+      "clickGroupCount": 2,
+      "clickEffectCount": 3,
+      "withEffectCount": 1,
+      "visibilitySetCount": 4,
+      "buildListPresent": false,
+      "transitionPresent": false
+    },
+    {
+      "slide": 14,
+      "conditionCount": 14,
+      "effectCount": 3,
+      "clickGroupCount": 0,
+      "clickEffectCount": 3,
+      "withEffectCount": 0,
+      "visibilitySetCount": 3,
+      "buildListPresent": false,
+      "transitionPresent": false
+    },
+    {
+      "slide": 15,
+      "conditionCount": 28,
+      "effectCount": 9,
+      "clickGroupCount": 0,
+      "clickEffectCount": 4,
+      "withEffectCount": 5,
+      "visibilitySetCount": 9,
+      "buildListPresent": false,
+      "transitionPresent": false
+    },
+    {
+      "slide": 17,
+      "conditionCount": 12,
+      "effectCount": 3,
+      "clickGroupCount": 0,
+      "clickEffectCount": 2,
+      "withEffectCount": 1,
+      "visibilitySetCount": 3,
+      "buildListPresent": false,
+      "transitionPresent": false
+    },
+    {
+      "slide": 20,
+      "conditionCount": 45,
+      "effectCount": 17,
+      "clickGroupCount": 3,
+      "clickEffectCount": 3,
+      "withEffectCount": 14,
+      "visibilitySetCount": 17,
+      "buildListPresent": true,
+      "transitionPresent": false
+    },
+    {
+      "slide": 21,
+      "conditionCount": 10,
+      "effectCount": 2,
+      "clickGroupCount": 0,
+      "clickEffectCount": 2,
+      "withEffectCount": 0,
+      "visibilitySetCount": 2,
+      "buildListPresent": false,
+      "transitionPresent": false
+    },
+    {
+      "slide": 22,
+      "conditionCount": 22,
+      "effectCount": 6,
+      "clickGroupCount": 1,
+      "clickEffectCount": 4,
+      "withEffectCount": 2,
+      "visibilitySetCount": 6,
+      "buildListPresent": true,
+      "transitionPresent": true
+    },
+    {
+      "slide": 23,
+      "conditionCount": 84,
+      "effectCount": 28,
+      "clickGroupCount": 0,
+      "clickEffectCount": 13,
+      "withEffectCount": 15,
+      "visibilitySetCount": 28,
+      "buildListPresent": true,
+      "transitionPresent": false
+    },
+    {
+      "slide": 25,
+      "conditionCount": 31,
+      "effectCount": 8,
+      "clickGroupCount": 0,
+      "clickEffectCount": 5,
+      "withEffectCount": 3,
+      "visibilitySetCount": 8,
+      "buildListPresent": true,
+      "transitionPresent": true
+    }
+  ],
+  "knowledgePointMap": [
+    {
+      "sourceSlides": [
+        12
+      ],
+      "knowledgePoints": [
+        "why AI systems need sequence models over time or space",
+        "speech recognition, robot localization, user attention, and medical monitoring as motivating applications"
+      ]
+    },
+    {
+      "sourceSlides": [
+        13
+      ],
+      "knowledgePoints": [
+        "the value of X at time t is the state X_t",
+        "initial-state distribution P(X_1)",
+        "transition probabilities or dynamics P(X_t|X_{t-1})",
+        "time-homogeneous transition assumption"
+      ]
+    },
+    {
+      "sourceSlides": [
+        14,
+        15,
+        16
+      ],
+      "knowledgePoints": [
+        "joint distribution of a finite Markov chain",
+        "chain-rule factorization",
+        "first-order Markov conditional-independence assumption",
+        "derivation of P(X_1) product over P(X_t|X_{t-1})"
+      ]
+    },
+    {
+      "sourceSlides": [
+        17,
+        18,
+        19
+      ],
+      "knowledgePoints": [
+        "implied conditional independencies",
+        "past and future are conditionally independent given the present",
+        "first-order Markov property",
+        "a finite unrolled chain as a Bayesian network"
+      ]
+    },
+    {
+      "sourceSlides": [
+        20
+      ],
+      "knowledgePoints": [
+        "two-state weather Markov chain",
+        "transition CPT, state-transition graph, and transition-matrix representations",
+        "deterministic initial distribution"
+      ]
+    },
+    {
+      "sourceSlides": [
+        21,
+        22
+      ],
+      "knowledgePoints": [
+        "one-step prediction by the law of total probability",
+        "forward propagation P(X_t)=sum over X_{t-1} of P(X_t|X_{t-1})P(X_{t-1})"
+      ]
+    },
+    {
+      "sourceSlides": [
+        23
+      ],
+      "knowledgePoints": [
+        "repeated state-distribution propagation",
+        "comparison of different initial distributions",
+        "convergence behavior in the specific weather chain"
+      ]
+    },
+    {
+      "sourceSlides": [
+        24,
+        25
+      ],
+      "knowledgePoints": [
+        "stationary distribution as a fixed point of the transition operator",
+        "conditions under which initial-state influence can vanish",
+        "solving the weather-chain stationary equations"
+      ]
+    }
+  ],
+  "wholeDeckInspection": [
+    {
+      "sourceSlides": [
+        1,
+        2
+      ],
+      "topic": "title and lecture overview",
+      "selection": "excluded"
+    },
+    {
+      "sourceSlides": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "topic": "independence, conditional independence, and probability recap",
+      "selection": "excluded because the exact content is already packaged for Meeting 10"
+    },
+    {
+      "sourceSlides": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "topic": "Markov-chain foundations, prediction, and stationary distributions",
+      "selection": "selected for Meeting 11"
+    },
+    {
+      "sourceSlides": [
+        26,
+        27
+      ],
+      "topic": "PageRank and Gibbs-sampling applications of stationary distributions",
+      "selection": "excluded from the core MDP meeting; preserve only as optional historical or advanced material"
+    },
+    {
+      "sourceSlides": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "topic": "hidden Markov models, conditional independence, filtering, robot localization, and the forward algorithm",
+      "selection": "excluded from Meeting 11 because this is a separate partially observable inference unit"
+    },
+    {
+      "sourceSlides": [
+        53
+      ],
+      "topic": "references",
+      "selection": "excluded from the instructional sequence but audited for bibliographic corrections"
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        3,
+        7,
+        8
+      ],
+      "scope": "whole-deck audit; outside selected Meeting 11 sequence",
+      "sourceIssue": "Conditional-probability equalities are displayed without consistently qualifying zero-probability conditioning events, and positive-event examples can be read as sufficient proof of variable-level independence.",
+      "correction": "Prefer joint-factorization definitions, or state that the conditional equality must hold for every relevant assignment whose conditioning event has positive probability."
+    },
+    {
+      "sourceSlides": [
+        9,
+        10
+      ],
+      "scope": "whole-deck audit; outside selected Meeting 11 sequence",
+      "sourceIssue": "Traffic-Umbrella-Raining and Fire-Smoke-Alarm diagrams can be mistaken for empirical or causal proof.",
+      "correction": "Treat each graph as a modeling assertion. A drawn common-cause pattern does not establish causation or conditional independence from observational data."
+    },
+    {
+      "sourceSlides": [
+        11
+      ],
+      "scope": "whole-deck audit; outside selected Meeting 11 sequence",
+      "sourceIssue": "Universal probability identities and independence-based reduced factorizations appear in one recap without an explicit assumption boundary.",
+      "correction": "Separate product and chain rules from simplifications that require an independence assumption."
+    },
+    {
+      "sourceSlides": [
+        13,
+        18
+      ],
+      "scope": "selected",
+      "sourceIssue": "The slides call time-invariant transitions a stationarity assumption in a way that can sound like part of every Markov model.",
+      "correction": "Call this a time-homogeneous transition assumption. Markov models and finite-horizon MDPs can have time-varying dynamics."
+    },
+    {
+      "sourceSlides": [
+        19
+      ],
+      "scope": "selected",
+      "sourceIssue": "The phrase 'Past and future independent of the present' reverses the intended conditioning relationship, and 'each time step only depends on the previous' is underspecified.",
+      "correction": "State that the past and future are conditionally independent given the present; equivalently, X_t is conditionally independent of earlier history given X_{t-1} in a first-order chain."
+    },
+    {
+      "sourceSlides": [
+        22
+      ],
+      "scope": "selected",
+      "sourceIssue": "The name 'Mini-Forward Algorithm' can be confused with HMM filtering because this slide performs prediction without observations.",
+      "correction": "Describe the operation as Markov-chain forward prediction or distribution propagation, then connect it explicitly to the time-update half of the HMM forward algorithm."
+    },
+    {
+      "sourceSlides": [
+        23,
+        24,
+        25
+      ],
+      "scope": "selected",
+      "sourceIssue": "The examples can imply that every Markov chain forgets its initial distribution and converges to one stationary distribution, and 'time equals infinity' is informal notation.",
+      "correction": "The displayed weather chain converges because it is finite, irreducible, and aperiodic. In general, stationary distributions may be nonunique and convergence may fail; write the limit as t approaches infinity."
+    },
+    {
+      "sourceSlides": [
+        26
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "Claims about Google 1.0, all search engines, link-spam robustness, PageRank becoming less important, and clickstreams dominating ranking are dated, proprietary, or unsupported.",
+      "correction": "Present the random-surfer model as a historical stationary-distribution application. Remove current ranking-system claims unless replaced by dated, authoritative evidence."
+    },
+    {
+      "sourceSlides": [
+        27
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "Running Gibbs sampling 'long enough' is said to yield the target distribution without the Markov-chain conditions or burn-in and mixing qualifications.",
+      "correction": "State the invariance and convergence conditions, distinguish asymptotic correctness from finite-run mixing, and note failures for reducible or periodic constructions."
+    },
+    {
+      "sourceSlides": [
+        29
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The claim that Markov chains are 'not so useful for most agents' is an unsupported overgeneralization.",
+      "correction": "Explain the narrower limitation: a fully observed Markov chain has no observation model for updating beliefs about a hidden state."
+    },
+    {
+      "sourceSlides": [
+        34
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The intuition that conditioning on any W lying on a path between U and V makes U and V independent is false for colliders and for graphs with another active path.",
+      "correction": "Use d-separation and distinguish chains or forks from colliders; block every active path before asserting conditional independence."
+    },
+    {
+      "sourceSlides": [
+        35
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The HMM recap explicitly makes the transition model time-homogeneous but does not equally surface the usual time-homogeneous emission-model assumption.",
+      "correction": "State both assumptions when defining a standard stationary HMM, or explicitly allow time-indexed transition and emission models."
+    },
+    {
+      "sourceSlides": [
+        37
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "Speech-recognition and machine-translation HMM descriptions reflect classical pipelines and read as current default architectures; the continuous robot example is broader than a finite-state HMM.",
+      "correction": "Label the speech and translation examples as historical, add current neural sequence-model context, and describe continuous tracking with the broader state-space-model terminology."
+    },
+    {
+      "sourceSlides": [
+        38
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "A uniform initial belief is presented as usual, and the assertion that the Kalman filter was first implemented for Apollo is a precise historical claim without a source.",
+      "correction": "Allow any justified prior and either cite an authoritative history for the Apollo claim or soften it to a documented early aerospace application."
+    },
+    {
+      "sourceSlides": [
+        46
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The speaker note explicitly marks a missing intermediate derivation step.",
+      "correction": "Show marginalization over X_t and substitution of the Markov transition before presenting the compact time-update equation."
+    },
+    {
+      "sourceSlides": [
+        47
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The statement that uncertainty accumulates as time passes is presented as general.",
+      "correction": "Prediction through a noisy transition often spreads belief in this example, but entropy need not increase under every transition model; describe the displayed result as model-specific."
+    },
+    {
+      "sourceSlides": [
+        48,
+        49
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The observation example says uncertainty decreases, which is not guaranteed for every realized observation even though expected information gain is nonnegative.",
+      "correction": "Say that evidence reweights and often concentrates belief; entropy decreases in expectation under standard information-gain analysis, not necessarily for each observation."
+    },
+    {
+      "sourceSlides": [
+        51,
+        52
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The speaker note identifies an X versus X_t notation problem, and 'the forward algorithm does not normalize' depends on whether alpha messages or normalized beliefs are being maintained.",
+      "correction": "Use X_t consistently and distinguish the unnormalized forward message from an implementation that normalizes at each step."
+    },
+    {
+      "sourceSlides": [
+        53
+      ],
+      "scope": "whole-deck audit; excluded from Meeting 11",
+      "sourceIssue": "The references misspell George Luger as 'Fluger' and Stuart Russell as 'Russel'.",
+      "correction": "Use George F. Luger and Stuart Russell; retain edition, publisher, year, chapter, and CS188 attribution only after verification."
+    }
+  ]
+}
