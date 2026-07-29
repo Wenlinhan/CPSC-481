@@ -1,0 +1,911 @@
+{
+  "source": "L01_AI.pptx",
+  "sourceFilename": "L01_AI.pptx",
+  "sourceSha256": "ad882532d0d9de2404f3c52495b3860dd1827321edca0ca1934607e43a143359",
+  "slideCount": 32,
+  "mediaCount": 12,
+  "media": [
+    {
+      "file": "image1.tiff",
+      "archivePath": "ppt/media/image1.tiff",
+      "bytes": 814582,
+      "sha256": "a1e3c01761fc1ad8b8053f8d70bc0675e8ed9c4c51080d9dcd6c65d33d5f8152",
+      "width": 520,
+      "height": 520,
+      "format": "TIFF"
+    },
+    {
+      "file": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "bytes": 69878,
+      "sha256": "d0e3ad95cc79b7a037d1da8ccbb4cee17fe79d3633f8c63ae685d2f69ddfcf11",
+      "width": 569,
+      "height": 360,
+      "format": "PNG"
+    },
+    {
+      "file": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "bytes": 23424,
+      "sha256": "63e0be42fc68cf2087179fb62a9f139a3ff8b9157219038919353734ee4b411d",
+      "width": 633,
+      "height": 360,
+      "format": "PNG"
+    },
+    {
+      "file": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "bytes": 28641,
+      "sha256": "897d331c695cd4cf8a116554ab1e77333cf60cb2465402d1569efe4c444edf87",
+      "width": 433,
+      "height": 316,
+      "format": "PNG"
+    },
+    {
+      "file": "image2.tiff",
+      "archivePath": "ppt/media/image2.tiff",
+      "bytes": 362256,
+      "sha256": "ce6d8106c906c2d58fe36b628168fb5e394fb55ef8028211f7f08b26ce4e56b9",
+      "width": 337,
+      "height": 355,
+      "format": "TIFF"
+    },
+    {
+      "file": "image3.tiff",
+      "archivePath": "ppt/media/image3.tiff",
+      "bytes": 610866,
+      "sha256": "13f0549543a359be10b7c2c68fdcd25903f8eec5143a47d76ab2587c0e84e6aa",
+      "width": 450,
+      "height": 450,
+      "format": "TIFF"
+    },
+    {
+      "file": "image4.tiff",
+      "archivePath": "ppt/media/image4.tiff",
+      "bytes": 273350,
+      "sha256": "f06ff54dd01adba8f4b629f5b8cb79ddb27431a84ba005d59681f1f56fc76c49",
+      "width": 300,
+      "height": 300,
+      "format": "TIFF"
+    },
+    {
+      "file": "image5.tiff",
+      "archivePath": "ppt/media/image5.tiff",
+      "bytes": 1370290,
+      "sha256": "e91150db4a19143de41c4ff9b3e74af0ea2171d5577f7e198a945039217825b9",
+      "width": 675,
+      "height": 675,
+      "format": "TIFF"
+    },
+    {
+      "file": "image6.png",
+      "archivePath": "ppt/media/image6.png",
+      "bytes": 6668,
+      "sha256": "c69724f763b2512713efc68fbac59b58d0083a803fc9cb80d9e541bfa555a2af",
+      "width": 339,
+      "height": 153,
+      "format": "PNG"
+    },
+    {
+      "file": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "bytes": 41288,
+      "sha256": "bf660244974243a343d524d19243af292ac523a66798dc2902927586918d4804",
+      "width": 570,
+      "height": 370,
+      "format": "PNG"
+    },
+    {
+      "file": "image8.png",
+      "archivePath": "ppt/media/image8.png",
+      "bytes": 86867,
+      "sha256": "75075f90592079d3a15305f57697e134ab7fbe90202a74b2ea2e211f1042faff",
+      "width": 576,
+      "height": 363,
+      "format": "PNG"
+    },
+    {
+      "file": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "bytes": 62346,
+      "sha256": "38710b37ac745be37018cbd1cf5c71a7f6dfbe5e00de309c693efeb85db5eef8",
+      "width": 568,
+      "height": 363,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "1",
+        "Artificial Intelligence\u000bCPSC 481",
+        "What is Artificial Intelligence?"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-01.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-01.png",
+        "bytes": 25408,
+        "sha256": "eef0b85e0c5725d71142f8c1972e166a14c564fa76398cd2f3b8236754a50571",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "Introduction and Syllabus",
+        "Waitlist, roster and introduce yourself\nSyllabus and course overview",
+        "2",
+        "CPSC 483 Introduction to Machine Learning\nCPSC 485 Computational Bioinformatics\nCPSC 583 Expert System Design\nCPSC 585 Artificial Neural Network"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-02.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-02.png",
+        "bytes": 47501,
+        "sha256": "20c6312d97ee1910d6d44df0f7379b606b20623bfbafb91e64908e016573fa19",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "State of the Art Applications",
+        "Board game: AlphaGo and AlphaZero\nAutonomous car: Google Waymo; Tesla autopilot; Audi summon feature; etc.\nSecurity: Generative Adversarial Network (GAN): Deepfake\nRobot: Sophia; Boston Dynamics; Erica (anthropomorphic)\nNatural language processing-Voice assistant: Google Duplex; Amazon Alexa; Apple Siri; etc.\nInternet of Things (IoT): Amazon cashierless store\nExpert systems: IBM Watson\nVideo game: OpenAI-Dota2",
+        "3"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-03.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-03.png",
+        "bytes": 69243,
+        "sha256": "3fdf6f8b96ea608daeeef31be5ff80a41fd466dae7233cb33f5891c3222850e7",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "History",
+        "1950   Claude Shannon’s “Programming a Computer for Playing Chess” is the first published article on developing a chess-playing computer program.\n1950   Alan Turing publishes “Computing Machinery and Intelligence” in which he proposes “the imitation game” which will later become known as the “Turing Test.”\n1956    the First AI Conference at Dartmouth: A program that simulates the machine; How can a computer be programmed to use a language; Neuron networks; Self-improvement through learning and reasoning\n1970    The first anthropomorphic robot, the WABOT-1, is built at Waseda University in Japan. It consisted of a limb-control system, a vision system and a conversation system.\n1972    MYCIN, an early expert system for identifying bacteria causing severe infections and recommending antibiotics, is developed at Stanford University.\n1997    Deep Blue becomes the first computer chess-playing program to beat a reigning world chess champion.\nNo major breakthroughs in many years…",
+        "4"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-04.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-04.png",
+        "bytes": 94399,
+        "sha256": "ddb33de6ef2185769fd4d5effb03577cfb63183a07b293080008ffff078cf6d8",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "Why is AI Difficult?",
+        "5",
+        "???"
+      ],
+      "notes": "",
+      "media": [
+        "image1.tiff",
+        "image2.tiff",
+        "image3.tiff",
+        "image4.tiff",
+        "image5.tiff"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-05.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-05.png",
+        "bytes": 1000593,
+        "sha256": "d090bc8d20b5af4b6f23ba906a947b433dba5b80b27ab1a6241bc0cb7780a830",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "6",
+        "What is Intelligence?",
+        "Intelligence is a general mental capability.\ndifferent from being “smart” that is capable of quickly adapting to the environment\nSome capabilities\nlearning\nrecognition, understanding\nreasoning\nimagination (or abstract thinking)\ncreativity\ncommunication\nplanning\ndecision making\nproblem solving"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-06.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-06.png",
+        "bytes": 84057,
+        "sha256": "5109905616389ffb14dd73fdec1e9f707a8dae7a41f11d10e4d4e7e33e240e79",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "7",
+        "Theories of Intelligence",
+        "Single intelligence\nSingle general intelligence\nIQ (psychometric testing) to measure the level of intelligence\nMultiple intelligence\nLogical, linguistic, spatial, musical, kinesthetic, interpersonal, intrapersonal, and naturalist intelligences (sensing patterns and making connections to elements in nature) by Howard Gardner\nEmotional intelligence by Daniel Goleman and others\nBut the Gardners theory has never been tested\nEQ to measure emotional intelligence"
+      ],
+      "notes": "Stephen Hawking: 280\nAverage: 90-110\n>120 superior",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-07.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-07.png",
+        "bytes": 55392,
+        "sha256": "1460a470d80b45d4b668c40e3fea9d173f16a9bd84f3df33ac6cd24198ec385a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Triarchic theory of intelligence",
+        "Formulated by Robert J. Sternberg\nAnalytical/componential intelligence\ntake apart problems and being able to see solutions not often seen; “book smart”\ncreative/experiential intelligence\nhow well a task is performed with regard to how familiar it is. two parts: novelty and automation. A novel situation is one that you have never experienced before. A process that has been automated has been performed multiple times and can now be done with little or no extra thought.\npractical/contextual intelligence\n\"deals with the mental activity involved in attaining fit to context\" ; \"street smarts\"",
+        "8"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-08.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-08.png",
+        "bytes": 70291,
+        "sha256": "44a9f09c7100f8b514b15b2ab2539827590161c1aac7a5d43addcbd049ced0c9",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "9",
+        "Other Aspects of Intelligence",
+        "Animal or plant intelligence\nIs human intelligence different from animal or plant intelligence? \nFactors affecting intelligence\nBiological\nEnvironmental\nEvolution of intelligence\n\nMany aspects of intelligence and cognitive process are still unknown\nExactly what happens when learning occurs? \nHow is knowledge represented in the nerve system (or brain)? \nWhat is intuition or skepticism? \nWhat is self-awareness? \netc."
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-09.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-09.png",
+        "bytes": 57742,
+        "sha256": "2e3895b455ddcdf0f33cfed68514f01b8645941c4a955ef4fce7dd21a76cc2b9",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "10",
+        "Artificial Intelligence (AI)",
+        "AI influenced by\nmany people in different areas including philosophers, psychologists, mathematicians, computer scientists, etc.\n\nAI is Artificial Intelligence using computer.\nArtificially made intelligence\n\nOther definitions of AI (as a field of studies)\nThe science and engineering of making intelligent machines (John McCarthy) \nThe study and design of intelligent agents where an intelligent agent is a system that perceives its environment and takes actions that maximize its chances of success."
+      ],
+      "notes": "Rationality:\nlogical reasoning and measure of optimal or ideal decision",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-10.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-10.png",
+        "bytes": 110612,
+        "sha256": "d3a5df31b47c0c651ba3cd2475796e722c7483902d405751d57585dcb38421aa",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "Intelligent Agents",
+        "An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators\nHuman agent has eyes, ears, and other organs for sensors; hands, legs, mouth, and other body parts for actuators.\nRobotic agent has cameras and infrared range finders for sensors; various motors for actuators.\nThe agent function maps from percept histories to actions:  [f: P*  A]\nThe agent program runs on the physical architecture to produce \nagent = architecture + program \n\nRational agents use\nenvironment,\nsensors,\nperformance measure, \nactuators",
+        "11"
+      ],
+      "notes": "+\nRational\nAgent\n: For each possible percept sequence, a rational agent should select an action that is expected to maximize its performance measure, given the evidence provided by the percept sequence and whatever built-in knowledge the agent has.",
+      "media": [
+        "image6.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-11.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-11.png",
+        "bytes": 199178,
+        "sha256": "1e30e645505dbf7bc384f1adeb403582f8c786d2b03e7f22093071f947f12444",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "Properties of Task Environments",
+        "Fully observable vs. partially observable: – Fully observable if agents sensors detect all aspects of environment relevant to choice of action; Could be partially observable due to noisy, inaccurate or missing sensors, or inability to measure everything that is needed; Often, if other agents are involved, their intentions are not observable, but their actions are;\nDeterministic vs. stochastic: Deterministic: If the next state of the environment is completely determined by the current state and the action executed by the agent; the next state has some uncertainty associated with it; Uncertainty could come from randomness, lack of a good environment model, or lack of complete sensor coverage\nEpisodic vs. sequential: The agent’s experience is divided into atomic episodes. The next episode does not depend on the actions taken in the previous episodes.  Sequential if current decisions affect future decisions, or rely on previous ones. Examples of episodic are expert advice systems – an episode is a single question and answer.",
+        "12"
+      ],
+      "notes": "Note: observable partially\nobservable is different from known and unknown environment. E.g., knowing the game of rules (known) but can be still partially observable (card game). Don’t know the rules (unknown) so need to learn them.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-12.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-12.png",
+        "bytes": 109686,
+        "sha256": "e14a65473dda6e48f8e3239d961c971a55f3b595017344e52756dc33b54a7eb1",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Properties of Task Environments-cont.",
+        "Static vs. dynamic: Dynamic if the environment may change over time. Static if nothing (other than the agent) in the environment changes. Other agents in an environment make it dynamic.  Not dynamic if the agent moves from one part of an environment to another, though it has a very similar effect\nDiscrete vs. continuous: time moves in fixed steps, usually with one measurement per step (and perhaps one action, but could be no action). Playing chess is discrete; Signals constantly coming into sensors, actions continually changing. taxi-driving is continuous.\nKnown vs. unknown: In a known environment, the outcomes for all actions are given. If the environment is unknown, the agent will have to learn how it works.  \nSingle agent vs multiple agents",
+        "13"
+      ],
+      "notes": "Note: observable partially\nobservable is different from known and unknown environment. E.g., knowing the game of rules (known) but can be still partially observable (card game). Don’t know the rules (unknown) so need to learn them.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-13.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-13.png",
+        "bytes": 88004,
+        "sha256": "a80934e99fe35c3d4c7ded10be749a2ffa3a686698df36be70dc52a1b7dea194",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "Example- playing a single soccer game",
+        "Partially observable – An agent cannot detect all the things on soccer field that can affect its action, for e.g. it cannot determine what other players are thinking. \nStochastic – For a given current state and action executed by agent, the next state or outcome cannot be exactly determined, for e.g., if agent kicks the ball in a particular direction, then the ball may or may not be stopped by other players, or the soccer field can change in many different ways depending on how players move. \nSequential – The past history of actions in the game can affect the next action in the game. \nDynamic – The environment can change while the agent is making decision, for e.g., soccer field (environment) changes when a player moves. \nContinuous – Location of the ball or players is continuous. The speed or the direction (angle) at which the agent hits the ball is continuous. \nUnknown\nMulti-agent – There are many agents involved in soccer game.",
+        "14"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-14.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-14.png",
+        "bytes": 98168,
+        "sha256": "79310c0d59e62e129b5a7772bcc0379d023d62baec94dffda66c84c137e873b5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Intelligent Agents",
+        "15",
+        "Simple reflex agent: only on the basis of the current percept, ignoring the rest of the percept history. only succeeds when the environment is fully observable. Infinite loops in partially observable environments.",
+        "Simple reflex agent with internal state\n(model-based agent): handle partially observable environments. Its current state is stored inside the agent maintaining some kind of structure which describes the part of the world which cannot be seen."
+      ],
+      "notes": "Simple: mail sorting robot; Mars\nrover\nModel: robot\nvacuum\n+reflex:\naction performed as a response to stimulus and without conscious thought",
+      "media": [
+        "image7.png",
+        "image8.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-15.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-15.png",
+        "bytes": 337388,
+        "sha256": "c16bf28ea385deb65d36a9f7a17e3e7e2943ef6794ff80e3fc33dbd4c9bfbc9b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "Intelligent Agents with Goals",
+        "16",
+        "Simple reflex agent with internal state\n(model-based agent)",
+        "Goal-based agent that has reasoning/inference and goals: This allows the agent a way to choose among multiple possibilities, selecting the one which reaches a goal state."
+      ],
+      "notes": "Goal: shopping\nlist",
+      "media": [
+        "image8.png",
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-16.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-16.png",
+        "bytes": 353435,
+        "sha256": "541bbf5d91803f18d524011882ac02a9aaa760836f210815d76c005100033e54",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "Intelligent Agents with Utility",
+        "17",
+        "Utility-based agent that consists of: \nreasoning/inference and rational decision making",
+        "Goal-based agent that has Reasoning/inference and goals"
+      ],
+      "notes": "Utility: several actions satisfy the goal, pick the\nbest\nShopping list: lowest price or fastest speed",
+      "media": [
+        "image10.png",
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-17.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-17.png",
+        "bytes": 346974,
+        "sha256": "ff73704805fa9e621c650fcc28d9e892a52b804826990a423c45cffe907d8363",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "Student Participation",
+        "For the following robots, what is the appropriate type of agent used to build the robot?\nShopping robot: bring back items on a shopping list\nRobotic vacuum\nMail sorting robot: sort mails by zip code\nShopping robot: bring back items on a shopping list with the lowest price",
+        "18"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-18.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-18.png",
+        "bytes": 53065,
+        "sha256": "b1ac84348de8e550de224ed59cd0849a91947b445850eeb8913676c5a4da9480",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Major Areas of Interests in the First AI Conference (at Dartmouth, 1956)",
+        "Automatic computers\nA program that simulates the machine\nHow can a computer be programmed to use a language\nThe way that human uses and manipulated words\nNeuron networks\nTheory of the size of a calculation\nSelf-improvement through learning and reasoning\nAbstractions\nRandomness and creativity\nDifference between randomness and creativity",
+        "19"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-19.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-19.png",
+        "bytes": 61583,
+        "sha256": "f65088d5706469acc83b18beef07df3af36e311e9183ed595041d7d6f4ae3b97",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "20",
+        "General Areas of AI",
+        "AI research is specialized and deeply divided into subfields\nPerception and the ability to move and manipulate objects\nKnowledge representation\nNatural language processing and understanding\nMachine learning\nReasoning: Knowledge-based or Expert systems\nPlanning\nProblem solving\nComplex decision making\nAbstract thoughts or creativity \nScope of AI\nWhat system is considered intelligent?"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-20.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-20.png",
+        "bytes": 60871,
+        "sha256": "14cb538e1eb72281bb412877a88cde12eabae5625af3a71f77df855518e63817",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "21",
+        "Directions of Artificial Intelligence",
+        "Weak AI – AI with specific intelligent abilities\nStrong AI – AI with general intelligence\n\nDirections of AI research\nFrom “Thinking humanly and acting humanly” \nTo “Thinking rationally and acting rationally” \n(through ideal decision making)"
+      ],
+      "notes": "Rationality:\nlogical reasoning and measure of optimal or ideal decision",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-21.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-21.png",
+        "bytes": 73016,
+        "sha256": "f917bc1bdc8366023e1e7457f154a0a2015912323afa3b4d38bf57565a3eca36",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "22",
+        "Turing Test \u000b(as a Way of Testing Acting Humanly)",
+        "Turing test by Alan Turing in the theory of computability\n\nAsking a question “Can a machine to be made to think?”",
+        "The Turing Test measures the performance of an intelligent machine against that of a human being through the imitation game.\nTrying to determine which player – A or B – is a computer and which is a human\nCan a system that passed a Turing Test be considered as intelligent as human?\n\nChatbots: ELIZA (1966), social media messengers, etc."
+      ],
+      "notes": "Chatbot\nis\nan example, ELIZA in 1966",
+      "media": [
+        "image11.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-22.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-22.png",
+        "bytes": 200161,
+        "sha256": "19894d8a2f73599c6e4cc572b8d35b172b4b40d4a5f04292290b50a3a302c2a8",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 23,
+      "textBlocks": [
+        "23",
+        "Importance and Criticisms for Turing Test",
+        "Importance of Turing Test\nAttempts to give an objective notion of intelligence by eliminating any bias in favor of living organisms.\nCriticisms for Turing Test\nFocuses on purely symbolic and problem-solving skills, not on perceptual skill.\nComputers can only do as they are told and consequently cannot perform original actions (Ada Lovelace). \nA distraction to the important tasks such as developing general theories to explain the mechanisms of intelligence in human and machines to solve problems.\nOnly based on simulating human intelligence. Machine can do a lot better than human for many tasks."
+      ],
+      "notes": "+Since the main focus is on simulating human intelligence at this time",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-23.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-23.png",
+        "bytes": 120567,
+        "sha256": "a6dfa700f07d9c57c311fc77b54a77e508ac65786268cb6b671cd110e5def4c4",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 24,
+      "textBlocks": [
+        "24"
+      ],
+      "notes": "",
+      "media": [
+        "image12.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-24.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-24.png",
+        "bytes": 242885,
+        "sha256": "631df0c88d0a5b4d83c889f01fd0d657d6912a01109afa3a499f454f015bf7cc",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 25,
+      "textBlocks": [
+        "25",
+        "Evolution of AI",
+        "AI has been the subject of optimism, but has also suffered setbacks and, today and future, has become an essential part of the technology in industry. \nEarly stages\nFocused on concepts, theories, and simulating human intelligence such as formal  logics, theorem proving, graph theory, search, knowledge representation, stochastic analysis, other related mathematics.\nModern AI\nFocus more on practical applications and problem solving – demand from real-world business applications.\nMachine learning, data mining, search engines, intelligent systems, robots, big data analytics, etc. \nCollective intelligence"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-25.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-25.png",
+        "bytes": 118818,
+        "sha256": "55aced2ac141df095492dfd5e572d22c0584de7113b06155d6c7914a2474c4e4",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 26,
+      "textBlocks": [
+        "Future of AI",
+        "AI started with the goal of strong AI but it has been weak AI.\nAI (robot or agent with AI) still weak at recognition, feeling, emotion\nStrong AI is still a long-term goal of AI research.\nAI offers a unique and powerful tool for expanding the capabilities of computer science.\nQuestions to think about\nCan a machine equipped with strong AI be more intelligent than human?\nWhat ethical issues may arise when we have the true intelligent system with strong AI?\nHow can Human and AI coexist?\nHuman player utilizing computer chess could beat Deep Blue.\nFuture job: How well can you utilize AI?\nWe are more influenced by pessimist’s forecasting.\nWhat has happened: History tells that different jobs will be created.",
+        "26"
+      ],
+      "notes": "Robotics, industry\n4.0,\nIoT\n, etc. pessimists predicts removal of many jobs.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-26.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-26.png",
+        "bytes": 123498,
+        "sha256": "7a0d5729d2409878259b71279afbc669292d69839f606e88156120f9b2e87cea",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 27,
+      "textBlocks": [
+        "Primary Focus in this Course",
+        "While we are trying to understand intelligence and implement intelligence such as problem solving, reasoning, learning, creativity, natural language understanding, decision making, and planning,\n\nWe also want to learn practical AI as complex and intelligent problem solving strategies.",
+        "27"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-27.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-27.png",
+        "bytes": 57374,
+        "sha256": "cc9b5395e8e8c8e93edc0cdf7b33d84204e9334f9d68f57402254994ac64ee91",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 28,
+      "textBlocks": [
+        "Study Guide",
+        "Levels of knowledge capabilities\nBeing able to understand and explain (can tell)\nBeing able to apply (can do)\nBeing able to teach (can teach)\nBeing able to criticize (can criticize)\nBeing able to improve and innovate (can innovate)\n\nThink about the review questions and subjects related to the questions and make sure you understand the principle ideas. \nOnce you understand them, think about how you can apply them to solve complex problems and build an intelligent system.",
+        "28"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-28.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-28.png",
+        "bytes": 101652,
+        "sha256": "e6b46a3d8c66ef1297a8fb359d4fc77a8dfc981f43c70f96076e9725ab0ec7b5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 29,
+      "textBlocks": [
+        "Review Questions -1",
+        "What is intelligence? \nWhat are the key capabilities to being intelligent? Try to define the meaning of each capability and think about potential real-world applications. \nWhat is the main difference between single intelligence and multiple intelligence? \nDoes only human has intelligence? \nWhat are some unknown aspects of intelligence?\nCan we develop a software system that has intelligence? \nWhat is Artificial Intelligence (AI)?\nWhat is an intelligent agent? \nWhat are the different types of environment for agents?\nDefine simple reflex, goal-based, and utility-based agent.\nWhat are the areas of AI?\nHow can we tell if a software system is intelligent?\nHow can AI be used for solving complex real-world problems? What are the applications of AI?",
+        "29"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-29.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-29.png",
+        "bytes": 80717,
+        "sha256": "74d035fa067adaeb38111e885711cb423c9d91da559221b8c30ad9903beb6fee",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 30,
+      "textBlocks": [
+        "Review Questions -2",
+        "Is it possible to develop a system that is as intelligent as human? \nWhat is Turing test? What is the purpose of Turing test?\nIs it possible to develop a system that can pass Turing test?\nIf a machine passes the Turing test, can the machine solve most AI problems? \nIs it possible to develop a system that is more intelligent than human?\nWhat is the main difference between weak AI and strong AI? \nWhat do you think will be the future of AI? \nWhat may be potential problems we may encounter with advanced AI?",
+        "30"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-30.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-30.png",
+        "bytes": 54949,
+        "sha256": "c7f6eb52f865be9e9126637f9077d3819d0f2112f3c53495b0bf47d49eb6ce87",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 31,
+      "textBlocks": [
+        "Most Important Points to Remember",
+        "Can you explain about intelligence? \nWhat are the major capabilities for intelligence?\nCan you explain about artificial intelligence (AI)? \nHow can we tell if a system is intelligent?\nWhat is an intelligent agent?\nWhat are the areas of AI?\nWhat are the applications of AI in real-world?\nWhat is the ultimate goal for AI?",
+        "31"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-31.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-31.png",
+        "bytes": 49887,
+        "sha256": "f320660a6273ec89946ac3f4a2d1b28c58ee0b042506463a981b3340fe272b66",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 32,
+      "textBlocks": [
+        "References",
+        "George Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapter 1, Addison Wesley, 2009.\nRussel and Norvig, Artificial Intelligence: A Modern Approach, 3rd edition, Prentice Hall, 2010.",
+        "32"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0
+      },
+      "render": {
+        "file": "slide-32.png",
+        "path": "public/course-source/l01-ai/source-slides/slide-32.png",
+        "bytes": 39535,
+        "sha256": "c86d2f20bfe285c704237142a364123a6f3c8038b4b7ffba9fe2582ead0110c2",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    }
+  ]
+}

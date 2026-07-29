@@ -1,0 +1,1770 @@
+{
+    "schemaVersion":  2,
+    "source":  "L12_StochasticMethods - Part B.pptx",
+    "sourceFilename":  "L12_StochasticMethods - Part B.pptx",
+    "sourceSha256":  "3728337B4AB2FC532B1C332B9C6A21F0C01A2345CE4F83A0E71FE01A5882E737",
+    "authoritativeSlideCount":  53,
+    "selectedSlides":  [
+                           3,
+                           4,
+                           5,
+                           6,
+                           7,
+                           8,
+                           9,
+                           10,
+                           11
+                       ],
+    "intendedMeetings":  [
+                             9,
+                             10
+                         ],
+    "scope":  "Independence and conditional-independence source block only; slides 3 through 11 inclusive.",
+    "selectionRationale":  "Slides 3 through 11 are the authoritative historical source for independence, conditional independence, the Toothache-Cavity-Catch example, common-cause examples, and the probability recap used across Meetings 9 and 10.",
+    "extractionPolicy":  "Every media part referenced by selected slides is copied byte-for-byte under its original PPTX filename. Full-slide renders exported by Microsoft PowerPoint at 1600 by 1200 preserve native text, equations, tables, DrawingML shapes, and animation final-state composition.",
+    "namespaceContext":  {
+                             "p":  "http://schemas.openxmlformats.org/presentationml/2006/main",
+                             "a":  "http://schemas.openxmlformats.org/drawingml/2006/main",
+                             "r":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+                         },
+    "auditSummary":  {
+                         "selectedSlideCount":  9,
+                         "slidesWithNotes":  [
+                                                 8
+                                             ],
+                         "slidesWithNonemptyNotes":  [
+
+                                                     ],
+                         "slidesWithEmbeddedMedia":  [
+                                                         3,
+                                                         4,
+                                                         5,
+                                                         6,
+                                                         7,
+                                                         8,
+                                                         9,
+                                                         10,
+                                                         11
+                                                     ],
+                         "rawMediaFileCount":  30,
+                         "slidesWithNativeTiming":  [
+                                                        3,
+                                                        4,
+                                                        7,
+                                                        10
+                                                    ],
+                         "slidesWithTransitions":  [
+
+                                                   ],
+                         "renderCount":  9,
+                         "renderDimensions":  {
+                                                  "width":  1600,
+                                                  "height":  1200
+                                              }
+                     },
+    "timingInventory":  {
+                            "nativeTimingSlides":  [
+                                                       3,
+                                                       4,
+                                                       7,
+                                                       10
+                                                   ],
+                            "statement":  "Slides 3, 4, 7, and 10 contain native entrance/visibility build sequences. The exact timing XML and hashes are stored per slide. No selected slide contains a slide transition."
+                        },
+    "slideInventory":  [
+                           {
+                               "slide":  3,
+                               "title":  "Independence",
+                               "slideXmlSha256":  "CC822FF8C6C6D1E10ED06B0632DF4A6400456F0C859594EFE1E2DAC4F5C4A6E9",
+                               "slideXmlBytes":  16181,
+                               "rawTextRuns":  [
+                                                   "Independence",
+                                                   "Two variables are ",
+                                                   "independent",
+                                                   " in a joint distribution if:",
+                                                   "Says the joint distribution ",
+                                                   "factors",
+                                                   " into a product of two simple ones",
+                                                   "Usually variables aren’t independent!",
+                                                   "Can use independence as a ",
+                                                   "modeling assumption",
+                                                   "Independence can be a simplifying assumption",
+                                                   "Empirical  ",
+                                                   "joint distributions: at best “close” to independent",
+                                                   "What could we assume for {Weather, Traffic, Cavity}?",
+                                                   "3"
+                                               ],
+                               "joinedTextForAudit":  "Independence | Two variables are  | independent |  in a joint distribution if: | Says the joint distribution  | factors |  into a product of two simple ones | Usually variables aren’t independent! | Can use independence as a  | modeling assumption | Independence can be a simplifying assumption | Empirical   | joint distributions: at best “close” to independent | What could we assume for {Weather, Traffic, Cavity}? | 3",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  4,
+                                                 "textOrShapeObjects":  3,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId5",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image1.png",
+                                                              "originalFile":  "image1.png",
+                                                              "copiedFile":  "media/image1.png",
+                                                              "sha256":  "1B84FCFFF03B70F06AC0A7F78B543B0AED65921B02A1962E778DAC931716321C",
+                                                              "bytes":  1704,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  773,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId6",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image2.png",
+                                                              "originalFile":  "image2.png",
+                                                              "copiedFile":  "media/image2.png",
+                                                              "sha256":  "1B3BCDABEBA43D37833529CA58D04165455DE15CAF29BDF37159E0D7A97EEA0F",
+                                                              "bytes":  2045,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  864,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId7",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image3.png",
+                                                              "originalFile":  "image3.png",
+                                                              "copiedFile":  "media/image3.png",
+                                                              "sha256":  "EA107CB153AFEE6BFC972B3222DF3E7893BD3824D55BEF61F4955F5BB5C6B4DB",
+                                                              "bytes":  566,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  245,
+                                                                                 "height":  63
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId8",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image4.png",
+                                                              "originalFile":  "image4.png",
+                                                              "copiedFile":  "media/image4.png",
+                                                              "sha256":  "177247A5CC3FDF19E02DBFEC99795ABE49B2112E31ACBF6A926436F1DB8B5026",
+                                                              "bytes":  56481,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  447,
+                                                                                 "height":  394
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  true,
+                                              "clickGroupCount":  5,
+                                              "clickEffectCount":  5,
+                                              "withEffectCount":  4,
+                                              "visibilitySetCount":  9,
+                                              "timingXmlSha256":  "CBCD599AD1E03D6897C8887E77013B58742AAD2F2EE9D1E638BBCA0E492E9424",
+                                              "rawTimingXml":  "\u003cp:timing\u003e\u003cp:tnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"1\" dur=\"indefinite\" restart=\"never\" nodeType=\"tmRoot\"\u003e\u003cp:childTnLst\u003e\u003cp:seq concurrent=\"1\" nextAc=\"seek\"\u003e\u003cp:cTn id=\"2\" dur=\"indefinite\" nodeType=\"mainSeq\"\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"3\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"4\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"5\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"6\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"23556\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"7\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"8\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"7\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"9\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"10\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"11\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"12\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"9\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"13\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"14\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"15\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"16\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"6\" end=\"6\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"17\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"18\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"7\" end=\"7\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"19\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"20\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"21\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"22\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"9\" end=\"9\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"23\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"24\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"25\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"26\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"10\" end=\"10\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"27\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"28\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"11\" end=\"11\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"29\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"30\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1014787\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"12\" end=\"12\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003cp:prevCondLst\u003e\u003cp:cond evt=\"onPrev\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:prevCondLst\u003e\u003cp:nextCondLst\u003e\u003cp:cond evt=\"onNext\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:nextCondLst\u003e\u003c/p:seq\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:tnLst\u003e\u003c/p:timing\u003e"
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-03.png",
+                                              "sha256":  "B1E393B571EA5572F82531F17E3B1C67C92E5671ADB527FFBA96AF7BB1DB495A",
+                                              "bytes":  195096,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  4,
+                               "title":  "Example: Independence?",
+                               "slideXmlSha256":  "C175FC976C58D51F9C7D6D0CAB6E64875F1E295025523FB70580AACC156FD950",
+                               "slideXmlBytes":  98627,
+                               "rawTextRuns":  [
+                                                   "Example: Independence?",
+                                                   "T",
+                                                   "W",
+                                                   "P",
+                                                   "hot",
+                                                   "sun",
+                                                   "0.4",
+                                                   "hot",
+                                                   "rain",
+                                                   "0.1",
+                                                   "cold",
+                                                   "sun",
+                                                   "0.2",
+                                                   "cold",
+                                                   "rain",
+                                                   "0.3",
+                                                   "T",
+                                                   "W",
+                                                   "P",
+                                                   "hot",
+                                                   "sun",
+                                                   "0.3",
+                                                   "hot",
+                                                   "rain",
+                                                   "0.2",
+                                                   "cold",
+                                                   "sun",
+                                                   "0.3",
+                                                   "cold",
+                                                   "rain",
+                                                   "0.2",
+                                                   "T",
+                                                   "P",
+                                                   "hot",
+                                                   "0.5",
+                                                   "cold",
+                                                   "0.5",
+                                                   "W",
+                                                   "P",
+                                                   "sun",
+                                                   "0.6",
+                                                   "rain",
+                                                   "0.4",
+                                                   "4"
+                                               ],
+                               "joinedTextForAudit":  "Example: Independence? | T | W | P | hot | sun | 0.4 | hot | rain | 0.1 | cold | sun | 0.2 | cold | rain | 0.3 | T | W | P | hot | sun | 0.3 | hot | rain | 0.2 | cold | sun | 0.3 | cold | rain | 0.2 | T | P | hot | 0.5 | cold | 0.5 | W | P | sun | 0.6 | rain | 0.4 | 4",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  4,
+                                                 "textOrShapeObjects":  2,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  4
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId5",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image5.png",
+                                                              "originalFile":  "image5.png",
+                                                              "copiedFile":  "media/image5.png",
+                                                              "sha256":  "634D96C123912AB1C359F9BC7CB603A26EE2E2E0E687656F697CCDEF8E32693F",
+                                                              "bytes":  875,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  312,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId6",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image6.png",
+                                                              "originalFile":  "image6.png",
+                                                              "copiedFile":  "media/image6.png",
+                                                              "sha256":  "481B205DCAF64F4D1FF546FFB1AAD3095B45DA3256DA545BAC7346511D22B078",
+                                                              "bytes":  556,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  176,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId7",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image7.png",
+                                                              "originalFile":  "image7.png",
+                                                              "copiedFile":  "media/image7.png",
+                                                              "sha256":  "24A876A09AAC4D3AEFA46DAA974CF4B05D5A10B1E725BC4AB4F1777277534824",
+                                                              "bytes":  697,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  205,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId8",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image8.emf",
+                                                              "originalFile":  "image8.emf",
+                                                              "copiedFile":  "media/image8.emf",
+                                                              "sha256":  "C4B40CC3031DED5FCC8B42D20333A12BF2727F7E07A7586B66F17DADD41B3448",
+                                                              "bytes":  43704,
+                                                              "format":  "EMF",
+                                                              "dimensions":  {
+                                                                                 "width":  508,
+                                                                                 "height":  51
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  true,
+                                              "clickGroupCount":  3,
+                                              "clickEffectCount":  3,
+                                              "withEffectCount":  3,
+                                              "visibilitySetCount":  6,
+                                              "timingXmlSha256":  "494BBADE17EA34DFE0D0DBE94EC994BB4BD4BFDFEFE9D6707B728FFB204229EA",
+                                              "rawTimingXml":  "\u003cp:timing\u003e\u003cp:tnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"1\" dur=\"indefinite\" restart=\"never\" nodeType=\"tmRoot\"\u003e\u003cp:childTnLst\u003e\u003cp:seq concurrent=\"1\" nextAc=\"seek\"\u003e\u003cp:cTn id=\"2\" dur=\"indefinite\" nodeType=\"mainSeq\"\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"3\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"4\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"5\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"6\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1041464\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"7\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"8\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"27732\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"9\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"10\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"11\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"12\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1041478\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"13\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"14\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"27733\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"15\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"16\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"17\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"18\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1041438\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"19\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"20\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"2\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003cp:prevCondLst\u003e\u003cp:cond evt=\"onPrev\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:prevCondLst\u003e\u003cp:nextCondLst\u003e\u003cp:cond evt=\"onNext\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:nextCondLst\u003e\u003c/p:seq\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:tnLst\u003e\u003c/p:timing\u003e"
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-04.png",
+                                              "sha256":  "F475F3EBC8C683039B2A4C64CFF96B3A6E8D99D14AF723E00C770CA0570DEBE1",
+                                              "bytes":  73368,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  5,
+                               "title":  "Example: Independence",
+                               "slideXmlSha256":  "3D340DB97DC3CDA147191179288F9BEDCD88E57E8FA68CA390A2B842B5041713",
+                               "slideXmlBytes":  44478,
+                               "rawTextRuns":  [
+                                                   "Example: Independence",
+                                                   "N fair, independent coin flips:",
+                                                   "H",
+                                                   "0.5",
+                                                   "T",
+                                                   "0.5",
+                                                   "H",
+                                                   "0.5",
+                                                   "T",
+                                                   "0.5",
+                                                   "H",
+                                                   "0.5",
+                                                   "T",
+                                                   "0.5",
+                                                   "5"
+                                               ],
+                               "joinedTextForAudit":  "Example: Independence | N fair, independent coin flips: | H | 0.5 | T | 0.5 | H | 0.5 | T | 0.5 | H | 0.5 | T | 0.5 | 5",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  8,
+                                                 "textOrShapeObjects":  7,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  3
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId8",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image9.png",
+                                                              "originalFile":  "image9.png",
+                                                              "copiedFile":  "media/image9.png",
+                                                              "sha256":  "D6E01B4B33DCEC257D475696084EC77F7D0846553BE72E0EA8E5F1505501398A",
+                                                              "bytes":  662,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  219,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId9",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image10.png",
+                                                              "originalFile":  "image10.png",
+                                                              "copiedFile":  "media/image10.png",
+                                                              "sha256":  "0F7E82033749649564325171094BE709AF96BE5D281C120147EAE04CAACC3634",
+                                                              "bytes":  724,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  223,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId10",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image11.png",
+                                                              "originalFile":  "image11.png",
+                                                              "copiedFile":  "media/image11.png",
+                                                              "sha256":  "9C5905F7B73DD0B11A96FFBD15CCFBAEAC0434F24BCE964D52447FCB252CB0D9",
+                                                              "bytes":  718,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  219,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId11",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image12.png",
+                                                              "originalFile":  "image12.png",
+                                                              "copiedFile":  "media/image12.png",
+                                                              "sha256":  "C0ADAB8E0AC07469895D802FBCACA0452F7C05E7C2E30B4421CDF22BD2732F89",
+                                                              "bytes":  194,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  113,
+                                                                                 "height":  21
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId12",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image13.png",
+                                                              "originalFile":  "image13.png",
+                                                              "copiedFile":  "media/image13.png",
+                                                              "sha256":  "445D2720894B7CAD1EB0205C233F6E3F0378184D198883ECB3C7807CEDBC187A",
+                                                              "bytes":  1348,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  593,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId13",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image14.png",
+                                                              "originalFile":  "image14.png",
+                                                              "copiedFile":  "media/image14.png",
+                                                              "sha256":  "9B0DBA761A6CDF77D47474B3A3827A377ABABF5516EA2B3027301C7B17B24DC1",
+                                                              "bytes":  378,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  79,
+                                                                                 "height":  61
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId14",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image15.png",
+                                                              "originalFile":  "image15.png",
+                                                              "copiedFile":  "media/image15.png",
+                                                              "sha256":  "33EFFFF41F2E039DF707D3320B1E448269588C7F87FAB3996112650A678B0571",
+                                                              "bytes":  92291,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  560,
+                                                                                 "height":  535
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId15",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image16.png",
+                                                              "originalFile":  "image16.png",
+                                                              "copiedFile":  "media/image16.png",
+                                                              "sha256":  "D171D1B41EE8EA7BBD9CAD94599F4548F2759EEFF17AE2D2F293CE7A9925C7F1",
+                                                              "bytes":  62531,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  752,
+                                                                                 "height":  340
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  false,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  0,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  0,
+                                              "timingXmlSha256":  null,
+                                              "rawTimingXml":  null
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-05.png",
+                                              "sha256":  "ACBF7EC56F92BA8470AC3B89D2478A5E7316A6101457D1ECC73CD048AFC6AB4F",
+                                              "bytes":  240451,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  6,
+                               "title":  "Conditional Independence",
+                               "slideXmlSha256":  "99AF674A61E950293DB5412B2DAB5B26CA0AE8DF0333E0150AF82DED673FD4B2",
+                               "slideXmlBytes":  2432,
+                               "rawTextRuns":  [
+                                                   "Conditional Independence",
+                                                   "6"
+                                               ],
+                               "joinedTextForAudit":  "Conditional Independence | 6",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  1,
+                                                 "textOrShapeObjects":  2,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId2",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image17.png",
+                                                              "originalFile":  "image17.png",
+                                                              "copiedFile":  "media/image17.png",
+                                                              "sha256":  "C2C4F2794C4F1E0BFCE11F103C2B72EBF7824A9FA09F5A846A713DDED086CFE6",
+                                                              "bytes":  119689,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  895,
+                                                                                 "height":  588
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  false,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  0,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  0,
+                                              "timingXmlSha256":  null,
+                                              "rawTimingXml":  null
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-06.png",
+                                              "sha256":  "FECA7F4C465FD454A40FC1FDC78025DFD6AE4DCBB2ACC3C56D05BD77E95EC794",
+                                              "bytes":  210970,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  7,
+                               "title":  "Conditional Independence",
+                               "slideXmlSha256":  "B6BDE81E783830F8F3FCC9DC0E7E486A3E974A63FA02F68115C4758D8AE228AA",
+                               "slideXmlBytes":  19626,
+                               "rawTextRuns":  [
+                                                   "Conditional Independence",
+                                                   "P(Toothache, Cavity, Catch)",
+                                                   "If I have a cavity, the probability that the probe catches in it doesn\u0027t depend on whether I have a toothache:",
+                                                   "P(+catch | +toothache, +cavity) = P(+catch | +cavity)",
+                                                   "The same independence holds if I don",
+                                                   "’",
+                                                   "t have a cavity:",
+                                                   "P(+catch | +toothache, ",
+                                                   "-",
+                                                   "cavity) = P(+catch| ",
+                                                   "-",
+                                                   "cavity)",
+                                                   "Catch is ",
+                                                   "conditionally independent",
+                                                   " of Toothache given Cavity:",
+                                                   "P(Catch | Toothache, Cavity) = P(Catch | Cavity)",
+                                                   "Equivalent statements:",
+                                                   "P(Toothache | Catch , Cavity) = P(Toothache | Cavity)",
+                                                   "P(Toothache, Catch | Cavity) = P(Toothache | Cavity) P(Catch | Cavity)",
+                                                   "One can be derived from the other easily",
+                                                   "7"
+                                               ],
+                               "joinedTextForAudit":  "Conditional Independence | P(Toothache, Cavity, Catch) | If I have a cavity, the probability that the probe catches in it doesn\u0027t depend on whether I have a toothache: | P(+catch | +toothache, +cavity) = P(+catch | +cavity) | The same independence holds if I don | ’ | t have a cavity: | P(+catch | +toothache,  | - | cavity) = P(+catch|  | - | cavity) | Catch is  | conditionally independent |  of Toothache given Cavity: | P(Catch | Toothache, Cavity) = P(Catch | Cavity) | Equivalent statements: | P(Toothache | Catch , Cavity) = P(Toothache | Cavity) | P(Toothache, Catch | Cavity) = P(Toothache | Cavity) P(Catch | Cavity) | One can be derived from the other easily | 7",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  1,
+                                                 "textOrShapeObjects":  4,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId2",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image18.png",
+                                                              "originalFile":  "image18.png",
+                                                              "copiedFile":  "media/image18.png",
+                                                              "sha256":  "F43CF4FADCE9299D1589C4DE307C6F8B21C10D59CBD30E7D23BEDA2D4544EAF9",
+                                                              "bytes":  110374,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  801,
+                                                                                 "height":  479
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  true,
+                                              "clickGroupCount":  3,
+                                              "clickEffectCount":  4,
+                                              "withEffectCount":  6,
+                                              "visibilitySetCount":  10,
+                                              "timingXmlSha256":  "6DAC5AF32C7440262F7F8AFE9F481F8DD8132513BE4401F257D2633764B9CE9D",
+                                              "rawTimingXml":  "\u003cp:timing\u003e\u003cp:tnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"1\" dur=\"indefinite\" restart=\"never\" nodeType=\"tmRoot\"\u003e\u003cp:childTnLst\u003e\u003cp:seq concurrent=\"1\" nextAc=\"seek\"\u003e\u003cp:cTn id=\"2\" dur=\"indefinite\" nodeType=\"mainSeq\"\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"3\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"4\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"5\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"6\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"2\" end=\"2\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"7\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"8\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"3\" end=\"3\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"9\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"10\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"11\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"12\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"4\" end=\"4\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"13\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"14\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"5\" end=\"5\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"15\" fill=\"hold\" nodeType=\"clickPar\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"16\" fill=\"hold\" nodeType=\"withGroup\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"17\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"18\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"7\" end=\"7\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"19\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"20\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"1045507\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"8\" end=\"8\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"21\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"22\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"23\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"24\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"5\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"0\" end=\"0\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"25\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"26\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"5\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"1\" end=\"1\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"27\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"28\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"5\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"2\" end=\"2\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003cp:par\u003e\u003cp:cTn id=\"29\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"withEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"30\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"5\"\u003e\u003cp:txEl\u003e\u003cp:pRg st=\"3\" end=\"3\"/\u003e\u003c/p:txEl\u003e\u003c/p:spTgt\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003cp:prevCondLst\u003e\u003cp:cond evt=\"onPrev\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:prevCondLst\u003e\u003cp:nextCondLst\u003e\u003cp:cond evt=\"onNext\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:nextCondLst\u003e\u003c/p:seq\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:tnLst\u003e\u003c/p:timing\u003e"
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-07.png",
+                                              "sha256":  "BD77780D0930F7EA98E27D8B059D4A0E0061B64366B8C256EB4363CFFF87897E",
+                                              "bytes":  214500,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  8,
+                               "title":  "Conditional Independence",
+                               "slideXmlSha256":  "AB773CD580094B61E3D11DB48DD702C4CDEF697DAB8540DC9B9DE96DC1643A4A",
+                               "slideXmlBytes":  13802,
+                               "rawTextRuns":  [
+                                                   "Conditional Independence",
+                                                   "Unconditional (absolute) independence very rare (why?)",
+                                                   "Conditional independence",
+                                                   " is our most basic and robust form of knowledge about uncertain environments.",
+                                                   "X is conditionally independent of Y given Z",
+                                                   "      if and only if:",
+                                                   "      or, equivalently, if and only if",
+                                                   "8"
+                                               ],
+                               "joinedTextForAudit":  "Conditional Independence | Unconditional (absolute) independence very rare (why?) | Conditional independence |  is our most basic and robust form of knowledge about uncertain environments. | X is conditionally independent of Y given Z |       if and only if: |       or, equivalently, if and only if | 8",
+                               "notes":  {
+                                             "present":  true,
+                                             "relationshipId":  "rId5",
+                                             "target":  "../notesSlides/notesSlide3.xml",
+                                             "notesPart":  "ppt/notesSlides/notesSlide3.xml",
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  "\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?\u003e\r\n\u003cp:notes xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"\u003e\u003cp:cSld\u003e\u003cp:spTree\u003e\u003cp:nvGrpSpPr\u003e\u003cp:cNvPr id=\"1\" name=\"\"/\u003e\u003cp:cNvGrpSpPr/\u003e\u003cp:nvPr/\u003e\u003c/p:nvGrpSpPr\u003e\u003cp:grpSpPr\u003e\u003ca:xfrm\u003e\u003ca:off x=\"0\" y=\"0\"/\u003e\u003ca:ext cx=\"0\" cy=\"0\"/\u003e\u003ca:chOff x=\"0\" y=\"0\"/\u003e\u003ca:chExt cx=\"0\" cy=\"0\"/\u003e\u003c/a:xfrm\u003e\u003c/p:grpSpPr\u003e\u003cp:sp\u003e\u003cp:nvSpPr\u003e\u003cp:cNvPr id=\"2\" name=\"Slide Image Placeholder 1\"/\u003e\u003cp:cNvSpPr\u003e\u003ca:spLocks noGrp=\"1\" noRot=\"1\" noChangeAspect=\"1\"/\u003e\u003c/p:cNvSpPr\u003e\u003cp:nvPr\u003e\u003cp:ph type=\"sldImg\"/\u003e\u003c/p:nvPr\u003e\u003c/p:nvSpPr\u003e\u003cp:spPr/\u003e\u003c/p:sp\u003e\u003cp:sp\u003e\u003cp:nvSpPr\u003e\u003cp:cNvPr id=\"3\" name=\"Notes Placeholder 2\"/\u003e\u003cp:cNvSpPr\u003e\u003ca:spLocks noGrp=\"1\"/\u003e\u003c/p:cNvSpPr\u003e\u003cp:nvPr\u003e\u003cp:ph type=\"body\" idx=\"1\"/\u003e\u003c/p:nvPr\u003e\u003c/p:nvSpPr\u003e\u003cp:spPr/\u003e\u003cp:txBody\u003e\u003ca:bodyPr/\u003e\u003ca:lstStyle/\u003e\u003ca:p\u003e\u003ca:endParaRPr lang=\"en-US\" dirty=\"0\"/\u003e\u003c/a:p\u003e\u003c/p:txBody\u003e\u003c/p:sp\u003e\u003cp:sp\u003e\u003cp:nvSpPr\u003e\u003cp:cNvPr id=\"4\" name=\"Slide Number Placeholder 3\"/\u003e\u003cp:cNvSpPr\u003e\u003ca:spLocks noGrp=\"1\"/\u003e\u003c/p:cNvSpPr\u003e\u003cp:nvPr\u003e\u003cp:ph type=\"sldNum\" sz=\"quarter\" idx=\"5\"/\u003e\u003c/p:nvPr\u003e\u003c/p:nvSpPr\u003e\u003cp:spPr/\u003e\u003cp:txBody\u003e\u003ca:bodyPr/\u003e\u003ca:lstStyle/\u003e\u003ca:p\u003e\u003ca:pPr\u003e\u003ca:defRPr/\u003e\u003c/a:pPr\u003e\u003ca:fld id=\"{60FA4D9F-7AC5-42F4-AC57-8FDFE9436C63}\" type=\"slidenum\"\u003e\u003ca:rPr lang=\"en-US\" smtClean=\"0\"/\u003e\u003ca:pPr\u003e\u003ca:defRPr/\u003e\u003c/a:pPr\u003e\u003ca:t\u003e8\u003c/a:t\u003e\u003c/a:fld\u003e\u003ca:endParaRPr lang=\"en-US\"/\u003e\u003c/a:p\u003e\u003c/p:txBody\u003e\u003c/p:sp\u003e\u003c/p:spTree\u003e\u003cp:extLst\u003e\u003cp:ext uri=\"{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}\"\u003e\u003cp14:creationId xmlns:p14=\"http://schemas.microsoft.com/office/powerpoint/2010/main\" val=\"3614709858\"/\u003e\u003c/p:ext\u003e\u003c/p:extLst\u003e\u003c/p:cSld\u003e\u003cp:clrMapOvr\u003e\u003ca:masterClrMapping/\u003e\u003c/p:clrMapOvr\u003e\u003c/p:notes\u003e",
+                                             "notesXmlSha256":  "4F1EE151029BD14CE2E31480F7DE33B3630BF73AC474B787B3B075D4D908D11A"
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  3,
+                                                 "textOrShapeObjects":  3,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId6",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image19.png",
+                                                              "originalFile":  "image19.png",
+                                                              "copiedFile":  "media/image19.png",
+                                                              "sha256":  "5348C29641FFD54B219C68840C3AE227721F86EE2F861AEBC83A4CB84A625F48",
+                                                              "bytes":  3166,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  874,
+                                                                                 "height":  57
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId7",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image20.png",
+                                                              "originalFile":  "image20.png",
+                                                              "copiedFile":  "media/image20.png",
+                                                              "sha256":  "D7E94719751448C82DD49FD608E31402E1BCBBC0AA959657E2D4A20C002CDE9B",
+                                                              "bytes":  1045,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  253,
+                                                                                 "height":  66
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId8",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image21.png",
+                                                              "originalFile":  "image21.png",
+                                                              "copiedFile":  "media/image21.png",
+                                                              "sha256":  "B85A0A4FAEA28712824A3641C5FEAE45CC7490E45557CAAD5894BF98C9CA8550",
+                                                              "bytes":  2492,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  701,
+                                                                                 "height":  57
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  false,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  0,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  0,
+                                              "timingXmlSha256":  null,
+                                              "rawTimingXml":  null
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-08.png",
+                                              "sha256":  "E86F2252A5478DF99BD33FC7D1D90523A1504044E5516ECF9733E87308D6BF83",
+                                              "bytes":  87794,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  9,
+                               "title":  "Conditional Independence",
+                               "slideXmlSha256":  "8067D2BBC1D1701E73B15159420F5A1A1679B666E43D7788543DC22DE54464C8",
+                               "slideXmlBytes":  4352,
+                               "rawTextRuns":  [
+                                                   "Conditional Independence",
+                                                   "What about this domain:",
+                                                   "Traffic",
+                                                   "Umbrella",
+                                                   "Raining",
+                                                   "9"
+                                               ],
+                               "joinedTextForAudit":  "Conditional Independence | What about this domain: | Traffic | Umbrella | Raining | 9",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  1,
+                                                 "textOrShapeObjects":  3,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId2",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image22.png",
+                                                              "originalFile":  "image22.png",
+                                                              "copiedFile":  "media/image22.png",
+                                                              "sha256":  "99E9A5CA2F86DC08D05425BB734B765B1576339D0BE982AE5432E39968636BAB",
+                                                              "bytes":  178744,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  1109,
+                                                                                 "height":  575
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  false,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  0,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  0,
+                                              "timingXmlSha256":  null,
+                                              "rawTimingXml":  null
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-09.png",
+                                              "sha256":  "1DB97C43A30597DFFBEF1FFB8AA4D6B2DCE48718BD2F0FC84A98C4890C64BEFC",
+                                              "bytes":  214398,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  10,
+                               "title":  "Conditional Independence",
+                               "slideXmlSha256":  "A8FCCEE16CFF339927DDB269E20B328AC340ED94ECC03872C963906F5702E3C8",
+                               "slideXmlBytes":  6135,
+                               "rawTextRuns":  [
+                                                   "Conditional Independence",
+                                                   "What about this domain:",
+                                                   "Fire",
+                                                   "Smoke",
+                                                   "Alarm",
+                                                   "10"
+                                               ],
+                               "joinedTextForAudit":  "Conditional Independence | What about this domain: | Fire | Smoke | Alarm | 10",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  2,
+                                                 "textOrShapeObjects":  3,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId2",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image23.png",
+                                                              "originalFile":  "image23.png",
+                                                              "copiedFile":  "media/image23.png",
+                                                              "sha256":  "78B61F5688E6E50264CDD4BFC31A17C96085705EF076C984EE0DB1FC653DDA95",
+                                                              "bytes":  78357,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  606,
+                                                                                 "height":  398
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId3",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image24.png",
+                                                              "originalFile":  "image24.png",
+                                                              "copiedFile":  "media/image24.png",
+                                                              "sha256":  "341BCBDD10A6F9A36AC2DA8C5EA2C4766B54837A8D31818DD73A62DD012333B8",
+                                                              "bytes":  76616,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  901,
+                                                                                 "height":  601
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  true,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  1,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  1,
+                                              "timingXmlSha256":  "F06A19A89D8E737140905598E49894C6EB7EB73374D70319F72AD1178076654A",
+                                              "rawTimingXml":  "\u003cp:timing\u003e\u003cp:tnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"1\" dur=\"indefinite\" restart=\"never\" nodeType=\"tmRoot\"\u003e\u003cp:childTnLst\u003e\u003cp:seq concurrent=\"1\" nextAc=\"seek\"\u003e\u003cp:cTn id=\"2\" dur=\"indefinite\" nodeType=\"mainSeq\"\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"3\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"indefinite\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"4\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:par\u003e\u003cp:cTn id=\"5\" presetID=\"1\" presetClass=\"entr\" presetSubtype=\"0\" fill=\"hold\" nodeType=\"clickEffect\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003cp:childTnLst\u003e\u003cp:set\u003e\u003cp:cBhvr\u003e\u003cp:cTn id=\"6\" dur=\"1\" fill=\"hold\"\u003e\u003cp:stCondLst\u003e\u003cp:cond delay=\"0\"/\u003e\u003c/p:stCondLst\u003e\u003c/p:cTn\u003e\u003cp:tgtEl\u003e\u003cp:spTgt spid=\"6\"/\u003e\u003c/p:tgtEl\u003e\u003cp:attrNameLst\u003e\u003cp:attrName\u003estyle.visibility\u003c/p:attrName\u003e\u003c/p:attrNameLst\u003e\u003c/p:cBhvr\u003e\u003cp:to\u003e\u003cp:strVal val=\"visible\"/\u003e\u003c/p:to\u003e\u003c/p:set\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003cp:prevCondLst\u003e\u003cp:cond evt=\"onPrev\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:prevCondLst\u003e\u003cp:nextCondLst\u003e\u003cp:cond evt=\"onNext\" delay=\"0\"\u003e\u003cp:tgtEl\u003e\u003cp:sldTgt/\u003e\u003c/p:tgtEl\u003e\u003c/p:cond\u003e\u003c/p:nextCondLst\u003e\u003c/p:seq\u003e\u003c/p:childTnLst\u003e\u003c/p:cTn\u003e\u003c/p:par\u003e\u003c/p:tnLst\u003e\u003c/p:timing\u003e"
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-10.png",
+                                              "sha256":  "84935CE62167A6887FE4DFE16EA95204F17BDA47C7C05BAB8F4CD1341F1A88A2",
+                                              "bytes":  193199,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           },
+                           {
+                               "slide":  11,
+                               "title":  "Probability Recap",
+                               "slideXmlSha256":  "802A9A550416AE2ED33E01D28B327C96A64587E3F83BD828A08F0805737EA544",
+                               "slideXmlBytes":  12849,
+                               "rawTextRuns":  [
+                                                   "Probability Recap",
+                                                   "Conditional probability",
+                                                   "Product rule",
+                                                   "Chain rule ",
+                                                   "X, Y independent if and only if:",
+                                                   "X and Y are conditionally independent given Z if and only if:",
+                                                   "11"
+                                               ],
+                               "joinedTextForAudit":  "Probability Recap | Conditional probability | Product rule | Chain rule  | X, Y independent if and only if: | X and Y are conditionally independent given Z if and only if: | 11",
+                               "notes":  {
+                                             "present":  false,
+                                             "relationshipId":  null,
+                                             "target":  null,
+                                             "notesPart":  null,
+                                             "bodyTextRuns":  [
+
+                                                              ],
+                                             "bodyText":  "",
+                                             "rawNotesXml":  null,
+                                             "notesXmlSha256":  null
+                                         },
+                               "structure":  {
+                                                 "pictureObjects":  6,
+                                                 "textOrShapeObjects":  3,
+                                                 "groupObjects":  0,
+                                                 "graphicFrames":  0
+                                             },
+                               "mediaRelationships":  [
+                                                          {
+                                                              "relationshipId":  "rId8",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image25.png",
+                                                              "originalFile":  "image25.png",
+                                                              "copiedFile":  "media/image25.png",
+                                                              "sha256":  "88DA4703CF050131F8FF31D644EDCDF7AC5BE39463FFD9A78CC01E26B5C302D3",
+                                                              "bytes":  1971,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  589,
+                                                                                 "height":  176
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId9",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image26.png",
+                                                              "originalFile":  "image26.png",
+                                                              "copiedFile":  "media/image26.png",
+                                                              "sha256":  "7BD55EF7EFE0498AF468E49D4EA9F39E87208D965D61BF561350CDEB2C545158",
+                                                              "bytes":  1705,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  747,
+                                                                                 "height":  75
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId10",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image27.png",
+                                                              "originalFile":  "image27.png",
+                                                              "copiedFile":  "media/image27.png",
+                                                              "sha256":  "666AEF5F1125654272B28BFBF42933124A9CF8A688BBABE6B5D2BA2DCA3395C6",
+                                                              "bytes":  2047,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  913,
+                                                                                 "height":  72
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId11",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image28.png",
+                                                              "originalFile":  "image28.png",
+                                                              "copiedFile":  "media/image28.png",
+                                                              "sha256":  "A30D1CE9AE6972ABADE99EB55402A27FA63FB77E400F661785585CD190E484D1",
+                                                              "bytes":  2705,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  1165,
+                                                                                 "height":  75
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId12",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image29.png",
+                                                              "originalFile":  "image29.png",
+                                                              "copiedFile":  "media/image29.png",
+                                                              "sha256":  "169433F65AD4943D16F66400244BA7700898E59E544DA9C120C9155D55F07FF3",
+                                                              "bytes":  821,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  337,
+                                                                                 "height":  89
+                                                                             }
+                                                          },
+                                                          {
+                                                              "relationshipId":  "rId13",
+                                                              "relationshipType":  "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+                                                              "target":  "../media/image30.png",
+                                                              "originalFile":  "image30.png",
+                                                              "copiedFile":  "media/image30.png",
+                                                              "sha256":  "1678537C12A45978BA52072817E4CA3F2869CEDFD914C99575D37C98246D1436",
+                                                              "bytes":  4694,
+                                                              "format":  "PNG",
+                                                              "dimensions":  {
+                                                                                 "width":  1599,
+                                                                                 "height":  233
+                                                                             }
+                                                          }
+                                                      ],
+                               "timing":  {
+                                              "present":  false,
+                                              "clickGroupCount":  0,
+                                              "clickEffectCount":  0,
+                                              "withEffectCount":  0,
+                                              "visibilitySetCount":  0,
+                                              "timingXmlSha256":  null,
+                                              "rawTimingXml":  null
+                                          },
+                               "transition":  {
+                                                  "present":  false,
+                                                  "rawTransitionXml":  null,
+                                                  "transitionXmlSha256":  null
+                                              },
+                               "render":  {
+                                              "file":  "slide-renders/slide-11.png",
+                                              "sha256":  "EB0E3EBD39360478E7F93C7CCCF51A9B91445D23AFDB022B8224ABC13CC97B3F",
+                                              "bytes":  114608,
+                                              "dimensions":  {
+                                                                 "width":  1600,
+                                                                 "height":  1200
+                                                             },
+                                              "exporter":  "Microsoft PowerPoint",
+                                              "exportFormat":  "PNG"
+                                          }
+                           }
+                       ],
+    "rawMediaFiles":  [
+                          {
+                              "file":  "media/image1.png",
+                              "originalFile":  "image1.png",
+                              "sha256":  "1B84FCFFF03B70F06AC0A7F78B543B0AED65921B02A1962E778DAC931716321C",
+                              "bytes":  1704,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  773,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   3
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  3,
+                                                              "relationshipId":  "rId5",
+                                                              "target":  "../media/image1.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image2.png",
+                              "originalFile":  "image2.png",
+                              "sha256":  "1B3BCDABEBA43D37833529CA58D04165455DE15CAF29BDF37159E0D7A97EEA0F",
+                              "bytes":  2045,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  864,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   3
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  3,
+                                                              "relationshipId":  "rId6",
+                                                              "target":  "../media/image2.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image3.png",
+                              "originalFile":  "image3.png",
+                              "sha256":  "EA107CB153AFEE6BFC972B3222DF3E7893BD3824D55BEF61F4955F5BB5C6B4DB",
+                              "bytes":  566,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  245,
+                                                 "height":  63
+                                             },
+                              "sourceSlides":  [
+                                                   3
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  3,
+                                                              "relationshipId":  "rId7",
+                                                              "target":  "../media/image3.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image4.png",
+                              "originalFile":  "image4.png",
+                              "sha256":  "177247A5CC3FDF19E02DBFEC99795ABE49B2112E31ACBF6A926436F1DB8B5026",
+                              "bytes":  56481,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  447,
+                                                 "height":  394
+                                             },
+                              "sourceSlides":  [
+                                                   3
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  3,
+                                                              "relationshipId":  "rId8",
+                                                              "target":  "../media/image4.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image5.png",
+                              "originalFile":  "image5.png",
+                              "sha256":  "634D96C123912AB1C359F9BC7CB603A26EE2E2E0E687656F697CCDEF8E32693F",
+                              "bytes":  875,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  312,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   4
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  4,
+                                                              "relationshipId":  "rId5",
+                                                              "target":  "../media/image5.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image6.png",
+                              "originalFile":  "image6.png",
+                              "sha256":  "481B205DCAF64F4D1FF546FFB1AAD3095B45DA3256DA545BAC7346511D22B078",
+                              "bytes":  556,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  176,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   4
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  4,
+                                                              "relationshipId":  "rId6",
+                                                              "target":  "../media/image6.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image7.png",
+                              "originalFile":  "image7.png",
+                              "sha256":  "24A876A09AAC4D3AEFA46DAA974CF4B05D5A10B1E725BC4AB4F1777277534824",
+                              "bytes":  697,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  205,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   4
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  4,
+                                                              "relationshipId":  "rId7",
+                                                              "target":  "../media/image7.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image8.emf",
+                              "originalFile":  "image8.emf",
+                              "sha256":  "C4B40CC3031DED5FCC8B42D20333A12BF2727F7E07A7586B66F17DADD41B3448",
+                              "bytes":  43704,
+                              "format":  "EMF",
+                              "dimensions":  {
+                                                 "width":  508,
+                                                 "height":  51
+                                             },
+                              "sourceSlides":  [
+                                                   4
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  4,
+                                                              "relationshipId":  "rId8",
+                                                              "target":  "../media/image8.emf"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image9.png",
+                              "originalFile":  "image9.png",
+                              "sha256":  "D6E01B4B33DCEC257D475696084EC77F7D0846553BE72E0EA8E5F1505501398A",
+                              "bytes":  662,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  219,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId8",
+                                                              "target":  "../media/image9.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image10.png",
+                              "originalFile":  "image10.png",
+                              "sha256":  "0F7E82033749649564325171094BE709AF96BE5D281C120147EAE04CAACC3634",
+                              "bytes":  724,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  223,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId9",
+                                                              "target":  "../media/image10.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image11.png",
+                              "originalFile":  "image11.png",
+                              "sha256":  "9C5905F7B73DD0B11A96FFBD15CCFBAEAC0434F24BCE964D52447FCB252CB0D9",
+                              "bytes":  718,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  219,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId10",
+                                                              "target":  "../media/image11.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image12.png",
+                              "originalFile":  "image12.png",
+                              "sha256":  "C0ADAB8E0AC07469895D802FBCACA0452F7C05E7C2E30B4421CDF22BD2732F89",
+                              "bytes":  194,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  113,
+                                                 "height":  21
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId11",
+                                                              "target":  "../media/image12.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image13.png",
+                              "originalFile":  "image13.png",
+                              "sha256":  "445D2720894B7CAD1EB0205C233F6E3F0378184D198883ECB3C7807CEDBC187A",
+                              "bytes":  1348,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  593,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId12",
+                                                              "target":  "../media/image13.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image14.png",
+                              "originalFile":  "image14.png",
+                              "sha256":  "9B0DBA761A6CDF77D47474B3A3827A377ABABF5516EA2B3027301C7B17B24DC1",
+                              "bytes":  378,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  79,
+                                                 "height":  61
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId13",
+                                                              "target":  "../media/image14.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image15.png",
+                              "originalFile":  "image15.png",
+                              "sha256":  "33EFFFF41F2E039DF707D3320B1E448269588C7F87FAB3996112650A678B0571",
+                              "bytes":  92291,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  560,
+                                                 "height":  535
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId14",
+                                                              "target":  "../media/image15.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image16.png",
+                              "originalFile":  "image16.png",
+                              "sha256":  "D171D1B41EE8EA7BBD9CAD94599F4548F2759EEFF17AE2D2F293CE7A9925C7F1",
+                              "bytes":  62531,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  752,
+                                                 "height":  340
+                                             },
+                              "sourceSlides":  [
+                                                   5
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  5,
+                                                              "relationshipId":  "rId15",
+                                                              "target":  "../media/image16.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image17.png",
+                              "originalFile":  "image17.png",
+                              "sha256":  "C2C4F2794C4F1E0BFCE11F103C2B72EBF7824A9FA09F5A846A713DDED086CFE6",
+                              "bytes":  119689,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  895,
+                                                 "height":  588
+                                             },
+                              "sourceSlides":  [
+                                                   6
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  6,
+                                                              "relationshipId":  "rId2",
+                                                              "target":  "../media/image17.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image18.png",
+                              "originalFile":  "image18.png",
+                              "sha256":  "F43CF4FADCE9299D1589C4DE307C6F8B21C10D59CBD30E7D23BEDA2D4544EAF9",
+                              "bytes":  110374,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  801,
+                                                 "height":  479
+                                             },
+                              "sourceSlides":  [
+                                                   7
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  7,
+                                                              "relationshipId":  "rId2",
+                                                              "target":  "../media/image18.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image19.png",
+                              "originalFile":  "image19.png",
+                              "sha256":  "5348C29641FFD54B219C68840C3AE227721F86EE2F861AEBC83A4CB84A625F48",
+                              "bytes":  3166,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  874,
+                                                 "height":  57
+                                             },
+                              "sourceSlides":  [
+                                                   8
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  8,
+                                                              "relationshipId":  "rId6",
+                                                              "target":  "../media/image19.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image20.png",
+                              "originalFile":  "image20.png",
+                              "sha256":  "D7E94719751448C82DD49FD608E31402E1BCBBC0AA959657E2D4A20C002CDE9B",
+                              "bytes":  1045,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  253,
+                                                 "height":  66
+                                             },
+                              "sourceSlides":  [
+                                                   8
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  8,
+                                                              "relationshipId":  "rId7",
+                                                              "target":  "../media/image20.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image21.png",
+                              "originalFile":  "image21.png",
+                              "sha256":  "B85A0A4FAEA28712824A3641C5FEAE45CC7490E45557CAAD5894BF98C9CA8550",
+                              "bytes":  2492,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  701,
+                                                 "height":  57
+                                             },
+                              "sourceSlides":  [
+                                                   8
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  8,
+                                                              "relationshipId":  "rId8",
+                                                              "target":  "../media/image21.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image22.png",
+                              "originalFile":  "image22.png",
+                              "sha256":  "99E9A5CA2F86DC08D05425BB734B765B1576339D0BE982AE5432E39968636BAB",
+                              "bytes":  178744,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  1109,
+                                                 "height":  575
+                                             },
+                              "sourceSlides":  [
+                                                   9
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  9,
+                                                              "relationshipId":  "rId2",
+                                                              "target":  "../media/image22.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image23.png",
+                              "originalFile":  "image23.png",
+                              "sha256":  "78B61F5688E6E50264CDD4BFC31A17C96085705EF076C984EE0DB1FC653DDA95",
+                              "bytes":  78357,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  606,
+                                                 "height":  398
+                                             },
+                              "sourceSlides":  [
+                                                   10
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  10,
+                                                              "relationshipId":  "rId2",
+                                                              "target":  "../media/image23.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image24.png",
+                              "originalFile":  "image24.png",
+                              "sha256":  "341BCBDD10A6F9A36AC2DA8C5EA2C4766B54837A8D31818DD73A62DD012333B8",
+                              "bytes":  76616,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  901,
+                                                 "height":  601
+                                             },
+                              "sourceSlides":  [
+                                                   10
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  10,
+                                                              "relationshipId":  "rId3",
+                                                              "target":  "../media/image24.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image25.png",
+                              "originalFile":  "image25.png",
+                              "sha256":  "88DA4703CF050131F8FF31D644EDCDF7AC5BE39463FFD9A78CC01E26B5C302D3",
+                              "bytes":  1971,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  589,
+                                                 "height":  176
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId8",
+                                                              "target":  "../media/image25.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image26.png",
+                              "originalFile":  "image26.png",
+                              "sha256":  "7BD55EF7EFE0498AF468E49D4EA9F39E87208D965D61BF561350CDEB2C545158",
+                              "bytes":  1705,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  747,
+                                                 "height":  75
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId9",
+                                                              "target":  "../media/image26.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image27.png",
+                              "originalFile":  "image27.png",
+                              "sha256":  "666AEF5F1125654272B28BFBF42933124A9CF8A688BBABE6B5D2BA2DCA3395C6",
+                              "bytes":  2047,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  913,
+                                                 "height":  72
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId10",
+                                                              "target":  "../media/image27.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image28.png",
+                              "originalFile":  "image28.png",
+                              "sha256":  "A30D1CE9AE6972ABADE99EB55402A27FA63FB77E400F661785585CD190E484D1",
+                              "bytes":  2705,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  1165,
+                                                 "height":  75
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId11",
+                                                              "target":  "../media/image28.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image29.png",
+                              "originalFile":  "image29.png",
+                              "sha256":  "169433F65AD4943D16F66400244BA7700898E59E544DA9C120C9155D55F07FF3",
+                              "bytes":  821,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  337,
+                                                 "height":  89
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId12",
+                                                              "target":  "../media/image29.png"
+                                                          }
+                                                      ]
+                          },
+                          {
+                              "file":  "media/image30.png",
+                              "originalFile":  "image30.png",
+                              "sha256":  "1678537C12A45978BA52072817E4CA3F2869CEDFD914C99575D37C98246D1436",
+                              "bytes":  4694,
+                              "format":  "PNG",
+                              "dimensions":  {
+                                                 "width":  1599,
+                                                 "height":  233
+                                             },
+                              "sourceSlides":  [
+                                                   11
+                                               ],
+                              "sourceRelationships":  [
+                                                          {
+                                                              "slide":  11,
+                                                              "relationshipId":  "rId13",
+                                                              "target":  "../media/image30.png"
+                                                          }
+                                                      ]
+                          }
+                      ],
+    "sourceCorrectionLedger":  [
+                                   {
+                                       "sourceSlides":  [
+                                                            3
+                                                        ],
+                                       "sourceIssue":  "The equality P(X|Y)=P(X) is only defined for conditioning values with positive probability.",
+                                       "correction":  "State independence using P(X,Y)=P(X)P(Y), or qualify conditional equalities with P(Y)\u003e0."
+                                   },
+                                   {
+                                       "sourceSlides":  [
+                                                            7,
+                                                            8
+                                                        ],
+                                       "sourceIssue":  "A few displayed positive-event equalities can be read as sufficient evidence for variable-level conditional independence.",
+                                       "correction":  "Conditional independence X independent of Y given Z requires the factorization or conditional equality to hold for every relevant value assignment with nonzero conditioning probability."
+                                   },
+                                   {
+                                       "sourceSlides":  [
+                                                            9,
+                                                            10
+                                                        ],
+                                       "sourceIssue":  "The compact Traffic-Umbrella-Raining and Fire-Smoke-Alarm graphics can be mistaken for empirical or causal proof.",
+                                       "correction":  "Treat the graphical separation as a modeling assertion. Arrows and a common-cause pattern do not by themselves prove causation or conditional independence from observational data."
+                                   },
+                                   {
+                                       "sourceSlides":  [
+                                                            11
+                                                        ],
+                                       "sourceIssue":  "The recap places universally valid probability identities beside independence-based factorizations without an explicit assumption boundary.",
+                                       "correction":  "Distinguish product and chain rules, which are probability identities where the conditionals are defined, from reduced factorizations that require an independence assumption."
+                                   }
+                               ]
+}

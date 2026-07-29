@@ -10,11 +10,87 @@ function ConceptImage({ name, alt }: { name: string; alt: string }) {
 }
 
 function CourseImage({ name, alt, className = "" }: { name: string; alt: string; className?: string }) {
-  return <figure className={`source-figure ${className}`.trim()}><img alt={alt} src={`${sourceRoot}/${name}`} /></figure>;
+  const source = `${sourceRoot}/${name}`;
+  return (
+    <figure className={`source-figure ${className}`.trim()}>
+      <a aria-label={`Enlarge: ${alt}`} href={source} rel="noreferrer" target="_blank">
+        <img alt={alt} src={source} />
+      </a>
+    </figure>
+  );
 }
 
 function SourceCallout({ title, children }: { title: string; children: ReactNode }) {
   return <aside className="source-callout"><strong>{title}</strong><div>{children}</div></aside>;
+}
+
+function VacuumPeasLab() {
+  const [active, setActive] = useState(0);
+  const cases = [
+    ["⟨(A, dirty)⟩", "SUCK", "The current square is dirty, so cleaning it immediately improves performance."],
+    ["⟨(A, clean)⟩", "RIGHT", "A simple reflex policy moves to the other square because the current one needs no cleaning."],
+    ["⟨(A, clean), (B, dirty)⟩", "SUCK", "The newest percept is B and dirty; the percept history also records that A was clean."],
+    ["⟨(A, clean), (B, clean), (A, clean)⟩", "NO-OP", "If dirt does not reappear and movement has a cost, the history supports stopping after both squares were observed clean."],
+  ];
+  const current = cases[active];
+  return (
+    <div className="peas-vacuum-lab">
+      <section className="peas-spec">
+        <div><span>PEAS specification</span><h3>Two-location vacuum world</h3></div>
+        <div className="peas-grid">
+          <article><strong>P</strong><div><span>Performance</span><p>Clean both squares; minimize time, actions, and energy.</p></div></article>
+          <article><strong>E</strong><div><span>Environment</span><p>Squares A and B, dirt, and the agent’s location.</p></div></article>
+          <article><strong>A</strong><div><span>Actuators</span><p>LEFT · RIGHT · SUCK · NO-OP</p></div></article>
+          <article><strong>S</strong><div><span>Sensors</span><p>Current location and whether that square is dirty.</p></div></article>
+        </div>
+      </section>
+      <section className="vacuum-function">
+        <div><span>Agent-function trace</span><h3>f : P* → A</h3><p>Choose a percept history, predict the action, then reveal the rationale.</p></div>
+        <nav>{cases.map((_, index) => <button className={active === index ? "active" : ""} key={index} onClick={() => setActive(index)} type="button">{index + 1}</button>)}</nav>
+        <div className="vacuum-trace"><code>{current[0]}</code><i>→</i><strong>{current[1]}</strong></div>
+        <SourceCallout title="Why this action?">{current[2]}</SourceCallout>
+      </section>
+    </div>
+  );
+}
+
+function LearningAgentDiagram() {
+  return (
+    <svg aria-labelledby="learning-agent-title learning-agent-desc" className="learning-agent-svg" role="img" viewBox="0 0 760 430">
+      <title id="learning-agent-title">Learning agent architecture</title>
+      <desc id="learning-agent-desc">An environment exchanges percepts and actions with a performance element. A critic, learning element, and problem generator improve the agent.</desc>
+      <defs>
+        <marker id="learning-agent-arrow" markerHeight="8" markerWidth="8" orient="auto" refX="7" refY="4">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#5131c7" />
+        </marker>
+      </defs>
+      <rect fill="#e7f1ff" height="108" rx="22" stroke="#1578c3" strokeWidth="3" width="142" x="24" y="154" />
+      <text fill="#111827" fontSize="24" fontWeight="800" textAnchor="middle" x="95" y="214">Environment</text>
+      <rect fill="#ffffff" height="364" rx="28" stroke="#aab8cc" strokeWidth="3" width="520" x="210" y="32" />
+      <text fill="#3d0877" fontSize="18" fontWeight="900" x="236" y="66">LEARNING AGENT</text>
+      <rect fill="#f1edff" height="76" rx="16" stroke="#6740d9" strokeWidth="3" width="228" x="302" y="122" />
+      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="416" y="154">Performance element</text>
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="416" y="178">selects external actions</text>
+      <rect fill="#e8f8f2" height="76" rx="16" stroke="#0a9b62" strokeWidth="3" width="228" x="302" y="274" />
+      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="416" y="306">Learning element</text>
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="416" y="330">changes future behavior</text>
+      <rect fill="#fff4d8" height="76" rx="16" stroke="#f0ad2f" strokeWidth="3" width="142" x="560" y="274" />
+      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="631" y="306">Critic</text>
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="631" y="330">evaluates</text>
+      <rect fill="#fdecef" height="76" rx="16" stroke="#c64f6d" strokeWidth="3" width="142" x="560" y="122" />
+      <text fill="#111827" fontSize="18" fontWeight="800" textAnchor="middle" x="631" y="153">Problem generator</text>
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="631" y="178">suggests exploration</text>
+      <path d="M166 182 H302" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="234" y="169">percepts</text>
+      <path d="M302 190 H166" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="15" textAnchor="middle" x="234" y="219">actions</text>
+      <path d="M166 246 C286 246 445 380 560 330" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="15" x="252" y="272">experience</text>
+      <path d="M560 312 H530" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <path d="M416 274 V198" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <path d="M560 160 H530" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+    </svg>
+  );
 }
 
 function Dimension({
@@ -92,11 +168,12 @@ function RobotPractice() {
     ["Mail sorting robot: sort mail by ZIP code", "Simple reflex is defensible when the current ZIP code completely determines the routing action."],
     ["Shopping robot: bring back items on a shopping list with the lowest price", "Utility-based is defensible because it must rank successful outcomes by price and possibly time or travel cost."],
   ];
+  const labels = ["Shopping goal", "Vacuum", "Mail sorter", "Lowest price"];
   const [active, setActive] = useState(0);
   const [revealed, setRevealed] = useState(false);
   return (
     <div className="robot-practice">
-      <nav>{cases.map((item, index) => <button className={active === index ? "active" : ""} key={item[0]} onClick={() => { setActive(index); setRevealed(false); }} type="button">{index + 1}</button>)}</nav>
+      <nav>{cases.map((item, index) => <button className={active === index ? "active" : ""} key={item[0]} onClick={() => { setActive(index); setRevealed(false); }} type="button">{labels[index]}</button>)}</nav>
       <section><ConceptImage alt="Robots requiring different agent designs" name="guided-practice" /><div><span>Student participation</span><h3>{cases[active][0]}</h3><p>Choose the simplest agent type that meets the task. Identify the assumption that determines your answer.</p><button onClick={() => setRevealed(value => !value)} type="button">{revealed ? "Hide analysis" : "Reveal a defensible analysis"}</button>{revealed && <SourceCallout title="Not the only possible answer">{cases[active][1]}</SourceCallout>}</div></section>
     </div>
   );
@@ -115,7 +192,6 @@ function TuringMiniLab() {
 }
 
 function TuringCritique() {
-  const [active, setActive] = useState(0);
   const points = [
     ["Importance", "The test seeks an objective notion of intelligence without favoring living organisms."],
     ["Perception limit", "It emphasizes symbolic and problem-solving skill rather than perceptual skill."],
@@ -124,39 +200,32 @@ function TuringCritique() {
     ["Human benchmark limit", "It tests simulation of human behavior even though machines can outperform humans on many tasks."],
   ];
   return (
-    <div className="turing-critique">
+    <div className="turing-critique all-points">
       <CourseImage alt="Venn diagram contrasting human behavior, intelligent behavior, and the Turing Test overlap" name="turing-behavior-venn.png" />
-      <div><nav>{points.map((item, index) => <button className={active === index ? "active" : ""} key={item[0]} onClick={() => setActive(index)} type="button">{index + 1}</button>)}</nav><span>{points[active][0]}</span><h3>{points[active][1]}</h3><SourceCallout title="Read the diagram">Some human behavior is unintelligent; some intelligent behavior is not human behavior. Human imitation and intelligence are not equivalent sets.</SourceCallout></div>
+      <div><span>Importance and criticisms</span><ol>{points.map(([label, explanation], index) => <li key={label}><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{label}</strong><p>{explanation}</p></div></li>)}</ol><SourceCallout title="Read the diagram">Some human behavior is unintelligent; some intelligent behavior is not human behavior. Human imitation and intelligence are not equivalent sets.</SourceCallout></div>
     </div>
   );
 }
 
 function EvolutionFuture() {
-  const [tab, setTab] = useState<"evolution" | "future">("evolution");
   return (
-    <div className="source-tabs">
-      <nav><button className={tab === "evolution" ? "active" : ""} onClick={() => setTab("evolution")} type="button">Evolution of AI</button><button className={tab === "future" ? "active" : ""} onClick={() => setTab("future")} type="button">Future of AI</button></nav>
-      {tab === "evolution" ? (
-        <section className="evolution-columns">
-          <article><span>Early stages</span><h3>Concepts, theories, and simulated human intelligence</h3><p>Formal logic · theorem proving · graph theory · search · knowledge representation · stochastic analysis · related mathematics</p></article>
-          <article><span>Modern AI</span><h3>Practical applications and problem solving</h3><p>Real-world business demand · machine learning · data mining · search engines · intelligent systems · robots · big-data analytics</p></article>
-          <aside><strong>Long arc</strong><p>AI has experienced optimism and setbacks, yet it has become an essential part of industrial technology. Collective intelligence adds coordinated human and machine capability.</p></aside>
-        </section>
-      ) : (
-        <section className="future-grid">
-          <article><h3>Strong and weak AI</h3><p>AI began with a strong-AI goal but has remained weak AI. Recognition, feeling, and emotion remain difficult; strong AI is a long-term research goal.</p></article>
-          <article><h3>Capability</h3><p>AI offers a unique and powerful tool for expanding the capabilities of computer science.</p></article>
-          <article><h3>Coexistence</h3><p>A human player using a computer chess system could beat Deep Blue. How can humans and AI coexist?</p></article>
-          <article><h3>Questions</h3><p>Could strong AI become more intelligent than humans? What ethical issues would a truly intelligent system create?</p></article>
-          <article><h3>Future work</h3><p>How well can you utilize AI? Pessimistic forecasts influence expectations, while history suggests different jobs will be created.</p></article>
-        </section>
-      )}
+    <div className="evolution-future-visible">
+      <section>
+        <header><ConceptImage alt="The evolution of AI systems and methods" name="history-ai-systems" /><div><span>Evolution of AI</span><h3>Optimism, setbacks, and practical systems</h3></div></header>
+        <article><strong>Early stages</strong><p>Concepts, theories, and simulated human intelligence: formal logic, theorem proving, graph theory, search, knowledge representation, stochastic analysis, and related mathematics.</p></article>
+        <article><strong>Modern AI</strong><p>Practical applications and problem solving driven by real-world demand: machine learning, data mining, search engines, intelligent systems, robots, and big-data analytics.</p></article>
+        <small>AI became an essential part of industrial technology; <strong>collective intelligence</strong> joins human and machine capability.</small>
+      </section>
+      <section>
+        <header><ConceptImage alt="People evaluating possible futures with AI" name="consequences" /><div><span>Future of AI</span><h3>Capability, coexistence, ethics, and work</h3></div></header>
+        <ul><li>AI began with a strong-AI goal but has mainly delivered weak AI; strong AI remains a long-term research goal.</li><li>Could a strong-AI system become more intelligent than humans? What ethical issues would arise?</li><li>A human using a chess computer could beat Deep Blue: how should humans and AI coexist?</li><li>How well can you utilize AI? Pessimistic forecasts emphasize job removal, while history also shows new jobs.</li><li>Source context included robotics, Industry 4.0, and the Internet of Things.</li></ul>
+        <SourceCallout title="Historical claim to reassess">The 2020 material said AI was still weak at recognition, feeling, and emotion. Recognition has advanced sharply; feeling and emotion remain contested capabilities that require operational definitions and evidence.</SourceCallout>
+      </section>
     </div>
   );
 }
 
 function CourseStudyGuide() {
-  const [tab, setTab] = useState<"focus" | "ladder">("focus");
   const levels = [
     ["Understand and explain", "can tell"],
     ["Apply", "can do"],
@@ -165,59 +234,62 @@ function CourseStudyGuide() {
     ["Improve and innovate", "can innovate"],
   ];
   return (
-    <div className="source-tabs">
-      <nav><button className={tab === "focus" ? "active" : ""} onClick={() => setTab("focus")} type="button">Primary course focus</button><button className={tab === "ladder" ? "active" : ""} onClick={() => setTab("ladder")} type="button">Study guide</button></nav>
-      {tab === "focus" ? (
-        <section className="course-focus"><div><h3>Understand and implement intelligence</h3><p>Problem solving · reasoning · learning · creativity · natural-language understanding · decision making · planning</p></div><div><h3>Learn practical AI</h3><p>Complex and intelligent problem-solving strategies.</p></div></section>
-      ) : (
-        <section className="knowledge-ladder"><div className="ladder-arrow">↓</div><ol>{levels.map(([level, shorthand], index) => <li key={level}><span>{index + 1}</span><strong>{level}</strong><small>{shorthand}</small></li>)}</ol><SourceCallout title="Study principle">Understand the principal ideas, then apply them to solve complex problems and build an intelligent system.</SourceCallout></section>
-      )}
+    <div className="course-study-visible">
+      <section><span>Primary course focus</span><h3>Understand and implement intelligence</h3><p>Problem solving · reasoning · learning · creativity · natural-language understanding · decision making · planning</p><h3>Learn practical AI</h3><p>Complex and intelligent problem-solving strategies.</p><SourceCallout title="Course habit">For every method: explain the idea, trace an example, apply it, criticize the evidence, and improve the design.</SourceCallout></section>
+      <section><span>Levels of knowledge capability</span><ol>{levels.map(([level, shorthand], index) => <li key={level}><b>{index + 1}</b><strong>{level}</strong><small>{shorthand}</small></li>)}</ol><SourceCallout title="Study principle">Understand the principal ideas, then apply them to solve complex problems and build an intelligent system.</SourceCallout></section>
     </div>
   );
 }
 
-function ReviewStudio() {
-  const [tab, setTab] = useState<"one" | "two" | "remember" | "references">("one");
-  const reviewOne = [
-    "What is intelligence?",
-    "What are the key capabilities of intelligence? Define each and consider real-world applications.",
-    "What is the main difference between single intelligence and multiple intelligence?",
-    "Do only humans have intelligence?",
-    "What are some unknown aspects of intelligence?",
-    "Can we develop a software system that has intelligence?",
-    "What is Artificial Intelligence (AI)?",
-    "What is an intelligent agent?",
-    "What are the different types of environment for agents?",
-    "Define simple reflex, goal-based, and utility-based agents.",
-    "What are the areas of AI?",
-    "How can we tell whether a software system is intelligent?",
-    "How can AI solve complex real-world problems? What are its applications?",
-  ];
-  const reviewTwo = [
-    "Is it possible to develop a system as intelligent as a human?",
-    "What is the Turing Test? What is its purpose?",
-    "Is it possible to develop a system that can pass the Turing Test?",
-    "If a machine passes the Turing Test, can it solve most AI problems?",
-    "Is it possible to develop a system more intelligent than a human?",
-    "What is the main difference between weak AI and strong AI?",
-    "What do you think will be the future of AI?",
-    "What potential problems may arise with advanced AI?",
-  ];
-  const remember = [
-    "Explain intelligence.",
-    "Identify the major capabilities of intelligence.",
-    "Explain Artificial Intelligence.",
-    "Determine whether a system is intelligent.",
-    "Define an intelligent agent.",
-    "Identify the areas of AI.",
-    "Identify real-world AI applications.",
-    "Explain AI’s ultimate goal.",
-  ];
+const reviewOne = [
+  "What is intelligence?",
+  "What are the key capabilities of intelligence? Define each and consider real-world applications.",
+  "What is the main difference between single intelligence and multiple intelligence?",
+  "Do only humans have intelligence?",
+  "What are some unknown aspects of intelligence?",
+  "Can we develop a software system that has intelligence?",
+  "What is Artificial Intelligence (AI)?",
+  "What is an intelligent agent?",
+  "What are the different types of environment for agents?",
+  "Define simple reflex, goal-based, and utility-based agents.",
+  "What are the areas of AI?",
+  "How can we tell whether a software system is intelligent?",
+  "How can AI solve complex real-world problems? What are its applications?",
+];
+
+const reviewTwo = [
+  "Is it possible to develop a system as intelligent as a human?",
+  "What is the Turing Test? What is its purpose?",
+  "Is it possible to develop a system that can pass the Turing Test?",
+  "If a machine passes the Turing Test, can it solve most AI problems?",
+  "Is it possible to develop a system more intelligent than a human?",
+  "What is the main difference between weak AI and strong AI?",
+  "What do you think will be the future of AI?",
+  "What potential problems may arise with advanced AI?",
+];
+
+const remember = [
+  "Can you explain intelligence?",
+  "What are the major capabilities for intelligence?",
+  "Can you explain Artificial Intelligence (AI)?",
+  "How can we tell whether a system is intelligent?",
+  "What is an intelligent agent?",
+  "What are the areas of AI?",
+  "What are the applications of AI in the real world?",
+  "What is the ultimate goal for AI?",
+];
+
+function ReviewQuestions({ questions }: { questions: string[] }) {
   return (
-    <div className="review-studio">
-      <nav><button className={tab === "one" ? "active" : ""} onClick={() => setTab("one")} type="button">Review 1</button><button className={tab === "two" ? "active" : ""} onClick={() => setTab("two")} type="button">Review 2</button><button className={tab === "remember" ? "active" : ""} onClick={() => setTab("remember")} type="button">Remember</button><button className={tab === "references" ? "active" : ""} onClick={() => setTab("references")} type="button">References</button></nav>
-      {tab === "references" ? <section className="reference-panel"><p><strong>George F. Luger.</strong> <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em>, 6th ed., Chapter 1, Addison Wesley, 2009.</p><p><strong>Stuart Russell and Peter Norvig.</strong> <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Prentice Hall, 2010.</p><SourceCallout title="Exit prompt">Choose one review question. Answer it with a definition, an example, and one evidence boundary.</SourceCallout></section>
-        : <ol className={tab === "one" ? "review-list long" : "review-list"}>{(tab === "one" ? reviewOne : tab === "two" ? reviewTwo : remember).map((question, index) => <li key={question}><span>{String(index + 1).padStart(2, "0")}</span>{question}</li>)}</ol>}
+    <ol className="review-list">{questions.map((question, index) => <li key={question}><span>{String(index + 1).padStart(2, "0")}</span>{question}</li>)}</ol>
+  );
+}
+
+function ImportantPointsAndReferences() {
+  return (
+    <div className="important-reference-grid">
+      <section><span>Most important points to remember</span><ol>{remember.map((point, index) => <li key={point}><b>{String(index + 1).padStart(2, "0")}</b>{point}</li>)}</ol></section>
+      <section><span>References</span><p><strong>George F. Luger.</strong> <em>Artificial Intelligence: Structures and Strategies for Complex Problem Solving</em>, 6th ed., Chapter 1, Addison Wesley, 2009.</p><p><strong>Stuart Russell and Peter Norvig.</strong> <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Prentice Hall, 2010.</p><SourceCallout title="Exit prompt">Choose one review question. Answer it with a definition, an example, and one evidence boundary.</SourceCallout></section>
     </div>
   );
 }
@@ -248,16 +320,23 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Agent definition · exact model",
     title: "Percepts flow in; actions flow out",
-    content: <div className="source-figure-explain"><CourseImage alt="Agent environment diagram labeled environment, percepts, sensors, agent, actions, and actuators" name="agent-environment-loop.png" /><div><h3>Read every arrow and label</h3><ul><li>The environment produces <strong>percepts</strong>.</li><li>Sensors deliver percepts to the agent.</li><li>The agent selects an <strong>action</strong>.</li><li>Actuators affect the environment.</li></ul><div className="source-formula">f : P* → A</div><p>The agent function maps percept histories to actions.</p></div></div>,
+    content: <div className="source-figure-explain"><CourseImage alt="Agent environment diagram labeled environment, percepts, sensors, agent, actions, and actuators" name="agent-environment-loop.png" /><div><h3>Read every arrow and label</h3><ul><li>The environment produces <strong>percepts</strong>.</li><li>Sensors deliver percepts to the agent.</li><li>The agent selects an <strong>action</strong>.</li><li>Actuators affect the environment.</li></ul><div className="source-formula">f : P* → A</div><p>The agent function maps <strong>possible percept sequences (P*)</strong> to actions—not only the current percept.</p></div></div>,
     note: "The figure is knowledge-bearing; keep it uncropped and inspect every label. P* denotes possible percept sequences, not only the current percept. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [11],
   },
   {
     eyebrow: "Agent definition · implementation and rationality",
     title: "The function is abstract; the program runs on an architecture",
-    content: <div className="architecture-equation"><div><span>Agent program</span><p>Implements the mapping from percept histories to actions.</p></div><b>+</b><div><span>Physical architecture</span><p>Provides the computational and embodied machinery on which the program runs.</p></div><b>=</b><div><span>Agent</span><p><strong>agent = architecture + program</strong></p></div><aside><strong>Rational-agent design uses</strong><p>environment · sensors · performance measure · actuators</p></aside></div>,
+    content: <div className="architecture-equation"><div><span>Agent program</span><p>Implements the mapping from percept histories to actions.</p></div><b>+</b><div><span>Physical architecture</span><p>Provides the computational and embodied machinery on which the program runs.</p></div><b>=</b><div><span>Agent</span><p><strong>agent = architecture + program</strong></p></div><aside><strong>Rational-agent criterion</strong><p>For each possible percept sequence, select the action <strong>expected to maximize the performance measure</strong>, given the percept evidence and built-in knowledge.</p><small>Rational does not mean omniscient, always successful, or morally good.</small></aside></div>,
     note: "Distinguish agent function from agent program. Rationality depends on the performance measure, evidence from the percept sequence, prior knowledge, and available actions. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [11],
+  },
+  {
+    eyebrow: "Agents and task environments · worked laboratory",
+    title: "PEAS defines success; the agent function defines a response",
+    content: <VacuumPeasLab />,
+    note: "Use the two-location vacuum world to connect the course plan to the source definition f : P* → A. Have students predict each action before revealing its rationale, then change one PEAS assumption and identify which actions would change. [Sources] Russell & Norvig 3e, Ch. 2; revised course plan.",
+    sourceSlides: [11, 12, 13],
   },
   {
     eyebrow: "Knowledge point 2 · Task environments",
@@ -304,7 +383,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment properties 6 and 7",
     title: "Known vs. unknown; single-agent vs. multi-agent",
-    content: <div className="paired-dimensions"><article><ConceptImage alt="A known task environment with given outcomes" name="known" /><span>Known</span><p>Outcomes for all actions are given.</p></article><article><ConceptImage alt="An unknown environment being learned" name="unknown" /><span>Unknown</span><p>The agent must learn how the environment works.</p></article><article><ConceptImage alt="One agent operating alone" name="single-agent" /><span>Single-agent</span><p>Only one agent’s decisions determine performance.</p></article><article><ConceptImage alt="Several agents interacting" name="multi-agent" /><span>Multi-agent</span><p>Other agents cooperate, compete, or otherwise alter outcomes.</p></article></div>,
+    content: <div className="paired-dimensions-lesson"><div className="paired-dimensions"><article><ConceptImage alt="A known task environment with given outcomes" name="known" /><span>Known</span><p>Outcomes for all actions are given.</p></article><article><ConceptImage alt="An unknown environment being learned" name="unknown" /><span>Unknown</span><p>The agent must learn how the environment works.</p></article><article><ConceptImage alt="One agent operating alone" name="single-agent" /><span>Single-agent</span><p>Only one agent’s decisions determine performance.</p></article><article><ConceptImage alt="Several agents interacting" name="multi-agent" /><span>Multi-agent</span><p>Other agents cooperate, compete, or otherwise alter outcomes.</p></article></div><SourceCallout title="Do not confuse two dimensions">A card game can be <b>known</b> because its rules are given and still <b>partially observable</b> because an opponent’s cards are hidden.</SourceCallout></div>,
     note: "Known concerns the action model, not observability. An environment can be fully observable yet unknown. Multi-agent classification depends on whether other entities should be modeled as agents. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [13],
   },
@@ -325,7 +404,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Simple reflex agent",
     title: "A simple reflex agent acts on the current percept",
-    content: <div className="architecture-slide"><CourseImage alt="Simple reflex agent architecture with condition-action rules" name="agent-simple-reflex.png" /><div><h3>Condition–action rules choose what to do now.</h3><ul><li>Uses only the current percept.</li><li>Ignores the rest of percept history.</li><li>Succeeds only when the environment is fully observable.</li><li>Can enter infinite loops in partially observable environments.</li></ul></div></div>,
+    content: <div className="architecture-slide"><CourseImage alt="Simple reflex agent architecture with condition-action rules" name="agent-simple-reflex.png" /><div><h3>Condition–action rules choose what to do now.</h3><ul><li>Uses only the current percept.</li><li>Ignores the rest of percept history.</li><li>Succeeds only when the environment is fully observable.</li><li>Can enter infinite loops in partially observable environments.</li></ul><SourceCallout title="Reflex and examples">A reflex is an action performed as a response to a stimulus without conscious thought. Source examples: a ZIP-code mail sorter and a Mars rover.</SourceCallout></div></div>,
     note: "Keep the complete source figure uncropped and large enough to read every label and arrow. Trace sensors → current world state → condition-action rule → action → effectors. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [15],
   },
@@ -346,9 +425,16 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Utility-based agent",
     title: "Utility ranks successful outcomes and tradeoffs",
-    content: <div className="architecture-comparison"><article><CourseImage alt="Goal-based agent architecture" name="agent-goal-based.png" /><span>Goal-based</span><p>Distinguishes goal states from non-goal states.</p></article><i>→</i><article><CourseImage alt="Utility-based agent architecture with utility and expected happiness of states" name="agent-utility-based.png" /><span>Utility-based</span><p>Adds reasoning or inference and rational decision making: “How happy I will be in such a state.”</p></article></div>,
+    content: <div className="architecture-comparison"><article><CourseImage alt="Goal-based agent architecture" name="agent-goal-based.png" /><span>Goal-based</span><p>Distinguishes goal states from non-goal states. A shopping list specifies a goal.</p></article><i>→</i><article><CourseImage alt="Utility-based agent architecture with utility and expected happiness of states" name="agent-utility-based.png" /><span>Utility-based</span><p>Adds rational decision making: “How happy I will be in such a state.” If several actions reach the goal, rank them by lowest price, fastest completion, risk, or another utility.</p></article></div>,
     note: "The figure’s Utility input and happiness label are knowledge-bearing. Explain that utility ranks outcomes; it does not guarantee that the chosen utility function is appropriate. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [17],
+  },
+  {
+    eyebrow: "Knowledge point 3 · Learning agent · textbook extension",
+    title: "A learning agent changes how it acts from experience",
+    content: <div className="learning-agent-layout"><LearningAgentDiagram /><div><article><strong>Performance element</strong><p>Selects actions from current knowledge.</p></article><article><strong>Critic</strong><p>Evaluates behavior against a performance standard.</p></article><article><strong>Learning element</strong><p>Uses feedback to change the performance element.</p></article><article><strong>Problem generator</strong><p>Suggests exploratory actions that may produce useful experience.</p></article><SourceCallout title="Design question">Which component is missing if the agent acts, receives a score, but never changes future behavior?</SourceCallout></div></div>,
+    note: "This page completes the revised course plan’s architecture list. Trace one robot-vacuum failure through critic → learning element → changed performance element. [Sources] Russell & Norvig 3e, Ch. 2; revised course plan.",
+    sourceSlides: [15, 16, 17],
   },
   {
     eyebrow: "Agent architectures · student participation",
@@ -374,7 +460,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 5 · Directions of AI",
     title: "Scope and evaluation distinguish weak AI from strong AI",
-    content: <div className="ai-directions"><section><article><span>Weak AI</span><h3>AI with specific intelligent abilities</h3></article><article><span>Strong AI</span><h3>AI with general intelligence</h3></article><SourceCallout title="Current term: AGI">Artificial General Intelligence usually refers to broad competence that transfers across many unfamiliar intellectual tasks; the term is not perfectly standardized.</SourceCallout></section><div><span>Direction of AI research</span><p>From <strong>thinking humanly</strong> and <strong>acting humanly</strong></p><i>↓</i><p>To <strong>thinking rationally</strong> and <strong>acting rationally</strong></p><small>through ideal decision making</small></div></div>,
+    content: <div className="ai-directions"><section><article><span>Weak AI</span><h3>AI with specific intelligent abilities</h3></article><article><span>Strong AI</span><h3>AI with general intelligence</h3></article><SourceCallout title="Current term: AGI">Artificial General Intelligence usually refers to broad competence that transfers across many unfamiliar intellectual tasks; the term is not perfectly standardized.</SourceCallout></section><div><span>Direction of AI research</span><p>From <strong>thinking humanly</strong> and <strong>acting humanly</strong></p><i>↓</i><p>To <strong>thinking rationally</strong> and <strong>acting rationally</strong></p><small>through logical reasoning and a measure of optimal or ideal decision making</small></div></div>,
     note: "Explain that weak/strong describes scope, while humanly/rationally describes the evaluation target. AGI is a modern, not perfectly standardized term often associated with broad transferable capability. [Sources] Russell & Norvig 3e, Ch. 1; course directions.",
     sourceSlides: [21],
   },
@@ -396,29 +482,43 @@ const slides: LessonSlide[] = [
     eyebrow: "Turing Test · importance and criticisms",
     title: "Human imitation and intelligence are overlapping—not identical—sets",
     content: <TuringCritique />,
-    note: "Use all five tabs. The exact Venn diagram is a knowledge point and must stay fully visible. [Sources] Course critique diagram; Turing 1950; Ada Lovelace objection.",
+    note: "Read all five arguments and the exact Venn diagram. Ask each group to defend one criticism and name evidence that would address it. [Sources] Course critique diagram; Turing 1950; Ada Lovelace objection.",
     sourceSlides: [23, 24],
   },
   {
     eyebrow: "Knowledge point 7 · Evolution and future",
     title: "AI evolved through optimism, setbacks, practical systems, and new questions",
     content: <EvolutionFuture />,
-    note: "Use both tabs. Preserve the early/modern method lists, collective intelligence, strong/weak AI claims, coexistence, ethics, and work questions. Discuss historical claims critically in light of current systems. [Sources] Luger 6e, Ch. 1; course evolution and future discussion.",
+    note: "Both source topics are visible together. Preserve the early/modern method lists, collective intelligence, strong/weak AI claims, coexistence, ethics, Industry 4.0/IoT context, and work questions. Discuss historical claims critically in light of current systems. [Sources] Luger 6e, Ch. 1; course evolution and future discussion.",
     sourceSlides: [25, 26],
   },
   {
     eyebrow: "Course purpose · study guide",
     title: "Knowledge grows from explanation to innovation",
     content: <CourseStudyGuide />,
-    note: "Use both tabs. The downward arrow in the five-level ladder indicates increasing sophistication. Connect “teach” to explaining AI to nontechnical audiences age 5 and up. [Sources] Course focus and study guide.",
+    note: "The course focus and full five-level ladder are visible together. Connect “teach” to explaining AI to nontechnical audiences age 5 and up. [Sources] Course focus and study guide.",
     sourceSlides: [27, 28],
   },
   {
-    eyebrow: "Meeting 2 · cumulative assessment",
-    title: "Review, retrieve, explain, apply, and critique",
-    content: <ReviewStudio />,
-    note: "Use the tabs as a retrieval-practice bank. The course materials do not provide keyed answers; require answers to be justified from definitions, figures, and examples in Meetings 1 and 2. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Chs. 1–2.",
-    sourceSlides: [29, 30, 31, 32],
+    eyebrow: "Meeting 2 · cumulative review · part 1",
+    title: "Retrieve the definitions, capabilities, agents, and environments",
+    content: <ReviewQuestions questions={reviewOne} />,
+    note: "Use these thirteen prompts as a retrieval-practice bank. Require each answer to include a definition, example, and evidence boundary. [Sources] Course review questions 1.",
+    sourceSlides: [29],
+  },
+  {
+    eyebrow: "Meeting 2 · cumulative review · part 2",
+    title: "Evaluate intelligence claims, the Turing Test, and possible futures",
+    content: <ReviewQuestions questions={reviewTwo} />,
+    note: "Assign pairs one question, then require a claim, evidence, counterargument, and remaining uncertainty. [Sources] Course review questions 2.",
+    sourceSlides: [30],
+  },
+  {
+    eyebrow: "Meeting 2 · exit assessment and references",
+    title: "Explain the most important ideas with evidence",
+    content: <ImportantPointsAndReferences />,
+    note: "The course materials do not provide keyed answers. Collect one response to the exit prompt and score definition, example, evidence, and boundary. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Chs. 1–2.",
+    sourceSlides: [31, 32],
   },
 ];
 

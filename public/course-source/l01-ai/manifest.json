@@ -1,84 +1,305 @@
 {
+  "schemaVersion": 2,
   "source": "L01_AI.pptx",
+  "sourceFilename": "L01_AI.pptx",
   "sourceSha256": "AD882532D0D9DE2404F3C52495B3860DD1827321EDCA0CA1934607E43A143359",
+  "sourceBytes": 3874293,
   "authoritativeSlideCount": 32,
+  "sourcePage": {
+    "widthPoints": 720,
+    "heightPoints": 540,
+    "aspectRatio": "4:3"
+  },
   "meetingCoverage": {
     "1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     "2": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
   },
+  "slideToMeeting": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "11": 2,
+    "12": 2,
+    "13": 2,
+    "14": 2,
+    "15": 2,
+    "16": 2,
+    "17": 2,
+    "18": 2,
+    "19": 2,
+    "20": 2,
+    "21": 2,
+    "22": 2,
+    "23": 2,
+    "24": 2,
+    "25": 2,
+    "26": 2,
+    "27": 2,
+    "28": 2,
+    "29": 2,
+    "30": 2,
+    "31": 2,
+    "32": 2
+  },
+  "auditSummary": {
+    "inventorySlides": 32,
+    "inventoryTextBlocks": 99,
+    "embeddedMediaFiles": 12,
+    "mediaRelationships": 14,
+    "slidesWithEmbeddedMedia": 7,
+    "embeddedMediaSlides": [5, 11, 15, 16, 17, 22, 24],
+    "slidesWithSpeakerNotes": 12,
+    "speakerNoteSlides": [7, 10, 11, 12, 13, 15, 16, 17, 21, 22, 23, 26],
+    "slidesWithNativeTiming": 2,
+    "nativeTimingSlides": [5, 14],
+    "timingConditionCount": 0,
+    "timingEffectCount": 0,
+    "fullSlideRenders": 32,
+    "renderDimensions": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  "inventoryProvenance": {
+    "file": "source-inventory.json",
+    "sha256": "DEA439CC75F07E3579CB57B23F78DA3B9323213E7C57772A7F83324130386D25",
+    "generator": "scripts/inventory_pptx.py",
+    "sourceSlideCount": 32,
+    "textBlockCount": 99,
+    "embeddedMediaCount": 12,
+    "speakerNotes": {
+      "count": 12,
+      "slides": [7, 10, 11, 12, 13, 15, 16, 17, 21, 22, 23, 26]
+    },
+    "nativeTiming": {
+      "count": 2,
+      "slides": [5, 14],
+      "conditionCount": 0,
+      "effectCount": 0
+    },
+    "captures": [
+      "source filename and SHA-256",
+      "all slide text blocks",
+      "speaker notes resolved through slide relationships",
+      "embedded-media relationships and byte metadata",
+      "native timing presence and counts",
+      "full-slide render bytes, hashes, dimensions, and paths"
+    ],
+    "statement": "The inventory was generated read-only from the authoritative PPTX and is the machine-verifiable index for this package."
+  },
+  "renderProvenance": {
+    "directory": "source-slides",
+    "count": 32,
+    "format": "PNG",
+    "dimensions": {
+      "width": 1600,
+      "height": 1200
+    },
+    "sourceDimensionsPoints": {
+      "width": 720,
+      "height": 540
+    },
+    "statement": "Each file is a complete 4:3 visual render of one authoritative slide. Renders preserve composed slide evidence and supplement the searchable text, notes, media, and timing inventory.",
+    "renders": [
+      {"slide": 1, "meeting": 1, "file": "slide-01.png", "bytes": 25408, "sha256": "EEF0B85E0C5725D71142F8C1972E166A14C564FA76398CD2F3B8236754A50571", "width": 1600, "height": 1200},
+      {"slide": 2, "meeting": 1, "file": "slide-02.png", "bytes": 47501, "sha256": "20C6312D97EE1910D6D44DF0F7379B606B20623BFBAFB91E64908E016573FA19", "width": 1600, "height": 1200},
+      {"slide": 3, "meeting": 1, "file": "slide-03.png", "bytes": 69243, "sha256": "3FDF6F8B96EA608DAEEEF31BE5FF80A41FD466DAE7233CB33F5891C3222850E7", "width": 1600, "height": 1200},
+      {"slide": 4, "meeting": 1, "file": "slide-04.png", "bytes": 94399, "sha256": "DDB33DE6EF2185769FD4D5EFFB03577CFB63183A07B293080008FFFF078CF6D8", "width": 1600, "height": 1200},
+      {"slide": 5, "meeting": 1, "file": "slide-05.png", "bytes": 1000593, "sha256": "D090BC8D20B5AF4B6F23BA906A947B433DBA5B80B27AB1A6241BC0CB7780A830", "width": 1600, "height": 1200},
+      {"slide": 6, "meeting": 1, "file": "slide-06.png", "bytes": 84057, "sha256": "5109905616389FFB14DD73FDEC1E9F707A8DAE7A41F11D10E4D4E7E33E240E79", "width": 1600, "height": 1200},
+      {"slide": 7, "meeting": 1, "file": "slide-07.png", "bytes": 55392, "sha256": "1460A470D80B45D4B668C40E3FEA9D173F16A9BD84F3DF33AC6CD24198EC385A", "width": 1600, "height": 1200},
+      {"slide": 8, "meeting": 1, "file": "slide-08.png", "bytes": 70291, "sha256": "44A9F09C7100F8B514B15B2AB2539827590161C1AAC7A5D43ADDCBD049CED0C9", "width": 1600, "height": 1200},
+      {"slide": 9, "meeting": 1, "file": "slide-09.png", "bytes": 57742, "sha256": "2E3895B455DDCDF0F33CFED68514F01B8645941C4A955EF4FCE7DD21A76CC2B9", "width": 1600, "height": 1200},
+      {"slide": 10, "meeting": 1, "file": "slide-10.png", "bytes": 110612, "sha256": "D3A5DF31B47C0C651BA3CD2475796E722C7483902D405751D57585DCB38421AA", "width": 1600, "height": 1200},
+      {"slide": 11, "meeting": 2, "file": "slide-11.png", "bytes": 199178, "sha256": "1E30E645505DBF7BC384F1ADEB403582F8C786D2B03E7F22093071F947F12444", "width": 1600, "height": 1200},
+      {"slide": 12, "meeting": 2, "file": "slide-12.png", "bytes": 109686, "sha256": "E14A65473DDA6E48F8E3239D961C971A55F3B595017344E52756DC33B54A7EB1", "width": 1600, "height": 1200},
+      {"slide": 13, "meeting": 2, "file": "slide-13.png", "bytes": 88004, "sha256": "A80934E99FE35C3D4C7DED10BE749A2FFA3A686698DF36BE70DC52A1B7DEA194", "width": 1600, "height": 1200},
+      {"slide": 14, "meeting": 2, "file": "slide-14.png", "bytes": 98168, "sha256": "79310C0D59E62E129B5A7772BCC0379D023D62BAEC94DFFDA66C84C137E873B5", "width": 1600, "height": 1200},
+      {"slide": 15, "meeting": 2, "file": "slide-15.png", "bytes": 337388, "sha256": "C16BF28EA385DEB65D36A9F7A17E3E7E2943EF6794FF80E3FC33DBD4C9BFBC9B", "width": 1600, "height": 1200},
+      {"slide": 16, "meeting": 2, "file": "slide-16.png", "bytes": 353435, "sha256": "541BBF5D91803F18D524011882AC02A9AAA760836F210815D76C005100033E54", "width": 1600, "height": 1200},
+      {"slide": 17, "meeting": 2, "file": "slide-17.png", "bytes": 346974, "sha256": "FF73704805FA9E621C650FCC28D9E892A52B804826990A423C45CFFE907D8363", "width": 1600, "height": 1200},
+      {"slide": 18, "meeting": 2, "file": "slide-18.png", "bytes": 53065, "sha256": "B1AC84348DE8E550DE224ED59CD0849A91947B445850EEB8913676C5A4DA9480", "width": 1600, "height": 1200},
+      {"slide": 19, "meeting": 2, "file": "slide-19.png", "bytes": 61583, "sha256": "F65088D5706469ACC83B18BEEF07DF3AF36E311E9183ED595041D7D6F4AE3B97", "width": 1600, "height": 1200},
+      {"slide": 20, "meeting": 2, "file": "slide-20.png", "bytes": 60871, "sha256": "14CB538E1EB72281BB412877A88CDE12EABAE5625AF3A71F77DF855518E63817", "width": 1600, "height": 1200},
+      {"slide": 21, "meeting": 2, "file": "slide-21.png", "bytes": 73016, "sha256": "F917BC1BDC8366023E1E7457F154A0A2015912323AFA3B4D38BF57565A3ECA36", "width": 1600, "height": 1200},
+      {"slide": 22, "meeting": 2, "file": "slide-22.png", "bytes": 200161, "sha256": "19894D8A2F73599C6E4CC572B8D35B172B4B40D4A5F04292290B50A3A302C2A8", "width": 1600, "height": 1200},
+      {"slide": 23, "meeting": 2, "file": "slide-23.png", "bytes": 120567, "sha256": "A6DFA700F07D9C57C311FC77B54A77E508AC65786268CB6B671CD110E5DEF4C4", "width": 1600, "height": 1200},
+      {"slide": 24, "meeting": 2, "file": "slide-24.png", "bytes": 242885, "sha256": "631DF0C88D0A5B4D83C889F01FD0D657D6912A01109AFA3A499F454F015BF7CC", "width": 1600, "height": 1200},
+      {"slide": 25, "meeting": 2, "file": "slide-25.png", "bytes": 118818, "sha256": "55ACED2AC141DF095492DFD5E572D22C0584DE7113B06155D6C7914A2474C4E4", "width": 1600, "height": 1200},
+      {"slide": 26, "meeting": 2, "file": "slide-26.png", "bytes": 123498, "sha256": "7A0D5729D2409878259B71279AFBC669292D69839F606E88156120F9B2E87CEA", "width": 1600, "height": 1200},
+      {"slide": 27, "meeting": 2, "file": "slide-27.png", "bytes": 57374, "sha256": "CC9B5395E8E8C8E93EDC0CDF7B33D84204E9334F9D68F57402254994AC64EE91", "width": 1600, "height": 1200},
+      {"slide": 28, "meeting": 2, "file": "slide-28.png", "bytes": 101652, "sha256": "E6B46A3D8C66EF1297A8FB359D4FC77A8DFC981F43C70F96076E9725AB0EC7B5", "width": 1600, "height": 1200},
+      {"slide": 29, "meeting": 2, "file": "slide-29.png", "bytes": 80717, "sha256": "74D035FA067ADAEB38111E885711CB423C9D91DA559221B8C30AD9903BEB6FEE", "width": 1600, "height": 1200},
+      {"slide": 30, "meeting": 2, "file": "slide-30.png", "bytes": 54949, "sha256": "C7F6EB52F865BE9E9126637F9077D3819D0F2112F3C53495B0BF47D49EB6CE87", "width": 1600, "height": 1200},
+      {"slide": 31, "meeting": 2, "file": "slide-31.png", "bytes": 49887, "sha256": "F320660A6273EC89946AC3F4A2D1B28C58EE0B042506463A981B3340FE272B66", "width": 1600, "height": 1200},
+      {"slide": 32, "meeting": 2, "file": "slide-32.png", "bytes": 39535, "sha256": "C86D2F20BFE285C704237142A364123A6F3C8038B4B7FFBA9FE2582EAD0110C2", "width": 1600, "height": 1200}
+    ]
+  },
+  "extractionPolicy": "All 12 embedded media parts are recorded in source-inventory.json with byte counts, SHA-256 hashes, formats, and dimensions. Browser assets retain the exact source content under descriptive filenames; TIFF sources are normalized to PNG and source PNGs remain byte-identical.",
   "usage": "Instructional images are preserved at their source aspect ratios and are not cropped.",
   "assets": [
     {
       "file": "peanut-oil.png",
+      "sha256": "96F0FE11E3B6AADBA786BC9922E26F164028D8B9AD872026BDB3AB261B4E6E1E",
+      "bytes": 218219,
+      "format": "PNG",
+      "dimensions": {"width": 520, "height": 520},
       "sourceMedia": "image1.tiff",
+      "sourceMediaSha256": "A1E3C01761FC1AD8B8053F8D70BC0675E8ED9C4C51080D9DCD6C65D33D5F8152",
+      "sourceMediaBytes": 814582,
       "sourceSlides": [5],
-      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 1"
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 1",
+      "preservation": "Source TIFF normalized to browser-safe PNG at the original pixel dimensions; full aspect ratio retained without cropping."
     },
     {
       "file": "coconut-oil.png",
+      "sha256": "500755A98A419D3E619FEE42B57FA17AEA6A16342D0406D9DED8CF18973603B6",
+      "bytes": 198899,
+      "format": "PNG",
+      "dimensions": {"width": 337, "height": 355},
       "sourceMedia": "image2.tiff",
+      "sourceMediaSha256": "CE6D8106C906C2D58FE36B628168FB5E394FB55EF8028211F7F08B26CE4E56B9",
+      "sourceMediaBytes": 362256,
       "sourceSlides": [5],
-      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 2"
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 2",
+      "preservation": "Source TIFF normalized to browser-safe PNG at the original pixel dimensions; full aspect ratio retained without cropping."
     },
     {
       "file": "corn-oil.png",
+      "sha256": "9E778408B44001E6CD07F81A79BAB83E342F57703BDA7C67F6268595743F62F7",
+      "bytes": 160199,
+      "format": "PNG",
+      "dimensions": {"width": 450, "height": 450},
       "sourceMedia": "image3.tiff",
+      "sourceMediaSha256": "13F0549543A359BE10B7C2C68FDCD25903F8EEC5143A47D76AB2587C0E84E6AA",
+      "sourceMediaBytes": 610866,
       "sourceSlides": [5],
-      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 3"
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, reveal 3",
+      "preservation": "Source TIFF normalized to browser-safe PNG at the original pixel dimensions; full aspect ratio retained without cropping."
     },
     {
       "file": "baby.png",
+      "sha256": "C630F7F19DDA8FCF4C8354E97D9D98F62281D8C48C43185B456C6C472FA82AEA",
+      "bytes": 207903,
+      "format": "PNG",
+      "dimensions": {"width": 300, "height": 300},
       "sourceMedia": "image4.tiff",
+      "sourceMediaSha256": "F06FF54DD01ADBA8F4B629F5B8CB79DDB27431A84BA005D59681F1F56FC76C49",
+      "sourceMediaBytes": 273350,
       "sourceSlides": [5],
-      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal"
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal",
+      "preservation": "Source TIFF normalized to browser-safe PNG at the original pixel dimensions; full aspect ratio retained without cropping."
     },
     {
       "file": "baby-oil.png",
+      "sha256": "E58542E37B6046276626F2D8FDA1921084C2421E7863114F0A610BE37573433C",
+      "bytes": 171927,
+      "format": "PNG",
+      "dimensions": {"width": 675, "height": 675},
       "sourceMedia": "image5.tiff",
+      "sourceMediaSha256": "E91150DB4A19143DE41C4FF9B3E74AF0EA2171D5577F7E198A945039217825B9",
+      "sourceMediaBytes": 1370290,
       "sourceSlides": [5],
-      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal"
+      "knowledgeRole": "Progressive semantic and commonsense reasoning exercise, final reveal",
+      "preservation": "Source TIFF normalized to browser-safe PNG at the original pixel dimensions; full aspect ratio retained without cropping."
     },
     {
       "file": "agent-environment-loop.png",
+      "sha256": "C69724F763B2512713EFC68FBAC59B58D0083A803FC9CB80D9E541BFA555A2AF",
+      "bytes": 6668,
+      "format": "PNG",
+      "dimensions": {"width": 339, "height": 153},
       "sourceMedia": "image6.png",
+      "sourceMediaSha256": "C69724F763B2512713EFC68FBAC59B58D0083A803FC9CB80D9E541BFA555A2AF",
+      "sourceMediaBytes": 6668,
       "sourceSlides": [11],
-      "knowledgeRole": "Agent, environment, percept, sensor, action, and actuator relationships"
+      "knowledgeRole": "Agent, environment, percept, sensor, action, and actuator relationships",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "agent-simple-reflex.png",
+      "sha256": "BF660244974243A343D524D19243AF292AC523A66798DC2902927586918D4804",
+      "bytes": 41288,
+      "format": "PNG",
+      "dimensions": {"width": 570, "height": 370},
       "sourceMedia": "image7.png",
+      "sourceMediaSha256": "BF660244974243A343D524D19243AF292AC523A66798DC2902927586918D4804",
+      "sourceMediaBytes": 41288,
       "sourceSlides": [15],
-      "knowledgeRole": "Simple reflex agent architecture"
+      "knowledgeRole": "Simple reflex agent architecture",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "agent-model-based.png",
+      "sha256": "75075F90592079D3A15305F57697E134AB7FBE90202A74B2EA2E211F1042FAFF",
+      "bytes": 86867,
+      "format": "PNG",
+      "dimensions": {"width": 576, "height": 363},
       "sourceMedia": "image8.png",
+      "sourceMediaSha256": "75075F90592079D3A15305F57697E134AB7FBE90202A74B2EA2E211F1042FAFF",
+      "sourceMediaBytes": 86867,
       "sourceSlides": [15, 16],
-      "knowledgeRole": "Model-based reflex agent architecture and internal state"
+      "knowledgeRole": "Model-based reflex agent architecture and internal state",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "agent-goal-based.png",
+      "sha256": "38710B37AC745BE37018CBD1CF5C71A7F6DFBE5E00DE309C693EFEB85DB5EEF8",
+      "bytes": 62346,
+      "format": "PNG",
+      "dimensions": {"width": 568, "height": 363},
       "sourceMedia": "image9.png",
+      "sourceMediaSha256": "38710B37AC745BE37018CBD1CF5C71A7F6DFBE5E00DE309C693EFEB85DB5EEF8",
+      "sourceMediaBytes": 62346,
       "sourceSlides": [16, 17],
-      "knowledgeRole": "Goal-based agent architecture and predicted future state"
+      "knowledgeRole": "Goal-based agent architecture and predicted future state",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "agent-utility-based.png",
+      "sha256": "D0E3AD95CC79B7A037D1DA8CCBB4CEE17FE79D3633F8C63AE685D2F69DDFCF11",
+      "bytes": 69878,
+      "format": "PNG",
+      "dimensions": {"width": 569, "height": 360},
       "sourceMedia": "image10.png",
+      "sourceMediaSha256": "D0E3AD95CC79B7A037D1DA8CCBB4CEE17FE79D3633F8C63AE685D2F69DDFCF11",
+      "sourceMediaBytes": 69878,
       "sourceSlides": [17],
-      "knowledgeRole": "Utility-based agent architecture and outcome preference"
+      "knowledgeRole": "Utility-based agent architecture and outcome preference",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "turing-test-diagram.png",
+      "sha256": "63E0BE42FC68CF2087179FB62A9F139A3FF8B9157219038919353734EE4B411D",
+      "bytes": 23424,
+      "format": "PNG",
+      "dimensions": {"width": 633, "height": 360},
       "sourceMedia": "image11.png",
+      "sourceMediaSha256": "63E0BE42FC68CF2087179FB62A9F139A3FF8B9157219038919353734EE4B411D",
+      "sourceMediaBytes": 23424,
       "sourceSlides": [22],
-      "knowledgeRole": "Imitation-game participants, hiding, and communication channels"
+      "knowledgeRole": "Imitation-game participants, hiding, and communication channels",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     },
     {
       "file": "turing-behavior-venn.png",
+      "sha256": "897D331C695CD4CF8A116554AB1E77333CF60CB2465402D1569EFE4C444EDF87",
+      "bytes": 28641,
+      "format": "PNG",
+      "dimensions": {"width": 433, "height": 316},
       "sourceMedia": "image12.png",
+      "sourceMediaSha256": "897D331C695CD4CF8A116554AB1E77333CF60CB2465402D1569EFE4C444EDF87",
+      "sourceMediaBytes": 28641,
       "sourceSlides": [24],
-      "knowledgeRole": "Human behavior and intelligent behavior are overlapping, non-equivalent sets"
+      "knowledgeRole": "Human behavior and intelligent behavior are overlapping, non-equivalent sets",
+      "preservation": "Source PNG preserved byte-for-byte under a descriptive filename; full aspect ratio retained without cropping."
     }
   ]
 }

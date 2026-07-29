@@ -22,7 +22,7 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 
 | Deck | Source focus | Slide inventory | Revised-course disposition |
 |---|---|---:|---|
-| `L01_AI.pptx` | Applications, history, intelligence, definitions, agents, task environments, agent types, AI fields, weak/strong AI, AGI, Turing test | 32 | Preserve across Meetings 1–2 |
+| `L01_AI.pptx` | Applications, history, intelligence, definitions, agents, task environments, agent types, AI fields, weak/strong AI, AGI, Turing test | 32; schema-v2 inventory and 32 full-slide renders | Preserve across Meetings 1–2 |
 | `L02_StateSpaceSearch.pptx` | State spaces, graphs, formulation, DFS, BFS, depth bounds, backtracking | 41 | Preserve across Meetings 3–4; add UCS and evaluation |
 | `L03_Heuristic, HillClimbing&SA.pptx` | Heuristics, hill climbing, local search, simulated annealing | 31 | Preserve in Meeting 5 |
 | `L04_BFS&AStar.pptx` | Best-first search, A*, admissibility, consistency, informedness | 22 | Preserve in Meeting 6 |
@@ -39,16 +39,16 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 
 | Meeting | Revised topic | Historical source | Status and source-fidelity action |
 |---:|---|---|---|
-| 1 | AI applications, history, intelligence, definitions | L01 slides 1–10 and 18–21, with cross-references to the complete deck | **Rebuilt.** 25 pages; complete L01 coverage is enforced jointly with Meeting 2. |
-| 2 | Agents, task environments, agent types, AI directions, weak/strong AI, AGI, Turing test | L01 slides 11–32 | **Rebuilt.** 28 pages; all 32 source slides and all 12 exact source images are mapped across Meetings 1–2. |
+| 1 | AI applications, history, intelligence, definitions | L01 slides 1–10 | **Rebuilt.** 25 pages; every source slide is mapped to the lesson sequence. Exact 4:3 source pages and knowledge-bearing images remain uncropped and enlargeable through the per-page Course source view. The source application survey is identified as a 2020 snapshot, and source notes are retained with explicit factual qualification where needed. |
+| 2 | Agents, task environments, agent types, AI directions, weak/strong AI, AGI, Turing test | L01 slides 11–32 | **Rebuilt.** 32 pages; every source slide, definition, review prompt, and knowledge-bearing agent/Turing-Test figure is mapped. The per-page Course source view preserves the complete 4:3 reference pages, while PEAS, the two-location vacuum-world laboratory, and the learning-agent architecture are clearly identified extensions. All 32 L01 slides and all 12 exact source images are preserved across Meetings 1–2. |
 | 3 | State-space formulation and graph foundations | L02 slides 1–20 | **Rebuilt.** 27 pages; exact source diagrams, definitions, examples, practice, and assessment retained. |
 | 4 | DFS, BFS, UCS, depth limits, backtracking, evaluation | L02 slides 21–41 | **Rebuilt.** 28 pages; all 41 source slides and all 26 exact source images are mapped across Meetings 3–4. |
 | 5 | Heuristic functions, hill climbing, simulated annealing | L03, all 31 slides | **Rebuilt.** 25 pages; all 31 source slides and all 13 exact assets are mapped. Factorial proxies, sign conventions, acceptance probability, and convergence conditions are corrected explicitly. |
 | 6 | Best-first search, A*, admissibility, consistency, heuristic quality | L04, all 22 slides | **Rebuilt.** 25 pages; all 22 source slides and all 15 exact assets are mapped, including four replayable source GIFs. Reopening, standard notation, consistency, and computation-cost qualifications are explicit. |
 | 7 | Game trees, minimax, evaluation functions | L05 slides 1–16 | **Rebuilt.** 25 pages; the exact game-playing, game-theory, minimax, cutoff-evaluation, and tic-tac-toe source sequence is retained with all seven Meeting 7 source assets. |
 | 8 | Alpha-beta pruning, expectimax, MCTS | L05 slides 17–31 plus modern supplements | **Rebuilt.** 25 pages; the exact alpha-beta pseudocode and worked pruning sequence is retained with all eight Meeting 8 source assets. Standard cutoff names and pruning equivalence are corrected explicitly; expectimax and MCTS are labeled modern supplements. |
-| 9 | Probability, Bayes rule, conditional independence | L11 foundations, with prerequisite material from L12 if needed | Pending rebuild. Restore normalization, product rule, chain rule, and Naive Bayes bridge that the current outline understates. |
-| 10 | Bayesian networks and inference | L11–L12 foundations plus revised-plan material | Pending rebuild. Correct the current broad provenance claim and explicitly distinguish preserved stochastic foundations from the Bayesian-network supplement. |
+| 9 | Probability models, conditioning, and Bayes rule | L11 slides 1–34 | **Rebuilt.** 25 pages; every source slide is mapped across variables and distributions, joints and marginals, normalization, conditioning, product and chain rules, Bayes rule, total probability, diagnosis, and hypothesis selection. Exact 1600×1200 source renders are retained at full aspect ratio with click-to-enlarge, and the source correction ledger is applied explicitly, including posterior-versus-likelihood and MAP-versus-maximum-likelihood distinctions. |
+| 10 | Conditional independence, Bayesian networks, and Naive Bayes | L11 slides 35–44 plus selected L12 slides 3–11 | **Rebuilt.** 25 pages; the remaining L11 source sequence and the complete selected L12 independence block are mapped with exact click-to-enlarge renders. Independence, conditional independence, Naive Bayes, pronunciation/speech examples, evaluation claims, and references are preserved with documented corrections. Bayesian-network semantics, DAG/CPT factorization, graphical independence, and exact inference are explicitly labeled textbook-grounded supplements rather than attributed to the historical decks. |
 | 11 | MDPs, policies, value iteration | Selected L12 Markov foundations plus modern MDP material | Pending rebuild. Treat this as a deliberate replacement/extension, not as if L12 already taught the complete MDP unit. |
 | 12 | Reinforcement learning and Q-learning | L10 reinforcement-learning seed plus modern supplement | Pending rebuild. |
 | 13 | ML workflow, data, baselines, splits | L09 ML framing plus modern workflow | Pending rebuild. |
@@ -80,11 +80,15 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 
 ## Verified source packages in the site
 
-- `public/course-source/l01-ai/manifest.json`: 32 source slides, 12 exact source images.
+- `public/course-source/l01-ai/manifest.json`: schema-v2 package for the exact `L01_AI.pptx` hash, with an explicit slide-to-meeting map (slides 1–10 in Meeting 1; 11–32 in Meeting 2), 12 exact source-image roles and hashes, 12 slides with speaker notes, and native timing recorded on slides 5 and 14.
+- `public/course-source/l01-ai/source-inventory.json`: read-only object-level evidence for all 32 slides, 99 text blocks, 12 embedded media files, 14 slide-to-media relationships, speaker notes, timing metadata, and per-render hashes. Its SHA-256 is pinned in the v2 manifest.
+- `public/course-source/l01-ai/source-slides/`: 32 complete 1600×1200 PNG renders at the source 4:3 aspect ratio, one per authoritative slide; renders supplement rather than replace searchable text, notes, and media provenance.
 - `public/course-source/l02-state-space/manifest.json`: 41 source slides, 26 exact source images.
 - `public/course-source/l03-heuristic-local-search/manifest.json`: 31 source slides, 13 exact source assets.
 - `public/course-source/l04-best-first-astar/manifest.json`: 22 source slides, 15 exact source assets.
 - `public/course-source/l05-minimax-pruning/manifest.json`: 31 source slides, 15 exact source assets; completely mapped across the rebuilt Meetings 7–8.
-- `tests/rendered-html.test.mjs`: route, instructional-cycle, source-coverage, asset-existence, and custom-deck checks.
+- `public/course-source/l11-probability-bayes/manifest.json`: schema-v2 package for all 44 slides of `L11_stochasticmethods - Part A.pptx`, mapped as slides 1–34 in Meeting 9 and 35–44 in Meeting 10. It records 44 complete 1600×1200 renders, 105 embedded-media files, three OLE embeddings, 16 slides with speaker notes, 17 slides with native timing, seven slides with build elements, and 11 explicit source-correction entries.
+- `public/course-source/l12-conditional-independence/manifest.json`: schema-v2 selected-source package for slides 3–11 of `L12_StochasticMethods - Part B.pptx`, used in Meeting 10. It records nine complete 1600×1200 renders, 30 byte-preserved media files, native timing on four selected slides, and four explicit source-correction entries.
+- `tests/rendered-html.test.mjs`: route, instructional-cycle, source-coverage, asset-existence, and custom-deck checks, including the L01 inventory hash, exact meeting split, all 32 render files/hashes/dimensions, all 12 media mappings, and note/timing counts.
 
-The next production unit is Meetings 9–10, using the L11 probability archive and any required L12 bridge material with this ledger as the acceptance contract.
+The next production unit is Meetings 11–12, using selected L12 Markov foundations and the L10 reinforcement-learning seed while preserving the same source-fidelity acceptance contract.

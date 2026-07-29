@@ -10,7 +10,14 @@ function ConceptImage({ name, alt }: { name: string; alt: string }) {
 }
 
 function CourseImage({ name, alt, className = "" }: { name: string; alt: string; className?: string }) {
-  return <figure className={`source-figure ${className}`.trim()}><img alt={alt} src={`${sourceRoot}/${name}`} /></figure>;
+  const source = `${sourceRoot}/${name}`;
+  return (
+    <figure className={`source-figure ${className}`.trim()}>
+      <a aria-label={`Enlarge: ${alt}`} href={source} rel="noreferrer" target="_blank">
+        <img alt={alt} src={source} />
+      </a>
+    </figure>
+  );
 }
 
 function SourceCallout({ title, children }: { title: string; children: ReactNode }) {
@@ -19,9 +26,9 @@ function SourceCallout({ title, children }: { title: string; children: ReactNode
 
 type AppItem = [title: string, detail: string, visual: string];
 
-function ApplicationGrid({ items }: { items: AppItem[] }) {
+function ApplicationGrid({ items, className = "" }: { items: AppItem[]; className?: string }) {
   return (
-    <div className="source-app-grid">
+    <div className={`source-app-grid ${className}`.trim()}>
       {items.map(([title, detail, visual], index) => (
         <article key={title}>
           <ConceptImage alt={`${title} AI application`} name={visual} />
@@ -157,7 +164,7 @@ const slides: LessonSlide[] = [
     sourceSlides: [2],
   },
   {
-    eyebrow: "Knowledge point 1 · State-of-the-art applications",
+    eyebrow: "Knowledge point 1 · “State of the Art Applications” · 2020 snapshot",
     title: "AI acts in games, mobility, security, and robots",
     content: <ApplicationGrid items={[
       ["Board games", "AlphaGo and AlphaZero", "history-alphago"],
@@ -169,12 +176,12 @@ const slides: LessonSlide[] = [
     sourceSlides: [3],
   },
   {
-    eyebrow: "Knowledge point 1 · State-of-the-art applications",
+    eyebrow: "Knowledge point 1 · “State of the Art Applications” · 2020 snapshot",
     title: "AI also works through language, environments, expertise, and play",
     content: <ApplicationGrid items={[
       ["Natural language processing", "Voice assistants: Google Duplex; Amazon Alexa; Apple Siri; etc.", "communication"],
       ["Internet of Things (IoT)", "Amazon cashierless store", "environment"],
-      ["Expert systems", "IBM Watson", "history-mycin"],
+      ["Expert systems", "IBM Watson", "reasoning"],
       ["Video games", "OpenAI-Dota 2", "decision"],
     ]} />,
     note: "Retain every named application. Ask which systems learn, which reason from encoded knowledge, and which coordinate several methods. [Sources] Course examples; Luger 6e, Ch. 1.",
@@ -190,10 +197,10 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 2 · History",
     title: "Chess, language, learning, and the imitation game shaped the early agenda",
-    content: <div className="source-timeline">
-      <article><span>1950</span><h3>Claude Shannon</h3><p>“Programming a Computer for Playing Chess” is the first published article on developing a chess-playing computer program.</p></article>
-      <article><span>1950</span><h3>Alan Turing</h3><p>“Computing Machinery and Intelligence” proposes the “imitation game,” later known as the Turing Test.</p></article>
-      <article><span>1956</span><h3>First AI Conference at Dartmouth</h3><p>Machine simulation; language use; neuron networks; self-improvement through learning and reasoning.</p></article>
+    content: <div className="source-timeline illustrated">
+      <article><ConceptImage alt="Early computer chess as a search problem" name="history-deep-blue" /><span>1950</span><h3>Claude Shannon</h3><p>“Programming a Computer for Playing Chess” is the first published article on developing a chess-playing computer program.</p></article>
+      <article><ConceptImage alt="Alan Turing and the imitation game" name="history-turing" /><span>1950</span><h3>Alan Turing</h3><p>“Computing Machinery and Intelligence” proposes the “imitation game,” later known as the Turing Test.</p></article>
+      <article><ConceptImage alt="The Dartmouth workshop where the AI research agenda was formed" name="history-dartmouth" /><span>1956</span><h3>First AI Conference at Dartmouth</h3><p>A program that simulates the machine; language use; neuron networks; self-improvement through learning and reasoning.</p></article>
     </div>,
     note: "Emphasize the research questions, not only the dates. Students should connect chess to search, language to representation, and self-improvement to learning. [Sources] Shannon 1950; Turing 1950; Dartmouth proposal.",
     sourceSlides: [4],
@@ -201,10 +208,10 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 2 · History",
     title: "Robotics and expert systems produced important—but bounded—successes",
-    content: <div className="source-timeline">
-      <article><span>1970</span><h3>WABOT-1</h3><p>The first anthropomorphic robot at Waseda University: limb-control, vision, and conversation systems.</p></article>
-      <article><span>1972</span><h3>MYCIN</h3><p>An early Stanford expert system identified bacteria causing severe infections and recommended antibiotics.</p></article>
-      <article><span>1997</span><h3>Deep Blue</h3><p>The first computer chess-playing program to defeat a reigning world chess champion.</p></article>
+    content: <div className="source-timeline illustrated">
+      <article><ConceptImage alt="An anthropomorphic robot integrating control, vision, and conversation" name="agent-architecture" /><span>1970</span><h3>WABOT-1</h3><p>The first anthropomorphic robot at Waseda University: limb-control, vision, and conversation systems.</p></article>
+      <article><ConceptImage alt="A rule-based medical expert system" name="history-mycin" /><span>1972</span><h3>MYCIN</h3><p>An early Stanford expert system identified bacteria causing severe infections and recommended antibiotics.</p></article>
+      <article><ConceptImage alt="Computer chess culminating in Deep Blue" name="history-deep-blue" /><span>1997</span><h3>Deep Blue</h3><p>The first computer chess-playing program to defeat a reigning world chess champion.</p></article>
       <aside><strong>Historical tension</strong><p>No major breakthroughs in many years…</p></aside>
     </div>,
     note: "Ask what each system could do and what it could not generalize to. Use “no major breakthroughs” to introduce cycles of expectations and setbacks. [Sources] Course timeline; Russell & Norvig 3e, Ch. 1.",
@@ -266,13 +273,12 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Intelligent capabilities · choose and act",
     title: "Planning, decision making, and problem solving organize action",
-    content: <ApplicationGrid items={[
+    content: <ApplicationGrid className="three" items={[
       ["Planning", "Choose a sequence of future actions toward a goal.", "planning"],
       ["Decision making", "Select among alternatives under goals, costs, and uncertainty.", "decision"],
       ["Problem solving", "Represent a problem and search for a satisfactory solution.", "reasoning"],
-      ["Adaptation", "Revise behavior when conditions or evidence change.", "adapt"],
     ]} />,
-    note: "Distinguish a plan from a decision: a plan is an action sequence; a decision chooses among alternatives. Adaptation is the source definition's contrast with being “smart.”",
+    note: "Distinguish a plan from a decision: a plan is an action sequence; a decision chooses among alternatives. The source contrasts intelligence with merely being “smart,” described there as quickly adapting to the environment; adaptation is not another item in its capability list.",
     sourceSlides: [6],
   },
   {
@@ -286,7 +292,7 @@ const slides: LessonSlide[] = [
     eyebrow: "Knowledge point 5 · Theories of intelligence",
     title: "One theory seeks a general factor; another separates kinds of ability",
     content: <TheoryColumns />,
-    note: "Introduce single general intelligence, multiple intelligence, IQ, and EQ exactly as distinct theoretical perspectives—not settled engineering specifications. [Sources] Course theory summary.",
+    note: "Introduce single general intelligence, multiple intelligence, IQ, and EQ exactly as distinct theoretical perspectives—not settled engineering specifications. Source note preserved for evaluation: “Stephen Hawking: 280; Average: 90-110; >120 superior.” Do not present the Hawking number as fact; it is unsupported and should be used only as a source-verification example. [Sources] Course theory summary.",
     sourceSlides: [7],
   },
   {
@@ -341,7 +347,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 8 · Definition of AI",
     title: "Artificial Intelligence is both an interdisciplinary idea and a field of study",
-    content: <div className="definition-stack"><article><span>Influences</span><p>AI has been shaped by philosophers, psychologists, mathematicians, computer scientists, and others.</p></article><article><span>Literal construction</span><p>“AI is Artificial Intelligence using computer.” In literal terms: <strong>artificially made intelligence.</strong></p></article><article><span>John McCarthy</span><p>“The science and engineering of making intelligent machines.”</p></article><article><span>Agent-centered definition</span><p>The study and design of intelligent agents—systems that perceive their environment and take actions that maximize their chances of success.</p></article></div>,
+    content: <div className="definition-lesson"><div className="definition-stack"><article><span>Influences</span><p>AI has been shaped by philosophers, psychologists, mathematicians, computer scientists, and others.</p></article><article><span>Literal construction</span><p>“AI is Artificial Intelligence using computer.” In literal terms: <strong>artificially made intelligence.</strong></p></article><article><span>John McCarthy</span><p>“The science and engineering of making intelligent machines.”</p></article><article><span>Agent-centered definition</span><p>The study and design of intelligent agents—systems that perceive their environment and take actions that maximize their chances of success.</p></article></div><SourceCallout title="Rationality bridge">“Rationality: logical reasoning and measure of optimal or ideal decision.” For an agent, rationality means choosing the action expected to best satisfy its performance measure from available evidence and knowledge—not being omniscient.</SourceCallout></div>,
     note: "Keep every definition visible and compare what each emphasizes: origin, engineering, mechanism, behavior, environment, or success. [Sources] John McCarthy; Russell & Norvig 3e, Chs. 1–2; Luger 6e, Ch. 1.",
     sourceSlides: [10],
   },

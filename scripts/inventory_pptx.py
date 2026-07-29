@@ -12,7 +12,6 @@ import hashlib
 import io
 import json
 import posixpath
-import re
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -107,16 +106,84 @@ def timing_metadata(archive: zipfile.ZipFile, slide_number: int) -> dict[str, An
     root = ET.fromstring(archive.read(slide_path))
     timing = root.find(f".//{{{PRESENTATION_NS}}}timing")
     if timing is None:
-        return {"hasTiming": False, "conditionCount": 0, "effectCount": 0}
-    xml = ET.tostring(timing, encoding="unicode")
+        return {
+            "hasTiming": False,
+            "conditionCount": 0,
+            "effectCount": 0,
+            "clickGroupCount": 0,
+            "clickEffectCount": 0,
+            "withEffectCount": 0,
+            "afterEffectCount": 0,
+            "visibilitySetCount": 0,
+            "targetShapeIds": [],
+        }
+
+    elements = list(timing.iter())
+
+    def local_name(node: ET.Element) -> str:
+        return node.tag.rsplit("}", 1)[-1]
+
+    effect_names = {
+        "anim",
+        "animClr",
+        "animEffect",
+        "animMotion",
+        "animRot",
+        "animScale",
+        "set",
+    }
     return {
         "hasTiming": True,
-        "conditionCount": len(re.findall(r"<p:cond\b", xml)),
-        "effectCount": len(re.findall(r"<p:anim(?:Clr|Effect|Motion|Rot|Scale)?\b", xml)),
+        "conditionCount": sum(local_name(node) == "cond" for node in elements),
+        "effectCount": sum(local_name(node) in effect_names for node in elements),
+        "clickGroupCount": sum(
+            node.attrib.get("nodeType") == "clickPar" for node in elements
+        ),
+        "clickEffectCount": sum(
+            node.attrib.get("nodeType") == "clickEffect" for node in elements
+        ),
+        "withEffectCount": sum(
+            node.attrib.get("nodeType") == "withEffect" for node in elements
+        ),
+        "afterEffectCount": sum(
+            node.attrib.get("nodeType") == "afterEffect" for node in elements
+        ),
+        "visibilitySetCount": sum(local_name(node) == "set" for node in elements),
+        "targetShapeIds": sorted(
+            {
+                node.attrib["spid"]
+                for node in elements
+                if local_name(node) == "spTgt" and "spid" in node.attrib
+            },
+            key=lambda value: int(value),
+        ),
     }
 
 
-def inventory(path: Path, extract_media: Path | None = None) -> dict[str, Any]:
+def render_metadata(render_dir: Path | None, slide_number: int) -> dict[str, Any] | None:
+    if render_dir is None:
+        return None
+    render = render_dir / f"slide-{slide_number:02d}.png"
+    if not render.exists():
+        return None
+    content = render.read_bytes()
+    with Image.open(io.BytesIO(content)) as image:
+        return {
+            "file": render.name,
+            "path": render.as_posix(),
+            "bytes": len(content),
+            "sha256": hashlib.sha256(content).hexdigest(),
+            "width": image.width,
+            "height": image.height,
+            "format": image.format,
+        }
+
+
+def inventory(
+    path: Path,
+    extract_media: Path | None = None,
+    render_dir: Path | None = None,
+) -> dict[str, Any]:
     presentation = Presentation(path)
     with zipfile.ZipFile(path) as archive:
         if extract_media is not None:
@@ -136,17 +203,24 @@ def inventory(path: Path, extract_media: Path | None = None) -> dict[str, Any]:
                 for shape in slide.shapes
                 if hasattr(shape, "text_frame") and shape.text.strip()
             ]
-            slides.append(
-                {
-                    "number": number,
-                    "textBlocks": text_blocks,
-                    "notes": notes_text(archive, number),
-                    "media": slide_media(archive, number),
-                    "timing": timing_metadata(archive, number),
-                }
-            )
+            slide_inventory = {
+                "number": number,
+                "textBlocks": text_blocks,
+                "notes": notes_text(archive, number),
+                "media": slide_media(archive, number),
+                "timing": timing_metadata(archive, number),
+            }
+            render = render_metadata(render_dir, number)
+            if render is not None:
+                slide_inventory["render"] = render
+            slides.append(slide_inventory)
+    source_content = path.read_bytes()
     return {
-        "source": str(path.resolve()),
+        # Public evidence packages should identify the authoritative file
+        # without publishing an instructor's local filesystem path.
+        "source": path.name,
+        "sourceFilename": path.name,
+        "sourceSha256": hashlib.sha256(source_content).hexdigest(),
         "slideCount": len(slides),
         "mediaCount": len(media),
         "media": media,
@@ -167,16 +241,29 @@ def main() -> None:
         type=Path,
         help="Optionally extract the deck's embedded media to this directory.",
     )
-    args = parser.parse_args()
-    result = inventory(args.pptx, args.extract_media)
-    print(
-        json.dumps(
-            result,
-            ensure_ascii=False,
-            separators=(",", ":") if args.compact else None,
-            indent=None if args.compact else 2,
-        )
+    parser.add_argument(
+        "--render-dir",
+        type=Path,
+        help="Optionally attach metadata for slide-NN.png renders in this directory.",
     )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Optionally write the JSON inventory to a file instead of stdout.",
+    )
+    args = parser.parse_args()
+    result = inventory(args.pptx, args.extract_media, args.render_dir)
+    serialized = json.dumps(
+        result,
+        ensure_ascii=False,
+        separators=(",", ":") if args.compact else None,
+        indent=None if args.compact else 2,
+    )
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(f"{serialized}\n", encoding="utf-8")
+    else:
+        print(serialized)
 
 
 if __name__ == "__main__":
