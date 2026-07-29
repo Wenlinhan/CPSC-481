@@ -9,6 +9,21 @@ import {
 
 const L11_RENDER_ROOT = "/course-source/l11-probability-bayes/slide-renders";
 const L12_RENDER_ROOT = "/course-source/l12-conditional-independence/slide-renders";
+const L11_SOURCE_DECK_LABEL = "L11 Stochastic Methods · Part A";
+const L12_SOURCE_DECK_LABEL = "L12 Stochastic Methods · Part B";
+
+function resolveMeeting10SourceReference(sourceSlide: number) {
+  const isL11Source = sourceSlide >= 35;
+  const deckLabel = isL11Source ? L11_SOURCE_DECK_LABEL : L12_SOURCE_DECK_LABEL;
+  const sourceRoot = isL11Source ? L11_RENDER_ROOT : L12_RENDER_ROOT;
+  const sourceKey = isL11Source ? "l11-probability-bayes" : "l12-conditional-independence";
+  return {
+    deckLabel,
+    image: `${sourceRoot}/slide-${String(sourceSlide).padStart(2, "0")}.png`,
+    key: `${sourceKey}:${sourceSlide}`,
+    page: sourceSlide,
+  };
+}
 
 function IndependenceTableCheck() {
   const [revealed, setRevealed] = useState(false);
@@ -528,7 +543,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 2 minutes. Provenance: L12 Part B slide 3. Preserve the formula and the modeling-assumption warning. Contrast parameter counts without claiming real variables are usually independent.",
-    sourceSlides: [],
+    sourceSlides: [3],
   },
   {
     eyebrow: "Worked independence · Counterexample and proof",
@@ -547,7 +562,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 3 minutes. Provenance: L12 Part B slide 4. Students test hot,sun first, then verify the remaining P2 cells. Emphasize that proof requires all cells but disproof needs one counterexample.",
-    sourceSlides: [],
+    sourceSlides: [4],
   },
   {
     eyebrow: "Worked independence · Repeated trials",
@@ -575,7 +590,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 2 minutes. Preserve L11 slide 36 and L12 slide 5 in full. Ask students for P(H,T,H)=0.5^3 and why fairness alone does not logically imply independence.",
-    sourceSlides: [36],
+    sourceSlides: [36, 5],
   },
   {
     eyebrow: "Conditional independence · Visual bridge",
@@ -602,7 +617,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 2 minutes. Provenance: L12 Part B slide 6. Elicit candidate variables before naming conditional independence. Avoid claiming the relationship without a model or data.",
-    sourceSlides: [],
+    sourceSlides: [6],
   },
   {
     eyebrow: "Conditional independence · Definition",
@@ -633,7 +648,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 3 minutes. Provenance: L12 Part B slide 8. Preserve both equivalent equations. Ask why unconditional independence is rare and why conditioning can create a more useful claim.",
-    sourceSlides: [],
+    sourceSlides: [8],
   },
   {
     eyebrow: "Conditional independence · Dental example",
@@ -664,7 +679,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 3 minutes. Provenance: L12 Part B slide 7. Derive one equivalent statement from another with the product rule. Preserve both cavity and no-cavity cases shown in the figure.",
-    sourceSlides: [],
+    sourceSlides: [7],
   },
   {
     eyebrow: "Conditional independence · Weather domain",
@@ -683,7 +698,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 3 minutes. Provenance: L12 Part B slide 9. Students draw Rain→Traffic and Rain→Umbrella, then state Traffic independent of Umbrella given Rain as a testable assumption.",
-    sourceSlides: [],
+    sourceSlides: [9],
   },
   {
     eyebrow: "Conditional independence · Safety domain",
@@ -702,7 +717,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 3 minutes. Provenance: L12 Part B slide 10. Surface counterexamples: smoke can directly trigger a detector, and a latent sensor fault may affect Alarm. Conditional independence follows the proposed model, not the nouns alone.",
-    sourceSlides: [],
+    sourceSlides: [10],
   },
   {
     eyebrow: "Probability recap · Tools for structured models",
@@ -730,7 +745,7 @@ const slides: SourceLessonSlide[] = [
       </div>
     ),
     note: "Timing: 2 minutes. Provenance: L12 Part B slide 11. Have students name which formulas are identities and which are modeling assumptions.",
-    sourceSlides: [],
+    sourceSlides: [11],
   },
   {
     eyebrow: "Textbook-grounded supplement · Bayesian-network semantics",
@@ -1058,7 +1073,9 @@ export function Meeting10Deck() {
     <SourceDeckShell
       meetingLabel="Week 5 · Meeting 10"
       meetingTitle="Conditional Independence, Bayesian Networks, and Naive Bayes"
+      resolveSourceReference={resolveMeeting10SourceReference}
       slides={slides}
+      sourceCollectionLabel={`${L11_SOURCE_DECK_LABEL} + ${L12_SOURCE_DECK_LABEL}`}
     />
   );
 }

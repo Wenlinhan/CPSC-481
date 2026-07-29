@@ -11,6 +11,8 @@ import {
   SearchSourceImage,
 } from "./SearchLessonPrimitives";
 
+const MEETING_04_TIMING = [2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 3, 4, 3, 2, 3, 2, 3, 4, 3, 3, 3, 2, 4, 3, 3, 2, 2, 4] as const;
+
 function AlgorithmSelectionLab() {
   const cases = [
     {
@@ -662,6 +664,9 @@ export function UninformedSearchDeck() {
       meetingLabel="Week 2 · Meeting 4"
       meetingTitle="Uninformed Graph Search"
       slides={slides}
+      sourceCollectionLabel="L02_StateSpaceSearch.pptx"
+      sourceCollectionPath="l02-state-space"
+      timingPlan={MEETING_04_TIMING}
     />
   );
 }

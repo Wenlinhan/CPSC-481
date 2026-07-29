@@ -7,17 +7,61 @@ export type LessonSlide = {
   title: string;
   subtitle?: string;
   content: ReactNode;
+  minutes?: number;
   note: string;
   sourceSlides: number[];
+};
+
+export type CourseSourceReference = {
+  deckLabel: string;
+  image: string;
+  key?: string;
+  page: number;
 };
 
 type L01DeckShellProps = {
   meetingLabel: string;
   meetingTitle: string;
+  resolveSourceReference?: (sourceSlide: number) => CourseSourceReference;
   slides: LessonSlide[];
+  sourceCollectionLabel?: string;
+  sourceCollectionPath?: string;
+  timingPlan?: readonly number[];
 };
 
-export function L01DeckShell({ meetingLabel, meetingTitle, slides }: L01DeckShellProps) {
+const DEFAULT_SOURCE_COLLECTION_LABEL = "L01_AI.pptx";
+
+function resolveL01SourceReference(sourceSlide: number): CourseSourceReference {
+  return {
+    deckLabel: DEFAULT_SOURCE_COLLECTION_LABEL,
+    image: `/course-source/l01-ai/source-slides/slide-${String(sourceSlide).padStart(2, "0")}.png`,
+    key: `l01-ai:${sourceSlide}`,
+    page: sourceSlide,
+  };
+}
+
+function inferMinutes(slide: LessonSlide): number | undefined {
+  if (slide.minutes) return slide.minutes;
+  const direct = slide.note.match(/Timing:\s*(\d+)\s+minutes?/i);
+  if (direct) return Number(direct[1]);
+  const range = slide.note.match(/(?:^|\s)(\d+)\s*[–-]\s*(\d+)\s+minutes?/i);
+  if (range) return Math.max(1, Number(range[2]) - Number(range[1]));
+  return undefined;
+}
+
+function noteStartsWithTiming(note: string): boolean {
+  return /^(?:Timing:|\d+\s*[–-]\s*\d+\s+minutes?|Allocate\s+\w+\s+minutes?)/i.test(note);
+}
+
+export function L01DeckShell({
+  meetingLabel,
+  meetingTitle,
+  resolveSourceReference,
+  slides,
+  sourceCollectionLabel = DEFAULT_SOURCE_COLLECTION_LABEL,
+  sourceCollectionPath = "l01-ai",
+  timingPlan,
+}: L01DeckShellProps) {
   const [current, setCurrent] = useState(0);
   const [overview, setOverview] = useState(false);
   const [notes, setNotes] = useState(false);
@@ -84,6 +128,37 @@ export function L01DeckShell({ meetingLabel, meetingTitle, slides }: L01DeckShel
   };
 
   const slide = slides[current];
+  const currentMinutes = timingPlan?.[current] ?? inferMinutes(slide);
+  const sourceReferenceResolver = resolveSourceReference ?? (
+    sourceCollectionPath === "l01-ai" && sourceCollectionLabel === DEFAULT_SOURCE_COLLECTION_LABEL
+      ? resolveL01SourceReference
+      : (sourceSlide: number): CourseSourceReference => ({
+        deckLabel: sourceCollectionLabel,
+        image: `/course-source/${sourceCollectionPath}/source-slides/slide-${String(sourceSlide).padStart(2, "0")}.png`,
+        key: `${sourceCollectionPath}:${sourceSlide}`,
+        page: sourceSlide,
+      })
+  );
+  const sourceReferences = slide.sourceSlides.reduce<CourseSourceReference[]>((references, sourceSlide) => {
+    const reference = sourceReferenceResolver(sourceSlide);
+    const key = reference.key ?? `${reference.deckLabel}:${reference.page}:${reference.image}`;
+    if (!references.some(item => (item.key ?? `${item.deckLabel}:${item.page}:${item.image}`) === key)) {
+      references.push({ ...reference, key });
+    }
+    return references;
+  }, []);
+  const sourceReferenceGroups = sourceReferences.reduce<Map<string, number[]>>((groups, reference) => {
+    const pages = groups.get(reference.deckLabel) ?? [];
+    pages.push(reference.page);
+    groups.set(reference.deckLabel, pages);
+    return groups;
+  }, new Map());
+  const sourceReferenceHeading = sourceReferenceGroups.size
+    ? [...sourceReferenceGroups.entries()]
+      .map(([deckLabel, pages]) => `${deckLabel} · ${pages.length === 1 ? "page" : "pages"} ${pages.join(", ")}`)
+      .join("; ")
+    : "No exact course source page is attached to this lesson page";
+
   return (
     <main
       className={motion ? "deck ai-deck source-deck" : "deck ai-deck source-deck motion-off"}
@@ -131,7 +206,7 @@ export function L01DeckShell({ meetingLabel, meetingTitle, slides }: L01DeckShel
       {notes && (
         <aside className="speaker-notes">
           <div><span>Instructor note · Slide {current + 1}</span><button onClick={() => setNotes(false)} type="button">×</button></div>
-          <p>{slide.note}</p>
+          <p>{currentMinutes && !noteStartsWithTiming(slide.note) ? `Timing: ${currentMinutes} minutes. ` : ""}{slide.note}</p>
         </aside>
       )}
 
@@ -145,24 +220,28 @@ export function L01DeckShell({ meetingLabel, meetingTitle, slides }: L01DeckShel
           >
             <div className="source-reference-heading">
               <div>
-                <span>Course source · L01_AI.pptx</span>
-                <h2>Exact reference {slide.sourceSlides.length === 1 ? "page" : "pages"} {slide.sourceSlides.join(", ")}</h2>
-                <p>Inspect the complete wording, emphasis, and figures connected to this lesson page.</p>
+                <span>Course source · {sourceCollectionLabel}</span>
+                <h2>{sourceReferenceHeading}</h2>
+                <p>
+                  {sourceReferences.length
+                    ? "Inspect the complete wording, emphasis, and figures connected to this lesson page."
+                    : "This lesson page is a labeled supplement or synthesis without a directly attached source page."}
+                </p>
               </div>
               <button aria-label="Close course source" onClick={() => setSourceView(false)} type="button">×</button>
             </div>
-            <div className={slide.sourceSlides.length > 1 ? "source-reference-pages multiple" : "source-reference-pages"}>
-              {[...new Set(slide.sourceSlides)].map(number => {
-                const image = `/course-source/l01-ai/source-slides/slide-${String(number).padStart(2, "0")}.png`;
-                return (
-                  <figure key={number}>
-                    <a href={image} rel="noreferrer" target="_blank">
-                      <img alt={`Complete course source page ${number}`} src={image} />
-                    </a>
-                    <figcaption>Reference page {number} · select to enlarge</figcaption>
-                  </figure>
-                );
-              })}
+            <div className={sourceReferences.length > 1 ? "source-reference-pages multiple" : "source-reference-pages"}>
+              {sourceReferences.map(reference => (
+                <figure key={reference.key}>
+                  <a href={reference.image} rel="noreferrer" target="_blank">
+                    <img
+                      alt={`Complete ${reference.deckLabel} course source page ${reference.page}`}
+                      src={reference.image}
+                    />
+                  </a>
+                  <figcaption>{reference.deckLabel} · page {reference.page} · select to enlarge</figcaption>
+                </figure>
+              ))}
             </div>
           </section>
         </div>
@@ -193,7 +272,7 @@ export function L01DeckShell({ meetingLabel, meetingTitle, slides }: L01DeckShel
                   type="button"
                 >
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><small>{item.eyebrow}</small><strong>{item.title}</strong></div>
+                  <div><small>{item.eyebrow}{(timingPlan?.[index] ?? inferMinutes(item)) ? ` · ${timingPlan?.[index] ?? inferMinutes(item)} min` : ""}</small><strong>{item.title}</strong></div>
                 </button>
               ))}
             </nav>

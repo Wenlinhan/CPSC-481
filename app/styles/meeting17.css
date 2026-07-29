@@ -1,0 +1,1502 @@
+/* Meeting 17 · Neural Networks I
+   Full 4:3 course-source pages remain uncropped and enlargeable.
+   Classroom cards use white surfaces with dark text for projection contrast. */
+
+.m17-cover,
+.m17-source-explain,
+.m17-vector-model,
+.m17-weighted-lab,
+.m17-logic-lab,
+.m17-data-studio,
+.m17-update-lab,
+.m17-boundary-lab,
+.m17-xor-lab,
+.m17-activation-lab,
+.m17-loss-lab,
+.m17-exit {
+  color: #111827;
+}
+
+.m17-source-frame {
+  min-height: 0;
+}
+
+.m17-source-frame > button {
+  padding: 8px;
+}
+
+.m17-source-frame figcaption {
+  min-height: 39px;
+}
+
+.m17-source-frame figcaption span {
+  display: none;
+}
+
+.m17-cover {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1.08fr 0.92fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.m17-cover > section {
+  align-content: center;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.18), transparent 150px),
+    linear-gradient(145deg, #2c075f, #6b36ba 68%, #0c8090);
+  border-radius: 22px;
+  color: white;
+  display: grid;
+  padding: clamp(26px, 3.2vw, 50px);
+}
+
+.m17-cover > section > span,
+.m17-overview-grid article > span,
+.m17-neuron-map article > span,
+.m17-vector-model section > span,
+.m17-weighted-lab section > span,
+.m17-learning-bridge article > span,
+.m17-data-studio section > span,
+.m17-update-header > span,
+.m17-boundary-lab section > div > span,
+.m17-xor-lab article > span,
+.m17-sigmoid article > span,
+.m17-activation-lab article > span,
+.m17-loss-lab section > span,
+.m17-exit section > span,
+.m17-compare section > span {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.m17-cover h3 {
+  color: white;
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.06;
+  margin: 12px 0 16px;
+}
+
+.m17-cover p {
+  color: #f1ebff;
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.46;
+  margin: 0;
+}
+
+.m17-source-explain {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1.08fr 0.92fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.m17-source-explain.reverse > .m17-source-frame {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.m17-source-explain.reverse > section {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.m17-source-explain > section {
+  align-content: center;
+  display: grid;
+  gap: 12px;
+  min-height: 0;
+}
+
+.m17-source-explain blockquote {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-left: 6px solid #6536ca;
+  border-radius: 14px;
+  color: #17233a;
+  font-size: clamp(17px, 1.42vw, 23px);
+  font-weight: 760;
+  line-height: 1.34;
+  margin: 0;
+  padding: 17px 19px;
+}
+
+.m17-overview-grid,
+.m17-neuron-map,
+.m17-learning-bridge,
+.m17-example-setup,
+.m17-geometry,
+.m17-sigmoid {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.m17-overview-grid article,
+.m17-neuron-map article,
+.m17-learning-bridge article,
+.m17-example-setup article,
+.m17-geometry article,
+.m17-sigmoid article,
+.m17-objectives article,
+.m17-contrast article,
+.m17-logic-cards article,
+.m17-compare > section,
+.m17-vector-model > section,
+.m17-exit > section {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 14px;
+  color: #111827;
+}
+
+.m17-overview-grid article,
+.m17-neuron-map article,
+.m17-learning-bridge article {
+  padding: 12px 14px;
+}
+
+.m17-overview-grid span,
+.m17-neuron-map span,
+.m17-learning-bridge span {
+  color: #6237c7;
+}
+
+.m17-overview-grid strong,
+.m17-neuron-map strong,
+.m17-learning-bridge strong {
+  color: #17233a;
+  display: block;
+  font-size: 16px;
+  line-height: 1.18;
+  margin-top: 4px;
+}
+
+.m17-overview-grid p,
+.m17-neuron-map p,
+.m17-learning-bridge p {
+  color: #516077;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 5px 0 0;
+}
+
+.m17-objectives {
+  align-content: center;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.m17-objectives article {
+  display: grid;
+  gap: 6px 14px;
+  grid-template-columns: 48px 1fr;
+  padding: 24px 26px;
+}
+
+.m17-objectives article > span {
+  color: #6638cc;
+  font-size: 11px;
+  font-weight: 900;
+  grid-row: 1 / 3;
+  letter-spacing: 0.1em;
+}
+
+.m17-objectives strong {
+  color: #17233a;
+  font-size: clamp(22px, 2vw, 31px);
+}
+
+.m17-objectives p {
+  color: #4c5a70;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.m17-contrast,
+.m17-logic-cards {
+  display: grid;
+  gap: 9px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.m17-contrast article,
+.m17-logic-cards article {
+  padding: 13px 15px;
+}
+
+.m17-contrast span,
+.m17-logic-cards span {
+  color: #6435ca;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.m17-contrast strong {
+  color: #17233a;
+  display: block;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.m17-contrast p,
+.m17-logic-cards p {
+  color: #4c5b71;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 5px 0 0;
+}
+
+.m17-logic-cards code {
+  color: #17233a;
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.m17-vector-model {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 0.78fr 1.22fr;
+  height: 100%;
+}
+
+.m17-vector-model > section {
+  align-content: center;
+  display: grid;
+  gap: 11px;
+  padding: 24px;
+}
+
+.m17-vector-model section > span {
+  color: #6638cc;
+}
+
+.m17-vector-model section > code {
+  background: #f3f0ff;
+  border-radius: 10px;
+  color: #251249;
+  font-size: clamp(17px, 1.45vw, 24px);
+  font-weight: 800;
+  padding: 12px 14px;
+}
+
+.m17-vector-flow {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+}
+
+.m17-vector-flow article {
+  align-content: center;
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #f1edff, #e8f7f8);
+  border: 1px solid #cfc5f0;
+  border-radius: 50%;
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.m17-vector-flow strong {
+  color: #432187;
+  font-size: clamp(22px, 2.3vw, 36px);
+}
+
+.m17-vector-flow span {
+  color: #485970;
+  font-size: 9px;
+  max-width: 80px;
+}
+
+.m17-vector-flow i {
+  color: #6a3ace;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.m17-weighted-lab {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 0.82fr 1.18fr;
+  height: 100%;
+}
+
+.m17-weighted-lab > section {
+  align-content: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  padding: 22px;
+}
+
+.m17-weighted-lab > section > span {
+  color: #6537ca;
+}
+
+.m17-controls {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.m17-controls label {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 45px 1fr 46px;
+}
+
+.m17-controls label span {
+  color: #35445b;
+  font-weight: 800;
+}
+
+.m17-controls input {
+  accent-color: #6638cc;
+  width: 100%;
+}
+
+.m17-controls strong {
+  background: #f2effc;
+  border-radius: 8px;
+  color: #2d175d;
+  padding: 6px;
+  text-align: center;
+}
+
+.m17-neuron-result {
+  align-items: center;
+  grid-template-columns: 0.45fr 1fr 0.58fr;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+}
+
+.m17-neuron-inputs {
+  display: grid;
+  gap: 15px;
+}
+
+.m17-neuron-inputs code {
+  background: #edf2f8;
+  border-radius: 999px;
+  color: #17233a;
+  font-weight: 800;
+  padding: 8px 12px;
+}
+
+.m17-neuron-node {
+  align-content: center;
+  background: linear-gradient(145deg, #e9e2ff, #d7f5f5);
+  border: 2px solid #5c35bf;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  display: grid;
+  height: 210px;
+  justify-items: center;
+  padding-right: 30px;
+  width: 220px;
+}
+
+.m17-neuron-node span,
+.m17-output span {
+  color: #4a5770;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.m17-neuron-node strong {
+  color: #32146d;
+  font-size: 36px;
+}
+
+.m17-neuron-node small {
+  color: #526077;
+}
+
+.m17-output {
+  align-content: center;
+  background: #fdecee;
+  border: 2px solid #cf5869;
+  border-radius: 50%;
+  display: grid;
+  height: 110px;
+  justify-items: center;
+  width: 110px;
+}
+
+.m17-output.positive {
+  background: #e4f7ed;
+  border-color: #16885b;
+}
+
+.m17-output strong {
+  color: #9e263a;
+  font-size: 38px;
+}
+
+.m17-output.positive strong {
+  color: #08794d;
+}
+
+.m17-neuron-result > p {
+  color: #4c5b71;
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+.m17-logic-lab {
+  align-content: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 140px 1fr;
+  height: 100%;
+}
+
+.m17-logic-lab > nav,
+.m17-update-lab > nav,
+.m17-boundary-lab > nav,
+.m17-xor-lab > nav,
+.m17-activation-lab > nav {
+  display: grid;
+  gap: 9px;
+}
+
+.m17-logic-lab button,
+.m17-update-lab button,
+.m17-boundary-lab button,
+.m17-xor-lab button,
+.m17-activation-lab button,
+.m17-loss-lab button {
+  background: white;
+  border: 1px solid #cfd9e7;
+  border-radius: 10px;
+  color: #26354c;
+  cursor: pointer;
+  font-weight: 800;
+  padding: 11px 13px;
+}
+
+.m17-logic-lab nav button.active,
+.m17-update-lab nav button.active,
+.m17-boundary-lab nav button.active,
+.m17-xor-lab nav button.active,
+.m17-activation-lab nav button.active {
+  background: #5d32bf;
+  border-color: #5d32bf;
+  color: white;
+}
+
+.m17-logic-lab > section {
+  align-items: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 0.65fr 1fr 0.6fr;
+  padding: 28px;
+}
+
+.m17-bit-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.m17-bit-controls button {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.m17-bit-controls strong {
+  color: #6435ca;
+  font-size: 28px;
+}
+
+.m17-logic-equation {
+  align-content: center;
+  display: grid;
+  gap: 9px;
+  justify-items: center;
+}
+
+.m17-logic-equation code {
+  background: #f1effa;
+  border-radius: 9px;
+  color: #281557;
+  font-size: 18px;
+  padding: 10px 12px;
+}
+
+.m17-logic-equation strong {
+  color: #5d32bf;
+  font-size: 38px;
+}
+
+.m17-logic-equation span {
+  color: #4b5a71;
+  font-weight: 750;
+}
+
+.m17-gate-output {
+  align-content: center;
+  background: #eff2f7;
+  border: 2px solid #9aabba;
+  border-radius: 18px;
+  display: grid;
+  height: 130px;
+  justify-items: center;
+}
+
+.m17-gate-output.on {
+  background: #e6f8ef;
+  border-color: #149260;
+}
+
+.m17-gate-output span {
+  color: #4d5b71;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.m17-gate-output strong {
+  color: #46546a;
+  font-size: 46px;
+}
+
+.m17-gate-output.on strong {
+  color: #087d50;
+}
+
+.m17-logic-lab > p {
+  color: #4a5970;
+  grid-column: 2;
+  margin: 0;
+}
+
+.m17-data-studio {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1.05fr 0.95fr;
+  height: 100%;
+}
+
+.m17-data-studio > div {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: repeat(11, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.m17-data-studio [role="row"] {
+  align-items: center;
+  background: white;
+  border: 0;
+  border-bottom: 1px solid #e3e8f0;
+  color: #26364d;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px 12px;
+  text-align: center;
+}
+
+.m17-data-studio button[role="row"] {
+  cursor: pointer;
+}
+
+.m17-data-studio button[role="row"].active {
+  background: #ede8ff;
+  color: #3d1c80;
+  font-weight: 850;
+}
+
+.m17-data-studio > section {
+  align-content: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 16px;
+  display: grid;
+  gap: 13px;
+  padding: 24px;
+}
+
+.m17-data-studio section > span {
+  color: #6638cc;
+}
+
+.m17-data-studio section > code {
+  background: #f1effa;
+  border-radius: 10px;
+  color: #281557;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 12px;
+}
+
+.m17-data-studio section > p {
+  color: #4d5c72;
+  margin: 0;
+}
+
+.m17-formula-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.m17-formula-stack code {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-left: 4px solid #6638cc;
+  border-radius: 9px;
+  color: #26144f;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 10px 12px;
+}
+
+.m17-algorithm {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1.08fr 0.92fr;
+  height: 100%;
+}
+
+.m17-algorithm > ol {
+  align-content: center;
+  display: grid;
+  gap: 9px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.m17-algorithm li {
+  align-items: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 13px;
+  display: grid;
+  gap: 13px;
+  grid-template-columns: 38px 1fr;
+  padding: 12px 15px;
+}
+
+.m17-algorithm li > span,
+.m17-update-lab li > span {
+  align-items: center;
+  background: #6638cc;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-weight: 900;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+
+.m17-algorithm li strong {
+  color: #17233a;
+}
+
+.m17-algorithm li p {
+  color: #4c5a70;
+  font-size: 12px;
+  margin: 3px 0 0;
+}
+
+.m17-algorithm > section {
+  align-content: center;
+  display: grid;
+  gap: 11px;
+}
+
+.m17-algorithm h3 {
+  color: #17233a;
+  font-size: clamp(25px, 2.3vw, 36px);
+  margin: 0;
+}
+
+.m17-algorithm section > p {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 14px;
+  color: #34445a;
+  line-height: 1.45;
+  margin: 0;
+  padding: 18px;
+}
+
+.m17-example-setup article {
+  padding: 11px 13px;
+}
+
+.m17-example-setup span {
+  color: #6336c8;
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.m17-example-setup code {
+  color: #17233a;
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.m17-update-lab {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 205px 1fr;
+  height: 100%;
+}
+
+.m17-update-lab nav button {
+  display: grid;
+  gap: 5px;
+  text-align: left;
+}
+
+.m17-update-lab nav button span {
+  color: #6c42c8;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.m17-update-lab nav button.active span {
+  color: #e6ddff;
+}
+
+.m17-update-lab > section {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 17px;
+  display: grid;
+  gap: 9px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  padding: 18px 21px;
+}
+
+.m17-update-header {
+  display: grid;
+  gap: 4px 12px;
+  grid-template-columns: 80px 1fr;
+}
+
+.m17-update-header span {
+  color: #6638cc;
+}
+
+.m17-update-header code {
+  color: #28374d;
+  font-weight: 800;
+}
+
+.m17-update-lab ol {
+  align-content: center;
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.m17-update-lab li {
+  align-items: center;
+  background: #f7f8fb;
+  border-radius: 10px;
+  display: grid;
+  gap: 11px;
+  grid-template-columns: 34px 1fr;
+  padding: 8px 11px;
+}
+
+.m17-update-lab li > span {
+  height: 27px;
+  width: 27px;
+}
+
+.m17-update-lab li div {
+  align-items: baseline;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 92px 1fr;
+}
+
+.m17-update-lab li strong {
+  color: #17233a;
+}
+
+.m17-update-lab li code {
+  color: #3d275f;
+  font-size: 12px;
+  white-space: normal;
+}
+
+.m17-update-lab section > p {
+  color: #4b5a70;
+  margin: 0;
+}
+
+.m17-geometry {
+  grid-template-columns: 1fr 1fr;
+}
+
+.m17-geometry > code {
+  background: #ede8ff;
+  border-radius: 10px;
+  color: #32176b;
+  font-size: 17px;
+  font-weight: 900;
+  grid-column: 1 / -1;
+  padding: 12px;
+}
+
+.m17-geometry article {
+  padding: 10px 12px;
+}
+
+.m17-geometry article span {
+  color: #6134c5;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.m17-geometry article p {
+  color: #34435a;
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+
+.m17-boundary-lab {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 145px 1fr;
+  height: 100%;
+}
+
+.m17-boundary-lab > section {
+  align-items: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 0.72fr;
+  min-height: 0;
+  padding: 16px 23px;
+}
+
+.m17-boundary-lab svg {
+  height: 100%;
+  max-height: 430px;
+  width: 100%;
+}
+
+.m17-boundary-lab svg > line:not(.m17-boundary-line) {
+  stroke: #74839a;
+  stroke-width: 2;
+}
+
+.m17-boundary-line {
+  stroke: #6838d0;
+  stroke-linecap: round;
+  stroke-width: 5;
+  transition: all 300ms ease;
+}
+
+.m17-boundary-lab circle.positive {
+  fill: #19a875;
+  stroke: #087650;
+  stroke-width: 2;
+}
+
+.m17-boundary-lab path.negative {
+  fill: #ef7d37;
+  stroke: #a84812;
+  stroke-width: 2;
+}
+
+.m17-boundary-lab svg text {
+  fill: #647289;
+  font-size: 10px;
+  text-anchor: middle;
+}
+
+.m17-boundary-lab svg .axis-label {
+  fill: #27364d;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.m17-boundary-lab section > div {
+  align-content: center;
+  display: grid;
+  gap: 12px;
+}
+
+.m17-boundary-lab section > div > span {
+  color: #6638cc;
+}
+
+.m17-boundary-lab section code {
+  background: #f1effa;
+  border-radius: 10px;
+  color: #281557;
+  font-size: 17px;
+  font-weight: 800;
+  padding: 12px;
+}
+
+.m17-boundary-lab section strong {
+  color: #08794d;
+  font-size: 25px;
+}
+
+.m17-boundary-lab section p {
+  color: #4d5c72;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.m17-compare {
+  align-content: center;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.m17-compare > section {
+  padding: 24px;
+}
+
+.m17-compare section > span {
+  color: #6638cc;
+}
+
+.m17-compare h3 {
+  color: #17233a;
+  font-size: clamp(23px, 2.2vw, 34px);
+  margin: 8px 0 14px;
+}
+
+.m17-compare ul {
+  color: #4c5a70;
+  line-height: 1.55;
+  margin: 0;
+  padding-left: 21px;
+}
+
+.m17-compare > .search-callout {
+  grid-column: 1 / -1;
+}
+
+.m17-xor-constraints {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.m17-xor-constraints code {
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 8px;
+  color: #2b1a4d;
+  font-weight: 800;
+  padding: 9px 11px;
+  text-align: center;
+}
+
+.m17-xor-lab {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 165px 1fr;
+  height: 100%;
+}
+
+.m17-xor-lab > section {
+  align-items: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1fr 0.8fr;
+  padding: 24px;
+}
+
+.m17-xor-plot {
+  aspect-ratio: 1.25;
+  background:
+    linear-gradient(#aeb9c7, #aeb9c7) 14% 88% / 74% 2px no-repeat,
+    linear-gradient(#aeb9c7, #aeb9c7) 14% 14% / 2px 74% no-repeat,
+    #f8fafc;
+  border: 1px solid #dce3ed;
+  border-radius: 14px;
+  position: relative;
+}
+
+.m17-xor-plot > span {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 20px;
+  font-weight: 900;
+  height: 48px;
+  justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  z-index: 2;
+}
+
+.m17-xor-plot .zero {
+  background: #e4eaf1;
+  border: 3px solid #63758b;
+  color: #27364c;
+}
+
+.m17-xor-plot .one {
+  background: #dff6ec;
+  border: 3px solid #13865a;
+  color: #08734b;
+}
+
+.m17-xor-plot .p00 { left: 24%; top: 75%; }
+.m17-xor-plot .p01 { left: 24%; top: 27%; }
+.m17-xor-plot .p10 { left: 72%; top: 75%; }
+.m17-xor-plot .p11 { left: 72%; top: 27%; }
+
+.m17-xor-plot i {
+  background: #6a39d1;
+  height: 5px;
+  left: 20%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  width: 62%;
+}
+
+.m17-xor-plot i.vertical {
+  transform: rotate(90deg);
+}
+
+.m17-xor-plot i.diagonal {
+  transform: rotate(-38deg);
+}
+
+.m17-xor-plot .x-label,
+.m17-xor-plot .y-label {
+  color: #44536a;
+  position: absolute;
+}
+
+.m17-xor-plot .x-label {
+  bottom: 4%;
+  right: 9%;
+}
+
+.m17-xor-plot .y-label {
+  left: 7%;
+  top: 8%;
+}
+
+.m17-xor-lab article {
+  background: #f5f7fa;
+  border: 1px solid #d8e0ea;
+  border-radius: 13px;
+  color: #111827;
+  padding: 18px;
+}
+
+.m17-xor-lab article.correct {
+  background: #e7f8ef;
+  border-color: #a9dfc4;
+}
+
+.m17-xor-lab article span {
+  color: #6537ca;
+}
+
+.m17-xor-lab article p {
+  color: #35445b;
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
+
+.m17-sigmoid > code {
+  background: #ede8ff;
+  border-radius: 10px;
+  color: #33176d;
+  font-size: 17px;
+  font-weight: 900;
+  grid-column: 1 / -1;
+  padding: 12px;
+  text-align: center;
+}
+
+.m17-sigmoid article {
+  padding: 10px 12px;
+}
+
+.m17-sigmoid article span {
+  color: #6336c8;
+}
+
+.m17-sigmoid article p {
+  color: #4c5b71;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 5px 0 0;
+}
+
+.m17-activation-lab {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 150px 1fr;
+  height: 100%;
+}
+
+.m17-activation-lab > section {
+  align-items: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1.1fr 0.9fr;
+  padding: 24px;
+}
+
+.m17-activation-lab svg {
+  height: 100%;
+  max-height: 390px;
+  width: 100%;
+}
+
+.m17-activation-lab svg line {
+  stroke: #96a4b6;
+  stroke-width: 2;
+}
+
+.m17-activation-lab svg path {
+  fill: none;
+  stroke: #6537ca;
+  stroke-linecap: round;
+  stroke-width: 6;
+}
+
+.m17-activation-lab svg text {
+  fill: #4c5a70;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.m17-activation-lab article > span {
+  color: #6638cc;
+}
+
+.m17-activation-lab h3 {
+  color: #17233a;
+  font-size: 30px;
+  margin: 8px 0;
+}
+
+.m17-activation-lab article code {
+  background: #f1effa;
+  border-radius: 9px;
+  color: #281557;
+  display: block;
+  font-weight: 800;
+  padding: 11px;
+}
+
+.m17-activation-lab article p {
+  color: #4b5a70;
+  line-height: 1.45;
+}
+
+.m17-loss-lab {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 0.9fr 1.1fr;
+  height: 100%;
+}
+
+.m17-loss-lab > section {
+  align-content: center;
+  background: white;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  display: grid;
+  gap: 13px;
+  padding: 24px;
+}
+
+.m17-loss-lab section > span {
+  color: #6638cc;
+}
+
+.m17-loss-lab section > code {
+  background: #f1effa;
+  border-radius: 10px;
+  color: #281557;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 12px;
+}
+
+.m17-loss-lab section > div:not(.m17-loss-track) {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.m17-loss-lab article {
+  background: #f7f8fb;
+  border-radius: 10px;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  text-align: center;
+}
+
+.m17-loss-lab article span {
+  color: #56657b;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.m17-loss-lab article strong {
+  color: #6336c8;
+  font-size: 22px;
+}
+
+.m17-loss-lab button + button {
+  background: #f5f7fa;
+}
+
+.m17-loss-track {
+  background: linear-gradient(90deg, #ef8b57, #1aa77a 66%, #ef8b57);
+  border-radius: 999px;
+  height: 12px;
+  margin: 22px 0;
+  position: relative;
+}
+
+.m17-loss-track i {
+  background: #2f1765;
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(25, 18, 48, 0.3);
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 250ms ease;
+  width: 25px;
+}
+
+.m17-loss-track span,
+.m17-loss-track b {
+  color: #4b5a70;
+  font-size: 10px;
+  position: absolute;
+  top: 20px;
+}
+
+.m17-loss-track span:first-of-type { left: 0; }
+.m17-loss-track span:last-of-type { right: 0; }
+.m17-loss-track b { left: 66%; transform: translateX(-50%); }
+
+.m17-exit {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.m17-exit > section {
+  align-content: center;
+  display: grid;
+  gap: 11px;
+  padding: 22px;
+}
+
+.m17-exit section > span {
+  color: #6638cc;
+}
+
+.m17-exit h3 {
+  color: #17233a;
+  font-size: 20px;
+  margin: 2px 0;
+}
+
+.m17-exit ol,
+.m17-exit ul {
+  color: #46556c;
+  font-size: 12px;
+  line-height: 1.38;
+  margin: 0;
+  padding-left: 21px;
+}
+
+.m17-exit li {
+  margin: 7px 0;
+}
+
+@media (max-width: 1040px) {
+  .m17-cover,
+  .m17-source-explain,
+  .m17-source-explain.reverse,
+  .m17-weighted-lab,
+  .m17-data-studio,
+  .m17-algorithm,
+  .m17-loss-lab,
+  .m17-exit {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .m17-vector-model {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .m17-neuron-node {
+    height: 170px;
+    width: 185px;
+  }
+}
+
+@media (max-width: 720px) {
+  .m17-cover,
+  .m17-objectives,
+  .m17-source-explain,
+  .m17-source-explain.reverse,
+  .m17-vector-model,
+  .m17-weighted-lab,
+  .m17-logic-lab,
+  .m17-data-studio,
+  .m17-algorithm,
+  .m17-update-lab,
+  .m17-boundary-lab,
+  .m17-compare,
+  .m17-xor-lab,
+  .m17-activation-lab,
+  .m17-loss-lab,
+  .m17-exit {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .m17-source-explain.reverse > .m17-source-frame,
+  .m17-source-explain.reverse > section {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .m17-logic-lab > nav,
+  .m17-update-lab > nav,
+  .m17-boundary-lab > nav,
+  .m17-xor-lab > nav,
+  .m17-activation-lab > nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .m17-logic-lab > nav button,
+  .m17-update-lab > nav button,
+  .m17-boundary-lab > nav button,
+  .m17-xor-lab > nav button,
+  .m17-activation-lab > nav button {
+    flex: 1 1 120px;
+  }
+
+  .m17-logic-lab > section,
+  .m17-boundary-lab > section,
+  .m17-xor-lab > section,
+  .m17-activation-lab > section {
+    grid-template-columns: 1fr;
+  }
+
+  .m17-logic-lab > p {
+    grid-column: auto;
+  }
+
+  .m17-neuron-result {
+    grid-template-columns: 0.38fr minmax(130px, 1fr) 72px;
+    min-width: 0;
+  }
+
+  .m17-weighted-lab > section {
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .m17-controls label {
+    gap: 6px;
+    grid-template-columns: 38px minmax(0, 1fr) 40px;
+  }
+
+  .m17-neuron-node {
+    height: 150px;
+    padding-right: 20px;
+    width: 150px;
+  }
+
+  .m17-neuron-node strong {
+    font-size: 28px;
+  }
+
+  .m17-output {
+    height: 72px;
+    width: 72px;
+  }
+
+  .m17-output strong {
+    font-size: 30px;
+  }
+
+  .m17-vector-flow {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .m17-vector-flow article:nth-of-type(3) {
+    grid-column: 1;
+  }
+
+  .m17-compare > .search-callout {
+    grid-column: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m17-boundary-line,
+  .m17-loss-track i {
+    transition: none;
+  }
+}

@@ -1,8 +1,11 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- static course assets must remain full-fit in the presentation canvas */
+
 import {
   type ReactNode,
   type TouchEvent,
+  useCallback,
   useEffect,
   useMemo,
   useState,
@@ -14,6 +17,7 @@ type SlideRecord = {
   subtitle?: string;
   content: ReactNode;
   note: string;
+  minutes: number;
 };
 
 const retrievalDocs = [
@@ -28,7 +32,7 @@ const retrievalDocs = [
     id: "D2",
     score: 0.88,
     label: "Syllabus",
-    text: "The AAB Research Evidence Brief is due during Week 13 and is worth 6% of the course grade.",
+    text: "The Research Evidence Brief is due during Week 13 and is worth 6% of the course grade.",
     relevant: true,
   },
   {
@@ -178,6 +182,203 @@ function SimilarityVisual() {
   );
 }
 
+function ParsingVisual() {
+  const [mode, setMode] = useState<"raw" | "structured">("raw");
+
+  return (
+    <div className="parsing-lab">
+      <div className="lab-header">
+        <div>
+          <span className="micro-label">Parsing demo</span>
+          <h3>Same PDF, different retrieval units</h3>
+        </div>
+        <div className="segmented" aria-label="Select parsing mode">
+          {(["raw", "structured"] as const).map((value) => (
+            <button
+              aria-pressed={mode === value}
+              className={mode === value ? "active" : ""}
+              key={value}
+              onClick={() => setMode(value)}
+              type="button"
+            >
+              {value === "raw" ? "Raw text" : "Structure-aware"}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className={`document-preview ${mode}`}>
+        <div className="document-page" aria-label="A two-column course policy page">
+          <span className="doc-kicker">CPSC 481 · Course policy</span>
+          <h4>Research Evidence Brief</h4>
+          <div className="doc-columns">
+            <p><b>Deadline</b><br />Submit in Week 13 through Canvas.</p>
+            <p><b>Required evidence</b><br />Source trace, methods, findings, and limitations.</p>
+          </div>
+          <div className="doc-footer">CPSC 481 · page 7</div>
+        </div>
+        <div className="parse-output">
+          {mode === "raw" ? (
+            <>
+              <span className="parse-bad">481 7 Deadline Required evidence CPSC</span>
+              <span className="parse-bad">Submit in Week source trace 13 methods through findings Canvas limitations</span>
+              <small>Columns interleave; headers and footers become noise.</small>
+            </>
+          ) : (
+            <>
+              <span><b>section:</b> Research Evidence Brief</span>
+              <span><b>deadline:</b> Submit in Week 13 through Canvas.</span>
+              <span><b>requirements:</b> Source trace, methods, findings, limitations.</span>
+              <small>Reading order and section identity survive extraction.</small>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChunkingLab() {
+  const [strategy, setStrategy] = useState<"fixed" | "structure">("fixed");
+  const [overlap, setOverlap] = useState(false);
+
+  return (
+    <div className="chunk-lab">
+      <div className="lab-header">
+        <div>
+          <span className="micro-label">Chunking demo</span>
+          <h3>Can one chunk answer the question?</h3>
+        </div>
+        <div className="chunk-controls">
+          <div className="segmented" aria-label="Select chunking strategy">
+            {(["fixed", "structure"] as const).map((value) => (
+              <button
+                aria-pressed={strategy === value}
+                className={strategy === value ? "active" : ""}
+                key={value}
+                onClick={() => setStrategy(value)}
+                type="button"
+              >
+                {value === "fixed" ? "120 tokens" : "By section"}
+              </button>
+            ))}
+          </div>
+          <button
+            aria-pressed={overlap}
+            className={`overlap-toggle ${overlap ? "active" : ""}`}
+            onClick={() => setOverlap((value) => !value)}
+            type="button"
+          >
+            {overlap ? "20-token overlap" : "No overlap"}
+          </button>
+        </div>
+      </div>
+      <p className="query"><span>Question</span>When is the evidence brief due, and what must it include?</p>
+      <div className={`chunk-output ${strategy} ${overlap ? "with-overlap" : ""}`}>
+        {strategy === "fixed" ? (
+          <>
+            <article><b>Chunk A</b><p>…Evidence Brief. Submit in Week 13 through Canvas. The next assignment…</p></article>
+            <article><b>Chunk B</b><p>…requires source trace, methods, findings, limitations, and supported claims…</p></article>
+            <article className="distractor"><b>Chunk C</b><p>Late work and course catalog information…</p></article>
+          </>
+        ) : (
+          <>
+            <article className="complete"><b>Research Evidence Brief</b><p>Submit in Week 13. Include source trace, methods, findings, limitations, and supported-versus-unsupported claims.</p></article>
+            <article className="distractor"><b>Late work</b><p>Policies for extensions and documented emergencies…</p></article>
+          </>
+        )}
+      </div>
+      <div className={`lab-verdict ${strategy === "structure" || overlap ? "success" : "warning"}`}>
+        <strong>{strategy === "structure" ? "Semantic boundary preserved" : overlap ? "Boundary repaired, with duplication" : "Answer split across a boundary"}</strong>
+        <span>
+          {strategy === "structure"
+            ? "One retrievable unit contains the complete policy."
+            : overlap
+              ? "Overlap improves continuity but increases index size and repeated context."
+              : "Top-k must recover two chunks before the generator can answer both parts."}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function VectorIndexVisual() {
+  return (
+    <div className="index-layout">
+      <div className="index-map" aria-label="Vector index search path">
+        <div className="index-query">q</div>
+        {[
+          ["D2", "near", "syllabus"],
+          ["D3", "near", "assignment"],
+          ["D7", "mid", "calendar"],
+          ["D1", "far", "catalog"],
+          ["D9", "far", "parking"],
+        ].map(([id, distance, label], index) => (
+          <div className={`index-node ${distance} node-${index + 1}`} key={id}>
+            <b>{id}</b><small>{label}</small>
+          </div>
+        ))}
+        <i className="search-radius radius-a" />
+        <i className="search-radius radius-b" />
+      </div>
+      <div className="index-copy">
+        <span className="micro-label">Search structure</span>
+        <h3>An index avoids comparing every vector</h3>
+        <ol>
+          <li><b>Insert</b><span>Store vector + chunk ID + metadata.</span></li>
+          <li><b>Navigate</b><span>Approximate nearest-neighbor search visits promising regions.</span></li>
+          <li><b>Return</b><span>Resolve top-k IDs back to readable chunks.</span></li>
+        </ol>
+        <Callout title="Engineering tradeoff" tone="gold">
+          Exact search maximizes recall but scales poorly. Approximate search trades a little recall for speed and memory efficiency.
+        </Callout>
+      </div>
+    </div>
+  );
+}
+
+function MismatchVisual() {
+  const [approach, setApproach] = useState<"literal" | "semantic" | "rewrite">("literal");
+  const result = {
+    literal: ["Low match", "“turn in” does not occur in the policy.", "warning"],
+    semantic: ["Useful match", "Embedding proximity links “turn in” with “submit.”", "success"],
+    rewrite: ["Sharper query", "“evidence brief submission deadline requirements”", "success"],
+  }[approach];
+
+  return (
+    <div className="mismatch-layout">
+      <div className="mismatch-pair">
+        <div><span>Student language</span><strong>“When do I turn in the brief, and what goes with it?”</strong></div>
+        <div><span>Document language</span><strong>“Submission deadline: Week 13. Required evidence: …”</strong></div>
+        <div className="vocabulary-gap" aria-hidden="true">≠</div>
+      </div>
+      <div className="mismatch-demo">
+        <div className="segmented" aria-label="Select mismatch strategy">
+          {([
+            ["literal", "Keyword"],
+            ["semantic", "Dense"],
+            ["rewrite", "Rewrite"],
+          ] as const).map(([value, label]) => (
+            <button
+              aria-pressed={approach === value}
+              className={approach === value ? "active" : ""}
+              key={value}
+              onClick={() => setApproach(value)}
+              type="button"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className={`mismatch-result ${result[2]}`}>
+          <strong>{result[0]}</strong>
+          <p>{result[1]}</p>
+        </div>
+        <small>Vocabulary mismatch is a retrieval problem, not a generation problem.</small>
+      </div>
+    </div>
+  );
+}
+
 function RerankVisual() {
   return (
     <div className="rerank-flow">
@@ -204,7 +405,9 @@ function RerankVisual() {
 function RetrievalLab() {
   const [topK, setTopK] = useState(1);
   const selected = retrievalDocs.slice(0, topK);
-  const hasAnswer = selected.some((doc) => doc.relevant);
+  const hasDueDate = selected.some((doc) => doc.id === "D2");
+  const hasRequirements = selected.some((doc) => doc.id === "D3");
+  const hasCompleteEvidence = hasDueDate && hasRequirements;
 
   return (
     <div className="lab">
@@ -228,8 +431,14 @@ function RetrievalLab() {
         </div>
       </div>
       <p className="query">
-        <span>Query</span> When is the AAB evidence brief due, and what must it include?
+        <span>Query</span> When is the research evidence brief due, and what must it include?
       </p>
+      <div className="retrieval-controls" aria-label="Metadata filters applied before search">
+        <span>course = CPSC 481</span>
+        <span>term = current</span>
+        <span>access = student</span>
+        <small>Filter first, then rank the permitted subset.</small>
+      </div>
       <div className="retrieval-results">
         {selected.map((doc) => (
           <article className={doc.relevant ? "result relevant" : "result"} key={doc.id}>
@@ -241,13 +450,13 @@ function RetrievalLab() {
           </article>
         ))}
       </div>
-      <div className={`lab-verdict ${hasAnswer ? "success" : "warning"}`} aria-live="polite">
-        <strong>{hasAnswer ? "Enough evidence to answer" : "Retrieval failure"}</strong>
+      <div className={`lab-verdict ${hasCompleteEvidence ? "success" : "warning"}`} aria-live="polite">
+        <strong>{hasCompleteEvidence ? "Enough evidence to answer" : hasDueDate ? "Partial evidence only" : "Retrieval failure"}</strong>
         <span>
-          {hasAnswer
-            ? topK === 2
+          {hasCompleteEvidence
+            ? "The generator now has both the due week and required elements."
+            : hasDueDate
               ? "The due week is available, but the required elements are still missing."
-              : "The generator now has both the due week and required elements."
             : "The highest-scoring chunk is topically related but does not answer the question."}
         </span>
       </div>
@@ -284,6 +493,7 @@ export function RagDeck() {
     () => [
       {
         eyebrow: "Week 11 · Meeting 21",
+        minutes: 2,
         title: "RAG Foundations",
         subtitle: "Retrieval-Augmented Generation as an evidence pipeline",
         content: (
@@ -321,14 +531,15 @@ export function RagDeck() {
       },
       {
         eyebrow: "Learning objectives",
+        minutes: 1,
         title: "By the end of class, you can…",
         content: (
           <div className="objective-grid">
             {[
               ["01", "Trace", "a question through the complete RAG pipeline."],
-              ["02", "Compare", "sparse, dense, and hybrid retrieval."],
-              ["03", "Diagnose", "whether a failure began in retrieval or generation."],
-              ["04", "Design", "a small evaluation set before tuning the system."],
+              ["02", "Explain", "parsing, chunking, embeddings, and vector search."],
+              ["03", "Control", "retrieval with top-k, filters, and metadata."],
+              ["04", "Diagnose", "the earliest broken stage from observable evidence."],
             ].map(([number, verb, detail]) => (
               <article className="objective-card" key={number}>
                 <span>{number}</span>
@@ -339,10 +550,11 @@ export function RagDeck() {
           </div>
         ),
         note:
-          "Have students select the objective they expect to be hardest. Revisit that response during the exit ticket.",
+          "Ask students to point to the objective they expect to be hardest. The 75-minute plan reserves the longest block for guided system design.",
       },
       {
         eyebrow: "The problem",
+        minutes: 3,
         title: "A fluent answer is not necessarily an informed answer",
         content: (
           <div className="split">
@@ -378,6 +590,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "Architecture choice",
+        minutes: 3,
         title: "RAG is one tool—not the answer to every problem",
         subtitle: "Choose the mechanism that matches what must change",
         content: <StrategyCompare />,
@@ -386,6 +599,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "System view",
+        minutes: 3,
         title: "RAG is a pipeline, not a single model",
         content: (
           <div className="pipeline-slide">
@@ -413,8 +627,9 @@ export function RagDeck() {
           "Walk left to right. Ask which stages require an LLM. Retrieval can use learned encoders, but the pipeline is not simply 'ask one LLM twice.'",
       },
       {
-        eyebrow: "Corpus design",
-        title: "The knowledge base is a governed product",
+        eyebrow: "Worked example · 1 of 3",
+        minutes: 3,
+        title: "Build a governed course-policy corpus",
         content: (
           <div className="media-split">
             <figure className="photo-card">
@@ -442,10 +657,11 @@ export function RagDeck() {
           </div>
         ),
         note:
-          "Connect the physical infrastructure photo to the logical corpus. RAG quality starts with document ownership, update policy, identity, and permissions—not with vector search.",
+          "Introduce the worked example used through the lesson: a course-policy assistant built from the syllabus and assignment pages. RAG quality starts with document ownership, update policy, identity, and permissions—not with vector search.",
       },
       {
         eyebrow: "Ingestion",
+        minutes: 3,
         title: "Before retrieval: make evidence retrievable",
         content: (
           <div className="ingestion-grid">
@@ -488,7 +704,53 @@ export function RagDeck() {
           "Explain why chunk size is not a universal constant. Code, policy documents, FAQs, and scientific papers each have different semantic boundaries.",
       },
       {
+        eyebrow: "Document parsing",
+        minutes: 3,
+        title: "A PDF is a layout—not a clean text stream",
+        subtitle: "Retrieval begins with reading order, structure, and provenance",
+        content: <ParsingVisual />,
+        note:
+          "Toggle raw text and structure-aware parsing. Ask students why a visually correct PDF can yield scrambled text. Name common hazards: two columns, repeated headers, scanned pages requiring OCR, tables, equations, and code blocks.",
+      },
+      {
+        eyebrow: "Structure-aware chunking",
+        minutes: 4,
+        title: "Chunk around meaning, not just a token count",
+        content: (
+          <div className="chunk-principles">
+            <div className="section-document">
+              <div className="section-title">Research Evidence Brief</div>
+              <div className="section-block identity"><span>metadata</span><b>course · term · page · section · access</b></div>
+              <div className="section-block"><span>deadline</span><b>Week 13 · Canvas</b></div>
+              <div className="section-block complete"><span>requirements</span><b>source trace · methods · findings · limitations</b></div>
+              <div className="section-block"><span>rubric</span><b>evidence quality · claim discipline</b></div>
+            </div>
+            <div className="chunk-rules">
+              {[
+                ["Respect boundaries", "Keep a heading with the paragraphs, table, or code it governs."],
+                ["Carry identity", "Attach document ID, section path, version, page, and access metadata."],
+                ["Test complete questions", "A useful chunk should preserve enough context to answer a target question."],
+                ["Tune by evidence", "Measure retrieval on representative questions; do not copy a universal chunk size."],
+              ].map(([label, text], index) => (
+                <article key={label}><span>{index + 1}</span><div><strong>{label}</strong><p>{text}</p></div></article>
+              ))}
+            </div>
+          </div>
+        ),
+        note:
+          "Contrast fixed windows with document-aware splitters. A token limit remains necessary, but headings, paragraph groups, tables, and code boundaries should guide the first cut.",
+      },
+      {
+        eyebrow: "Interactive checkpoint",
+        minutes: 4,
+        title: "Chunk size and overlap trade precision for continuity",
+        content: <ChunkingLab />,
+        note:
+          "Have students predict the result before toggling each control. Smaller chunks are focused but may fragment an answer. Larger chunks preserve context but add noise. Overlap can repair boundaries while increasing duplication, cost, and repeated evidence.",
+      },
+      {
         eyebrow: "Representation",
+        minutes: 3,
         title: "Embeddings turn meaning into a neighborhood",
         content: (
           <div className="embedding-layout">
@@ -513,6 +775,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "Retrieval",
+        minutes: 3,
         title: "Three ways to find evidence",
         content: (
           <div className="retriever-grid">
@@ -544,6 +807,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "Vector search",
+        minutes: 3,
         title: "Similarity creates a ranking—not a truth score",
         content: (
           <div className="similarity-layout">
@@ -564,14 +828,32 @@ export function RagDeck() {
           "Stress that 0.88 is not 88 percent relevant. Similarity scores are useful for ordering candidates and must be calibrated empirically for the specific application.",
       },
       {
-        eyebrow: "Interactive checkpoint",
-        title: "Retrieval quality constrains answer quality",
-        content: <RetrievalLab />,
+        eyebrow: "Vector index",
+        minutes: 3,
+        title: "Search the neighborhood without scanning the corpus",
+        content: <VectorIndexVisual />,
         note:
-          "Start at k=1. Ask students to predict whether the generator can answer before changing k. Then discuss the precision-recall tradeoff and why more context can also introduce distractors.",
+          "Keep index internals conceptual: vectors and metadata are stored behind stable chunk IDs, approximate search visits promising neighborhoods, and returned IDs resolve to readable evidence. HNSW details belong in an advanced systems course.",
       },
       {
-        eyebrow: "Second-stage retrieval",
+        eyebrow: "Worked example · 2 of 3",
+        minutes: 4,
+        title: "Top-k decides which evidence reaches the model",
+        content: <RetrievalLab />,
+        note:
+          "Start at k=1. Ask students to predict whether the generator can answer before changing k. Then discuss the precision-recall tradeoff. Metadata filters such as course, term, and access should run before prompt assembly; top-k is not a substitute for authorization.",
+      },
+      {
+        eyebrow: "Query–document mismatch",
+        minutes: 4,
+        title: "Users and documents often describe the same idea differently",
+        content: <MismatchVisual />,
+        note:
+          "Toggle keyword, dense, and rewritten queries. Ask which approach helps a course number such as CPSC 481 and which helps a paraphrase such as turn in versus submission. Hybrid retrieval and reranking are previewed next and developed in Meeting 22.",
+      },
+      {
+        eyebrow: "Meeting 22 preview",
+        minutes: 1,
         title: "Retrieve wide, then spend effort on the shortlist",
         content: (
           <div className="rerank-layout">
@@ -593,7 +875,8 @@ export function RagDeck() {
           "This is a conceptual preview, not a deep implementation lecture. Ask what could go wrong if access-control filtering happens after generation rather than before retrieval.",
       },
       {
-        eyebrow: "Generation",
+        eyebrow: "Worked example · 3 of 3",
+        minutes: 3,
         title: "The prompt is a controlled evidence package",
         content: (
           <div className="prompt-layout">
@@ -632,13 +915,14 @@ export function RagDeck() {
       },
       {
         eyebrow: "Grounding and attribution",
+        minutes: 3,
         title: "A citation is useful only when the claim resolves to evidence",
         content: (
           <div className="citation-layout">
             <div className="claim-card">
               <span className="micro-label">Generated answer</span>
               <p>
-                The AAB evidence brief is due in <mark>Week 13</mark> and must include
+                The research evidence brief is due in <mark>Week 13</mark> and must include
                 a <mark>source trace</mark> and <mark>limitations</mark>.
               </p>
               <div className="claim-links">
@@ -662,7 +946,8 @@ export function RagDeck() {
           "Distinguish a decorative citation from verified attribution. Applications should map stable document IDs to visible source locations and check that the cited passage entails the nearby claim.",
       },
       {
-        eyebrow: "Evaluation",
+        eyebrow: "Quality boundary",
+        minutes: 3,
         title: "Evaluate the retriever and generator separately",
         content: (
           <div className="evaluation-layout">
@@ -693,16 +978,17 @@ export function RagDeck() {
               />
             </div>
             <Callout title="Start with a small human-reviewed evaluation set" tone="gold">
-              Include answerable, unanswerable, ambiguous, multi-hop, and adversarial questions.
-              Automated judges accelerate iteration; they do not replace calibrated human review.
+              Include answerable, unanswerable, ambiguous, and paraphrased questions.
+              Meeting 22 develops hybrid retrieval, reranking, citation checks, and evaluation.
             </Callout>
           </div>
         ),
         note:
-          "Connect to ML evaluation: tune on a development set and preserve a held-out test set. A single demo question is not evidence of system quality.",
+          "Keep this as a boundary-setting preview. Students need only distinguish retrieval coverage from answer faithfulness today. Meeting 22 develops the metrics and experimental design.",
       },
       {
         eyebrow: "Failure analysis",
+        minutes: 3,
         title: "Debug the earliest broken stage",
         content: (
           <div className="failure-table" role="table" aria-label="RAG failures and interventions">
@@ -735,6 +1021,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "Security and trust",
+        minutes: 3,
         title: "Retrieved text is untrusted input",
         content: (
           <div className="security-layout">
@@ -764,12 +1051,13 @@ export function RagDeck() {
           "Introduce indirect prompt injection: a document can contain instructions aimed at the model. RAG expands the attack surface because external text crosses a trust boundary.",
       },
       {
-        eyebrow: "Design studio",
+        eyebrow: "Guided practice",
+        minutes: 6,
         title: "A minimum viable RAG experiment",
         content: (
           <div className="studio-layout">
             <div className="studio-brief">
-              <span className="micro-label">12-minute pair activity</span>
+              <span className="micro-label">6-minute pair activity</span>
               <h3>Design a course-policy assistant</h3>
               <p>
                 It answers questions from the CPSC 481 syllabus and assignment
@@ -791,10 +1079,11 @@ export function RagDeck() {
           </div>
         ),
         note:
-          "Collect one design decision from three pairs. Look for teams that start with a vector database rather than a task definition and evaluation set; redirect them.",
+          "Pairs get four minutes to complete the design and two minutes for rapid share-out. Look for teams that start with a vector database rather than a task definition, governed corpus, and test questions; redirect them.",
       },
       {
         eyebrow: "Synthesis",
+        minutes: 2,
         title: "RAG adds evidence—not certainty",
         content: (
           <div className="summary-layout">
@@ -823,6 +1112,7 @@ export function RagDeck() {
       },
       {
         eyebrow: "Sources and next class",
+        minutes: 2,
         title: "Continue from foundations to RAG quality",
         content: (
           <div className="references-layout">
@@ -872,13 +1162,14 @@ export function RagDeck() {
   );
 
   const total = slides.length;
+  const plannedMinutes = slides.reduce((sum, item) => sum + item.minutes, 0);
 
-  const goTo = (index: number) => {
+  const goTo = useCallback((index: number) => {
     const bounded = Math.max(0, Math.min(total - 1, index));
     setCurrent(bounded);
     setOverviewOpen(false);
     window.history.replaceState(null, "", `#slide-${bounded + 1}`);
-  };
+  }, [total]);
 
   useEffect(() => {
     const match = window.location.hash.match(/slide-(\d+)/);
@@ -921,7 +1212,7 @@ export function RagDeck() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [current, total]);
+  }, [current, goTo, total]);
 
   const handleTouchStart = (event: TouchEvent) => {
     setTouchStart(event.touches[0]?.clientX ?? null);
@@ -977,7 +1268,10 @@ export function RagDeck() {
         key={current}
       >
         <div className="slide-heading">
-          <span className="eyebrow">{slide.eyebrow}</span>
+          <div className="heading-meta">
+            <span className="eyebrow">{slide.eyebrow}</span>
+            <span className="timing-chip">{slide.minutes} min</span>
+          </div>
           <h1>{slide.title}</h1>
           {slide.subtitle && <p>{slide.subtitle}</p>}
         </div>
@@ -1007,7 +1301,7 @@ export function RagDeck() {
         </button>
         <div className="progress-wrap">
           <div className="progress-meta">
-            <span>RAG Foundations</span>
+            <span>RAG Foundations · {plannedMinutes}-minute plan</span>
             <span>{current + 1} / {total}</span>
           </div>
           <div
@@ -1053,7 +1347,7 @@ export function RagDeck() {
                 >
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div>
-                    <small>{item.eyebrow}</small>
+                    <small>{item.eyebrow} · {item.minutes} min</small>
                     <strong>{item.title}</strong>
                   </div>
                 </button>

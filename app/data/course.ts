@@ -161,7 +161,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L11_stochasticmethods - Part A.pptx slides 35–44", "L12_StochasticMethods - Part B.pptx slides 3–11", "Bayesian-network supplement grounded in Russell and Norvig, 3e, Chapters 13–14", "Revised Week 5 schedule"],
   },
   {
-    id: 11, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "planned",
+    id: 11, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "custom",
     title: "Markov Decision Processes, Policies, and Value Iteration",
     question: "How does an agent plan when actions have uncertain long-term consequences?",
     knowledgePoints: [
@@ -174,7 +174,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L12_StochasticMethods - Part B.pptx Markov-model foundations", "Revised Week 6 schedule"],
   },
   {
-    id: 12, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "planned",
+    id: 12, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "custom",
     title: "Reinforcement Learning, Q-Learning, and Exploration",
     question: "How can an agent improve from consequences without a labeled answer for each action?",
     knowledgePoints: [
@@ -187,7 +187,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L10_MachineLearning Part B.pptx reinforcement-learning introduction", "Revised Week 6 schedule"],
   },
   {
-    id: 13, week: 7, module: "Machine Learning Foundations", deck: "planned",
+    id: 13, week: 7, module: "Machine Learning Foundations", deck: "custom",
     title: "The Machine-Learning Workflow: Data, Baselines, and Splits",
     question: "What makes a machine-learning result credible rather than merely impressive?",
     knowledgePoints: [
@@ -200,7 +200,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L09_MachineLearning Part A.pptx slides 2–11 and 37–39", "Revised Week 7 schedule"],
   },
   {
-    id: 14, week: 7, module: "Machine Learning Foundations", deck: "planned",
+    id: 14, week: 7, module: "Machine Learning Foundations", deck: "custom",
     title: "Classification, Regression, Overfitting, and Metrics",
     question: "How do we know whether a learned model will work for the people and cases that matter?",
     knowledgePoints: [
@@ -213,7 +213,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L09_MachineLearning Part A.pptx decision trees and supervised learning", "Revised Week 7 schedule"],
   },
   {
-    id: 15, week: 8, module: "Applied Machine Learning", deck: "planned",
+    id: 15, week: 8, module: "Applied Machine Learning", deck: "custom",
     title: "Pipelines, Cross-Validation, and Error Analysis Lab",
     question: "How can an experiment reveal why a model fails—not just how often?",
     knowledgePoints: [
@@ -226,7 +226,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L09_MachineLearning Part A.pptx decision-tree evaluation", "Revised Week 8 schedule"],
   },
   {
-    id: 16, week: 8, module: "Applied Machine Learning", deck: "planned",
+    id: 16, week: 8, module: "Applied Machine Learning", deck: "custom",
     title: "Midterm Examination",
     question: "Can you connect agent design, search, uncertainty, and learning under time constraints?",
     knowledgePoints: [
@@ -239,7 +239,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 8 schedule"],
   },
   {
-    id: 17, week: 9, module: "Neural Networks", deck: "planned",
+    id: 17, week: 9, module: "Neural Networks", deck: "custom",
     title: "Perceptrons, Activations, Loss, and Gradient Descent",
     question: "How does a neural network turn numerical error into improved predictions?",
     knowledgePoints: [
@@ -252,7 +252,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L10_MachineLearning Part B.pptx slides 6–18", "Revised Week 9 schedule"],
   },
   {
-    id: 18, week: 9, module: "Neural Networks", deck: "planned",
+    id: 18, week: 9, module: "Neural Networks", deck: "custom",
     title: "Backpropagation and a PyTorch Training Lab",
     question: "What exactly happens between a tensor entering a model and a trained model leaving the loop?",
     knowledgePoints: [
@@ -265,7 +265,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["L10_MachineLearning Part B.pptx backpropagation material", "Revised Week 9 schedule"],
   },
   {
-    id: 19, week: 10, module: "Transformers and Large Language Models", deck: "planned",
+    id: 19, week: 10, module: "Transformers and Large Language Models", deck: "custom",
     title: "Tokens, Embeddings, Attention, and Transformer Architecture",
     question: "How does a transformer represent context and move information among tokens?",
     knowledgePoints: [
@@ -278,7 +278,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 10 schedule", "Contemporary transformer readings"],
   },
   {
-    id: 20, week: 10, module: "Transformers and Large Language Models", deck: "planned",
+    id: 20, week: 10, module: "Transformers and Large Language Models", deck: "custom",
     title: "LLM Training, Structured Outputs, Hallucination, and Verification",
     question: "What can an LLM output justify, and what must an application verify?",
     knowledgePoints: [
@@ -317,7 +317,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Existing Meeting 22 RAG Quality site", "Revised Week 11 schedule"],
   },
   {
-    id: 23, week: 12, module: "Tool-Using AI and Agent Harnesses", deck: "planned",
+    id: 23, week: 12, module: "Tool-Using AI and Agent Harnesses", deck: "custom",
     title: "Structured Tool Calls, Agent Loops, and MCP Concepts",
     question: "What changes when a model can take actions instead of only generating text?",
     knowledgePoints: [
@@ -330,7 +330,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 12 schedule", "Official protocol documentation"],
   },
   {
-    id: 24, week: 12, module: "Tool-Using AI and Agent Harnesses", deck: "planned",
+    id: 24, week: 12, module: "Tool-Using AI and Agent Harnesses", deck: "custom",
     title: "Harness Fundamentals: State, Permissions, Approval, Logging, and Evaluation",
     question: "What must surround an AI model before it can act responsibly in a real system?",
     knowledgePoints: [
@@ -343,7 +343,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 12 schedule", "Contemporary agent-system practices"],
   },
   {
-    id: 25, week: 13, module: "AI Literacy and AAB Evidence", deck: "planned",
+    id: 25, week: 13, module: "AI Literacy and AAB Evidence", deck: "custom",
     title: "AAB Evidence Practicum: Finding and Reviewing Research",
     question: "How can a research paper become cautious, traceable case evidence without overstating its results?",
     knowledgePoints: [
@@ -356,7 +356,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 13 schedule", "AAB Research Evidence Brief assignment"],
   },
   {
-    id: 26, week: 13, module: "AI Literacy and AAB Evidence", deck: "planned",
+    id: 26, week: 13, module: "AI Literacy and AAB Evidence", deck: "custom",
     title: "Explaining AI to Nontechnical Audiences Age Five and Older",
     question: "How can a technically accurate idea become understandable without becoming misleading?",
     knowledgePoints: [
@@ -369,7 +369,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 13 schedule", "AAB Explain AI assignment"],
   },
   {
-    id: 27, week: 14, module: "Capstone Engineering", deck: "planned",
+    id: 27, week: 14, module: "Capstone Engineering", deck: "custom",
     title: "Baselines, Evaluation Sets, Testing, and System Cards",
     question: "What evidence should accompany an AI system before anyone relies on it?",
     knowledgePoints: [
@@ -382,7 +382,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 14 schedule"],
   },
   {
-    id: 28, week: 14, module: "Capstone Engineering", deck: "planned",
+    id: 28, week: 14, module: "Capstone Engineering", deck: "custom",
     title: "Project Studio: Peer Testing, Red-Teaming, and Revision",
     question: "Which failure discovered today should change the system before demonstration?",
     knowledgePoints: [
@@ -395,7 +395,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 14 schedule"],
   },
   {
-    id: 29, week: 15, module: "Demonstration and Synthesis", deck: "planned",
+    id: 29, week: 15, module: "Demonstration and Synthesis", deck: "custom",
     title: "Capstone Demonstrations and Individual Technical Defense",
     question: "Can the team demonstrate both what the system does and why its evidence should be trusted?",
     knowledgePoints: [
@@ -408,7 +408,7 @@ export const meetings: MeetingPlan[] = [
     sourceTrace: ["Revised Week 15 schedule"],
   },
   {
-    id: 30, week: 15, module: "Demonstration and Synthesis", deck: "planned",
+    id: 30, week: 15, module: "Demonstration and Synthesis", deck: "custom",
     title: "Course Synthesis and Final Review",
     question: "How do representation, search, uncertainty, learning, and evidence connect across modern AI systems?",
     knowledgePoints: [

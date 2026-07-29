@@ -151,6 +151,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Week 1 · Meeting 1",
     title: "Artificial Intelligence",
+    minutes: 2,
     subtitle: "Applications, history, intelligence, and definitions",
     content: <div className="source-hero"><div><p>What is Artificial Intelligence?</p><span>CPSC 481 · Introduction to Artificial Intelligence</span></div><ConceptImage alt="A connected landscape of AI systems" name="ai-systems" /></div>,
     note: "Open with the central course question. Ask students for one system they consider intelligent and one reason. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Ch. 1.",
@@ -159,6 +160,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Course orientation",
     title: "Introduction and syllabus",
+    minutes: 5,
     content: <div className="orientation-layout"><div><h3>Today</h3><ul><li>Waitlist, roster, and introductions</li><li>Syllabus and course overview</li></ul><SourceCallout title="Introduce yourself">Name, preferred name, one AI system you have used, and one question you have about it.</SourceCallout></div><aside><span>Related courses</span><p>CPSC 483 · Introduction to Machine Learning</p><p>CPSC 485 · Computational Bioinformatics</p><p>CPSC 583 · Expert System Design</p><p>CPSC 585 · Artificial Neural Network</p></aside></div>,
     note: "Complete required enrollment and syllabus items, then use introductions as a first inventory of AI conceptions. [Sources] CPSC course orientation materials.",
     sourceSlides: [2],
@@ -166,6 +168,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 1 · “State of the Art Applications” · 2020 snapshot",
     title: "AI acts in games, mobility, security, and robots",
+    minutes: 2,
     content: <ApplicationGrid items={[
       ["Board games", "AlphaGo and AlphaZero", "history-alphago"],
       ["Autonomous cars", "Google Waymo; Tesla Autopilot; Audi summon feature; etc.", "taxi-environment"],
@@ -178,6 +181,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 1 · “State of the Art Applications” · 2020 snapshot",
     title: "AI also works through language, environments, expertise, and play",
+    minutes: 2,
     content: <ApplicationGrid items={[
       ["Natural language processing", "Voice assistants: Google Duplex; Amazon Alexa; Apple Siri; etc.", "communication"],
       ["Internet of Things (IoT)", "Amazon cashierless store", "environment"],
@@ -190,6 +194,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Applications · in-class practice",
     title: "An application name does not explain where the intelligence is",
+    minutes: 5,
     content: <div className="source-practice-grid"><ConceptImage alt="Students decomposing an AI system" name="guided-practice" /><div><h3>Choose one application from the previous two pages.</h3><ol><li>What task is being performed?</li><li>What information enters the system?</li><li>What action or prediction leaves it?</li><li>Which intelligent capability is required?</li><li>What evidence would demonstrate success?</li></ol><SourceCallout title="Share-out rule">Name the mechanism or capability—not only the product.</SourceCallout></div></div>,
     note: "Pairs analyze for two minutes; cold-call one pair for each prompt. This prepares students to distinguish products, models, and agent behavior.",
     sourceSlides: [3],
@@ -197,6 +202,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 2 · History",
     title: "Chess, language, learning, and the imitation game shaped the early agenda",
+    minutes: 3,
     content: <div className="source-timeline illustrated">
       <article><ConceptImage alt="Early computer chess as a search problem" name="history-deep-blue" /><span>1950</span><h3>Claude Shannon</h3><p>“Programming a Computer for Playing Chess” is the first published article on developing a chess-playing computer program.</p></article>
       <article><ConceptImage alt="Alan Turing and the imitation game" name="history-turing" /><span>1950</span><h3>Alan Turing</h3><p>“Computing Machinery and Intelligence” proposes the “imitation game,” later known as the Turing Test.</p></article>
@@ -208,6 +214,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 2 · History",
     title: "Robotics and expert systems produced important—but bounded—successes",
+    minutes: 3,
     content: <div className="source-timeline illustrated">
       <article><ConceptImage alt="An anthropomorphic robot integrating control, vision, and conversation" name="agent-architecture" /><span>1970</span><h3>WABOT-1</h3><p>The first anthropomorphic robot at Waseda University: limb-control, vision, and conversation systems.</p></article>
       <article><ConceptImage alt="A rule-based medical expert system" name="history-mycin" /><span>1972</span><h3>MYCIN</h3><p>An early Stanford expert system identified bacteria causing severe infections and recommended antibiotics.</p></article>
@@ -220,6 +227,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "History · current bridge",
     title: "New methods broadened capability without removing the old questions",
+    minutes: 2,
     content: <div className="source-comparison"><article><span>Earlier emphasis</span><h3>Symbols, search, rules, and explicit knowledge</h3><p>Programs were designed around formal representations and carefully specified domains.</p></article><i>+</i><article><span>Later emphasis</span><h3>Learning from data, large models, and deployed systems</h3><p>Statistical learning and foundation models expanded pattern recognition and generation.</p></article><SourceCallout title="Continuity">Representation, reasoning, learning, evaluation, and the meaning of intelligence remain central.</SourceCallout></div>,
     note: "This is a bridge, not a replacement history. Modern systems still face the foundational questions introduced in the historical sequence. [Sources] Russell & Norvig 3e, Ch. 1; course modernization.",
     sourceSlides: [3, 4],
@@ -227,6 +235,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Why AI is difficult",
     title: "Can a machine infer the intended concept?",
+    minutes: 5,
     subtitle: "Advance the sequence one image at a time",
     content: <OilPuzzle />,
     note: "Do not name the objects before the final reveal. Reveal peanut oil, coconut oil, and corn oil on separate clicks; then reveal the baby-oil bottle, baby photograph, and question marks together. Ask students to state how their hypothesis changed. [Sources] Course concept exercise.",
@@ -235,6 +244,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Why AI is difficult · debrief",
     title: "Words inherit meaning from context and world knowledge",
+    minutes: 3,
     content: <div className="oil-debrief"><div className="oil-debrief-images"><CourseImage alt="Peanut oil bottle" name="peanut-oil.png" /><CourseImage alt="Coconut oil jar" name="coconut-oil.png" /><CourseImage alt="Corn oil bottle" name="corn-oil.png" /><CourseImage alt="Baby oil bottle" name="baby-oil.png" /><CourseImage alt="Baby photograph" name="baby.png" /></div><div><h3>“Peanut oil” names oil derived from peanuts. “Baby oil” names oil intended for babies.</h3><p>The same grammatical form does not guarantee the same semantic relation.</p><ul><li>Recognition: identify each object.</li><li>Language: interpret a compound noun.</li><li>World knowledge: reject an implausible relation.</li><li>Context: choose the intended meaning.</li></ul></div></div>,
     note: "Connect the exercise to ambiguity, commonsense knowledge, semantic composition, and the limits of pattern matching. The exact objects are part of the knowledge point. [Sources] Course concept exercise.",
     sourceSlides: [5],
@@ -242,6 +252,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 4 · What is intelligence?",
     title: "Intelligence is a general mental capability",
+    minutes: 3,
     content: <div className="intelligence-overview"><div><strong>Intelligence</strong><p>is a general mental capability.</p><small>It is different from being merely “smart” in the sense of quickly adapting to the environment.</small></div><ul><li>learning</li><li>recognition and understanding</li><li>reasoning</li><li>imagination or abstract thinking</li><li>creativity</li><li>communication</li><li>planning</li><li>decision making</li><li>problem solving</li></ul></div>,
     note: "Keep the definition and all nine capabilities visible. Ask whether each capability is necessary, sufficient, or one contributor to intelligence. [Sources] Course definition; Luger 6e, Ch. 1.",
     sourceSlides: [6],
@@ -249,6 +260,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Intelligent capabilities · perceive and infer",
     title: "Learning, recognition, understanding, and reasoning turn experience into conclusions",
+    minutes: 3,
     content: <ApplicationGrid items={[
       ["Learning", "Change behavior or a model through data or experience.", "learning"],
       ["Recognition", "Identify a pattern, object, event, or category.", "perception"],
@@ -261,6 +273,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Intelligent capabilities · imagine and communicate",
     title: "Imagination, abstract thinking, creativity, and communication extend beyond recognition",
+    minutes: 3,
     content: <ApplicationGrid items={[
       ["Imagination", "Represent possibilities that are not currently perceived.", "predict"],
       ["Abstract thinking", "Retain relevant structure while ignoring incidental detail.", "model"],
@@ -273,6 +286,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Intelligent capabilities · choose and act",
     title: "Planning, decision making, and problem solving organize action",
+    minutes: 3,
     content: <ApplicationGrid className="three" items={[
       ["Planning", "Choose a sequence of future actions toward a goal.", "planning"],
       ["Decision making", "Select among alternatives under goals, costs, and uncertainty.", "decision"],
@@ -284,6 +298,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Intelligence · formative assessment",
     title: "A capability claim needs observable evidence",
+    minutes: 4,
     content: <QuickCheck question="A system labels a photograph correctly but cannot explain the object, use it, or recognize it from a new angle. Which claim is best supported?" options={["General intelligence", "Recognition on the tested examples", "Understanding", "Creative reasoning"]} correct={1} explanation="The evidence supports bounded recognition. Broader claims require transfer, explanation, use, and additional tests." />,
     note: "Ask students to name one additional test that would support understanding rather than recognition alone.",
     sourceSlides: [6],
@@ -291,6 +306,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 5 · Theories of intelligence",
     title: "One theory seeks a general factor; another separates kinds of ability",
+    minutes: 3,
     content: <TheoryColumns />,
     note: "Introduce single general intelligence, multiple intelligence, IQ, and EQ exactly as distinct theoretical perspectives—not settled engineering specifications. Source note preserved for evaluation: “Stephen Hawking: 280; Average: 90-110; >120 superior.” Do not present the Hawking number as fact; it is unsupported and should be used only as a source-verification example. [Sources] Course theory summary.",
     sourceSlides: [7],
@@ -298,6 +314,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Theories of intelligence · multiple intelligence",
     title: "Gardner proposed several forms of intelligence",
+    minutes: 3,
     content: <div className="multiple-intelligences"><div><span>logical</span><span>linguistic</span><span>spatial</span><span>musical</span><span>kinesthetic</span><span>interpersonal</span><span>intrapersonal</span><span>naturalist</span></div><aside><h3>Naturalist intelligence</h3><p>Sensing patterns and making connections to elements in nature.</p><h3>Emotional intelligence</h3><p>Associated with Daniel Goleman and others; often discussed using EQ.</p><SourceCallout title="Claim to evaluate">“Gardner’s theory has never been tested.” What would count as a fair test? The independence and measurement of the proposed intelligences remain contested.</SourceCallout></aside></div>,
     note: "Retain every named intelligence and the course's empirical caution. Frame the caution as a research question about independent measurement and predictive evidence. [Sources] Gardner; Goleman; course theory summary.",
     sourceSlides: [7],
@@ -305,6 +322,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 6 · Triarchic theory",
     title: "Sternberg connects analytical, creative, and practical intelligence",
+    minutes: 3,
     content: <TriarchicOverview />,
     note: "Use the tabs to preview the three parts before treating each one in depth. [Sources] Robert J. Sternberg's triarchic theory.",
     sourceSlides: [8],
@@ -312,6 +330,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Triarchic theory · analytical/componential",
     title: "Analytical intelligence takes problems apart",
+    minutes: 2,
     content: <div className="source-focus"><ConceptImage alt="A structured reasoning problem being decomposed" name="reasoning" /><div><span>“Book smart”</span><h3>Take apart problems and see solutions that are not often seen.</h3><p>The emphasis is on analysis, evaluation, comparison, and the components of problem solving.</p><SourceCallout title="Example">Given two search strategies, identify their assumptions and predict when each will fail.</SourceCallout></div></div>,
     note: "Ask for evidence that distinguishes analysis from memorized recall. [Sources] Sternberg triarchic theory; course definition.",
     sourceSlides: [8],
@@ -319,6 +338,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Triarchic theory · creative/experiential",
     title: "Creative intelligence combines novelty with automation",
+    minutes: 2,
     content: <div className="source-comparison"><article><span>Novelty</span><h3>A situation never experienced before</h3><p>The learner must construct or transfer a strategy rather than retrieve a routine.</p></article><i>+</i><article><span>Automation</span><h3>A process performed many times</h3><p>It can now be carried out with little or no extra thought.</p></article><SourceCallout title="Key relationship">How well a task is performed depends partly on how familiar the task is.</SourceCallout></div>,
     note: "Use a programming example: first recursive problem versus a practiced loop pattern. Preserve both novelty and automation. [Sources] Sternberg triarchic theory; course definition.",
     sourceSlides: [8],
@@ -326,6 +346,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Triarchic theory · practical/contextual",
     title: "Practical intelligence seeks a fit with context",
+    minutes: 2,
     content: <div className="source-focus"><ConceptImage alt="A person adapting a plan to a changing real-world context" name="adapt" /><div><span>“Street smarts”</span><h3>It “deals with the mental activity involved in attaining fit to context.”</h3><p>Practical performance requires reading a situation, adapting behavior, and acting under real constraints.</p><SourceCallout title="Example">A technically correct explanation fails if the audience cannot understand or use it.</SourceCallout></div></div>,
     note: "Connect practical intelligence to the course's AI-literacy goal: explain a technical idea to a nontechnical audience age 5 and up. [Sources] Sternberg triarchic theory; course definition.",
     sourceSlides: [8],
@@ -333,6 +354,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 7 · Other aspects of intelligence",
     title: "Intelligence may not be exclusively human",
+    minutes: 2,
     content: <div className="other-intelligence"><ConceptImage alt="Biological organisms and an artificial agent compared" name="compare" /><div><h3>Questions and influences</h3><ul><li>Animal or plant intelligence</li><li>Is human intelligence different from animal or plant intelligence?</li><li>Biological factors</li><li>Environmental factors</li><li>Evolution of intelligence</li></ul><SourceCallout title="Comparison rule">State the capability and evidence before deciding whether the same word “intelligence” applies.</SourceCallout></div></div>,
     note: "Do not resolve this as a vocabulary vote. Ask students to operationalize one capability across human, animal, plant, and machine cases. [Sources] Course questions on intelligence.",
     sourceSlides: [9],
@@ -340,6 +362,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Other aspects · open problems",
     title: "Many cognitive processes remain only partly understood",
+    minutes: 2,
     content: <div className="open-questions"><article><span>01</span><p>Exactly what happens when learning occurs?</p></article><article><span>02</span><p>How is knowledge represented in the nervous system—or brain?</p></article><article><span>03</span><p>What is intuition or skepticism?</p></article><article><span>04</span><p>What is self-awareness?</p></article><aside>These are scientific questions and design questions. An AI implementation may model a capability without settling how biological intelligence works.</aside></div>,
     note: "Preserve all open questions. Ask which can be studied through behavior, which require internal measurements, and which first need an operational definition. [Sources] Course questions on cognition.",
     sourceSlides: [9],
@@ -347,6 +370,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 8 · Definition of AI",
     title: "Artificial Intelligence is both an interdisciplinary idea and a field of study",
+    minutes: 4,
     content: <div className="definition-lesson"><div className="definition-stack"><article><span>Influences</span><p>AI has been shaped by philosophers, psychologists, mathematicians, computer scientists, and others.</p></article><article><span>Literal construction</span><p>“AI is Artificial Intelligence using computer.” In literal terms: <strong>artificially made intelligence.</strong></p></article><article><span>John McCarthy</span><p>“The science and engineering of making intelligent machines.”</p></article><article><span>Agent-centered definition</span><p>The study and design of intelligent agents—systems that perceive their environment and take actions that maximize their chances of success.</p></article></div><SourceCallout title="Rationality bridge">“Rationality: logical reasoning and measure of optimal or ideal decision.” For an agent, rationality means choosing the action expected to best satisfy its performance measure from available evidence and knowledge—not being omniscient.</SourceCallout></div>,
     note: "Keep every definition visible and compare what each emphasizes: origin, engineering, mechanism, behavior, environment, or success. [Sources] John McCarthy; Russell & Norvig 3e, Chs. 1–2; Luger 6e, Ch. 1.",
     sourceSlides: [10],
@@ -354,6 +378,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Meeting 1 · exit assessment",
     title: "Define AI without losing intelligence, mechanism, or evidence",
+    minutes: 4,
     content: <div className="source-exit"><div><span>Individual response · 4 minutes</span><h3>Choose one named AI application.</h3><ol><li>Define AI in one sentence.</li><li>Name two intelligent capabilities the system requires.</li><li>Give one piece of evidence for each capability.</li><li>Name one claim the evidence does <em>not</em> support.</li></ol></div><aside><h3>Prepare for Meeting 2</h3><p>The agent-centered definition introduces four questions:</p><p><strong>What does the system perceive? What can it do? What counts as success? What kind of environment constrains it?</strong></p><small>Reading: Russell & Norvig 3e, Chapter 2; Luger 6e, Chapter 1.</small></aside></div>,
     note: "Collect responses or use pair critique. Score definition, capability, evidence, and boundary from 0–2 each. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Chs. 1–2.",
     sourceSlides: [1, 10],

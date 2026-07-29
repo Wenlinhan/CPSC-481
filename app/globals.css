@@ -1000,6 +1000,24 @@
   margin-bottom: 0;
 }
 
+@media (min-width: 981px) and (max-width: 1100px) {
+  .heuristic-layout {
+    gap: 16px;
+  }
+
+  .heuristic-layout .search-quick-check {
+    gap: 12px;
+  }
+
+  .heuristic-layout .search-quick-check > section {
+    padding: 18px;
+  }
+
+  .heuristic-layout .search-quick-check > section h3 {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 980px) {
   .heuristic-layout-split,
   .heuristic-layout-image-lab,
@@ -7545,6 +7563,36 @@ kbd {
   }
 }
 
+@media (min-width: 761px) and (max-width: 1050px) {
+  .dartmouth-map {
+    gap: 10px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .dartmouth-map article {
+    grid-column: span 3;
+    min-height: 108px;
+    padding: 12px 14px;
+  }
+
+  .dartmouth-map article:nth-child(5),
+  .dartmouth-map article:nth-child(6),
+  .dartmouth-map article:nth-child(7),
+  .dartmouth-map article:last-child {
+    grid-column: span 4;
+    transform: none;
+  }
+
+  .turing-critique.all-points ol {
+    gap: 4px;
+    margin: 6px 0;
+  }
+
+  .turing-critique.all-points li {
+    padding: 6px 9px;
+  }
+}
+
 @media (max-width: 760px) {
   .source-reference-backdrop {
     padding: 10px;
@@ -9658,15 +9706,27 @@ kbd {
 
   .search-comparison-table,
   .evaluation-matrix {
-    overflow-x: auto;
+    align-content: start;
+    height: auto;
+    overflow-x: visible;
   }
 
   .search-comparison-table > div {
-    min-width: 700px;
+    grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1fr);
+    min-width: 0;
   }
 
   .evaluation-matrix > div {
-    min-width: 780px;
+    grid-template-columns: 68px repeat(3, minmax(0, 1fr));
+    min-width: 0;
+  }
+
+  .search-comparison-table > div > *,
+  .evaluation-matrix > div > * {
+    font-size: 10px;
+    min-height: 42px;
+    overflow-wrap: anywhere;
+    padding: 6px 5px;
   }
 
   .problem-solving-pipeline {

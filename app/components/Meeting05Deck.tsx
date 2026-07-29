@@ -1020,6 +1020,8 @@ export function HeuristicLocalSearchDeck() {
       meetingLabel="Week 3 · Meeting 5"
       meetingTitle="Heuristic Search and Local Search"
       slides={slides}
+      sourceCollectionLabel="L03_Heuristic, HillClimbing&SA.pptx"
+      sourceCollectionPath="l03-heuristic-local-search"
     />
   );
 }

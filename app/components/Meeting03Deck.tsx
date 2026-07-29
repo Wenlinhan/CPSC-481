@@ -9,6 +9,8 @@ import {
   SearchSourceImage,
 } from "./SearchLessonPrimitives";
 
+const MEETING_03_TIMING = [2, 2, 2, 3, 3, 2, 4, 2, 2, 2, 2, 3, 2, 3, 2, 3, 4, 3, 3, 3, 3, 3, 2, 2, 3, 6, 4] as const;
+
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Week 2 · Meeting 3",
@@ -554,6 +556,9 @@ export function StateSpaceFoundationsDeck() {
       meetingLabel="Week 2 · Meeting 3"
       meetingTitle="State-Space Search Foundations"
       slides={slides}
+      sourceCollectionLabel="L02_StateSpaceSearch.pptx"
+      sourceCollectionPath="l02-state-space"
+      timingPlan={MEETING_03_TIMING}
     />
   );
 }

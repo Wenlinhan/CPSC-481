@@ -1016,6 +1016,8 @@ export function Meeting06Deck() {
       meetingLabel="Week 3 · Meeting 6"
       meetingTitle="Best-First Search, A*, and Heuristic Quality"
       slides={slides}
+      sourceCollectionLabel="L04_BFS&AStar.pptx"
+      sourceCollectionPath="l04-best-first-astar"
     />
   );
 }

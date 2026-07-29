@@ -298,6 +298,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Week 1 · Meeting 2",
     title: "Intelligent Agents",
+    minutes: 2,
     subtitle: "Task environments, agent architectures, AI directions, and the Turing Test",
     content: <div className="source-hero"><div><p>Intelligence becomes an engineering problem when a system must perceive, choose, and act.</p><span>Today: define the agent, classify its world, and justify its design.</span></div><ConceptImage alt="An intelligent agent interacting with an environment" name="agent-loop" /></div>,
     note: "Open by asking students to identify the agent boundary in one familiar AI system. [Sources] Russell & Norvig 3e, Ch. 2; Luger 6e, Ch. 1.",
@@ -306,6 +307,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Learning objectives",
     title: "Move from a definition to a defensible agent design",
+    minutes: 2,
     content: <div className="source-objectives"><article><span>01</span><h3>Define</h3><p>Agent, percept, action, function, program, architecture, and rationality.</p></article><article><span>02</span><h3>Classify</h3><p>Seven properties of task environments and their design consequences.</p></article><article><span>03</span><h3>Compare</h3><p>Simple reflex, model-based, goal-based, and utility-based agents.</p></article><article><span>04</span><h3>Evaluate</h3><p>Weak/strong AI claims and the evidence provided by the Turing Test.</p></article></div>,
     note: "Use these objectives as the organizing questions for the meeting. Each section ends with classification or evaluation practice.",
     sourceSlides: [11, 12, 13, 15, 21, 22],
@@ -313,6 +315,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 1 · Agent definition",
     title: "An agent perceives an environment and acts upon it",
+    minutes: 3,
     content: <div className="agent-definition"><blockquote>An agent is anything that can be viewed as <strong>perceiving</strong> its environment through <strong>sensors</strong> and <strong>acting</strong> upon that environment through <strong>actuators</strong>.</blockquote><div><article><span>Human agent</span><p>Eyes, ears, and other organs serve as sensors; hands, legs, mouth, and other body parts serve as actuators.</p></article><article><span>Robotic agent</span><p>Cameras and infrared range finders serve as sensors; various motors serve as actuators.</p></article></div></div>,
     note: "Keep the complete definition visible. Ask students to mark the agent boundary, environment, sensors, and actuators in a chatbot and an autonomous car. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [11],
@@ -320,6 +323,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Agent definition · exact model",
     title: "Percepts flow in; actions flow out",
+    minutes: 2,
     content: <div className="source-figure-explain"><CourseImage alt="Agent environment diagram labeled environment, percepts, sensors, agent, actions, and actuators" name="agent-environment-loop.png" /><div><h3>Read every arrow and label</h3><ul><li>The environment produces <strong>percepts</strong>.</li><li>Sensors deliver percepts to the agent.</li><li>The agent selects an <strong>action</strong>.</li><li>Actuators affect the environment.</li></ul><div className="source-formula">f : P* → A</div><p>The agent function maps <strong>possible percept sequences (P*)</strong> to actions—not only the current percept.</p></div></div>,
     note: "The figure is knowledge-bearing; keep it uncropped and inspect every label. P* denotes possible percept sequences, not only the current percept. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [11],
@@ -327,20 +331,23 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Agent definition · implementation and rationality",
     title: "The function is abstract; the program runs on an architecture",
+    minutes: 2,
     content: <div className="architecture-equation"><div><span>Agent program</span><p>Implements the mapping from percept histories to actions.</p></div><b>+</b><div><span>Physical architecture</span><p>Provides the computational and embodied machinery on which the program runs.</p></div><b>=</b><div><span>Agent</span><p><strong>agent = architecture + program</strong></p></div><aside><strong>Rational-agent criterion</strong><p>For each possible percept sequence, select the action <strong>expected to maximize the performance measure</strong>, given the percept evidence and built-in knowledge.</p><small>Rational does not mean omniscient, always successful, or morally good.</small></aside></div>,
     note: "Distinguish agent function from agent program. Rationality depends on the performance measure, evidence from the percept sequence, prior knowledge, and available actions. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [11],
   },
   {
-    eyebrow: "Agents and task environments · worked laboratory",
+    eyebrow: "Textbook extension · PEAS and two-location vacuum world",
     title: "PEAS defines success; the agent function defines a response",
+    minutes: 4,
     content: <VacuumPeasLab />,
-    note: "Use the two-location vacuum world to connect the course plan to the source definition f : P* → A. Have students predict each action before revealing its rationale, then change one PEAS assumption and identify which actions would change. [Sources] Russell & Norvig 3e, Ch. 2; revised course plan.",
+    note: "This worked laboratory extends the historical agent-definition sequence with the textbook PEAS framework and two-location vacuum world. Connect it to f : P* → A, have students predict each action before revealing its rationale, then change one PEAS assumption and identify which actions would change. [Sources] Russell & Norvig 3e, Ch. 2; revised course plan.",
     sourceSlides: [11, 12, 13],
   },
   {
     eyebrow: "Knowledge point 2 · Task environments",
     title: "A task environment specifies the problem the agent must solve",
+    minutes: 2,
     content: <div className="task-environment-boundary"><section><ConceptImage alt="An agent, its task, and relevant external conditions" name="task-environment" /><h3>A task environment includes</h3><p>The external states, entities, events, information, and constraints relevant to choosing and evaluating the agent’s actions.</p></section><section><ConceptImage alt="An irrelevant object outside the task environment" name="not-task-environment" /><h3>It does not automatically include</h3><p>Every fact about the universe, the agent’s source code, or details that cannot affect its percepts, choices, or performance.</p></section><SourceCallout title="Diagnostic question">Could changing this feature alter what the agent perceives, should do, or how success is measured?</SourceCallout></div>,
     note: "Examples: a chessboard position is part of the chess task environment; the color of the table usually is not. Task relevance depends on the stated performance measure. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [12, 13],
@@ -348,6 +355,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment property 1",
     title: "Fully observable vs. partially observable",
+    minutes: 2,
     content: <Dimension left="Fully observable" right="Partially observable" leftDefinition="Sensors detect all aspects of the environment relevant to choosing an action." rightDefinition="Relevant information is missing, noisy, inaccurate, or impossible to measure." details={<>With other agents, their actions may be observable while their intentions remain hidden.</>} leftExample="Chess board state" rightExample="Driving among people" leftVisual="fully-observable" rightVisual="partially-observable" />,
     note: "Observability is relative to the agent’s sensors and the information required for action—not to whether a human observer knows everything. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [12],
@@ -355,6 +363,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment property 2",
     title: "Deterministic vs. stochastic",
+    minutes: 2,
     content: <Dimension left="Deterministic" right="Stochastic" leftDefinition="The current state and executed action completely determine the next state." rightDefinition="The next state has uncertainty associated with it." details={<>Uncertainty may come from randomness, an inadequate environment model, or incomplete sensor coverage.</>} leftExample="A legal chess move" rightExample="A kick in a soccer match" leftVisual="deterministic" rightVisual="stochastic" />,
     note: "Do not equate stochastic only with randomness; uncertainty can also reflect incomplete models and sensing. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [12],
@@ -362,6 +371,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment property 3",
     title: "Episodic vs. sequential",
+    minutes: 2,
     content: <Dimension left="Episodic" right="Sequential" leftDefinition="Experience is divided into atomic episodes; the next episode does not depend on prior actions." rightDefinition="Current decisions affect future decisions or rely on earlier decisions." details={<>An expert-advice system can be episodic when one episode is a single question and answer.</>} leftExample="Independent item classification" rightExample="A soccer match" leftVisual="episodic" rightVisual="sequential" />,
     note: "Ask whether a spam filter is episodic if its later model updates depend on earlier labels. The answer changes with the system boundary. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [12],
@@ -369,6 +379,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment property 4",
     title: "Static vs. dynamic",
+    minutes: 2,
     content: <Dimension left="Static" right="Dynamic" leftDefinition="Nothing other than the agent changes while it is deciding." rightDefinition="The environment may change while the agent is deciding." details={<>Other agents make an environment dynamic. The agent moving to another location does not by itself make the environment dynamic, although it can create a similar design effect.</>} leftExample="Crossword puzzle on paper" rightExample="Taxi driving" leftVisual="static" rightVisual="dynamic" />,
     note: "Keep the important nuance about agent motion versus independent environmental change. A clock can also make an otherwise static task semidynamic. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [13],
@@ -376,6 +387,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment property 5",
     title: "Discrete vs. continuous",
+    minutes: 2,
     content: <Dimension left="Discrete" right="Continuous" leftDefinition="Time or state advances in fixed steps, often with one measurement and perhaps one action per step." rightDefinition="Signals arrive continually and actions or states vary over continuous ranges." details={<>Chess is discrete. Taxi driving is continuous: position, speed, steering angle, and sensor signals vary continuously.</>} leftExample="Chess" rightExample="Taxi driving" leftVisual="discrete" rightVisual="continuous" />,
     note: "A task may mix discrete decisions with continuous perception and control. Require students to state which variable they are classifying. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [13],
@@ -383,6 +395,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task-environment properties 6 and 7",
     title: "Known vs. unknown; single-agent vs. multi-agent",
+    minutes: 2,
     content: <div className="paired-dimensions-lesson"><div className="paired-dimensions"><article><ConceptImage alt="A known task environment with given outcomes" name="known" /><span>Known</span><p>Outcomes for all actions are given.</p></article><article><ConceptImage alt="An unknown environment being learned" name="unknown" /><span>Unknown</span><p>The agent must learn how the environment works.</p></article><article><ConceptImage alt="One agent operating alone" name="single-agent" /><span>Single-agent</span><p>Only one agent’s decisions determine performance.</p></article><article><ConceptImage alt="Several agents interacting" name="multi-agent" /><span>Multi-agent</span><p>Other agents cooperate, compete, or otherwise alter outcomes.</p></article></div><SourceCallout title="Do not confuse two dimensions">A card game can be <b>known</b> because its rules are given and still <b>partially observable</b> because an opponent’s cards are hidden.</SourceCallout></div>,
     note: "Known concerns the action model, not observability. An environment can be fully observable yet unknown. Multi-agent classification depends on whether other entities should be modeled as agents. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [13],
@@ -390,6 +403,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task environments · worked example",
     title: "Classify a single soccer game",
+    minutes: 4,
     content: <SoccerReveal />,
     note: "Reveal all seven source classifications one at a time: partially observable, stochastic, sequential, dynamic, continuous, unknown, and multi-agent. Require a reason for each. [Sources] Course soccer example.",
     sourceSlides: [14],
@@ -397,6 +411,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Task environments · in-class practice",
     title: "The classification depends on stated assumptions",
+    minutes: 3,
     content: <EnvironmentPractice />,
     note: "Groups classify one scenario, then compare with another group. Differences are acceptable when the assumed boundary or performance measure differs and the reasoning is explicit.",
     sourceSlides: [12, 13, 14],
@@ -404,6 +419,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Simple reflex agent",
     title: "A simple reflex agent acts on the current percept",
+    minutes: 2,
     content: <div className="architecture-slide"><CourseImage alt="Simple reflex agent architecture with condition-action rules" name="agent-simple-reflex.png" /><div><h3>Condition–action rules choose what to do now.</h3><ul><li>Uses only the current percept.</li><li>Ignores the rest of percept history.</li><li>Succeeds only when the environment is fully observable.</li><li>Can enter infinite loops in partially observable environments.</li></ul><SourceCallout title="Reflex and examples">A reflex is an action performed as a response to a stimulus without conscious thought. Source examples: a ZIP-code mail sorter and a Mars rover.</SourceCallout></div></div>,
     note: "Keep the complete source figure uncropped and large enough to read every label and arrow. Trace sensors → current world state → condition-action rule → action → effectors. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [15],
@@ -411,6 +427,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Model-based agent",
     title: "Internal state represents what cannot currently be seen",
+    minutes: 2,
     content: <div className="architecture-slide"><CourseImage alt="Model-based reflex agent architecture with state, world evolution, and action effects" name="agent-model-based.png" /><div><h3>A simple reflex agent with internal state handles partial observability.</h3><ul><li>Stores a current state inside the agent.</li><li>Maintains a structure describing parts of the world that cannot be seen.</li><li>Uses how the world evolves.</li><li>Uses what its own actions do.</li></ul></div></div>,
     note: "Trace the three information sources entering the state update. Ask what happens when the internal model is wrong. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [15],
@@ -418,6 +435,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Goal-based agent",
     title: "Goals let the agent compare possible futures",
+    minutes: 2,
     content: <div className="architecture-comparison"><article><CourseImage alt="Model-based agent architecture" name="agent-model-based.png" /><span>Model-based</span><p>Represents the current world.</p></article><i>→</i><article><CourseImage alt="Goal-based agent architecture with predicted outcomes and goals" name="agent-goal-based.png" /><span>Goal-based</span><p>Adds reasoning or inference and goals, then selects among possibilities that reach a goal state.</p></article></div>,
     note: "The repeated model-based figure is intentional. Ask students to identify exactly what the goal-based architecture adds: predicted consequences and a goal test. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [16],
@@ -425,6 +443,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Utility-based agent",
     title: "Utility ranks successful outcomes and tradeoffs",
+    minutes: 2,
     content: <div className="architecture-comparison"><article><CourseImage alt="Goal-based agent architecture" name="agent-goal-based.png" /><span>Goal-based</span><p>Distinguishes goal states from non-goal states. A shopping list specifies a goal.</p></article><i>→</i><article><CourseImage alt="Utility-based agent architecture with utility and expected happiness of states" name="agent-utility-based.png" /><span>Utility-based</span><p>Adds rational decision making: “How happy I will be in such a state.” If several actions reach the goal, rank them by lowest price, fastest completion, risk, or another utility.</p></article></div>,
     note: "The figure’s Utility input and happiness label are knowledge-bearing. Explain that utility ranks outcomes; it does not guarantee that the chosen utility function is appropriate. [Sources] Russell & Norvig 3e, Ch. 2.",
     sourceSlides: [17],
@@ -432,6 +451,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 3 · Learning agent · textbook extension",
     title: "A learning agent changes how it acts from experience",
+    minutes: 2,
     content: <div className="learning-agent-layout"><LearningAgentDiagram /><div><article><strong>Performance element</strong><p>Selects actions from current knowledge.</p></article><article><strong>Critic</strong><p>Evaluates behavior against a performance standard.</p></article><article><strong>Learning element</strong><p>Uses feedback to change the performance element.</p></article><article><strong>Problem generator</strong><p>Suggests exploratory actions that may produce useful experience.</p></article><SourceCallout title="Design question">Which component is missing if the agent acts, receives a score, but never changes future behavior?</SourceCallout></div></div>,
     note: "This page completes the revised course plan’s architecture list. Trace one robot-vacuum failure through critic → learning element → changed performance element. [Sources] Russell & Norvig 3e, Ch. 2; revised course plan.",
     sourceSlides: [15, 16, 17],
@@ -439,6 +459,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Agent architectures · student participation",
     title: "Which agent type should build each robot?",
+    minutes: 4,
     content: <RobotPractice />,
     note: "The source provides no official answers. Accept multiple architectures when students identify the assumption that makes the extra capability necessary.",
     sourceSlides: [18],
@@ -446,6 +467,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 4 · Dartmouth, 1956",
     title: "The first AI agenda named questions that still organize the field",
+    minutes: 2,
     content: <div className="dartmouth-map"><article><span>Automatic computers</span><p>A program that simulates the machine</p></article><article><span>Language</span><p>How can a computer use language the way humans use and manipulate words?</p></article><article><span>Neuron networks</span><p>Networks of simple processing units</p></article><article><span>Calculation</span><p>Theory of the size of a calculation</p></article><article><span>Self-improvement</span><p>Learning and reasoning</p></article><article><span>Abstractions</span><p>Represent what matters</p></article><article><span>Randomness and creativity</span><p>What is the difference?</p></article></div>,
     note: "Preserve every Dartmouth item. Ask students which later course module addresses each question. [Sources] Dartmouth proposal, 1955/1956.",
     sourceSlides: [19],
@@ -453,6 +475,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 4 · General areas of AI",
     title: "AI divides intelligence into researchable subfields",
+    minutes: 2,
     content: <div className="ai-area-map"><ul><li>Perception and the ability to move and manipulate objects</li><li>Knowledge representation</li><li>Natural language processing and understanding</li><li>Machine learning</li><li>Reasoning: knowledge-based or expert systems</li></ul><ul><li>Planning</li><li>Problem solving</li><li>Complex decision making</li><li>Abstract thought or creativity</li></ul><aside><strong>Scope of AI</strong><p>What system is considered intelligent?</p></aside></div>,
     note: "Keep all nine named areas. Explain that deployed systems often combine several subfields. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Ch. 1.",
     sourceSlides: [20],
@@ -460,6 +483,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 5 · Directions of AI",
     title: "Scope and evaluation distinguish weak AI from strong AI",
+    minutes: 2,
     content: <div className="ai-directions"><section><article><span>Weak AI</span><h3>AI with specific intelligent abilities</h3></article><article><span>Strong AI</span><h3>AI with general intelligence</h3></article><SourceCallout title="Current term: AGI">Artificial General Intelligence usually refers to broad competence that transfers across many unfamiliar intellectual tasks; the term is not perfectly standardized.</SourceCallout></section><div><span>Direction of AI research</span><p>From <strong>thinking humanly</strong> and <strong>acting humanly</strong></p><i>↓</i><p>To <strong>thinking rationally</strong> and <strong>acting rationally</strong></p><small>through logical reasoning and a measure of optimal or ideal decision making</small></div></div>,
     note: "Explain that weak/strong describes scope, while humanly/rationally describes the evaluation target. AGI is a modern, not perfectly standardized term often associated with broad transferable capability. [Sources] Russell & Norvig 3e, Ch. 1; course directions.",
     sourceSlides: [21],
@@ -467,6 +491,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 6 · Turing Test",
     title: "The imitation game operationalizes acting humanly",
+    minutes: 2,
     content: <div className="source-figure-explain"><CourseImage alt="Turing Test diagram with a human, an interrogator, and a computer connected by hidden communication channels" name="turing-test-diagram.png" /><div><span className="turing-theory-label">Alan Turing · theory of computability</span><h3>“Can machines think?” becomes an observable test.</h3><p>The Turing Test measures an intelligent machine’s performance against a human through the imitation game.</p><ul><li>The interrogator tries to determine which player—A or B—is the computer.</li><li>Can a system that passes be considered as intelligent as a human?</li><li>Chatbots include ELIZA (1966), social-media messengers, and later systems.</li></ul></div></div>,
     note: "Keep the exact diagram uncropped. Identify the evaluator, hidden participants, observable evidence, and criterion of success. [Sources] Turing 1950; course Turing Test diagram.",
     sourceSlides: [22],
@@ -474,6 +499,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Turing Test · classroom demonstration",
     title: "A transcript can support imitation without explaining intelligence",
+    minutes: 4,
     content: <TuringMiniLab />,
     note: "Let students vote before debriefing. The correct instructional move is not to reveal a hidden machine identity; it is to inspect what the transcript can justify. [Sources] Turing 1950; ELIZA example.",
     sourceSlides: [22],
@@ -481,6 +507,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Turing Test · importance and criticisms",
     title: "Human imitation and intelligence are overlapping—not identical—sets",
+    minutes: 2,
     content: <TuringCritique />,
     note: "Read all five arguments and the exact Venn diagram. Ask each group to defend one criticism and name evidence that would address it. [Sources] Course critique diagram; Turing 1950; Ada Lovelace objection.",
     sourceSlides: [23, 24],
@@ -488,6 +515,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Knowledge point 7 · Evolution and future",
     title: "AI evolved through optimism, setbacks, practical systems, and new questions",
+    minutes: 2,
     content: <EvolutionFuture />,
     note: "Both source topics are visible together. Preserve the early/modern method lists, collective intelligence, strong/weak AI claims, coexistence, ethics, Industry 4.0/IoT context, and work questions. Discuss historical claims critically in light of current systems. [Sources] Luger 6e, Ch. 1; course evolution and future discussion.",
     sourceSlides: [25, 26],
@@ -495,6 +523,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Course purpose · study guide",
     title: "Knowledge grows from explanation to innovation",
+    minutes: 2,
     content: <CourseStudyGuide />,
     note: "The course focus and full five-level ladder are visible together. Connect “teach” to explaining AI to nontechnical audiences age 5 and up. [Sources] Course focus and study guide.",
     sourceSlides: [27, 28],
@@ -502,6 +531,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Meeting 2 · cumulative review · part 1",
     title: "Retrieve the definitions, capabilities, agents, and environments",
+    minutes: 2,
     content: <ReviewQuestions questions={reviewOne} />,
     note: "Use these thirteen prompts as a retrieval-practice bank. Require each answer to include a definition, example, and evidence boundary. [Sources] Course review questions 1.",
     sourceSlides: [29],
@@ -509,6 +539,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Meeting 2 · cumulative review · part 2",
     title: "Evaluate intelligence claims, the Turing Test, and possible futures",
+    minutes: 2,
     content: <ReviewQuestions questions={reviewTwo} />,
     note: "Assign pairs one question, then require a claim, evidence, counterargument, and remaining uncertainty. [Sources] Course review questions 2.",
     sourceSlides: [30],
@@ -516,6 +547,7 @@ const slides: LessonSlide[] = [
   {
     eyebrow: "Meeting 2 · exit assessment and references",
     title: "Explain the most important ideas with evidence",
+    minutes: 3,
     content: <ImportantPointsAndReferences />,
     note: "The course materials do not provide keyed answers. Collect one response to the exit prompt and score definition, example, evidence, and boundary. [Sources] Luger 6e, Ch. 1; Russell & Norvig 3e, Chs. 1–2.",
     sourceSlides: [31, 32],

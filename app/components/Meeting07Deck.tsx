@@ -375,7 +375,7 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Start with the source list—sequence, possible moves, reward, maximize—then refine reward into terminal utility plus cutoff evaluation. Ask students to name these elements in tic-tac-toe.",
+    note: "Timing: 2 minutes. Start with the source list—sequence, possible moves, reward, maximize—then refine reward into terminal utility plus cutoff evaluation. Ask students to name these elements in tic-tac-toe.",
     sourceSlides: [2],
   },
   {
@@ -390,7 +390,7 @@ const slides: SourceLessonSlide[] = [
         <div><span>Approximation</span><p>Search depth may be sufficient for exact cost.</p><p>Use a cutoff and evaluation function when full resolution is infeasible.</p></div>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve both source contrasts: unpredictable opponent implies a move for every reply; time limits make a full goal search unlikely and force approximation. Ask whether a game solution is a path or policy.",
+    note: "Timing: 2 minutes. Preserve both source contrasts: unpredictable opponent implies a move for every reply; time limits make a full goal search unlikely and force approximation. Ask whether a game solution is a path or policy.",
     sourceSlides: [3],
   },
   {
@@ -430,7 +430,7 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Read the source definition, then separate game theory's broad scope from the narrower two-player minimax model used today.",
+    note: "Timing: 2 minutes. Read the source definition, then separate game theory's broad scope from the narrower two-player minimax model used today.",
     sourceSlides: [5],
   },
   {
@@ -455,7 +455,7 @@ const slides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve zero-sum, non-zero-sum, prisoner's dilemma, and the listed type pairs. Ask students whether zero-sum implies alternating moves; it does not.",
+    note: "Timing: 2 minutes. Preserve zero-sum, non-zero-sum, prisoner's dilemma, and the listed type pairs. Ask students whether zero-sum implies alternating moves; it does not.",
     sourceSlides: [6],
   },
   {
@@ -527,7 +527,7 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the source assumption of shared state-space knowledge and consistent effort to win. Correct the informal advantage wording with the best-worst-case definition.",
+    note: "Timing: 2 minutes. Preserve the source assumption of shared state-space knowledge and consistent effort to win. Correct the informal advantage wording with the best-worst-case definition.",
     sourceSlides: [8],
   },
   {
@@ -864,6 +864,8 @@ export function Meeting07Deck() {
       meetingLabel="Week 4 · Meeting 7"
       meetingTitle="Game Trees, Minimax, and Evaluation Functions"
       slides={slides}
+      sourceCollectionLabel="L05_MiniMax&Pruning.pptx"
+      sourceCollectionPath="l05-minimax-pruning"
     />
   );
 }

@@ -1,0 +1,1310 @@
+{
+  "source": "L10_MachineLearning Part B.pptx",
+  "sourceFilename": "L10_MachineLearning Part B.pptx",
+  "sourceSha256": "afb85a8365cf49bac114d362e78552503a1d771f84b6fa85a0d0827775fadc7d",
+  "slideCount": 36,
+  "mediaCount": 29,
+  "media": [
+    {
+      "file": "image1.png",
+      "archivePath": "ppt/media/image1.png",
+      "bytes": 14627,
+      "sha256": "d8df863a30330e5acd09b9d903c608f78fa3c534db9961bed0622520542c2ad9",
+      "width": 581,
+      "height": 286,
+      "format": "PNG"
+    },
+    {
+      "file": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "bytes": 708,
+      "sha256": "63f0af3a8871174c339183853fd3616c06255e713c8a959d06cefda8ae1f5eb5",
+      "width": 38,
+      "height": 49,
+      "format": "PNG"
+    },
+    {
+      "file": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "bytes": 528,
+      "sha256": "ffee0d5f72e47e4f08f22adb9528858082eb33ff1fa486070a7b5315414e150c",
+      "width": 19,
+      "height": 49,
+      "format": "PNG"
+    },
+    {
+      "file": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "bytes": 708,
+      "sha256": "a5d60ecc3858a589a98f87d0c8bee50ea42962dcd84f1998b81a2193501912d0",
+      "width": 38,
+      "height": 49,
+      "format": "PNG"
+    },
+    {
+      "file": "image13.png",
+      "archivePath": "ppt/media/image13.png",
+      "bytes": 21837,
+      "sha256": "178de3a0c0341c917a56ccae6517682486659a6ea77b4d6c458f0fbf7360fc23",
+      "width": 655,
+      "height": 510,
+      "format": "PNG"
+    },
+    {
+      "file": "image14.png",
+      "archivePath": "ppt/media/image14.png",
+      "bytes": 6047,
+      "sha256": "35e6c32495008eadca0276cde99423eaaae93fe250436cb7a36b0600c28b3742",
+      "width": 555,
+      "height": 242,
+      "format": "PNG"
+    },
+    {
+      "file": "image15.png",
+      "archivePath": "ppt/media/image15.png",
+      "bytes": 9288,
+      "sha256": "ebb8f29b628309f92f98ffc7544050fc6247c7708005bc729c13f4d0af1397ce",
+      "width": 440,
+      "height": 376,
+      "format": "PNG"
+    },
+    {
+      "file": "image16.png",
+      "archivePath": "ppt/media/image16.png",
+      "bytes": 23149,
+      "sha256": "a7693550d024a18254cb07d7af459c323c51a58775abd79bd5df35de630ffbf7",
+      "width": 733,
+      "height": 322,
+      "format": "PNG"
+    },
+    {
+      "file": "image17.emf",
+      "archivePath": "ppt/media/image17.emf",
+      "bytes": 30132,
+      "sha256": "36207e18b75d0bed67f7b44bb1ea8eff59d4a70a50ea4c99baea824e34d2ab5d",
+      "width": 709,
+      "height": 848,
+      "format": "WMF"
+    },
+    {
+      "file": "image170.png",
+      "archivePath": "ppt/media/image170.png",
+      "bytes": 14309,
+      "sha256": "2e1a1b69764afb2007cdf83501f4940118550f4848fcaa31a5d40dcdd8143bba",
+      "width": 1331,
+      "height": 132,
+      "format": "PNG"
+    },
+    {
+      "file": "image18.png",
+      "archivePath": "ppt/media/image18.png",
+      "bytes": 19341,
+      "sha256": "fad8c3908263c59a75497b85e8e1e1bb0f9e971c9a20e9e23bf3486238c1907f",
+      "width": 592,
+      "height": 399,
+      "format": "PNG"
+    },
+    {
+      "file": "image19.png",
+      "archivePath": "ppt/media/image19.png",
+      "bytes": 102200,
+      "sha256": "ef5dec76bee78b7cfd10b9914da5d836822cc0faca6d534baf35a2745c6f49cb",
+      "width": 949,
+      "height": 924,
+      "format": "PNG"
+    },
+    {
+      "file": "image19.wmf",
+      "archivePath": "ppt/media/image19.wmf",
+      "bytes": 9462,
+      "sha256": "5e66c52aae0c30d41e000b0c10e3b95d3ffbaca1dd9158516f9590defacc6395",
+      "width": 121,
+      "height": 165,
+      "format": "WMF"
+    },
+    {
+      "file": "image2.gif",
+      "archivePath": "ppt/media/image2.gif",
+      "bytes": 5226,
+      "sha256": "24f4167e1aa65c91da722832b6ce87333c017c0d44cfbd503eb548fb74799cf1",
+      "width": 495,
+      "height": 300,
+      "format": "GIF"
+    },
+    {
+      "file": "image20.png",
+      "archivePath": "ppt/media/image20.png",
+      "bytes": 14434,
+      "sha256": "95068dfa0e6f778828a9225c73dea4226a87e9d2951c501e87771d5dfe2c9e7f",
+      "width": 1263,
+      "height": 145,
+      "format": "PNG"
+    },
+    {
+      "file": "image20.wmf",
+      "archivePath": "ppt/media/image20.wmf",
+      "bytes": 1102,
+      "sha256": "3f96365a7f51493a171e91e297e3e3f18b20ebabbb12d64fc93f22ae789f1d50",
+      "width": 110,
+      "height": 38,
+      "format": "WMF"
+    },
+    {
+      "file": "image21.png",
+      "archivePath": "ppt/media/image21.png",
+      "bytes": 93091,
+      "sha256": "c2a3e479d7c2a73945be2c0ab677ceda8b45c48b9c72a5c308935f52dfa51b39",
+      "width": 949,
+      "height": 923,
+      "format": "PNG"
+    },
+    {
+      "file": "image22.png",
+      "archivePath": "ppt/media/image22.png",
+      "bytes": 10412,
+      "sha256": "e03e8a1d01368592ee4304fbd303d38a7c1a59b3d8fe245b32130b3b043d61c8",
+      "width": 1263,
+      "height": 145,
+      "format": "PNG"
+    },
+    {
+      "file": "image23.png",
+      "archivePath": "ppt/media/image23.png",
+      "bytes": 34205,
+      "sha256": "5fe6ab68985a951b2a40581dc61089ce74109e6c460494baf858197ab46624f3",
+      "width": 1284,
+      "height": 417,
+      "format": "PNG"
+    },
+    {
+      "file": "image24.jpeg",
+      "archivePath": "ppt/media/image24.jpeg",
+      "bytes": 44178,
+      "sha256": "8814e3141f8ee1da0ef1b1badc2778557e8787e92ace95e59a822b7f1f64c9c0",
+      "width": 385,
+      "height": 450,
+      "format": "JPEG"
+    },
+    {
+      "file": "image24.png",
+      "archivePath": "ppt/media/image24.png",
+      "bytes": 100802,
+      "sha256": "4d32f6cd0ebfeb4f08fd7efb607a06fddff34b6406c19ae230d2abc39ccb4e08",
+      "width": 1439,
+      "height": 930,
+      "format": "PNG"
+    },
+    {
+      "file": "image25.png",
+      "archivePath": "ppt/media/image25.png",
+      "bytes": 68128,
+      "sha256": "03d5db6fb9f96ad1ece52cffbd74f95764b0cefa7313c598245675026e49373f",
+      "width": 632,
+      "height": 387,
+      "format": "PNG"
+    },
+    {
+      "file": "image3.png",
+      "archivePath": "ppt/media/image3.png",
+      "bytes": 11071,
+      "sha256": "7a2beb8f48ee78b203e1d6c2b286a9aa8c9e2283eedba5ba67af47f960724b74",
+      "width": 697,
+      "height": 172,
+      "format": "PNG"
+    },
+    {
+      "file": "image4.png",
+      "archivePath": "ppt/media/image4.png",
+      "bytes": 6523,
+      "sha256": "fd58794190f492d3eaa2caa45b818d8853e6e70fc59972f3a6648533b70dd23f",
+      "width": 514,
+      "height": 219,
+      "format": "PNG"
+    },
+    {
+      "file": "image5.png",
+      "archivePath": "ppt/media/image5.png",
+      "bytes": 17276,
+      "sha256": "4eb81b95c536d47b2edbc7f5406b32a619459603b44a1de65a07db03dea59bcb",
+      "width": 454,
+      "height": 550,
+      "format": "PNG"
+    },
+    {
+      "file": "image6.emf",
+      "archivePath": "ppt/media/image6.emf",
+      "bytes": 38200,
+      "sha256": "5abcaebc4668a0bf583a1d81f78fb08b60fad057d556ebd70df89529d234082c",
+      "width": 634,
+      "height": 388,
+      "format": "WMF"
+    },
+    {
+      "file": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "bytes": 14686,
+      "sha256": "7e0cd09e6de5a0805a5ad67c353073f055ccf0351484c2c1f6d2f4138f0cd069",
+      "width": 649,
+      "height": 260,
+      "format": "PNG"
+    },
+    {
+      "file": "image8.png",
+      "archivePath": "ppt/media/image8.png",
+      "bytes": 696,
+      "sha256": "645a884bb1d496300d39adcd0821b6aaaa8c0e0b96eedc913ca4fb1a9b6f0279",
+      "width": 38,
+      "height": 49,
+      "format": "PNG"
+    },
+    {
+      "file": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "bytes": 547,
+      "sha256": "853e4b32fb208938a9c38a63aef60a5e9f5fa7e2d1a7ded1afc95a8ef26fc78d",
+      "width": 19,
+      "height": 49,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "1",
+        "Artificial Intelligence\u000bCPSC 481",
+        "Machine Learning\nPart B"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-01.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-01.png",
+        "bytes": 55265,
+        "sha256": "e880d0d8ea08a11798dec353bbd541381b9445ab7e6b58ad9377f1891b3022f5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "2",
+        "Overview",
+        "Non-symbolic machine learning\nArtificial neural networks\n\nUnsupervised Learning\n\nOther machine learning approaches\nGenetic learning\nReinforcement learning\nDeep learning\nOnline learning\n\nIssues related to learning"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-02.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-02.png",
+        "bytes": 88440,
+        "sha256": "2fd2b955a7ca25c04be3d448f69525a83007b04a33e54cabde4321ad0b34346f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "Non-symbolic Learning Approaches",
+        "Non-symbolic learning approaches use adaptive or optimization method (similar to gradient search) instead of symbolic generalization and specialization in learning.\n\nExamples of non-symbolic learning\nEvolutionary approach that is based on adaptation to environment using fitness function\nArtificial neural network that is based on weights optimization or gradient descent/ascent search, finding a local minimum/maximum of a function by taking steps proportional to the negative/positive direction of the gradient of the function at the current point.",
+        "3"
+      ],
+      "notes": "Problems of\nsymbolic learning:\ndecision tree,\nWinston:\nNon-adaptive, strict cut-off (income $15001 VS $15K ???)",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-03.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-03.png",
+        "bytes": 170794,
+        "sha256": "e7088a2cf35d399823697bbcf510cd94f88e28cc6ebdc6bfc66abaa80c5d7888",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "Genetic Learning using GP",
+        "Learning a function using Genetic Programming (for regression analysis)\nLearning of the function that map a data item to a real valued prediction variable.\nParameters for genetic supervised learning\nObjective: evolve functions fitting the values of the cases in training data set\n        Parameters:\tValues\nTerminal set: variable x (input) and integer constants between –5 and +5\nFunction set: {+, , *, %}\nFitness function: Error function\nPopulation size: 600\nCrossover probability: 90%\nMutation probability: 5%\nSelection: tournament selection, size 4\nTolerant error: 0.001\nTermination criterion: none\nMaximum number of generations: 100\nMaximum depth of tree after crossover: 200\nMaximum mutant depth: 4",
+        "4",
+        "Training data set \nrecordID\tInput\tOutput\n1\t0.000\t0.000\n2\t0.100\t0.005\n3\t0.200\t0.020\n4\t0.300\t0.045\n5\t0.400\t0.080\n6\t0.500\t0.125\n7\t0.600\t0.180\n8\t0.700\t0.245\n9\t0.800\t0.320\n10\t0.900\t0.405"
+      ],
+      "notes": "Genetic learning is non-symbolic supervised learning",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-04.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-04.png",
+        "bytes": 240627,
+        "sha256": "db5205098624e92ae67d402ad52ad9d0c30d8be7f9eaa70ff9327f2de577eb2e",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "Sci-kit learn: Genetic programming example",
+        "Show how to install and use Machine learning tools, such as Sci-kit learn.\nShow how to use GP to solve non-linear regression problem.\nCode and more details about the example:\nhttps://gplearn.readthedocs.io/en/stable/examples.html#symbolic-regressor\nhttps://youtu.be/Ifq38smV5Xw\nFollow the instructions and practice",
+        "5"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-05.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-05.png",
+        "bytes": 154352,
+        "sha256": "4a94e1084c0bb8c5779c63cc12a997a2b2ed961d190ed67efc92b3045c8b7e8a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "Artificial Neuron",
+        "6",
+        "Artificial neuron is the basis of neural network.\nArtificial neuron consists of\nInput signals in a vector, X: data from environment or other neurons\nA set of real valued weights in a vector, W: connection strengths\nAn activation function, f that determines the neuron’s output value based on the cumulative strength, net calculated by wixi and a thresh hold value. Why weighted sum?",
+        "Actual neuron",
+        "Artificial neuron",
+        "Net = wixi"
+      ],
+      "notes": "Simulate how human think. Consider\nvarious factors and these factors have different weights of importance.\nSearch for a house: school district, price, commute distance, traffic, etc.\nCollege application: accreditation, admission rate, location, prestige, tuition, graduation rate, etc.\nHow to learn the weights of these factors?",
+      "media": [
+        "image1.png",
+        "image2.gif"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-06.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-06.png",
+        "bytes": 257761,
+        "sha256": "bc81f5dc261a9be9a1be698b1ac5af51438dcca622260af9b5187d73f61ee26f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "McCulloch-Pitts Neuron Model to Calculate the Logic Functions, AND and OR, 1943",
+        "7",
+        "AND",
+        "AND",
+        "AND",
+        "OR",
+        "OR",
+        "Input",
+        "net",
+        "Activation function f(net): \n1 if net >= 0\n0 otherwise\n\nwhere net= wixi",
+        "net",
+        "Bias (or constant)",
+        "What is the key idea used to solve these problems? Changing weights or activation function?"
+      ],
+      "notes": "Weight\nfor x and y is 1",
+      "media": [
+        "image3.png",
+        "image4.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-07.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-07.png",
+        "bytes": 189345,
+        "sha256": "03fefeee7a80e23476c2a8678feb0b099d0e5fd6fa706dbfaf002de7843162be",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Use McCulloch-Pitts Neuron Model to Solve Learning Problem",
+        "Can we use McCulloch-Pitts Neuron Model to solve other problems? \n\nHow can we solve a learning problem (predictive modeling) based on the idea of McCulloch-Pitts Neuron Model?\n\nWhich part of the McCulloch-Pitts Model do we need to change to solve other problems such as general linear equations?",
+        "8",
+        "Training data set",
+        "Class"
+      ],
+      "notes": "Binary classifier: apple, not an apple\nApply,\nnot apply",
+      "media": [
+        "image5.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-08.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-08.png",
+        "bytes": 184574,
+        "sha256": "f7e83be1d74d7b526161843e7454da4de19f451c7db036de13591e8412aa9ca6",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "Perceptron Learning (Rosenblatt, 1962)",
+        "Activation function, f(net) or f(w,x) is defined as\nnet = wixi \nf(net): 1 if net >= θ, -1 else (if net < θ)\nOutput a is either 1 or -1 chosen for binary class.\nθ is a threshhold value.\nWeight adjustment on the ith component (or feature) of the input vector, wi can be defined:\nwi = l(t – a)xi, where l is a learning rate (0.0~1.0) to control the speed of convergence, t is the desired output value (class label) from the training set, a is the perceptron output value (e.g., either 1 or -1 in this case) for the current input case xi in a vector, Xn. wi will be used to adjust the weight of xi for the next input case, Xn+1. \nPerceptron algorithm learns the weight W from the training set by adjusting the weights to minimize the average error as follows:\nIf t = a, do nothing\nElse (error), adjust the weight vector for the next case by Wn+1 = Wn + Wn\nRepeat this process for all examples in the training set until converged (possibly reusing the training data).",
+        "9",
+        "a"
+      ],
+      "notes": "",
+      "media": [
+        "image6.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-09.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-09.png",
+        "bytes": 275800,
+        "sha256": "b82d0bf7abd66f540ae107fc63d5710450f3ffd30133808daf6e8558430d7de1",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "Training data set",
+        "Example: Perceptron Learning",
+        "10",
+        "Class",
+        "f(net) = f(w1*x1+w2*x2+w3*1), bias=1, θ = -0.6\nW = [0.75, 0.5, -0.6] (randomly generated), \n   l = 0.2\nf(net)1=f(0.75*1+0.5*1-0.6*1)=f(0.65) = 1,           (t - a) = (1-1) = 0, so no w needed \nf(net)2=f(0.75*9.4+0.5*6.4-0.6*1)=f(9.65) = 1,\n(t - a)=(-1-1)=-2,we need w\nW3 = W2 + 0.2(-1-1)X2  =  [      ] -0.4[     ] = [      ] \n\nf(net)3 = f(-3.01*2.5 – 2.06*2.1 – 1.0*1) \n           = f(-12.84) = -1, we need w\n\nW4 = W3 + 0.2(1-(-1))X3 =[         ]+ 0.4[    ] = [      ]\n\n*Continue this process until converged. \n(This is a gradient descent search.)",
+        "net = Sxiwi",
+        "y",
+        "a"
+      ],
+      "notes": "When converged?\nThe outputs are\nas desired and remain no changes for several iterations",
+      "media": [
+        "image10.png",
+        "image11.png",
+        "image12.png",
+        "image5.png",
+        "image7.png",
+        "image8.png",
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-10.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-10.png",
+        "bytes": 276046,
+        "sha256": "934877a75096558faf870d1e24b8c9d3e8116f8c95a6c5d2533931711e0a19b1",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "A linearly separable function produced after 10 iterations of the perceptron net.",
+        "The Perceptron that Linearly Separates the Training Data Set",
+        "11",
+        "*The weight vector converged after repeated training on the data set, about 500 iterations\nW500 = [-1.3, -1.1, 10.9]\nOutput, f(net) = w1x1 + w2x2 + w3, where two discriminant functions gi and gj are the same (border), gi = gj\nf(net) = -1.3x1 + -1.1x2 + 10.9 = 0 \nf(net) is the line separating the two classes that can be used for classification.",
+        "+How is the perceptron learning different from symbolic learning approaches such as Winston’s learning program and decision tree induction?"
+      ],
+      "notes": "f(net) is 1, when\nnet >=\n\nPerception learning: a binary classifier. The input data set is the training data set.\nWhy it is a classifier, not a cluster?\nSince it already knows the two classes: -1 and 1. And it will be used to classify new (x1, x2) to either -1 or 1 based on the output.",
+      "media": [
+        "image13.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-11.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-11.png",
+        "bytes": 236182,
+        "sha256": "c3bd4818480b3ad6f13cdf15e56d18a648a1953999b9bc642082eec2b1924fa5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "From the data set, following equations must be solved: \nw1*1 + w2*1 < θ , where θ is a threshold. \nw1*1 + 0 > θ\n0 + w2*1 > θ\n0 + 0 < θ or θ must be positive\n(This series of equations with w1, w2, and θ has no solution)\n*Minsky and Papert  (1969) proved that a perceptron that solves exclusive-or is impossible.",
+        "Linearly Not Separable Case",
+        "12",
+        "Truth table for exclusive-OR",
+        "No straight line can separate these data points."
+      ],
+      "notes": "",
+      "media": [
+        "image14.png",
+        "image15.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-12.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-12.png",
+        "bytes": 167598,
+        "sha256": "fef0bee6653d175db2a906a9afa69cfbbdb66647ef493088e0e777cee4a1f5ef",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Sigmoidal Function for Activation Function",
+        "13",
+        "1 if f(x) >=0, \n-1 else f(x)<0 \nused in perceptron",
+        "Useful features of sigmoidal function:\nS-shaped non-linear and continuous function in the range of 0 ~1\nDifferentiable (has a derivative) at each point and derivative calculation is easy.\nThe value of derivative is greatest where the sigmoidal function is changing most rapidly.",
+        "Sigmoidal activation function: f(net)=1/(1 + e-net), where net = wixi\nThe value of f(net) is continuous 0~1, not binary.",
+        "Output of f(x) is normalized to 0~1"
+      ],
+      "notes": "",
+      "media": [
+        "image16.png",
+        "image170.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-13.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-13.png",
+        "bytes": 271694,
+        "sha256": "de9a5650469fbf62fc190dce5559b4d49b95f0dc2046fec3658a8affd8ae4f8d",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "Muti-layer Neural Networks with Backpropagation",
+        "Goal: Given training data, find a set of weights that fits outputs of neural net to desired classification.\nMechanism:\nFor each training example, propagate the inputs Forward for activation.\nBackpropagate the error to previous layer and adjust the weights slowly in direction that reduces error.\nRepeat this process until converged. (gradient descent approach).\nProven to converge on the nearest local minimum but\nMay not find the best weight setting. \nSensitive to initial weight setting.\nWorks very slowly (long training time).\nMany applications:\n      solved many difficult real-world problems.",
+        "14",
+        "Weights",
+        "Weights",
+        "Output",
+        "Inputs",
+        "bias",
+        "a"
+      ],
+      "notes": "Based on artificial neuron and sigmoidal activation function.\nThe word “hidden” implies that they are not visible to the external systems and are “private” to the neural network.\nThere could be zero or more hidden layers in a neural network.\nRole of hidden layers:\nfacial recognition\n, where computer learns to detect human faces. Human face is a complex object, it must have eyes, a nose, a mouth, and to be in a round shape, for computer it means that there are a lot of pixels of different colors that are comprised in different shapes. And in order to decide whether there is a human face on a picture, computer has to detect all those objects.",
+      "media": [
+        "image17.emf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-14.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-14.png",
+        "bytes": 266799,
+        "sha256": "8f29261fbf6a9376260493cfc5a1cd7a595e97917b359382e698df47c9698e0e",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Weight Adjustment with Sigmoidal Function",
+        "15",
+        "How do we adjust weights for errors when using sigmoidal activation functions?\nUse the delta rule (Rumelhart et al. 1986) for weight adjustment on the jth node from the ith input: wj =  l(tj – aj)f’(netj)xi where l is the learning rate, tj is the desired output, aj is the output of the node, and f’(netj) is the derivative of activation function, and xi is an input (= output from the previous node).\n\nConcepts of the delta rule is shown in the following graph:",
+        "*l determines the size of learning step. \n*Learning algorithm uses gradient descent method to find the direction on this surface which most rapidly reduces the error (ending at a local minimum).\n*Gradient is a measure of slope, as a function of direction from a point on a surface.",
+        "*This error surface represents cumulative error over a data set as a function of network weights.",
+        "How to determine + or – of w?\nHow to calculate f’(net)?\nProve the delta rule."
+      ],
+      "notes": "Derivative\nis the rate of change of f(\nx,y\n), which can be thought of the slope of the function at a point (x0,y0).\ndirectional\nderivative\nof a function is a scalar while\ngradient\nis a vector.",
+      "media": [
+        "image18.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-15.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-15.png",
+        "bytes": 286078,
+        "sha256": "d193a91e82cc83b4bb4a025bac7b8a42565827cf6a64774ea2204b6d1092656d",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "16",
+        "Output k",
+        "Hidden J",
+        "Input I",
+        "Error",
+        "Activation",
+        "Subscript notations\nI: input layer\nJ: hidden layer\nK: output layer\nwij: weight, input  hidden\nwjk: weight, hidden  output \na: an activation value\nt: a target value\nnet: the net input\nl: learning rate",
+        "WJk",
+        "WIJ"
+      ],
+      "notes": "",
+      "media": [
+        "image19.png",
+        "image20.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-16.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-16.png",
+        "bytes": 300399,
+        "sha256": "bd29b7fb983dd4427246e4ee5395c18fe0b4eaa89780becb151ce2409c71ce2d",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "17",
+        "Output k",
+        "Hidden J",
+        "Input I",
+        "Error",
+        "Activation",
+        "Subscript notations\nI: input layer\nJ: hidden layer\nK: output layer\nwij: weight, input  hidden\nwjk: weight, hidden  output \na: an activation value\nt: a target value\nnet: the net input\nl: learning rate",
+        "WJk",
+        "WIJ"
+      ],
+      "notes": "",
+      "media": [
+        "image21.png",
+        "image22.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-17.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-17.png",
+        "bytes": 278784,
+        "sha256": "89b5c5cfb4fef5b7a1eb86e1569dd9652f8b48102427d919b01233852c9323a6",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "Backpropagation Algorithm",
+        "18"
+      ],
+      "notes": "1: obtain\noutput values\n2: obtain errors\n3:\nbackpropagate\nerrors to hidden layer, then to input layer\n4:\nupdate network weights\n5: update bias",
+      "media": [
+        "image24.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-18.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-18.png",
+        "bytes": 224085,
+        "sha256": "fdc954ea069680822a893ef5a85b92297bd7fb78f06bd09d2e109ea6ffe08618",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Various Types of Neural Networks",
+        "Different neural networks can be built using different options: \nNetwork topology\nMany layers instead of 2 => +100 layers (deep learning)\nLearning algorithm\nEncoding scheme\n\nNeural network can be used for both\nSupervised learning (classification) and\nUnsupervised learning (clustering)",
+        "19"
+      ],
+      "notes": "Convolutional Neural Network, Recurrent Neural Networks",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-19.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-19.png",
+        "bytes": 112615,
+        "sha256": "beaa2426cc7b01a8d6fe86736afcf114ac43b02417e5aaf2d0c7cdb698b5cc28",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "Unsupervised Learning",
+        "Unsupervised learning eliminates the teacher and requires that the learners form and evaluate concepts on their own\nAM was the first unsupervised discovery program to learn mathematical concepts, e.g., concepts of set theory, could learn natural number theory, prime numbers, etc. but was not very successful, mostly due to representation (LISP based or symbolic based) and inability to learn to learn.\nMethods needed for unsupervised learning\nDiscovery such as scientific discovery process: hypothesis  generality  conclusion\nPattern discovery using clustering (class identification, different from classification)",
+        "20"
+      ],
+      "notes": "Supervised learning:\nsuppose you have a basket and it is filled with some fresh fruits and your task is to arrange the same type fruits at one place. suppose the fruits are\napple,banana,cherry\n, and grape. so you already know from your previous work that, the shape of each and every fruit so it is easy to arrange the same type of fruits at one place. here your previous work is called as trained data in data mining. so you already learn the things from your trained data, This is because of you have a response variable which says you that if some fruit have so and so features it is grape, like that for each and every fruit.\nThis type of data you will get from the trained data. This type of learning is called as supervised learning. This type solving problem comes under Classification. So you already learn the things so you can do you job confidently.\nunsupervised :\nsuppose you have a basket and it is filled with some fresh fruits and your task is to arrange the same type fruits at one place.\nThis time you don't know any thing about that fruits, you are first time seeing these fruits so how will you arrange the same type of fruits.\nWhat you will do first is you take on the fruit and you will select any physical character of that particular fruit. suppose you taken color.\nThen you will arrange them based on the color, then the groups will be some thing like this.\nRED COLOR GROUP:\napples & cherry fruits.\nGREEN COLOR GROUP:\nbananas & grapes. so now you will take another physical character as size, so now the groups will be some thing like this.\nRED COLOR AND BIG SIZE:\napple.\nRED COLOR AND SMALL SIZE:\ncherry fruits.\nGREEN COLOR AND BIG SIZE:\nbananas.\nGREEN COLOR AND SMALL SIZE\n: grapes. job done happy ending.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "Clustering",
+        "Clustering\nGrouping objects into a set of clusters based on similarity (intra-cluster similarity is minimized and inter-cluster similarity is maximized)\nClustering approaches\nPartitional clustering\nHierarchical clustering\nConceptual clustering",
+        "21"
+      ],
+      "notes": "hierarchical clustering (also called hierarchical cluster analysis or HCA) is a method of cluster analysis which seeks to build a hierarchy of clusters\nConceptual clustering:\nIt is distinguished from ordinary data clustering by generating a concept description for each generated class. Most conceptual clustering methods are capable of generating hierarchical category structures",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "22",
+        "Partitional Clustering",
+        "Original Points"
+      ],
+      "notes": "",
+      "media": [
+        "image19.wmf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 23,
+      "textBlocks": [
+        "23",
+        "Goal of Clustering",
+        "Finding groups of objects such that the objects in a group will be similar (or related) to one another and different from (or unrelated to) the objects in other groups—computationally difficult problem (NP-hard)"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 24,
+      "textBlocks": [
+        "24",
+        "Similarity and Dissimilarity",
+        "Proximity refers to a similarity or dissimilarity.\nSimilarity\nNumerical measure of how alike two data objects are.\nIs higher when objects are more alike.\nOften falls in the range [0,1]\nDissimilarity\nNumerical measure of how different are two data objects\nLower when objects are more alike\nMinimum dissimilarity is often 0\nUpper limit varies",
+        "Minkowski distance is a generalization of Euclidean distance, where r is a parameter, n is the number of dimensions (attributes) and pk and qk are, respectively, the kth attributes (components) or data objects p and q."
+      ],
+      "notes": "dimensions (attributes):\ncolor, size, shape, distance, etc.",
+      "media": [
+        "image20.wmf"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 25,
+      "textBlocks": [
+        "25",
+        "K-means Clustering",
+        "K-means algorithm:\nPartitional clustering approach \nEach cluster is associated with a centroid (center point) \nEach point is assigned to the cluster with the closest centroid\nNumber of clusters, K, must be specified as a parameter",
+        "+Several variations exist, e.g., fuzzy C-means, k-means++, etc.",
+        "https://en.wikipedia.org/wiki/K-means_clustering#/media/File:K-means_convergence.gif"
+      ],
+      "notes": "",
+      "media": [
+        "image23.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 26,
+      "textBlocks": [
+        "Classification vs. Clustering",
+        "In general, in classification you have a set of predefined classes and want to know which class a new object belongs to.\nClustering tries to group a set of objects and find whether there is some relationship between the objects.\nIn the context of machine learning, classification is supervised learning and clustering is unsupervised learning.",
+        "26"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 27,
+      "textBlocks": [
+        "Classification vs. Clustering : An Example",
+        "Suppose you have a basket and it is filled with some fresh fruits.\nYour task is to arrange the same type fruits at one place.",
+        "27"
+      ],
+      "notes": "",
+      "media": [
+        "image24.jpeg"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 28,
+      "textBlocks": [
+        "Classification",
+        "You already know from your previous work that, the shape of each and every fruit.\nYou already know the fruits are apple, banana, cherry, and grape. \nYou are to use this training dataset to train the classifier.\nThe classifier is used to recognize new examples of fruits. They are apple? Banana? Cherry? Or grape?",
+        "Clustering",
+        "You don't know any thing about that fruits, you are first time seeing these fruits.\nYou will select any physical character of that particular fruit. \nSuppose you taken color. Then you will arrange them based on the color: RED COLOR GROUP: apples & cherry fruits. GREEN COLOR GROUP: bananas & grapes. \nThen take another physical character as size, RED COLOR AND BIG SIZE: apple. RED COLOR AND SMALL SIZE: cherry fruits. GREEN COLOR AND BIG SIZE: bananas. GREEN COLOR AND SMALL SIZE: grapes.",
+        "28"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 29,
+      "textBlocks": [
+        "29",
+        "Unsupervised vs. Supervised Learning",
+        "Applications for unsupervised learning\nUsed in many disciplines such as Biology, Business, etc.\nPattern or object detection recognition: How can we group pixels into meaning regions of objects?\nOutlier detection\nDimensionality reduction\nIdentification of common properties of objects, e.g., consumers\nSome questions to clarify\nWhat’s the results of unsupervised learning (clustering)? \nWhat’s the results of supervised learning? \nHow can we use of the results of unsupervised learning for supervised learning?\nIs unsupervised learning more powerful than supervised learning (in terms of usefulness and accuracy of learned models)?\nHow can we combine both?\nSemi-supervised learning (like human learning)"
+      ],
+      "notes": "What’s the results of unsupervised learning (clustering)? clusters\nWhat’s the results of supervised learning? Classes/tags/concepts",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 30,
+      "textBlocks": [
+        "Reinforcement Learning",
+        "The learning agent goes through trial-and-error, receives feedback or reward, and learns an optimal policy to accomplish goals within its environment.\nInspired by old behaviorist psychology, concerned with how an agent ought to take actions in an environment so as to maximize some notion of cumulative reward.\nReinforcement learning is most successful when the environment is big or cannot be precisely described. \nUnlike supervised learning, learning agent is not told directly what to do; rather, the agent discovers itself through exploration which actions offer the most reward.\nStudied in many other disciplines, such as control theory, operations research (called approximate dynamic programming), information theory, simulation-based optimization.\nIn economics and game theory, reinforcement learning may be used to explain how equilibrium may arise under bounded rationality.",
+        "30",
+        "Supplemental material “Monte Carlo Tree Search and AlphaGo”, Monte Carlo Reinforcement Learning"
+      ],
+      "notes": "Game playing\n- determining the best move to make in a game often depends on a number of different factors, hence the number of possible states that can exist in a particular game is usually very large. To cover this many states using a standard rule based approach would mean specifying an also large number of hard coded rules. RL cuts out the need to manually specify rules, agents learn simply by playing the game. For two player games such as backgammon, agents can be trained by playing against other human players or even other RL agents.\nControl problems\n- such as elevator scheduling. Again, it is not obvious what strategies would provide the best, most timely elevator service. For control problems such as this, RL agents can be left to learn in a simulated environment and eventually they will come up with good controlling policies. Some advantages of using RL for control problems is that an agent can be retrained easily to adapt to environment changes, and trained continuously while the system is online, improving performance all the time.\nQ-Learning",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 31,
+      "textBlocks": [
+        "Domain Knowledge in Learning",
+        "Use of domain knowledge in learning process\nCognitive scientist argue that learners learn better and faster based on the existing domain knowledge—knowledge is important in learning (although sounds counter-intuitive). \nHuman can learn patterns by a few examples. \nMany machine learning algorithms such as ID3 and candidate elimination learn on the basis of regularities, similarities, or patterns in training data without using domain knowledge to guide generalization\nMeta-DENDRAL as an Example (by Buchanan and Mitchel, 1978)\nKnowledge is represented in the form of rules (use graphs of molecular structure for LHS and RHS)\nMeta-DENDRAL infers the rules for the structure of organic molecules from their chemical formula and data. \nExplanations of the results are added after the inference as positive examples  for a rule",
+        "31"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 32,
+      "textBlocks": [
+        "32",
+        "Online Learning as a Promising Method for Big Data Analysis"
+      ],
+      "notes": "",
+      "media": [
+        "image25.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 33,
+      "textBlocks": [
+        "Categories of Machine Learning",
+        "Symbolic learning vs. non-symbolic learning\nSupervised learning vs. unsupervised learning\nBatch learning vs. Online learning\nDifference between online learning and reinforcement learning is very small. \nOther types of learning\nAnalogical learning\nDeep learning\nReinforcement learning\nImportant to robot\nHybrid learning or universal learning\nImportant for deep learning",
+        "33"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 34,
+      "textBlocks": [
+        "Applications of Machine Learning",
+        "Data mining\nBusiness intelligence, Big data analytics\nFinancial modeling\nCredit risk analysis, loan application screening\nWeather forecasting\nSpeech recognition\nGames\nMany engineering problem solving\nRobotics\nMedicine and biology\nSo many others",
+        "34"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 35,
+      "textBlocks": [
+        "Challenges of Machine Learning",
+        "Learning from big data\nOnline learning\nIntegration of various machine learning\nEnsemble learning\nDeep learning\nUniversal learner\nInconsistency in knowledge representation\nKnowledge integration and utilization\nUse of domain knowledge\nUse of common sense knowledge",
+        "35"
+      ],
+      "notes": "Ensemble learning\nis a machine\nlearning\nparadigm where multiple\nlearners\nare trained to solve the same problem.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 36,
+      "textBlocks": [
+        "References",
+        "George Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapters 10 and 12, Addison Wesley, 2009.\nTom M. Mitchell, Machine Learning, McGraw-Hills, 1997.",
+        "36"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-36.png",
+        "path": "public/course-source/l10-neural-networks/slide-renders/slide-36.png",
+        "bytes": 83863,
+        "sha256": "289c507acf66f676cf1b117342b23d4309236ffe762ffe09c64b746eea429522",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1457 @@
+{
+  "source": "L09_MachineLearning Part A.pptx",
+  "sourceFilename": "L09_MachineLearning Part A.pptx",
+  "sourceSha256": "f6995bee122230af66447c8e09d258cb762dd00fe2dfd6ea91cbd50d5e993296",
+  "slideCount": 40,
+  "mediaCount": 21,
+  "media": [
+    {
+      "file": "image1.jpeg",
+      "archivePath": "ppt/media/image1.jpeg",
+      "bytes": 19564,
+      "sha256": "54251275665b43f9bd90c9dce389eb7c4fda4885148e74a8b35480b074dd6cab",
+      "width": 334,
+      "height": 255,
+      "format": "JPEG"
+    },
+    {
+      "file": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "bytes": 2000,
+      "sha256": "5016fe3d65678c06d62887b5e2731ecaf5d7cea90916be8631863aad9da32e8a",
+      "width": 324,
+      "height": 98,
+      "format": "PNG"
+    },
+    {
+      "file": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "bytes": 27427,
+      "sha256": "e8be780c8f4937c950f3fa66cf443245a062526c5fe5d7f57681a1df58b05b03",
+      "width": 445,
+      "height": 502,
+      "format": "PNG"
+    },
+    {
+      "file": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "bytes": 17378,
+      "sha256": "78eeb1152321570d8457ac50ccfe7c68ab33c14e6be4b5762966e8e31c49a4a1",
+      "width": 646,
+      "height": 261,
+      "format": "PNG"
+    },
+    {
+      "file": "image13.png",
+      "archivePath": "ppt/media/image13.png",
+      "bytes": 36659,
+      "sha256": "85f4679c1b007bddd0f3b70a8f3230e84130dab5ec7a4cac493533e8d7430e63",
+      "width": 608,
+      "height": 516,
+      "format": "PNG"
+    },
+    {
+      "file": "image14.png",
+      "archivePath": "ppt/media/image14.png",
+      "bytes": 44980,
+      "sha256": "888798c8825f8c9125507baadf856200a9603fe2657bb35aa2310ea7c38cf19e",
+      "width": 403,
+      "height": 295,
+      "format": "PNG"
+    },
+    {
+      "file": "image15.png",
+      "archivePath": "ppt/media/image15.png",
+      "bytes": 29141,
+      "sha256": "72b14c78fe244a8d3ce4241a3c00fb98036711c76b42c668ab0dedf766ac370f",
+      "width": 636,
+      "height": 416,
+      "format": "PNG"
+    },
+    {
+      "file": "image16.png",
+      "archivePath": "ppt/media/image16.png",
+      "bytes": 116696,
+      "sha256": "22e1b8bf5a041ee8638e451c1db3a8e6f9b509677798994d0ff367613df9047e",
+      "width": 1811,
+      "height": 1002,
+      "format": "PNG"
+    },
+    {
+      "file": "image17.png",
+      "archivePath": "ppt/media/image17.png",
+      "bytes": 30340,
+      "sha256": "3eec0314d9b507a303bb6e32c0886d639d37e9700e5cbede5ee07eb349de301c",
+      "width": 859,
+      "height": 417,
+      "format": "PNG"
+    },
+    {
+      "file": "image18.png",
+      "archivePath": "ppt/media/image18.png",
+      "bytes": 118846,
+      "sha256": "5f3f8dceb839636011d2b08933feb716b8eea7f45efa3c04547ec07b35e481e3",
+      "width": 1376,
+      "height": 855,
+      "format": "PNG"
+    },
+    {
+      "file": "image19.png",
+      "archivePath": "ppt/media/image19.png",
+      "bytes": 185416,
+      "sha256": "c7cc1c3d7484582ab515f63d44541299af8ab98a583e40d0fc5f5503f5b68f72",
+      "width": 1352,
+      "height": 910,
+      "format": "PNG"
+    },
+    {
+      "file": "image2.jpeg",
+      "archivePath": "ppt/media/image2.jpeg",
+      "bytes": 32331,
+      "sha256": "6e4bd47d39001e104073098d7d7c4f3836dcc34b633b2abf37eb2eb9cc002c1b",
+      "width": 550,
+      "height": 358,
+      "format": "JPEG"
+    },
+    {
+      "file": "image20.png",
+      "archivePath": "ppt/media/image20.png",
+      "bytes": 11479,
+      "sha256": "875c940862bc7d5bc9d171311146e72dafbca4a30b6742dd0787ab9f9a8303d1",
+      "width": 743,
+      "height": 203,
+      "format": "PNG"
+    },
+    {
+      "file": "image21.png",
+      "archivePath": "ppt/media/image21.png",
+      "bytes": 20205,
+      "sha256": "79344f9002180e7c1f20b59f29617bcc6f9d1dc3ee988a2dcd395e33ba058c97",
+      "width": 730,
+      "height": 319,
+      "format": "PNG"
+    },
+    {
+      "file": "image3.jpeg",
+      "archivePath": "ppt/media/image3.jpeg",
+      "bytes": 36318,
+      "sha256": "abc2b8afb4dc696dbcadd8b07e2b5071f77e040e71844cd0b813e556ca2b5b5b",
+      "width": 400,
+      "height": 324,
+      "format": "JPEG"
+    },
+    {
+      "file": "image4.jpeg",
+      "archivePath": "ppt/media/image4.jpeg",
+      "bytes": 89856,
+      "sha256": "8b9fa92f80fb528802e9ffd7935344139cd986f11a74078bf53b2c1cec0a2120",
+      "width": 550,
+      "height": 384,
+      "format": "JPEG"
+    },
+    {
+      "file": "image5.jpeg",
+      "archivePath": "ppt/media/image5.jpeg",
+      "bytes": 13941,
+      "sha256": "dd3b1a7dca9f071764b7f1515bac87f51e319825cadc345705ad94388081e28a",
+      "width": 199,
+      "height": 240,
+      "format": "JPEG"
+    },
+    {
+      "file": "image6.png",
+      "archivePath": "ppt/media/image6.png",
+      "bytes": 31607,
+      "sha256": "bb69f4970e237805a8f1d4dc7f77a7ebcd19508e31428d6d39a27243ec7a01b9",
+      "width": 746,
+      "height": 423,
+      "format": "PNG"
+    },
+    {
+      "file": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "bytes": 24655,
+      "sha256": "5b5c2828568f08259026a1e3fafbfd265959a8f0439d07e3e7e5207099cade67",
+      "width": 635,
+      "height": 420,
+      "format": "PNG"
+    },
+    {
+      "file": "image8.png",
+      "archivePath": "ppt/media/image8.png",
+      "bytes": 9099,
+      "sha256": "b702e2630cd4829f9d63410bd661923741c02d4e2b9a4b4eea9c6b33d514087b",
+      "width": 644,
+      "height": 521,
+      "format": "PNG"
+    },
+    {
+      "file": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "bytes": 20907,
+      "sha256": "4413df148c48031dddd66de93e798e3a99c835c377762886a293ee3e12339e2b",
+      "width": 637,
+      "height": 364,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "1",
+        "Artificial Intelligence\u000bCPSC 481",
+        "Machine Learning\nPart A",
+        "More details and coding in CPSC 483 – Introduction to Machine Learning \nCPSC 585 – Artificial Neural Networks"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-01.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-01.png",
+        "bytes": 81186,
+        "sha256": "9ebe1ebb38f2c330af9a495045f9a34a44aa2557293dd8a2ae7fda9d6daf74f7",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "2",
+        "What is Learning?",
+        "Learning is acquiring new knowledge, skills, values, or understanding.\nOccurs as part of training or education, personal development, or experience\nLearning curve represents the progress of learning over time \nAn indicator of the learning performance\n\nHow do we learn?"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-02.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-02.png",
+        "bytes": 95877,
+        "sha256": "0d50cd2c0bc3517465c188df2ff073650c0a009be896ec6c04ef895dd7239a00",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "Cognitive Process of Human Learning",
+        "Knowledge acquired through learning actions such as \nReading, observing, touching, doing, thinking, etc. \nPhysical actions can strengthen the knowledge learned.",
+        "3"
+      ],
+      "notes": "Examples of how to use human brain to learn\nSimilar to computer systems",
+      "media": [
+        "image1.jpeg"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-03.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-03.png",
+        "bytes": 431132,
+        "sha256": "c63bac706d699a033c03c45e1af71ece17e902aa24271bfd1db8b91c8c3b6a0a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "Important Terms and Questions related to Learning",
+        "What are the outcomes of learning?\nConcept, meaning, and knowledge\nA concept is a cognitive unit of meaning, an abstract idea or a mental symbol defined as a \"unit of knowledge“. \nBall, Ball Game, Sports, etc.\nClasses (labels) of knowledge are names of knowledge units.\n\nHow to represent concepts or knowledge?\n\nWhat to do with the learned knowledge?\nApplication or use of knowledge",
+        "4"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-04.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-04.png",
+        "bytes": 143745,
+        "sha256": "59aa247b08d243696f869dc795d07a11a8943ca8edd3237dd75bc948e76e7165",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "A Baby’s Animal Class Learning",
+        "5",
+        "Class: Dog",
+        "Class: Cat",
+        "Class: Bird",
+        "Some questions to think about\nHow does a baby acquire knowledge or concepts of dogs, cats, birds, and animals?\nHow does a baby know the class of animals or objects?\nWhat does each animal class mean to a baby?\nWhat if no one tells the baby about the class?\nWhat are the possible learning methods used by a baby?"
+      ],
+      "notes": "",
+      "media": [
+        "image2.jpeg",
+        "image3.jpeg",
+        "image4.jpeg",
+        "image5.jpeg"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-05.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-05.png",
+        "bytes": 940712,
+        "sha256": "ee015f18e5dc6176003a9c461d3c3cb503bcc3492067a07fbb2f3b7c727e0371",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "6",
+        "What are Possible Learning Methods",
+        "Think about how you learn.\n\nVarious learning methods to transform external data or  information to internal knowledge (understanding or making data meaningful)\nMemorization (very weak and low level learning)\nSynthesizing different types of information\nGeneralization or conceptualization (understanding) and specialization\nPattern recognition and categorization by patterns or similarity\nInduction and classification\nAnalogy\nDeduction"
+      ],
+      "notes": "Analogy: comparison between two things\nDeduction: CSUF is a smoke free campus\n- > no one should smoke on campus",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-06.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-06.png",
+        "bytes": 132026,
+        "sha256": "571d8d35e6589ae169d7d6f60718db7517d22600e59654b334bf06ce9640ac64",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "7",
+        "What is Machine Learning?",
+        "Machine learning\nImplementation of learning with computer\nAny change in a system that allows it to perform better the second time on repetition of the same task or on another task drawn from the same population (Simon, 1983)\n\nWhy machine learning?\nOne of the important AI problems\nKnowledge engineering bottleneck. Costly to build expert systems with all the necessary knowledge.\n\nSo many real world applications such as pattern recognition, speech recognition, forecasting, unmanned vehicles, data mining, big data analytics, etc.\nMainly for understanding through analysis, decision making, forecasting"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-07.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-07.png",
+        "bytes": 149403,
+        "sha256": "7d0aacd5c5fdeac50cc325b22c8241d8f759d8306e96606fa4899bde9e759717",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Generalization as a Learning Method",
+        "Generalization\nVolleyball, baseball, football generalize to ball or sports\n\nUse of generalization (operators) in logical expressions\nReplacing constants with variables: \nObj(round,red,ball) generalizes to Obj(round, X,ball)\nDropping conditions from a conjunctive expression:\nObj(round) ^ Obj(small) ^ Obj(red) generalizes to Obj(round) ^ Obj(red)\nAdding a disjunct to an expression: \nObj(round) ^ Obj(small) ^ Obj(red) generalizes to \n\t\tObj(round) ^ Obj(small) ^ ((Obj(red) v Obj(blue))\nReplacing a property with its parent in a class hierarchy\nObj(red) generalizes to Obj(primary_color) if primary_color is a superclass of red (following the color class hierarchy)\nUse of ontology",
+        "8"
+      ],
+      "notes": "Ontology: the existence\nof an object and its different types of symbols\nHeart, picture of heart, heart in other languages",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-08.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-08.png",
+        "bytes": 201899,
+        "sha256": "fe59b4fb505f71be0b27303efde647bb2fa0bfd6b69ae40ac5633d51e31c9dc4",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "Concept Learning through Generalization",
+        "Concept learning\nLearning Ball concept from following two ball examples:\n\tBall1: (small, red, round)\n\tBall2: (large, blue, round)\n\tgeneralized to a ball concept: Ball is (Y, Z, round)\nThe concept “ball” can be described by (Y, Z, round), meaning that “Ball is a round object that has variable sizes and colors.”\nVersion space learning utilizes this approach. \nAny sentence that unifies with this general definition represents a ball\nConcept space is a set of concepts (candidate concepts) that can be created by learning methods.\nLearning is searching for a right concept in the concept space (e.g., learning is a search problem). See the figure on next slide.\nIf concept p is more general than concept q, we say that p covers q, p  q. Or p covers q iff q(x) is a logical consequence of p(x).",
+        "9"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-09.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-09.png",
+        "bytes": 210356,
+        "sha256": "0629322ada5f866f7a274ed5dfa7233610bb2652ba18f7ffac898cf612eaf53a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "Generalization and Specialization in a Concept Space",
+        "10",
+        "obj(X,Y,Z) may be general enough but too general",
+        "obj is too specific to be a concept",
+        "Concept Space",
+        "Generalization",
+        "Specialization"
+      ],
+      "notes": "Should “ball” be “round”?\nNo, here\n“ball” means a shape, “not cube”, “not brick”",
+      "media": [
+        "image6.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-10.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-10.png",
+        "bytes": 257222,
+        "sha256": "3a18fb7e955fa0dd676b60c224ab4c0bd2b1a55e8c251bf4777e89f665ea2276",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "Developing Learning Systems",
+        "How can we develop a system that can learn the concept of Ball?\nHow can we develop a system that can learn the concept of Arch?\nWhat are the learning method and concept/knowledge representation?\n\nMore complex learning systems\nHow can we develop a system that can recognize my face? \nHow can we develop a system that can recognize my voice?\nHow can we develop a system that can learn the winning strategies in a chess or Go game?\nHow can we develop a system that can learn the patterns of good credits and bad credits?\nHow can we develop a system that can learn the pattern of successful investment?",
+        "11"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-11.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-11.png",
+        "bytes": 163414,
+        "sha256": "164c6eb81dadc5ff5fc2981c23bc95fbf2fa8455cf284f6c7f7c57a7c265dff1",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "Winston’s Learning Program (Winston, 1975): Used Generalization and Specialization methods",
+        "12",
+        "Learning goal: Learn Arch concept \nKnowledge representation method used: Semantic Networks",
+        "More details about semantic network, “supplemental material” on Titanium"
+      ],
+      "notes": "",
+      "media": [
+        "image7.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-12.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-12.png",
+        "bytes": 218917,
+        "sha256": "d461ec1854fccfb9c7d4660fc2c5231402151152bcf3f61ca249895318f329e2",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Positive examples: arches\nCorrect arch concept should cover all positive examples or include patterns of all positive examples of arches.\nUse generalization method",
+        "Positive and Negative Examples in Learning",
+        "13",
+        "Negative examples (near miss): not arches\nCorrect arch concept should cover none of the negative examples or exclude patterns of negative examples.\nUse specialization method",
+        "Training data (consisting of both positive and negative examples) needed for learning or training"
+      ],
+      "notes": "",
+      "media": [
+        "image8.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-13.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-13.png",
+        "bytes": 174877,
+        "sha256": "b99252da9942d78e76684b254a35dda083eebe112e15fbadd3231914267be793",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "What is a Generalized Arch Concept from Two Positive Examples?",
+        "14",
+        "Positive examples: arches\nCorrect arch concept should cover all positive examples or include patterns of all positive examples of arches.\nUse generalization method"
+      ],
+      "notes": "",
+      "media": [
+        "image7.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-14.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-14.png",
+        "bytes": 237157,
+        "sha256": "5048ba603421b2bcec05974643f97efb2e105d3bcb261a1a30abe719b05d1009",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Generalization to Cover all Positive Examples in Winston’s Learning Program",
+        "15",
+        "Need a generalization hierarchy of these concepts as background knowledge"
+      ],
+      "notes": "",
+      "media": [
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-15.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-15.png",
+        "bytes": 185702,
+        "sha256": "1d8e615db2ad21b90fbf529b115b01f816e31ce1cc73128d470466e4d0f7c04c",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "What is a Specialized Arch Concept from Two Negative Examples?",
+        "16",
+        "Negative examples (near miss): not arches\nCorrect arch concept should cover none of the negative examples or exclude patterns of negative examples.\nUse specialization method"
+      ],
+      "notes": "",
+      "media": [
+        "image10.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-16.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-16.png",
+        "bytes": 101782,
+        "sha256": "378101ef05188854b4ec18d9173e4bb51dbe45ca4771ab6a27823b43cecf2e32",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "*Adds constraints to the semantic network so that it can’t match with negative examples. \n*Negative example helps the learning algorithm to prevent over-generalization of a concept.",
+        "Specialization to Exclude Negative Examples",
+        "17"
+      ],
+      "notes": "",
+      "media": [
+        "image11.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-17.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-17.png",
+        "bytes": 276565,
+        "sha256": "43885e5f2102b3354c0272522f4f9ccd77f2db04349c2b3db23ba3506f1d5b50",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "The Role of Negative Examples in Preventing Overgeneralization",
+        "18"
+      ],
+      "notes": "",
+      "media": [
+        "image12.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-18.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-18.png",
+        "bytes": 144954,
+        "sha256": "35fd840e4786ac0e5e3d614958d7ce57984f50d21ac50461e5a864d24281e798",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Lessons Learned from Winston’s Learning Program",
+        "Generalization and specialization operations can be used to define a concept space.\nNeed positive examples to generalize a concept and negative examples to prevent overgeneralization\nConcept should be general enough to cover all positive examples but should be specific enough to exclude all negative examples. \nGeneralize as little as possible to cover positive examples and Specialize as little as possible to exclude negative examples to eliminate overly general concepts.\nProblem of Winston’s learning program\nBased on a hill climbing search without backtracking on the concept space guided by the training data. So, the learning performance is highly sensitive to the order and quality of the training examples.\nWhat does it mean by the quality of training data?",
+        "19"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-19.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-19.png",
+        "bytes": 203481,
+        "sha256": "4c6149b6f113fabb7a9f7a5cf4d2a28e6420de9529b11a7adca4cf0d350858ee",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "Problem: Learning the Risk level",
+        "20",
+        "Data collected from credit history of loan applications",
+        "What can be a learning method to learn the concept of risk level?\n \nHow can we represent the risk level concepts?"
+      ],
+      "notes": "",
+      "media": [
+        "image13.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-20.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-20.png",
+        "bytes": 248027,
+        "sha256": "c100ed8e465aa1d6e89e440884b17463b902457e2fd9232a155f528bedc92d17",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "Decision Tree Induction",
+        "Decision tree induction approach\nQuinlan 1986 developed ID3 as one of the earliest learning algorithm using decision tree.\nDecision tree is used as the knowledge representation.\nDecision tree is a popularly used graph model for decision analysis in business, operation research, etc. See next slide for an example.\nA set of rules with conditional expressions that describe patterns or concepts can be represented by a decision tree that determines the class of an object (classification) by testing its values for certain properties.\nID3 uses the input data as training data to learn the concepts or patterns of a given class and produce a decision tree that describe the concepts that correspond to a set of rules.",
+        "21"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-21.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-21.png",
+        "bytes": 170530,
+        "sha256": "22bd59d0777a4894650d5290dd293e243ec197527434d43907838b3c5813b6eb",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "What is Decision Tree?",
+        "We use attribute values (internal nodes) to make a decision (leaf node).\nCan we represent a concept or knowledge in the form of decision tree?",
+        "22",
+        "A decision tree to decide if we go for picnic",
+        "Internal nodes represent tests on attributes.\n\nLeaf nodes represent decisions."
+      ],
+      "notes": "",
+      "media": [
+        "image14.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-22.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-22.png",
+        "bytes": 290462,
+        "sha256": "6fd95e2baa0e73b8d63b90d2362afbc4cab84871be4fcd50a4c37952778060aa",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 23,
+      "textBlocks": [
+        "Training Data Set for Learning",
+        "23",
+        "Decision class column\nWe are trying to understand this data set in terms of financial risk.",
+        "Data collected from credit history of loan applications"
+      ],
+      "notes": "",
+      "media": [
+        "image13.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-23.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-23.png",
+        "bytes": 227163,
+        "sha256": "ba69bbe3552ca6cebbb74445304e6ebd9097607ed6a36c7ebe6e04d949985add",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 24,
+      "textBlocks": [
+        "A Decision Tree for Risk Assessment",
+        "24",
+        "How can we create this decision tree?\nHow can we classify loan applications by risk level?"
+      ],
+      "notes": "",
+      "media": [
+        "image15.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-24.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-24.png",
+        "bytes": 257818,
+        "sha256": "bdc2bb5d46ebf26e651f5e11f450c8affeb17838c2b380e012e6d927b4375e9f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 25,
+      "textBlocks": [
+        "ID3: Decision Tree Induction Algorithm",
+        "25"
+      ],
+      "notes": "",
+      "media": [
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-25.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-25.png",
+        "bytes": 215380,
+        "sha256": "967cf8bd4100b4c3a21ab5ef071fdaa8cb23a24a517d90dbfbad3511cfcbc9bc",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 26,
+      "textBlocks": [
+        "Major Steps for Top-down Decision Tree Induction Process",
+        "Select a property (attribute) of training data set to test by values of the property at the current node of the tree.\nHow?\nUse the values of the selected property to partition the set of examples in the training data set into groups by the values.\nCheck if all members in a partition belong to the same class. \nIf so, the class of the partition is determined by the class (leaf node).\nIf not, recursively construct a subtree for each partition following steps 1 ~ 3. \nPerform the steps 1 ~ 3 for all other branches until all members of the partition are in the same class; that class becomes a leaf node of the tree.",
+        "26"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-26.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-26.png",
+        "bytes": 158885,
+        "sha256": "146751d2ba728751f8012a97f4d5c8ede43ed09d09f0968ba6d9da65c7d72350",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 27,
+      "textBlocks": [
+        "A Simpler Decision Tree",
+        "27",
+        "If multiple trees can be created from the same data set, which tree would you use and why?"
+      ],
+      "notes": "",
+      "media": [
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-27.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-27.png",
+        "bytes": 183778,
+        "sha256": "15c0603c502406f5d107de4ab8e15dea8ce6c16a8444fb0349ae4875f29e4dc7",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 28,
+      "textBlocks": [
+        "Theory that Supports the Simpler Tree",
+        "A pattern needs to be “simpler” than listing out the data set it describes.\nMinimal Message Length (MML) theory\nGiven a data set D\nGiven a set of hypotheses H1, H2, .., Ht, that describe D \nThese H can be classifiers, clusters, theories, etc.\nMML principle states that: \nWe should choose Hi, for which the quantity: Mlength(Hi) + Mlength(D|Hi) is minimized, where Mlength(Hi) is minimum number of bits needed to specify Hi, Mlength(D|Hi) is minimum number of bits needed to describe the data given that Hi is true.\nExample: Represent a set {2,4,6,…, 100}\nH1: List all 49 integers: cost of H1 = cost of listing 49 integers\nH2: “All even numbers <= 100 AND >= 2”: cost of H2 = cost of listing 2 integers + cost of “<=“ + cost of “even” concept\nAccording to MML, if cost(solution1) > cost(solution2), then solution2 is worth something since as size of set increases, the cost of solution1 increases much more rapidly.\nSimpler concept covers all examples and is the least likely to include unnecessary constraints.",
+        "28"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-28.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-28.png",
+        "bytes": 242277,
+        "sha256": "b6d855cda9d58967bdf840b1b7525e4e27451727f433a5180d3c0d22e0e1414f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 29,
+      "textBlocks": [
+        "Entropy in Information Theory",
+        "29"
+      ],
+      "notes": "0, no uncertainty\n, log2^1\n= 0",
+      "media": [
+        "image18.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-29.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-29.png",
+        "bytes": 285924,
+        "sha256": "2993db994cd887e1a577139a41881a095d53090952b54af860cca0817a812a21",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 30,
+      "textBlocks": [
+        "Information Theoretic Test Selection",
+        "30"
+      ],
+      "notes": "H(T): a random variable\nX\nhas s possible values, and these s possible values can be classified\ninto t classes.",
+      "media": [
+        "image19.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-30.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-30.png",
+        "bytes": 250458,
+        "sha256": "d722bbb0b4f2a470e3207bea80107f6ef90638bf51671c9e4585451562040b8b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 31,
+      "textBlocks": [
+        "Example: Calculating Information Gain",
+        "For the Training Data Set for Loan Applications\nH(LoanData) = -6/14log2(6/14) – 3/14log2(3/14) – 5/14log2(5/14) = 1.531 bits. This is for any tree that covers the examples in the data set.\nPartitions by income are: V1={1,4,7,11}, V2={2,3,12,14}, V3={5,6,8,9,10,13} \nFrom the partitions, |v1|/|T| = 4/14, |v2|/|T| = 4/14, |v3|/|T| = 6/14\nH(v1) = –p(Ci)log2p(Ci)=0.0 since all in “high” class, H(v2) = 1.0, H(v3) = 0.65\nThe expected information needed to complete the tree for income, E(income) = 4/14*H(V1) + 4/14*H(V2) + 6/14*H(V3) = 4/14*0.0 + 4/14*1.0 + 6/14*0.65 = 0.564bits\nInformation gain by choosing income, gain(income) = H(LoanData) – E(income) = 1.531 – 0.564 = 0.967 bits.\nSimilarly we calculate information gain for all other attributes, gain(credit history) = 0.266, gain(debt) = 0.063, gain(collateral) = 0.206. \nSo we choose the attribute, income for partition that results in subtrees.\nFor each subtree, repeat the same procedure.\nCan we choose the same attribute as the parent node?",
+        "31"
+      ],
+      "notes": "14 records: 6\nhigh, 3 moderate, 5 low\nV1: 0-15K, V2: 15-25K, V3: over 35K\nH(V3) = -5/6log2^(5/6)-1/6log2^(1/6) = 0.65\nH(V2) = -2/4log2^(2/4)-2/4log2^(2/4)\n= 1",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-31.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-31.png",
+        "bytes": 228568,
+        "sha256": "eed9350bedf09634627e78a7f9c60f0ba2f619636ec36791c8346fb8930bcc78",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 32,
+      "textBlocks": [
+        "Stage A of a decision tree",
+        "Two Partially Constructed Decision Tree",
+        "32",
+        "These are record Ids",
+        "Stage B of a decision tree",
+        "All examples {14 records}"
+      ],
+      "notes": "",
+      "media": [
+        "image20.png",
+        "image21.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-32.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-32.png",
+        "bytes": 223836,
+        "sha256": "a848e86609145d68cf5a4ce4fb8fd3cf3a381a8f7d85e890755e6fca54ecddbc",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 33,
+      "textBlocks": [
+        "The Final Decision Tree Constructed",
+        "33"
+      ],
+      "notes": "",
+      "media": [
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-33.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-33.png",
+        "bytes": 166207,
+        "sha256": "636bb987e0c1cf22eb0ff3ef430e4e4a0b31b2aae33618a7ba0b60be28a4dd6c",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 34,
+      "textBlocks": [
+        "Class Concepts in Rules",
+        "Class concepts can be represented in tree structure or in rules\nCommon rule formats (common knowledge representation)\nLHS (decisions leading to the leaf node)  RHS (class outcome)\nIF (condition), THEN (class outcome)\nPossible rules from the decision tree \nHigh risk rule (for high risk concept)\nIF (income = $0~$15k) OR (income = $15k~$35k AND credit history = unknown AND debt = high) OR (income = $15k~$35k AND credit history = bad) \nTHEN the application is considered as high risk\n\nLow risk rule (for low risk concept)\n     IF (income > $35k) AND (credit history = unknown OR good) \n     THEN the application is considered as low risk\n\nHow about moderate risk rule?",
+        "34"
+      ],
+      "notes": "LHS: left-hand side",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-34.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-34.png",
+        "bytes": 179827,
+        "sha256": "fcd6d57d2c335e9739cfedced215c913d7c3fc0615bc7c51cea071af25b274cf",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 35,
+      "textBlocks": [
+        "Decision Tree Induction as Search through a Concept Space",
+        "Representation: Tree\nConcepts represented in tree\nConcept space (Version space) is all possible decision trees that can be created from training examples\nOperations\nMoving through the space consists of adding tests to a tree. \nID3 as a search algorithm\nID3 implements a form of greedy search in the space of all possible trees without backtracking. Very efficient!",
+        "35"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-35.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-35.png",
+        "bytes": 128354,
+        "sha256": "cd35ef7d9d53f28b6d87fbd671fc61724fbb81df9209dc53cd306c68176d9fb2",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 36,
+      "textBlocks": [
+        "Evaluation of Decision Tree",
+        "Advantages\nEasy to convert a decision tree into a set of rules\nCommon issues\nWhen the quality of data is poor, e.g., inconsistent data, missing data\nNominal attributes are ideal. For continuous values, break the values into subsets of values (groups of values).\nLarge data set may produce a large tree.\nC4.5 or higher version addressed many of these issues\nBagging produce replicate training sets, called bootstrap samples, by sampling with replacement from the training instances. Boosting maintains a weight for each classifier. The weight is used to reflect the importance. Multiple classifiers produced from bootstrap samples are combined by taking average or voting to form a composite classifier. In bagging, each component classifier has the same vote, while boosting assigns different voting strength to component classifiers on the basis of their accuracy.\nThis technique can be used for other learning or regression approaches. \nTo handle large data set, divide the data into subsets, build the decision tree on one subset, and then test its accuracy on other subsets. \nMany variations exist, e.g., CART",
+        "36"
+      ],
+      "notes": "Given a standard\ntraining set\n{\\\ndisplaystyle\nD} of size\nn\n, bagging generates\nm\nnew training sets {\\\ndisplaystyle\nD_{\ni\n}}, each of size\nn′\n, by\nsampling\nfrom\nD\nuniformly\nand\nwith replacement\n. By sampling with replacement, some observations may be repeated in each {\\\ndisplaystyle\nD_{\ni\n}}. If\nn\n′\n=\nn\n, then for large\nn\nthe set {\\\ndisplaystyle\nD_{\ni\n}} is expected to have the fraction (1 - 1/\ne\n) (≈63.2%) of the unique examples of\nD\n, the rest being duplicates.\n[1]\nThis kind of sample is known as a\nbootstrap\nsample. The\nm\nmodels are fitted using the above\nm\nbootstrap samples and combined by averaging the output (for regression) or voting (for classification).",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-36.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-36.png",
+        "bytes": 270516,
+        "sha256": "040a9518f801cf670be944e1eb26cac49dd37957a4c1d463c5bb0d477fca0025",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 37,
+      "textBlocks": [
+        "Supervised Learning Process",
+        "Steps:\nTraining with both positive and negative examples (training data) to build a learning model (with patterns).\nTesting for verification of concept learned\n\n3. Use the model for forecasting, prediction, recognition, etc.\nWhy do we call it “supervised learning”? \nWhy do we also call it learning by examples, inductive learning, classification?\nOutcomes of supervised learning\nDescription of learned classes represents patterns or a set of properties that represent each class – concepts or knowledge.\nSome questions to think about\nCan we learn multiple concepts?\nCan we use Winston’s learning algorithm for classification purpose?",
+        "37"
+      ],
+      "notes": "In\nsupervised learning\n, the output datasets are provided which are used to train the machine and get the desired outputs whereas\nin\nunsupervised\nlearning\nno datasets are provided, instead the data is clustered into\ndifferent\nclasses .",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-37.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-37.png",
+        "bytes": 174997,
+        "sha256": "4b5529e7314bc6f00b215b963d214f49fab27497e888c14455ec0ca2ecedc86c",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 38,
+      "textBlocks": [
+        "Inductive Bias",
+        "Induction (learning) depends on prior knowledge and assumptions about the nature of the concepts being learned.\nInductive bias refers to any criteria a learner uses to constrain the concept space or to select concepts within that space.\nExamples of inductive biases\nUse of domain specific knowledge and assumptions such as heuristics, e.g., Heuristics based on information theory are used for ID3\nSyntactic constraints on the representation of learned concepts to limit the size of the space, e.g., bit representation, decision tree, feature vectors, rules, etc.\nReason for inductive bias\nLearning space is so large, so search-based learning becomes impractical.\nTraining data are only  a subset of all instances in the domain. Since data alone are not enough, it must make additional assumptions about “likely” concepts, may be in the form of heuristics. \nProblem: Knowledge learned from induction (inductive learning) may not be accurate!",
+        "38"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-38.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-38.png",
+        "bytes": 220268,
+        "sha256": "82e7474c6e5516a278ac01b8e02c816403231fad29bf89f09fc515d3f2f56d11",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 39,
+      "textBlocks": [
+        "39",
+        "Categorizations of Machine Learning Approaches",
+        "Supervised learning vs. unsupervised learning\nSymbolic learning vs. non-symbolic learning\nSymbolic learning builds symbolic concepts or models from experience by making improvement using symbolic computation of data.\nNon-symbolic learning uses of optimization (using numerical computation), adaptation (evolutionary approach)\nSome symbolic and supervised learning approaches\nConcepts learning through generalization and specialization\nDecision tree induction, Concept/Version space learning, etc.\nSome non-symbolic supervised learning approaches\nArtificial neural network, Genetic learning\nSome unsupervised learning approaches\nClustering, Expectation-Maximization (EM) algorithm, Principle Component Analysis (PCA), etc."
+      ],
+      "notes": "Supervised symbolic learning: Winston learning\nprogram, decision tree\nGenetic learning is non-symbolic\nis because it does not use symbols to represent concepts and concept space.\nIt only uses a tree structure to represent a candidate solution.\nLearning is to transform info.\nto\nconcepts (the unit\nof knowledge).",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-39.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-39.png",
+        "bytes": 202089,
+        "sha256": "5becce479aecceb614ab5a4b27e95f8a11ae6feaf19a64f8c30d57e4a73fb35a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 40,
+      "textBlocks": [
+        "References",
+        "George Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapters 10 and 12, Addison Wesley, 2009.",
+        "40"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": true,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-40.png",
+        "path": "public/course-source/l09-machine-learning-part-a/slide-renders/slide-40.png",
+        "bytes": 69351,
+        "sha256": "80cc00de1035f82e04ba4492ec5c8a6b1a0da89242d7702839961a013fcdbbb7",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    }
+  ]
+}

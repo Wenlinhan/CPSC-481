@@ -8,6 +8,16 @@ import {
 } from "./SearchLessonPrimitives";
 
 const SOURCE_ROOT = "/course-source/l11-probability-bayes";
+const SOURCE_DECK_LABEL = "L11 Stochastic Methods · Part A";
+
+function resolveMeeting09SourceReference(sourceSlide: number) {
+  return {
+    deckLabel: SOURCE_DECK_LABEL,
+    image: `${SOURCE_ROOT}/slide-renders/slide-${String(sourceSlide).padStart(2, "0")}.png`,
+    key: `l11-probability-bayes:${sourceSlide}`,
+    page: sourceSlide,
+  };
+}
 
 function SourceFrame({
   slide,
@@ -572,7 +582,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 5 minutes. Let groups answer Q1–Q5 before revealing. Preserve every speaker-note answer. Explicitly correct Q3: A and B are events; X and the first-toss indicator are random variables.",
+    note: "Timing: 4 minutes. Let groups answer Q1–Q5 before revealing. Preserve every speaker-note answer. Explicitly correct Q3: A and B are events; X and the first-toss indicator are random variables.",
     sourceSlides: [20],
   },
   {
@@ -836,7 +846,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve the speaker-note identity P(a1)=P(a1,d1)+P(a1,d2)+P(a1,d3). Have students compute the numerator, denominator, and final posterior 0.5.",
+    note: "Timing: 3 minutes. Preserve the speaker-note identity P(a1)=P(a1,d1)+P(a1,d2)+P(a1,d3). Have students compute the numerator, denominator, and final posterior 0.5.",
     sourceSlides: [34],
   },
   {
@@ -881,7 +891,9 @@ export function Meeting09Deck() {
     <SourceDeckShell
       meetingLabel="Week 5 · Meeting 9"
       meetingTitle="Probability Foundations and Bayesian Inference"
+      resolveSourceReference={resolveMeeting09SourceReference}
       slides={slides}
+      sourceCollectionLabel={SOURCE_DECK_LABEL}
     />
   );
 }

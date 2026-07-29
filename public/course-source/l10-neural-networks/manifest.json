@@ -1,0 +1,1516 @@
+{
+  "schemaVersion": 2,
+  "source": "L10_MachineLearning Part B.pptx",
+  "sourceFilename": "L10_MachineLearning Part B.pptx",
+  "sourceSha256": "AFB85A8365CF49BAC114D362E78552503A1D771F84B6FA85A0D0827775FADC7D",
+  "sourceBytes": 963006,
+  "authoritativeSlideCount": 36,
+  "sourcePage": {
+    "widthPoints": 720,
+    "heightPoints": 540,
+    "aspectRatio": "4:3"
+  },
+  "selectedSlides": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    36
+  ],
+  "intendedMeetings": [
+    17,
+    18
+  ],
+  "meetingCoverage": {
+    "17": [
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "18": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      36
+    ]
+  },
+  "slideToMeeting": {
+    "1": 17,
+    "2": 17,
+    "3": 17,
+    "6": 17,
+    "7": 17,
+    "8": 17,
+    "9": 17,
+    "10": 17,
+    "11": 17,
+    "12": 17,
+    "13": 17,
+    "14": 18,
+    "15": 18,
+    "16": 18,
+    "17": 18,
+    "18": 18,
+    "19": 18,
+    "36": 18
+  },
+  "scope": "Historical neural-network evidence from Machine Learning Part B: non-symbolic learning, artificial neurons, McCulloch-Pitts logic, perceptron learning, linear separability, XOR, sigmoid activation, multilayer networks, delta rules, backpropagation, network types, and references.",
+  "selectionRationale": "Pages 1-3 and 6-19 form the complete neural-network teaching sequence; page 36 preserves its textbook references. Genetic programming, clustering, reinforcement learning, and general ML pages remain inventoried but are assigned elsewhere or retained as optional archive material.",
+  "knowledgePointGroups": [
+    {
+      "slides": [
+        1,
+        2,
+        3
+      ],
+      "meeting": 17,
+      "topic": "Machine Learning Part B context and the historical distinction between symbolic and adaptive or optimization-based learning."
+    },
+    {
+      "slides": [
+        6,
+        7,
+        8
+      ],
+      "meeting": 17,
+      "topic": "Artificial-neuron components, McCulloch-Pitts logic functions, and the transition from hand-set parameters to a learning problem."
+    },
+    {
+      "slides": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "meeting": 17,
+      "topic": "Perceptron learning, a numeric update sequence, linear separation, XOR limitation, and sigmoid activation."
+    },
+    {
+      "slides": [
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "meeting": 18,
+      "topic": "Multilayer networks, forward propagation, error backpropagation, delta-rule weight adjustment, layer notation, and the complete source algorithm."
+    },
+    {
+      "slides": [
+        19,
+        36
+      ],
+      "meeting": 18,
+      "topic": "Network design choices, supervised and unsupervised uses, and the historical textbook references."
+    }
+  ],
+  "auditSummary": {
+    "wholeDeckSlides": 36,
+    "wholeDeckMedia": 29,
+    "selectedSlideCount": 18,
+    "selectedRenderCount": 18,
+    "selectedMediaCount": 24,
+    "selectedSlidesWithNotes": [
+      3,
+      6,
+      7,
+      8,
+      10,
+      11,
+      14,
+      15,
+      18,
+      19
+    ],
+    "renderDimensions": {
+      "width": 1600,
+      "height": 1200
+    }
+  },
+  "inventoryProvenance": {
+    "file": "source-inventory.json",
+    "sha256": "A7CD73D5CB2D2592C511A0A36716EF8FCDBB5247C17AEC6281239A5C8897A47D",
+    "bytes": 54633,
+    "generator": "scripts/inventory_pptx.py"
+  },
+  "renderProvenance": {
+    "source": "Historical instructor PDF exported from the same L10 PowerPoint deck.",
+    "renderer": "Poppler pdftoppm at 160 DPI",
+    "selectedRenders": [
+      {
+        "file": "slide-renders/slide-01.png",
+        "sha256": "E880D0D8EA08A11798DEC353BBD541381B9445AB7E6B58AD9377F1891B3022F5",
+        "bytes": 55265,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-02.png",
+        "sha256": "2FD2B955A7CA25C04BE3D448F69525A83007B04A33E54CABDE4321AD0B34346F",
+        "bytes": 88440,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-03.png",
+        "sha256": "E7088A2CF35D399823697BBCF510CD94F88E28CC6EBDC6BFC66ABAA80C5D7888",
+        "bytes": 170794,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-06.png",
+        "sha256": "BC81F5DC261A9BE9A1BE698B1AC5AF51438DCCA622260AF9B5187D73F61EE26F",
+        "bytes": 257761,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-07.png",
+        "sha256": "03FEFEEE7A80E23476C2A8678FEB0B099D0E5FD6FA706DBFAF002DE7843162BE",
+        "bytes": 189345,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-08.png",
+        "sha256": "F7E83BE1D74D7B526161843E7454DA4DE19F451C7DB036DE13591E8412AA9CA6",
+        "bytes": 184574,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-09.png",
+        "sha256": "B82D0BF7ABD66F540AE107FC63D5710450F3FFD30133808DAF6E8558430D7DE1",
+        "bytes": 275800,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-10.png",
+        "sha256": "934877A75096558FAF870D1E24B8C9D3E8116F8C95A6C5D2533931711E0A19B1",
+        "bytes": 276046,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-11.png",
+        "sha256": "C3BD4818480B3AD6F13CDF15E56D18A648A1953999B9BC642082EEC2B1924FA5",
+        "bytes": 236182,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-12.png",
+        "sha256": "FEF0BEE6653D175DB2A906A9AFA69CFBBDB66647EF493088E0E777CEE4A1F5EF",
+        "bytes": 167598,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-13.png",
+        "sha256": "DE9A5650469FBF62FC190DCE5559B4D49B95F0DC2046FEC3658A8AFFD8AE4F8D",
+        "bytes": 271694,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-14.png",
+        "sha256": "8F29261FBF6A9376260493CFC5A1CD7A595E97917B359382E698DF47C9698E0E",
+        "bytes": 266799,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-15.png",
+        "sha256": "D193A91E82CC83B4BB4A025BAC7B8A42565827CF6A64774EA2204B6D1092656D",
+        "bytes": 286078,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-16.png",
+        "sha256": "BD29B7FB983DD4427246E4EE5395C18FE0B4EAA89780BECB151CE2409C71CE2D",
+        "bytes": 300399,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-17.png",
+        "sha256": "89B5C5CFB4FEF5B7A1EB86E1569DD9652F8B48102427D919B01233852C9323A6",
+        "bytes": 278784,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-18.png",
+        "sha256": "FDC954EA069680822A893EF5A85B92297BD7FB78F06BD09D2E109EA6FFE08618",
+        "bytes": 224085,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-19.png",
+        "sha256": "BEAA2426CC7B01A8D6FE86736AFCF114AC43B02417E5AAF2D0C7CDB698B5CC28",
+        "bytes": 112615,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      {
+        "file": "slide-renders/slide-36.png",
+        "sha256": "289C507ACF66F676CF1B117342B23D4309236FFE762FFE09C64B746EEA429522",
+        "bytes": 83863,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    ],
+    "archivalContextRenders": [
+      "slide-renders/slide-04.png",
+      "slide-renders/slide-05.png"
+    ],
+    "dimensions": {
+      "width": 1600,
+      "height": 1200
+    },
+    "preservation": "Complete 4:3 pages are retained without cropping. Source images and explanatory text remain visible together."
+  },
+  "sourceSlideEvidence": [
+    {
+      "slide": 1,
+      "meeting": 17,
+      "title": "Artificial Intelligence\u000bCPSC 481",
+      "visibleTextBlocks": [
+        "1",
+        "Artificial Intelligence\u000bCPSC 481",
+        "Machine Learning\nPart B"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [],
+      "render": {
+        "file": "slide-renders/slide-01.png",
+        "sha256": "E880D0D8EA08A11798DEC353BBD541381B9445AB7E6B58AD9377F1891B3022F5",
+        "bytes": 55265,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 2,
+      "meeting": 17,
+      "title": "Overview",
+      "visibleTextBlocks": [
+        "2",
+        "Overview",
+        "Non-symbolic machine learning\nArtificial neural networks\n\nUnsupervised Learning\n\nOther machine learning approaches\nGenetic learning\nReinforcement learning\nDeep learning\nOnline learning\n\nIssues related to learning"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [],
+      "render": {
+        "file": "slide-renders/slide-02.png",
+        "sha256": "2FD2B955A7CA25C04BE3D448F69525A83007B04A33E54CABDE4321AD0B34346F",
+        "bytes": 88440,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 3,
+      "meeting": 17,
+      "title": "Non-symbolic Learning Approaches",
+      "visibleTextBlocks": [
+        "Non-symbolic Learning Approaches",
+        "Non-symbolic learning approaches use adaptive or optimization method (similar to gradient search) instead of symbolic generalization and specialization in learning.\n\nExamples of non-symbolic learning\nEvolutionary approach that is based on adaptation to environment using fitness function\nArtificial neural network that is based on weights optimization or gradient descent/ascent search, finding a local minimum/maximum of a function by taking steps proportional to the negative/positive direction of the gradient of the function at the current point.",
+        "3"
+      ],
+      "speakerNotes": "Problems of\nsymbolic learning:\ndecision tree,\nWinston:\nNon-adaptive, strict cut-off (income $15001 VS $15K ???)",
+      "embeddedMedia": [],
+      "render": {
+        "file": "slide-renders/slide-03.png",
+        "sha256": "E7088A2CF35D399823697BBCF510CD94F88E28CC6EBDC6BFC66ABAA80C5D7888",
+        "bytes": 170794,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 6,
+      "meeting": 17,
+      "title": "Artificial Neuron",
+      "visibleTextBlocks": [
+        "Artificial Neuron",
+        "6",
+        "Artificial neuron is the basis of neural network.\nArtificial neuron consists of\nInput signals in a vector, X: data from environment or other neurons\nA set of real valued weights in a vector, W: connection strengths\nAn activation function, f that determines the neuron’s output value based on the cumulative strength, net calculated by wixi and a thresh hold value. Why weighted sum?",
+        "Actual neuron",
+        "Artificial neuron",
+        "Net = wixi"
+      ],
+      "speakerNotes": "Simulate how human think. Consider\nvarious factors and these factors have different weights of importance.\nSearch for a house: school district, price, commute distance, traffic, etc.\nCollege application: accreditation, admission rate, location, prestige, tuition, graduation rate, etc.\nHow to learn the weights of these factors?",
+      "embeddedMedia": [
+        "media/image1.png",
+        "media/image2.gif"
+      ],
+      "render": {
+        "file": "slide-renders/slide-06.png",
+        "sha256": "BC81F5DC261A9BE9A1BE698B1AC5AF51438DCCA622260AF9B5187D73F61EE26F",
+        "bytes": 257761,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 7,
+      "meeting": 17,
+      "title": "McCulloch-Pitts Neuron Model to Calculate the Logic Functions, AND and OR, 1943",
+      "visibleTextBlocks": [
+        "McCulloch-Pitts Neuron Model to Calculate the Logic Functions, AND and OR, 1943",
+        "7",
+        "AND",
+        "AND",
+        "AND",
+        "OR",
+        "OR",
+        "Input",
+        "net",
+        "Activation function f(net): \n1 if net >= 0\n0 otherwise\n\nwhere net= wixi",
+        "net",
+        "Bias (or constant)",
+        "What is the key idea used to solve these problems? Changing weights or activation function?"
+      ],
+      "speakerNotes": "Weight\nfor x and y is 1",
+      "embeddedMedia": [
+        "media/image3.png",
+        "media/image4.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-07.png",
+        "sha256": "03FEFEEE7A80E23476C2A8678FEB0B099D0E5FD6FA706DBFAF002DE7843162BE",
+        "bytes": 189345,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 8,
+      "meeting": 17,
+      "title": "Use McCulloch-Pitts Neuron Model to Solve Learning Problem",
+      "visibleTextBlocks": [
+        "Use McCulloch-Pitts Neuron Model to Solve Learning Problem",
+        "Can we use McCulloch-Pitts Neuron Model to solve other problems? \n\nHow can we solve a learning problem (predictive modeling) based on the idea of McCulloch-Pitts Neuron Model?\n\nWhich part of the McCulloch-Pitts Model do we need to change to solve other problems such as general linear equations?",
+        "8",
+        "Training data set",
+        "Class"
+      ],
+      "speakerNotes": "Binary classifier: apple, not an apple\nApply,\nnot apply",
+      "embeddedMedia": [
+        "media/image5.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-08.png",
+        "sha256": "F7E83BE1D74D7B526161843E7454DA4DE19F451C7DB036DE13591E8412AA9CA6",
+        "bytes": 184574,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 9,
+      "meeting": 17,
+      "title": "Perceptron Learning (Rosenblatt, 1962)",
+      "visibleTextBlocks": [
+        "Perceptron Learning (Rosenblatt, 1962)",
+        "Activation function, f(net) or f(w,x) is defined as\nnet = wixi \nf(net): 1 if net >= θ, -1 else (if net < θ)\nOutput a is either 1 or -1 chosen for binary class.\nθ is a threshhold value.\nWeight adjustment on the ith component (or feature) of the input vector, wi can be defined:\nwi = l(t – a)xi, where l is a learning rate (0.0~1.0) to control the speed of convergence, t is the desired output value (class label) from the training set, a is the perceptron output value (e.g., either 1 or -1 in this case) for the current input case xi in a vector, Xn. wi will be used to adjust the weight of xi for the next input case, Xn+1. \nPerceptron algorithm learns the weight W from the training set by adjusting the weights to minimize the average error as follows:\nIf t = a, do nothing\nElse (error), adjust the weight vector for the next case by Wn+1 = Wn + Wn\nRepeat this process for all examples in the training set until converged (possibly reusing the training data).",
+        "9",
+        "a"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [
+        "media/image6.emf"
+      ],
+      "render": {
+        "file": "slide-renders/slide-09.png",
+        "sha256": "B82D0BF7ABD66F540AE107FC63D5710450F3FFD30133808DAF6E8558430D7DE1",
+        "bytes": 275800,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 10,
+      "meeting": 17,
+      "title": "Training data set",
+      "visibleTextBlocks": [
+        "Training data set",
+        "Example: Perceptron Learning",
+        "10",
+        "Class",
+        "f(net) = f(w1*x1+w2*x2+w3*1), bias=1, θ = -0.6\nW = [0.75, 0.5, -0.6] (randomly generated), \n   l = 0.2\nf(net)1=f(0.75*1+0.5*1-0.6*1)=f(0.65) = 1,           (t - a) = (1-1) = 0, so no w needed \nf(net)2=f(0.75*9.4+0.5*6.4-0.6*1)=f(9.65) = 1,\n(t - a)=(-1-1)=-2,we need w\nW3 = W2 + 0.2(-1-1)X2  =  [      ] -0.4[     ] = [      ] \n\nf(net)3 = f(-3.01*2.5 – 2.06*2.1 – 1.0*1) \n           = f(-12.84) = -1, we need w\n\nW4 = W3 + 0.2(1-(-1))X3 =[         ]+ 0.4[    ] = [      ]\n\n*Continue this process until converged. \n(This is a gradient descent search.)",
+        "net = Sxiwi",
+        "y",
+        "a"
+      ],
+      "speakerNotes": "When converged?\nThe outputs are\nas desired and remain no changes for several iterations",
+      "embeddedMedia": [
+        "media/image10.png",
+        "media/image11.png",
+        "media/image12.png",
+        "media/image5.png",
+        "media/image7.png",
+        "media/image8.png",
+        "media/image9.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-10.png",
+        "sha256": "934877A75096558FAF870D1E24B8C9D3E8116F8C95A6C5D2533931711E0A19B1",
+        "bytes": 276046,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 11,
+      "meeting": 17,
+      "title": "A linearly separable function produced after 10 iterations of the perceptron net.",
+      "visibleTextBlocks": [
+        "A linearly separable function produced after 10 iterations of the perceptron net.",
+        "The Perceptron that Linearly Separates the Training Data Set",
+        "11",
+        "*The weight vector converged after repeated training on the data set, about 500 iterations\nW500 = [-1.3, -1.1, 10.9]\nOutput, f(net) = w1x1 + w2x2 + w3, where two discriminant functions gi and gj are the same (border), gi = gj\nf(net) = -1.3x1 + -1.1x2 + 10.9 = 0 \nf(net) is the line separating the two classes that can be used for classification.",
+        "+How is the perceptron learning different from symbolic learning approaches such as Winston’s learning program and decision tree induction?"
+      ],
+      "speakerNotes": "f(net) is 1, when\nnet >=\n\nPerception learning: a binary classifier. The input data set is the training data set.\nWhy it is a classifier, not a cluster?\nSince it already knows the two classes: -1 and 1. And it will be used to classify new (x1, x2) to either -1 or 1 based on the output.",
+      "embeddedMedia": [
+        "media/image13.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-11.png",
+        "sha256": "C3BD4818480B3AD6F13CDF15E56D18A648A1953999B9BC642082EEC2B1924FA5",
+        "bytes": 236182,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 12,
+      "meeting": 17,
+      "title": "From the data set, following equations must be solved: \nw1*1 + w2*1 < θ , where θ is a threshold. \nw1*1 + 0 > θ\n0 + w2*1 > θ\n0 + 0 < θ or θ must be positive\n(This series of equations with w1, w2, and θ has no solution)\n*Minsky and Papert  (1969) proved that a perceptron that solves exclusive-or is impossible.",
+      "visibleTextBlocks": [
+        "From the data set, following equations must be solved: \nw1*1 + w2*1 < θ , where θ is a threshold. \nw1*1 + 0 > θ\n0 + w2*1 > θ\n0 + 0 < θ or θ must be positive\n(This series of equations with w1, w2, and θ has no solution)\n*Minsky and Papert  (1969) proved that a perceptron that solves exclusive-or is impossible.",
+        "Linearly Not Separable Case",
+        "12",
+        "Truth table for exclusive-OR",
+        "No straight line can separate these data points."
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [
+        "media/image14.png",
+        "media/image15.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-12.png",
+        "sha256": "FEF0BEE6653D175DB2A906A9AFA69CFBBDB66647EF493088E0E777CEE4A1F5EF",
+        "bytes": 167598,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 13,
+      "meeting": 17,
+      "title": "Sigmoidal Function for Activation Function",
+      "visibleTextBlocks": [
+        "Sigmoidal Function for Activation Function",
+        "13",
+        "1 if f(x) >=0, \n-1 else f(x)<0 \nused in perceptron",
+        "Useful features of sigmoidal function:\nS-shaped non-linear and continuous function in the range of 0 ~1\nDifferentiable (has a derivative) at each point and derivative calculation is easy.\nThe value of derivative is greatest where the sigmoidal function is changing most rapidly.",
+        "Sigmoidal activation function: f(net)=1/(1 + e-net), where net = wixi\nThe value of f(net) is continuous 0~1, not binary.",
+        "Output of f(x) is normalized to 0~1"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [
+        "media/image16.png",
+        "media/image170.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-13.png",
+        "sha256": "DE9A5650469FBF62FC190DCE5559B4D49B95F0DC2046FEC3658A8AFFD8AE4F8D",
+        "bytes": 271694,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 14,
+      "meeting": 18,
+      "title": "Muti-layer Neural Networks with Backpropagation",
+      "visibleTextBlocks": [
+        "Muti-layer Neural Networks with Backpropagation",
+        "Goal: Given training data, find a set of weights that fits outputs of neural net to desired classification.\nMechanism:\nFor each training example, propagate the inputs Forward for activation.\nBackpropagate the error to previous layer and adjust the weights slowly in direction that reduces error.\nRepeat this process until converged. (gradient descent approach).\nProven to converge on the nearest local minimum but\nMay not find the best weight setting. \nSensitive to initial weight setting.\nWorks very slowly (long training time).\nMany applications:\n      solved many difficult real-world problems.",
+        "14",
+        "Weights",
+        "Weights",
+        "Output",
+        "Inputs",
+        "bias",
+        "a"
+      ],
+      "speakerNotes": "Based on artificial neuron and sigmoidal activation function.\nThe word “hidden” implies that they are not visible to the external systems and are “private” to the neural network.\nThere could be zero or more hidden layers in a neural network.\nRole of hidden layers:\nfacial recognition\n, where computer learns to detect human faces. Human face is a complex object, it must have eyes, a nose, a mouth, and to be in a round shape, for computer it means that there are a lot of pixels of different colors that are comprised in different shapes. And in order to decide whether there is a human face on a picture, computer has to detect all those objects.",
+      "embeddedMedia": [
+        "media/image17.emf"
+      ],
+      "render": {
+        "file": "slide-renders/slide-14.png",
+        "sha256": "8F29261FBF6A9376260493CFC5A1CD7A595E97917B359382E698DF47C9698E0E",
+        "bytes": 266799,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 15,
+      "meeting": 18,
+      "title": "Weight Adjustment with Sigmoidal Function",
+      "visibleTextBlocks": [
+        "Weight Adjustment with Sigmoidal Function",
+        "15",
+        "How do we adjust weights for errors when using sigmoidal activation functions?\nUse the delta rule (Rumelhart et al. 1986) for weight adjustment on the jth node from the ith input: wj =  l(tj – aj)f’(netj)xi where l is the learning rate, tj is the desired output, aj is the output of the node, and f’(netj) is the derivative of activation function, and xi is an input (= output from the previous node).\n\nConcepts of the delta rule is shown in the following graph:",
+        "*l determines the size of learning step. \n*Learning algorithm uses gradient descent method to find the direction on this surface which most rapidly reduces the error (ending at a local minimum).\n*Gradient is a measure of slope, as a function of direction from a point on a surface.",
+        "*This error surface represents cumulative error over a data set as a function of network weights.",
+        "How to determine + or – of w?\nHow to calculate f’(net)?\nProve the delta rule."
+      ],
+      "speakerNotes": "Derivative\nis the rate of change of f(\nx,y\n), which can be thought of the slope of the function at a point (x0,y0).\ndirectional\nderivative\nof a function is a scalar while\ngradient\nis a vector.",
+      "embeddedMedia": [
+        "media/image18.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-15.png",
+        "sha256": "D193A91E82CC83B4BB4A025BAC7B8A42565827CF6A64774EA2204B6D1092656D",
+        "bytes": 286078,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 16,
+      "meeting": 18,
+      "title": "Output k",
+      "visibleTextBlocks": [
+        "16",
+        "Output k",
+        "Hidden J",
+        "Input I",
+        "Error",
+        "Activation",
+        "Subscript notations\nI: input layer\nJ: hidden layer\nK: output layer\nwij: weight, input  hidden\nwjk: weight, hidden  output \na: an activation value\nt: a target value\nnet: the net input\nl: learning rate",
+        "WJk",
+        "WIJ"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [
+        "media/image19.png",
+        "media/image20.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-16.png",
+        "sha256": "BD29B7FB983DD4427246E4EE5395C18FE0B4EAA89780BECB151CE2409C71CE2D",
+        "bytes": 300399,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 17,
+      "meeting": 18,
+      "title": "Output k",
+      "visibleTextBlocks": [
+        "17",
+        "Output k",
+        "Hidden J",
+        "Input I",
+        "Error",
+        "Activation",
+        "Subscript notations\nI: input layer\nJ: hidden layer\nK: output layer\nwij: weight, input  hidden\nwjk: weight, hidden  output \na: an activation value\nt: a target value\nnet: the net input\nl: learning rate",
+        "WJk",
+        "WIJ"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [
+        "media/image21.png",
+        "media/image22.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-17.png",
+        "sha256": "89B5C5CFB4FEF5B7A1EB86E1569DD9652F8B48102427D919B01233852C9323A6",
+        "bytes": 278784,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 18,
+      "meeting": 18,
+      "title": "Backpropagation Algorithm",
+      "visibleTextBlocks": [
+        "Backpropagation Algorithm",
+        "18"
+      ],
+      "speakerNotes": "1: obtain\noutput values\n2: obtain errors\n3:\nbackpropagate\nerrors to hidden layer, then to input layer\n4:\nupdate network weights\n5: update bias",
+      "embeddedMedia": [
+        "media/image24.png"
+      ],
+      "render": {
+        "file": "slide-renders/slide-18.png",
+        "sha256": "FDC954EA069680822A893EF5A85B92297BD7FB78F06BD09D2E109EA6FFE08618",
+        "bytes": 224085,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 19,
+      "meeting": 18,
+      "title": "Various Types of Neural Networks",
+      "visibleTextBlocks": [
+        "Various Types of Neural Networks",
+        "Different neural networks can be built using different options: \nNetwork topology\nMany layers instead of 2 => +100 layers (deep learning)\nLearning algorithm\nEncoding scheme\n\nNeural network can be used for both\nSupervised learning (classification) and\nUnsupervised learning (clustering)",
+        "19"
+      ],
+      "speakerNotes": "Convolutional Neural Network, Recurrent Neural Networks",
+      "embeddedMedia": [],
+      "render": {
+        "file": "slide-renders/slide-19.png",
+        "sha256": "BEAA2426CC7B01A8D6FE86736AFCF114AC43B02417E5AAF2D0C7CDB698B5CC28",
+        "bytes": 112615,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "slide": 36,
+      "meeting": 18,
+      "title": "References",
+      "visibleTextBlocks": [
+        "References",
+        "George Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapters 10 and 12, Addison Wesley, 2009.\nTom M. Mitchell, Machine Learning, McGraw-Hills, 1997.",
+        "36"
+      ],
+      "speakerNotes": null,
+      "embeddedMedia": [],
+      "render": {
+        "file": "slide-renders/slide-36.png",
+        "sha256": "289C507ACF66F676CF1B117342B23D4309236FFE762FFE09C64B746EEA429522",
+        "bytes": 83863,
+        "dimensions": {
+          "width": 1600,
+          "height": 1200
+        }
+      },
+      "nativeTiming": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    }
+  ],
+  "extractionPolicy": {
+    "publicPath": "/course-source/l10-neural-networks/slide-renders/slide-XX.png",
+    "imagePolicy": "Use complete source pages in the Course source viewer and preserve exact embedded media byte-for-byte.",
+    "textPolicy": "Preserve searchable source wording; present corrections and modern PyTorch supplements explicitly."
+  },
+  "assets": [
+    {
+      "file": "media/image1.png",
+      "originalFile": "image1.png",
+      "archivePath": "ppt/media/image1.png",
+      "sha256": "D8DF863A30330E5ACD09B9D903C608F78FA3C534DB9961BED0622520542C2AD9",
+      "bytes": 14627,
+      "format": "PNG",
+      "dimensions": {
+        "width": 581,
+        "height": 286
+      },
+      "sourceSlides": [
+        6
+      ],
+      "knowledgeRole": "Exact source image used on page 6: Artificial Neuron.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image10.png",
+      "originalFile": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "sha256": "63F0AF3A8871174C339183853FD3616C06255E713C8A959D06CEFDA8AE1F5EB5",
+      "bytes": 708,
+      "format": "PNG",
+      "dimensions": {
+        "width": 38,
+        "height": 49
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image11.png",
+      "originalFile": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "sha256": "FFEE0D5F72E47E4F08F22ADB9528858082EB33FF1FA486070A7B5315414E150C",
+      "bytes": 528,
+      "format": "PNG",
+      "dimensions": {
+        "width": 19,
+        "height": 49
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image12.png",
+      "originalFile": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "sha256": "A5D60ECC3858A589A98F87D0C8BEE50EA42962DCD84F1998B81A2193501912D0",
+      "bytes": 708,
+      "format": "PNG",
+      "dimensions": {
+        "width": 38,
+        "height": 49
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image13.png",
+      "originalFile": "image13.png",
+      "archivePath": "ppt/media/image13.png",
+      "sha256": "178DE3A0C0341C917A56CCAE6517682486659A6EA77B4D6C458F0FBF7360FC23",
+      "bytes": 21837,
+      "format": "PNG",
+      "dimensions": {
+        "width": 655,
+        "height": 510
+      },
+      "sourceSlides": [
+        11
+      ],
+      "knowledgeRole": "Exact source image used on page 11: A linearly separable function produced after 10 iterations of the perceptron net..",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image14.png",
+      "originalFile": "image14.png",
+      "archivePath": "ppt/media/image14.png",
+      "sha256": "35E6C32495008EADCA0276CDE99423EAAAE93FE250436CB7A36B0600C28B3742",
+      "bytes": 6047,
+      "format": "PNG",
+      "dimensions": {
+        "width": 555,
+        "height": 242
+      },
+      "sourceSlides": [
+        12
+      ],
+      "knowledgeRole": "Exact source image used on page 12: From the data set, following equations must be solved: \nw1*1 + w2*1 < θ , where θ is a threshold. \nw1*1 + 0 > θ\n0 + w2*1 > θ\n0 + 0 < θ or θ must be positive\n(This series of equations with w1, w2, and θ has no solution)\n*Minsky and Papert  (1969) proved that a perceptron that solves exclusive-or is impossible..",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image15.png",
+      "originalFile": "image15.png",
+      "archivePath": "ppt/media/image15.png",
+      "sha256": "EBB8F29B628309F92F98FFC7544050FC6247C7708005BC729C13F4D0AF1397CE",
+      "bytes": 9288,
+      "format": "PNG",
+      "dimensions": {
+        "width": 440,
+        "height": 376
+      },
+      "sourceSlides": [
+        12
+      ],
+      "knowledgeRole": "Exact source image used on page 12: From the data set, following equations must be solved: \nw1*1 + w2*1 < θ , where θ is a threshold. \nw1*1 + 0 > θ\n0 + w2*1 > θ\n0 + 0 < θ or θ must be positive\n(This series of equations with w1, w2, and θ has no solution)\n*Minsky and Papert  (1969) proved that a perceptron that solves exclusive-or is impossible..",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image16.png",
+      "originalFile": "image16.png",
+      "archivePath": "ppt/media/image16.png",
+      "sha256": "A7693550D024A18254CB07D7AF459C323C51A58775ABD79BD5DF35DE630FFBF7",
+      "bytes": 23149,
+      "format": "PNG",
+      "dimensions": {
+        "width": 733,
+        "height": 322
+      },
+      "sourceSlides": [
+        13
+      ],
+      "knowledgeRole": "Exact source image used on page 13: Sigmoidal Function for Activation Function.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image17.emf",
+      "originalFile": "image17.emf",
+      "archivePath": "ppt/media/image17.emf",
+      "sha256": "36207E18B75D0BED67F7B44BB1EA8EFF59D4A70A50EA4C99BAEA824E34D2AB5D",
+      "bytes": 30132,
+      "format": "WMF",
+      "dimensions": {
+        "width": 709,
+        "height": 848
+      },
+      "sourceSlides": [
+        14
+      ],
+      "knowledgeRole": "Exact source image used on page 14: Muti-layer Neural Networks with Backpropagation.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image170.png",
+      "originalFile": "image170.png",
+      "archivePath": "ppt/media/image170.png",
+      "sha256": "2E1A1B69764AFB2007CDF83501F4940118550F4848FCAA31A5D40DCDD8143BBA",
+      "bytes": 14309,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1331,
+        "height": 132
+      },
+      "sourceSlides": [
+        13
+      ],
+      "knowledgeRole": "Exact source image used on page 13: Sigmoidal Function for Activation Function.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image18.png",
+      "originalFile": "image18.png",
+      "archivePath": "ppt/media/image18.png",
+      "sha256": "FAD8C3908263C59A75497B85E8E1E1BB0F9E971C9A20E9E23BF3486238C1907F",
+      "bytes": 19341,
+      "format": "PNG",
+      "dimensions": {
+        "width": 592,
+        "height": 399
+      },
+      "sourceSlides": [
+        15
+      ],
+      "knowledgeRole": "Exact source image used on page 15: Weight Adjustment with Sigmoidal Function.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image19.png",
+      "originalFile": "image19.png",
+      "archivePath": "ppt/media/image19.png",
+      "sha256": "EF5DEC76BEE78B7CFD10B9914DA5D836822CC0FACA6D534BAF35A2745C6F49CB",
+      "bytes": 102200,
+      "format": "PNG",
+      "dimensions": {
+        "width": 949,
+        "height": 924
+      },
+      "sourceSlides": [
+        16
+      ],
+      "knowledgeRole": "Exact source image used on page 16: Output k.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image2.gif",
+      "originalFile": "image2.gif",
+      "archivePath": "ppt/media/image2.gif",
+      "sha256": "24F4167E1AA65C91DA722832B6CE87333C017C0D44CFBD503EB548FB74799CF1",
+      "bytes": 5226,
+      "format": "GIF",
+      "dimensions": {
+        "width": 495,
+        "height": 300
+      },
+      "sourceSlides": [
+        6
+      ],
+      "knowledgeRole": "Exact source image used on page 6: Artificial Neuron.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image20.png",
+      "originalFile": "image20.png",
+      "archivePath": "ppt/media/image20.png",
+      "sha256": "95068DFA0E6F778828A9225C73DEA4226A87E9D2951C501E87771D5DFE2C9E7F",
+      "bytes": 14434,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1263,
+        "height": 145
+      },
+      "sourceSlides": [
+        16
+      ],
+      "knowledgeRole": "Exact source image used on page 16: Output k.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image21.png",
+      "originalFile": "image21.png",
+      "archivePath": "ppt/media/image21.png",
+      "sha256": "C2A3E479D7C2A73945BE2C0AB677CEDA8B45C48B9C72A5C308935F52DFA51B39",
+      "bytes": 93091,
+      "format": "PNG",
+      "dimensions": {
+        "width": 949,
+        "height": 923
+      },
+      "sourceSlides": [
+        17
+      ],
+      "knowledgeRole": "Exact source image used on page 17: Output k.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image22.png",
+      "originalFile": "image22.png",
+      "archivePath": "ppt/media/image22.png",
+      "sha256": "E03E8A1D01368592EE4304FBD303D38A7C1A59B3D8FE245B32130B3B043D61C8",
+      "bytes": 10412,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1263,
+        "height": 145
+      },
+      "sourceSlides": [
+        17
+      ],
+      "knowledgeRole": "Exact source image used on page 17: Output k.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image24.png",
+      "originalFile": "image24.png",
+      "archivePath": "ppt/media/image24.png",
+      "sha256": "4D32F6CD0EBFEB4F08FD7EFB607A06FDDFF34B6406C19AE230D2ABC39CCB4E08",
+      "bytes": 100802,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1439,
+        "height": 930
+      },
+      "sourceSlides": [
+        18
+      ],
+      "knowledgeRole": "Exact source image used on page 18: Backpropagation Algorithm.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image3.png",
+      "originalFile": "image3.png",
+      "archivePath": "ppt/media/image3.png",
+      "sha256": "7A2BEB8F48EE78B203E1D6C2B286A9AA8C9E2283EEDBA5BA67AF47F960724B74",
+      "bytes": 11071,
+      "format": "PNG",
+      "dimensions": {
+        "width": 697,
+        "height": 172
+      },
+      "sourceSlides": [
+        7
+      ],
+      "knowledgeRole": "Exact source image used on page 7: McCulloch-Pitts Neuron Model to Calculate the Logic Functions, AND and OR, 1943.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image4.png",
+      "originalFile": "image4.png",
+      "archivePath": "ppt/media/image4.png",
+      "sha256": "FD58794190F492D3EAA2CAA45B818D8853E6E70FC59972F3A6648533B70DD23F",
+      "bytes": 6523,
+      "format": "PNG",
+      "dimensions": {
+        "width": 514,
+        "height": 219
+      },
+      "sourceSlides": [
+        7
+      ],
+      "knowledgeRole": "Exact source image used on page 7: McCulloch-Pitts Neuron Model to Calculate the Logic Functions, AND and OR, 1943.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image5.png",
+      "originalFile": "image5.png",
+      "archivePath": "ppt/media/image5.png",
+      "sha256": "4EB81B95C536D47B2EDBC7F5406B32A619459603B44A1DE65A07DB03DEA59BCB",
+      "bytes": 17276,
+      "format": "PNG",
+      "dimensions": {
+        "width": 454,
+        "height": 550
+      },
+      "sourceSlides": [
+        8,
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 8: Use McCulloch-Pitts Neuron Model to Solve Learning Problem; page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image6.emf",
+      "originalFile": "image6.emf",
+      "archivePath": "ppt/media/image6.emf",
+      "sha256": "5ABCAEBC4668A0BF583A1D81F78FB08B60FAD057D556EBD70DF89529D234082C",
+      "bytes": 38200,
+      "format": "WMF",
+      "dimensions": {
+        "width": 634,
+        "height": 388
+      },
+      "sourceSlides": [
+        9
+      ],
+      "knowledgeRole": "Exact source image used on page 9: Perceptron Learning (Rosenblatt, 1962).",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image7.png",
+      "originalFile": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "sha256": "7E0CD09E6DE5A0805A5AD67C353073F055CCF0351484C2C1F6D2F4138F0CD069",
+      "bytes": 14686,
+      "format": "PNG",
+      "dimensions": {
+        "width": 649,
+        "height": 260
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image8.png",
+      "originalFile": "image8.png",
+      "archivePath": "ppt/media/image8.png",
+      "sha256": "645A884BB1D496300D39ADCD0821B6AAAA8C0E0B96EEDC913CA4FB1A9B6F0279",
+      "bytes": 696,
+      "format": "PNG",
+      "dimensions": {
+        "width": 38,
+        "height": 49
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    },
+    {
+      "file": "media/image9.png",
+      "originalFile": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "sha256": "853E4B32FB208938A9C38A63AEF60A5E9F5FA7E2D1A7DED1AFC95A8EF26FC78D",
+      "bytes": 547,
+      "format": "PNG",
+      "dimensions": {
+        "width": 19,
+        "height": 49
+      },
+      "sourceSlides": [
+        10
+      ],
+      "knowledgeRole": "Exact source image used on page 10: Training data set.",
+      "preservation": "Copied byte-for-byte from the authoritative PPTX; source dimensions and aspect ratio are unchanged."
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        3
+      ],
+      "sourceIssue": "The source groups evolutionary adaptation and neural-network optimization together as non-symbolic learning, which can hide important differences in representation and optimization.",
+      "correction": "Retain the historical taxonomy, then distinguish model representation, objective, search or optimizer, and supervision as separate dimensions."
+    },
+    {
+      "sourceSlides": [
+        6,
+        9
+      ],
+      "sourceIssue": "The source repeatedly spells threshold as 'thresh hold' or 'threshhold' and distributes the bias or threshold notation inconsistently.",
+      "correction": "Use one explicit affine form z=w dot x+b, then define the activation and decision threshold consistently."
+    },
+    {
+      "sourceSlides": [
+        7
+      ],
+      "sourceIssue": "The McCulloch-Pitts examples can be misread as learning examples even though their weights and thresholds are hand specified.",
+      "correction": "Separate hand-designed logic-gate parameters from the later perceptron learning rule."
+    },
+    {
+      "sourceSlides": [
+        9
+      ],
+      "sourceIssue": "The source labels perceptron learning 'Rosenblatt, 1962' without distinguishing the earlier invention and the 1962 book.",
+      "correction": "State that Rosenblatt introduced the perceptron in the late 1950s and published the book Principles of Neurodynamics in 1962."
+    },
+    {
+      "sourceSlides": [
+        10
+      ],
+      "sourceIssue": "The source calls the worked perceptron update gradient descent without identifying a differentiable loss or the perceptron criterion.",
+      "correction": "Teach the perceptron mistake-driven update directly and distinguish it from gradient descent on differentiable losses."
+    },
+    {
+      "sourceSlides": [
+        11
+      ],
+      "sourceIssue": "The reported convergence after about 500 iterations is specific to the shown data, initialization, learning rate, and ordering.",
+      "correction": "Use the example as one run and state the perceptron convergence guarantee only for linearly separable finite data under its assumptions."
+    },
+    {
+      "sourceSlides": [
+        12
+      ],
+      "sourceIssue": "The statement that Minsky and Papert proved a perceptron that solves XOR is impossible is overbroad.",
+      "correction": "State precisely that a single linear threshold unit cannot represent XOR; a multilayer nonlinear network can."
+    },
+    {
+      "sourceSlides": [
+        13
+      ],
+      "sourceIssue": "The source describes the sigmoid range as 0 to 1, although the logistic sigmoid has the open range (0,1).",
+      "correction": "Use the open interval (0,1), derive the derivative, and compare sigmoid with modern activation choices."
+    },
+    {
+      "sourceSlides": [
+        14
+      ],
+      "sourceIssue": "The source claims backpropagation is proven to converge to the nearest local minimum.",
+      "correction": "Backpropagation computes gradients; optimizer convergence depends on the objective, step sizes, stochasticity, architecture, and other assumptions, and may approach a stationary point rather than a nearest local minimum."
+    },
+    {
+      "sourceSlides": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "sourceIssue": "The output-unit delta expression does not by itself explain hidden-layer gradients.",
+      "correction": "Use the chain rule to distinguish output and hidden deltas, then connect the source algorithm to modern reverse-mode automatic differentiation."
+    },
+    {
+      "sourceSlides": [
+        19
+      ],
+      "sourceIssue": "The source uses layer count as the main definition of deep learning and compresses neural-network uses into supervised classification and unsupervised clustering.",
+      "correction": "Retain the historical examples while distinguishing topology, objective, data, optimization, and task; include regression, representation learning, and generative uses."
+    },
+    {
+      "sourceSlides": [
+        36
+      ],
+      "sourceIssue": "The reference page spells George F. Luger's surname as 'Fluger' and McGraw-Hill as 'McGraw-Hills.'",
+      "correction": "Use George F. Luger and McGraw-Hill in course text while preserving the exact source page in the evidence viewer."
+    }
+  ],
+  "excludedCoreSlides": {
+    "4": "Genetic-programming regression is retained as optional archive context rather than core neural-network content.",
+    "5": "The historical gplearn demonstration is retained as optional archive context.",
+    "30": "Reinforcement learning is preserved in Meeting 12.",
+    "20-29": "Unsupervised learning and clustering are inventoried but outside the revised core sequence.",
+    "31-35": "Domain knowledge, online learning, taxonomy, applications, and challenges are inventoried and may be used as optional comparison material."
+  }
+}

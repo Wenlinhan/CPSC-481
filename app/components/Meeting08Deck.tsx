@@ -916,6 +916,8 @@ export function Meeting08Deck() {
       meetingLabel="Week 4 · Meeting 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
       slides={slides}
+      sourceCollectionLabel="L05_MiniMax&Pruning.pptx"
+      sourceCollectionPath="l05-minimax-pruning"
     />
   );
 }

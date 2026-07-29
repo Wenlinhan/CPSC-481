@@ -65,7 +65,7 @@ test("every lesson is preplanned as explanation, example, demo, practice, and as
   }
 });
 
-test("preserves custom Meetings 1–8, 21, and 22 and their visual assets", async () => {
+test("preserves implemented custom meeting decks and their visual assets", async () => {
   const files = [
     "../app/components/Meeting01Deck.tsx",
     "../app/components/Meeting02Deck.tsx",
@@ -75,6 +75,18 @@ test("preserves custom Meetings 1–8, 21, and 22 and their visual assets", asyn
     "../app/components/Meeting06Deck.tsx",
     "../app/components/Meeting07Deck.tsx",
     "../app/components/Meeting08Deck.tsx",
+    "../app/components/Meeting09Deck.tsx",
+    "../app/components/Meeting10Deck.tsx",
+    "../app/components/Meeting11Deck.tsx",
+    "../app/components/Meeting12Deck.tsx",
+    "../app/components/Meeting13Deck.tsx",
+    "../app/components/Meeting14Deck.tsx",
+    "../app/components/Meeting15Deck.tsx",
+    "../app/components/Meeting16Deck.tsx",
+    "../app/components/Meeting17Deck.tsx",
+    "../app/components/Meeting18Deck.tsx",
+    "../app/components/Meeting19Deck.tsx",
+    "../app/components/Meeting20Deck.tsx",
     "../app/components/Meeting21Deck.tsx",
     "../app/components/Meeting22Deck.tsx",
   ];
@@ -102,6 +114,18 @@ test("Meetings 1 and 2 account for the complete L01 v2 source-evidence package",
   const expectedMeeting2 = allSlides.slice(10);
   assert.equal((meeting1.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
   assert.equal((meeting2.match(/sourceSlides:\s*\[/g) ?? []).length, 32);
+  assert.equal((meeting1.match(/minutes:\s*\d+/g) ?? []).length, 25);
+  assert.equal((meeting2.match(/minutes:\s*\d+/g) ?? []).length, 32);
+  assert.equal(
+    [...meeting1.matchAll(/minutes:\s*(\d+)/g)]
+      .reduce((total, match) => total + Number(match[1]), 0),
+    75,
+  );
+  assert.equal(
+    [...meeting2.matchAll(/minutes:\s*(\d+)/g)]
+      .reduce((total, match) => total + Number(match[1]), 0),
+    75,
+  );
   assert.deepEqual(meeting1Coverage, expectedMeeting1);
   assert.deepEqual(meeting2Coverage, expectedMeeting2);
 
@@ -135,6 +159,7 @@ test("Meetings 1 and 2 account for the complete L01 v2 source-evidence package",
   ]) {
     assert.match(combined, new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
   }
+  assert.match(meeting2, /Textbook extension · PEAS and two-location vacuum world/);
   assert.doesNotMatch(combined, /\b(?:original|old)\s+slides?\b/i);
 
   const shell = await readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8");
@@ -314,6 +339,78 @@ test("Meetings 3 and 4 account for every authoritative L02 source slide and imag
   }
 });
 
+test("Meetings 3 through 8 route Course source to the matching complete historical deck", async () => {
+  const deckGroups = [
+    {
+      components: ["Meeting03Deck.tsx", "Meeting04Deck.tsx"],
+      count: 41,
+      directory: "l02-state-space",
+      label: "L02_StateSpaceSearch.pptx",
+    },
+    {
+      components: ["Meeting05Deck.tsx"],
+      count: 31,
+      directory: "l03-heuristic-local-search",
+      label: "L03_Heuristic, HillClimbing&SA.pptx",
+    },
+    {
+      components: ["Meeting06Deck.tsx"],
+      count: 22,
+      directory: "l04-best-first-astar",
+      label: "L04_BFS&AStar.pptx",
+    },
+    {
+      components: ["Meeting07Deck.tsx", "Meeting08Deck.tsx"],
+      count: 31,
+      directory: "l05-minimax-pruning",
+      label: "L05_MiniMax&Pruning.pptx",
+    },
+  ];
+
+  for (const group of deckGroups) {
+    const components = await Promise.all(group.components.map((name) => (
+      readFile(new URL(`../app/components/${name}`, import.meta.url), "utf8")
+    )));
+    const combined = components.join("\n");
+    assert.match(combined, new RegExp(`sourceCollectionLabel="${group.label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+    assert.match(combined, new RegExp(`sourceCollectionPath="${group.directory}"`));
+
+    for (let page = 1; page <= group.count; page += 1) {
+      const sourcePage = await readFile(new URL(
+        `../public/course-source/${group.directory}/source-slides/slide-${String(page).padStart(2, "0")}.png`,
+        import.meta.url,
+      ));
+      assert.deepEqual(pngDimensions(sourcePage), { width: 1600, height: 1200 });
+    }
+  }
+});
+
+test("historical teaching meetings expose complete 75-minute timing plans", async () => {
+  const [meeting3, meeting4, meeting7, meeting9, meeting12] = await Promise.all(
+    [3, 4, 7, 9, 12].map((meeting) => (
+      readFile(new URL(`../app/components/Meeting${String(meeting).padStart(2, "0")}Deck.tsx`, import.meta.url), "utf8")
+    )),
+  );
+  const timingArray = (source, constantName) => {
+    const match = source.match(new RegExp(`const ${constantName} = \\[([^\\]]+)\\] as const;`));
+    assert.ok(match, `${constantName} should be present`);
+    return [...match[1].matchAll(/\d+/g)].map((item) => Number(item[0]));
+  };
+  const meeting3Timing = timingArray(meeting3, "MEETING_03_TIMING");
+  const meeting4Timing = timingArray(meeting4, "MEETING_04_TIMING");
+  assert.equal(meeting3Timing.length, 27);
+  assert.equal(meeting4Timing.length, 28);
+  assert.equal(meeting3Timing.reduce((total, minutes) => total + minutes, 0), 75);
+  assert.equal(meeting4Timing.reduce((total, minutes) => total + minutes, 0), 75);
+
+  for (const [meeting, source] of [[7, meeting7], [9, meeting9], [12, meeting12]]) {
+    const minutes = [...source.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+      .map((match) => Number(match[1]));
+    assert.equal(minutes.length, 25, `Meeting ${meeting} should time all 25 pages`);
+    assert.equal(minutes.reduce((total, value) => total + value, 0), 75);
+  }
+});
+
 test("Meeting 5 accounts for every authoritative L03 source slide and image", async () => {
   const [meeting5, manifestText] = await Promise.all([
     readFile(new URL("../app/components/Meeting05Deck.tsx", import.meta.url), "utf8"),
@@ -464,7 +561,8 @@ test("Meetings 7 and 8 account for every authoritative L05 source slide and imag
 });
 
 test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence package", async () => {
-  const [meeting9, meeting10, l11ManifestText, l12ManifestText] = await Promise.all([
+  const [deckShell, meeting9, meeting10, l11ManifestText, l12ManifestText] = await Promise.all([
+    readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/Meeting09Deck.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/Meeting10Deck.tsx", import.meta.url), "utf8"),
     readFile(new URL("../public/course-source/l11-probability-bayes/manifest.json", import.meta.url), "utf8"),
@@ -475,6 +573,8 @@ test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence
     .flatMap((match) => [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])));
   const meeting9Coverage = [...new Set(extractCoverage(meeting9))].sort((a, b) => a - b);
   const meeting10Coverage = [...new Set(extractCoverage(meeting10))].sort((a, b) => a - b);
+  const meeting10L11Coverage = meeting10Coverage.filter((slide) => slide >= 35);
+  const meeting10L12Coverage = meeting10Coverage.filter((slide) => slide >= 3 && slide <= 11);
   const l12Coverage = [...new Set(
     [...meeting10.matchAll(/data-l12-source-slide="(\d+)"/g)].map((match) => Number(match[1])),
   )].sort((a, b) => a - b);
@@ -486,18 +586,38 @@ test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence
   assert.equal((meeting9.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
   assert.equal((meeting10.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
   assert.deepEqual(meeting9Coverage, expectedMeeting9);
-  assert.deepEqual(meeting10Coverage, expectedMeeting10);
+  assert.deepEqual(meeting10L11Coverage, expectedMeeting10);
+  assert.deepEqual(meeting10L12Coverage, expectedL12Slides);
   assert.deepEqual(
-    [...new Set([...meeting9Coverage, ...meeting10Coverage])].sort((a, b) => a - b),
+    [...new Set([...meeting9Coverage, ...meeting10L11Coverage])].sort((a, b) => a - b),
     allL11Slides,
   );
   assert.deepEqual(l12Coverage, expectedL12Slides);
+
+  assert.match(deckShell, /resolveSourceReference\?: \(sourceSlide: number\) => CourseSourceReference/);
+  assert.match(deckShell, /const sourceReferenceResolver = resolveSourceReference \?\?/);
+  assert.match(deckShell, /\? resolveL01SourceReference/);
+  assert.match(meeting9, /resolveSourceReference=\{resolveMeeting09SourceReference\}/);
+  assert.match(meeting10, /resolveSourceReference=\{resolveMeeting10SourceReference\}/);
+  assert.match(meeting9, /\/course-source\/l11-probability-bayes/);
+  assert.match(meeting10, /\/course-source\/l11-probability-bayes\/slide-renders/);
+  assert.match(meeting10, /\/course-source\/l12-conditional-independence\/slide-renders/);
+  assert.doesNotMatch(`${meeting9}\n${meeting10}`, /\/course-source\/l01-ai/);
+
   for (const slide of expectedMeeting10) {
     assert.match(meeting10, new RegExp(`file="slide-${String(slide).padStart(2, "0")}\\.png"`));
+    await access(new URL(
+      `../public/course-source/l11-probability-bayes/slide-renders/slide-${String(slide).padStart(2, "0")}.png`,
+      import.meta.url,
+    ));
   }
   for (const slide of expectedL12Slides) {
     const padded = String(slide).padStart(2, "0");
     assert.match(meeting10, new RegExp(`data-l12-source-slide="${slide}"[\\s\\S]*?file="slide-${padded}\\.png"`));
+    await access(new URL(
+      `../public/course-source/l12-conditional-independence/slide-renders/slide-${padded}.png`,
+      import.meta.url,
+    ));
   }
 
   const combined = `${meeting9}\n${meeting10}`;
@@ -654,5 +774,1020 @@ test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence
       assert.equal(relationship.bytes, media.bytes);
       assert.ok(media.sourceSlides.includes(slideRecord.slide));
     }
+  }
+});
+
+test("Meetings 11 and 12 preserve their Markov and reinforcement-learning source evidence", async () => {
+  const [
+    meeting11,
+    meeting12,
+    mdpManifestText,
+    reinforcementManifestText,
+  ] = await Promise.all([
+    readFile(new URL("../app/components/Meeting11Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting12Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/course-source/l12-mdp/manifest.json", import.meta.url), "utf8"),
+    readFile(
+      new URL("../public/course-source/l10-reinforcement-learning/manifest.json", import.meta.url),
+      "utf8",
+    ),
+  ]);
+  const extractCoverage = (source) => [
+    ...new Set(
+      [...source.matchAll(/sourceSlides:\s*\[([^\]]*)\]/g)].flatMap((match) =>
+        [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])),
+      ),
+    ),
+  ].sort((a, b) => a - b);
+  const expectedMarkovSlides = Array.from({ length: 14 }, (_, index) => index + 12);
+  const expectedReinforcementSlides = [30, 32, 33, 36];
+
+  assert.equal((meeting11.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting12.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.deepEqual(extractCoverage(meeting11), expectedMarkovSlides);
+  assert.deepEqual(extractCoverage(meeting12), expectedReinforcementSlides);
+  assert.match(meeting11, /\/course-source\/l12-mdp\/slide-renders/);
+  assert.match(meeting12, /\/course-source\/l10-reinforcement-learning/);
+  assert.match(meeting12, /source-slides\/slide-/);
+  assert.match(meeting11, /resolveSourceReference=/);
+  assert.match(meeting12, /resolveSourceReference=\{resolveMeeting12SourceReference\}/);
+  assert.doesNotMatch(`${meeting11}\n${meeting12}`, /\/course-source\/l01-ai/);
+
+  for (const knowledgePoint of [
+    "Markov chain",
+    "transition matrix",
+    "stationary distribution",
+    "Markov decision process",
+    "policy",
+    "discount",
+    "Bellman",
+    "value iteration",
+    "trial and error",
+    "return",
+    "Q-learning",
+    "ε-greedy",
+    "off-policy",
+    "SARSA",
+  ]) {
+    assert.match(
+      `${meeting11}\n${meeting12}`,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  assert.doesNotMatch(`${meeting11}\n${meeting12}`, /\b(?:original|old)\s+slides?\b/i);
+
+  const mdpManifest = JSON.parse(mdpManifestText);
+  assert.equal(mdpManifest.schemaVersion, 2);
+  assert.equal(mdpManifest.source, "L12_StochasticMethods - Part B.pptx");
+  assert.equal(
+    mdpManifest.sourceSha256,
+    "3728337B4AB2FC532B1C332B9C6A21F0C01A2345CE4F83A0E71FE01A5882E737",
+  );
+  assert.equal(mdpManifest.sourceBytes, 5417912);
+  assert.equal(mdpManifest.authoritativeSlideCount, 53);
+  assert.deepEqual(mdpManifest.selectedSlides, expectedMarkovSlides);
+  assert.deepEqual(mdpManifest.meetingCoverage["11"], expectedMarkovSlides);
+  assert.equal(mdpManifest.renderProvenance.count, 14);
+  assert.equal(mdpManifest.selectedMedia.count, 46);
+  assert.equal(mdpManifest.sourceCorrectionLedger.length, 19);
+  for (const render of mdpManifest.renderProvenance.renders) {
+    const renderContent = await readFile(
+      new URL(`../public/course-source/l12-mdp/slide-renders/${render.file}`, import.meta.url),
+    );
+    assert.equal(renderContent.length, render.bytes);
+    assert.equal(sha256(renderContent), render.sha256);
+    assert.deepEqual(pngDimensions(renderContent), { width: 1600, height: 1200 });
+  }
+  for (const file of mdpManifest.selectedMedia.files) {
+    await access(new URL(`../public/course-source/l12-mdp/media/${file}`, import.meta.url));
+  }
+
+  const reinforcementManifest = JSON.parse(reinforcementManifestText);
+  assert.equal(reinforcementManifest.schemaVersion, 2);
+  assert.equal(reinforcementManifest.source, "L10_MachineLearning Part B.pptx");
+  assert.equal(
+    reinforcementManifest.sourceSha256,
+    "AFB85A8365CF49BAC114D362E78552503A1D771F84B6FA85A0D0827775FADC7D",
+  );
+  assert.equal(reinforcementManifest.sourceBytes, 963006);
+  assert.equal(reinforcementManifest.authoritativeSlideCount, 36);
+  assert.deepEqual(reinforcementManifest.selectedSlides, expectedReinforcementSlides);
+  assert.deepEqual(reinforcementManifest.meetingCoverage["12"], expectedReinforcementSlides);
+  assert.equal(reinforcementManifest.renderProvenance.count, 4);
+  assert.equal(reinforcementManifest.assets.length, 1);
+  assert.equal(reinforcementManifest.sourceCorrectionLedger.length, 4);
+  for (const render of reinforcementManifest.renderProvenance.renders) {
+    const renderContent = await readFile(
+      new URL(
+        `../public/course-source/l10-reinforcement-learning/source-slides/${render.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(renderContent.length, render.bytes);
+    assert.equal(sha256(renderContent), render.sha256);
+    assert.deepEqual(pngDimensions(renderContent), { width: 1600, height: 1200 });
+  }
+  for (const asset of reinforcementManifest.assets) {
+    const assetContent = await readFile(
+      new URL(
+        `../public/course-source/l10-reinforcement-learning/${asset.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(assetContent.length, asset.bytes);
+    assert.equal(sha256(assetContent), asset.sha256);
+  }
+});
+
+test("Meetings 13–15 preserve concept learning, ID3, ensembles, and supervised evaluation", async () => {
+  const [meeting13, meeting14, meeting15, manifestText, inventoryContent] = await Promise.all([
+    readFile(new URL("../app/components/Meeting13Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting14Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting15Deck.tsx", import.meta.url), "utf8"),
+    readFile(
+      new URL("../public/course-source/l09-machine-learning-part-a/manifest.json", import.meta.url),
+      "utf8",
+    ),
+    readFile(
+      new URL(
+        "../public/course-source/l09-machine-learning-part-a/source-inventory.json",
+        import.meta.url,
+      ),
+    ),
+  ]);
+  const extractCoverage = (source) => [
+    ...new Set(
+      [...source.matchAll(/sourceSlides:\s*\[([^\]]*)\]/g)].flatMap((match) =>
+        [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])),
+      ),
+    ),
+  ].sort((a, b) => a - b);
+  const expectedMeeting13 = Array.from({ length: 19 }, (_, index) => index + 1);
+  const expectedMeeting14 = Array.from({ length: 16 }, (_, index) => index + 20);
+  const expectedMeeting15 = Array.from({ length: 5 }, (_, index) => index + 36);
+
+  assert.equal((meeting13.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting14.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting15.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.deepEqual(extractCoverage(meeting13), expectedMeeting13);
+  assert.deepEqual(extractCoverage(meeting14), expectedMeeting14);
+  assert.deepEqual(extractCoverage(meeting15), expectedMeeting15);
+  assert.match(meeting13, /resolveSourceReference=\{resolveMeeting13SourceReference\}/);
+  assert.match(meeting14, /resolveSourceReference=\{resolveMeeting14SourceReference\}/);
+  assert.match(meeting15, /resolveSourceReference=\{resolveMeeting15SourceReference\}/);
+  assert.match(meeting13, /\/course-source\/l09-machine-learning-part-a/);
+  assert.match(meeting14, /\/course-source\/l09-machine-learning-part-a/);
+  assert.match(meeting15, /\/course-source\/l09-machine-learning-part-a/);
+  assert.doesNotMatch(`${meeting13}\n${meeting14}\n${meeting15}`, /\b(?:original|old)\s+slides?\b/i);
+
+  for (const knowledgePoint of [
+    "Learning is acquiring new knowledge",
+    "Any change in a system",
+    "Replacing constants with variables",
+    "p covers q",
+    "Winston",
+    "near miss",
+    "hill-climbing",
+    "Decision Tree Induction",
+    "ID3",
+    "Minimal Message Length",
+    "50 integers",
+    "Entropy",
+    "Information gain",
+    "gain(income)",
+    "Class concepts",
+    "greedy search",
+    "precision",
+    "recall",
+    "bagging",
+    "AdaBoost",
+    "Gradient boosting",
+    "inductive bias",
+    "Supervised learning",
+    "cross-validation",
+    "Pipeline",
+    "leakage",
+    "error analysis",
+  ]) {
+    assert.match(
+      `${meeting13}\n${meeting14}\n${meeting15}`,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+
+  const manifest = JSON.parse(manifestText);
+  const inventory = JSON.parse(inventoryContent.toString("utf8"));
+  assert.equal(manifest.schemaVersion, 2);
+  assert.equal(manifest.source, "L09_MachineLearning Part A.pptx");
+  assert.equal(
+    manifest.sourceSha256,
+    "F6995BEE122230AF66447C8E09D258CB762DD00FE2DFD6EA91CBD50D5E993296",
+  );
+  assert.equal(manifest.sourceBytes, 1090966);
+  assert.equal(manifest.authoritativeSlideCount, 40);
+  assert.deepEqual(manifest.meetingCoverage["13"], expectedMeeting13);
+  assert.deepEqual(manifest.meetingCoverage["14"], expectedMeeting14);
+  assert.deepEqual(manifest.meetingCoverage["15"], expectedMeeting15);
+  assert.equal(manifest.sourceSlideEvidence.length, 40);
+  assert.equal(manifest.assets.length, 21);
+  assert.equal(manifest.sourceCorrectionLedger.length, 10);
+  assert.equal(manifest.auditSummary.fullSlideRenders, 40);
+  assert.deepEqual(manifest.auditSummary.renderDimensions, {
+    width: 1600,
+    height: 1200,
+  });
+  assert.equal(sha256(inventoryContent), manifest.inventoryProvenance.sha256);
+  assert.equal(inventory.slideCount, 40);
+  assert.equal(inventory.mediaCount, 21);
+
+  for (const slideRecord of manifest.sourceSlideEvidence) {
+    assert.ok(slideRecord.render, `Source page ${slideRecord.slide} must have a render`);
+    const renderContent = await readFile(
+      new URL(
+        `../public/course-source/l09-machine-learning-part-a/${slideRecord.render.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(renderContent.length, slideRecord.render.bytes);
+    assert.equal(sha256(renderContent), slideRecord.render.sha256);
+    assert.deepEqual(pngDimensions(renderContent), { width: 1600, height: 1200 });
+  }
+  for (const asset of manifest.assets) {
+    const assetContent = await readFile(
+      new URL(
+        `../public/course-source/l09-machine-learning-part-a/${asset.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(assetContent.length, asset.bytes);
+    assert.equal(sha256(assetContent), asset.sha256);
+    assert.ok(asset.sourceSlides.length > 0);
+  }
+});
+
+test("Meetings 17 and 18 preserve the neural-network sequence and modern training laboratory", async () => {
+  const [meeting17, meeting18, manifestText, inventoryContent] = await Promise.all([
+    readFile(new URL("../app/components/Meeting17Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting18Deck.tsx", import.meta.url), "utf8"),
+    readFile(
+      new URL("../public/course-source/l10-neural-networks/manifest.json", import.meta.url),
+      "utf8",
+    ),
+    readFile(
+      new URL("../public/course-source/l10-neural-networks/source-inventory.json", import.meta.url),
+    ),
+  ]);
+  const extractCoverage = (source) => [
+    ...new Set(
+      [...source.matchAll(/sourceSlides:\s*\[([^\]]*)\]/g)].flatMap((match) =>
+        [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])),
+      ),
+    ),
+  ].sort((a, b) => a - b);
+  const expectedMeeting17 = [1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13];
+  const expectedMeeting18 = [14, 15, 16, 17, 18, 19, 36];
+
+  assert.equal((meeting17.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting18.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.deepEqual(extractCoverage(meeting17), expectedMeeting17);
+  assert.deepEqual(extractCoverage(meeting18), expectedMeeting18);
+  assert.match(meeting17, /resolveSourceReference=\{resolveMeeting17SourceReference\}/);
+  assert.match(meeting18, /resolveSourceReference=\{resolveMeeting18SourceReference\}/);
+  assert.match(meeting17, /\/course-source\/l10-neural-networks/);
+  assert.match(meeting18, /\/course-source\/l10-neural-networks/);
+  assert.doesNotMatch(`${meeting17}\n${meeting18}`, /\b(?:original|old)\s+slides?\b/i);
+
+  for (const knowledgePoint of [
+    "McCulloch–Pitts",
+    "perceptron",
+    "AND",
+    "OR",
+    "XOR",
+    "linear decision boundary",
+    "sigmoid",
+    "gradient descent",
+    "Backpropagation",
+    "chain rule",
+    "delta rule",
+    "autodiff",
+    "PyTorch",
+    "zero_grad",
+    "model.eval",
+    "checkpoint",
+  ]) {
+    assert.match(
+      `${meeting17}\n${meeting18}`,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+
+  const manifest = JSON.parse(manifestText);
+  const inventory = JSON.parse(inventoryContent.toString("utf8"));
+  assert.equal(manifest.schemaVersion, 2);
+  assert.equal(manifest.source, "L10_MachineLearning Part B.pptx");
+  assert.equal(
+    manifest.sourceSha256,
+    "AFB85A8365CF49BAC114D362E78552503A1D771F84B6FA85A0D0827775FADC7D",
+  );
+  assert.equal(manifest.sourceBytes, 963006);
+  assert.equal(manifest.authoritativeSlideCount, 36);
+  assert.deepEqual(manifest.meetingCoverage["17"], expectedMeeting17);
+  assert.deepEqual(manifest.meetingCoverage["18"], expectedMeeting18);
+  assert.equal(manifest.sourceSlideEvidence.length, 18);
+  assert.equal(manifest.assets.length, 24);
+  assert.equal(manifest.sourceCorrectionLedger.length, 12);
+  assert.equal(manifest.auditSummary.selectedRenderCount, 18);
+  assert.deepEqual(manifest.auditSummary.renderDimensions, {
+    width: 1600,
+    height: 1200,
+  });
+  assert.equal(sha256(inventoryContent), manifest.inventoryProvenance.sha256);
+  assert.equal(inventory.slideCount, 36);
+  assert.equal(inventory.mediaCount, 29);
+
+  for (const slideRecord of manifest.sourceSlideEvidence) {
+    assert.ok(slideRecord.render, `Source page ${slideRecord.slide} must have a render`);
+    const renderContent = await readFile(
+      new URL(
+        `../public/course-source/l10-neural-networks/${slideRecord.render.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(renderContent.length, slideRecord.render.bytes);
+    assert.equal(sha256(renderContent), slideRecord.render.sha256);
+    assert.deepEqual(pngDimensions(renderContent), { width: 1600, height: 1200 });
+  }
+  for (const asset of manifest.assets) {
+    const assetContent = await readFile(
+      new URL(
+        `../public/course-source/l10-neural-networks/${asset.file}`,
+        import.meta.url,
+      ),
+    );
+    assert.equal(assetContent.length, asset.bytes);
+    assert.equal(sha256(assetContent), asset.sha256);
+    assert.ok(asset.sourceSlides.length > 0);
+  }
+});
+
+test("Meeting 16 provides a secure, cumulative, 75-minute public assessment review", async () => {
+  const meeting16 = await readFile(
+    new URL("../app/components/Meeting16Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting16.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting16.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting16.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting16, /\b(?:original|old)\s+slides?\b/i);
+  assert.doesNotMatch(meeting16, /solution key/i);
+  for (const knowledgePoint of [
+    "rational",
+    "task environment",
+    "A*",
+    "alpha-beta",
+    "Bayes rule",
+    "Bellman",
+    "Q-learning",
+    "data leakage",
+    "information gain",
+    "accessibility",
+    "integrity",
+    "Canvas",
+  ]) {
+    assert.match(
+      meeting16,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+});
+
+test("Meetings 19 and 20 provide two complete primary-source transformer and LLM lessons", async () => {
+  const [meeting19, meeting20] = await Promise.all([
+    readFile(new URL("../app/components/Meeting19Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting20Deck.tsx", import.meta.url), "utf8"),
+  ]);
+  for (const [meeting, source] of [[19, meeting19], [20, meeting20]]) {
+    assert.equal(
+      (source.match(/sourceSlides:\s*\[\]/g) ?? []).length,
+      25,
+      `Meeting ${meeting} must contain 25 modern lesson pages`,
+    );
+    assert.equal((source.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+    const minutes = [...source.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+      .reduce((total, match) => total + Number(match[1]), 0);
+    assert.equal(minutes, 75, `Meeting ${meeting} must total 75 minutes`);
+    assert.doesNotMatch(source, /\b(?:original|old)\s+slides?\b/i);
+    assert.match(source, /Current primary-source reading set/);
+  }
+  for (const knowledgePoint of [
+    "BPE",
+    "SentencePiece",
+    "embedding matrix",
+    "positional",
+    "query",
+    "key",
+    "value",
+    "QK",
+    "scaled",
+    "softmax",
+    "causal mask",
+    "multi-head",
+    "residual",
+    "normalization",
+    "feed-forward",
+    "next-token",
+    "temperature",
+    "scaling laws",
+    "instruction tuning",
+    "preference",
+    "structured output",
+    "schema",
+    "semantic",
+    "hallucination",
+    "verification",
+    "refuse",
+    "escalate",
+  ]) {
+    assert.match(
+      `${meeting19}\n${meeting20}`,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const primarySource of [
+    "aclanthology.org/P16-1162",
+    "arxiv.org/abs/1808.06226",
+    "papers.nips.cc/paper_files/paper/2017",
+    "arxiv.org/abs/2001.08361",
+    "arxiv.org/abs/2203.02155",
+    "aclanthology.org/2022.acl-long.229",
+    "openai.com/index/introducing-structured-outputs",
+  ]) {
+    assert.match(`${meeting19}\n${meeting20}`, new RegExp(primarySource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+});
+
+test("Meeting 23 provides a complete structured-tool, agent-loop, and MCP lesson", async () => {
+  const meeting23 = await readFile(
+    new URL("../app/components/Meeting23Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting23.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting23.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting23.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting23, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting23, /Current primary-source reading set/);
+  for (const knowledgePoint of [
+    "structured tool",
+    "JSON Schema",
+    "syntactic",
+    "semantic",
+    "authority",
+    "agent loop",
+    "stop condition",
+    "budget",
+    "host",
+    "client",
+    "server",
+    "tools",
+    "resources",
+    "prompts",
+    "capabilit",
+    "read-only",
+    "trace",
+  ]) {
+    assert.match(
+      meeting23,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const primarySource of [
+    "modelcontextprotocol.io/docs/learn/architecture",
+    "modelcontextprotocol.io/specification/2025-11-25/schema",
+    "modelcontextprotocol.io/specification/2025-11-25/server/resources",
+    "openai.github.io/openai-agents-js/guides/tools",
+  ]) {
+    assert.match(
+      meeting23,
+      new RegExp(primarySource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 24 provides a complete harness-state, authority, approval, and evaluation lesson", async () => {
+  const meeting24 = await readFile(
+    new URL("../app/components/Meeting24Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting24.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting24.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting24.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting24, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting24, /Current primary-source reading set/);
+  for (const knowledgePoint of [
+    "harness",
+    "HarnessState",
+    "durable",
+    "least privilege",
+    "scope",
+    "approval",
+    "single-use",
+    "budget",
+    "trace",
+    "redact",
+    "prompt injection",
+    "sandbox",
+    "secret",
+    "idempoten",
+    "recovery",
+    "evaluation",
+    "correctness",
+    "release",
+  ]) {
+    assert.match(
+      meeting24,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const primarySource of [
+    "modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+    "modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+    "openai.github.io/openai-agents-js/guides/human-in-the-loop",
+    "openai.github.io/openai-agents-js/guides/guardrails",
+    "openai.github.io/openai-agents-js/guides/tracing",
+    "openai.github.io/openai-agents-js/guides/sessions",
+  ]) {
+    assert.match(
+      meeting24,
+      new RegExp(primarySource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 22 provides a complete RAG evaluation, reliability, and guardrails lesson", async () => {
+  const meeting22 = await readFile(
+    new URL("../app/components/Meeting22Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting22.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting22.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting22.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting22, /\b(?:original|old)\s+slides?\b/i);
+  for (const knowledgePoint of [
+    "hybrid",
+    "BM25",
+    "dense",
+    "RRF",
+    "metadata",
+    "chunk",
+    "rerank",
+    "lost in the middle",
+    "abstain",
+    "Recall@5",
+    "Precision@5",
+    "MRR",
+    "grounded",
+    "correctness",
+    "citation",
+    "indirect prompt injection",
+    "guardrail",
+    "human",
+    "escalat",
+    "latency",
+    "cost",
+  ]) {
+    assert.match(
+      meeting22,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const primarySource of [
+    "research.google/pubs/reciprocal-rank-fusion",
+    "arxiv.org/abs/2307.03172",
+    "aclanthology.org/2024.eacl-demo.16",
+    "aclanthology.org/2024.naacl-long.20",
+    "arxiv.org/abs/2302.12173",
+    "doi.org/10.6028/NIST.AI.600-1",
+  ]) {
+    assert.match(
+      meeting22,
+      new RegExp(primarySource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 21 provides a complete 75-minute RAG foundations lesson", async () => {
+  const meeting21 = await readFile(
+    new URL("../app/components/Meeting21Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting21.match(/minutes:\s*\d+/g) ?? []).length, 25);
+  const minutes = [...meeting21.matchAll(/minutes:\s*(\d+)/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting21, /\b(?:original|old)\s+slides?\b/i);
+  for (const knowledgePoint of [
+    "RAG",
+    "pipeline",
+    "ingestion",
+    "parsing",
+    "provenance",
+    "chunk",
+    "overlap",
+    "embedding",
+    "lexical",
+    "vector",
+    "hybrid",
+    "similarity",
+    "index",
+    "top-k",
+    "query",
+    "prompt",
+    "citation",
+    "retriever",
+    "generator",
+    "untrusted input",
+  ]) {
+    assert.match(
+      meeting21,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const primarySource of [
+    "arxiv.org/abs/2005.11401",
+    "aclanthology.org/2020.emnlp-main.550",
+    "aclanthology.org/D19-1410",
+    "aclanthology.org/2024.eacl-demo.16",
+  ]) {
+    assert.match(
+      meeting21,
+      new RegExp(primarySource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("AAB participation is concentrated in Week 13 Meetings 25 and 26", async () => {
+  const meetingsWithAab = [];
+  for (let meeting = 1; meeting <= 30; meeting += 1) {
+    const source = await readFile(
+      new URL(`../app/components/Meeting${String(meeting).padStart(2, "0")}Deck.tsx`, import.meta.url),
+      "utf8",
+    );
+    if (/\bAAB\b|AABoard|aaboard/i.test(source)) meetingsWithAab.push(meeting);
+  }
+  assert.deepEqual(meetingsWithAab, [25, 26]);
+});
+
+test("Meeting 25 provides a complete AAB research-evidence practicum and publication guardrails", async () => {
+  const meeting25 = await readFile(
+    new URL("../app/components/Meeting25Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting25.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting25.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting25.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting25, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting25, /Current AAB and scholarly-source reading set/);
+  for (const knowledgePoint of [
+    "candidate contribution",
+    "not endorse",
+    "grades never depend",
+    "source verification",
+    "authorized editorial review",
+    "population",
+    "study type",
+    "peer-reviewed",
+    "search record",
+    "include",
+    "exclude",
+    "DOI",
+    "methods",
+    "causal",
+    "uncertainty",
+    "limitations",
+    "transferability",
+    "reviewer inference",
+    "unsupported",
+    "claim-to-source",
+    "field map",
+    "reproducible",
+    "Accept",
+    "Revise",
+    "Hold",
+    "Reject",
+  ]) {
+    assert.match(
+      meeting25,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const currentSource of [
+    "aaboard.org/cases/AAB-CASE-2026-RV-116",
+    "aaboard.org/cases/AAB-CASE-2026-RV-065",
+    "doi.org/the-identifier/what-is-a-doi",
+    "equator-network.org",
+  ]) {
+    assert.match(
+      meeting25,
+      new RegExp(currentSource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 26 provides a complete AI-literacy explanation and audience-testing practicum", async () => {
+  const meeting26 = await readFile(
+    new URL("../app/components/Meeting26Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting26.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting26.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting26.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting26, /\b(?:original|old)\s+slides?\b/i);
+  assert.doesNotMatch(meeting26, /K[–-]12/i);
+  assert.match(meeting26, /Current AI-literacy and communication reading set/);
+  for (const knowledgePoint of [
+    "nontechnical audiences age five and older",
+    "Audience profile",
+    "Age 5-7",
+    "Teen",
+    "Adult",
+    "observable objective",
+    "cognitive load",
+    "causal spine",
+    "plain language",
+    "analogy",
+    "break point",
+    "meaning-matched",
+    "next-token",
+    "retrieval",
+    "misconception",
+    "Accessibility",
+    "Privacy",
+    "Safety",
+    "Teach-back",
+    "Pilot",
+    "observed performance",
+    "revision",
+    "Course grade and publication are separate",
+  ]) {
+    assert.match(
+      meeting26,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const currentSource of [
+    "aaboard.org/cases/AAB-CASE-2026-RV-065",
+    "udlguidelines.cast.org",
+    "w3.org/WAI/tutorials/images",
+    "ahrq.gov/health-literacy/improve/precautions/tool5",
+  ]) {
+    assert.match(
+      meeting26,
+      new RegExp(currentSource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 27 provides a complete claim, baseline, evaluation-set, testing, and system-card studio", async () => {
+  const meeting27 = await readFile(
+    new URL("../app/components/Meeting27Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting27.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting27.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting27.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting27, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting27, /Historical capstone requirements and current engineering practice/);
+  for (const knowledgePoint of [
+    "bounded problem",
+    "intended use",
+    "excluded use",
+    "falsifi",
+    "disconfirm",
+    "baseline",
+    "ablation",
+    "evaluation set",
+    "version",
+    "typical",
+    "difficult",
+    "edge",
+    "adversarial",
+    "unanswerable",
+    "leakage",
+    "quantitative",
+    "qualitative",
+    "unit",
+    "integration",
+    "task",
+    "misuse",
+    "regression",
+    "uncertainty",
+    "error",
+    "reproducib",
+    "dependencies",
+    "third-party",
+    "license",
+    "individual contribution",
+    "system card",
+  ]) {
+    assert.match(
+      meeting27,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const currentSource of [
+    "doi.org/10.1145/3287560.3287596",
+    "doi.org/10.1145/3458723",
+    "doi.org/10.6028/NIST.AI.600-1",
+    "research.google/pubs/the-ml-test-score",
+  ]) {
+    assert.match(
+      meeting27,
+      new RegExp(currentSource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 28 provides a complete peer-testing, red-team, revision, and regression studio", async () => {
+  const meeting28 = await readFile(
+    new URL("../app/components/Meeting28Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting28.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting28.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting28.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting28, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting28, /Capstone studio protocol and current testing practice/);
+  for (const knowledgePoint of [
+    "reproducib",
+    "protocol",
+    "participant",
+    "environment",
+    "expected behavior",
+    "actual behavior",
+    "trace",
+    "task success",
+    "confusion",
+    "recovery",
+    "think-aloud",
+    "coaching",
+    "model",
+    "interface",
+    "instruction",
+    "task definition",
+    "red-team",
+    "prompt injection",
+    "unsupported",
+    "unsafe action",
+    "privacy",
+    "authorization",
+    "severity",
+    "likelihood",
+    "reproducib",
+    "defect",
+    "limitation",
+    "misuse",
+    "out-of-scope",
+    "one variable",
+    "regression",
+    "decision log",
+    "residual",
+    "disclosure",
+  ]) {
+    assert.match(
+      meeting28,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+  for (const currentSource of [
+    "nist.gov/publications/adversarial-machine-learning-taxonomy",
+    "airc.nist.gov/airmf-resources/airmf/5-sec-core",
+    "cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention",
+  ]) {
+    assert.match(
+      meeting28,
+      new RegExp(currentSource.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+});
+
+test("Meeting 29 provides a complete ten-minute capstone demonstration and individual defense", async () => {
+  const meeting29 = await readFile(
+    new URL("../app/components/Meeting29Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting29.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting29.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting29.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting29, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(meeting29, /Historical demonstration requirements and revised capstone evidence/);
+  for (const knowledgePoint of [
+    "10-minute limit",
+    "1:00",
+    "3:00",
+    "6:00",
+    "8:00",
+    "9:00",
+    "Architecture",
+    "contribution",
+    "Live success",
+    "trace",
+    "Baseline",
+    "evaluation",
+    "honest failure",
+    "limitations",
+    "oversight",
+    "recommendation",
+    "preflight",
+    "fallback",
+    "accessibility",
+    "Peer evaluation",
+    "Novelty",
+    "instructor evaluates technical correctness",
+    "individual defense",
+    "explain",
+    "end-to-end",
+    "justify",
+    "diagnos",
+    "dependency",
+    "reused",
+  ]) {
+    assert.match(
+      meeting29,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+});
+
+test("Meeting 30 provides a complete public course synthesis and final review", async () => {
+  const meeting30 = await readFile(
+    new URL("../app/components/Meeting30Deck.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.equal((meeting30.match(/sourceSlides:\s*\[\]/g) ?? []).length, 25);
+  assert.equal((meeting30.match(/Timing:\s*\d+\s+minutes?/g) ?? []).length, 25);
+  const minutes = [...meeting30.matchAll(/Timing:\s*(\d+)\s+minutes?/g)]
+    .reduce((total, match) => total + Number(match[1]), 0);
+  assert.equal(minutes, 75);
+  assert.doesNotMatch(meeting30, /\b(?:original|old)\s+slides?\b/i);
+  assert.doesNotMatch(meeting30, /solution key/i);
+  assert.match(meeting30, /Complete course source map and public review set/);
+  for (const knowledgePoint of [
+    "rational",
+    "task environment",
+    "performance measure",
+    "representation",
+    "state space",
+    "A*",
+    "Bayes",
+    "Markov",
+    "MDP",
+    "RL",
+    "objective",
+    "data",
+    "baseline",
+    "leakage",
+    "backpropagation",
+    "tokens",
+    "attention",
+    "LLM",
+    "RAG",
+    "Tools",
+    "MCP",
+    "harness",
+    "permissions",
+    "approval",
+    "logging",
+    "evidence brief",
+    "nontechnical",
+    "system card",
+    "deployment boundary",
+    "assumption",
+    "misconception",
+    "concept map",
+    "Accessibility",
+    "Integrity",
+  ]) {
+    assert.match(
+      meeting30,
+      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
   }
 });
