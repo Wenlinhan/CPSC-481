@@ -1,6 +1,11 @@
 {
   "source": "L01_AI.pptx",
+  "sourceSha256": "AD882532D0D9DE2404F3C52495B3860DD1827321EDCA0CA1934607E43A143359",
   "authoritativeSlideCount": 32,
+  "meetingCoverage": {
+    "1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "2": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+  },
   "usage": "Instructional images are preserved at their source aspect ratios and are not cropped.",
   "assets": [
     {

@@ -41,7 +41,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Luger, 6e, Chapter 1", "Russell and Norvig, 3e, Chapters 1–2"],
     preparation: "Bring one current AI application and one claim about what makes it intelligent.",
-    sourceTrace: ["Old L01_AI slides 3–10 and 18–31", "Revised Week 1 schedule"],
+    sourceTrace: ["L01_AI.pptx slides 1–10; complete source map shared with Meeting 2", "Revised Week 1 schedule"],
   },
   {
     id: 2, week: 1, module: "AI Foundations", deck: "custom",
@@ -54,10 +54,10 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapters 1–2", "Luger, 6e, Chapter 1"],
     preparation: "Review the four definitions of AI and bring a task that could be performed by an agent.",
-    sourceTrace: ["Old L01_AI slides 11–27", "Revised Week 1 schedule"],
+    sourceTrace: ["L01_AI.pptx slides 11–32; complete source map shared with Meeting 1", "Revised Week 1 schedule"],
   },
   {
-    id: 3, week: 2, module: "State-Space Search", deck: "planned",
+    id: 3, week: 2, module: "State-Space Search", deck: "custom",
     title: "Problem Formulation and Breadth-First Search",
     question: "How does a real problem become a searchable state space?",
     knowledgePoints: [
@@ -67,10 +67,10 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Luger, 6e, Chapter 3", "Russell and Norvig, 3e, Chapter 3"],
     preparation: "Review graphs, queues, and asymptotic complexity.",
-    sourceTrace: ["Old L02_StateSpaceSearch slides 3–17 and 22–29", "Revised Week 2 schedule"],
+    sourceTrace: ["L02_StateSpaceSearch.pptx slides 1–20", "Revised Week 2 schedule"],
   },
   {
-    id: 4, week: 2, module: "State-Space Search", deck: "planned",
+    id: 4, week: 2, module: "State-Space Search", deck: "custom",
     title: "Depth-First, Uniform-Cost, and Search Evaluation",
     question: "Which uninformed strategy should we trust under different costs and resource limits?",
     knowledgePoints: [
@@ -80,7 +80,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 3", "Luger, 6e, Chapter 3"],
     preparation: "Complete a short BFS/DFS trace before class.",
-    sourceTrace: ["Old L02_StateSpaceSearch slides 18–40", "Revised Week 2 schedule"],
+    sourceTrace: ["L02_StateSpaceSearch.pptx slides 21–41", "Revised Week 2 schedule"],
   },
   {
     id: 5, week: 3, module: "Informed and Local Search", deck: "planned",
@@ -93,7 +93,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Luger, 6e, Chapter 4", "Russell and Norvig, 3e, Chapters 3–4"],
     preparation: "Bring one real problem where an exact solution is too expensive.",
-    sourceTrace: ["Old L03_Heuristic, HillClimbing&SA", "Revised Week 3 schedule"],
+    sourceTrace: ["L03_Heuristic, HillClimbing&SA.pptx", "Revised Week 3 schedule"],
   },
   {
     id: 6, week: 3, module: "Informed and Local Search", deck: "planned",
@@ -106,7 +106,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 3", "Luger, 6e, Chapter 4"],
     preparation: "Complete the heuristic worksheet and bring a laptop.",
-    sourceTrace: ["Old L04_BFS&AStar", "Revised Week 3 schedule"],
+    sourceTrace: ["L04_BFS&AStar.pptx", "Revised Week 3 schedule"],
   },
   {
     id: 7, week: 4, module: "Adversarial Search", deck: "planned",
@@ -119,7 +119,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 5", "Luger, 6e, Chapter 4"],
     preparation: "Play two games of tic-tac-toe while recording decision reasons.",
-    sourceTrace: ["Old L05_MiniMax&Pruning slides 1–16", "Revised Week 4 schedule"],
+    sourceTrace: ["L05_MiniMax&Pruning.pptx slides 1–16", "Revised Week 4 schedule"],
   },
   {
     id: 8, week: 4, module: "Adversarial Search", deck: "planned",
@@ -132,7 +132,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 5", "Canvas note on Monte Carlo tree search"],
     preparation: "Review minimax backup and logarithms.",
-    sourceTrace: ["Old L05_MiniMax&Pruning slides 17–31", "Revised Week 4 schedule"],
+    sourceTrace: ["L05_MiniMax&Pruning.pptx slides 17–31", "Revised Week 4 schedule"],
   },
   {
     id: 9, week: 5, module: "Reasoning Under Uncertainty", deck: "planned",
@@ -143,9 +143,9 @@ export const meetings: MeetingPlan[] = [
       kp("Bayes rule", "Bayes rule reverses a conditional by combining likelihood with a prior and normalization; base rates can dominate seemingly accurate evidence.", "Calculate disease probability after a positive test.", "Move prevalence and false-positive sliders to see posterior probability change.", "Solve and explain a diagnostic posterior without confusing P(E|H) and P(H|E).", "Why is a 95%-accurate test not enough information?"),
       kp("Independence and conditional independence", "Independence factorizes distributions; conditional independence is the more useful claim that variables become independent once a relevant cause is known.", "Toothache and probe catch become conditionally independent given cavity.", "Toggle a common cause in a small dependency diagram and compare probabilities.", "Judge three independence claims and state the conditioning variable.", "What empirical or domain evidence supports an independence assumption?"),
     ],
-    readings: ["Russell and Norvig, 3e, Chapter 13", "Old probability review handout"],
+    readings: ["Russell and Norvig, 3e, Chapter 13", "Course probability review handout"],
     preparation: "Complete the probability refresher.",
-    sourceTrace: ["Old L11_stochasticmethods Part A slides 3–38", "Revised Week 5 schedule"],
+    sourceTrace: ["L11_stochasticmethods - Part A.pptx", "Revised Week 5 schedule"],
   },
   {
     id: 10, week: 5, module: "Reasoning Under Uncertainty", deck: "planned",
@@ -158,7 +158,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapters 13–14", "Luger, 6e, uncertainty chapter"],
     preparation: "Bring a conditional-independence question from Meeting 9.",
-    sourceTrace: ["Old L11 Part A and L12 Part B", "Revised Week 5 schedule"],
+    sourceTrace: ["L11_stochasticmethods - Part A.pptx", "L12_StochasticMethods - Part B.pptx", "Revised Week 5 schedule"],
   },
   {
     id: 11, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "planned",
@@ -171,7 +171,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 17", "Canvas MDP worksheet"],
     preparation: "Review expectation and geometric discounting.",
-    sourceTrace: ["Old L12 Markov-model foundations", "Revised Week 6 schedule"],
+    sourceTrace: ["L12_StochasticMethods - Part B.pptx Markov-model foundations", "Revised Week 6 schedule"],
   },
   {
     id: 12, week: 6, module: "Sequential Decisions and Reinforcement Learning", deck: "planned",
@@ -184,7 +184,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 21", "Canvas Q-learning note"],
     preparation: "Install the provided notebook environment.",
-    sourceTrace: ["Old L10 reinforcement-learning introduction", "Revised Week 6 schedule"],
+    sourceTrace: ["L10_MachineLearning Part B.pptx reinforcement-learning introduction", "Revised Week 6 schedule"],
   },
   {
     id: 13, week: 7, module: "Machine Learning Foundations", deck: "planned",
@@ -197,7 +197,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 18", "Canvas ML workflow guide"],
     preparation: "Bring a laptop with Python, Git, and the course environment ready.",
-    sourceTrace: ["Old L09 Machine Learning Part A slides 2–11 and 37–39", "Revised Week 7 schedule"],
+    sourceTrace: ["L09_MachineLearning Part A.pptx slides 2–11 and 37–39", "Revised Week 7 schedule"],
   },
   {
     id: 14, week: 7, module: "Machine Learning Foundations", deck: "planned",
@@ -210,7 +210,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Russell and Norvig, 3e, Chapter 18", "Canvas metrics worksheet"],
     preparation: "Review mean, variance, and confusion matrices.",
-    sourceTrace: ["Old L09 decision trees and supervised learning", "Revised Week 7 schedule"],
+    sourceTrace: ["L09_MachineLearning Part A.pptx decision trees and supervised learning", "Revised Week 7 schedule"],
   },
   {
     id: 15, week: 8, module: "Applied Machine Learning", deck: "planned",
@@ -223,7 +223,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Canvas applied-ML lab", "scikit-learn user guide selections"],
     preparation: "Complete the environment check and download the lab dataset.",
-    sourceTrace: ["Old L09 decision-tree evaluation", "Revised Week 8 schedule"],
+    sourceTrace: ["L09_MachineLearning Part A.pptx decision-tree evaluation", "Revised Week 8 schedule"],
   },
   {
     id: 16, week: 8, module: "Applied Machine Learning", deck: "planned",
@@ -247,9 +247,9 @@ export const meetings: MeetingPlan[] = [
       kp("Activations and multilayer networks", "Nonlinear activations let stacked layers represent nonlinear functions; without them, many layers collapse to one linear transformation.", "Compare step, sigmoid, tanh, and ReLU.", "Toggle activation functions and watch hidden representations change.", "Choose an activation and predict saturation or sparsity behavior.", "What failure occurs if every layer is linear?"),
       kp("Loss and gradient descent", "A loss measures prediction error; gradients show local sensitivity; learning rate controls the size of parameter updates.", "Minimize a simple quadratic before moving to network loss.", "Animate descent with too-small, useful, and too-large learning rates.", "Compute one derivative-based update and diagnose divergence.", "Does lower training loss guarantee better generalization?"),
     ],
-    readings: ["Russell and Norvig, 3e, neural-network section", "Old L10 Machine Learning Part B"],
+    readings: ["Russell and Norvig, 3e, neural-network section", "L10_MachineLearning Part B.pptx"],
     preparation: "Review vectors, derivatives, and the chain rule.",
-    sourceTrace: ["Old L10 slides 6–18", "Revised Week 9 schedule"],
+    sourceTrace: ["L10_MachineLearning Part B.pptx slides 6–18", "Revised Week 9 schedule"],
   },
   {
     id: 18, week: 9, module: "Neural Networks", deck: "planned",
@@ -262,7 +262,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["PyTorch quickstart", "Canvas neural-network lab"],
     preparation: "Install the pinned PyTorch environment and run the diagnostic notebook.",
-    sourceTrace: ["Old L10 backpropagation material", "Revised Week 9 schedule"],
+    sourceTrace: ["L10_MachineLearning Part B.pptx backpropagation material", "Revised Week 9 schedule"],
   },
   {
     id: 19, week: 10, module: "Transformers and Large Language Models", deck: "planned",
@@ -418,7 +418,7 @@ export const meetings: MeetingPlan[] = [
     ],
     readings: ["Final review guide", "Student system cards and AAB evidence briefs"],
     preparation: "Bring a one-page concept map and remaining questions.",
-    sourceTrace: ["Revised Week 15 schedule", "Cumulative old and contemporary course materials"],
+    sourceTrace: ["Revised Week 15 schedule", "Cumulative historical and contemporary course materials"],
   },
 ];
 

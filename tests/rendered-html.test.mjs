@@ -52,10 +52,12 @@ test("every lesson is preplanned as explanation, example, demo, practice, and as
   }
 });
 
-test("preserves custom Meetings 1, 2, 21, and 22 and their visual assets", async () => {
+test("preserves custom Meetings 1, 2, 3, 4, 21, and 22 and their visual assets", async () => {
   const files = [
     "../app/components/Meeting01Deck.tsx",
     "../app/components/Meeting02Deck.tsx",
+    "../app/components/Meeting03Deck.tsx",
+    "../app/components/Meeting04Deck.tsx",
     "../app/components/Meeting21Deck.tsx",
     "../app/components/Meeting22Deck.tsx",
   ];
@@ -108,6 +110,11 @@ test("Meetings 1 and 2 account for every authoritative L01 source slide and imag
 
   const manifest = JSON.parse(manifestText);
   assert.equal(manifest.authoritativeSlideCount, 32);
+  assert.equal(manifest.sourceSha256, "AD882532D0D9DE2404F3C52495B3860DD1827321EDCA0CA1934607E43A143359");
+  assert.deepEqual(
+    [...new Set(Object.values(manifest.meetingCoverage).flat())].sort((a, b) => a - b),
+    Array.from({ length: 32 }, (_, index) => index + 1),
+  );
   assert.equal(manifest.assets.length, 12);
   for (const asset of manifest.assets) {
     await access(new URL(`../public/course-source/l01-ai/${asset.file}`, import.meta.url));
@@ -117,5 +124,51 @@ test("Meetings 1 and 2 account for every authoritative L01 source slide and imag
   }
   for (const match of combined.matchAll(/<CourseImage\b[^>]*\bname="([^"]+)"/g)) {
     await access(new URL(`../public/course-source/l01-ai/${match[1]}`, import.meta.url));
+  }
+});
+
+test("Meetings 3 and 4 account for every authoritative L02 source slide and image", async () => {
+  const [meeting3, meeting4, manifestText] = await Promise.all([
+    readFile(new URL("../app/components/Meeting03Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting04Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/course-source/l02-state-space/manifest.json", import.meta.url), "utf8"),
+  ]);
+  const extractCoverage = (source) => [...source.matchAll(/sourceSlides:\s*\[([^\]]+)\]/g)]
+    .flatMap((match) => [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])));
+  const coverage = [...new Set([...extractCoverage(meeting3), ...extractCoverage(meeting4)])].sort((a, b) => a - b);
+  assert.equal((meeting3.match(/sourceSlides:\s*\[/g) ?? []).length, 27);
+  assert.equal((meeting4.match(/sourceSlides:\s*\[/g) ?? []).length, 28);
+  assert.deepEqual(coverage, Array.from({ length: 41 }, (_, index) => index + 1));
+
+  const combined = `${meeting3}\n${meeting4}`;
+  for (const knowledgePoint of [
+    "State, state space, and search",
+    "Königsberg",
+    "⟨N, A, S, GD⟩",
+    "PROSPECTOR",
+    "DENDRAL",
+    "Depth-first search",
+    "Breadth-first search",
+    "Uniform-cost search",
+    "SL, NSL, DE, and CS",
+    "George F. Luger",
+  ]) {
+    assert.match(combined, new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+  assert.doesNotMatch(combined, /\b(?:original|old)\s+slides?\b/i);
+
+  const manifest = JSON.parse(manifestText);
+  assert.equal(manifest.authoritativeSlideCount, 41);
+  assert.equal(manifest.sourceSha256, "0ADF5336D2B7B31F82F3B72446346B0419CA336C24BF051C5660D3D1F4457FE6");
+  assert.deepEqual(
+    [...new Set(Object.values(manifest.meetingCoverage).flat())].sort((a, b) => a - b),
+    Array.from({ length: 41 }, (_, index) => index + 1),
+  );
+  assert.equal(manifest.assets.length, 26);
+  for (const asset of manifest.assets) {
+    await access(new URL(`../public/course-source/l02-state-space/${asset.file}`, import.meta.url));
+  }
+  for (const match of combined.matchAll(/<SearchSourceImage\b[^>]*\bfile="([^"]+)"/g)) {
+    await access(new URL(`../public/course-source/l02-state-space/${match[1]}`, import.meta.url));
   }
 });
