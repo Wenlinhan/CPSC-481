@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "source": "L03_Heuristic, HillClimbing&SA.pptx",
+  "sourceFilename": "L03_Heuristic, HillClimbing&SA.pptx",
+  "sourceSha256": "B076CF24F606F0730E0BCC362F0C9ED0369591C3F91BEC4C1020BB996B2CB4F5",
+  "authoritativeSlideCount": 31,
+  "meetingCoverage": {
+    "5": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  "slideToMeeting": {
+    "1": 5,
+    "2": 5,
+    "3": 5,
+    "4": 5,
+    "5": 5,
+    "6": 5,
+    "7": 5,
+    "8": 5,
+    "9": 5,
+    "10": 5,
+    "11": 5,
+    "12": 5,
+    "13": 5,
+    "14": 5,
+    "15": 5,
+    "16": 5,
+    "17": 5,
+    "18": 5,
+    "19": 5,
+    "20": 5,
+    "21": 5,
+    "22": 5,
+    "23": 5,
+    "24": 5,
+    "25": 5,
+    "26": 5,
+    "27": 5,
+    "28": 5,
+    "29": 5,
+    "30": 5,
+    "31": 5
+  },
+  "extractionPolicy": "Every PPTX-embedded media file is preserved byte-for-byte in its original format. Only the public filename is made descriptive.",
+  "assets": [
+    {
+      "file": "tic-tac-toe-symmetry-state-space.png",
+      "originalFile": "image1.png",
+      "sourceSlides": [
+        5
+      ],
+      "knowledgeRole": "First three levels of the tic-tac-toe state space reduced by corner, center, and side symmetry",
+      "sha256": "DCDE58B028B3C43BFA2FD99DDA312BB3626D0770EEC3055C1AC5680912524103",
+      "bytes": 18742,
+      "format": "PNG",
+      "dimensions": {
+        "width": 725,
+        "height": 475
+      },
+      "sourceRelationships": [
+        {
+          "slide": 5,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-most-wins-openings.png",
+      "originalFile": "image2.png",
+      "sourceSlides": [
+        6
+      ],
+      "knowledgeRole": "Most-wins heuristic comparison of corner, center, and side opening moves",
+      "sha256": "B344A8B9EBD04A4BB17E0A2AA4CA0186093AE0CB1DE049312D9E056352D36591",
+      "bytes": 10162,
+      "format": "PNG",
+      "dimensions": {
+        "width": 542,
+        "height": 215
+      },
+      "sourceRelationships": [
+        {
+          "slide": 6,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-heuristically-pruned-tree.png",
+      "originalFile": "image3.png",
+      "sourceSlides": [
+        7
+      ],
+      "knowledgeRole": "Heuristically reduced tic-tac-toe tree showing two-thirds of the search space pruned after the first move",
+      "sha256": "33D75524198DDE2CC48D239A2E56E94F59A728B720C37C3E45E6365EE9C5E234",
+      "bytes": 30123,
+      "format": "PNG",
+      "dimensions": {
+        "width": 567,
+        "height": 605
+      },
+      "sourceRelationships": [
+        {
+          "slide": 7,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "travelling-salesperson-search-tree.png",
+      "originalFile": "image4.png",
+      "sourceSlides": [
+        8
+      ],
+      "knowledgeRole": "Weighted travelling-salesperson search tree used to motivate branch-and-bound and greedy reduction",
+      "sha256": "A63981AB1F1BDAB0DCB6EFDFCA7DB4046837BD84A5147B885137D9F0197A9748",
+      "bytes": 36070,
+      "format": "PNG",
+      "dimensions": {
+        "width": 805,
+        "height": 530
+      },
+      "sourceRelationships": [
+        {
+          "slide": 8,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "nearest-neighbor-tour-counterexample.png",
+      "originalFile": "image5.png",
+      "sourceSlides": [
+        9
+      ],
+      "knowledgeRole": "Nearest-neighbor travelling-salesperson tour and counterexample to greedy optimality",
+      "sha256": "B50655FA9919D6F9BE9AE43CAE40A69715CDD78659391B16E30DDAC82897E016",
+      "bytes": 26151,
+      "format": "PNG",
+      "dimensions": {
+        "width": 529,
+        "height": 342
+      },
+      "sourceRelationships": [
+        {
+          "slide": 9,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-start-and-successors.png",
+      "originalFile": "image6.png",
+      "sourceSlides": [
+        12
+      ],
+      "knowledgeRole": "8-puzzle start state, three legal successor states, and goal state used to define candidate heuristics",
+      "sha256": "B184721AF3F989162C6C8C95578E1BB954014F49E30EF2A41A44F7B9B546CA6B",
+      "bytes": 17072,
+      "format": "PNG",
+      "dimensions": {
+        "width": 576,
+        "height": 496
+      },
+      "sourceRelationships": [
+        {
+          "slide": 12,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-heuristic-comparison.png",
+      "originalFile": "image7.png",
+      "sourceSlides": [
+        13
+      ],
+      "knowledgeRole": "Comparison table for misplaced tiles, Manhattan-distance sum, and direct tile reversals across three 8-puzzle states",
+      "sha256": "06706005D0D0E952AB6A9ACDE38B0C0FBA56E09963D7EA19BB469DCF31389443",
+      "bytes": 21475,
+      "format": "PNG",
+      "dimensions": {
+        "width": 709,
+        "height": 438
+      },
+      "sourceRelationships": [
+        {
+          "slide": 13,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-f-score-successors.png",
+      "originalFile": "image8.png",
+      "sourceSlides": [
+        14
+      ],
+      "knowledgeRole": "8-puzzle successor evaluation with g equals one and f scores six, four, and six",
+      "sha256": "E5204A7EFEA4B8D7B8EB4058907042062F5E2A6AC63EC322B2DE691DD541B3BD",
+      "bytes": 29166,
+      "format": "PNG",
+      "dimensions": {
+        "width": 725,
+        "height": 553
+      },
+      "sourceRelationships": [
+        {
+          "slide": 14,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "hill-climbing-search-landscape.jpeg",
+      "originalFile": "image9.jpeg",
+      "sourceSlides": [
+        15,
+        18
+      ],
+      "knowledgeRole": "Objective landscape labeling shoulder, global maximum, local maximum, and flat local maximum",
+      "sha256": "42DE377B4F2BD93A8B9795D80FAE89B85E0FFEB68DFF111721F48C7379BC2604",
+      "bytes": 8491,
+      "format": "JPEG",
+      "dimensions": {
+        "width": 401,
+        "height": 225
+      },
+      "sourceRelationships": [
+        {
+          "slide": 15,
+          "relationshipId": "rId3"
+        },
+        {
+          "slide": 18,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "hill-climbing-plateau-lookahead.png",
+      "originalFile": "image10.png",
+      "sourceSlides": [
+        21
+      ],
+      "knowledgeRole": "Three-level lookahead tree illustrating a hill-climbing plateau with equal or similar path values",
+      "sha256": "BE6E0D4B96CA29EA5995BAD17CA1AF9B7079C5B9F6BE2A60DC3255DC59984B5A",
+      "bytes": 10506,
+      "format": "PNG",
+      "dimensions": {
+        "width": 396,
+        "height": 329
+      },
+      "sourceRelationships": [
+        {
+          "slide": 21,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "metallurgy-annealing-photo.png",
+      "originalFile": "image11.png",
+      "sourceSlides": [
+        23
+      ],
+      "knowledgeRole": "Metallurgical heating photograph grounding the simulated-annealing analogy",
+      "sha256": "7CFD661E40432466554BBA707BAE412D074B40CB5D9B4DE5186468C170E87723",
+      "bytes": 52590,
+      "format": "PNG",
+      "dimensions": {
+        "width": 216,
+        "height": 150
+      },
+      "sourceRelationships": [
+        {
+          "slide": 23,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "annealing-temperature-schedule.png",
+      "originalFile": "image12.png",
+      "sourceSlides": [
+        23
+      ],
+      "knowledgeRole": "Cooling curve illustrating a simulated-annealing temperature schedule",
+      "sha256": "BFA6B2E6CF3783BE08EA078409BE301B90F04FE9BF76AD92C68C2AC535A7C42B",
+      "bytes": 20365,
+      "format": "PNG",
+      "dimensions": {
+        "width": 464,
+        "height": 355
+      },
+      "sourceRelationships": [
+        {
+          "slide": 23,
+          "relationshipId": "rId4"
+        }
+      ]
+    },
+    {
+      "file": "simulated-annealing-local-maxima.gif",
+      "originalFile": "image13.gif",
+      "sourceSlides": [
+        25
+      ],
+      "knowledgeRole": "Animated simulated-annealing walk that continues across local maxima and settles at the global maximum as temperature falls",
+      "sha256": "C89ABA202997328F29CFF4AA350165F15CDF87EFBAC31ECDD360E4DF9142E54E",
+      "bytes": 1125635,
+      "format": "GIF",
+      "dimensions": {
+        "width": 500,
+        "height": 161
+      },
+      "sourceRelationships": [
+        {
+          "slide": 25,
+          "relationshipId": "rId2"
+        }
+      ],
+      "gif": {
+        "frameCount": 275,
+        "totalDurationMs": 13750,
+        "frameDurations": [
+          {
+            "durationMs": 50,
+            "frameCount": 275
+          }
+        ],
+        "loopCount": 0,
+        "loopBehavior": "infinite"
+      },
+      "attribution": {
+        "creator": "Kingpin13",
+        "workStatement": "Own work",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=25010763",
+        "sourceSlideText": "By Kingpin13 - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=25010763"
+      }
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        2
+      ],
+      "sourceIssue": "The overview lists best-first search, A*, constraint satisfaction, minimax, and advanced game playing although the detailed deck ends with simulated annealing.",
+      "correction": "Preserve these entries as a forward course map, not as outcomes claimed for Meeting 5."
+    },
+    {
+      "sourceSlides": [
+        3
+      ],
+      "sourceIssue": "The slide labels 9!, 64!, and 361! as the search spaces for tic-tac-toe, chess, and Go.",
+      "correction": "Present them as naive permutation-growth illustrations rather than exact legal game-tree or reachable-state counts."
+    },
+    {
+      "sourceSlides": [
+        8
+      ],
+      "sourceIssue": "The presenter note contains the unexplained branch-and-bound expression 1.26N.",
+      "correction": "Retain the archival note in source trace but do not promote the expression as a verified complexity claim."
+    },
+    {
+      "sourceSlides": [
+        11,
+        14
+      ],
+      "sourceIssue": "The slides call f(n)=g(n)+h(n) a heuristic function and then use it to guide DFS.",
+      "correction": "Distinguish the heuristic estimate h from the search evaluation f; use f=g+h for A*-style evaluation and explain that a local-search objective may use a different score convention."
+    },
+    {
+      "sourceSlides": [
+        23,
+        26,
+        27
+      ],
+      "sourceIssue": "The simulated-annealing explanation mixes maximization and energy-minimization definitions of delta and alternates between exp(delta/T) and exp(-delta/T).",
+      "correction": "Use one explicit convention: for maximization, delta=value(next)-value(current) and a worse move is accepted with exp(delta/T); equivalently, for energy minimization, delta=E(next)-E(current) and a worse move is accepted with exp(-delta/T)."
+    },
+    {
+      "sourceSlides": [
+        27
+      ],
+      "sourceIssue": "The presenter note says that as temperature decreases, the worse-move acceptance probability increases.",
+      "correction": "For a fixed worse move, the acceptance probability decreases as temperature decreases."
+    },
+    {
+      "sourceSlides": [
+        28
+      ],
+      "sourceIssue": "The numeric example states exp(-5)=0.05 and describes that as a 5 percent acceptance probability.",
+      "correction": "exp(-5) is approximately 0.0067, or 0.67 percent."
+    },
+    {
+      "sourceSlides": [
+        29
+      ],
+      "sourceIssue": "The slide says simulated annealing will theoretically always find the global optimum without stating conditions.",
+      "correction": "Qualify convergence as an asymptotic result under restrictive, sufficiently slow cooling assumptions; it is not an unconditional finite-time guarantee."
+    },
+    {
+      "sourceSlides": [
+        31
+      ],
+      "sourceIssue": "The bibliography misspells George F. Luger as George Fluger and Russell as Russel.",
+      "correction": "Use George F. Luger and Stuart Russell while preserving the original editions and chapter references."
+    }
+  ]
+}

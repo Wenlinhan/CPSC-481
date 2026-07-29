@@ -2,18 +2,20 @@
 
 import { type ReactNode, useState } from "react";
 
-const sourceRoot = "/course-source/l02-state-space";
+const defaultSourceRoot = "/course-source/l02-state-space";
 
 export function SearchSourceImage({
   file,
   alt,
   caption,
   className = "",
+  sourceRoot = defaultSourceRoot,
 }: {
   file: string;
   alt: string;
   caption?: string;
   className?: string;
+  sourceRoot?: string;
 }) {
   const [zoomed, setZoomed] = useState(false);
   return (
@@ -48,6 +50,38 @@ export function SearchSourceImage({
         </div>
       )}
     </>
+  );
+}
+
+export function ReplayableSourceAnimation({
+  file,
+  alt,
+  caption,
+  attribution,
+  sourceRoot,
+}: {
+  file: string;
+  alt: string;
+  caption: string;
+  attribution: string;
+  sourceRoot: string;
+}) {
+  const [run, setRun] = useState(0);
+  return (
+    <div className="replayable-source-animation">
+      <SearchSourceImage
+        alt={alt}
+        caption={caption}
+        file={`${file}?replay=${run}`}
+        sourceRoot={sourceRoot}
+      />
+      <div>
+        <span>{attribution}</span>
+        <button onClick={() => setRun(value => value + 1)} type="button">
+          Replay animation
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -43,10 +43,10 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 | 2 | Agents, task environments, agent types, AI directions, weak/strong AI, AGI, Turing test | L01 slides 11–32 | **Rebuilt.** 28 pages; all 32 source slides and all 12 exact source images are mapped across Meetings 1–2. |
 | 3 | State-space formulation and graph foundations | L02 slides 1–20 | **Rebuilt.** 27 pages; exact source diagrams, definitions, examples, practice, and assessment retained. |
 | 4 | DFS, BFS, UCS, depth limits, backtracking, evaluation | L02 slides 21–41 | **Rebuilt.** 28 pages; all 41 source slides and all 26 exact source images are mapped across Meetings 3–4. |
-| 5 | Heuristics, greedy and local search | L03, all 31 slides | **Next rebuild.** Inventory complete; use about 25 pages by combining redundant source slides without dropping knowledge. Correct factorial proxy claims and the simulated-annealing probability example. |
-| 6 | A*, admissibility, consistency, heuristic experiments | L04, all 22 slides | **Next rebuild.** Inventory complete; use about 25 pages with exact GIFs and diagrams, practice, and a heuristic-quality experiment. Clarify reopening, notation, and consistency. |
-| 7 | Game trees, minimax, evaluation functions | L05 slides 1–16 | Pending exact-object inventory and rebuild. |
-| 8 | Alpha-beta pruning, expectimax, MCTS | L05 slides 17–31 plus modern supplements | Pending exact-object inventory and rebuild. Preserve minimax/pruning source assets; label expectimax and MCTS as supplements. |
+| 5 | Heuristic functions, hill climbing, simulated annealing | L03, all 31 slides | **Rebuilt.** 25 pages; all 31 source slides and all 13 exact assets are mapped. Factorial proxies, sign conventions, acceptance probability, and convergence conditions are corrected explicitly. |
+| 6 | Best-first search, A*, admissibility, consistency, heuristic quality | L04, all 22 slides | **Rebuilt.** 25 pages; all 22 source slides and all 15 exact assets are mapped, including four replayable source GIFs. Reopening, standard notation, consistency, and computation-cost qualifications are explicit. |
+| 7 | Game trees, minimax, evaluation functions | L05 slides 1–16 | **Inventory complete; rebuild next.** All source text, notes, relationships, corrections, and exact assets are packaged. |
+| 8 | Alpha-beta pruning, expectimax, MCTS | L05 slides 17–31 plus modern supplements | **Inventory complete; rebuild next.** Preserve the exact minimax/pruning source sequence and assets; label expectimax and MCTS as modern supplements. |
 | 9 | Probability, Bayes rule, conditional independence | L11 foundations, with prerequisite material from L12 if needed | Pending rebuild. Restore normalization, product rule, chain rule, and Naive Bayes bridge that the current outline understates. |
 | 10 | Bayesian networks and inference | L11–L12 foundations plus revised-plan material | Pending rebuild. Correct the current broad provenance claim and explicitly distinguish preserved stochastic foundations from the Bayesian-network supplement. |
 | 11 | MDPs, policies, value iteration | Selected L12 Markov foundations plus modern MDP material | Pending rebuild. Treat this as a deliberate replacement/extension, not as if L12 already taught the complete MDP unit. |
@@ -82,6 +82,9 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 
 - `public/course-source/l01-ai/manifest.json`: 32 source slides, 12 exact source images.
 - `public/course-source/l02-state-space/manifest.json`: 41 source slides, 26 exact source images.
+- `public/course-source/l03-heuristic-local-search/manifest.json`: 31 source slides, 13 exact source assets.
+- `public/course-source/l04-best-first-astar/manifest.json`: 22 source slides, 15 exact source assets.
+- `public/course-source/l05-minimax-pruning/manifest.json`: 31 source slides, 15 exact source assets; mapped to Meetings 7–8 for the next rebuild.
 - `tests/rendered-html.test.mjs`: route, instructional-cycle, source-coverage, asset-existence, and custom-deck checks.
 
-The next production unit is Meetings 5–6, using the completed L03/L04 inventories and this ledger as the acceptance contract.
+The next production unit is Meetings 7–8, using the L05 minimax and alpha-beta archive with this ledger as the acceptance contract.

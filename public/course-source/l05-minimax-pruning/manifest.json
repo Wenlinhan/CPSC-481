@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "source": "L05_MiniMax&Pruning.pptx",
+  "sourceFilename": "L05_MiniMax&Pruning.pptx",
+  "sourceSha256": "19D492F9B7A4F24CB410B0744026D0597B128C5FA3A4AB06AD525582EC4B9A51",
+  "authoritativeSlideCount": 31,
+  "meetingCoverage": {
+    "7": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "8": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  "slideToMeeting": {
+    "1": 7,
+    "2": 7,
+    "3": 7,
+    "4": 7,
+    "5": 7,
+    "6": 7,
+    "7": 7,
+    "8": 7,
+    "9": 7,
+    "10": 7,
+    "11": 7,
+    "12": 7,
+    "13": 7,
+    "14": 7,
+    "15": 7,
+    "16": 7,
+    "17": 8,
+    "18": 8,
+    "19": 8,
+    "20": 8,
+    "21": 8,
+    "22": 8,
+    "23": 8,
+    "24": 8,
+    "25": 8,
+    "26": 8,
+    "27": 8,
+    "28": 8,
+    "29": 8,
+    "30": 8,
+    "31": 8
+  },
+  "auditSummary": {
+    "slidesWithSpeakerNotes": 18,
+    "slidesWithEmbeddedMedia": 16,
+    "embeddedMediaFiles": 15,
+    "nativeAnimationEffects": 0,
+    "nativeBuilds": 0,
+    "nativeTransitions": 0,
+    "animatedMediaFiles": 0,
+    "equationObjects": 0,
+    "otherEmbeddings": 0
+  },
+  "animationInventory": {
+    "nativePowerPointAnimations": [],
+    "animatedMedia": [],
+    "statement": "The authoritative deck contains no native PowerPoint timing, build, or transition elements and no GIF, audio, or video assets."
+  },
+  "extractionPolicy": "Every PPTX-embedded media file is preserved byte-for-byte in its original format. Only the public filename is made descriptive.",
+  "assets": [
+    {
+      "file": "chess-zero-sum-players.png",
+      "originalFile": "image1.png",
+      "sourceSlides": [
+        7
+      ],
+      "knowledgeRole": "Two chess players illustrating alternating turns, opponent modeling, and the zero-sum framing",
+      "sha256": "1AC762FE19587EC3EF734D60C547F7FA6264A9AD9FF28B7169D05314247BF23D",
+      "bytes": 123682,
+      "format": "PNG",
+      "dimensions": {
+        "width": 396,
+        "height": 199
+      },
+      "sourceRelationships": [
+        {
+          "slide": 7,
+          "relationshipId": "rId2"
+        }
+      ]
+    },
+    {
+      "file": "minimax-pseudocode.png",
+      "originalFile": "image2.png",
+      "sourceSlides": [
+        9
+      ],
+      "knowledgeRole": "Recursive Minimax-Decision, Max-Value, and Min-Value pseudocode adapted from Russell and Norvig",
+      "sha256": "465A7387501E17A587A0A75A3690F5E0B0F75D85D8440758EB6C4DA1F24945D2",
+      "bytes": 66761,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1024,
+        "height": 768
+      },
+      "sourceRelationships": [
+        {
+          "slide": 9,
+          "relationshipId": "rId2"
+        }
+      ]
+    },
+    {
+      "file": "fixed-three-ply-minimax-tree.png",
+      "originalFile": "image3.png",
+      "sourceSlides": [
+        10,
+        11
+      ],
+      "knowledgeRole": "Fixed three-ply game tree showing leaf heuristic values and backed-up MIN and MAX values",
+      "sha256": "418ACF917FEA15F642EA8949FC4BE54084F14B94633449068567967E896999A3",
+      "bytes": 18064,
+      "format": "PNG",
+      "dimensions": {
+        "width": 545,
+        "height": 281
+      },
+      "sourceRelationships": [
+        {
+          "slide": 10,
+          "relationshipId": "rId3"
+        },
+        {
+          "slide": 11,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-evaluation-function.png",
+      "originalFile": "image4.png",
+      "sourceSlides": [
+        12
+      ],
+      "knowledgeRole": "Tic-tac-toe cutoff evaluation E(n)=M(n)-O(n) using possible winning lines for the player and opponent",
+      "sha256": "FEF2369A258FF6F95CB223A19C96CE355C686298FAD10D43021E845DF4C24507",
+      "bytes": 32182,
+      "format": "PNG",
+      "dimensions": {
+        "width": 480,
+        "height": 573
+      },
+      "sourceRelationships": [
+        {
+          "slide": 12,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-two-ply-opening.png",
+      "originalFile": "image5.png",
+      "sourceSlides": [
+        13
+      ],
+      "knowledgeRole": "Two-ply minimax tree for the opening tic-tac-toe move with backed-up values minus one, minus two, and one",
+      "sha256": "1BD56D67B0EF22FDCD36AFCAEA4CAFEAAF7E87636FA8D360010E682AFE51C46D",
+      "bytes": 18557,
+      "format": "PNG",
+      "dimensions": {
+        "width": 708,
+        "height": 426
+      },
+      "sourceRelationships": [
+        {
+          "slide": 13,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-second-turn-tree.png",
+      "originalFile": "image6.png",
+      "sourceSlides": [
+        14
+      ],
+      "knowledgeRole": "Expanded tic-tac-toe tree after MAX and the opponent move, used to explain the next minimax decision",
+      "sha256": "DF128D0A7C525450F9F41292C99A56E88DC3270B54B252678D32D39A9C147D55",
+      "bytes": 27859,
+      "format": "PNG",
+      "dimensions": {
+        "width": 707,
+        "height": 559
+      },
+      "sourceRelationships": [
+        {
+          "slide": 14,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "tic-tac-toe-late-game-minimax.png",
+      "originalFile": "image7.png",
+      "sourceSlides": [
+        15
+      ],
+      "knowledgeRole": "Two-ply minimax tree near the end of tic-tac-toe used to discuss mistakes, immediate threats, and guarantees",
+      "sha256": "AC19D3E0E024D78EBDC7029694D10915F9FAAB0D391899A3459D2BFDA1ADB520",
+      "bytes": 24453,
+      "format": "PNG",
+      "dimensions": {
+        "width": 657,
+        "height": 467
+      },
+      "sourceRelationships": [
+        {
+          "slide": 15,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-search-max-value-pseudocode.png",
+      "originalFile": "image8.png",
+      "sourceSlides": [
+        19
+      ],
+      "knowledgeRole": "Alpha-Beta-Search and Max-Value pseudocode showing the v greater than or equal to beta cutoff condition",
+      "sha256": "B92B58290FDD46DB01F566BF61AC5117F000CFD69B475B974763BD3B77CC04A3",
+      "bytes": 68940,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1024,
+        "height": 768
+      },
+      "sourceRelationships": [
+        {
+          "slide": 19,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-min-value-pseudocode.png",
+      "originalFile": "image9.png",
+      "sourceSlides": [
+        20
+      ],
+      "knowledgeRole": "Min-Value pseudocode showing the v less than or equal to alpha cutoff condition",
+      "sha256": "4C6A7F27BFB3E2D2F135FFB688B0F59BE8CE61B7F65DF0704037E1D903CCF130",
+      "bytes": 58395,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1024,
+        "height": 768
+      },
+      "sourceRelationships": [
+        {
+          "slide": 20,
+          "relationshipId": "rId2"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-example-left-branch.png",
+      "originalFile": "image10.png",
+      "sourceSlides": [
+        22
+      ],
+      "knowledgeRole": "First stage of the worked alpha-beta tree establishing MIN value three and root alpha three",
+      "sha256": "83FC30D5980CDF110A99484AD5B7628F5758CE5670C5A83B4FD9815EAD2D9A28",
+      "bytes": 3130,
+      "format": "PNG",
+      "dimensions": {
+        "width": 378,
+        "height": 173
+      },
+      "sourceRelationships": [
+        {
+          "slide": 22,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-example-first-cutoff.png",
+      "originalFile": "image11.png",
+      "sourceSlides": [
+        23
+      ],
+      "knowledgeRole": "Worked alpha cutoff where a MIN node reaches beta two below root alpha three and remaining siblings are skipped",
+      "sha256": "78909C6DBFEA6D570837DE7FE01751E4FC39F4B8A4E15C18F3B79052E5848279",
+      "bytes": 4173,
+      "format": "PNG",
+      "dimensions": {
+        "width": 378,
+        "height": 173
+      },
+      "sourceRelationships": [
+        {
+          "slide": 23,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-example-third-branch.png",
+      "originalFile": "image12.png",
+      "sourceSlides": [
+        24
+      ],
+      "knowledgeRole": "Worked third branch beginning with a MIN upper bound of fourteen",
+      "sha256": "81A2FC66196D71AE4858A0A41E5B34D2EDB8246939FA016EDB27220F081E0DC6",
+      "bytes": 5059,
+      "format": "PNG",
+      "dimensions": {
+        "width": 378,
+        "height": 173
+      },
+      "sourceRelationships": [
+        {
+          "slide": 24,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-example-beta-five.png",
+      "originalFile": "image13.png",
+      "sourceSlides": [
+        25
+      ],
+      "knowledgeRole": "Worked third branch after the MIN upper bound decreases from fourteen to five",
+      "sha256": "EEC67F28443081DB3A8863289861047A38FA03638503C075EEFA26A96E3E098C",
+      "bytes": 5576,
+      "format": "PNG",
+      "dimensions": {
+        "width": 380,
+        "height": 174
+      },
+      "sourceRelationships": [
+        {
+          "slide": 25,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-example-final-cutoff.png",
+      "originalFile": "image14.png",
+      "sourceSlides": [
+        26
+      ],
+      "knowledgeRole": "Worked third branch after its MIN value reaches two and satisfies the alpha-cutoff condition",
+      "sha256": "783CAFF6252055F2D716525AA4E719EC3525FE154E753CF8A28679D2F6ACD0FB",
+      "bytes": 6071,
+      "format": "PNG",
+      "dimensions": {
+        "width": 379,
+        "height": 174
+      },
+      "sourceRelationships": [
+        {
+          "slide": 26,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "alpha-beta-hypothetical-state-space.png",
+      "originalFile": "image15.png",
+      "sourceSlides": [
+        29
+      ],
+      "knowledgeRole": "Hypothetical MAX-MIN state space showing beta pruning at B and alpha pruning at D and E",
+      "sha256": "9FAB450425693E57ACA4454BE219A7F7B429DC18CD67C70E38C814C3D0191A16",
+      "bytes": 30244,
+      "format": "PNG",
+      "dimensions": {
+        "width": 537,
+        "height": 463
+      },
+      "sourceRelationships": [
+        {
+          "slide": 29,
+          "relationshipId": "rId3"
+        }
+      ]
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        2
+      ],
+      "sourceIssue": "The strategy-game definition says rules specify a reward for every move.",
+      "correction": "Define terminal utility for completed outcomes and a cutoff evaluation function for nonterminal leaves; individual moves need not carry rewards."
+    },
+    {
+      "sourceSlides": [
+        7,
+        8
+      ],
+      "sourceIssue": "The deck describes minimax as maximizing my advantage and minimizing the opponent's advantage and says it is based on breadth-first search with a bound.",
+      "correction": "Define minimax as choosing the action with the best worst-case backed-up utility against an optimal opponent; implement the recursive computation depth-first to terminal or cutoff states."
+    },
+    {
+      "sourceSlides": [
+        8,
+        16
+      ],
+      "sourceIssue": "The root is said to become MAX or MIN according to whether the heuristic is a reward or cost and the presenter note says it is unimportant which player moves first.",
+      "correction": "The player to move and the fixed utility perspective determine whether the root is MAX or MIN. Utility signs must remain consistent throughout the tree."
+    },
+    {
+      "sourceSlides": [
+        8,
+        12,
+        16
+      ],
+      "sourceIssue": "The deck broadly says to apply a heuristic only to leaf nodes without separating terminal leaves from depth-cutoff leaves.",
+      "correction": "Use exact utility at terminal states and an evaluation function at nonterminal cutoff leaves; internal values are then backed up recursively."
+    },
+    {
+      "sourceSlides": [
+        14,
+        16
+      ],
+      "sourceIssue": "The presenter notes say a new game tree may have to be recreated after every opponent move.",
+      "correction": "Advance the root to the observed child and reuse a matching subtree or transposition-table entries when valid; rebuild only the portions invalidated by the new state or search budget."
+    },
+    {
+      "sourceSlides": [
+        15
+      ],
+      "sourceIssue": "The questions can imply minimax guarantees a win and may fail when an opponent makes a mistake.",
+      "correction": "Minimax remains a safe optimal-opponent policy and can exploit a mistake if the new state is searched, but it guarantees a win only from a theoretically winning position under the modeled rules and search assumptions."
+    },
+    {
+      "sourceSlides": [
+        16
+      ],
+      "sourceIssue": "The presenter note explains cutoff evaluation with the Machiavelli phrase end meets means and frames MIN as choosing the opponent's worst move.",
+      "correction": "Remove the slogan. Explain that MIN chooses the action minimizing MAX's utility under a zero-sum convention, and that the cutoff evaluation approximates future terminal utility."
+    },
+    {
+      "sourceSlides": [
+        17,
+        18
+      ],
+      "sourceIssue": "Alpha-beta is said to use more informed heuristics while applying the heuristic to a state and all its siblings.",
+      "correction": "Alpha-beta returns the same depth-limited minimax result without changing the evaluation function. Move-ordering heuristics improve pruning efficiency, and cutoff siblings are deliberately not evaluated."
+    },
+    {
+      "sourceSlides": [
+        19,
+        20
+      ],
+      "sourceIssue": "The slide labels are reversed relative to the standard cutoff names: Max-Value v greater than or equal to beta is labeled ALPHA cutoff, while Min-Value v less than or equal to alpha is labeled BETA cutoff.",
+      "correction": "Use beta cutoff at a MAX node when v is greater than or equal to beta, and alpha cutoff at a MIN node when v is less than or equal to alpha."
+    },
+    {
+      "sourceSlides": [
+        21
+      ],
+      "sourceIssue": "The presenter note says only examine branches greater than alpha or less than beta.",
+      "correction": "Alpha and beta are path bounds, not prefilters. Examine children in order until a returned bound proves that remaining siblings cannot affect the ancestor decision."
+    },
+    {
+      "sourceSlides": [
+        26
+      ],
+      "sourceIssue": "The final worked example announces a cutoff after the last child value two has already been evaluated.",
+      "correction": "The condition beta less than or equal to alpha is true, but there are no remaining siblings to skip, so that particular cutoff saves no additional evaluation."
+    },
+    {
+      "sourceSlides": [
+        29
+      ],
+      "sourceIssue": "The slide says alpha-beta never prunes a branch and instead does not expand unnecessary branches, and proposes checking current and parent heuristic values to verify correctness.",
+      "correction": "Describe pruning as skipping the expansion or evaluation of remaining subtrees. Verify that alpha-beta and full minimax return the same root value and selected action at the same depth and evaluation function, while alpha-beta evaluates no more leaves."
+    },
+    {
+      "sourceSlides": [
+        31
+      ],
+      "sourceIssue": "The bibliography misspells George F. Luger as George Fluger and Russell as Russel.",
+      "correction": "Use George F. Luger and Stuart Russell while preserving the original editions and chapter references."
+    }
+  ]
+}

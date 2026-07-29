@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 1,
+  "source": "L04_BFS&AStar.pptx",
+  "sourceFilename": "L04_BFS&AStar.pptx",
+  "sourceSha256": "4B0A102995BD6FC150DA56864CB7B16E371010B048E7C511D2288E775B6C84A0",
+  "authoritativeSlideCount": 22,
+  "meetingCoverage": {
+    "6": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
+  },
+  "slideToMeeting": {
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "5": 6,
+    "6": 6,
+    "7": 6,
+    "8": 6,
+    "9": 6,
+    "10": 6,
+    "11": 6,
+    "12": 6,
+    "13": 6,
+    "14": 6,
+    "15": 6,
+    "16": 6,
+    "17": 6,
+    "18": 6,
+    "19": 6,
+    "20": 6,
+    "21": 6,
+    "22": 6
+  },
+  "extractionPolicy": "Every PPTX-embedded media file is preserved byte-for-byte in its original format. Only the public filename is made descriptive.",
+  "assets": [
+    {
+      "file": "best-first-hypothetical-state-space.png",
+      "originalFile": "image1.png",
+      "sourceSlides": [
+        3,
+        5
+      ],
+      "knowledgeRole": "Hypothetical heuristic-labeled tree used for best-first expansion order and the exact Open/Closed trace",
+      "sha256": "ED9016010B3405964BA09882558FA49DEF13640CCAD5D87A84C6000E626E6A35",
+      "bytes": 21360,
+      "format": "PNG",
+      "dimensions": {
+        "width": 505,
+        "height": 420
+      },
+      "sourceRelationships": [
+        {
+          "slide": 3,
+          "relationshipId": "rId3"
+        },
+        {
+          "slide": 5,
+          "relationshipId": "rId4"
+        }
+      ]
+    },
+    {
+      "file": "best-first-search-pseudocode.png",
+      "originalFile": "image2.png",
+      "sourceSlides": [
+        4
+      ],
+      "knowledgeRole": "Archival best-first pseudocode with Open, Closed, duplicate-path updates, reopening, and heuristic reordering",
+      "sha256": "F28B59B1DEA205932C4D465BDF6EF2510F0CF0D34DF239B28C32FDFD9D9383AA",
+      "bytes": 48861,
+      "format": "PNG",
+      "dimensions": {
+        "width": 618,
+        "height": 626
+      },
+      "sourceRelationships": [
+        {
+          "slide": 4,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "best-first-open-closed-trace.png",
+      "originalFile": "image3.png",
+      "sourceSlides": [
+        5
+      ],
+      "knowledgeRole": "Exact seven-step Open and Closed trace ending when P3 is evaluated",
+      "sha256": "34EA451E8310C1DEA2108A5E5DAD9A3F7AB369C76AD68D7C76FAEC5E02CB9CDF",
+      "bytes": 80666,
+      "format": "PNG",
+      "dimensions": {
+        "width": 1665,
+        "height": 588
+      },
+      "sourceRelationships": [
+        {
+          "slide": 5,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-f-score-successors.png",
+      "originalFile": "image4.png",
+      "sourceSlides": [
+        6
+      ],
+      "knowledgeRole": "8-puzzle successor evaluation with g equals one and f scores six, four, and six",
+      "sha256": "E5204A7EFEA4B8D7B8EB4058907042062F5E2A6AC63EC322B2DE691DD541B3BD",
+      "bytes": 29166,
+      "format": "PNG",
+      "dimensions": {
+        "width": 725,
+        "height": 553
+      },
+      "sourceRelationships": [
+        {
+          "slide": 6,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-open-closed-third-iteration.png",
+      "originalFile": "image5.png",
+      "sourceSlides": [
+        7
+      ],
+      "knowledgeRole": "Open and Closed regions after the third iteration of best-first search on the 8-puzzle",
+      "sha256": "933057CAEC7EAF089640996D33F8D355E0E75B6D1BC5CA5B4C683F9810950587",
+      "bytes": 38782,
+      "format": "PNG",
+      "dimensions": {
+        "width": 548,
+        "height": 583
+      },
+      "sourceRelationships": [
+        {
+          "slide": 7,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "eight-puzzle-best-first-generated-state-space.png",
+      "originalFile": "image6.png",
+      "sourceSlides": [
+        8
+      ],
+      "knowledgeRole": "Generated 8-puzzle state space arranged by path depth to expose the effect of a weak heuristic",
+      "sha256": "5768E698B6A3202487CBFA628DC6E03A1431DD4964BD8F256E80CDC064A23C65",
+      "bytes": 26558,
+      "format": "PNG",
+      "dimensions": {
+        "width": 491,
+        "height": 552
+      },
+      "sourceRelationships": [
+        {
+          "slide": 8,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "admissibility-and-optimality-definition.png",
+      "originalFile": "image7.png",
+      "sourceSlides": [
+        9
+      ],
+      "knowledgeRole": "Archival definition of algorithm admissibility, A*, and the relationship among g, h, and optimality",
+      "sha256": "F03A74DFC730B81A1796AD9B11CD8E664D24359E5DD3A7A9631B3CB9ED873D9F",
+      "bytes": 60367,
+      "format": "PNG",
+      "dimensions": {
+        "width": 719,
+        "height": 524
+      },
+      "sourceRelationships": [
+        {
+          "slide": 9,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "breadth-first-vs-astar-eight-puzzle.png",
+      "originalFile": "image8.png",
+      "sourceSlides": [
+        11
+      ],
+      "knowledgeRole": "8-puzzle comparison of breadth-first and A* search spaces with the optimal path highlighted",
+      "sha256": "12F39065425939F3A80C336849D23C77B703F9C12FF61821BC1CAE0BEF4FDFB4",
+      "bytes": 35039,
+      "format": "PNG",
+      "dimensions": {
+        "width": 534,
+        "height": 526
+      },
+      "sourceRelationships": [
+        {
+          "slide": 11,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "astar-city-graph.gif",
+      "originalFile": "image9.gif",
+      "sourceSlides": [
+        12
+      ],
+      "knowledgeRole": "Animated A* expansion on a weighted city graph with successive f equals g plus h calculations",
+      "sha256": "C490B54F2A7C57E0EF5C3AA4E506DEFA2A80B66A0691E6B328BA2D23ED427AF8",
+      "bytes": 50445,
+      "format": "GIF",
+      "dimensions": {
+        "width": 400,
+        "height": 283
+      },
+      "sourceRelationships": [
+        {
+          "slide": 12,
+          "relationshipId": "rId2"
+        }
+      ],
+      "gif": {
+        "frameCount": 19,
+        "totalDurationMs": 19000,
+        "frameDurations": [
+          {
+            "durationMs": 200,
+            "frameCount": 15
+          },
+          {
+            "durationMs": 2000,
+            "frameCount": 3
+          },
+          {
+            "durationMs": 10000,
+            "frameCount": 1
+          }
+        ],
+        "loopCount": 0,
+        "loopBehavior": "infinite"
+      },
+      "attribution": {
+        "creator": "CountingPine",
+        "workStatement": "Own work",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=31958129",
+        "sourceSlideText": "By CountingPine - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=31958129"
+      }
+    },
+    {
+      "file": "astar-robot-motion-planning.gif",
+      "originalFile": "image10.gif",
+      "sourceSlides": [
+        13
+      ],
+      "knowledgeRole": "Animated A* open and closed wavefront around an obstacle with the final robot path revealed",
+      "sha256": "5B202CF7F489527D2147F72AE558884E57796377A0259FAB249A7309C3AF3D5B",
+      "bytes": 50907,
+      "format": "GIF",
+      "dimensions": {
+        "width": 210,
+        "height": 210
+      },
+      "sourceRelationships": [
+        {
+          "slide": 13,
+          "relationshipId": "rId2"
+        }
+      ],
+      "gif": {
+        "frameCount": 195,
+        "totalDurationMs": 24400,
+        "frameDurations": [
+          {
+            "durationMs": 100,
+            "frameCount": 194
+          },
+          {
+            "durationMs": 5000,
+            "frameCount": 1
+          }
+        ],
+        "loopCount": 0,
+        "loopBehavior": "infinite"
+      },
+      "attribution": {
+        "creator": "Subh83",
+        "workStatement": "Own work",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=14916867",
+        "sourceSlideText": "By Subh83 - Own work, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=14916867"
+      }
+    },
+    {
+      "file": "astar-washington-los-angeles-rail.gif",
+      "originalFile": "image11.gif",
+      "sourceSlides": [
+        14
+      ],
+      "knowledgeRole": "Animated A* exploration of the North American freight-rail network followed by the Washington-to-Los-Angeles path",
+      "sha256": "7E5077F566FC102D96911CDC9B3BA708A4AA1460AF5478181748B9A7B77B1ADE",
+      "bytes": 1740827,
+      "format": "GIF",
+      "dimensions": {
+        "width": 598,
+        "height": 448
+      },
+      "sourceRelationships": [
+        {
+          "slide": 14,
+          "relationshipId": "rId2"
+        }
+      ],
+      "gif": {
+        "frameCount": 703,
+        "totalDurationMs": 0,
+        "frameDurations": [
+          {
+            "durationMs": 0,
+            "frameCount": 703
+          }
+        ],
+        "durationMetadataPresent": false,
+        "playbackTiming": "viewer-dependent",
+        "loopCount": 0,
+        "loopBehavior": "infinite"
+      },
+      "attribution": {
+        "creator": "Srossd",
+        "workStatement": "Own work",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=35900474",
+        "sourceSlideText": "By Srossd - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=35900474"
+      }
+    },
+    {
+      "file": "dijkstra-shortest-path.gif",
+      "originalFile": "image12.gif",
+      "sourceSlides": [
+        15
+      ],
+      "knowledgeRole": "Animated Dijkstra trace updating tentative distances and closing vertices for a shortest path from a to b",
+      "sha256": "446247B1DC6A8BB8A5818CE706588DF3726B3D2FE32AFCA4DF3F4FF39DC7CE79",
+      "bytes": 8561,
+      "format": "GIF",
+      "dimensions": {
+        "width": 283,
+        "height": 222
+      },
+      "sourceRelationships": [
+        {
+          "slide": 15,
+          "relationshipId": "rId2"
+        }
+      ],
+      "gif": {
+        "frameCount": 26,
+        "totalDurationMs": 29000,
+        "frameDurations": [
+          {
+            "durationMs": 1000,
+            "frameCount": 24
+          },
+          {
+            "durationMs": 2000,
+            "frameCount": 1
+          },
+          {
+            "durationMs": 3000,
+            "frameCount": 1
+          }
+        ],
+        "loopCount": 0,
+        "loopBehavior": "infinite"
+      },
+      "attribution": {
+        "creator": "Ibmua",
+        "workStatement": "Work by uploader.",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=6282617",
+        "sourceSlideText": "By Ibmua - Work by uploader., Public Domain, https://commons.wikimedia.org/w/index.php?curid=6282617"
+      }
+    },
+    {
+      "file": "heuristic-consistency-definition.png",
+      "originalFile": "image13.png",
+      "sourceSlides": [
+        16
+      ],
+      "knowledgeRole": "Archival monotonicity and consistency definition with the local triangle inequality and zero goal heuristic",
+      "sha256": "268395C05B14375B98D454A6B3389883AF57987FB4DDF78785C7636966F8CBD4",
+      "bytes": 29627,
+      "format": "PNG",
+      "dimensions": {
+        "width": 815,
+        "height": 330
+      },
+      "sourceRelationships": [
+        {
+          "slide": 16,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "heuristic-informedness-definition.png",
+      "originalFile": "image14.png",
+      "sourceSlides": [
+        17
+      ],
+      "knowledgeRole": "Definition of heuristic informedness using pointwise dominance h1 less than or equal to h2",
+      "sha256": "45B6F79EDDE2AC14286AE72F4CF42E0193F9D01CC6FA7F6E7AB1B2EE1D835935",
+      "bytes": 16936,
+      "format": "PNG",
+      "dimensions": {
+        "width": 816,
+        "height": 161
+      },
+      "sourceRelationships": [
+        {
+          "slide": 17,
+          "relationshipId": "rId3"
+        }
+      ]
+    },
+    {
+      "file": "heuristic-informedness-cost-tradeoff.png",
+      "originalFile": "image15.png",
+      "sourceSlides": [
+        18
+      ],
+      "knowledgeRole": "Nilsson-style comparison of decreasing search cost, increasing heuristic-control cost, and total problem-solving cost",
+      "sha256": "C3D2266D4BF9353BF6851DF8DBFDCF9D728F877923C69D860907C3FB5C452B18",
+      "bytes": 31012,
+      "format": "PNG",
+      "dimensions": {
+        "width": 637,
+        "height": 448
+      },
+      "sourceRelationships": [
+        {
+          "slide": 18,
+          "relationshipId": "rId3"
+        }
+      ]
+    }
+  ],
+  "sourceCorrectionLedger": [
+    {
+      "sourceSlides": [
+        1,
+        2,
+        9,
+        11
+      ],
+      "sourceIssue": "The deck and slide questions use BFS in contexts that can mean either best-first search or breadth-first search.",
+      "correction": "Spell out greedy best-first search and breadth-first search on every audience-facing page; reserve abbreviations only after disambiguation."
+    },
+    {
+      "sourceSlides": [
+        1,
+        2,
+        5
+      ],
+      "sourceIssue": "Open is described as a max or min heap and Closed as a queue even though lower h values are preferred.",
+      "correction": "Use a min-priority queue for Open under the deck's score convention and a set or best-known-cost map for Closed."
+    },
+    {
+      "sourceSlides": [
+        2,
+        4
+      ],
+      "sourceIssue": "The archival pseudocode tracks shorter paths but the presenter note says the returned current path becomes the shortest path after any solution is found.",
+      "correction": "Greedy best-first search is not optimal merely because parent links or best-known duplicate paths are maintained; optimality requires the appropriate f ordering and A* assumptions."
+    },
+    {
+      "sourceSlides": [
+        9
+      ],
+      "sourceIssue": "The slide annotation uses h*(n) for an estimate that never overestimates, whereas standard notation uses h*(n) for the true optimal remaining cost.",
+      "correction": "Use h*(n) as true remaining cost and define admissibility as 0 less than or equal to h(n) less than or equal to h*(n), with h(goal)=0."
+    },
+    {
+      "sourceSlides": [
+        9,
+        11
+      ],
+      "sourceIssue": "The slides mix heuristic admissibility with algorithm completeness and optimality and state that all A* algorithms are admissible without graph-search qualifications.",
+      "correction": "Separate heuristic admissibility from algorithm guarantees; state nonnegative-cost and termination assumptions, and explain that graph-search A* with an inconsistent heuristic may need to reopen states."
+    },
+    {
+      "sourceSlides": [
+        11
+      ],
+      "sourceIssue": "Breadth-first search is described as admissible without the cost condition.",
+      "correction": "Breadth-first search is complete under standard finite-branching assumptions and optimal only when step costs are equal; uniform-cost search handles varying positive costs."
+    },
+    {
+      "sourceSlides": [
+        15
+      ],
+      "sourceIssue": "Dijkstra is presented as an unconditional special case of A*.",
+      "correction": "State that A* with h equals zero reduces to uniform-cost or Dijkstra-style search under nonnegative edge-cost assumptions."
+    },
+    {
+      "sourceSlides": [
+        16
+      ],
+      "sourceIssue": "The annotations call consistency local admissibility of h* and mix true-cost and estimated-cost notation.",
+      "correction": "Use h(n) less than or equal to c(n,n-prime) plus h(n-prime), with h(goal)=0; explain that consistency implies nondecreasing f along a path and, under standard conditions, admissibility."
+    },
+    {
+      "sourceSlides": [
+        17,
+        18
+      ],
+      "sourceIssue": "The slide says a more informed heuristic is better without immediately stating the admissibility and computation-cost conditions.",
+      "correction": "Compare pointwise dominance only among admissible heuristics and retain the source deck's explicit search-savings versus heuristic-computation tradeoff."
+    },
+    {
+      "sourceSlides": [
+        22
+      ],
+      "sourceIssue": "The bibliography misspells George F. Luger as George Fluger and Russell as Russel.",
+      "correction": "Use George F. Luger and Stuart Russell while preserving the original editions and chapter references."
+    }
+  ]
+}
