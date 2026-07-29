@@ -52,7 +52,7 @@ test("every lesson is preplanned as explanation, example, demo, practice, and as
   }
 });
 
-test("preserves custom Meetings 1–6, 21, and 22 and their visual assets", async () => {
+test("preserves custom Meetings 1–8, 21, and 22 and their visual assets", async () => {
   const files = [
     "../app/components/Meeting01Deck.tsx",
     "../app/components/Meeting02Deck.tsx",
@@ -60,6 +60,8 @@ test("preserves custom Meetings 1–6, 21, and 22 and their visual assets", asyn
     "../app/components/Meeting04Deck.tsx",
     "../app/components/Meeting05Deck.tsx",
     "../app/components/Meeting06Deck.tsx",
+    "../app/components/Meeting07Deck.tsx",
+    "../app/components/Meeting08Deck.tsx",
     "../app/components/Meeting21Deck.tsx",
     "../app/components/Meeting22Deck.tsx",
   ];
@@ -257,5 +259,69 @@ test("Meeting 6 accounts for every authoritative L04 source slide and image", as
   for (const asset of manifest.assets) {
     await access(new URL(`../public/course-source/l04-best-first-astar/${asset.file}`, import.meta.url));
     assert.match(meeting6, new RegExp(asset.file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+});
+
+test("Meetings 7 and 8 account for every authoritative L05 source slide and image", async () => {
+  const [meeting7, meeting8, manifestText] = await Promise.all([
+    readFile(new URL("../app/components/Meeting07Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/Meeting08Deck.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/course-source/l05-minimax-pruning/manifest.json", import.meta.url), "utf8"),
+  ]);
+  const extractCoverage = (source) => [...source.matchAll(/sourceSlides:\s*\[([^\]]+)\]/g)]
+    .flatMap((match) => [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])));
+  const meeting7Coverage = [...new Set(extractCoverage(meeting7))].sort((a, b) => a - b);
+  const meeting8Coverage = [...new Set(extractCoverage(meeting8))].sort((a, b) => a - b);
+  assert.equal((meeting7.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.equal((meeting8.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
+  assert.deepEqual(meeting7Coverage, Array.from({ length: 16 }, (_, index) => index + 1));
+  assert.deepEqual(meeting8Coverage, Array.from({ length: 15 }, (_, index) => index + 17));
+  assert.deepEqual(
+    [...new Set([...meeting7Coverage, ...meeting8Coverage])].sort((a, b) => a - b),
+    Array.from({ length: 31 }, (_, index) => index + 1),
+  );
+
+  const combined = `${meeting7}\n${meeting8}`;
+  for (const knowledgePoint of [
+    "Game playing",
+    "strategy game",
+    "unpredictable opponent",
+    "Game theory",
+    "zero-sum",
+    "Minimax",
+    "best worst-case backed-up utility",
+    "MAX",
+    "MIN",
+    "terminal utility",
+    "evaluation function",
+    "ply",
+    "E(n) = M(n) − O(n)",
+    "alpha-beta",
+    "beta cutoff",
+    "alpha cutoff",
+    "same minimax result",
+    "move ordering",
+    "full minimax",
+    "expectimax",
+    "Monte Carlo Tree Search",
+    "George F. Luger",
+  ]) {
+    assert.match(combined, new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+  assert.doesNotMatch(combined, /\b(?:original|old)\s+slides?\b/i);
+
+  const manifest = JSON.parse(manifestText);
+  assert.equal(manifest.authoritativeSlideCount, 31);
+  assert.equal(manifest.sourceSha256, "19D492F9B7A4F24CB410B0744026D0597B128C5FA3A4AB06AD525582EC4B9A51");
+  assert.deepEqual(manifest.meetingCoverage["7"], Array.from({ length: 16 }, (_, index) => index + 1));
+  assert.deepEqual(manifest.meetingCoverage["8"], Array.from({ length: 15 }, (_, index) => index + 17));
+  assert.deepEqual(
+    [...new Set(Object.values(manifest.meetingCoverage).flat())].sort((a, b) => a - b),
+    Array.from({ length: 31 }, (_, index) => index + 1),
+  );
+  assert.equal(manifest.assets.length, 15);
+  for (const asset of manifest.assets) {
+    await access(new URL(`../public/course-source/l05-minimax-pruning/${asset.file}`, import.meta.url));
+    assert.match(combined, new RegExp(asset.file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 });

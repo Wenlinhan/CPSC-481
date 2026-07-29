@@ -7,6 +7,8 @@ import { StateSpaceFoundationsDeck as Meeting03Deck } from "../../components/Mee
 import { UninformedSearchDeck as Meeting04Deck } from "../../components/Meeting04Deck";
 import { Meeting05Deck } from "../../components/Meeting05Deck";
 import { Meeting06Deck } from "../../components/Meeting06Deck";
+import { Meeting07Deck } from "../../components/Meeting07Deck";
+import { Meeting08Deck } from "../../components/Meeting08Deck";
 import { RagDeck as Meeting21Deck } from "../../components/Meeting21Deck";
 import { RagQualityDeck as Meeting22Deck } from "../../components/Meeting22Deck";
 import { PlannedLessonDeck } from "../../components/PlannedLessonDeck";
@@ -38,6 +40,8 @@ export default async function MeetingPage({ params }: { params: Promise<{ meetin
     : meeting.id === 4 ? <Meeting04Deck />
     : meeting.id === 5 ? <Meeting05Deck />
     : meeting.id === 6 ? <Meeting06Deck />
+    : meeting.id === 7 ? <Meeting07Deck />
+    : meeting.id === 8 ? <Meeting08Deck />
     : meeting.id === 21 ? <Meeting21Deck />
     : meeting.id === 22 ? <Meeting22Deck />
     : null;
