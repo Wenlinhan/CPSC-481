@@ -64,31 +64,46 @@ function LearningAgentDiagram() {
           <path d="M0,0 L8,4 L0,8 Z" fill="#5131c7" />
         </marker>
       </defs>
-      <rect fill="#e7f1ff" height="108" rx="22" stroke="#1578c3" strokeWidth="3" width="142" x="24" y="154" />
-      <text fill="#111827" fontSize="24" fontWeight="800" textAnchor="middle" x="95" y="214">Environment</text>
-      <rect fill="#ffffff" height="364" rx="28" stroke="#aab8cc" strokeWidth="3" width="520" x="210" y="32" />
-      <text fill="#3d0877" fontSize="18" fontWeight="900" x="236" y="66">LEARNING AGENT</text>
-      <rect fill="#f1edff" height="76" rx="16" stroke="#6740d9" strokeWidth="3" width="228" x="302" y="122" />
-      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="416" y="154">Performance element</text>
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="416" y="178">selects external actions</text>
-      <rect fill="#e8f8f2" height="76" rx="16" stroke="#0a9b62" strokeWidth="3" width="228" x="302" y="274" />
-      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="416" y="306">Learning element</text>
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="416" y="330">changes future behavior</text>
-      <rect fill="#fff4d8" height="76" rx="16" stroke="#f0ad2f" strokeWidth="3" width="142" x="560" y="274" />
-      <text fill="#111827" fontSize="21" fontWeight="800" textAnchor="middle" x="631" y="306">Critic</text>
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="631" y="330">evaluates</text>
-      <rect fill="#fdecef" height="76" rx="16" stroke="#c64f6d" strokeWidth="3" width="142" x="560" y="122" />
-      <text fill="#111827" fontSize="18" fontWeight="800" textAnchor="middle" x="631" y="153">Problem generator</text>
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="631" y="178">suggests exploration</text>
-      <path d="M166 182 H302" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="234" y="169">percepts</text>
-      <path d="M302 190 H166" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
-      <text fill="#59647a" fontSize="15" textAnchor="middle" x="234" y="219">actions</text>
-      <path d="M166 246 C286 246 445 380 560 330" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
-      <text fill="#59647a" fontSize="15" x="252" y="272">experience</text>
-      <path d="M560 312 H530" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
-      <path d="M416 274 V198" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
-      <path d="M560 160 H530" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <rect fill="#e7f1ff" height="100" rx="22" stroke="#1578c3" strokeWidth="3" width="154" x="22" y="158" />
+      <text fill="#111827" fontSize="20" fontWeight="800" textAnchor="middle" x="99" y="214">Environment</text>
+      <rect fill="#ffffff" height="374" rx="28" stroke="#aab8cc" strokeWidth="3" width="535" x="205" y="28" />
+      <text fill="#3d0877" fontSize="18" fontWeight="900" x="232" y="64">LEARNING AGENT</text>
+
+      <rect fill="#f1edff" height="96" rx="16" stroke="#6740d9" strokeWidth="3" width="250" x="290" y="112" />
+      <text fill="#111827" fontSize="19" fontWeight="800" textAnchor="middle" x="415">
+        <tspan x="415" y="146">Performance</tspan>
+        <tspan x="415" y="167">element</tspan>
+      </text>
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="415" y="190">selects external actions</text>
+
+      <rect fill="#e8f8f2" height="96" rx="16" stroke="#0a9b62" strokeWidth="3" width="250" x="290" y="265" />
+      <text fill="#111827" fontSize="19" fontWeight="800" textAnchor="middle" x="415">
+        <tspan x="415" y="299">Learning</tspan>
+        <tspan x="415" y="320">element</tspan>
+      </text>
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="415" y="343">changes future behavior</text>
+
+      <rect fill="#fff4d8" height="96" rx="16" stroke="#f0ad2f" strokeWidth="3" width="150" x="565" y="265" />
+      <text fill="#111827" fontSize="20" fontWeight="800" textAnchor="middle" x="640" y="310">Critic</text>
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="640" y="339">evaluates</text>
+
+      <rect fill="#fdecef" height="96" rx="16" stroke="#c64f6d" strokeWidth="3" width="150" x="565" y="112" />
+      <text fill="#111827" fontSize="17" fontWeight="800" textAnchor="middle" x="640">
+        <tspan x="640" y="146">Problem</tspan>
+        <tspan x="640" y="166">generator</tspan>
+      </text>
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="640" y="190">suggests exploration</text>
+
+      <path d="M176 178 H290" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="233" y="166">percepts</text>
+      <path d="M290 198 H176" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="14" textAnchor="middle" x="233" y="222">actions</text>
+
+      <path d="M176 244 C230 244 238 382 290 382 H640 V361" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <text fill="#59647a" fontSize="14" x="201" y="304">experience</text>
+      <path d="M565 314 H540" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <path d="M415 265 V208" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
+      <path d="M565 160 H540" fill="none" markerEnd="url(#learning-agent-arrow)" stroke="#5131c7" strokeWidth="4" />
     </svg>
   );
 }
