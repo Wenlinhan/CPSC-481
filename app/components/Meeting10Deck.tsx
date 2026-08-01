@@ -179,11 +179,11 @@ function NetworkFactorizationExplorer() {
   const item = networkFactors[active];
 
   return (
-    <div className="algorithm-selection">
-      <nav aria-label="Choose a Bayesian-network variable">
+    <div className={styles.networkExplorer}>
+      <nav className={styles.factorControls} aria-label="Choose a Bayesian-network variable">
         {networkFactors.map((entry, index) => (
           <button
-            className={active === index ? "active" : ""}
+            className={active === index ? styles.selectedFactor : ""}
             key={entry.label}
             onClick={() => setActive(index)}
             type="button"
@@ -192,18 +192,19 @@ function NetworkFactorizationExplorer() {
           </button>
         ))}
       </nav>
-      <section>
-        <BurglaryNetworkDiagram active={item.label} height={170} />
-        <span>Local factor · {item.label}</span>
+      <div className={styles.networkPanel}>
+        <BurglaryNetworkDiagram active={item.label} height={188} />
+        <p><strong>DAG:</strong> Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls.</p>
+      </div>
+      <section className={styles.factorPanel}>
+        <span className={styles.kicker}>Local factor · {item.label}</span>
         <h3>{item.factor}</h3>
         <p>{item.meaning}</p>
-        <p>
-          <strong>DAG:</strong> Burglary → Alarm ← Earthquake; Alarm →
-          JohnCalls; Alarm → MaryCalls.
-        </p>
-        <SearchCallout label="Joint factorization" tone="green">
-          P(B,E,A,J,M) = P(B)P(E)P(A|B,E)P(J|A)P(M|A).
-        </SearchCallout>
+        <div className={styles.jointFactor}>
+          <strong>Complete joint</strong>
+          <span>P(B,E,A,J,M)</span>
+          <small>= P(B)P(E)P(A|B,E)P(J|A)P(M|A)</small>
+        </div>
       </section>
     </div>
   );

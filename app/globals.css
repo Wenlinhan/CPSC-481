@@ -6994,6 +6994,43 @@ kbd {
   margin: 2px 0 0;
 }
 
+/* Meeting 2 page 14: fit the complete worked example inside the slide viewport. */
+.soccer-reveal > div {
+  align-content: start;
+  min-height: 0;
+}
+
+.soccer-reveal .source-concept {
+  aspect-ratio: auto;
+  height: 168px;
+  margin-bottom: 8px;
+}
+
+.soccer-reveal h3 {
+  font-size: clamp(24px, 2.25vw, 35px);
+  line-height: 1.08;
+  margin: 6px 0;
+}
+
+.soccer-reveal > div > p {
+  font-size: 14px;
+  margin: 3px 0 9px;
+}
+
+.soccer-reveal ol {
+  align-content: start;
+  gap: 4px;
+}
+
+.soccer-reveal li {
+  gap: 9px;
+  min-height: 42px;
+  padding: 5px 10px;
+}
+
+.soccer-reveal li strong { font-size: 14px; }
+.soccer-reveal li p { font-size: 12px; line-height: 1.22; }
+
 .environment-practice,
 .robot-practice {
   display: grid;
@@ -7455,6 +7492,43 @@ kbd {
   line-height: 1.28;
   margin: 2px 0 0;
 }
+
+/* Meeting 2 page 27: preserve the complete diagram, five critiques, and callout. */
+.turing-critique.all-points {
+  align-items: stretch;
+  min-height: 0;
+}
+
+.turing-critique.all-points > .source-figure {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  padding: 10px;
+}
+
+.turing-critique.all-points > div {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+}
+
+.turing-critique.all-points ol {
+  align-content: start;
+  gap: 4px;
+  margin: 5px 0;
+  min-height: 0;
+}
+
+.turing-critique.all-points li {
+  gap: 8px;
+  padding: 5px 9px;
+}
+
+.turing-critique.all-points li strong { font-size: 12px; }
+.turing-critique.all-points li p { font-size: clamp(11px, .82vw, 13px); line-height: 1.2; }
+.turing-critique.all-points .source-callout { margin: 0; padding: 8px 11px; }
+.turing-critique.all-points .source-callout strong { font-size: 10px; }
+.turing-critique.all-points .source-callout div { font-size: 12px; line-height: 1.25; }
 
 .evolution-future-visible {
   align-items: stretch;
