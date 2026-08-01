@@ -5,7 +5,6 @@ import "../styles/meeting13.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   SearchCallout,
-  SearchSourceImage,
 } from "./SearchLessonPrimitives";
 
 const SOURCE_ROOT = "/course-source/l09-machine-learning-part-a";
@@ -31,14 +30,41 @@ function SourceFrame({
   caption: string;
   className?: string;
 }) {
+  const sourcePages: Record<number, { title: string; points: string[]; visual?: "actions" | "animals" | "methods" | "symbolic" | "arch" | "boundary" }> = {
+    1: { title: "Machine learning · Part A", points: ["CPSC 481 introduction", "CPSC 483 and CPSC 585 continue implementation study"] },
+    2: { title: "What is learning?", points: ["acquiring knowledge, skills, values, or understanding", "training, education, development, or experience", "a learning curve tracks performance over time"] },
+    3: { title: "Cognitive process of human learning", points: ["read", "observe", "touch", "do", "think"], visual: "actions" },
+    4: { title: "Concept, meaning, and knowledge", points: ["a concept is a cognitive unit of meaning", "classes such as ball game and sport name knowledge units", "learned knowledge must be represented and applied"] },
+    5: { title: "How are animal classes learned?", points: ["dog", "cat", "bird", "animal", "What if no one supplies the label?"], visual: "animals" },
+    6: { title: "Possible learning methods", points: ["memorization", "instruction", "analogy", "induction", "deduction", "discovery", "practice"], visual: "methods" },
+    7: { title: "What is machine learning?", points: ["Simon 1983: change that improves later performance", "reduce manual knowledge engineering", "recognition, forecasting, vehicles, data mining, and analytics"] },
+    8: { title: "Generalization operators", points: ["replace a constant with a variable", "drop a conjunct", "add a disjunct", "replace a property with its parent class"], visual: "symbolic" },
+    9: { title: "Learning the ball concept", points: ["Ball₁=(small, red, round)", "Ball₂=(large, blue, round)", "generalize size and color while retaining roundness"], visual: "symbolic" },
+    10: { title: "Concept space", points: ["generalize upward to cover more instances", "specialize downward to exclude instances", "candidate descriptions form a structured search space"] },
+    11: { title: "Questions for a learning system", points: ["target concept", "knowledge representation", "learning method", "examples and evaluation evidence"] },
+    12: { title: "Winston's arch learner", points: ["goal: learn the arch concept", "representation: semantic network", "operators: generalization and specialization"], visual: "arch" },
+    13: { title: "Training evidence", points: ["positive arches expand coverage", "negative near misses constrain coverage", "training requires informative examples"], visual: "arch" },
+    14: { title: "Two positive arches", points: ["brick supports remain", "top changes from brick to pyramid", "generalize only the differing property"], visual: "arch" },
+    15: { title: "Background hierarchy", points: ["brick isa polygon", "pyramid isa polygon", "top-part type generalizes to polygon"], visual: "arch" },
+    16: { title: "Negative near misses", points: ["loose pieces lack support relations", "touching supports violate the arch constraint"], visual: "arch" },
+    17: { title: "Minimal specialization", points: ["require support relations", "add must-not-touch between supports", "do not memorize the whole negative example"], visual: "arch" },
+    18: { title: "Decision boundary", points: ["positive examples leave a broad plausible region", "negative examples carve away invalid regions", "unobserved cases remain uncertain"], visual: "boundary" },
+    19: { title: "Lessons from Winston's learner", points: ["minimal generalization and specialization", "hill climbing without backtracking", "example order and data quality matter"] },
+  };
+  const page = sourcePages[slide] ?? { title: `Course source page ${slide}`, points: [caption] };
+  const visualLabels = page.visual === "actions" || page.visual === "animals" || page.visual === "methods" || page.visual === "symbolic"
+    ? page.points.slice(0, 5)
+    : page.points.slice(0, 5).map((_, index) => String(index + 1));
   return (
-    <SearchSourceImage
-      alt={alt}
-      caption={caption}
-      className={`m13-source-frame ${className}`.trim()}
-      file={`slide-renders/slide-${String(slide).padStart(2, "0")}.png`}
-      sourceRoot={SOURCE_ROOT}
-    />
+    <article className={`m13-source-frame m13-source-rebuilt ${className}`.trim()} aria-label={alt}>
+      <span>Course-source reconstruction · page {slide}</span>
+      <h3>{page.title}</h3>
+      {page.visual && <div className={`m13-mini-visual ${page.visual}`} aria-hidden="true">
+        {visualLabels.map((label, index) => <i key={`${label}-${index}`}><b>{index + 1}</b><em>{label}</em></i>)}
+      </div>}
+      <ul>{page.points.map(point => <li key={point}>{point}</li>)}</ul>
+      <small>{caption}</small>
+    </article>
   );
 }
 

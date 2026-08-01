@@ -145,6 +145,156 @@
   min-height: 0;
 }
 
+/* Rebuilt course-foundation pages: native HTML plus standalone source art. */
+.m11-sequence-motivation,
+.m11-foundation-grid,
+.m11-factorization-lesson,
+.m11-ci-lesson,
+.m11-unrolled-chain,
+.m11-weather-representations,
+.m11-one-step,
+.m11-forward-lesson,
+.m11-stationary-lesson {
+  color: #17233a;
+  height: 100%;
+  min-height: 0;
+}
+
+.m11-sequence-motivation {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 0.72fr 1.28fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.m11-sequence-motivation > section {
+  align-content: center;
+  background: linear-gradient(145deg, #24124f, #44308e);
+  border-radius: 18px;
+  color: white;
+  display: grid;
+  padding: 25px;
+}
+
+.m11-sequence-motivation > section span,
+.m11-derivation-steps span,
+.m11-ci-cards span,
+.m11-unrolled-chain article span,
+.m11-weather-models article > span,
+.m11-one-step section > span,
+.m11-forward-lesson section span,
+.m11-stationary-lesson article > span,
+.m11-stationary-work article > span,
+.m11-concept-card > span {
+  color: #6740d9;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.m11-sequence-motivation > section span { color: #aeeaf0; }
+.m11-sequence-motivation h3 { color: white; font-size: clamp(25px, 2.5vw, 38px); line-height: 1.1; margin: 9px 0 12px; }
+.m11-sequence-motivation > section p { color: #eeeaff; line-height: 1.4; margin: 0; }
+.m11-sequence-motivation > div { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+.m11-sequence-motivation article,
+.m11-definition-stack article,
+.m11-derivation-steps article,
+.m11-ci-cards article,
+.m11-unrolled-chain article,
+.m11-weather-models article,
+.m11-one-step > section,
+.m11-stationary-lesson article,
+.m11-stationary-work > article {
+  background: #fff;
+  border: 1px solid #d5deeb;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.m11-sequence-motivation article strong { color: #24124f; font-size: 18px; }
+.m11-sequence-motivation article p { color: #536078; font-size: 13px; margin: 5px 0 0; }
+.m11-sequence-motivation > .search-callout { grid-column: 1 / -1; }
+
+.m11-chain-diagram { align-items: center; display: flex; justify-content: center; min-width: 0; }
+.m11-chain-step { align-items: center; display: flex; }
+.m11-chain-step > span { align-items: center; background: #fff; border: 3px solid #17233a; border-radius: 999px; display: flex; font-family: Georgia, serif; font-size: clamp(18px, 1.7vw, 27px); font-style: italic; height: 56px; justify-content: center; width: 56px; }
+.m11-chain-step > b { color: #6740d9; font-size: 31px; line-height: 1; margin: 0 3px; }
+.m11-chain-diagram > em { color: #17233a; font-size: 34px; margin-left: 5px; }
+
+.m11-foundation-grid { display: grid; gap: 14px; grid-template-columns: 1.06fr 0.94fr; grid-template-rows: minmax(0, 1fr) auto; }
+.m11-concept-card { align-content: center; background: #f2efff; border: 1px solid #d4c9ff; border-radius: 18px; display: grid; gap: 20px; padding: 24px; }
+.m11-formula-row { display: flex; font-family: Georgia, serif; font-size: clamp(19px, 1.7vw, 27px); justify-content: space-around; }
+.m11-definition-stack { align-content: center; display: grid; gap: 10px; }
+.m11-definition-stack article strong { color: #6740d9; }
+.m11-definition-stack article p { color: #536078; margin: 5px 0 0; }
+.m11-foundation-grid > .search-callout { grid-column: 1 / -1; }
+
+.m11-factorization-lesson { display: grid; gap: 13px; grid-template-rows: auto minmax(0, 1fr) auto; }
+.m11-factorization-lesson > .m11-chain-diagram { transform: scale(.82); transform-origin: center; }
+.m11-derivation-steps { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+.m11-derivation-steps article { align-content: center; display: grid; }
+.m11-derivation-steps article:nth-child(2) { background: #f2efff; border-color: #c9bcf8; }
+.m11-derivation-steps article:nth-child(3) { background: #eef9f3; border-color: #9ed8bd; }
+.m11-derivation-steps p { color: #17233a; font-family: Georgia, serif; font-size: clamp(16px, 1.35vw, 22px); line-height: 1.4; margin: 13px 0; overflow-wrap: anywhere; }
+.m11-derivation-steps small { color: #536078; line-height: 1.35; }
+
+.m11-ci-lesson { display: grid; gap: 13px; grid-template-rows: minmax(100px, .56fr) minmax(0, 1fr) auto; }
+.m11-ci-lesson > img { height: 100%; justify-self: center; max-width: 72%; object-fit: contain; }
+.m11-ci-cards { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+.m11-ci-cards article { align-content: center; display: grid; }
+.m11-ci-cards strong { color: #24124f; font-family: Georgia, serif; font-size: clamp(17px, 1.45vw, 23px); margin: 8px 0; }
+.m11-ci-cards p { color: #536078; line-height: 1.35; margin: 0; }
+
+.m11-unrolled-chain { display: grid; gap: 13px; grid-template-columns: .85fr 1.15fr; grid-template-rows: minmax(110px, .7fr) minmax(0, 1fr); }
+.m11-unrolled-chain > img { align-self: center; grid-column: 1; max-height: 155px; max-width: 100%; object-fit: contain; }
+.m11-unrolled-chain > .m11-chain-diagram { grid-column: 2; }
+.m11-unrolled-chain > section { display: grid; gap: 10px; grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+.m11-unrolled-chain article strong { color: #24124f; display: block; font-size: 18px; margin: 7px 0; }
+.m11-unrolled-chain article p { color: #536078; line-height: 1.35; margin: 0; }
+
+.m11-weather-representations { display: grid; gap: 12px; grid-template-rows: minmax(100px, .7fr) minmax(0, 1fr) auto; }
+.m11-weather-representations > img { height: 100%; justify-self: center; max-width: 72%; object-fit: contain; }
+.m11-weather-models { display: grid; gap: 12px; grid-template-columns: 1fr 1fr 1fr; }
+.m11-weather-models article { overflow: hidden; }
+.m11-weather-models article { padding: 10px 12px; }
+.m11-weather-models table,
+.m11-forward-lesson table { border-collapse: collapse; margin-top: 7px; width: 100%; }
+.m11-weather-models th, .m11-weather-models td,
+.m11-forward-lesson th, .m11-forward-lesson td { border: 1px solid #cbd5e3; padding: 4px 7px; text-align: center; }
+.m11-weather-models table { font-size: 12px; line-height: 1.1; }
+.m11-weather-models th, .m11-weather-models td { padding: 3px 5px; }
+.m11-weather-models th, .m11-forward-lesson th { background: #f2efff; color: #3d267f; }
+.m11-state-graph > div { align-items: center; display: grid; gap: 4px; grid-template-columns: 55px 1fr; margin-top: 12px; }
+.m11-state-graph b { background: #d8cf49; border: 2px solid #17233a; border-radius: 999px; padding: 10px 4px; text-align: center; }
+.m11-state-graph i { color: #536078; font-size: 12px; }
+.m11-matrix { background: #f6f3ff; border-left: 4px solid #6740d9; font-family: Georgia, serif; font-size: 22px; line-height: 1.55; padding: 8px 12px; }
+
+.m11-one-step { display: grid; gap: 16px; grid-template-columns: .76fr 1.24fr; }
+.m11-one-step section { align-content: center; display: grid; min-height: 0; }
+.m11-one-step h3 { color: #24124f; font-size: 24px; margin: 8px 0 4px; }
+.m11-one-step img { height: 190px; justify-self: center; max-width: 100%; object-fit: contain; }
+.m11-one-step section:nth-child(2) > p { background: #f4f1ff; border-radius: 10px; font-family: Georgia, serif; font-size: clamp(16px, 1.4vw, 22px); line-height: 1.45; margin: 8px 0; padding: 11px; }
+.m11-one-step section:nth-child(2) > strong { color: #6740d9; font-family: Georgia, serif; font-size: clamp(20px, 1.7vw, 27px); }
+
+.m11-forward-lesson { display: grid; gap: 14px; grid-template-rows: minmax(105px, .65fr) minmax(0, 1fr); }
+.m11-forward-lesson > section { align-items: center; background: #fff; border: 1px solid #d5deeb; border-radius: 14px; display: grid; gap: 20px; grid-template-columns: .75fr 1.25fr; padding: 10px 18px; }
+.m11-forward-lesson img { height: 118px; justify-self: center; max-width: 100%; object-fit: contain; }
+.m11-forward-lesson section p { font-family: Georgia, serif; font-size: clamp(17px, 1.45vw, 23px); margin: 6px 0; }
+.m11-forward-lesson section small { color: #536078; }
+.m11-forward-lesson table { background: #fff; font-size: clamp(11px, .9vw, 14px); }
+.m11-forward-lesson td:first-child { color: #3d267f; font-weight: 850; }
+
+.m11-stationary-lesson { display: grid; gap: 15px; grid-template-columns: 1fr 1fr; }
+.m11-stationary-lesson > section { display: grid; gap: 11px; grid-template-rows: minmax(100px, .75fr) minmax(0, 1fr); }
+.m11-stationary-lesson img { height: 100%; justify-self: center; max-width: 95%; object-fit: contain; }
+.m11-stationary-lesson h3 { color: #24124f; font-size: clamp(19px, 1.55vw, 25px); line-height: 1.2; margin: 7px 0; }
+.m11-stationary-lesson article p { color: #536078; font-family: Georgia, serif; margin: 0; }
+.m11-stationary-work { align-content: center; display: grid; gap: 10px; }
+.m11-stationary-work article p { font-family: Georgia, serif; margin: 7px 0; }
+.m11-stationary-work article:nth-child(2) { display: grid; grid-template-columns: 1fr 1fr; }
+.m11-stationary-work article:nth-child(2) span { grid-column: 1 / -1; }
+.m11-stationary-work article:nth-child(2) strong { color: #6740d9; font-size: 23px; margin-top: 7px; }
+
 .m11-weather-studio {
   align-items: stretch;
   display: grid;
@@ -453,8 +603,10 @@
 .m11-transition-demo > div {
   align-content: center;
   display: grid;
-  gap: 13px;
+  gap: 8px;
 }
+
+.m11-transition-demo > div > .search-callout { padding: 9px 13px; }
 
 .m11-grid {
   background: #d8dfeb;
@@ -474,7 +626,7 @@
   border: 0;
   color: #17233a;
   display: grid;
-  min-height: 86px;
+  min-height: 82px;
   padding: 8px;
   text-align: center;
 }

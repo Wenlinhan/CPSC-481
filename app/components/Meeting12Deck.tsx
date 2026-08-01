@@ -32,14 +32,36 @@ function SourceFrame({
   caption: string;
   className?: string;
 }) {
+  const sourceContent = {
+    30: {
+      title: "Reinforcement learning",
+      points: ["trial and error", "feedback as reward", "policy connects situations to actions", "maximize cumulative reward", "exploration discovers useful actions"],
+    },
+    32: {
+      title: "Batch learning compared with online learning",
+      points: ["Batch: observe a fixed training set, learn once, then predict", "Online: observe a sequence, update incrementally, then predict again", "The true response can trigger the next update"],
+    },
+    33: {
+      title: "Categories of machine learning",
+      points: ["symbolic and non-symbolic", "supervised and unsupervised", "batch and online", "analogical, deep, reinforcement, and hybrid learning"],
+    },
+    36: {
+      title: "Course references",
+      points: ["Luger, Artificial Intelligence, 6th ed.", "Russell and Norvig, Artificial Intelligence: A Modern Approach, 3rd ed.", "Course slides and speaker-note applications"],
+    },
+  }[slide];
   return (
-    <SearchSourceImage
-      alt={alt}
-      caption={caption}
-      className={className}
-      file={`source-slides/slide-${slide}.png`}
-      sourceRoot={SOURCE_ROOT}
-    />
+    <article className={`m12-source-rebuilt ${className}`.trim()} aria-label={alt}>
+      <span>Course-source reconstruction · page {slide}</span>
+      <h3>{sourceContent.title}</h3>
+      <ul>{sourceContent.points.map(point => <li key={point}>{point}</li>)}</ul>
+      {slide === 32 && (
+        <div className="m12-update-flow" aria-label="Batch and online update flow">
+          <b>data</b><i>→</i><b>model</b><i>→</i><b>prediction</b><i>→</i><b>response</b><i>↺ update</i>
+        </div>
+      )}
+      <small>{caption}</small>
+    </article>
   );
 }
 
@@ -816,11 +838,11 @@ const slides: SourceLessonSlide[] = [
           <article><strong>γ = 0</strong><p>Only the immediate reward matters.</p></article>
           <article><strong>0 &lt; γ &lt; 1</strong><p>Later rewards count, but with diminishing weight.</p></article>
           <article><strong>γ = 1</strong><p>All rewards count equally; use safely for finite episodes.</p></article>
+          <SearchCallout label="Objective" tone="green">
+            A policy is evaluated by expected return, because trajectories and
+            rewards may be stochastic.
+          </SearchCallout>
         </div>
-        <SearchCallout label="Objective" tone="green">
-          A policy is evaluated by expected return, because trajectories and
-          rewards may be stochastic.
-        </SearchCallout>
       </div>
     ),
     note: "Timing: 3 minutes. Textbook/modern supplement. Define discounted return and expected return. Ask why immediate-reward maximization can fail in a task with delayed consequences.",

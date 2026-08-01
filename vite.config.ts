@@ -44,6 +44,10 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // Dropbox can retain Windows reparse-point handles inside dist between builds.
+    // Reusing the output directory avoids a failing recursive delete; emitted
+    // hashed assets and the generated server bundle are still replaced.
+    build: { emptyOutDir: false },
     server: {
       watch: {
         ignored: ["**/output/**", "../output/**"],

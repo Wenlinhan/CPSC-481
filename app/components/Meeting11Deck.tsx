@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import "../styles/meeting11.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
@@ -10,6 +10,7 @@ import {
 } from "./SearchLessonPrimitives";
 
 const L12_MDP_RENDER_ROOT = "/course-source/l12-mdp/slide-renders";
+const L12_MDP_MEDIA_ROOT = "/course-source/l12-mdp/media";
 
 const weatherTransition = {
   sun: { sun: 0.9, rain: 0.1 },
@@ -555,7 +556,199 @@ function MdpAssumptionAudit() {
   );
 }
 
-const slides: SourceLessonSlide[] = [
+function MarkovChainDiagram({ extended = false }: { extended?: boolean }) {
+  return (
+    <div className="m11-chain-diagram" aria-label="First-order Markov chain">
+      {["X₁", "X₂", "X₃", "X₄"].map((label, index) => (
+        <div className="m11-chain-step" key={label}>
+          <span>{label}</span>
+          {(index < 3 || extended) && <b aria-hidden="true">→</b>}
+        </div>
+      ))}
+      {extended && <em>…</em>}
+    </div>
+  );
+}
+
+function SequenceMotivation() {
+  const cases = [
+    ["Speech recognition", "phoneme or word position", "acoustic frames"],
+    ["Robot localization", "location and heading", "sensor readings"],
+    ["User attention", "attention state", "clicks and gaze"],
+    ["Medical monitoring", "patient condition", "vital signs"],
+  ];
+  return (
+    <div className="m11-sequence-motivation">
+      <section>
+        <span>Original knowledge point</span>
+        <h3>Reason about a sequence of observations</h3>
+        <p>Introduce time—or space—because the current observation alone may not identify the underlying state.</p>
+      </section>
+      <div>
+        {cases.map(([name, state, observation]) => (
+          <article key={name}>
+            <strong>{name}</strong>
+            <p><b>State:</b> {state}</p>
+            <p><b>Observation:</b> {observation}</p>
+          </article>
+        ))}
+      </div>
+      <SearchCallout label="Retrieval prompt" tone="cyan">
+        For robot localization, what must the state preserve so the next-step distribution no longer needs the entire path history?
+      </SearchCallout>
+    </div>
+  );
+}
+
+function MarkovModelFoundation() {
+  return (
+    <div className="m11-foundation-grid">
+      <section className="m11-concept-card">
+        <span>State sequence</span>
+        <MarkovChainDiagram extended />
+        <div className="m11-formula-row"><strong>P(X₁)</strong><strong>P(Xₜ | Xₜ₋₁)</strong></div>
+      </section>
+      <section className="m11-definition-stack">
+        <article><strong>State Xₜ</strong><p>The value of X at time t.</p></article>
+        <article><strong>Initial distribution P(X₁)</strong><p>Uncertainty before the sequence begins.</p></article>
+        <article><strong>Transition dynamics P(Xₜ|Xₜ₋₁)</strong><p>How the state evolves one step.</p></article>
+      </section>
+      <SearchCallout label="Terminology correction" tone="amber">
+        Reusing the same transition probabilities at every time is a <strong>time-homogeneous transition assumption</strong>. It is not required by every Markov model and is not the same as a stationary state distribution.
+      </SearchCallout>
+    </div>
+  );
+}
+
+function MarkovFactorizationLesson() {
+  return (
+    <div className="m11-factorization-lesson">
+      <MarkovChainDiagram extended />
+      <div className="m11-derivation-steps">
+        <article>
+          <span>1 · Chain rule identity</span>
+          <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | x₁:ᵢ₋₁)</p>
+          <small>Valid for every joint distribution.</small>
+        </article>
+        <article>
+          <span>2 · First-order assumption</span>
+          <p>Xᵢ ⟂ X₁:ᵢ₋₂ | Xᵢ₋₁</p>
+          <small>The present state screens off earlier history.</small>
+        </article>
+        <article>
+          <span>3 · Markov factorization</span>
+          <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | xᵢ₋₁)</p>
+          <small>A modeling assumption makes the factors local.</small>
+        </article>
+      </div>
+      <SearchCallout label="In-class check" tone="green">
+        Which line is a probability identity, and which line introduces the Markov modeling assumption?
+      </SearchCallout>
+    </div>
+  );
+}
+
+function ConditionalIndependenceLesson() {
+  return (
+    <div className="m11-ci-lesson">
+      <img alt="Robot states X1 through X4 connected through time" src={`${L12_MDP_MEDIA_ROOT}/image49.png`} />
+      <div className="m11-ci-cards">
+        <article><span>Explicit assumption</span><strong>Xₜ ⟂ X₁:ₜ₋₂ | Xₜ₋₁</strong><p>Each state needs only the previous state.</p></article>
+        <article><span>Implied property</span><strong>past ⟂ future | present</strong><p>Knowing the present blocks information flow along the chain.</p></article>
+        <article><span>Proof idea</span><strong>factor, cancel, normalize</strong><p>For example, P(X₁|X₂,X₃,X₄)=P(X₁|X₂).</p></article>
+      </div>
+      <SearchCallout label="Correction to the original wording" tone="amber">
+        Past and future are conditionally independent <strong>given the present</strong>; they are not “independent of the present.”
+      </SearchCallout>
+    </div>
+  );
+}
+
+function UnrolledChainLesson() {
+  return (
+    <div className="m11-unrolled-chain">
+      <img alt="Four robot states illustrating a temporal sequence" src={`${L12_MDP_MEDIA_ROOT}/image49.png`} />
+      <MarkovChainDiagram extended />
+      <section>
+        <article><span>Graph form</span><strong>A growable Bayesian network</strong><p>Truncate at horizon T to obtain a finite directed acyclic graph.</p></article>
+        <article><span>Probability form</span><strong>Multiply local factors</strong><p>P(x₁)P(x₂|x₁)…P(xₜ|xₜ₋₁).</p></article>
+        <article><span>Independence form</span><strong>Condition on an intermediate state</strong><p>X₁ and X₄ may be dependent marginally, but are independent given X₂ or X₃.</p></article>
+      </section>
+    </div>
+  );
+}
+
+function WeatherRepresentations() {
+  return (
+    <div className="m11-weather-representations">
+      <img alt="Five-day sun and rain sequence from the course source" src={`${L12_MDP_MEDIA_ROOT}/image50.png`} />
+      <div className="m11-weather-models">
+        <article>
+          <span>CPT</span>
+          <table><thead><tr><th>current</th><th>next</th><th>P</th></tr></thead><tbody>
+            <tr><td>sun</td><td>sun</td><td>.9</td></tr><tr><td>sun</td><td>rain</td><td>.1</td></tr>
+            <tr><td>rain</td><td>sun</td><td>.3</td></tr><tr><td>rain</td><td>rain</td><td>.7</td></tr>
+          </tbody></table>
+        </article>
+        <article className="m11-state-graph"><span>State graph</span><div><b>sun</b><i>.9 loop · .1 → rain</i><b>rain</b><i>.7 loop · .3 → sun</i></div></article>
+        <article><span>Matrix</span><p className="m11-matrix">T = [ .9&nbsp; .1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.3&nbsp; .7 ]</p><small>Rows: current state; columns: next state.</small></article>
+      </div>
+      <SearchCallout label="Representation check" tone="green">Map one CPT row to the matching outgoing graph edges and matrix row. Each row must sum to 1.</SearchCallout>
+    </div>
+  );
+}
+
+function OneStepWeatherLesson() {
+  return (
+    <div className="m11-one-step">
+      <section>
+        <span>Given</span><h3>P₁(sun)=1.0 · P₁(rain)=0.0</h3>
+        <img alt="Robot considering weather on a future day" src={`${L12_MDP_MEDIA_ROOT}/image53.png`} />
+      </section>
+      <section>
+        <span>Law of total probability</span>
+        <p>P₂(sun) = P(sun|sun)P₁(sun) + P(sun|rain)P₁(rain)</p>
+        <strong>= 0.9(1.0) + 0.3(0.0) = 0.9</strong>
+        <p>P₂(rain) = 0.1(1.0) + 0.7(0.0) = 0.1</p>
+        <SearchCallout label="Predict before revealing" tone="cyan">Why must both next-state probabilities add to 1?</SearchCallout>
+      </section>
+    </div>
+  );
+}
+
+function ForwardPredictionLesson() {
+  const rows = [
+    ["All sun", "(1.000, 0.000)", "(0.900, 0.100)", "(0.840, 0.160)", "(0.804, 0.196)"],
+    ["All rain", "(0.000, 1.000)", "(0.300, 0.700)", "(0.480, 0.520)", "(0.588, 0.412)"],
+  ];
+  return (
+    <div className="m11-forward-lesson">
+      <section><img alt="Robot using a weather model to predict future days" src={`${L12_MDP_MEDIA_ROOT}/image53.png`} /><div><span>Forward prediction</span><p>Pₜ(xₜ)=Σ<sub>xₜ₋₁</sub>P(xₜ|xₜ₋₁)Pₜ₋₁(xₜ₋₁)</p><small>Prediction only: no observation update.</small></div></section>
+      <table><thead><tr><th>initial belief</th><th>P(X₁)</th><th>P(X₂)</th><th>P(X₃)</th><th>P(X₄)</th><th>limit</th></tr></thead><tbody>
+        {rows.map(row => <tr key={row[0]}>{row.map(cell => <td key={cell}>{cell}</td>)}<td>(.750, .250)</td></tr>)}
+        <tr><td>Any p</td><td>(p, 1−p)</td><td colSpan={3}>repeated transition updates</td><td>(.750, .250)</td></tr>
+      </tbody></table>
+    </div>
+  );
+}
+
+function StationaryDistributionLesson() {
+  return (
+    <div className="m11-stationary-lesson">
+      <section>
+        <img alt="Sequence converging from mixed blobs to one stable purple blob" src={`${L12_MDP_MEDIA_ROOT}/image68.png`} />
+        <article><span>Definition</span><h3>A stationary distribution π is unchanged by one transition</h3><p>π = πT, or π(x′)=ΣₓP(x′|x)π(x).</p></article>
+      </section>
+      <div className="m11-stationary-work">
+        <article><span>Weather equations</span><p>π(sun)=.9π(sun)+.3π(rain)</p><p>π(rain)=.1π(sun)+.7π(rain)</p><p>π(sun)+π(rain)=1</p></article>
+        <article><span>Solve</span><strong>π(sun)=¾</strong><strong>π(rain)=¼</strong></article>
+        <SearchCallout label="Convergence condition" tone="amber">This chain converges because it is finite, irreducible, and aperiodic. A stationary distribution alone does not guarantee convergence from every start.</SearchCallout>
+      </div>
+    </div>
+  );
+}
+
+const baseSlides: SourceLessonSlide[] = [
   {
     eyebrow: "Week 6 · Meeting 11 · Sequential decisions",
     title: "Markov Decision Processes, Policies, and Value Iteration",
@@ -584,61 +777,15 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Course foundation · L12 Part B",
     title: "Sequence models connect observations across time or space",
-    content: (
-      <div className="tree-layout m11-source-pair">
-        <SearchSourceImage
-          alt="Complete course source slide motivating reasoning over time or space"
-          caption="Exact source page 12 · speech recognition, robot localization, user attention, and medical monitoring."
-          file="slide-12.png"
-          sourceRoot={L12_MDP_RENDER_ROOT}
-        />
-        <section>
-          <span>Knowledge point · why sequence matters</span>
-          <h3>A single observation has no memory</h3>
-          <p>
-            Speech, position, attention, and health evolve. A sequential model
-            represents a state at each step and specifies how belief or state
-            can propagate between steps.
-          </p>
-          <SearchCallout label="Retrieval prompt" tone="cyan">
-            For robot localization, what must the state preserve so that the
-            next-step distribution no longer needs the entire path history?
-          </SearchCallout>
-        </section>
-      </div>
-    ),
-    note: "Timing: 2 minutes. Preserve source page 12 in full. Ask students to name the state variable and observation for one of the four source applications.",
+    content: <SequenceMotivation />,
+    note: "Timing: 2 minutes. Ask students to name the state variable and observation for one of the four source applications.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Course foundation · State and dynamics",
     title: "A Markov model starts with state, an initial distribution, and transitions",
-    content: (
-      <div className="tree-layout m11-source-pair">
-        <SearchSourceImage
-          alt="Complete course source slide defining Markov-model state and transitions"
-          caption="Exact source page 13 · X₁ through X₄, initial-state probabilities, and transition dynamics."
-          file="slide-13.png"
-          sourceRoot={L12_MDP_RENDER_ROOT}
-        />
-        <section>
-          <span>Read the notation</span>
-          <h3>X<sub>t</sub> is the state at step t</h3>
-          <ul>
-            <li><strong>P(X₁):</strong> uncertainty before the sequence begins.</li>
-            <li><strong>P(X<sub>t</sub>|X<sub>t−1</sub>):</strong> how state evolves one step.</li>
-            <li><strong>State space:</strong> every value X<sub>t</sub> may take.</li>
-          </ul>
-          <SearchCallout label="Terminology correction" tone="amber">
-            Equal transition probabilities at every time are a
-            <strong> time-homogeneous transition assumption</strong>, not a
-            requirement of every Markov model and not the same as a stationary
-            state distribution.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Preserve source page 13. Explicitly correct “stationarity assumption” to time-homogeneous transitions. Contrast a time-homogeneous model with a stationary distribution.",
+    content: <MarkovModelFoundation />,
+    note: "Timing: 3 minutes. Contrast time-homogeneous transitions with a stationary distribution.",
     sourceSlides: [13],
   },
   {
@@ -1110,6 +1257,22 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
 ];
+
+const rebuiltCourseFoundation: Record<number, ReactNode> = {
+  3: <MarkovFactorizationLesson />,
+  4: <ConditionalIndependenceLesson />,
+  5: <UnrolledChainLesson />,
+  6: <WeatherRepresentations />,
+  7: <OneStepWeatherLesson />,
+  8: <ForwardPredictionLesson />,
+  9: <StationaryDistributionLesson />,
+};
+
+const slides = baseSlides.map((slide, index) =>
+  rebuiltCourseFoundation[index]
+    ? { ...slide, content: rebuiltCourseFoundation[index] }
+    : slide,
+);
 
 export function Meeting11Deck() {
   return (

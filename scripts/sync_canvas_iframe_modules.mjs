@@ -230,7 +230,7 @@ async function main() {
           module: {
             name,
             position: week.week,
-            published: false,
+            published: true,
           },
         }),
       });
@@ -256,7 +256,7 @@ async function main() {
             wiki_page: {
               title,
               body,
-              published: false,
+              published: true,
               editing_roles: "teachers",
             },
           }),
@@ -271,7 +271,7 @@ async function main() {
             wiki_page: {
               title,
               body,
-              published: false,
+              published: true,
               editing_roles: "teachers",
             },
           }),

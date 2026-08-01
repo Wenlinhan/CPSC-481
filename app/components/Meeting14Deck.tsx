@@ -6,10 +6,52 @@ import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   SearchCallout,
   SearchQuickCheck,
-  SearchSourceImage,
 } from "./SearchLessonPrimitives";
 
 const SOURCE_ROOT = "/course-source/l09-machine-learning-part-a";
+const loanRecords = [
+  [1,"high","bad","high","none","$0–$15k"], [2,"high","unknown","high","none","$15–$35k"],
+  [3,"moderate","unknown","low","none","$15–$35k"], [4,"high","unknown","low","none","$0–$15k"],
+  [5,"low","unknown","low","none","over $35k"], [6,"low","unknown","low","adequate","over $35k"],
+  [7,"high","bad","low","none","$0–$15k"], [8,"moderate","bad","low","adequate","over $35k"],
+  [9,"low","good","low","none","over $35k"], [10,"low","good","high","adequate","over $35k"],
+  [11,"high","good","high","none","$0–$15k"], [12,"moderate","good","high","none","$15–$35k"],
+  [13,"low","good","high","none","over $35k"], [14,"high","bad","high","none","$15–$35k"],
+] as const;
+
+function LoanDataTable() {
+  return <div className="m14-loan-table-wrap"><table className="m14-loan-table"><thead><tr><th>No.</th><th>Risk</th><th>Credit history</th><th>Debt</th><th>Collateral</th><th>Income</th></tr></thead><tbody>{loanRecords.map(row => <tr key={row[0]}>{row.map((cell,index) => <td key={`${row[0]}-${index}`}>{cell}</td>)}</tr>)}</tbody></table></div>;
+}
+
+function CompactRiskTree({ picnic = false }: { picnic?: boolean }) {
+  if (picnic) return <div className="m14-rebuilt-tree picnic"><b>forecast?</b><div><span>sunny → humidity?</span><span>overcast → yes</span><span>rain → wind?</span></div><small>Internal nodes test attributes; branches are values; leaves are decisions.</small></div>;
+  return <div className="m14-rebuilt-tree"><b>income?</b><div><span>$0–$15k → high</span><span>$15–$35k → credit / debt</span><span>&gt;$35k → credit</span></div><small>Collateral is never selected in the learned tree.</small></div>;
+}
+
+function M14SourceReconstruction({ slide, alt, className = "" }: { slide: number; alt: string; caption: string; className?: string }) {
+  const pageText: Record<number, { title: string; points: string[] }> = {
+    20:{title:"Learning the risk level",points:["Target: financial risk", "Predictors: credit history, debt, collateral, and income"]},
+    21:{title:"Decision tree induction",points:["Quinlan developed ID3 in 1986", "a tree represents concepts through property tests", "labeled training data induce classification rules"]},
+    22:{title:"Decision-tree representation",points:["internal nodes are attribute tests", "branches are attribute values", "leaves are class decisions"]},
+    23:{title:"Training data set for learning",points:["14 labeled loan applications", "risk is the decision-class column"]},
+    24:{title:"Risk decision tree",points:["begin at income", "follow only the matching branch", "stop at a risk-class leaf"]},
+    25:{title:"ID3 recursive algorithm",points:["if all examples share a class, return a leaf", "if no attributes remain, return a default class", "otherwise select a test, partition, and recurse"]},
+    26:{title:"Top-down induction",points:["select a best attribute", "create one branch per value", "partition examples", "make pure branches leaves", "recurse on impure branches", "stop at base cases"]},
+    27:{title:"Choosing among consistent trees",points:["many trees may fit the training data", "prefer a compact pattern, then verify generalization"]},
+    28:{title:"Minimum message length",points:["minimize description of the hypothesis plus data given the hypothesis", "the integers 2–100 contain 50 even values"]},
+    29:{title:"Entropy and information",points:["I(c)=−log₂p(c)", "H(S)=−Σp(c)log₂p(c)", "pure sets have entropy 0"]},
+    30:{title:"Information gain",points:["E(X)=Σᵥ |Tᵥ|/|T| · H(Tᵥ)", "Gain(X)=H(T)−E(X)", "choose the largest gain"]},
+    31:{title:"Loan-data calculation",points:["H(LoanData)=1.531 bits", "E(income)=0.564 bits", "Gain(income)=0.967 bits", "income has the largest gain"]},
+    32:{title:"Partial decision trees",points:["Stage A splits all records on income", "Stage B recomputes gain within each impure subset"]},
+    33:{title:"Completed risk tree",points:["income is the root", "credit history and debt refine selected branches", "leaves encode high, moderate, and low risk"]},
+    34:{title:"Tree paths become rules",points:["join tests on one path with AND", "join alternative paths to one class with OR", "the leaf class becomes the rule conclusion"]},
+    35:{title:"Decision-tree induction as search",points:["state: partially built tree", "operator: add an attribute test", "heuristic: information gain", "greedy search uses no backtracking"]},
+  };
+  const page = pageText[slide] ?? { title:`Course source page ${slide}`, points:[] };
+  const usesTable = slide === 20 || slide === 23;
+  const usesTree = slide === 22 || [24,27,32,33].includes(slide);
+  return <article className={`m14-source-frame m14-source-rebuilt ${className}`.trim()} aria-label={alt}><span>Course-source reconstruction · page {slide}</span><h3>{page.title}</h3>{usesTable ? <LoanDataTable /> : usesTree ? <CompactRiskTree picnic={slide === 22} /> : <ol>{page.points.map(point => <li key={point}>{point}</li>)}</ol>}{(usesTable || usesTree) && <small>{page.points.join(" · ")}</small>}</article>;
+}
 const SOURCE_DECK_LABEL = "L09 Machine Learning · Part A";
 
 function resolveMeeting14SourceReference(sourceSlide: number) {
@@ -32,15 +74,7 @@ function SourceFrame({
   caption: string;
   className?: string;
 }) {
-  return (
-    <SearchSourceImage
-      alt={alt}
-      caption={caption}
-      className={`m14-source-frame ${className}`.trim()}
-      file={`slide-renders/slide-${String(slide).padStart(2, "0")}.png`}
-      sourceRoot={SOURCE_ROOT}
-    />
-  );
+  return <M14SourceReconstruction alt={alt} caption={caption} className={className} slide={slide} />;
 }
 
 function SourceExplanation({
@@ -49,15 +83,17 @@ function SourceExplanation({
   caption,
   children,
   reverse = false,
+  className = "",
 }: {
   slide: number;
   alt: string;
   caption: string;
   children: React.ReactNode;
   reverse?: boolean;
+  className?: string;
 }) {
   return (
-    <div className={`m14-source-explain ${reverse ? "reverse" : ""}`}>
+    <div className={`m14-source-explain ${reverse ? "reverse" : ""} ${className}`.trim()}>
       <SourceFrame alt={alt} caption={caption} slide={slide} />
       <section>{children}</section>
     </div>
@@ -417,6 +453,7 @@ const slides: SourceLessonSlide[] = [
       <SourceExplanation
         alt="Picnic decision tree and definitions of internal nodes and leaf nodes"
         caption="Exact source page 22 · the picnic example is a conceptual example, not decoration."
+        className="m14-anatomy-explain"
         reverse
         slide={22}
       >
@@ -584,6 +621,7 @@ const slides: SourceLessonSlide[] = [
       <SourceExplanation
         alt="Historical formulas for information-theoretic test selection"
         caption="Exact source page 30 · entropy of T, expected entropy after testing X, and information gain."
+        className="m14-gain-explain"
         slide={30}
       >
         <div className="m14-formulas">
