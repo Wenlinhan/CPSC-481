@@ -824,22 +824,12 @@ const slides: SourceLessonSlide[] = [
     title: "Apply alpha-beta left-to-right to the complete practice tree",
     content: (
       <div className="algorithm-source-layout">
-        <pre
-          aria-label="Practice game tree: a MAX root has three MIN children. The left MIN has MAX children with leaves 5,2 and 10,11. The middle MIN has MAX children with leaves 1,2,2 then 8 then 6,5. The right MIN has MAX children with leaves 12 then 4,3 then 25,2."
-          className="heuristic-code"
-          role="img"
-        >{`MAX
-├─ MIN
-│  ├─ MAX → [5, 2]
-│  └─ MAX → [10, 11]
-├─ MIN
-│  ├─ MAX → [1, 2, 2]
-│  ├─ MAX → [8]
-│  └─ MAX → [6, 5]
-└─ MIN
-   ├─ MAX → [12]
-   ├─ MAX → [4, 3]
-   └─ MAX → [25, 2]`}</pre>
+        <SearchSourceImage
+          alt="Original Alpha-Beta Pruning Practice slide: a MAX root has three MIN children above MAX nodes and leaves 5, 2, 10, 11, 1, 2, 2, 8, 6, 5, 12, 4, 3, 25, and 2"
+          caption="The original practice tree preserves the node shapes, player levels, branch grouping, and left-to-right leaf order."
+          file="source-slides/slide-30.png"
+          sourceRoot={sourceRoot}
+        />
         <section>
           <h3>Submit a trace, not only an answer</h3>
           <p>
@@ -857,7 +847,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 5 minutes. This recreates the exact source practice tree and leaf grouping as a legible text tree. Students work independently for three minutes, then compare bound tables with a partner.",
+    note: "Timing: 5 minutes. Use the original source practice tree and its exact leaf grouping. Students work independently for three minutes, then compare bound tables with a partner.",
     sourceSlides: [30],
   },
   {
