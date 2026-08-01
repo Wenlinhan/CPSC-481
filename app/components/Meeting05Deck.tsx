@@ -1017,6 +1017,7 @@ for t ← 1 to ∞ do
 export function HeuristicLocalSearchDeck() {
   return (
     <SourceDeckShell
+      hoverEffects
       meetingLabel="Week 3 · Meeting 5"
       meetingTitle="Heuristic Search and Local Search"
       slides={slides}

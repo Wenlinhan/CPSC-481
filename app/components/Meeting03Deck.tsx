@@ -553,6 +553,7 @@ const slides: SourceLessonSlide[] = [
 export function StateSpaceFoundationsDeck() {
   return (
     <SourceDeckShell
+      hoverEffects
       meetingLabel="Week 2 · Meeting 3"
       meetingTitle="State-Space Search Foundations"
       slides={slides}

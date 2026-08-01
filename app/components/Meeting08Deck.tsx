@@ -903,6 +903,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting08Deck() {
   return (
     <SourceDeckShell
+      hoverEffects
       meetingLabel="Week 4 · Meeting 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
       slides={slides}

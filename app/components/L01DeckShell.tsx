@@ -1,6 +1,12 @@
 "use client";
 
-import { type ReactNode, type TouchEvent, useEffect, useState } from "react";
+import {
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+  type TouchEvent,
+  useEffect,
+  useState,
+} from "react";
 
 export type LessonSlide = {
   eyebrow: string;
@@ -20,6 +26,7 @@ export type CourseSourceReference = {
 };
 
 type L01DeckShellProps = {
+  hoverEffects?: boolean;
   meetingLabel: string;
   meetingTitle: string;
   resolveSourceReference?: (sourceSlide: number) => CourseSourceReference;
@@ -54,6 +61,7 @@ function noteStartsWithTiming(note: string): boolean {
 }
 
 export function L01DeckShell({
+  hoverEffects = false,
   meetingLabel,
   meetingTitle,
   resolveSourceReference,
@@ -132,6 +140,24 @@ export function L01DeckShell({
     setTouchStart(null);
   };
 
+  const onPointerMove = (event: ReactPointerEvent<HTMLElement>) => {
+    if (!hoverEffects || !motion || event.pointerType === "touch") return;
+
+    const target = (event.target as HTMLElement).closest<HTMLElement>(
+      ".slide-content article, .slide-content aside, .slide-content blockquote, .slide-content .source-concept, .slide-content .source-figure, .slide-content .search-source-image, .slide-content .source-callout, .slide-content .search-callout, .slide-content .source-formula",
+    );
+    if (!target || !event.currentTarget.contains(target)) return;
+
+    const bounds = target.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+
+    const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+    target.style.setProperty("--hover-x", `${Math.round(x * 100)}%`);
+    target.style.setProperty("--hover-y", `${Math.round(y * 100)}%`);
+    target.style.setProperty("--hover-rotate", `${((x - 0.5) * 1.4).toFixed(2)}deg`);
+  };
+
   const slide = slides[current];
   const currentMinutes = timingPlan?.[current] ?? inferMinutes(slide);
   const sourceReferenceResolver = resolveSourceReference ?? (
@@ -187,7 +213,8 @@ export function L01DeckShell({
 
   return (
     <main
-      className={motion ? "deck ai-deck source-deck" : "deck ai-deck source-deck motion-off"}
+      className={`deck ai-deck source-deck${hoverEffects ? " hover-effects" : ""}${motion ? "" : " motion-off"}`}
+      onPointerMove={onPointerMove}
       onTouchStart={event => setTouchStart(event.touches[0]?.clientX ?? null)}
       onTouchEnd={onTouchEnd}
     >

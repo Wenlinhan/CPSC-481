@@ -18,6 +18,144 @@
     linear-gradient(135deg, #fdfcff, #f5f5fb);
 }
 
+/* Pointer-reactive presentation polish for Meetings 1–8. */
+.source-deck.hover-effects {
+  --hover-accent: 103, 64, 217;
+  --hover-cyan: 31, 167, 201;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .source-deck.hover-effects:not(.motion-off) .slide-content :where(
+    article,
+    aside,
+    blockquote,
+    .source-concept,
+    .source-figure,
+    .search-source-image,
+    .source-callout,
+    .search-callout,
+    .source-formula
+  ) {
+    --hover-x: 50%;
+    --hover-y: 50%;
+    --hover-rotate: 0deg;
+    transform-origin: var(--hover-x) var(--hover-y);
+    transition:
+      translate 220ms cubic-bezier(.2, .8, .2, 1),
+      scale 220ms cubic-bezier(.2, .8, .2, 1),
+      rotate 220ms cubic-bezier(.2, .8, .2, 1),
+      box-shadow 220ms ease,
+      filter 220ms ease,
+      background-image 220ms ease;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) .slide-content :where(
+    article,
+    aside,
+    blockquote,
+    .source-concept,
+    .source-figure,
+    .search-source-image,
+    .source-callout,
+    .search-callout,
+    .source-formula
+  ):hover {
+    background-image: radial-gradient(
+      circle at var(--hover-x) var(--hover-y),
+      rgba(var(--hover-cyan), .14),
+      rgba(var(--hover-accent), .06) 28%,
+      transparent 58%
+    );
+    box-shadow:
+      0 18px 42px rgba(19, 34, 58, .16),
+      0 0 0 1px rgba(var(--hover-accent), .18);
+    filter: saturate(1.05);
+    rotate: var(--hover-rotate);
+    scale: 1.012;
+    translate: 0 -5px;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) .slide-content img {
+    transition: scale 260ms cubic-bezier(.2, .8, .2, 1), filter 260ms ease;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) .slide-content :where(
+    .source-concept,
+    .source-figure,
+    .search-source-image
+  ):hover img {
+    filter: saturate(1.08) contrast(1.02);
+    scale: 1.035;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) :where(
+    .slide-heading h1,
+    .slide-content h2,
+    .slide-content h3,
+    .slide-content strong,
+    .slide-content .micro-label,
+    .slide-content .column-label
+  ) {
+    transition: color 180ms ease, text-shadow 180ms ease, translate 180ms ease;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) :where(
+    .slide-heading h1,
+    .slide-content h2,
+    .slide-content h3,
+    .slide-content strong,
+    .slide-content .micro-label,
+    .slide-content .column-label
+  ):hover {
+    color: var(--source-violet);
+    text-shadow: 0 8px 22px rgba(var(--hover-accent), .18);
+    translate: 3px 0;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) .slide-content button {
+    transition:
+      translate 180ms ease,
+      scale 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .source-deck.hover-effects:not(.motion-off) .slide-content button:hover {
+    box-shadow: 0 10px 24px rgba(19, 34, 58, .16);
+    scale: 1.025;
+    translate: 0 -2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .source-deck.hover-effects .slide-content :where(
+    article,
+    aside,
+    blockquote,
+    .source-concept,
+    .source-figure,
+    .search-source-image,
+    .source-callout,
+    .search-callout,
+    .source-formula,
+    img,
+    button
+  ),
+  .source-deck.hover-effects :where(
+    .slide-heading h1,
+    .slide-content h2,
+    .slide-content h3,
+    .slide-content strong,
+    .slide-content .micro-label,
+    .slide-content .column-label
+  ) {
+    filter: none !important;
+    rotate: none !important;
+    scale: none !important;
+    translate: none !important;
+  }
+}
+
 /* Source-faithful Week 3 heuristic and local-search deck */
 .heuristic-layout,
 .heuristic-hero,

@@ -661,6 +661,7 @@ const slides: SourceLessonSlide[] = [
 export function UninformedSearchDeck() {
   return (
     <SourceDeckShell
+      hoverEffects
       meetingLabel="Week 2 · Meeting 4"
       meetingTitle="Uninformed Graph Search"
       slides={slides}

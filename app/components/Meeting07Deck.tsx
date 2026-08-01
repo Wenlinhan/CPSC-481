@@ -861,6 +861,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting07Deck() {
   return (
     <SourceDeckShell
+      hoverEffects
       meetingLabel="Week 4 · Meeting 7"
       meetingTitle="Game Trees, Minimax, and Evaluation Functions"
       slides={slides}

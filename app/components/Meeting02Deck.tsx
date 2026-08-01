@@ -570,5 +570,5 @@ const slides: LessonSlide[] = [
 ];
 
 export function AiFoundationsDeck() {
-  return <L01DeckShell meetingLabel="Week 1 · Meeting 2" meetingTitle="Intelligent Agents, Task Environments, and the Turing Test" slides={slides} />;
+  return <L01DeckShell hoverEffects meetingLabel="Week 1 · Meeting 2" meetingTitle="Intelligent Agents, Task Environments, and the Turing Test" slides={slides} />;
 }

@@ -386,5 +386,5 @@ const slides: LessonSlide[] = [
 ];
 
 export function AiFoundationsDeck() {
-  return <L01DeckShell meetingLabel="Week 1 · Meeting 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
+  return <L01DeckShell hoverEffects meetingLabel="Week 1 · Meeting 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
 }
