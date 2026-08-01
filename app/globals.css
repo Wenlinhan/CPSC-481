@@ -8594,6 +8594,16 @@ kbd {
   overflow: hidden;
 }
 
+/* Meeting 7, page 21: keep the complete re-rooted tree inside the slide frame. */
+.meeting07-reroot-layout {
+  height: min(430px, calc(100dvh - 360px));
+  min-height: 0;
+}
+
+.meeting07-reroot-layout > .search-source-image {
+  min-height: 0;
+}
+
 .source-definition-layout > *,
 .tree-layout > *,
 .iteration-comparison > article,

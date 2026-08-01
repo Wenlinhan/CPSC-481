@@ -754,7 +754,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Next turn · Re-root and reuse",
     title: "After the opponent moves, advance the root to the observed state",
     content: (
-      <div className="tree-layout">
+      <div className="tree-layout meeting07-reroot-layout">
         <SearchSourceImage
           alt="Expanded tic-tac-toe tree for MAX's second move"
           caption="The next decision begins from the board actually produced by the opponent's reply."
