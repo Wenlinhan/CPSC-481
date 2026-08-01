@@ -560,7 +560,7 @@ test("Meetings 7 and 8 account for every authoritative L05 source slide and imag
   }
 });
 
-test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence package", async () => {
+test("Meetings 9 and 10 preserve source coverage while presenting concepts as native HTML", async () => {
   const [deckShell, meeting9, meeting10, l11ManifestText, l12ManifestText] = await Promise.all([
     readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/Meeting09Deck.tsx", import.meta.url), "utf8"),
@@ -603,9 +603,14 @@ test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence
   assert.match(meeting10, /\/course-source\/l11-probability-bayes\/slide-renders/);
   assert.match(meeting10, /\/course-source\/l12-conditional-independence\/slide-renders/);
   assert.doesNotMatch(`${meeting9}\n${meeting10}`, /\/course-source\/l01-ai/);
+  assert.doesNotMatch(meeting10, /SearchSourceImage|file="slide-\d+\.png"/);
+  assert.match(meeting10, /Meeting10Deck\.module\.css/);
+  assert.match(meeting10, /ProbabilityTable/);
+  assert.match(meeting10, /CommonCauseDiagram/);
+  assert.match(meeting10, /L11_MEDIA_ROOT/);
+  assert.match(meeting10, /L12_MEDIA_ROOT/);
 
   for (const slide of expectedMeeting10) {
-    assert.match(meeting10, new RegExp(`file="slide-${String(slide).padStart(2, "0")}\\.png"`));
     await access(new URL(
       `../public/course-source/l11-probability-bayes/slide-renders/slide-${String(slide).padStart(2, "0")}.png`,
       import.meta.url,
@@ -613,7 +618,7 @@ test("Meetings 9 and 10 preserve the complete L11 deck and selected L12 evidence
   }
   for (const slide of expectedL12Slides) {
     const padded = String(slide).padStart(2, "0");
-    assert.match(meeting10, new RegExp(`data-l12-source-slide="${slide}"[\\s\\S]*?file="slide-${padded}\\.png"`));
+    assert.match(meeting10, new RegExp(`data-l12-source-slide="${slide}"`));
     await access(new URL(
       `../public/course-source/l12-conditional-independence/slide-renders/slide-${padded}.png`,
       import.meta.url,

@@ -195,7 +195,7 @@ const slides: LessonSlide[] = [
     eyebrow: "Applications · in-class practice",
     title: "An application name does not explain where the intelligence is",
     minutes: 5,
-    content: <div className="source-practice-grid"><ConceptImage alt="Students decomposing an AI system" name="guided-practice" /><div><h3>Choose one application from the previous two pages.</h3><ol><li>What task is being performed?</li><li>What information enters the system?</li><li>What action or prediction leaves it?</li><li>Which intelligent capability is required?</li><li>What evidence would demonstrate success?</li></ol><SourceCallout title="Share-out rule">Name the mechanism or capability—not only the product.</SourceCallout></div></div>,
+    content: <div className="source-practice-grid application-decomposition"><ConceptImage alt="Students decomposing an AI system" name="guided-practice" /><div><h3>Choose one application from the previous two pages.</h3><ol><li>What task is being performed?</li><li>What information enters the system?</li><li>What action or prediction leaves it?</li><li>Which intelligent capability is required?</li><li>What evidence would demonstrate success?</li></ol><SourceCallout title="Share-out rule">Name the mechanism or capability—not only the product.</SourceCallout></div></div>,
     note: "Pairs analyze for two minutes; cold-call one pair for each prompt. This prepares students to distinguish products, models, and agent behavior.",
     sourceSlides: [3],
   },

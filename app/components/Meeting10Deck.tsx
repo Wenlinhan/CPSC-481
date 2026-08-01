@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
-import {
-  SearchCallout,
-  SearchSourceImage,
-} from "./SearchLessonPrimitives";
+import { SearchCallout } from "./SearchLessonPrimitives";
+import styles from "./Meeting10Deck.module.css";
 
 const L11_RENDER_ROOT = "/course-source/l11-probability-bayes/slide-renders";
 const L12_RENDER_ROOT = "/course-source/l12-conditional-independence/slide-renders";
+const L11_MEDIA_ROOT = "/course-source/l11-probability-bayes/raw-media";
+const L12_MEDIA_ROOT = "/course-source/l12-conditional-independence/media";
 const L11_SOURCE_DECK_LABEL = "L11 Stochastic Methods · Part A";
 const L12_SOURCE_DECK_LABEL = "L12 Stochastic Methods · Part B";
 
@@ -23,6 +23,42 @@ function resolveMeeting10SourceReference(sourceSlide: number) {
     key: `${sourceKey}:${sourceSlide}`,
     page: sourceSlide,
   };
+}
+
+function Formula({ children, small = false }: { children: React.ReactNode; small?: boolean }) {
+  return <div className={`${styles.formula} ${small ? styles.formulaSmall : ""}`}>{children}</div>;
+}
+
+function ProbabilityTable({
+  caption,
+  rows,
+  highlight,
+}: {
+  caption: string;
+  rows: Array<Array<string | number>>;
+  highlight?: "bad" | "good";
+}) {
+  return (
+    <table className={styles.probTable}>
+      <caption>{caption}</caption>
+      <thead><tr><th>T</th><th>W</th><th>P</th></tr></thead>
+      <tbody>{rows.map((row, index) => (
+        <tr key={`${caption}-${index}`}>
+          {row.map((cell, column) => <td className={index === 0 && column === 2 && highlight ? (highlight === "bad" ? styles.badCell : styles.goodCell) : ""} key={column}>{cell}</td>)}
+        </tr>
+      ))}</tbody>
+    </table>
+  );
+}
+
+function CommonCauseDiagram({ cause, left, right }: { cause: string; left: string; right: string }) {
+  return (
+    <div className={styles.fork} aria-label={`${cause} is a common cause of ${left} and ${right}`}>
+      <div className={`${styles.node} ${styles.causeNode}`}>{cause}</div>
+      <div className={styles.arrow}>↙</div><div className={styles.arrow}>↘</div>
+      <div className={styles.node}>{left}</div><div className={styles.node}>{right}</div>
+    </div>
+  );
 }
 
 function IndependenceTableCheck() {
@@ -125,80 +161,16 @@ function BurglaryNetworkDiagram({
   label?: string;
 }) {
   const highlighted = new Set(Array.isArray(active) ? active : [active]);
-  const nodes = [
-    { id: "B", label: "Burglary", x: 25, y: 18, width: 120 },
-    { id: "E", label: "Earthquake", x: 415, y: 18, width: 120 },
-    { id: "A", label: "Alarm", x: 220, y: 100, width: 120 },
-    { id: "J", label: "JohnCalls", x: 70, y: 182, width: 120 },
-    { id: "M", label: "MaryCalls", x: 370, y: 182, width: 120 },
-  ];
-  const markerId = `bn-arrow-${[...highlighted].sort().join("-") || "none"}-${height}`;
-
   return (
-    <svg
-      aria-label={label}
-      role="img"
-      style={{
-        background: "#f8f7ff",
-        border: "1px solid #d7d3ee",
-        borderRadius: 14,
-        display: "block",
-        height,
-        width: "100%",
-      }}
-      viewBox="0 0 560 242"
-    >
-      <title>{label}</title>
-      <defs>
-        <marker id={markerId} markerHeight="8" markerWidth="8" orient="auto" refX="7" refY="4">
-          <path d="M0,0 L8,4 L0,8 Z" fill="#344a68" />
-        </marker>
-      </defs>
-      {[
-        [145, 50, 238, 102],
-        [415, 50, 322, 102],
-        [245, 142, 175, 184],
-        [315, 142, 385, 184],
-      ].map(([x1, y1, x2, y2], index) => (
-        <line
-          key={`${x1}-${y1}-${x2}-${y2}`}
-          markerEnd={`url(#${markerId})`}
-          stroke={index < 2 ? "#6740d9" : "#0c8f9b"}
-          strokeWidth="4"
-          x1={x1}
-          x2={x2}
-          y1={y1}
-          y2={y2}
-        />
-      ))}
-      {nodes.map(node => {
-        const selected = highlighted.has(node.id);
-        return (
-          <g key={node.id}>
-            <rect
-              fill={selected ? "#6740d9" : "#ffffff"}
-              height="42"
-              rx="12"
-              stroke={selected ? "#4c28bc" : "#9daac0"}
-              strokeWidth="2"
-              width={node.width}
-              x={node.x}
-              y={node.y}
-            />
-            <text
-              fill={selected ? "#ffffff" : "#17233a"}
-              fontSize="16"
-              fontWeight="800"
-              textAnchor="middle"
-              x={node.x + node.width / 2}
-              y={node.y + 26}
-            >
-              {node.label}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
+    <div className={styles.network} aria-label={label} role="img" style={{ minHeight: height }}>
+      <div className={`${styles.networkNode} ${styles.b} ${highlighted.has("B") ? styles.active : ""}`}>Burglary</div>
+      <div className={`${styles.networkNode} ${styles.e} ${highlighted.has("E") ? styles.active : ""}`}>Earthquake</div>
+      <div className={`${styles.networkArrow} ${styles.down1}`}>↘ &nbsp;&nbsp; ↙</div>
+      <div className={`${styles.networkNode} ${styles.a} ${highlighted.has("A") ? styles.active : ""}`}>Alarm</div>
+      <div className={`${styles.networkArrow} ${styles.down2}`}>↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+      <div className={`${styles.networkNode} ${styles.j} ${highlighted.has("J") ? styles.active : ""}`}>JohnCalls</div>
+      <div className={`${styles.networkNode} ${styles.m} ${highlighted.has("M") ? styles.active : ""}`}>MaryCalls</div>
+    </div>
   );
 }
 
@@ -489,21 +461,20 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Independence · Equivalent tests",
     title: "Independence means learning Y does not change belief about X",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Course figure defining independence through conditional equality and joint factorization"
-          caption="Independence can be tested as P(x|y)=P(x) or P(x,y)=P(x)P(y), for all values with positive conditioning probability."
-          file="slide-35.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Three equivalent views</span>
-          <h3>X ⟂ Y</h3>
-          <ul>
-            <li>P(x|y)=P(x) when P(y)&gt;0.</li>
-            <li>P(y|x)=P(y) when P(x)&gt;0.</li>
-            <li>P(x,y)=P(x)P(y) for every x,y pair.</li>
-          </ul>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Three equivalent views</span>
+          <Formula>X ⟂ Y</Formula>
+          <div className={styles.equiv}>
+            <div><b>1</b><span>P(x|y)=P(x), when P(y)&gt;0</span></div>
+            <div><b>2</b><span>P(y|x)=P(y), when P(x)&gt;0</span></div>
+            <div><b>3</b><span>P(x,y)=P(x)P(y), for every x,y pair</span></div>
+          </div>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Interpretation and test</span>
+          <h3>Observing Y adds no information about X</h3>
+          <p>For a finite joint table, test every cell. One mismatch disproves independence; every match is needed to establish it.</p>
           <SearchCallout label="Modeling caution" tone="amber">
             Exact independence is rare in empirical data. Treat it as a claim to
             justify or test, not a property inferred from variable names.
@@ -511,24 +482,25 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Preserve L11 slide 35 in full. State the positive-probability condition for conditional forms and distinguish exact mathematical independence from an approximation.",
+    note: "Timing: 2 minutes. State the positive-probability condition for conditional forms and distinguish exact mathematical independence from an approximation.",
     sourceSlides: [35],
   },
   {
     eyebrow: "Independence · Joint factorization",
     title: "Factorization replaces one joint table with smaller distributions",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="3">
-          <SearchSourceImage
-            alt="L12 course figure showing the product definition of independence"
-            caption="L12 Part B · P(X,Y)=P(X)P(Y), written X ⟂ Y."
-            file="slide-03.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
-        <section>
-          <span>Representation consequence</span>
+      <div className={styles.nativeGrid} data-l12-source-slide="3">
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Definition</span>
+          <Formula>P(X,Y)=P(X)P(Y)</Formula>
+          <div className={styles.stats}>
+            <div><strong>2ⁿ</strong><span>joint rows for n binary variables</span></div>
+            <div><strong>2n</strong><span>marginal entries if independent</span></div>
+            <div><strong>∀</strong><span>every assignment must satisfy the equality</span></div>
+          </div>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Representation consequence</span>
           <h3>Store P(X) and P(Y), not every pair</h3>
           <p>
             If X and Y are independent, every joint cell is reconstructed from
@@ -549,14 +521,11 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Worked independence · Counterexample and proof",
     title: "One mismatched cell disproves independence",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="4">
-          <SearchSourceImage
-            alt="Two temperature-weather joint tables and their marginal distributions"
-            caption="L12 Part B · P₁ does not factorize; P₂ equals P(T)P(W)."
-            file="slide-04.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
+      <div className={styles.nativeGrid} data-l12-source-slide="4">
+        <div className={`${styles.panel} ${styles.tableRow}`}>
+          <ProbabilityTable caption="P₁(T,W)" highlight="bad" rows={[["hot","sun",.4],["hot","rain",.1],["cold","sun",.2],["cold","rain",.3]]} />
+          <ProbabilityTable caption="P₂(T,W)" highlight="good" rows={[["hot","sun",.3],["hot","rain",.2],["cold","sun",.3],["cold","rain",.2]]} />
+          <div><ProbabilityTable caption="P(T)P(W)" rows={[["hot","sun",.3],["hot","rain",.2],["cold","sun",.3],["cold","rain",.2]]} /><p><strong>First cell:</strong> .5 × .6 = .3</p></div>
         </div>
         <IndependenceTableCheck />
       </div>
@@ -568,37 +537,33 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Worked independence · Repeated trials",
     title: "Independent coin flips turn an exponential joint into repeated local factors",
     content: (
-      <div className="iteration-comparison">
-        <article>
-          <span>L11 Part A · slide 36</span>
-          <SearchSourceImage
-            alt="Three fair independent coin distributions"
-            caption="Each fair flip contributes a local probability 0.5."
-            file="slide-36.png"
-            sourceRoot={L11_RENDER_ROOT}
-          />
-        </article>
-        <article data-l12-source-slide="5">
-          <span>L12 Part B · slide 5</span>
-          <SearchSourceImage
-            alt="N fair independent coin flips and a factorized joint distribution"
-            caption="The complete joint has 2ⁿ outcomes, but independence gives P(X₁,…,Xₙ)=∏ᵢP(Xᵢ)."
-            file="slide-05.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </article>
+      <div className={styles.nativeGrid} data-l12-source-slide="5">
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Worked event · H, T, H</span>
+          <div className={styles.coinRow}><div className={styles.coin}>H</div><div className={styles.coin}>T</div><div className={styles.coin}>H</div></div>
+          <Formula small>P(H,T,H)=0.5×0.5×0.5=0.125</Formula>
+          <p>Fairness fixes each marginal at 0.5. Independence is the additional assumption that permits multiplication.</p>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>General factorization</span>
+          <Formula>P(X₁,…,Xₙ)=∏ᵢP(Xᵢ)</Formula>
+          <div className={styles.stats}>
+            <div><strong>2ⁿ</strong><span>outcomes</span></div><div><strong>n</strong><span>local distributions</span></div><div><strong>0.5ⁿ</strong><span>per sequence</span></div>
+          </div>
+          <SearchCallout label="Quick check" tone="cyan">A fair coin does not logically guarantee independent flips; fair marginals alone do not rule out dependence over time.</SearchCallout>
+        </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Preserve L11 slide 36 and L12 slide 5 in full. Ask students for P(H,T,H)=0.5^3 and why fairness alone does not logically imply independence.",
+    note: "Timing: 2 minutes. Ask students for P(H,T,H)=0.5^3 and why fairness alone does not logically imply independence.",
     sourceSlides: [36, 5],
   },
   {
     eyebrow: "Conditional independence · Visual bridge",
     title: "A shared cause can explain why two observations move together",
     content: (
-      <div className="search-hero">
-        <section>
-          <span>From association to screening off</span>
+      <div className={styles.nativeGrid} data-l12-source-slide="6">
+        <section className={styles.panel}>
+          <span className={styles.kicker}>From association to screening off</span>
           <h3>Smoke and an alarm can be associated because both depend on fire</h3>
           <p>
             Once the relevant state of the fire is known, a model may assert
@@ -606,14 +571,10 @@ const slides: SourceLessonSlide[] = [
             That assertion is conditional—not absolute—independence.
           </p>
         </section>
-        <div data-l12-source-slide="6">
-          <SearchSourceImage
-            alt="Fire producing smoke while a detector triggers an alarm"
-            caption="L12 Part B · a common-cause setting for conditional independence."
-            file="slide-06.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
+        <figure className={`${styles.panel} ${styles.imagePanel}`}>
+          <img alt="Fire produces smoke while an alarm activates" src={`${L12_MEDIA_ROOT}/image17.png`} />
+          <figcaption>Fire is the common cause; Smoke and Alarm are its effects.</figcaption>
+        </figure>
       </div>
     ),
     note: "Timing: 2 minutes. Provenance: L12 Part B slide 6. Elicit candidate variables before naming conditional independence. Avoid claiming the relationship without a model or data.",
@@ -623,17 +584,18 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Conditional independence · Definition",
     title: "Condition on Z, then test factorization inside every Z stratum",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="8">
-          <SearchSourceImage
-            alt="Conditional independence definition and equivalent equations"
-            caption="L12 Part B · X ⟂ Y | Z iff P(x,y|z)=P(x|z)P(y|z), equivalently P(x|z,y)=P(x|z)."
-            file="slide-08.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
-        <section>
-          <span>Read the quantifier</span>
+      <div className={styles.nativeGrid} data-l12-source-slide="8">
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Equivalent equations</span>
+          <Formula small>X ⟂ Y | Z</Formula>
+          <div className={styles.equiv}>
+            <div><b>1</b><span>P(x,y|z)=P(x|z)P(y|z)</span></div>
+            <div><b>2</b><span>P(x|y,z)=P(x|z)</span></div>
+            <div><b>3</b><span>P(y|x,z)=P(y|z)</span></div>
+          </div>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Read the quantifier</span>
           <h3>For all x, y, z with valid denominators</h3>
           <p>
             Conditional independence does not say X and Y are unrelated. It
@@ -654,17 +616,13 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Conditional independence · Dental example",
     title: "Cavity can screen Toothache from Catch",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="7">
-          <SearchSourceImage
-            alt="Toothache cavity and probe catch conditional-independence equations"
-            caption="L12 Part B · Catch ⟂ Toothache | Cavity, with equivalent conditional and factorized statements."
-            file="slide-07.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
-        <section>
-          <span>Translate the notation</span>
+      <div className={styles.nativeGrid} data-l12-source-slide="7">
+        <figure className={`${styles.panel} ${styles.imagePanel}`}>
+          <img alt="Dental probe checking a tooth for a cavity" src={`${L12_MEDIA_ROOT}/image18.png`} />
+          <figcaption>Cavity can jointly explain Toothache and a probe Catch.</figcaption>
+        </figure>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Translate the notation</span>
           <h3>Once Cavity is known, Toothache does not change Catch</h3>
           <ul>
             <li>P(Catch|Toothache,Cavity)=P(Catch|Cavity)</li>
@@ -685,15 +643,8 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Conditional independence · Weather domain",
     title: "Rain can screen Traffic from Umbrella",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="9">
-          <SearchSourceImage
-            alt="Rain traffic and umbrella domain illustration"
-            caption="L12 Part B · Traffic, Umbrella, and Raining invite a common-cause model."
-            file="slide-09.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
+      <div className={styles.nativeGrid} data-l12-source-slide="9">
+        <div className={styles.panel}><CommonCauseDiagram cause="Raining" left="Traffic" right="Umbrella" /><Formula small>Traffic ⟂ Umbrella | Raining</Formula></div>
         <CommonCauseCheck x="Traffic" y="Umbrella" cause="Raining" />
       </div>
     ),
@@ -704,15 +655,8 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Conditional independence · Safety domain",
     title: "Fire can screen Smoke from Alarm—but only under a simplified model",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="10">
-          <SearchSourceImage
-            alt="Fire smoke and alarm illustrations"
-            caption="L12 Part B · Fire, Smoke, and Alarm support a second common-cause analysis."
-            file="slide-10.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
-        </div>
+      <div className={styles.nativeGrid} data-l12-source-slide="10">
+        <div className={styles.panel}><CommonCauseDiagram cause="Fire" left="Smoke" right="Alarm" /><Formula small>Smoke ⟂ Alarm | Fire</Formula></div>
         <CommonCauseCheck x="Smoke" y="Alarm" cause="Fire" />
       </div>
     ),
@@ -723,17 +667,15 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Probability recap · Tools for structured models",
     title: "Product and chain rules turn independence claims into factorization",
     content: (
-      <div className="tree-layout">
-        <div data-l12-source-slide="11">
-          <SearchSourceImage
-            alt="Probability recap with conditional probability product rule chain rule and independence"
-            caption="L12 Part B · the formulas needed to derive Bayesian-network factorization."
-            file="slide-11.png"
-            sourceRoot={L12_RENDER_ROOT}
-          />
+      <div className={styles.nativeGrid} data-l12-source-slide="11">
+        <div className={`${styles.panel} ${styles.rules}`}>
+          <article><strong>Conditional probability</strong>P(x|y)=P(x,y)/P(y)</article>
+          <article><strong>Product rule</strong>P(x,y)=P(x|y)P(y)</article>
+          <article><strong>Chain rule</strong>P(x₁,…,xₙ)=∏ᵢP(xᵢ|x₁,…,xᵢ₋₁)</article>
+          <article><strong>Independence</strong>P(x,y)=P(x)P(y)</article>
         </div>
-        <section>
-          <span>Retrieval check</span>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Retrieval check</span>
           <h3>Use the right rule for the right job</h3>
           <ul>
             <li>Conditional probability: divide a compatible joint by evidence mass.</li>
@@ -829,15 +771,18 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Naive Bayes · Class-conditional factorization",
     title: "Given the class, treat feature likelihoods as independent factors",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Naive Bayes derivation from chain rule and conditional independence"
-          caption="The derivation reduces P(F₁,…,Fₙ|C) to a product of class-conditional feature likelihoods."
-          file="slide-37.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Correct assumption</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>From chain rule to the shortcut</span>
+          <Formula small>P(F₁,…,Fₙ|C) ≈ ∏ᵢP(Fᵢ|C)</Formula>
+          <div className={styles.featureFlow}>
+            <div className={styles.classBox}><strong>Class C</strong><br/>apple / not apple</div><div className={styles.arrow}>→</div>
+            <div className={styles.featureStack}><span>size</span><span>color</span><span>shape</span></div>
+          </div>
+          <p>Every feature is conditioned on the same class. The approximation drops dependencies among features within each class.</p>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Correct assumption</span>
           <h3>Fᵢ ⟂ Fⱼ | C, not Fᵢ ⟂ Fⱼ</h3>
           <p>
             Features such as fruit shape, color, and size may be associated
@@ -851,22 +796,24 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve L11 slide 37 and its notes: apple/not-apple hypotheses; size, color, shape features; trained class priors and class-conditional feature probabilities. Correct marginal independence to conditional independence.",
+    note: "Timing: 3 minutes. Retain the apple/not-apple hypotheses; size, color, shape features; trained class priors and class-conditional feature probabilities. Correct marginal independence to conditional independence.",
     sourceSlides: [37],
   },
   {
     eyebrow: "Naive Bayes · Classifier decision",
     title: "The class prior and feature likelihoods produce a MAP decision",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Naive Bayes classifier argmax formula and fruit and spam examples"
-          caption="The argmax includes P(C), so the decision is maximum a posteriori rather than maximum likelihood."
-          file="slide-38.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Decision rule</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Decision rule</span>
+          <Formula small>ĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)</Formula>
+          <div className={styles.scoreCards}>
+            <article><span>Maximum likelihood</span><strong>∏P(eᵢ|C)</strong><p>uses feature likelihood only</p></article>
+            <article><span>MAP</span><strong>P(C)∏P(eᵢ|C)</strong><p>also uses the class prior</p></article>
+          </div>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Compute in log space</span>
           <h3>ĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)</h3>
           <ul>
             <li>Estimate P(C) from class frequency or a justified prior.</li>
@@ -877,22 +824,26 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve L11 slide 38. Correct terminology: including the class prior yields MAP. Ask why multiplying many small probabilities motivates log-space computation.",
+    note: "Timing: 3 minutes. Correct terminology: including the class prior yields MAP. Ask why multiplying many small probabilities motivates log-space computation.",
     sourceSlides: [38],
   },
   {
     eyebrow: "Naive Bayes · Fruit example",
     title: "Training estimates local probabilities; testing compares class scores",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Naive Bayes fruit classifier example with features and hypotheses"
-          caption="The example separates training estimates from the class returned during testing."
-          file="slide-39.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Example structure</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Training → testing</span>
+          <div className={styles.timeline}>
+            <article><strong>1 · Data</strong>apples, grapes, other fruit</article>
+            <article><strong>2 · Estimate</strong>priors and feature likelihoods</article>
+            <article><strong>3 · Score</strong>apple vs not-apple</article>
+            <article><strong>4 · Decide</strong>0.8 vs 0.2 → apple</article>
+          </div>
+          <Formula small>score(C)=P(C)P(size|C)P(color|C)P(shape|C)</Formula>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Example structure</span>
           <h3>Apple versus not-apple</h3>
           <ul>
             <li>Training data: apples, grapes, and other fruits.</li>
@@ -907,22 +858,20 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve L11 slide 39. Retain the training/features/hypotheses/testing sequence and correct its 'maximum likelihood' wording to posterior or MAP classification.",
+    note: "Timing: 4 minutes. Retain the training/features/hypotheses/testing sequence and correct its 'maximum likelihood' wording to posterior or MAP classification.",
     sourceSlides: [39],
   },
   {
     eyebrow: "Sequence model · Pronouncing “tomato”",
     title: "A probabilistic finite-state acceptor models alternative phone paths",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Probabilistic finite-state acceptor for pronunciations of tomato"
-          caption="Transition probabilities encode alternative pronunciations; 0.60 goes directly from /t/ to /m/."
-          file="slide-40.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Preserve the model; correct the label</span>
+      <div className={styles.nativeGrid}>
+        <figure className={`${styles.panel} ${styles.imagePanel}`}>
+          <img className={styles.sourceFragment} alt="Probabilistic phone-state paths for pronunciations of tomato" src={`${L11_MEDIA_ROOT}/image99.png`} />
+          <figcaption>Transition probabilities encode alternative phone paths; 0.60 goes directly from /t/ to /m/.</figcaption>
+        </figure>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Preserve the model; correct the label</span>
           <h3>This is a probabilistic sequence model, not Naive Bayes by itself</h3>
           <p>
             A finite-state acceptor assigns probabilities to transitions among
@@ -936,22 +885,23 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve L11 slide 40 and its speaker note. Explicitly correct the slide label: a probabilistic finite-state acceptor is not evidence of a Naive Bayes factorization.",
+    note: "Timing: 3 minutes. Preserve the phone-state graph and speaker note. Explicitly correct the label: a probabilistic finite-state acceptor is not evidence of a Naive Bayes factorization.",
     sourceSlides: [40],
   },
   {
     eyebrow: "Speech recognition · Prior × phone likelihood",
     title: "A common word can outrank a perfect phone match",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Speech-recognition candidates for phone ni with corpus frequencies and priors"
-          caption="Brown and Switchboard counts supply P(word); the phone model supplies P(ni|word)."
-          file="slide-41.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Candidate words</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Corpus prior</span>
+          <Formula small>P(word | [ni]) ∝ P([ni] | word)P(word)</Formula>
+          <table className={styles.speechTable}><thead><tr><th>word</th><th>frequency</th><th>P(word)</th></tr></thead><tbody>
+            <tr><td>knee</td><td>61</td><td>.000024</td></tr><tr><td>the</td><td>114,834</td><td>.046</td></tr><tr><td>neat</td><td>338</td><td>.00013</td></tr><tr><td>need</td><td>1,417</td><td>.00056</td></tr><tr><td>new</td><td>2,625</td><td>.001</td></tr>
+          </tbody></table>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Candidate words</span>
           <h3>knee · the · neat · need · new</h3>
           <p>
             Compare candidates with an unnormalized Bayes score:
@@ -965,22 +915,22 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve L11 slide 41 and notes, including candidate list, Brown/Switchboard corpus sizes, and why 'the' appears. Ask students to distinguish prior from likelihood.",
+    note: "Timing: 3 minutes. Preserve the candidate list, Brown/Switchboard corpus sizes, and why 'the' appears. Ask students to distinguish prior from likelihood.",
     sourceSlides: [41],
   },
   {
     eyebrow: "Speech recognition · Result and missing context",
     title: "Phone-only decoding selects “new”; word context favors “need”",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Calculated ni phone to word scores for new neat need knee and the"
-          caption="The phone-only score is largest for “new”; P(ni|the)=0 makes “the” impossible under this observation."
-          file="slide-42.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Read the evidence</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Phone-only score</span>
+          <table className={styles.speechTable}><thead><tr><th>word</th><th>P([ni]|word)</th><th>P(word)</th><th>product</th></tr></thead><tbody>
+            <tr className={styles.winner}><td>new</td><td>.36</td><td>.001</td><td>.00036</td></tr><tr><td>neat</td><td>.52</td><td>.00013</td><td>.000068</td></tr><tr><td>need</td><td>.11</td><td>.00056</td><td>.000062</td></tr><tr><td>knee</td><td>1.0</td><td>.000024</td><td>.000024</td></tr><tr><td>the</td><td>0</td><td>.046</td><td>0</td></tr>
+          </tbody></table>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Read the evidence</span>
           <h3>Local winner: new</h3>
           <p>
             The displayed model uses only the phone evidence and word prior, so
@@ -994,22 +944,26 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve L11 slide 42 and all note answers: P(ni|the)=0; phone-only winner new; 'I new' is implausible; two-word context favors 'I need'; the displayed score omits I.",
+    note: "Timing: 4 minutes. Preserve all note answers: P(ni|the)=0; phone-only winner new; 'I new' is implausible; two-word context favors 'I need'; the displayed score omits I.",
     sourceSlides: [42],
   },
   {
     eyebrow: "Naive Bayes evaluation · Qualified claims",
     title: "Naive Bayes is efficient, but the variant and dependencies matter",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Advantages and disadvantages listed for Naive Bayes"
-          caption="The evaluation motivates efficient classification and relationship-aware alternatives; several claims require qualification."
-          file="slide-43.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Keep, qualify, correct</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Evaluation matrix</span>
+          <div className={styles.rules}>
+            <article><strong>Strength · efficient</strong>Simple counts or distribution estimates; fast prediction.</article>
+            <article><strong>Strength · incremental</strong>Sufficient statistics can often update from streaming data.</article>
+            <article><strong>Risk · dependence</strong>Correlated features may count the same evidence repeatedly.</article>
+            <article><strong>Risk · calibration</strong>Good class accuracy does not guarantee reliable probabilities.</article>
+          </div>
+          <Formula small>Choose the variant: Gaussian · Multinomial · Bernoulli · Categorical</Formula>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Keep, qualify, correct</span>
           <ul>
             <li><strong>Efficient:</strong> training and prediction are usually simple counts or distribution estimates.</li>
             <li><strong>Real or discrete:</strong> choose Gaussian, multinomial, Bernoulli, or categorical assumptions appropriately.</li>
@@ -1023,7 +977,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve L11 slide 43. Retain efficiency, irrelevant-feature, real/discrete/streaming, dependency violation, and relationship-aware solution ideas while applying the documented qualifications.",
+    note: "Timing: 3 minutes. Retain efficiency, irrelevant-feature, real/discrete/streaming, dependency violation, and relationship-aware solution ideas while applying the documented qualifications.",
     sourceSlides: [43],
   },
   {
@@ -1037,15 +991,19 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Cumulative assessment · Readings and next use",
     title: "Factor, query, classify—and defend every independence claim",
     content: (
-      <div className="tree-layout">
-        <SearchSourceImage
-          alt="Course references for probability and probabilistic reasoning"
-          caption="Course bibliography retained in full; corrected author names appear in the reading note."
-          file="slide-44.png"
-          sourceRoot={L11_RENDER_ROOT}
-        />
-        <section>
-          <span>Exit ticket</span>
+      <div className={styles.nativeGrid}>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Knowledge map</span>
+          <div className={styles.timeline}>
+            <article><strong>Factor</strong>independence and chain rule</article>
+            <article><strong>Represent</strong>DAG + local CPTs</article>
+            <article><strong>Query</strong>sum hidden assignments</article>
+            <article><strong>Classify</strong>MAP with Naive Bayes</article>
+          </div>
+          <SearchCallout label="Readings" tone="cyan">George F. Luger, <em>Artificial Intelligence</em>, 6th ed., Chapters 5, 9, and 13; Stuart Russell and Peter Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Chapters 13–14.</SearchCallout>
+        </section>
+        <section className={styles.panel}>
+          <span className={styles.kicker}>Exit ticket</span>
           <h3>Submit one response with four parts</h3>
           <ol>
             <li>State one unconditional and one conditional independence claim.</li>
@@ -1053,17 +1011,11 @@ const slides: SourceLessonSlide[] = [
             <li>Identify query, evidence, and hidden variables for one posterior.</li>
             <li>Correct one Naive Bayes claim and name evidence that would test it.</li>
           </ol>
-          <SearchCallout label="Readings" tone="cyan">
-            George F. Luger, <em>Artificial Intelligence</em>, 6th ed.,
-            Chapters 5, 9, and 13; Stuart Russell and Peter Norvig,
-            <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed.,
-            Chapters 13–14. Selected probability figures also adapt CS188
-            material by Dan Klein and Pieter Abbeel.
-          </SearchCallout>
+          <p>Selected probability examples also adapt CS188 material by Dan Klein and Pieter Abbeel.</p>
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve L11 slide 44 and correct George F. Luger and Stuart Russell. Collect the four-part exit ticket. Close by connecting conditional independence to later probabilistic and sequential models.",
+    note: "Timing: 4 minutes. Correct George F. Luger and Stuart Russell. Collect the four-part exit ticket. Close by connecting conditional independence to later probabilistic and sequential models.",
     sourceSlides: [44],
   },
 ];
