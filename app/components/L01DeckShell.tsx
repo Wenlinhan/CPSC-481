@@ -68,6 +68,7 @@ export function L01DeckShell({
   const [sourceView, setSourceView] = useState(false);
   const [motion, setMotion] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [printAll, setPrintAll] = useState(false);
   const total = slides.length;
 
   const go = (requested: number) => {
@@ -77,6 +78,10 @@ export function L01DeckShell({
     setSourceView(false);
     window.history.replaceState(null, "", `#slide-${next + 1}`);
   };
+
+  useEffect(() => {
+    setPrintAll(new URLSearchParams(window.location.search).get("print") === "all");
+  }, []);
 
   useEffect(() => {
     const match = window.location.hash.match(/slide-(\d+)/);
@@ -158,6 +163,27 @@ export function L01DeckShell({
       .map(([deckLabel, pages]) => `${deckLabel} · ${pages.length === 1 ? "page" : "pages"} ${pages.join(", ")}`)
       .join("; ")
     : "No exact course source page is attached to this lesson page";
+
+  if (printAll) {
+    return (
+      <main className="deck ai-deck source-deck print-all-deck">
+        {slides.map((item, index) => (
+          <section
+            className="slide"
+            data-source-slides={item.sourceSlides.join(",")}
+            key={`${item.title}-${index}`}
+          >
+            <div className="slide-heading">
+              <span className="eyebrow">{item.eyebrow}</span>
+              <h1>{item.title}</h1>
+              {item.subtitle && <p>{item.subtitle}</p>}
+            </div>
+            <div className="slide-content">{item.content}</div>
+          </section>
+        ))}
+      </main>
+    );
+  }
 
   return (
     <main

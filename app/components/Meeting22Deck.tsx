@@ -292,6 +292,7 @@ export function RagQualityDeck() {
   const [notesOpen, setNotesOpen] = useState(false);
   const [motionEnabled, setMotionEnabled] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [printAll, setPrintAll] = useState(false);
 
   const slides: SlideRecord[] = useMemo(
     () => [
@@ -783,6 +784,10 @@ export function RagQualityDeck() {
   );
 
   const total = slides.length;
+  useEffect(() => {
+    setPrintAll(new URLSearchParams(window.location.search).get("print") === "all");
+  }, []);
+
   const goTo = useCallback((index: number) => {
     const bounded = Math.max(0, Math.min(total - 1, index));
     setCurrent(bounded);
@@ -835,6 +840,24 @@ export function RagQualityDeck() {
     setTouchStart(null);
   };
   const slide = slides[current];
+
+  if (printAll) {
+    return (
+      <main className="deck quality-deck print-all-deck">
+        {slides.map((item, index) => (
+          <section
+            aria-label={`Slide ${index + 1} of ${total}: ${item.title}`}
+            className="slide"
+            data-source-slides={item.sourceSlides.join(",")}
+            key={`${item.eyebrow}-${item.title}`}
+          >
+            <div className="slide-heading"><span className="eyebrow">{item.eyebrow}</span><h1>{item.title}</h1>{item.subtitle && <p>{item.subtitle}</p>}</div>
+            <div className="slide-content">{item.content}</div>
+          </section>
+        ))}
+      </main>
+    );
+  }
 
   return (
     <main className={motionEnabled ? "deck quality-deck" : "deck quality-deck motion-off"} onTouchEnd={handleTouchEnd} onTouchStart={handleTouchStart}>

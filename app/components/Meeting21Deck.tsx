@@ -488,6 +488,7 @@ export function RagDeck() {
   const [notesOpen, setNotesOpen] = useState(false);
   const [motionEnabled, setMotionEnabled] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [printAll, setPrintAll] = useState(false);
 
   const slides: SlideRecord[] = useMemo(
     () => [
@@ -1164,6 +1165,10 @@ export function RagDeck() {
   const total = slides.length;
   const plannedMinutes = slides.reduce((sum, item) => sum + item.minutes, 0);
 
+  useEffect(() => {
+    setPrintAll(new URLSearchParams(window.location.search).get("print") === "all");
+  }, []);
+
   const goTo = useCallback((index: number) => {
     const bounded = Math.max(0, Math.min(total - 1, index));
     setCurrent(bounded);
@@ -1227,6 +1232,30 @@ export function RagDeck() {
   };
 
   const slide = slides[current];
+
+  if (printAll) {
+    return (
+      <main className="deck print-all-deck">
+        {slides.map((item, index) => (
+          <section
+            aria-label={`Slide ${index + 1} of ${total}: ${item.title}`}
+            className="slide"
+            key={`${item.eyebrow}-${item.title}`}
+          >
+            <div className="slide-heading">
+              <div className="heading-meta">
+                <span className="eyebrow">{item.eyebrow}</span>
+                <span className="timing-chip">{item.minutes} min</span>
+              </div>
+              <h1>{item.title}</h1>
+              {item.subtitle && <p>{item.subtitle}</p>}
+            </div>
+            <div className="slide-content">{item.content}</div>
+          </section>
+        ))}
+      </main>
+    );
+  }
 
   return (
     <main

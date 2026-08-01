@@ -453,14 +453,14 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Prediction · Symmetry as knowledge",
     title: "Nine legal squares collapse to three distinct first-move classes",
     content: (
-      <div className="heuristic-layout heuristic-layout-split">
+      <div className="heuristic-layout heuristic-layout-split heuristic-symmetry-slide">
         <SearchSourceImage
           alt="First three levels of a tic-tac-toe state space reduced by symmetry"
           caption="Corner, center, and side represent the three distinct first moves."
           file="tic-tac-toe-symmetry-state-space.png"
           sourceRoot={SOURCE_ROOT}
         />
-        <section>
+        <section className="heuristic-symmetry-assessment">
           <SearchQuickCheck
             correct={1}
             explanation="Rotations and reflections make all corners equivalent and all sides equivalent, leaving corner, center, and side."
@@ -652,14 +652,14 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Worked calculation · Score and critique",
     title: "A score can be computable and still be unhelpful",
     content: (
-      <div className="heuristic-layout heuristic-layout-image-lab">
+      <div className="heuristic-layout heuristic-layout-image-lab heuristic-score-critique-slide">
         <SearchSourceImage
           alt="Three eight-puzzle children with h1 h2 and h3 scores"
           caption="Worked source values: h₁ = 5,3,5; h₂ = 6,4,6; h₃ = 0,0,0."
           file="eight-puzzle-heuristic-comparison.png"
           sourceRoot={SOURCE_ROOT}
         />
-        <div>
+        <div className="heuristic-score-critique-panel">
           <PuzzleHeuristicLab />
           <SearchCallout label="A stronger composite" tone="green">
             One proposed improvement is the distance sum plus 2 × the number of direct reversals. It combines signals; it still must be tested rather than assumed superior.
