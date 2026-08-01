@@ -55,7 +55,7 @@ function noteStartsWithTiming(note: string): boolean {
 }
 
 export function L01DeckShell({
-  hoverEffects = false,
+  hoverEffects = true,
   meetingLabel,
   meetingTitle,
   resolveSourceReference,
