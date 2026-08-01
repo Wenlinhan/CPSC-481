@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
-import {
-  SearchCallout,
-  SearchSourceImage,
-} from "./SearchLessonPrimitives";
+import { SearchCallout } from "./SearchLessonPrimitives";
+import styles from "./Meeting09Deck.module.css";
 
 const SOURCE_ROOT = "/course-source/l11-probability-bayes";
 const SOURCE_DECK_LABEL = "L11 Stochastic Methods · Part A";
@@ -19,37 +17,79 @@ function resolveMeeting09SourceReference(sourceSlide: number) {
   };
 }
 
-function SourceFrame({
-  slide,
-  alt,
+type Row = { values: ReactNode[]; tone?: "focus" | "muted" };
+
+function ProbabilityTable({
   caption,
+  headers,
+  rows,
 }: {
-  slide: number;
-  alt: string;
   caption: string;
+  headers: ReactNode[];
+  rows: Row[];
 }) {
   return (
-    <SearchSourceImage
-      alt={alt}
-      caption={caption}
-      file={`slide-renders/slide-${String(slide).padStart(2, "0")}.png`}
-      sourceRoot={SOURCE_ROOT}
-    />
+    <table className={styles.table}>
+      <caption>{caption}</caption>
+      <thead><tr>{headers.map((header, index) => <th key={index}>{header}</th>)}</tr></thead>
+      <tbody>
+        {rows.map((row, rowIndex) => (
+          <tr className={row.tone ? styles[row.tone] : ""} key={rowIndex}>
+            {row.values.map((value, cellIndex) => <td key={cellIndex}>{value}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
-function SourcePair({
-  left,
-  right,
+function Formula({ children, label }: { children: ReactNode; label?: string }) {
+  return (
+    <div className={styles.formula}>
+      {label && <span>{label}</span>}
+      <strong>{children}</strong>
+    </div>
+  );
+}
+
+function SourceFragment({
+  file,
+  alt,
+  caption,
+  contain = false,
 }: {
-  left: { slide: number; alt: string; caption: string };
-  right: { slide: number; alt: string; caption: string };
+  file: string;
+  alt: string;
+  caption?: string;
+  contain?: boolean;
 }) {
   return (
-    <div className="source-definition-layout">
-      <SourceFrame {...left} />
-      <SourceFrame {...right} />
-    </div>
+    <figure className={styles.fragment}>
+      <img
+        alt={alt}
+        className={contain ? styles.contain : ""}
+        src={`${SOURCE_ROOT}/raw-media/${file}`}
+      />
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
+  );
+}
+
+function ConceptCard({
+  label,
+  title,
+  children,
+}: {
+  label: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <article className={styles.card}>
+      <span>{label}</span>
+      <h3>{title}</h3>
+      <div>{children}</div>
+    </article>
   );
 }
 
@@ -75,11 +115,11 @@ function ProbabilityPractice({
   const item = items[active];
 
   return (
-    <div className="algorithm-selection">
+    <div className={styles.practice}>
       <nav aria-label={ariaLabel}>
         {items.map((entry, index) => (
           <button
-            className={active === index ? "active" : ""}
+            className={active === index ? styles.active : ""}
             key={entry.label}
             onClick={() => {
               setActive(index);
@@ -91,7 +131,7 @@ function ProbabilityPractice({
           </button>
         ))}
       </nav>
-      <section style={{ padding: "22px" }}>
+      <section>
         <span>{eyebrow}</span>
         <h3>{item.question}</h3>
         <p>{item.working}</p>
@@ -108,526 +148,336 @@ function ProbabilityPractice({
   );
 }
 
+const jointRows: Row[] = [
+  { values: ["hot", "sun", "0.4"] },
+  { values: ["hot", "rain", "0.1"] },
+  { values: ["cold", "sun", "0.2"] },
+  { values: ["cold", "rain", "0.3"] },
+];
+
+const xyRows: Row[] = [
+  { values: ["+x", "+y", "0.2"] },
+  { values: ["+x", "−y", "0.3"] },
+  { values: ["−x", "+y", "0.4"] },
+  { values: ["−x", "−y", "0.1"] },
+];
+
 const eventCases: PracticeItem[] = [
-  {
-    label: "Q1",
-    question: "What is P(+x, +y)?",
-    working: "A complete assignment identifies one row of the joint table.",
-    answer: "P(+x, +y) = 0.2",
-    explanation: "The event contains exactly the first row, so no summation is needed.",
-  },
-  {
-    label: "Q2",
-    question: "What is P(+x)?",
-    working: "The value of Y is unspecified. Sum every row in which X is true.",
-    answer: "P(+x) = 0.2 + 0.3 = 0.5",
-    explanation: "This is a marginal probability: Y has been summed out.",
-  },
-  {
-    label: "Q3",
-    question: "What is P(−y OR +x)?",
-    working: "Take the union once. Do not count the (+x, −y) row twice.",
-    answer: "P(−y ∪ +x) = 0.6",
-    explanation: "Rows (+x,+y), (+x,−y), and (−x,−y) have mass 0.2 + 0.3 + 0.1.",
-  },
+  { label: "Q1", question: "What is P(+x, +y)?", working: "A complete assignment identifies one row of the joint table.", answer: "P(+x, +y) = 0.2", explanation: "The event contains exactly the first row, so no summation is needed." },
+  { label: "Q2", question: "What is P(+x)?", working: "The value of Y is unspecified. Sum every row in which X is true.", answer: "P(+x) = 0.2 + 0.3 = 0.5", explanation: "This is a marginal probability: Y has been summed out." },
+  { label: "Q3", question: "What is P(−y OR +x)?", working: "Take the union once. Do not count the (+x, −y) row twice.", answer: "P(−y ∪ +x) = 0.6", explanation: "Rows (+x,+y), (+x,−y), and (−x,−y) have mass 0.2 + 0.3 + 0.1." },
 ];
 
 const normalizationCases: PracticeItem[] = [
-  {
-    label: "+x",
-    question: "Given Y = −y, how much mass belongs to +x?",
-    working: "Select the two rows with Y = −y. Their unnormalized masses are 0.3 and 0.1.",
-    answer: "P(+x | −y) = 0.3 / 0.4 = 0.75",
-    explanation: "The normalizer is the selected mass P(−y) = 0.3 + 0.1 = 0.4.",
-  },
-  {
-    label: "−x",
-    question: "Given Y = −y, how much mass belongs to −x?",
-    working: "Use the same evidence normalizer, 0.4.",
-    answer: "P(−x | −y) = 0.1 / 0.4 = 0.25",
-    explanation: "The two conditional values sum to one, which checks the calculation.",
-  },
+  { label: "+x", question: "Given Y = −y, how much mass belongs to +x?", working: "Select the two rows with Y = −y. Their unnormalized masses are 0.3 and 0.1.", answer: "P(+x | −y) = 0.3 / 0.4 = 0.75", explanation: "The normalizer is the selected mass P(−y) = 0.3 + 0.1 = 0.4." },
+  { label: "−x", question: "Given Y = −y, how much mass belongs to −x?", working: "Use the same evidence normalizer, 0.4.", answer: "P(−x | −y) = 0.1 / 0.4 = 0.25", explanation: "The two conditional values sum to one, which checks the calculation." },
 ];
 
 const coinCases: PracticeItem[] = [
-  {
-    label: "Q1",
-    question: "What is the sample space?",
-    working: "List every length-three sequence of H or T.",
-    answer: "S has eight outcomes",
-    explanation: "S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}.",
-  },
-  {
-    label: "Q2",
-    question: "Which events matter?",
-    working: "Let A mean more heads than tails and B mean the first toss is H.",
-    answer: "P(A) = 4/8 and P(B) = 4/8",
-    explanation: "A = {HHH,HHT,HTH,THH}; B = {HHH,HHT,HTH,HTT}.",
-  },
-  {
-    label: "Q3",
-    question: "Which random variables should we define?",
-    working: "An event is a set of outcomes; a random variable maps each outcome to a value.",
-    answer: "Use X = number of heads and I = 1[first toss is H]",
-    explanation: "Teaching correction: A and B are events, not random variables. X has values 0–3; I is binary.",
-  },
-  {
-    label: "Q4",
-    question: "What is the distribution of X?",
-    working: "Count sequences with zero, one, two, and three heads.",
-    answer: "P(X=0,1,2,3) = (1,3,3,1)/8",
-    explanation: "The binomial counts 1, 3, 3, 1 sum to eight equally likely sequences.",
-  },
-  {
-    label: "Q5",
-    question: "What is P(A | B)?",
-    working: "Under B, only HHH, HHT, HTH, and HTT remain possible.",
-    answer: "P(A | B) = (3/8)/(4/8) = 3/4",
-    explanation: "Three of the four outcomes beginning with H have more heads than tails.",
-  },
+  { label: "Q1", question: "What is the sample space?", working: "List every length-three sequence of H or T.", answer: "S has eight outcomes", explanation: "S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}." },
+  { label: "Q2", question: "Which events matter?", working: "Let A mean more heads than tails and B mean the first toss is H.", answer: "P(A) = 4/8 and P(B) = 4/8", explanation: "A = {HHH,HHT,HTH,THH}; B = {HHH,HHT,HTH,HTT}." },
+  { label: "Q3", question: "Which random variables should we define?", working: "An event is a set of outcomes; a random variable maps each outcome to a value.", answer: "Use X = number of heads and I = 1[first toss is H]", explanation: "A and B are events, not random variables. X has values 0–3; I is binary." },
+  { label: "Q4", question: "What is the distribution of X?", working: "Count sequences with zero, one, two, and three heads.", answer: "P(X=0,1,2,3) = (1,3,3,1)/8", explanation: "The binomial counts 1, 3, 3, 1 sum to eight equally likely sequences." },
+  { label: "Q5", question: "What is P(A | B)?", working: "Under B, only HHH, HHT, HTH, and HTT remain possible.", answer: "P(A | B) = (3/8)/(4/8) = 3/4", explanation: "Three of the four outcomes beginning with H have more heads than tails." },
 ];
 
 const trafficCases: PracticeItem[] = [
-  {
-    label: "Q1",
-    question: "What is P(C = true)?",
-    working: "Marginalize over traffic: add the two rows in which construction is true.",
-    answer: "P(C) = 0.3 + 0.2 = 0.5",
-    explanation: "This prior is the probability of construction before conditioning on bad traffic.",
-  },
-  {
-    label: "Q2",
-    question: "What is P(C = true | T = true)?",
-    working: "Select the two rows with bad traffic and normalize their masses.",
-    answer: "P(C | T) = 0.3 / (0.3 + 0.1) = 0.75",
-    explanation: "Bad traffic raises the construction belief from 0.5 to 0.75 in this joint model.",
-  },
-  {
-    label: "Q3",
-    question: "What should orange barrels do to the belief?",
-    working: "Barrels are evidence associated with construction, but the displayed joint table contains only C and T.",
-    answer: "Increase it—if barrels are more likely when C is true",
-    explanation: "A numeric update requires probabilities involving B. The arrows are a dependency sketch, not yet a fully specified Bayesian network.",
-  },
+  { label: "Q1", question: "What is P(C = true)?", working: "Marginalize over traffic: add the two rows in which construction is true.", answer: "P(C) = 0.3 + 0.2 = 0.5", explanation: "This prior is the probability of construction before conditioning on bad traffic." },
+  { label: "Q2", question: "What is P(C = true | T = true)?", working: "Select the two rows with bad traffic and normalize their masses.", answer: "P(C | T) = 0.3 / (0.3 + 0.1) = 0.75", explanation: "Bad traffic raises the construction belief from 0.5 to 0.75 in this joint model." },
+  { label: "Q3", question: "What should orange barrels do to the belief?", working: "Barrels are evidence associated with construction, but the displayed joint table contains only C and T.", answer: "Increase it—if barrels are more likely when C is true", explanation: "A numeric update requires probabilities involving B. The arrows are a dependency sketch, not a fully specified Bayesian network." },
 ];
 
 const chainCases: PracticeItem[] = [
-  {
-    label: "2",
-    question: "Factor two variables",
-    working: "Start from the product rule and choose an ordering.",
-    answer: "P(x₁,x₂) = P(x₁)P(x₂ | x₁)",
-    explanation: "Reversing the ordering is also valid: P(x₂)P(x₁ | x₂).",
-  },
-  {
-    label: "3",
-    question: "Add a third variable",
-    working: "Treat the first two variables as the accumulated context.",
-    answer: "P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂)",
-    explanation: "Equivalently, the speaker-note step is P(x₁,x₂)P(x₃ | x₁,x₂).",
-  },
-  {
-    label: "n",
-    question: "State the general chain rule",
-    working: "Each factor conditions on every variable that precedes it in the chosen ordering.",
-    answer: "P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁)",
-    explanation: "The identity follows by repeatedly applying the product rule; it does not assume independence.",
-  },
+  { label: "2", question: "Factor two variables", working: "Start from the product rule and choose an ordering.", answer: "P(x₁,x₂) = P(x₁)P(x₂ | x₁)", explanation: "Reversing the ordering is also valid: P(x₂)P(x₁ | x₂)." },
+  { label: "3", question: "Add a third variable", working: "Treat the first two variables as the accumulated context.", answer: "P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂)", explanation: "Equivalently, P(x₁,x₂)P(x₃ | x₁,x₂)." },
+  { label: "n", question: "State the general chain rule", working: "Each factor conditions on every variable that precedes it in the chosen ordering.", answer: "P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁)", explanation: "The identity follows by repeatedly applying the product rule; it does not assume independence." },
 ];
 
 const meningitisCases: PracticeItem[] = [
-  {
-    label: "1",
-    question: "Record the prior and likelihoods",
-    working: "P(+m)=0.0001, P(+s|+m)=0.8, and P(+s|−m)=0.01.",
-    answer: "Rare disease, informative symptom",
-    explanation: "The likelihood ratio is 80, but the prior odds are extremely small.",
-  },
-  {
-    label: "2",
-    question: "Compute the evidence probability",
-    working: "Use the two-hypothesis partition {+m, −m}.",
-    answer: "P(+s) = 0.8(0.0001) + 0.01(0.9999) = 0.010079",
-    explanation: "Computation check: P(−m)=1−0.0001=0.9999.",
-  },
-  {
-    label: "3",
-    question: "Compute the posterior",
-    working: "Divide the disease-and-symptom mass by the total symptom mass.",
-    answer: "P(+m | +s) ≈ 0.00794 = 0.794%",
-    explanation: "The symptom changes the belief sharply, yet the posterior remains below one percent because the prior is tiny.",
-  },
-  {
-    label: "4",
-    question: "Why still seek medical evaluation?",
-    working: "A probability is not a decision by itself; actions also depend on consequences.",
-    answer: "Low probability can still justify action",
-    explanation: "A serious missed diagnosis can carry much higher cost than an examination. Decision thresholds depend on utilities and available tests.",
-  },
+  { label: "1", question: "Record the prior and likelihoods", working: "P(+m)=0.0001, P(+s|+m)=0.8, and P(+s|−m)=0.01.", answer: "Rare disease, informative symptom", explanation: "The likelihood ratio is 80, but the prior odds are extremely small." },
+  { label: "2", question: "Compute the evidence probability", working: "Use the two-hypothesis partition {+m, −m}.", answer: "P(+s) = 0.8(0.0001) + 0.01(0.9999) = 0.010079", explanation: "Computation check: P(−m)=1−0.0001=0.9999." },
+  { label: "3", question: "Compute the posterior", working: "Divide the disease-and-symptom mass by the total symptom mass.", answer: "P(+m | +s) ≈ 0.00794 = 0.794%", explanation: "The symptom changes the belief sharply, yet the posterior remains below one percent because the prior is tiny." },
+  { label: "4", question: "Why still seek medical evaluation?", working: "A probability is not a decision by itself; actions also depend on consequences.", answer: "Low probability can still justify action", explanation: "A serious missed diagnosis can carry much higher cost than an examination. Decision thresholds depend on utilities and tests." },
 ];
 
 const weatherCases: PracticeItem[] = [
-  {
-    label: "1",
-    question: "Compute the normalizer P(dry)",
-    working: "Sum the dry joint outcomes or use total probability over weather.",
-    answer: "P(dry) = 0.9(0.8) + 0.3(0.2) = 0.78",
-    explanation: "The two terms correspond to dry-and-sun and dry-and-rain.",
-  },
-  {
-    label: "2",
-    question: "Compute P(sun | dry)",
-    working: "Apply Bayes' rule with likelihood 0.9 and prior 0.8.",
-    answer: "P(sun | dry) = 0.72 / 0.78 ≈ 0.923",
-    explanation: "Dry evidence shifts probability toward sun.",
-  },
-  {
-    label: "3",
-    question: "Compute P(rain | dry)",
-    working: "Use likelihood 0.3, prior 0.2, and the same normalizer.",
-    answer: "P(rain | dry) = 0.06 / 0.78 ≈ 0.077",
-    explanation: "The two posterior values sum to one, providing a useful check.",
-  },
+  { label: "1", question: "Compute the normalizer P(dry)", working: "Use total probability over weather.", answer: "P(dry) = 0.9(0.8) + 0.3(0.2) = 0.78", explanation: "The two terms are dry-and-sun and dry-and-rain." },
+  { label: "2", question: "Compute P(sun | dry)", working: "Apply Bayes’ rule with likelihood 0.9 and prior 0.8.", answer: "P(sun | dry) = 0.72 / 0.78 ≈ 0.923", explanation: "Dry evidence shifts probability toward sun." },
+  { label: "3", question: "Compute P(rain | dry)", working: "Use likelihood 0.3, prior 0.2, and the same normalizer.", answer: "P(rain | dry) = 0.06 / 0.78 ≈ 0.077", explanation: "The posterior values sum to one." },
 ];
 
 const dealerCases: PracticeItem[] = [
-  {
-    label: "1",
-    question: "Form the d2 numerator",
-    working: "Multiply the likelihood of buying a1 at d2 by the prior probability of visiting d2.",
-    answer: "P(a1 | d2)P(d2) = 0.4 × 0.4 = 0.16",
-    explanation: "This is the joint mass P(a1,d2).",
-  },
-  {
-    label: "2",
-    question: "Compute the evidence normalizer",
-    working: "Sum over the three mutually exclusive dealers.",
-    answer: "P(a1) = 0.2(0.2) + 0.4(0.4) + 0.3(0.4) = 0.32",
-    explanation: "This preserves the speaker-note identity P(a1)=ΣᵢP(a1,dᵢ).",
-  },
-  {
-    label: "3",
-    question: "Normalize the d2 mass",
-    working: "Divide the d2 joint mass by the total probability of buying a1.",
-    answer: "P(d2 | a1) = 0.16 / 0.32 = 0.5",
-    explanation: "After observing the purchase, half of the compatible probability mass belongs to d2.",
-  },
+  { label: "1", question: "Form the d₂ numerator", working: "Multiply the likelihood of buying a₁ at d₂ by the prior probability of visiting d₂.", answer: "P(a₁ | d₂)P(d₂) = 0.4 × 0.4 = 0.16", explanation: "This is the joint mass P(a₁,d₂)." },
+  { label: "2", question: "Compute the evidence normalizer", working: "Sum over the three mutually exclusive dealers.", answer: "P(a₁) = 0.2(0.2) + 0.4(0.4) + 0.3(0.4) = 0.32", explanation: "This uses P(a₁)=ΣᵢP(a₁,dᵢ)." },
+  { label: "3", question: "Normalize the d₂ mass", working: "Divide the d₂ joint mass by the total probability of buying a₁.", answer: "P(d₂ | a₁) = 0.16 / 0.32 = 0.5", explanation: "Half of the compatible probability mass belongs to d₂." },
 ];
 
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Stochastic reasoning · Part A",
     title: "Reasoning under uncertainty starts with a probability model",
-    subtitle: "Today: variables, distributions, conditional inference, Bayes' rule, and worked diagnosis.",
+    subtitle: "Variables → distributions → conditional inference → Bayes’ rule",
     content: (
-      <SourcePair
-        left={{
-          slide: 1,
-          alt: "CPSC 481 stochastic methods Part A title frame",
-          caption: "Stochastic methods for reasoning in uncertain situations.",
-        }}
-        right={{
-          slide: 2,
-          alt: "Lecture overview listing uncertainty, probability, probabilistic reasoning, and Bayesian inference",
-          caption: "The complete learning path for this meeting.",
-        }}
-      />
+      <div className={styles.hero}>
+        <div className={styles.heroVisual}>
+          <div className={styles.observation}>evidence</div>
+          <div className={styles.arrow}>→</div>
+          <div className={styles.modelNode}>probability<br />model</div>
+          <div className={styles.arrow}>→</div>
+          <div className={styles.belief}>belief</div>
+        </div>
+        <div className={styles.cardGrid}>
+          <ConceptCard label="01" title="Represent"><p>Name uncertain variables and their possible values.</p></ConceptCard>
+          <ConceptCard label="02" title="Compute"><p>Use joint, marginal, and conditional probabilities.</p></ConceptCard>
+          <ConceptCard label="03" title="Update"><p>Reverse conditionals with Bayes’ rule.</p></ConceptCard>
+          <ConceptCard label="04" title="Interpret"><p>Separate posterior belief from causation and decision.</p></ConceptCard>
+        </div>
+      </div>
     ),
-    note: "Timing: 2 minutes. Open with the source title and agenda. Ask students for one AI system that must act with incomplete information. Keep all four overview topics visible.",
+    note: "Timing: 2 minutes. Ask students for one AI system that must act with incomplete information. Preview the four-part learning path.",
     sourceSlides: [1, 2],
   },
   {
     eyebrow: "Uncertainty · Evidence, targets, and models",
     title: "Evidence is observed; target variables are hidden; a model connects them",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={3}
-          alt="Uncertainty frame with observed variables, unobserved variables, and a model"
-          caption="Examples connect sensors, symptoms, and weather evidence to hidden states."
-        />
-        <section>
-          <article><span>Observed variables</span><p>Facts available now: sensor readings, symptoms, or current weather.</p></article>
-          <article><span>Unobserved variables</span><p>Quantities the agent must infer: an object&apos;s location, a disease, or tomorrow&apos;s weather.</p></article>
-          <article><span>Model</span><p>A structured account of how observed and hidden variables relate.</p></article>
-          <SearchCallout label="Belief, not certainty" tone="cyan">
-            Probabilistic reasoning represents degrees of belief and updates them when evidence changes.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.inferenceDiagram}>
+          <div><span>Observed</span><strong>sensor reading</strong><small>facts available now</small></div>
+          <b>→</b>
+          <div className={styles.modelNode}><span>Model</span><strong>relationship</strong><small>links known to unknown</small></div>
+          <b>→</b>
+          <div><span>Hidden</span><strong>world state</strong><small>quantity to infer</small></div>
+          <div className={styles.matrixBand} aria-label="Belief distribution over hidden states">
+            {[0.11, 0.22, 0.37, 0.3].map((value, index) => <i key={index} style={{ opacity: 0.35 + value }} />)}
+          </div>
+        </div>
+        <div className={styles.compactGrid}>
+          <ConceptCard label="Observed variables" title="Evidence"><p>Sensor readings, symptoms, or current weather.</p></ConceptCard>
+          <ConceptCard label="Unobserved variables" title="Targets"><p>An object’s location, a disease, or tomorrow’s weather.</p></ConceptCard>
+          <ConceptCard label="Structured relationship" title="Model"><p>Represents how evidence and hidden quantities relate.</p></ConceptCard>
+          <SearchCallout label="Belief, not certainty" tone="cyan">Probability represents degrees of belief and changes when evidence changes.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 2 minutes. Preserve the three-part source structure. Have students identify evidence, target, and model for a self-driving-car perception example.",
+    note: "Timing: 3 minutes. Preserve the three-part source structure. Have students identify evidence, target, and model for self-driving perception.",
     sourceSlides: [3],
   },
   {
     eyebrow: "Probability foundations · Variables and distributions",
     title: "Random variables name uncertain aspects; distributions assign probability to their values",
     content: (
-      <SourcePair
-        left={{
-          slide: 4,
-          alt: "Examples and domains of random variables including rain, temperature, drive time, and location",
-          caption: "Discrete and continuous domains appear in the same modeling vocabulary.",
-        }}
-        right={{
-          slide: 5,
-          alt: "Temperature and weather probability distribution tables",
-          caption: "Each table associates a probability with every value in a variable's domain.",
-        }}
-      />
+      <div className={styles.twoColumn}>
+        <div className={styles.variablePanel}>
+          <SourceFragment file="image5.png" alt="Robot tossing a coin to illustrate a random experiment" caption="A random variable maps uncertain outcomes to values." contain />
+          <div className={styles.variableList}>
+            <p><strong>R</strong> = Is it raining? <em>{'{true, false}'}</em></p>
+            <p><strong>T</strong> = Is it hot or cold? <em>{'{hot, cold}'}</em></p>
+            <p><strong>D</strong> = Drive time <em>[0, ∞)</em></p>
+            <p><strong>L</strong> = Robot location <em>possible coordinates</em></p>
+          </div>
+        </div>
+        <div className={styles.distributionPanel}>
+          <SourceFragment file="image9.png" alt="Four weather conditions: sun, rain, fog, and meteor" caption="Weather outcomes: sun, rain, fog, and meteor." contain />
+          <div className={styles.tableRow}>
+            <ProbabilityTable caption="P(T)" headers={["T", "P"]} rows={[{ values: ["hot", "0.5"] }, { values: ["cold", "0.5"] }]} />
+            <ProbabilityTable caption="P(W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.6"] }, { values: ["rain", "0.1"] }, { values: ["fog", "0.3"] }, { values: ["meteor", "0.0"] }]} />
+          </div>
+        </div>
+      </div>
     ),
-    note: "Timing: 3 minutes. Preserve R, T, D, and L plus their domains. Distinguish the random variable (capital letter), a value (such as hot), and the distribution over values.",
+    note: "Timing: 3 minutes. Distinguish the variable, one value, its domain, and the distribution. Compare discrete R and T with continuous D.",
     sourceSlides: [4, 5],
   },
   {
     eyebrow: "Probability foundations · Joint distributions",
-    title: "A valid distribution is nonnegative, normalized, and defined over complete outcomes",
+    title: "A valid joint distribution covers every complete assignment",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={6}
-          alt="Probability distribution definition, notation, tables, and normalization constraints"
-          caption="A distribution is a table; a probability is one number selected from it."
-        />
-        <section style={{ gridTemplateRows: "minmax(0, 1fr) auto" }}>
-          <SourceFrame
-            slide={7}
-            alt="Joint distribution over temperature and weather with four complete outcomes"
-            caption="A joint table assigns probability to every combined assignment."
-          />
-          <SearchCallout label="Domain-size correction" tone="amber">
-            With domains of sizes d₁,…,dₙ, a full joint table has ∏ᵢdᵢ entries. The shortcut dⁿ applies only when all n domains have the same size d.
-          </SearchCallout>
-        </section>
+      <div className={styles.threeColumn}>
+        <ConceptCard label="Constraint 1" title="Nonnegative"><Formula>P(x) ≥ 0</Formula><p>No outcome may receive negative probability.</p></ConceptCard>
+        <ConceptCard label="Constraint 2" title="Normalized"><Formula>Σₓ P(x) = 1</Formula><p>The complete outcome space carries total mass one.</p></ConceptCard>
+        <div className={styles.tableCard}>
+          <ProbabilityTable caption="P(T, W)" headers={["T", "W", "P"]} rows={jointRows} />
+          <Formula label="Size">|P(X₁,…,Xₙ)| = ∏ᵢ |Dom(Xᵢ)|</Formula>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Enlarge both frames. Preserve shorthand notation, nonnegativity, sum-to-one, the joint table, and the practicality question. Explicitly teach the corrected product-of-domain-sizes rule.",
+    note: "Timing: 3 minutes. Explain complete assignments and the product-of-domain-sizes rule. The shortcut d^n applies only when every domain has size d.",
     sourceSlides: [6, 7],
   },
   {
     eyebrow: "Probabilistic models · Events and queries",
     title: "A joint model makes the probability of any event computable",
     content: (
-      <SourcePair
-        left={{
-          slide: 8,
-          alt: "Probabilistic model definition with variables, domains, joint distribution, and normalization",
-          caption: "A probabilistic model is a normalized joint distribution over chosen variables.",
-        }}
-        right={{
-          slide: 9,
-          alt: "Events and sample-space questions over the temperature and weather joint table",
-          caption: "Events are sets of complete outcomes; partial assignments select several rows.",
-        }}
-      />
+      <div className={styles.twoColumn}>
+        <div className={styles.eventPanel}>
+          <h3>Event = a set of complete outcomes</h3>
+          <div className={styles.outcomeGrid}>
+            {jointRows.map((row, index) => <div key={index}><span>{row.values[0]} ∧ {row.values[1]}</span><strong>{row.values[2]}</strong></div>)}
+          </div>
+          <Formula label="General query">P(E) = Σ<sub>ω ∈ E</sub> P(ω)</Formula>
+        </div>
+        <div className={styles.queryStack}>
+          <ConceptCard label="One row" title="hot AND sun"><p>P(hot, sun) = <strong>0.4</strong></p></ConceptCard>
+          <ConceptCard label="Two rows" title="hot"><p>P(hot) = 0.4 + 0.1 = <strong>0.5</strong></p></ConceptCard>
+          <ConceptCard label="Union" title="hot OR sun"><p>0.4 + 0.1 + 0.2 = <strong>0.7</strong></p></ConceptCard>
+          <SearchCallout label="Do not double-count" tone="amber">The hot-and-sun row belongs to both conditions but is added only once in the union.</SearchCallout>
+        </div>
+      </div>
     ),
-    note: "Timing: 3 minutes. Compute hot-and-sun = 0.4, hot = 0.5, and hot-or-sun = 0.7 aloud. Clarify that a global outcome space underlies the model; an event is a subset of that space.",
+    note: "Timing: 3 minutes. Compute the three queries aloud. Clarify that partial assignments identify sets of complete rows.",
     sourceSlides: [8, 9],
   },
   {
     eyebrow: "Formative check · Events",
     title: "Select the rows that satisfy the event, then add each row once",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={10}
-          alt="Student participation joint table and three event-probability questions"
-          caption="Use the complete X,Y joint table for all three calculations."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose an event-probability question"
-            eyebrow="Commit before reveal"
-            items={eventCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.tableCard}>
+          <ProbabilityTable caption="Joint distribution P(X,Y)" headers={["X", "Y", "P"]} rows={xyRows} />
+          <p className={styles.prompt}>Before calculating, point to the included rows.</p>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose an event-probability question" eyebrow="Commit before reveal" items={eventCases} />
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the speaker-note answers 0.2, 0.5, and 0.6. Require students to mark included rows before adding; diagnose double-counting in the union.",
+    note: "Timing: 3 minutes. Preserve answers 0.2, 0.5, and 0.6. Diagnose double-counting in the union.",
     sourceSlides: [10],
   },
   {
     eyebrow: "Marginalization · Summing out variables",
     title: "A marginal distribution collapses a joint table by addition",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={11}
-          alt="Marginalization of temperature and weather from a joint table"
-          caption="Rows that differ only in the eliminated variable are combined."
-        />
-        <section style={{ gridTemplateRows: "minmax(0, 1fr) auto" }}>
-          <SourceFrame
-            slide={12}
-            alt="Student participation marginal-distribution tables for X and Y"
-            caption="Complete both one-variable distributions before checking."
-          />
-          <SearchCallout label="Speaker-note answers" tone="green">
-            P(+x)=0.5, P(−x)=0.5; P(+y)=0.6, P(−y)=0.4. Each marginal table must sum to one.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.marginalVisual}>
+          <ProbabilityTable caption="P(T,W)" headers={["T", "W", "P"]} rows={jointRows} />
+          <div className={styles.sumArrow}>Σ<sub>W</sub> →</div>
+          <ProbabilityTable caption="P(T)" headers={["T", "P"]} rows={[{ values: ["hot", "0.4 + 0.1 = 0.5"], tone: "focus" }, { values: ["cold", "0.2 + 0.3 = 0.5"] }]} />
+        </div>
+        <div className={styles.queryStack}>
+          <Formula>P(x) = Σ<sub>y</sub> P(x,y)</Formula>
+          <ConceptCard label="Pair practice" title="Marginalize X"><p>P(+x)=0.5; P(−x)=0.5</p></ConceptCard>
+          <ConceptCard label="Pair practice" title="Marginalize Y"><p>P(+y)=0.6; P(−y)=0.4</p></ConceptCard>
+          <SearchCallout label="Check" tone="green">Every marginal distribution must sum to one.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Demonstrate one collapsed row, then let pairs complete the X and Y marginals. Preserve all four note answers and use normalization as the error check.",
+    note: "Timing: 3 minutes. Demonstrate one collapsed row, then let pairs complete the X and Y marginals.",
     sourceSlides: [11, 12],
   },
   {
     eyebrow: "Conditional probability · Definition",
     title: "Conditioning restricts the population; it does not imply time or causation",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={13}
-          alt="Conditional probability definition and hot, sun, sickness, and cough examples"
-          caption="P(A | B) asks about A under the condition or evidence B."
-        />
-        <section style={{ gridTemplateRows: "minmax(0, 1fr) auto" }}>
-          <SourceFrame
-            slide={14}
-            alt="Joint-to-conditional probability relation with a joint table"
-            caption="P(A | B) = P(A∩B) / P(B), provided P(B) is positive."
-          />
-          <SearchCallout label="Interpretation correction" tone="amber">
-            “Given B” need not mean B happened earlier or caused A. P(sick | cough) and P(cough | sick) answer different questions.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.conditionVisual}>
+          <div className={styles.population}><span>All outcomes</span><div className={styles.conditionSet}><span>Evidence B</span><div className={styles.targetSet}>A ∩ B</div></div></div>
+          <Formula>P(A | B) = P(A ∩ B) / P(B)</Formula>
+        </div>
+        <div className={styles.stack}>
+          <ConceptCard label="Question" title="P(sick | cough)"><p>Among people who cough, what fraction are sick?</p></ConceptCard>
+          <ConceptCard label="Reverse" title="P(cough | sick)"><p>Among people who are sick, what fraction cough?</p></ConceptCard>
+          <SearchCallout label="Interpretation" tone="amber">“Given B” need not mean B happened earlier or caused A. Reversing the conditional changes the reference population.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the source wording and examples, then state the corrected set-based definition. Ask why reversing sick and cough changes the denominator.",
+    note: "Timing: 3 minutes. Derive the ratio from the nested sets. Ask why reversing sick and cough changes the denominator.",
     sourceSlides: [13, 14],
   },
   {
     eyebrow: "Conditional distributions · From one value to a table",
-    title: "Normalize every compatible row to obtain a conditional distribution",
+    title: "Fix the evidence value, then normalize every compatible row",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={15}
-          alt="Student participation questions for three conditional probabilities"
-          caption="Each denominator is the total mass consistent with the stated evidence."
-        />
-        <section style={{ gridTemplateRows: "minmax(0, 1fr) auto" }}>
-          <SourceFrame
-            slide={16}
-            alt="Joint distribution and two conditional weather distributions"
-            caption="Fixing temperature produces a full distribution over weather."
-          />
-          <SearchCallout label="Speaker-note answers" tone="green">
-            P(+x|+y)=1/3; P(−x|+y)=2/3; P(−y|+x)=0.6.
-          </SearchCallout>
-        </section>
+      <div className={styles.threeColumn}>
+        <div className={styles.tableCard}><ProbabilityTable caption="P(W | hot)" headers={["W", "P"]} rows={[{ values: ["sun", "0.8"], tone: "focus" }, { values: ["rain", "0.2"] }]} /></div>
+        <div className={styles.tableCard}><ProbabilityTable caption="P(W | cold)" headers={["W", "P"]} rows={[{ values: ["sun", "0.4"] }, { values: ["rain", "0.6"], tone: "focus" }]} /></div>
+        <div className={styles.stack}>
+          <ConceptCard label="Question 1" title="P(+x | +y)"><p>0.2 / 0.6 = <strong>1/3</strong></p></ConceptCard>
+          <ConceptCard label="Question 2" title="P(−x | +y)"><p>0.4 / 0.6 = <strong>2/3</strong></p></ConceptCard>
+          <ConceptCard label="Question 3" title="P(−y | +x)"><p>0.3 / 0.5 = <strong>0.6</strong></p></ConceptCard>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Students compute all three source questions. Then compare P(W|hot)=(0.8,0.2) with P(W|cold)=(0.4,0.6) and explain why each column-normalized table sums to one.",
+    note: "Timing: 3 minutes. Students compute all three questions, then compare the two weather conditionals. Each conditional table sums to one.",
     sourceSlides: [15, 16],
   },
   {
     eyebrow: "Normalization trick · Select, then normalize",
     title: "The selected mass is exactly the probability of the evidence",
     content: (
-      <SourcePair
-        left={{
-          slide: 17,
-          alt: "Normalization trick setup using the temperature and weather joint table",
-          caption: "Begin with a joint table and an evidence assignment.",
-        }}
-        right={{
-          slide: 18,
-          alt: "Normalization trick selecting cold rows and normalizing them",
-          caption: "Select matching rows; divide by their sum to make a conditional distribution.",
-        }}
-      />
+      <div className={styles.normalizationFlow}>
+        <div className={styles.tableCard}><ProbabilityTable caption="1 · Joint table" headers={["T", "W", "P"]} rows={jointRows} /></div>
+        <div className={styles.flowArrow}>select<br /><strong>T = cold</strong> →</div>
+        <div className={styles.tableCard}><ProbabilityTable caption="2 · Compatible rows" headers={["W", "mass"]} rows={[{ values: ["sun", "0.2"], tone: "focus" }, { values: ["rain", "0.3"], tone: "focus" }]} /></div>
+        <div className={styles.flowArrow}>divide by<br /><strong>0.5</strong> →</div>
+        <div className={styles.tableCard}><ProbabilityTable caption="3 · P(W | cold)" headers={["W", "P"]} rows={[{ values: ["sun", "0.4"] }, { values: ["rain", "0.6"] }]} /></div>
+      </div>
     ),
-    note: "Timing: 2 minutes. Preserve the build sequence across both frames. Derive the trick from P(W|T=c)=P(W,T=c)/P(T=c), where the selected-row sum is P(T=c).",
+    note: "Timing: 2 minutes. Derive the trick from P(W|T=c)=P(W,T=c)/P(T=c), where the selected-row sum is P(T=c).",
     sourceSlides: [17, 18],
   },
   {
     eyebrow: "Formative check · Normalization",
     title: "Selection preserves ratios; normalization makes them probabilities",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={19}
-          alt="Student participation normalization problem for P of X given Y is false"
-          caption="Select the two Y=−y rows before dividing."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a normalization component"
-            eyebrow="Conditional vector"
-            items={normalizationCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.tableCard}>
+          <ProbabilityTable caption="Select Y = −y" headers={["X", "Y", "P"]} rows={xyRows.map((row, index) => ({ ...row, tone: index === 1 || index === 3 ? "focus" : "muted" }))} />
+          <Formula label="Normalizer">P(−y) = 0.3 + 0.1 = 0.4</Formula>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a normalization component" eyebrow="Conditional vector" items={normalizationCases} />
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the note answers 0.75 and 0.25. Ask students to predict which value is larger before calculating, then verify that the result sums to one.",
+    note: "Timing: 3 minutes. Ask students to predict which value is larger, then compute 0.75 and 0.25 and check the sum.",
     sourceSlides: [19],
   },
   {
     eyebrow: "In-class practice · Three coin tosses",
-    title: "Connect sample space, events, random variables, distributions, and conditioning",
+    title: "Connect outcomes, events, random variables, distributions, and conditioning",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={20}
-          alt="Five-question exercise about three fair coin tosses"
-          caption="Work through all five questions; the definitions must agree with one another."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a coin-toss exercise question"
-            eyebrow="Five-part probability lab"
-            items={coinCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.coinPanel}>
+          <SourceFragment file="image5.png" alt="Robot tossing a coin" contain />
+          <div className={styles.outcomes}>
+            {["HHH", "HHT", "HTH", "HTT", "THH", "THT", "TTH", "TTT"].map(value => <span key={value}>{value}</span>)}
+          </div>
+          <p><strong>Event A:</strong> more heads than tails · <strong>Event B:</strong> first toss is H</p>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a coin-toss exercise question" eyebrow="Five-part probability lab" items={coinCases} />
       </div>
     ),
-    note: "Timing: 4 minutes. Let groups answer Q1–Q5 before revealing. Preserve every speaker-note answer. Explicitly correct Q3: A and B are events; X and the first-toss indicator are random variables.",
+    note: "Timing: 4 minutes. Let groups answer Q1–Q5. Explicitly correct Q3: A and B are events; X and I are random variables.",
     sourceSlides: [20],
   },
   {
     eyebrow: "Inference scenario · Competing explanations",
-    title: "The same observation can support several hidden causes",
+    title: "One observation can support several hidden causes",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={21}
-          alt="Traffic-congestion scenario with construction, accident, barrels, and flashing lights"
-          caption="Bad traffic is evidence; construction and accident are competing explanations."
-        />
-        <section>
-          <article><span>Observation</span><p>The vehicle is slowing because traffic has become congested.</p></article>
-          <article><span>Hypotheses</span><p>Road construction, an accident, or another unmodeled cause.</p></article>
-          <article><span>Additional evidence</span><p>Orange barrels support construction; flashing emergency lights support accident.</p></article>
-          <SearchCallout label="Inference task" tone="cyan">
-            Compare posterior beliefs after evidence—not just which story sounds plausible.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <SourceFragment file="image58.png" alt="Dependency sketch linking construction and accident to bad traffic and related evidence" caption="Observed evidence can discriminate between competing causes." contain />
+        <div className={styles.stack}>
+          <ConceptCard label="Observed now" title="Bad traffic"><p>The vehicle slows because traffic is congested.</p></ConceptCard>
+          <ConceptCard label="Competing hypotheses" title="Construction or accident"><p>Either hidden cause could explain the same observation.</p></ConceptCard>
+          <ConceptCard label="Discriminating evidence" title="Barrels or flashing lights"><p>Additional observations can shift belief between explanations.</p></ConceptCard>
+          <SearchCallout label="Inference task" tone="cyan">Compare posterior beliefs after evidence—not merely which story sounds plausible.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 2 minutes. Preserve the full traffic narrative. Ask students to separate observations from hypotheses and to name one evidence item that discriminates between the two causes.",
+    note: "Timing: 3 minutes. Ask students to separate observations from hypotheses and name evidence that discriminates between the causes.",
     sourceSlides: [21],
   },
   {
     eyebrow: "Traffic inference · Marginalize and condition",
     title: "Bad traffic raises the construction belief from 0.5 to 0.75",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={22}
-          alt="Traffic dependency sketch, construction and traffic joint table, and three inference questions"
-          caption="The full frame includes the causal sketch, joint table, and all three questions."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a traffic-inference question"
-            eyebrow="Evidence update"
-            items={trafficCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.trafficPanel}>
+          <SourceFragment file="image58.png" alt="Construction and accident dependency sketch" contain />
+          <ProbabilityTable caption="P(C,T)" headers={["C", "T", "P"]} rows={[{ values: ["true", "true", "0.3"], tone: "focus" }, { values: ["true", "false", "0.2"] }, { values: ["false", "true", "0.1"], tone: "focus" }, { values: ["false", "false", "0.4"] }]} />
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a traffic-inference question" eyebrow="Evidence update" items={trafficCases} />
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve note answers 0.5, 0.75, and yes. Make the qualification explicit: the C,T table supports the first two calculations; a numeric barrel update needs probabilities involving B. Do not present the arrow sketch as a complete Bayesian-network specification.",
+    note: "Timing: 4 minutes. The C,T table supports the first two calculations. A numeric barrel update needs probabilities involving B.",
     sourceSlides: [22],
   },
   {
@@ -635,253 +485,196 @@ const slides: SourceLessonSlide[] = [
     title: "Multiply a prior by a conditional to recover joint probability",
     subtitle: "P(x,y) = P(y)P(x | y)",
     content: (
-      <SourcePair
-        left={{
-          slide: 23,
-          alt: "Product rule definition relating a conditional distribution to a joint distribution",
-          caption: "The product rule is the conditional-probability definition rearranged.",
-        }}
-        right={{
-          slide: 24,
-          alt: "Product rule worked example for weather and wet or dry conditions",
-          caption: "Each joint cell is a weather prior multiplied by the corresponding conditional value.",
-        }}
-      />
+      <div className={styles.twoColumn}>
+        <SourceFragment file="image62.png" alt="Cartoon multiplication showing two probability factors combine into a joint probability" caption="Two probability factors combine into a joint probability." contain />
+        <div className={styles.productPanel}>
+          <ProbabilityTable caption="P(W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.8"] }, { values: ["rain", "0.2"] }]} />
+          <ProbabilityTable caption="P(D | W)" headers={["W", "wet", "dry"]} rows={[{ values: ["sun", "0.1", "0.9"] }, { values: ["rain", "0.7", "0.3"] }]} />
+          <Formula label="Four joint cells">0.08 · 0.72 · 0.14 · 0.06</Formula>
+          <SearchCallout label="Check" tone="green">The four products sum to one.</SearchCallout>
+        </div>
+      </div>
     ),
-    note: "Timing: 3 minutes. Trace all four products: 0.8×0.1=0.08, 0.8×0.9=0.72, 0.2×0.7=0.14, and 0.2×0.3=0.06. Confirm that the joint table sums to one.",
+    note: "Timing: 3 minutes. Trace all four products and confirm normalization.",
     sourceSlides: [23, 24],
   },
   {
     eyebrow: "Chain rule · Incremental factorization",
     title: "Repeated product rules factor any joint distribution",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={25}
-          alt="Chain rule equations for three and n random variables"
-          caption="The complete chain-rule formulation and the question of why it is always true."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a chain-rule depth"
-            eyebrow="Build the factorization"
-            items={chainCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.chainVisual}>
+          <Formula label="Two variables">P(x₁,x₂) = P(x₁)P(x₂ | x₁)</Formula>
+          <Formula label="Three variables">P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂)</Formula>
+          <Formula label="n variables">P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁)</Formula>
+          <SearchCallout label="No independence assumption" tone="cyan">The chain rule is an identity. Independence assumptions may simplify its factors later.</SearchCallout>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a chain-rule depth" eyebrow="Build the factorization" items={chainCases} />
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve both displayed equations and the speaker-note intermediate P(x1,x2)P(x3|x1,x2). Stress that the chain rule is an identity; independence assumptions only simplify its factors later.",
+    note: "Timing: 3 minutes. Build the three formulas one factor at a time. Stress ordering and the absence of independence assumptions.",
     sourceSlides: [25],
   },
   {
-    eyebrow: "Bayes' rule · Reverse a conditional",
+    eyebrow: "Bayes’ rule · Reverse a conditional",
     title: "Two factorizations of the same joint yield Bayes' rule",
     content: (
-      <SourcePair
-        left={{
-          slide: 26,
-          alt: "Bayes rule equation",
-          caption: "Posterior = likelihood × prior ÷ evidence.",
-        }}
-        right={{
-          slide: 27,
-          alt: "Bayes rule derivation from two factorizations of a joint distribution",
-          caption: "P(x|y) is constructed from the often easier reverse conditional P(y|x).",
-        }}
-      />
+      <div className={styles.twoColumn}>
+        <div className={styles.bayesPortrait}>
+          <SourceFragment file="image71.jpeg" alt="Portrait of Thomas Bayes" caption="Thomas Bayes (1701–1761)" contain />
+          <Formula>P(x,y) = P(x | y)P(y)</Formula>
+          <Formula>P(x,y) = P(y | x)P(x)</Formula>
+        </div>
+        <div className={styles.derivation}>
+          <p>Set the two factorizations equal:</p>
+          <Formula>P(x | y)P(y) = P(y | x)P(x)</Formula>
+          <p>Divide by P(y), provided P(y) &gt; 0:</p>
+          <Formula label="Bayes' rule">P(x | y) = P(y | x)P(x) / P(y)</Formula>
+          <div className={styles.bayesTerms}><span>posterior</span><span>likelihood</span><span>prior</span><span>evidence</span></div>
+        </div>
+      </div>
     ),
-    note: "Timing: 3 minutes. Derive P(x|y)P(y)=P(y|x)P(x) before dividing. Preserve the source motivations: reverse a difficult conditional, support probabilistic systems, and recognize a foundational AI equation.",
+    note: "Timing: 2 minutes. Derive Bayes' rule rather than presenting it as memorization. Name all four quantities.",
     sourceSlides: [26, 27],
   },
   {
     eyebrow: "Bayes' rule · Diagnosis",
     title: "Posterior disease probability is not the probability that disease causes a symptom",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={28}
-          alt="Bayes rule cause-and-effect interpretation for medical diagnosis"
-          caption="The complete disease-and-symptom explanation and cause/effect diagram."
-        />
-        <section>
-          <article><span>Posterior</span><p>P(disease | symptom): belief in the disease after observing the symptom.</p></article>
-          <article><span>Likelihood</span><p>P(symptom | disease): probability of the symptom under the disease hypothesis.</p></article>
-          <article><span>Prior</span><p>P(disease): belief before observing the current symptom.</p></article>
-          <SearchCallout label="Meaning correction" tone="amber">
-            Bayes&apos; rule reverses a conditional. It does not, by itself, prove that the disease caused the observed symptom.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.diagnosisDiagram}>
+          <div className={styles.causeNode}>Disease<br /><small>hypothesis d</small></div>
+          <div className={styles.causalArrow}>causal direction →</div>
+          <div className={styles.effectNode}>Symptom<br /><small>evidence s</small></div>
+          <div className={styles.reverseArrow}>← inferential direction</div>
+          <Formula>P(d | s) = P(s | d)P(d) / P(s)</Formula>
+        </div>
+        <div className={styles.compactGrid}>
+          <ConceptCard label="Posterior" title="P(disease | symptom)"><p>Belief in disease after observing the symptom.</p></ConceptCard>
+          <ConceptCard label="Likelihood" title="P(symptom | disease)"><p>How probable the symptom is if the disease is present.</p></ConceptCard>
+          <ConceptCard label="Prior" title="P(disease)"><p>Belief before the current symptom is observed.</p></ConceptCard>
+          <SearchCallout label="Meaning correction" tone="amber">Bayes' rule reverses a conditional; it does not prove causation.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the source medical-test examples from the notes: common cold, fever, runny nose, cough, and ear infection. Correct the posterior-versus-causal-likelihood wording visibly.",
+    note: "Timing: 3 minutes. Use cold, fever, runny nose, cough, and ear infection as examples. Contrast posterior and likelihood.",
     sourceSlides: [28],
   },
   {
     eyebrow: "Total probability · The evidence normalizer",
     title: "Partition the hypothesis space, then add disjoint joint masses",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={29}
-          alt="Total probability theorem with a Venn diagram and partition derivation"
-          caption="The complete partition diagram and derivation remain available for close inspection."
-        />
-        <section>
-          <article><span>Partition</span><p>Hypotheses H₁,…,Hₙ are mutually exclusive and collectively exhaustive.</p></article>
-          <article><span>Disjoint pieces</span><p>E = (E∩H₁) ∪ ··· ∪ (E∩Hₙ).</p></article>
-          <article><span>Clean theorem</span><p><strong>P(E) = Σᵢ P(E|Hᵢ)P(Hᵢ)</strong></p></article>
-          <SearchCallout label="Derivation correction" tone="amber">
-            Because the partition pieces are disjoint, add their probabilities directly. No multiway-intersection subtraction term is needed.
-          </SearchCallout>
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.partition}>
+          <div className={styles.eventSlice}>E</div>
+          {["H₁", "H₂", "H₃"].map(label => <div key={label}><span>{label}</span></div>)}
+        </div>
+        <div className={styles.stack}>
+          <Formula>E = (E∩H₁) ∪ (E∩H₂) ∪ ··· ∪ (E∩Hₙ)</Formula>
+          <Formula>P(E) = Σᵢ P(E∩Hᵢ)</Formula>
+          <Formula label="Total probability">P(E) = Σᵢ P(E | Hᵢ)P(Hᵢ)</Formula>
+          <SearchCallout label="Why addition works" tone="amber">The hypotheses are mutually exclusive and collectively exhaustive, so the pieces are disjoint. No overlap subtraction is needed.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Trace E across the three regions of the exact Venn diagram. Teach the corrected disjoint-union derivation and connect P(E) to the denominator in Bayes' rule.",
+    note: "Timing: 3 minutes. Trace E across the partition and connect P(E) to the denominator in Bayes' rule.",
     sourceSlides: [29],
   },
   {
     eyebrow: "Worked example · Rare-disease diagnosis",
     title: "A strong likelihood may still produce a small posterior when the prior is tiny",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={30}
-          alt="Meningitis and stiff-neck Bayes rule example with givens, equation, and medical illustration"
-          caption="The full diagnostic equation, numerical givens, and medical visual are preserved."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a meningitis calculation step"
-            eyebrow="Work the posterior"
-            items={meningitisCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.medicalPanel}>
+          <SourceFragment file="image82.jpeg" alt="Medical illustration of inflamed meninges and stiff-neck symptoms" caption="Clinical illustration of inflamed meninges and stiff-neck symptoms." contain />
+          <div className={styles.givens}><span>P(+m)=0.0001</span><span>P(+s | +m)=0.8</span><span>P(+s | −m)=0.01</span></div>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a meningitis calculation step" eyebrow="Work the posterior" items={meningitisCases} />
       </div>
     ),
-    note: "Timing: 4 minutes. Advance only after students predict each term. Use P(-m)=0.9999, compute P(+m|+s)≈0.794%, and discuss why medical action also depends on consequences and follow-up tests.",
+    note: "Timing: 4 minutes. Compute the normalizer and posterior. Discuss why action also depends on consequences and follow-up tests.",
     sourceSlides: [30],
   },
   {
     eyebrow: "Student participation · Bayes' rule",
     title: "Dry conditions make sun much more probable than rain",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={31}
-          alt="Weather priors, wet and dry likelihoods, and question asking for weather given dry"
-          caption="Use the same tables that generated the product-rule joint distribution."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a weather posterior step"
-            eyebrow="Posterior distribution"
-            items={weatherCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.weatherPanel}>
+          <SourceFragment file="image9.png" alt="Sun and rain among four possible weather states" contain />
+          <ProbabilityTable caption="Prior P(W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.8"] }, { values: ["rain", "0.2"] }]} />
+          <ProbabilityTable caption="Likelihood P(dry | W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.9"] }, { values: ["rain", "0.3"] }]} />
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a weather posterior step" eyebrow="Posterior distribution" items={weatherCases} />
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve the full speaker-note derivation: P(dry)=0.78, P(sun|dry)=0.923, and P(rain|dry)=0.077. Require the sum-to-one check.",
+    note: "Timing: 3 minutes. Compute P(dry)=0.78, P(sun|dry)=0.923, and P(rain|dry)=0.077. Require the sum-to-one check.",
     sourceSlides: [31],
   },
   {
     eyebrow: "General Bayes theorem · Four quantities",
     title: "The posterior combines prior belief, likelihood, and evidence prevalence",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={32}
-          alt="General Bayes theorem with prior, likelihood, marginal evidence, and posterior meanings"
-          caption="The general formula includes total probability in the denominator."
-        />
-        <section>
-          <article><span>Prior · P(H)</span><p>How plausible was the hypothesis before this evidence?</p></article>
-          <article><span>Likelihood · P(e|H)</span><p>How compatible is the evidence with this hypothesis?</p></article>
-          <article><span>Evidence · P(e)</span><p>How probable is the evidence across the full hypothesis partition?</p></article>
-          <article><span>Posterior · P(H|e)</span><p>How plausible is the hypothesis after observing the evidence?</p></article>
-        </section>
+      <div className={styles.bayesBoard}>
+        <Formula>P(H | e) = P(e | H) P(H) / Σᵢ P(e | Hᵢ)P(Hᵢ)</Formula>
+        <div className={styles.cardGrid}>
+          <ConceptCard label="Prior · P(H)" title="Before"><p>How plausible was H before this evidence?</p></ConceptCard>
+          <ConceptCard label="Likelihood · P(e|H)" title="Compatibility"><p>How well does H predict the evidence?</p></ConceptCard>
+          <ConceptCard label="Evidence · P(e)" title="Prevalence"><p>How probable is e across all hypotheses?</p></ConceptCard>
+          <ConceptCard label="Posterior · P(H|e)" title="After"><p>How plausible is H after observing e?</p></ConceptCard>
+        </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve every physical meaning and the total-probability denominator. Explain the note definition of argmax in preparation for hypothesis selection.",
+    note: "Timing: 3 minutes. Point to each term in the formula and match it to its physical meaning.",
     sourceSlides: [32],
   },
   {
     eyebrow: "Hypothesis selection · MAP versus maximum likelihood",
     title: "Including the prior makes the rule MAP, not maximum likelihood",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={33}
-          alt="Probabilistic inference frame labeled maximum likelihood with argmax likelihood times prior"
-          caption="Inspect the complete source formulation before comparing the two estimators."
-        />
-        <section>
-          <article><span>MAP</span><p><strong>arg maxₕ P(E|h)P(h)</strong> chooses the largest posterior because P(E) is common to every h.</p></article>
-          <article><span>Maximum likelihood</span><p><strong>arg maxₕ P(E|h)</strong> compares likelihoods and omits the prior.</p></article>
-          <article><span>When equal</span><p>With a uniform prior over hypotheses, MAP and maximum likelihood select the same h.</p></article>
-          <SearchCallout label="Terminology correction" tone="amber">
-            Dropping P(E) is valid for the argmax; retaining P(h) means the estimator is maximum a posteriori.
-          </SearchCallout>
-        </section>
+      <div className={styles.comparison}>
+        <ConceptCard label="Maximum likelihood" title="arg maxₕ P(E | h)"><p>Chooses the hypothesis that makes the evidence most likely. The prior is omitted.</p></ConceptCard>
+        <ConceptCard label="Maximum a posteriori" title="arg maxₕ P(E | h)P(h)"><p>Chooses the most probable hypothesis after evidence. P(E) is common and can be dropped.</p></ConceptCard>
+        <div className={styles.equalPrior}>
+          <strong>Uniform prior</strong><span>⇒</span><p>MAP and ML choose the same hypothesis.</p>
+        </div>
+        <SearchCallout label="Terminology check" tone="amber">Dropping P(E) is valid for the argmax. Keeping P(h) means the estimator is MAP.</SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the source equation and class-selection question. Explicitly correct the title: argmax P(E|h)P(h) is MAP; maximum likelihood omits P(h).",
+    note: "Timing: 3 minutes. Have students compare the two objectives and state exactly when they agree.",
     sourceSlides: [33],
   },
   {
     eyebrow: "Worked example · Dealer inference",
     title: "The evidence normalizer combines all ways the observed purchase could occur",
     content: (
-      <div className="source-definition-layout">
-        <SourceFrame
-          slide={34}
-          alt="Bayes theorem dealer and car model example with complete calculation"
-          caption="The full scenario, priors, likelihoods, denominator, and posterior are preserved."
-        />
-        <section>
-          <ProbabilityPractice
-            ariaLabel="Choose a dealer-example calculation step"
-            eyebrow="Three-step solution"
-            items={dealerCases}
-          />
-        </section>
+      <div className={styles.twoColumn}>
+        <div className={styles.dealerPanel}>
+          <ProbabilityTable caption="Prior dealer probability" headers={["Dealer", "P(dᵢ)"]} rows={[{ values: ["d₁", "0.2"] }, { values: ["d₂", "0.4"], tone: "focus" }, { values: ["d₃", "0.4"] }]} />
+          <ProbabilityTable caption="Purchase likelihood" headers={["Dealer", "P(a₁ | dᵢ)"]} rows={[{ values: ["d₁", "0.2"] }, { values: ["d₂", "0.4"], tone: "focus" }, { values: ["d₃", "0.3"] }]} />
+          <Formula>P(d₂ | a₁) = 0.16 / 0.32 = 0.5</Formula>
+        </div>
+        <ProbabilityPractice ariaLabel="Choose a dealer-example calculation step" eyebrow="Three-step solution" items={dealerCases} />
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the speaker-note identity P(a1)=P(a1,d1)+P(a1,d2)+P(a1,d3). Have students compute the numerator, denominator, and final posterior 0.5.",
+    note: "Timing: 3 minutes. Compute numerator, denominator, and posterior. Preserve P(a1)=ΣᵢP(a1,di).",
     sourceSlides: [34],
   },
   {
     eyebrow: "Cumulative assessment · Probability foundations",
     title: "Represent uncertainty, compute an update, and defend the interpretation",
     content: (
-      <div className="search-exit">
-        <article>
-          <span>1 · Represent</span>
-          <h3>Build the model</h3>
-          <p>Define variables and domains, list the relevant outcomes, and verify that the joint distribution is nonnegative and normalized.</p>
-        </article>
-        <article>
-          <span>2 · Infer</span>
-          <h3>Show the calculation</h3>
-          <p>Select or marginalize rows, compute the evidence normalizer, apply the product, chain, or Bayes rule, and check the result.</p>
-        </article>
-        <article>
-          <span>3 · Interpret</span>
-          <h3>State what it means</h3>
-          <p>Distinguish event from random variable, posterior from likelihood, association from cause, and MAP from maximum likelihood.</p>
-        </article>
+      <div className={styles.exit}>
+        <ConceptCard label="1 · Represent" title="Build the model"><p>Define variables and domains. Verify a joint distribution is nonnegative and normalized.</p></ConceptCard>
+        <ConceptCard label="2 · Infer" title="Show the calculation"><p>Select or marginalize rows, compute the normalizer, and apply the correct probability rule.</p></ConceptCard>
+        <ConceptCard label="3 · Interpret" title="State what it means"><p>Distinguish event from variable, posterior from likelihood, association from cause, and MAP from ML.</p></ConceptCard>
         <aside>
-          <strong>Prepare for Meeting 10: independence, Naive Bayes, and Bayesian-network structure</strong>
-          <p>
-            Read George F. Luger, <em>Artificial Intelligence</em>, 6th ed.,
-            the stochastic-methods probability sections, and Stuart Russell
-            and Peter Norvig, <em>Artificial Intelligence: A Modern Approach</em>,
-            3rd ed., Chapter 13. Bring one example in which a prior changes the
-            selected hypothesis.
-          </p>
+          <strong>Prepare for Meeting 10</strong>
+          <p>Read George F. Luger, <em>Artificial Intelligence</em>, 6th ed., and Stuart Russell and Peter Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Chapter 13. Bring one example in which a prior changes the selected hypothesis.</p>
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Collect one complete response. The submission must include a normalized model, a transparent calculation, and an interpretation that uses the corrected terminology from the meeting.",
+    note: "Timing: 3 minutes. Collect one complete response with a normalized model, transparent calculation, and defensible interpretation.",
     sourceSlides: [1, 2, 20, 22, 25, 27, 29, 31, 32, 33, 34],
   },
 ];
