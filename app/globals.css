@@ -1455,12 +1455,14 @@ a:focus-visible {
 }
 
 .deck {
+  height: 100dvh;
   min-height: 100dvh;
   display: grid;
   grid-template-rows: 68px 1fr 70px;
   background:
     radial-gradient(circle at 92% 8%, rgba(31, 167, 201, 0.12), transparent 26rem),
     linear-gradient(135deg, #fbfdff 0%, #f4f7fb 100%);
+  overflow: hidden;
   position: relative;
 }
 
@@ -1532,10 +1534,12 @@ a:focus-visible {
 .slide {
   animation: enter 340ms ease both;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: calc(100dvh - 138px);
   margin: auto;
   max-height: calc(100dvh - 138px);
   min-height: 0;
+  min-width: 0;
   padding: clamp(22px, 3.8vh, 48px) clamp(28px, 6vw, 96px);
   width: min(1500px, 100%);
 }
@@ -1583,6 +1587,7 @@ a:focus-visible {
 .slide-content {
   align-self: stretch;
   min-height: 0;
+  min-width: 0;
 }
 
 .hero-layout,
@@ -5222,6 +5227,12 @@ kbd {
 
 .source-deck .slide-content {
   display: grid;
+  overflow: hidden;
+}
+
+.source-deck .slide-content > * {
+  min-height: 0;
+  min-width: 0;
 }
 
 .source-deck .source-concept,
@@ -5230,7 +5241,10 @@ kbd {
   display: flex;
   justify-content: center;
   margin: 0;
+  max-height: 100%;
+  max-width: 100%;
   min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -5306,9 +5320,10 @@ kbd {
 }
 
 .source-hero .source-concept {
-  aspect-ratio: 1;
+  aspect-ratio: auto;
+  height: 100%;
   justify-self: center;
-  width: min(35vw, 470px);
+  width: 100%;
 }
 
 .orientation-layout {
@@ -5429,13 +5444,16 @@ kbd {
   gap: clamp(28px, 5vw, 75px);
   grid-template-columns: 0.7fr 1.3fr;
   height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .source-practice-grid > .source-concept,
 .other-intelligence > .source-concept {
-  aspect-ratio: 1;
+  aspect-ratio: auto;
+  height: 100%;
   justify-self: center;
-  width: min(31vw, 420px);
+  width: 100%;
 }
 
 .source-practice-grid > div,
@@ -5596,9 +5614,10 @@ kbd {
   display: grid;
   gap: 14px;
   grid-template-rows: minmax(0, 1fr) auto;
-  height: min(59vh, 530px);
-  max-height: 100%;
+  height: 100%;
+  max-height: none;
   min-height: 0;
+  overflow: hidden;
 }
 
 .oil-sequence {
