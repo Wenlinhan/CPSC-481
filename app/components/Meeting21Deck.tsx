@@ -493,7 +493,7 @@ export function RagDeck() {
   const slides: SlideRecord[] = useMemo(
     () => [
       {
-        eyebrow: "Week 11 · Meeting 21",
+        eyebrow: "Module 14 · Lesson 21",
         minutes: 2,
         title: "RAG Foundations",
         subtitle: "Retrieval-Augmented Generation as an evidence pipeline",
@@ -1359,7 +1359,7 @@ export function RagDeck() {
           <aside aria-label="Slide overview" className="overview">
             <div className="overview-heading">
               <div>
-                <span>Week 11 · Meeting 21</span>
+                <span>Module 14 · Lesson 21</span>
                 <h2>RAG Foundations</h2>
               </div>
               <button aria-label="Close slide overview" onClick={() => setOverviewOpen(false)} type="button">

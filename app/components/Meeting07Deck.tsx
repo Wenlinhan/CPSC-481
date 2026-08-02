@@ -306,7 +306,7 @@ function SourceQuestionClinic() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 4 · Meeting 7 · Adversarial search",
+    eyebrow: "Module 5 · Lesson 7 · Adversarial search",
     title: "Game Trees, Minimax, and Evaluation Functions",
     subtitle: "How should an agent choose when another agent actively tries to defeat it?",
     content: (
@@ -862,7 +862,7 @@ export function Meeting07Deck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 4 · Meeting 7"
+      meetingLabel="Module 5 · Lesson 7"
       meetingTitle="Game Trees, Minimax, and Evaluation Functions"
       slides={slides}
       sourceCollectionLabel="L05_MiniMax&Pruning.pptx"

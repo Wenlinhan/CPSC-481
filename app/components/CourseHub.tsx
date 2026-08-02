@@ -2,75 +2,14 @@
 
 import Link from "next/link";
 import { type CSSProperties, useMemo, useState } from "react";
-import { modules } from "../data/course";
 
-export function CourseHub() {
-  const [query, setQuery] = useState("");
-  const [activeWeek, setActiveWeek] = useState<number | null>(null);
-  const visible = useMemo(() => modules.filter((module) => {
-    const haystack = `${module.title} ${module.meetings.map((meeting) => meeting.title).join(" ")}`.toLowerCase();
-    return (!activeWeek || module.week === activeWeek) && haystack.includes(query.toLowerCase());
-  }), [activeWeek, query]);
+const titles:Record<number,string>={1:"AI Applications, History, Intelligence, and Definitions",2:"Agents, Task Environments, Agent Types, and the Turing Test",3:"Problem Formulation and Breadth-First Search",4:"Depth-First, Uniform-Cost, and Search Evaluation",5:"Heuristic Functions, Hill Climbing, and Simulated Annealing",6:"Best-First Search, A*, and Heuristic Quality",7:"Game Trees, Minimax, and Evaluation Functions",8:"Alpha-Beta Pruning and Modern Game Search",9:"Evolutionary Computation and Genetic Algorithms",10:"Genetic Programming, Artificial Life, and Swarm Intelligence",11:"AAB Evidence Practicum",12:"Explaining AI to Nontechnical Audiences Age Five and Older",13:"Probability Foundations and Bayesian Inference",14:"Conditional Independence, Naive Bayes, and Bayesian Networks",15:"Machine Learning Foundations and Concept Learning",16:"Decision Trees, ID3, and Evaluation",17:"Applied Machine Learning",18:"Neural Networks",19:"Transformers and Attention",20:"Large Language Models",21:"RAG Foundations",22:"RAG Quality and Evaluation"};
+const lessons=(...ids:number[])=>ids.map(id=>({id,title:titles[id]}));
+const modules=[
+ {id:1,title:"Course Overview and Prerequisites",items:[]},{id:2,title:"Introduction to Artificial Intelligence",items:lessons(1,2)},{id:3,title:"State-Space Search",items:lessons(3,4)},{id:4,title:"Heuristics, Hill Climbing, and Simulated Annealing",items:lessons(5,6)},{id:5,title:"Game Search: Minimax and Alpha-Beta Pruning",items:lessons(7,8)},{id:6,title:"Evolutionary Computation, Genetic Programming, and Artificial Life",items:lessons(9,10)},{id:7,title:"Midterm Review",items:[]},{id:8,title:"Midterm Exam",items:[]},{id:9,title:"AI Literacy and AAB Evidence",items:lessons(11,12)},{id:10,title:"Reasoning Under Uncertainty",items:lessons(13,14)},{id:11,title:"Machine Learning Foundations",items:lessons(15,16)},{id:12,title:"Applied Machine Learning and Neural Networks",items:lessons(17,18)},{id:13,title:"Transformers and Large Language Models",items:lessons(19,20)},{id:14,title:"Retrieval-Augmented Generation",items:lessons(21,22)},{id:15,title:"Final Review",items:[]},
+];
 
-  return (
-    <main className="course-hub">
-      <header className="course-hero">
-        <nav><span className="course-code">CPSC 481</span><span>Introduction to Artificial Intelligence</span></nav>
-        <div className="course-hero-grid">
-          <section>
-            <span className="hub-eyebrow">15 modules · 30 class meetings · one course site</span>
-            <h1>Learn AI by explaining, tracing, building, and evaluating it.</h1>
-            <p>Each 75-minute meeting develops a small set of college-level knowledge points through explanation, worked examples, interactive demonstrations, guided practice, and formative assessment.</p>
-            <div className="hero-actions">
-              <Link href="/meetings/01">Begin Meeting 1</Link>
-              <a href="#modules">Browse all modules</a>
-            </div>
-          </section>
-          <div className="course-orbit" aria-label="Course concept map">
-            <strong>AI</strong>
-            {["Agents", "Search", "Uncertainty", "Learning", "LLMs", "Evidence"].map((item, index) =>
-              <span key={item} style={{ "--i": index } as CSSProperties}>{item}</span>)}
-          </div>
-        </div>
-      </header>
-
-      <section className="course-method">
-        {[
-          ["01", "Explain", "Build the mental model and define the boundary."],
-          ["02", "Demonstrate", "Make the algorithm or system behavior visible."],
-          ["03", "Practice", "Trace, calculate, design, or critique in class."],
-          ["04", "Assess", "Reveal reasoning and misconceptions before moving on."],
-        ].map((item) => <article key={item[0]}><span>{item[0]}</span><h2>{item[1]}</h2><p>{item[2]}</p></article>)}
-      </section>
-
-      <section className="module-browser" id="modules">
-        <div className="browser-heading">
-          <div><span className="hub-eyebrow">Course map</span><h2>Fifteen cumulative modules</h2></div>
-          <div className="course-filters">
-            <input aria-label="Search meetings" onChange={(event) => setQuery(event.target.value)} placeholder="Search a topic…" value={query} />
-            <select aria-label="Filter by module" onChange={(event) => setActiveWeek(event.target.value ? Number(event.target.value) : null)} value={activeWeek ?? ""}>
-              <option value="">All modules</option>
-              {modules.map((module) => <option key={module.week} value={module.week}>Module {module.week}</option>)}
-            </select>
-          </div>
-        </div>
-        <div className="module-grid">
-          {visible.map((module) => (
-            <article className="module-card" key={module.week}>
-              <div className="module-number">{String(module.week).padStart(2, "0")}</div>
-              <div className="module-copy"><span>Module {module.week}</span><h3>{module.title}</h3></div>
-              <div className="meeting-links">
-                {module.meetings.map((meeting) => (
-                  <Link href={`/meetings/${String(meeting.id).padStart(2, "0")}`} key={meeting.id}>
-                    <span>Meeting {meeting.id}</span><strong>{meeting.title}</strong><i aria-hidden="true">→</i>
-                  </Link>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-      <footer className="course-footer"><strong>CPSC 481</strong><span>California State University, Fullerton</span></footer>
-    </main>
-  );
+export function CourseHub(){
+ const [query,setQuery]=useState("");const [active,setActive]=useState<number|null>(null);const visible=useMemo(()=>modules.filter(m=>(!active||m.id===active)&&`${m.title} ${m.items.map(x=>x.title).join(" ")}`.toLowerCase().includes(query.toLowerCase())),[active,query]);
+ return <main className="course-hub"><header className="course-hero"><nav><span className="course-code">CPSC 481</span><span>Introduction to Artificial Intelligence</span></nav><div className="course-hero-grid"><section><span className="hub-eyebrow">15 modules · 22 sequential lessons · midterm and final</span><h1>Learn AI by explaining, tracing, building, and evaluating it.</h1><p>Each 75-minute lesson develops college-level knowledge through explanation, worked examples, interactive demonstrations, guided practice, and formative assessment.</p><div className="hero-actions"><Link href="/lessons/01">Begin Lesson 1</Link><a href="#modules">Browse all modules</a></div></section><div className="course-orbit" aria-label="Course concept map"><strong>AI</strong>{["Agents","Search","Evolution","Learning","LLMs","Evidence"].map((x,i)=><span key={x} style={{"--i":i} as CSSProperties}>{x}</span>)}</div></div></header><section className="course-method">{[["01","Explain","Build the mental model and define its boundary."],["02","Demonstrate","Make algorithm and system behavior visible."],["03","Practice","Trace, calculate, design, or critique in class."],["04","Assess","Reveal reasoning and misconceptions before moving on."]].map(x=><article key={x[0]}><span>{x[0]}</span><h2>{x[1]}</h2><p>{x[2]}</p></article>)}</section><section className="module-browser" id="modules"><div className="browser-heading"><div><span className="hub-eyebrow">Course map</span><h2>Fifteen cumulative modules</h2></div><div className="course-filters"><input aria-label="Search lessons" onChange={e=>setQuery(e.target.value)} placeholder="Search a topic…" value={query}/><select aria-label="Filter by module" onChange={e=>setActive(e.target.value?Number(e.target.value):null)} value={active??""}><option value="">All modules</option>{modules.map(m=><option key={m.id} value={m.id}>Module {m.id}</option>)}</select></div></div><div className="module-grid">{visible.map(m=><article className="module-card" key={m.id}><div className="module-number">{String(m.id).padStart(2,"0")}</div><div className="module-copy"><span>Module {m.id}</span><h3>{m.title}</h3></div><div className="meeting-links">{m.items.length?m.items.map(x=><Link href={`/lessons/${String(x.id).padStart(2,"0")}`} key={x.id}><span>Lesson {x.id}</span><strong>{x.title}</strong><i>→</i></Link>):<div className="module-phase-label">{m.id===1?"Orientation and prerequisites":m.id===7?"Review and catch up":m.id===8?"Midterm examination":"Final review and synthesis"}</div>}</div></article>)}</div></section><footer className="course-footer"><strong>CPSC 481</strong><span>California State University, Fullerton</span></footer></main>;
 }

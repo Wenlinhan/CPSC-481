@@ -297,7 +297,7 @@ export function RagQualityDeck() {
   const slides: SlideRecord[] = useMemo(
     () => [
       {
-        eyebrow: "Week 11 · Meeting 22",
+        eyebrow: "Module 14 · Lesson 22",
         title: "RAG Evaluation, Reliability, and Guardrails",
         subtitle: "From a working demo to a system whose evidence, failures, and escalation paths can be tested",
         content: (
@@ -885,7 +885,7 @@ export function RagQualityDeck() {
         <div className="progress-wrap"><div className="progress-meta"><span>RAG Evaluation, Reliability, and Guardrails</span><span>{current + 1} / {total}</span></div><div aria-label={`${Math.round(((current + 1) / total) * 100)} percent complete`} aria-valuemax={total} aria-valuemin={1} aria-valuenow={current + 1} className="progress" role="progressbar"><i style={{ width: `${((current + 1) / total) * 100}%` }} /></div></div>
         <button aria-label="Next slide" disabled={current === total - 1} onClick={() => goTo(current + 1)} type="button">→</button>
       </footer>
-      {overviewOpen && <div className="overview-backdrop" role="presentation"><aside aria-label="Slide overview" className="overview"><div className="overview-heading"><div><span>Week 11 · Meeting 22</span><h2>RAG Evaluation, Reliability, and Guardrails</h2></div><button aria-label="Close slide overview" onClick={() => setOverviewOpen(false)} type="button">×</button></div><nav aria-label="Presentation slides">{slides.map((item, index) => <button aria-current={index === current ? "page" : undefined} key={`${item.eyebrow}-${item.title}`} onClick={() => goTo(index)} type="button"><span>{String(index + 1).padStart(2, "0")}</span><div><small>{item.eyebrow}</small><strong>{item.title}</strong></div></button>)}</nav></aside></div>}
+      {overviewOpen && <div className="overview-backdrop" role="presentation"><aside aria-label="Slide overview" className="overview"><div className="overview-heading"><div><span>Module 14 · Lesson 22</span><h2>RAG Evaluation, Reliability, and Guardrails</h2></div><button aria-label="Close slide overview" onClick={() => setOverviewOpen(false)} type="button">×</button></div><nav aria-label="Presentation slides">{slides.map((item, index) => <button aria-current={index === current ? "page" : undefined} key={`${item.eyebrow}-${item.title}`} onClick={() => goTo(index)} type="button"><span>{String(index + 1).padStart(2, "0")}</span><div><small>{item.eyebrow}</small><strong>{item.title}</strong></div></button>)}</nav></aside></div>}
     </main>
   );
 }

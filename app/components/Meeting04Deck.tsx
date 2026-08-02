@@ -131,7 +131,7 @@ function ReviewStudio() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 2 · Meeting 4",
+    eyebrow: "Module 3 · Lesson 4",
     title: "Uninformed Graph Search",
     subtitle: "Depth-first, breadth-first, bounded, uniform-cost, and backtracking strategies",
     content: (
@@ -662,7 +662,7 @@ export function UninformedSearchDeck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 2 · Meeting 4"
+      meetingLabel="Module 3 · Lesson 4"
       meetingTitle="Uninformed Graph Search"
       slides={slides}
       sourceCollectionLabel="L02_StateSpaceSearch.pptx"

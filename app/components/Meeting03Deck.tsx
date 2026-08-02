@@ -13,7 +13,7 @@ const MEETING_03_TIMING = [2, 2, 2, 3, 3, 2, 4, 2, 2, 2, 2, 3, 2, 3, 2, 3, 4, 3,
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 2 · Meeting 3",
+    eyebrow: "Module 3 · Lesson 3",
     title: "State-Space Search for Problem Solving",
     subtitle: "From a real problem to states, operators, graphs, and a searchable solution space",
     content: (
@@ -554,7 +554,7 @@ export function StateSpaceFoundationsDeck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 2 · Meeting 3"
+      meetingLabel="Module 3 · Lesson 3"
       meetingTitle="State-Space Search Foundations"
       slides={slides}
       sourceCollectionLabel="L02_StateSpaceSearch.pptx"

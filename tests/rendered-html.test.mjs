@@ -33,10 +33,19 @@ test("server-renders the unified course home", async () => {
   const html = await response.text();
   assert.match(html, /CPSC 481/);
   assert.match(html, /15 modules/);
-  assert.match(html, /30 class meetings/);
+  assert.match(html, /22 sequential lessons/);
   assert.match(html, /Learn AI by explaining, tracing, building, and evaluating it/);
-  for (let meeting = 1; meeting <= 30; meeting += 1) {
-    assert.match(html, new RegExp(`href="/meetings/${String(meeting).padStart(2, "0")}"`));
+  for (let lesson = 1; lesson <= 22; lesson += 1) {
+    assert.match(html, new RegExp(`href="/lessons/${String(lesson).padStart(2, "0")}"`));
+  }
+});
+
+test("all 22 sequential lesson routes render", async () => {
+  for (let lesson = 1; lesson <= 22; lesson += 1) {
+    const response = await render(`/lessons/${String(lesson).padStart(2, "0")}`);
+    assert.equal(response.status, 200, `Lesson ${lesson} should render`);
+    const html = await response.text();
+    assert.match(html, new RegExp(`Lesson ${lesson}\\b`));
   }
 });
 

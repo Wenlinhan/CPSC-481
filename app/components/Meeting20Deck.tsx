@@ -503,7 +503,7 @@ function LossVisual() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 10 · Meeting 20",
+    eyebrow: "Module 13 · Lesson 20",
     title: "From fluent continuation to verified output",
     subtitle: "LLM training, inference, structured outputs, hallucination, and risk-based verification.",
     content: (
@@ -905,7 +905,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting20Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 10 · Meeting 20"
+      meetingLabel="Module 13 · Lesson 20"
       meetingTitle="LLM Training, Structured Outputs, and Verification"
       slides={slides}
       sourceCollectionLabel="Current primary-source reading set"

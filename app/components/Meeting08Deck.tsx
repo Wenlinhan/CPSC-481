@@ -293,7 +293,7 @@ const practiceReveal = [
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 4 · Meeting 8 · Adversarial search",
+    eyebrow: "Module 5 · Lesson 8 · Adversarial search",
     title: "Alpha-Beta Pruning and Modern Game Search",
     subtitle: "How can an agent prove that part of a game tree cannot change its decision?",
     content: (
@@ -904,7 +904,7 @@ export function Meeting08Deck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 4 · Meeting 8"
+      meetingLabel="Module 5 · Lesson 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
       slides={slides}
       sourceCollectionLabel="L05_MiniMax&Pruning.pptx"

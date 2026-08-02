@@ -149,7 +149,7 @@ function TriarchicOverview() {
 
 const slides: LessonSlide[] = [
   {
-    eyebrow: "Week 1 · Meeting 1",
+    eyebrow: "Module 2 · Lesson 1",
     title: "Artificial Intelligence",
     minutes: 2,
     subtitle: "Applications, history, intelligence, and definitions",
@@ -386,5 +386,5 @@ const slides: LessonSlide[] = [
 ];
 
 export function AiFoundationsDeck() {
-  return <L01DeckShell hoverEffects meetingLabel="Week 1 · Meeting 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
+  return <L01DeckShell hoverEffects meetingLabel="Module 2 · Lesson 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
 }

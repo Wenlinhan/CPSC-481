@@ -682,7 +682,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting09Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 5 · Meeting 9"
+      meetingLabel="Module 10 · Lesson 13"
       meetingTitle="Probability Foundations and Bayesian Inference"
       resolveSourceReference={resolveMeeting09SourceReference}
       slides={slides}

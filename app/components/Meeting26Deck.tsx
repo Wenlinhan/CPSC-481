@@ -1107,7 +1107,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting26Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 13 / Meeting 26"
+      meetingLabel="Module 9 · Lesson 12"
       meetingTitle="Explaining AI to Nontechnical Audiences Age Five and Older"
       slides={slides}
       sourceCollectionLabel="Current AI-literacy and communication reading set"

@@ -387,7 +387,7 @@ function AnnealingAcceptanceLab() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 3 · Meeting 5",
+    eyebrow: "Module 4 · Lesson 5",
     title: "Heuristic Search and Local Search",
     subtitle: "How can an agent make progress when exhaustive search is impossible?",
     content: (
@@ -1018,7 +1018,7 @@ export function HeuristicLocalSearchDeck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 3 · Meeting 5"
+      meetingLabel="Module 4 · Lesson 5"
       meetingTitle="Heuristic Search and Local Search"
       slides={slides}
       sourceCollectionLabel="L03_Heuristic, HillClimbing&SA.pptx"

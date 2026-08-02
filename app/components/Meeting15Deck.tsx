@@ -1029,7 +1029,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting15Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 8 - Meeting 15"
+      meetingLabel="Module 12 · Lesson 17"
       meetingTitle="Supervised Learning Evaluation and Reproducible Pipelines"
       resolveSourceReference={resolveMeeting15SourceReference}
       slides={slides}

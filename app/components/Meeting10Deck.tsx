@@ -433,7 +433,7 @@ function NaiveBayesModelAudit() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 5 · Meeting 10 · Structured uncertainty",
+    eyebrow: "Module 10 · Lesson 14 · Structured uncertainty",
     title: "Conditional Independence, Bayesian Networks, and Naive Bayes",
     subtitle: "How can a small set of local assumptions represent and query a much larger joint distribution?",
     content: (
@@ -1024,7 +1024,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting10Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 5 · Meeting 10"
+      meetingLabel="Module 10 · Lesson 14"
       meetingTitle="Conditional Independence, Bayesian Networks, and Naive Bayes"
       resolveSourceReference={resolveMeeting10SourceReference}
       slides={slides}

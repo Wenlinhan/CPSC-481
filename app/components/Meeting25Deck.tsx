@@ -839,7 +839,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting25Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 13 / Meeting 25"
+      meetingLabel="Module 9 · Lesson 11"
       meetingTitle="AAB Evidence Practicum: Finding and Reviewing Research"
       slides={slides}
       sourceCollectionLabel="Current AAB and scholarly-source reading set"

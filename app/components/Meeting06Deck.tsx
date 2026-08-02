@@ -352,7 +352,7 @@ function AStarApplicationPractice() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 3 · Meeting 6 · Informed search",
+    eyebrow: "Module 4 · Lesson 6 · Informed search",
     title: "Best-First Search, A*, and Heuristic Quality",
     subtitle: "How should a search agent combine cost already paid with cost it predicts remains?",
     content: (
@@ -1014,7 +1014,7 @@ export function Meeting06Deck() {
   return (
     <SourceDeckShell
       hoverEffects
-      meetingLabel="Week 3 · Meeting 6"
+      meetingLabel="Module 4 · Lesson 6"
       meetingTitle="Best-First Search, A*, and Heuristic Quality"
       slides={slides}
       sourceCollectionLabel="L04_BFS&AStar.pptx"

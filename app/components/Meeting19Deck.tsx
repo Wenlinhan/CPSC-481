@@ -880,7 +880,7 @@ const slides: SourceLessonSlide[] = [
     content: (
       <div className="m19-cover">
         <section>
-          <span>Week 10 · Meeting 19 · 75 minutes</span>
+          <span>Module 13 · Lesson 19 · 75 minutes</span>
           <h3>How does a sequence of symbols become a context-sensitive computation?</h3>
           <p>We will follow every major tensor from input text to next-token scores.</p>
         </section>
@@ -1195,7 +1195,7 @@ const slides: SourceLessonSlide[] = [
 export function Meeting19Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 10 · Meeting 19"
+      meetingLabel="Module 13 · Lesson 19"
       meetingTitle="Tokens, Embeddings, Attention, and Transformers"
       slides={slides}
       sourceCollectionLabel={PRIMARY_SOURCE_LABEL}

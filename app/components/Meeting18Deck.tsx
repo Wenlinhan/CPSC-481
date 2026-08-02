@@ -947,7 +947,7 @@ loss.backward()`}</code></pre>
 export function Meeting18Deck() {
   return (
     <SourceDeckShell
-      meetingLabel="Week 9 · Meeting 18"
+      meetingLabel="Module 12 · Lesson 18 · Part B"
       meetingTitle="Backpropagation and Modern Neural-Network Training"
       resolveSourceReference={resolveMeeting18SourceReference}
       slides={slides}

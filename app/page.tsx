@@ -3,7 +3,7 @@ import { CourseHub } from "./components/CourseHub";
 
 export const metadata: Metadata = {
   title: "CPSC 481 · Introduction to Artificial Intelligence",
-  description: "A unified 15-module, 30-meeting interactive course in artificial intelligence.",
+  description: "A unified 15-module, 22-lesson interactive course in artificial intelligence.",
   openGraph: {
     title: "CPSC 481 · Introduction to Artificial Intelligence",
     description: "College-level AI lessons with explanations, demos, worked examples, practice, and assessment.",
