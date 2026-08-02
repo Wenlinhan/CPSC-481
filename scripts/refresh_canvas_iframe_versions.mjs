@@ -90,9 +90,11 @@ async function main() {
   ]);
 
   for (const id of meetings) {
-    const prefix = `Meeting ${String(id).padStart(2, "0")}:`;
-    const summary = pages.find((page) => page.title.startsWith(prefix));
-    if (!summary) throw new Error(`Canvas page not found: ${prefix}`);
+    const prefixes = id <= 8
+      ? [`Lesson ${id}:`, `Meeting ${String(id).padStart(2, "0")}:`]
+      : [`Meeting ${String(id).padStart(2, "0")}:`, `Lesson ${id}:`];
+    const summary = pages.find((page) => prefixes.some((prefix) => page.title.startsWith(prefix)));
+    if (!summary) throw new Error(`Canvas page not found: ${prefixes.join(" or ")}`);
 
     const page = await canvasFetch(`courses/${COURSE_ID}/pages/${summary.url}`);
     const updatedBody = versionBody(page.body ?? "", id);

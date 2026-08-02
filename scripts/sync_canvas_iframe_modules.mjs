@@ -132,10 +132,18 @@ function pageSlug(meeting) {
 }
 
 function pageTitle(meeting) {
+  if (meeting.id <= 8) return `Lesson ${meeting.id}: ${meeting.title}`;
   return `Meeting ${String(meeting.id).padStart(2, "0")}: ${meeting.title}`;
 }
 
 function moduleTitle(week) {
+  const redesigned = new Map([
+    [1, "Module 2: L01-Introduction"],
+    [2, "Module 3: L02-State Space Search"],
+    [3, "Module 4: L03-Heuristic, HillClimbing&SA"],
+    [4, "Module 5: L04-BFS&AStar"],
+  ]);
+  if (redesigned.has(week.week)) return redesigned.get(week.week);
   return `Week ${String(week.week).padStart(2, "0")}: ${week.module}`;
 }
 
@@ -181,14 +189,14 @@ async function main() {
       canvasPaginate(`courses/${COURSE_ID}/pages`),
     ]);
     const weeklyModules = existingModules
-      .filter((module) => /^Week \d\d:/.test(module.name))
+      .filter((module) => /^(?:Module [2-5]:|Week \d\d:)/.test(module.name))
       .sort((a, b) => a.position - b.position);
     let meetingPageItems = 0;
     let iframePages = 0;
     console.log(`Weekly modules: ${weeklyModules.length}`);
     for (const module of weeklyModules) {
       const items = await canvasPaginate(`courses/${COURSE_ID}/modules/${module.id}/items`);
-      const pages = items.filter((item) => item.type === "Page" && /^Meeting \d\d:/.test(item.title));
+      const pages = items.filter((item) => item.type === "Page" && /^(?:Meeting \d\d:|Lesson [1-8]:)/.test(item.title));
       meetingPageItems += pages.length;
       for (const page of pages) {
         const fullPage = await canvasFetch(`courses/${COURSE_ID}/pages/${page.page_url}`);
@@ -198,7 +206,7 @@ async function main() {
       }
       console.log(`${module.name}: ${pages.length} meeting page item(s), published=${module.published}`);
     }
-    const meetingPages = existingPages.filter((page) => /^Meeting \d\d:/.test(page.title));
+    const meetingPages = existingPages.filter((page) => /^(?:Meeting \d\d:|Lesson [1-8]:)/.test(page.title));
     console.log(`Meeting page items in modules: ${meetingPageItems}`);
     console.log(`Meeting pages in course: ${meetingPages.length}`);
     console.log(`Meeting pages with iframe body: ${iframePages}`);
