@@ -12,6 +12,7 @@ test("lesson image lightboxes fill the viewport while preserving aspect ratio", 
   assert.match(styles, /\.source-image-lightbox\s*>\s*img[\s\S]*height:\s*82vh[\s\S]*object-fit:\s*contain[\s\S]*width:\s*92vw/);
   assert.match(primitives, /export function EnlargeableImage/);
   assert.match(primitives, /event\.key === "Escape"/);
+  assert.match(primitives, /export function SearchSourceImage[\s\S]*event\.key === "Escape"[\s\S]*onClick=\{\(\) => setZoomed\(false\)\}/);
 });
 
 test("Lessons 1, 2, 9, and 10 use the shared enlargement control", async () => {

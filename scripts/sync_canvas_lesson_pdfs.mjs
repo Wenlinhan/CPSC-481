@@ -117,7 +117,8 @@ async function verifyCanvas() {
   for (const lesson of located) {
     const pdfItem = lesson.items.find(item => item.type === "File" && item.title === lesson.itemTitle);
     const file = files.find(candidate => candidate.id === pdfItem?.content_id);
-    if (!lesson.module.published || !lesson.pageItem.published || !pdfItem?.published || !file || file.content_type !== "application/pdf" || file.size < 100_000) {
+    const contentType = file?.["content-type"] ?? file?.content_type;
+    if (!lesson.module.published || !lesson.pageItem.published || !pdfItem?.published || !file || contentType !== "application/pdf" || file.size < 100_000) {
       throw new Error(`Canvas verification failed for Lesson ${lesson.id}`);
     }
     if (pdfItem.position !== lesson.pageItem.position + 1) throw new Error(`Lesson ${lesson.id} PDF is not directly after its lesson page`);
@@ -158,6 +159,22 @@ for (const lesson of located) {
     });
   }
   console.log(`Lesson ${lesson.id}: uploaded file ${file.id}; module item ${item.id}`);
+}
+
+// Canvas renumbers later items after every insertion. Re-read the finished
+// module state and place PDFs from bottom to top so each one remains directly
+// after its lesson page.
+const placed = locateLessons(await courseState()).sort((a, b) => {
+  if (a.module.id !== b.module.id) return a.module.position - b.module.position;
+  return b.pageItem.position - a.pageItem.position;
+});
+for (const lesson of placed) {
+  const pdfItem = lesson.items.find(item => item.type === "File" && item.title === lesson.itemTitle);
+  if (!pdfItem) throw new Error(`Canvas PDF item not found after upload: ${lesson.itemTitle}`);
+  await canvasFetch(`courses/${COURSE_ID}/modules/${lesson.module.id}/items/${pdfItem.id}`, {
+    method: "PUT",
+    body: JSON.stringify({ module_item: { position: lesson.pageItem.position + 1, published: true } }),
+  });
 }
 
 await verifyCanvas();

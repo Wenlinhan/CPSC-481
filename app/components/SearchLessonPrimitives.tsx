@@ -81,6 +81,21 @@ export function SearchSourceImage({
   sourceRoot?: string;
 }) {
   const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setZoomed(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [zoomed]);
+
   return (
     <>
       <figure className={`search-source-image ${className}`.trim()}>
@@ -98,6 +113,7 @@ export function SearchSourceImage({
           aria-label={`Enlarged source figure: ${alt}`}
           aria-modal="true"
           className="source-image-lightbox"
+          onClick={() => setZoomed(false)}
           role="dialog"
         >
           <button
@@ -108,7 +124,7 @@ export function SearchSourceImage({
           >
             ×
           </button>
-          <img alt={alt} src={`${sourceRoot}/${file}`} />
+          <img alt={alt} onClick={event => event.stopPropagation()} src={`${sourceRoot}/${file}`} />
           {caption && <p>{caption}</p>}
         </div>,
         document.body,
