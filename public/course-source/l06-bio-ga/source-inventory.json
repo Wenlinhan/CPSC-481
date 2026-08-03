@@ -1,0 +1,711 @@
+{
+  "source": "L06_Bio&GA.pptx",
+  "sourceFilename": "L06_Bio&GA.pptx",
+  "sourceSha256": "1e532c786a82b0586909581efe2e13287a5f28bcba67d3234eedcf63ed02849f",
+  "slideCount": 22,
+  "mediaCount": 3,
+  "media": [
+    {
+      "file": "image1.jpeg",
+      "archivePath": "ppt/media/image1.jpeg",
+      "bytes": 650483,
+      "sha256": "1401e389eb4d7f67c99b24e0371b86a81f3678aaa4a0f3eae1723d2ce6df079f",
+      "width": 1955,
+      "height": 1397,
+      "format": "JPEG"
+    },
+    {
+      "file": "image2.png",
+      "archivePath": "ppt/media/image2.png",
+      "bytes": 75475,
+      "sha256": "fce2ca5f72f5c701ddde8ac4a7ff99029ab9d7e0082e9e713df6d40f057a0373",
+      "width": 1572,
+      "height": 643,
+      "format": "PNG"
+    },
+    {
+      "file": "image3.png",
+      "archivePath": "ppt/media/image3.png",
+      "bytes": 12417,
+      "sha256": "5d4d82734a80c4429ede3d58d3fd1863d6973f0d85390d38a2718ea6e37a5e6a",
+      "width": 523,
+      "height": 235,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "1",
+        "Artificial Intelligence\u000bCPSC 481",
+        "Search based on Biological Metaphor for\n Problem Solving, Creativity, and Learning",
+        "More details and coding in CPSC 485 – Computational Bioinformatics"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-01.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-01.png",
+        "bytes": 125755,
+        "sha256": "25728225e4e5c723cdd4df7bf0d44c2a6897144f7e2703a6908129c1aad1c629",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "2",
+        "Lecture Overview",
+        "Molecular biology basics for computer scientists\nUsing biological metaphor such as DNA, evolution, survival of fitness\nEvolutionary approaches\nGenetic algorithm\nGenetic programming\nArtificial Life\nSwarm Intelligence\nSwarm particle optimization\nAnt colony optimization\nBees algorithm"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-02.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-02.png",
+        "bytes": 159946,
+        "sha256": "c9e6cb946a3b153223a8cff937277a68c170d32d31d973e9ad47ec78cedf579f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "A Crash Course of Molecular Biology",
+        "From atom to species\nAtom (Physical)  Molecule (Chemical)  Cell (Biological)  Organism (Physiological)  Species (Ecological)\n\nThree most important types of molecules in cells\nDNA (Deoxyribonucleic acid)\nRNA (Ribonucleic acid)\nProteins",
+        "3"
+      ],
+      "notes": "Protein is a CHAIN\nof amino acids",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-03.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-03.png",
+        "bytes": 160219,
+        "sha256": "51a909ef1a8091c0a712b0942112ec084889a79523b9775334c86152a36b1a5f",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "Protein",
+        "Proteins in cells are involved in virtually all cell functions. \nEach protein within the body has a specific function.\nEnzymes, carry signals, transport small molecules such as oxygen, form cellular structures (tissues),regulate cell processes  (such as defense mechanisms).\nWhat makes up a protein?\nAmino acids (20 different kinds found in nature)\n\nHow are proteins created?",
+        "4"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-04.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-04.png",
+        "bytes": 159850,
+        "sha256": "e92d083c7ff2b628b71f428b84b21da751f56bed0ee552be3b1527598a3f27e5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "How are Proteins Created in Cells?",
+        "Principle Idea of Molecular Biology\nDNA (code of life)  transcription  RNA (mRNA)  translation  Amino acids (Protein)\n\nStructures of DNA and protein\nDNA is 1D (linear sequence of characters).\nDNA is translated into 3D structure of proteins\nWhole process happens in 4D with time\n\nWhat makes up DNA and where is it located?",
+        "5"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-05.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-05.png",
+        "bytes": 183202,
+        "sha256": "7c0fb759a5f87f5ca19a146f92acf32e7913823b67840cb7d6b68296b8335f77",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "6"
+      ],
+      "notes": "",
+      "media": [
+        "image1.jpeg"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-06.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-06.png",
+        "bytes": 2251781,
+        "sha256": "673197c32948c4e26d6aa6fc15561e8def526677c9654cad3d9376357a10ddbc",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "DNA Structure and Genetic Code",
+        "DNA structure\nBase pairs (nucleotides, A-T, G-C) are complementary, known as Watson-Crick bps\nA double-stranded DNA sequence can be represented by strings of letters: \n5' ... TACTGAA ... 3'  or  3' ... ATGACTT ... 5' \nLength of DNA in bps (e.g. 100 kbp)\nGenes as genetic code\nSpecific sequence of nucleotides (A,T,G,C) along a chromosome holds information for constructing a protein\nA gene consisting of codons (3 base pairs corresponding to one amino acid)\n\nMendel’s idea of gene in 1860’s was elucidated 75 years later using DNA",
+        "7"
+      ],
+      "notes": "*What’s the advantage of DNA redundancy?\nbps = base pairs\nKbp\n: kilobase = 1000 bps\n5’ is 5\ncarbon chain\nfor\norganic compound",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-07.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-07.png",
+        "bytes": 238197,
+        "sha256": "1ec99ca1bb3039e27184aaadff85fe93dc94377b24f183694fe668fc23fe5431",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Evolution by Natural Selection",
+        "Genome and heredity\nGenome is a complete set of chromosomes for a specie. Half of the genome (DNA) is passed from parent to child. Thus, heredity is passed through the genome.  \nGenetic variation in a population is\nthe results of principal forces: mutation (various reasons) and crossover (sexual recombination) of genetic code (DNA) \nEvolution is\nthe results of natural selection (or survival of the fittest) over multiple generations through Inheritance (from reproduction) and genetic variation (from crossover and mutation).\n\nWhat do these DNA and Evolution have to do with our problem solving approaches?",
+        "8"
+      ],
+      "notes": "*Reproduction: DNA replication or mutation,\nasexual reproduction during\ncell division\nor crossover as a result of sexual recombination. DNA recombination.\nMutation reasons: environment, climate, pollution, disease",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-08.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-08.png",
+        "bytes": 258626,
+        "sha256": "ca936f08add22a1ad478b0978cd71f3a2adf0642fda9e496798fa0931997a02a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "Life System vs. Computer System",
+        "DNA as very complex source code of life\nA Big Problem to life scientists: Code of life is given but semantics are not, just like source code is given for a complex computer system such as Windows, Linux, Oracle, etc., without much of information to understand it.\nLife System  and Computer System analogy",
+        "9"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-09.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-09.png",
+        "bytes": 256644,
+        "sha256": "ae962b4ce39853755e0620c9fdbba275ca1a715365136f031925c116fc7c1986",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "How to use Biological Knowledge in Problem Solving",
+        "What we have learned from Biologists are:\nHow the information about functions and traits for an individual is represented and where it is stored.\nEvolutionary mechanism through Natural selection, Inheritance, and Genetic variation\nHow a member in a population is evaluated. \nWhat the operators for genetic variations are.\nHow a population is evolved (adapted, improved, or survived).\nImportance of diversity in a population in evolution\nHistory teaches us that all closed societies failed to survive.\nHow can we use this knowledge to solve problems?\nSimulation of the evolutionary mechanism\nEvolutionary algorithms",
+        "10"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-10.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-10.png",
+        "bytes": 273535,
+        "sha256": "124f85740aa8204e8349bc430d58656f1f097de4b04440f3635fe78c8aa2a18b",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "How can We Simulate Evolution?",
+        "Goal of evolution\nLife or Survival?\nHow is a population created?\nWho created a population?\nDriving force of evolution\nNatural selection by survival of fitness\nHow is a fitness measured and what are the criteria?\nInheritance and Genetic variations during evolution\nInheritance from parents (copy)\nCrossover\nMutation\nWhen does an evolutionary process stop?",
+        "11",
+        "Goal of evolution\nSolution for a problem \nHow is a population created?\nWho will create a population?\nDriving force of evolution\nNatural selection by survival of fitness\nHow is a fitness measured? Criteria?\nInheritance and Genetic variations during evolution\nInheritance from parents (copy)\nCrossover\nMutation\nWhen does an evolutionary process stop?\nas soon as a solution is found.",
+        "Evolution in Biology",
+        "Use of Evolution in Solving Problems with Computer"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-11.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-11.png",
+        "bytes": 319239,
+        "sha256": "b30477662c6949c605f2a899f1821aa59bf8821b40dcbf8b0098d74cffb67136",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "Evolutionary Computation (EC)",
+        "Motivation for EC is automatic programming.\nThe idea of automatic programming is natural, once you have learned how complex and tedious manual programming is. \nThe idea is almost as old as the computer itself [Friedberg, 1958]. \n General framework for Evolutionary Algorithm (EA)\nCreate initial solutions (based on a priori knowledge, results of earlier run, or random)\n\nLoop: Evaluate and select them by fitness function to determine: \nIf the solution(s) is (are) sufficiently good or max. cycles is reached\nStop and Return the solution(s).\nElse \nGenerate variants by genetic operators (mutation and crossover) for the population in next generation. \n\nMany variants to EA have been proposed.  Two most popular ones are: \nGenetic Algorithm (GA) and Genetic Programming (GP).",
+        "12"
+      ],
+      "notes": "+EC can be considered as a meta-search.\nFitness function and EC algorithm can be considered as meta-heuristic (high level general purpose search instead of problem specific heuristic)",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-12.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-12.png",
+        "bytes": 278501,
+        "sha256": "91717c7d4c9b76353321a83e298f90de1f874012dc197684cc3c192a64304ab5",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Genetic Algorithms (GA)",
+        "First introduced by Holland and his colleagues at the University of Michigan,1975\n\nA population, P(t) = {xt1, xt2, …, xtn}, xti is a candidate solution at time t (generation).",
+        "13",
+        "Key questions to ask to setup a GA for problem solving:\nHow do we represent a problem based on a biological metaphor? Representation\nHow do we create an initial population with candidate solutions? Initial population\nHow do we define fitness of each candidate solution in a population? Fitness criteria\nHow do we apply genetic operators? Genetic variation\nHow do we evolve the population? Creating next population"
+      ],
+      "notes": "",
+      "media": [
+        "image2.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-13.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-13.png",
+        "bytes": 372930,
+        "sha256": "74f7227a075ec9f0041e2b962637fb99cfdd739579a4eddf243ccb7a0a98a792",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "Answers to the Questions to Setup a GA",
+        "Representation for a candidate solution (DNA)\nUse a fixed length string (binary bit string).  \nInitial population of candidate solutions (chromosomes)\nCreate randomly (each candidate solution can be a random binary string.)\nFitness criteria (measure for survival of fitness)\nDefine a fitness function f(x) to evaluate each candidate solution. \nCreating next population with genetic variations (evolution)\nSelect survived candidate solutions.\nApply genetic operators to the selected solutions to produce improved solutions in next generation (offsprings with modified DNA).\nTerminating conditions and other parameters\npopulation size, probability of crossover, probability of mutation, number of generations, etc.",
+        "14"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-14.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-14.png",
+        "bytes": 285787,
+        "sha256": "9dc42812ca1ad059d1a57ccacd633f409e4a302b007038560c10fa8ac7ac1954",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Example: an Optimization Problem",
+        "Problem description\nGiven f(x) = x*sin(10*x) + 1.0, find xi such that f(xi)  f(x), for all x  [-1,2],          e.g., find xi in the range [-1,2] which maximizes the function f. \nPrecision of xi is 6 digits after decimal point.\nEncoding the problem and candidate solutions\nThe size of binary string (as a chromosome) can be determined as follow:\nVariable xi in the range [-1,2] can be divided into 3 ranges (-1~0, 0~1, and 1~2) which requires at least 3*1000000 equal size ranges. \nrequires 22 bits for a chromosome (from 2097152 = 221  3000000  222 = 4194304).\nDecoding from a binary string into a real number xi\nConvert a 22bits binary string <b21b20…b0> to base 10 and call it x’.\nGet the corresponding real number xi by xi = -1.0 + x’ * 3/(222-1) in the range of [-1, 2].\nE.g., a chromosome x’ = (1000101110110101000111) represents the number 0.637197 since x’ = (1000101110110101000111)2 = 2288967 and\n\t  xi = -1.0 + 2288967*(3/4194303) = 0.637197. \nNote: the chromosomes (0000…0000) and (1111…1111) represent -1.0 and 2.0, respectively.",
+        "15"
+      ],
+      "notes": "Why 1000000 (million)? Because of 6 digits\nWhy divide\ninto 3 ranges? To minimize the # of representations. The absolute range is\nx.xxxxxx\nWhere the function\nx_i\n= -1.0 + x’*3/(2^22-1) comes from?\nSince\n(0000…0000)\nand\n(1111…1111)\nrepresent -1.0 and 2.0",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-15.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-15.png",
+        "bytes": 338850,
+        "sha256": "a8aa71326b07b54b1dd4f0852fe6e8701c300787a8c5e372fae1330c08e9d8af",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "Example: GA Setup for Finding an \u000b             Optimal Value for the Function",
+        "Creating an Initial population\nCreate a population of candidate solutions by a population size.\nFor example, 300 candidates where each candidate is a binary vector of 22 bits. \nAll 22 bits for each candidate are initialized randomly.\nFitness function and evaluation of each candidate, si\nDefine a fitness function, fit(si) that returns a value, f(xi) from a binary string, si, where xi is the value decoded from the decoded function.\nApply fit() to all individuals in a population.\nCreating next population for evolution\nSelect the candidate solutions by fitness.\nPerform crossover and mutation probabilistically for genetic variations.\nCreate new population with modified candidates.\nOther parameter settings\nprobability of crossover = 0.5, probability of mutation = 0.01, \nnumber of generations = 1000. \nRUN the system when everything is ready!\nLooking for xi that returns the largest value of f(xi)",
+        "16"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-16.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-16.png",
+        "bytes": 320333,
+        "sha256": "4f971a32edd9030c7e000a2d902c8a2ec096b4a8322b0a0212460d96011a1994",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "*Crossover takes two candidates (randomly or strategically), determine the split points (in the middle or randomly), divides them, and swapping components to produce two new candidates",
+        "How Do Crossover and Mutation Work?",
+        "*Mutation takes a single candidate (randomly or strategically) and change one or some bits randomly.",
+        "# means “don’t care”",
+        "17",
+        "Choose a crossover point randomly\nor strategically.",
+        "Choose a mutation point randomly."
+      ],
+      "notes": "Crossover\nstrategy\n:\nSingle-point, Two-point, Uniform and half uniform\n(\na fixed mixing ratio between two parents\n),\nThree parent",
+      "media": [
+        "image3.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-17.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-17.png",
+        "bytes": 262793,
+        "sha256": "d54066d9abad54a300cb54efe21cdeb27402752c1fed7c9f726e62030e37be45",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "Example: Traveling Salesman Problem",
+        "Let’s assume a traveling salesman problem with nine cities.\nWhat can be the string representation of a member in a population? \nHow can we encode a member to a candidate solution?\n\nEncoding scheme #1\nUse 4 bits of binary to represent each city, 1, 2, …, 9 in order\nExample candidate solutions:\np1: 0001 0010 0011 …. 1000 1001      p2: 0101 0100 0011 …. 0100 0011\nCan we apply crossover and mutation operators? \nCan we easily define a fitness function?",
+        "18"
+      ],
+      "notes": "*genetic operators\ncannot be applied to #1: crossover may remove some cities, create redundant cities vising >1, and even illegal or out of order visit\n*crossover is possible but very difficult to avoid duplicate, mutation with restriction is applicable to #2.\n*#3: Starting from the second cut of one parent, the cities from the other parent are copied into same order, omitting cities already present. When the end of the string is reached, continue on from the beginning. Thus: 2 3 4 5 9 1 8 7 6. After cities, 4, 6, 5, 7 are removed, we get 2, 3, 9, 1, 8 that preserves the ordering in p2.",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-18.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-18.png",
+        "bytes": 197882,
+        "sha256": "45dfc0f96f9db8d1556125a65b0c805501e27d4f293b21a76402381ff1a9b946",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Example: Traveling Salesman Problem",
+        "Encoding scheme #2\nUse decimal numbers instead of binary bit string\np1 = (1 9 2 4 6 5 7 8 3)\t         p2 = (4 5 9 1 8 7 6 2 3) \n\nCan we apply crossover and mutation operators?\nMutation is possible if neighboring cities are exchanged",
+        "19"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-19.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-19.png",
+        "bytes": 130072,
+        "sha256": "67b7a87275f734c80fef3e5eb7c58abb64de897b61b1f4d5d11926900c240548",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "Example: Traveling Salesman Problem",
+        "Encoding scheme #2 with modified crossover operator\nUse decimal numbers instead of binary\np1 = (1 9 2 4 6 5 7 8 3)\t         p2 = (4 5 9 1 8 7 6 2 3) \nOrder Crossover\nMake two cut points in each of two parents randomly\np1 = (1 9 2 | 4 6 5 7 | 8 3)       p2 = (4 5 9 | 1 8 7 6 | 2 3)\nTwo children c1 and c2 are produced by copying the middle segments\nc1 = (x x x | 4 6 5 7 | x x)       c2 = (x x x | 1 8 7 6 | x x)\nStarting from the second cut, copy the cities from the other parent except for existing cities\nc1 = (2 3 9 | 4 6 5 7 | 1 8)       c2 = (3 9 2 | 1 8 7 6 | 4 5)  from 2, 3, 9,1,8 removing 4, 6, 5, 7",
+        "20"
+      ],
+      "notes": "How to copy?\nCross out 4 6 5 7 in p2, then 91823 left. Start from the second cut, copy 2 3 9 1 8 to c1",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-20.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-20.png",
+        "bytes": 237620,
+        "sha256": "07a82d185c748c846645060ab3561d7994fcd67f242381926ffccb3d93695c28",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "Evaluation of GA",
+        "Advantage\nOnce a problem is properly represented and encoded, representation can be compact, therefore the execution of evolution process can be quite efficient.\n\nDisadvantage\nRepresentation is limited to bit string.\nEncoding can be hard.\nThe success of GA often depends on finding a suitable way to encode the problem and solution.",
+        "21"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-21.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-21.png",
+        "bytes": 148123,
+        "sha256": "f4223e229f22b0cb4da79b4d562cd879f74591e6e3147a05836adf641121f93d",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "References",
+        "G. Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapter 12, Addison Wesley, 2009.\nD. Sadava, D.M. Hillis, H.C. Heller, M. Berenbaum, Life: The Science of Biology, Vol. II. W.H. Freeman, 2009.\nJ. Koza, Genetic Programming: On the Programming of Computers by Means of Natural Selection (Complex Adaptive Systems), The MIT press, 1992. \nD. Goldberg, Genetic Algorithms in Search, Optimization, and Machine Learning, Addison-Wesley, 1989.\nR.C. Eberhart, Y. Shi, and J. Kennedy, Swarm Intelligence, The Morgan Kaufmann, 2001.",
+        "22"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      },
+      "render": {
+        "file": "slide-22.png",
+        "path": "public/course-source/l06-bio-ga/source-slides/slide-22.png",
+        "bytes": 246015,
+        "sha256": "e063d8ce5e4d4f4cfdc288c05ec26ce95cb7ca5662b3fc352c7b98fec840b47a",
+        "width": 1600,
+        "height": 1200,
+        "format": "PNG"
+      }
+    }
+  ]
+}

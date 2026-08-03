@@ -20,7 +20,8 @@ import { RagDeck as Meeting21Deck } from "../../components/Meeting21Deck";
 import { RagQualityDeck as Meeting22Deck } from "../../components/Meeting22Deck";
 import { Meeting25Deck } from "../../components/Meeting25Deck";
 import { Meeting26Deck } from "../../components/Meeting26Deck";
-import { Lesson09Deck, Lesson10Deck } from "../../components/EvolutionaryComputationDecks";
+import { Lesson10Deck } from "../../components/EvolutionaryComputationDecks";
+import { Lesson09Deck } from "../../components/Lesson09GASlides";
 import { MergedNeuralNetworksDeck } from "../../components/MergedNeuralNetworksDeck";
 
 const lessonTitles: Record<number, string> = {

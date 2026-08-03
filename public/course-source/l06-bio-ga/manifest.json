@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "lesson": 9,
+  "route": "/lessons/09",
+  "preservationPolicy": "Every historical source page is mapped to at least one native lesson page; full-page renders appear only in the optional Course source dialog.",
+  "sources": [
+    {
+      "label": "L06_Bio&GA.pptx",
+      "sourceSha256": "1e532c786a82b0586909581efe2e13287a5f28bcba67d3234eedcf63ed02849f",
+      "pageCount": 22,
+      "inventory": {
+        "file": "source-inventory.json",
+        "sha256": "4a50262fbcc14ff4386cc495ca39f3ce4fba015624dc0c182e79d7d3ed4f5bb9"
+      },
+      "renderDirectory": "source-slides",
+      "sourcePageToLessonPages": {
+        "1": [
+          1
+        ],
+        "2": [
+          1,
+          2
+        ],
+        "3": [
+          3
+        ],
+        "4": [
+          3
+        ],
+        "5": [
+          4
+        ],
+        "6": [
+          4,
+          5
+        ],
+        "7": [
+          5
+        ],
+        "8": [
+          6
+        ],
+        "9": [
+          7
+        ],
+        "10": [
+          2,
+          8
+        ],
+        "11": [
+          2,
+          8
+        ],
+        "12": [
+          9
+        ],
+        "13": [
+          10,
+          11,
+          25
+        ],
+        "14": [
+          11,
+          25
+        ],
+        "15": [
+          12,
+          13,
+          14
+        ],
+        "16": [
+          15,
+          16,
+          18
+        ],
+        "17": [
+          17,
+          18
+        ],
+        "18": [
+          19,
+          20,
+          23
+        ],
+        "19": [
+          21,
+          23
+        ],
+        "20": [
+          22,
+          23
+        ],
+        "21": [
+          24,
+          25,
+          26
+        ],
+        "22": [
+          26
+        ]
+      }
+    }
+  ]
+}
