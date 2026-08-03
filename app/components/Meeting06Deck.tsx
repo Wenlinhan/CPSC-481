@@ -310,13 +310,60 @@ const applicationCases = [
   },
 ];
 
+function ApplicationScene({ kind, title }: { kind: number; title: string }) {
+  const line = { fill: "none", stroke: "currentColor", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
+  return (
+    <svg className="m6-application-scene" role="img" viewBox="0 0 360 190">
+      <title>{title} application scene</title>
+      <rect className="scene-sky" height="190" rx="22" width="360" />
+      {kind === 0 && <>
+        <path className="scene-route" d="M28 142 C102 128 128 78 213 91 S302 58 338 49" {...line} />
+        <path className="scene-ground" d="M20 155 H340" {...line} />
+        <path className="scene-object" d="M105 98 l62 -17 56 -48 13 5 -26 52 58 21 -5 12 -66 -7 -39 31 -12 -5 17 -35 -58 3z" {...line} />
+        <circle className="scene-marker" cx="319" cy="56" r="7" />
+      </>}
+      {kind === 1 && <>
+        <path className="scene-ground" d="M18 151 Q75 114 132 146 T244 138 T342 149" {...line} />
+        <path className="scene-object" d="M151 76 h58 M180 47 v58 M144 69 l16 14 M216 69 l-16 14 M164 52 l16 12 16-12 M164 100 l16-12 16 12" {...line} />
+        <rect className="scene-object-fill" height="31" rx="7" width="44" x="158" y="62" />
+        <path className="scene-route" d="M38 134 C86 83 121 133 176 112 S274 50 329 73" {...line} />
+        <circle className="scene-marker" cx="329" cy="73" r="7" />
+      </>}
+      {kind === 2 && <>
+        <path className="scene-ground" d="M22 148 H338 M68 35 V148 M292 35 V148" {...line} />
+        <rect className="scene-furniture" height="52" rx="6" width="64" x="213" y="84" />
+        <circle className="scene-object-fill" cx="127" cy="117" r="32" />
+        <circle className="scene-wheel" cx="112" cy="143" r="7" />
+        <circle className="scene-wheel" cx="142" cy="143" r="7" />
+        <path className="scene-object" d="M110 112 q17 -17 34 0 M119 122 h16" {...line} />
+        <path className="scene-route" d="M127 79 C142 48 198 50 222 72" {...line} />
+      </>}
+      {kind === 3 && <>
+        <rect className="scene-board" height="128" width="128" x="116" y="30" />
+        {[0, 1, 2, 3].map(row => [0, 1, 2, 3].map(col => <rect className={(row + col) % 2 ? "scene-square-dark" : "scene-square-light"} height="32" key={`${row}-${col}`} width="32" x={116 + col * 32} y={30 + row * 32} />))}
+        <path className="scene-piece" d="M144 130 h36 l-4 -13 h-28z M151 116 q22 -20 10 -42 q25 8 21 42z" {...line} />
+        <path className="scene-piece-alt" d="M202 130 h27 l-4 -12 h-19z M210 116 v-24 h13 v24 M209 91 h15" {...line} />
+        <path className="scene-route" d="M169 68 C195 49 216 56 221 83" {...line} />
+      </>}
+      {kind === 4 && <>
+        <path className="scene-ground" d="M30 148 H332" {...line} />
+        <path className="scene-bars" d="M67 138 v-29 h28 v29 M115 138 V82 h28 v56 M163 138 v-43 h28 v43 M211 138 V59 h28 v79 M259 138 V42 h28 v96" {...line} />
+        <path className="scene-route" d="M50 119 L101 93 151 107 202 73 252 83 310 38" {...line} />
+        <circle className="scene-marker" cx="310" cy="38" r="7" />
+        <path className="scene-risk" d="M59 43 l19 34 H40z M59 54 v10 M59 70 v1" {...line} />
+      </>}
+    </svg>
+  );
+}
+
 function AStarApplicationPractice() {
   const [active, setActive] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const item = applicationCases[active];
 
   return (
-    <div className="algorithm-selection">
+    <div className="algorithm-selection m6-application-practice">
       <nav>
         {applicationCases.map((entry, index) => (
           <button
@@ -328,23 +375,62 @@ function AStarApplicationPractice() {
             }}
             type="button"
           >
-            {index + 1}
+            <ApplicationScene kind={index} title={entry.title} />
+            <span>{entry.title}</span>
           </button>
         ))}
       </nav>
       <section>
-        <span>Application {active + 1} · {item.title}</span>
-        <h3>Would A* be a defensible model?</h3>
-        <p>
-          Name the state, actions, edge cost, heuristic, and environmental
-          assumptions before deciding.
-        </p>
-        <button onClick={() => setRevealed(value => !value)} type="button">
-          {revealed ? "Hide analysis" : "Reveal one defensible analysis"}
-        </button>
-        {revealed && (
-          <SearchCallout label={item.answer} tone="green">{item.why}</SearchCallout>
-        )}
+        <ApplicationScene kind={active} title={item.title} />
+        <div>
+          <span>Application {active + 1} · {item.title}</span>
+          <h3>Would A* be a defensible model?</h3>
+          <p>Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding.</p>
+          <button onClick={() => setRevealed(value => !value)} type="button">
+            {revealed ? "Hide analysis" : "Reveal one defensible analysis"}
+          </button>
+          {revealed && <SearchCallout label={item.answer} tone="green">{item.why}</SearchCallout>}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+const propertyQuestions = [
+  { prompt: "Is h1 admissible?", lens: "HEURISTIC h", answer: "Check 0 ≤ h1(n) ≤ h*(n) for every state." },
+  { prompt: "Is h2 consistent?", lens: "HEURISTIC h", answer: "Check h2(n) ≤ c(n,n′)+h2(n′) on every edge." },
+  { prompt: "Is DFS consistent?", lens: "CATEGORY MISMATCH", answer: "Consistency here is a property of h. Evaluate DFS for completeness, optimality, time, and space instead." },
+  { prompt: "Is best-first search complete?", lens: "SEARCH ALGORITHM", answer: "State which best-first variant and the space, cycle, and termination assumptions." },
+  { prompt: "Is algorithm A admissible?", lens: "SEARCH ALGORITHM", answer: "In the classical algorithm sense, ask whether A is guaranteed to return an optimal solution." },
+];
+
+function PropertyEvaluationFramework() {
+  const [active, setActive] = useState(0);
+  const item = propertyQuestions[active];
+
+  return (
+    <div className="m6-property-framework">
+      <section className="m6-property-lenses">
+        <article>
+          <header><span>01</span><div><strong>Heuristic function h</strong><small>Judge an estimate</small></div></header>
+          <p><b>Admissibility</b><em>0 ≤ h(n) ≤ h*(n)</em><small>Never overestimates true remaining cost.</small></p>
+          <p><b>Consistency</b><em>h(n) ≤ c(n,n′)+h(n′)</em><small>Also monotonicity or local admissibility.</small></p>
+          <p><b>Informedness</b><em>h1(n) ≤ h2(n) ≤ h*(n)</em><small>h2 is the tighter admissible lower bound.</small></p>
+        </article>
+        <article>
+          <header><span>02</span><div><strong>Search algorithm</strong><small>Judge the whole procedure</small></div></header>
+          <div className="m6-algorithm-gauges">
+            <p><b>Complete?</b><small>Finds a solution if one exists.</small></p>
+            <p><b>Optimal?</b><small>Returns a least-cost solution.</small></p>
+            <p><b>Time?</b><small>How much work grows?</small></p>
+            <p><b>Space?</b><small>How much must be stored?</small></p>
+          </div>
+          <aside><strong>Algorithm admissibility</strong> is the classical synonym for an optimality guarantee—not heuristic admissibility.</aside>
+        </article>
+      </section>
+      <section className="m6-question-sorter">
+        <nav>{propertyQuestions.map((question, index) => <button className={active === index ? "active" : ""} key={question.prompt} onClick={() => setActive(index)} type="button">{question.prompt}</button>)}</nav>
+        <div><span>{item.lens}</span><strong>{item.prompt}</strong><p>{item.answer}</p></div>
       </section>
     </div>
   );
@@ -928,18 +1014,10 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [18],
   },
   {
-    eyebrow: "Algorithm evaluation · Four criteria",
-    title: "Judge the whole search procedure, not h in isolation",
-    content: (
-      <div className="evaluation-matrix">
-        <div><span>Criterion</span><span>Greedy best-first</span><span>A*</span><span>Evidence to request</span></div>
-        <div><span>Completeness</span><p>Not in unrestricted spaces</p><p>Under standard finite-branching and cost conditions</p><p>Space, cycles, and termination assumptions</p></div>
-        <div><span>Optimality</span><p>No general guarantee</p><p>Admissible tree search; consistent or reopening graph search</p><p>h proof, edge costs, duplicate policy</p></div>
-        <div><span>Time</span><p>Often fast when h points well</p><p>Can still be exponential</p><p>Expanded nodes plus h-computation cost</p></div>
-        <div><span>Space</span><p>OPEN and CLOSED may grow greatly</p><p>OPEN and CLOSED may grow greatly</p><p>Peak stored records and representation size</p></div>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Have teams each defend one row. Emphasize that heuristics are fallible but indispensable when exact evaluation is unavailable or too costly. Ask for the implementation assumptions behind every guarantee.",
+    eyebrow: "Evaluation · First identify the object",
+    title: "Use one lens for h and another for the search algorithm",
+    content: <PropertyEvaluationFramework />,
+    note: "Timing: 5 minutes. First separate the object being judged: a heuristic function or a search procedure. For h, test admissibility, consistency (also monotonicity or local admissibility), and informedness. For the procedure, test completeness, optimality or algorithm admissibility, time, and space under explicit assumptions. Use every sorter prompt. Treat 'Is DFS consistent?' as a category mismatch under the heuristic definition of consistency.",
     sourceSlides: [19],
   },
   {
