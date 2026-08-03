@@ -51,20 +51,25 @@ test("Lesson 10 route uses the rebuilt deck", async () => {
   assert.match(route, /10:"Genetic Programming, Artificial Life, and Swarm Intelligence"/);
 });
 
-test("Lesson 10 uses legal interactive maze movement and recognizable swarm illustrations", async () => {
+test("Lesson 10 uses orientation-based mouse terminals and recognizable swarm illustrations", async () => {
   const deck = await readFile(deckPath, "utf8");
   const styles = await readFile(illustrationStylesPath, "utf8");
   for (const concept of [
     "InteractiveMouseMaze",
-    "Blocked: that move would hit a raised wall.",
+    "FORWARD is blocked by a raised wall",
     "Success! The rat reached the cheese.",
-    "Move mouse up",
+    "Move forward one step",
+    "Turn left without moving",
+    "Turn right without moving",
+    "action!==\"forward\"",
+    "executed actions",
     "Emergent flock",
     "Waggle dance",
     "Recruit + exploit",
     "AntNest",
     "AntFood",
     "Rock",
+    "Illustrated ant colony food discovery",
   ]) assert.match(deck, new RegExp(concept.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   for (const selector of [".l10-bird", ".l10-hive", ".l10-bee", ".l10-ant-real", ".l10-ant-nest", ".l10-ant-food", ".l10-rock"]) {
     assert.match(styles, new RegExp(selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));

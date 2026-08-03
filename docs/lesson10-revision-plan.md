@@ -55,6 +55,13 @@ Lesson 10 is a 75-minute, 28-page native HTML lecture grounded in all 33 pages o
 
 Visual QA: derive the path only from accepted grid moves so it cannot cross a wall; test arrow keys and buttons; expose focus and status text; verify raised walls, rat, cheese, and route at 1536×723 and a narrower viewport; preserve reduced-motion behavior.
 
+### Terminal-semantics correction
+
+| Page | Source requirement | Correct interaction | Verification |
+|---|---|---|---|
+| 12 | Terminal set is `{ FORWARD, LEFT, RIGHT }` | `FORWARD` attempts one grid step in the rat's current heading; `LEFT` rotates the rat 90° counterclockwise without changing its cell; `RIGHT` rotates 90° clockwise without changing its cell | Confirm each turn preserves position and route length; confirm a forward move uses the new heading; remove the unsupported backward/down action |
+| 13 | Every executed non-root function or terminal costs one unit | Count forward attempts and turns as execution actions; recompute remaining corridor distance only after a successful forward move; show `(actions + remaining distance)^2` | Confirm a turn changes action cost but not distance; confirm a blocked forward costs one action but does not cross a wall |
+
 ## Additional recognizable-object visual repairs
 
 | Page | Learning purpose | Visual repair | Interaction | Asset type |
@@ -63,6 +70,7 @@ Visual QA: derive the path only from accepted grid moves so it cannot cross a wa
 | 21 | Explain flocking as emergence from local rules | Replace abstract agent shapes with illustrated birds showing bodies, wings, beaks, tails, and changing flock geometry | Four-stage separation, alignment, cohesion, emergence demo | Native SVG |
 | 23 | Explain the Bees Algorithm lifecycle | Replace circles with a recognizable wooden hive, striped bees, and flower patches | Five-stage Scout, Evaluate, Waggle dance, Recruit + exploit, Abandon or revisit demo | Native SVG |
 | 24 | Explain ACO around an obstacle | Replace labeled circles and polygon with illustrated ants, a soil nest, irregular rock, and visible food | Five-stage trail interruption and shortest-path reinforcement demo | Native SVG |
+| 25 | Explain food discovery, recruitment, exploration, and evaporation | Reuse page 24's illustrated ants, soil nest, food, ground, trail styling, and numbered five-stage interaction rather than reverting to circles | Five-stage Random scouts, Find food, Recruit, Explore alternatives, Evaporate demo | Native SVG |
 
 ## Source-page destinations
 
