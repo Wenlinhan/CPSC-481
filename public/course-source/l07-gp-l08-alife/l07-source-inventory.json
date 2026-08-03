@@ -1,0 +1,238 @@
+{
+  "source": "L07_GP.pdf",
+  "sourceSha256": "b3ada7dc2e21589a6eec80220b03d086de4cacd842f37b769bd59972efe7a693",
+  "pageCount": 33,
+  "pages": [
+    {
+      "number": 1,
+      "width": 720,
+      "height": 540,
+      "text": "Genetic Programming\nRevised based on slides from Darius Makaitis, Creighton University",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-01.png"
+    },
+    {
+      "number": 2,
+      "width": 720,
+      "height": 540,
+      "text": "What is Genetic Programming?\n• Genetic programming is a model of programming\nwhich uses the ideas (and some of the\nterminology) of biological evolution to handle a\ncomplex problem. … Genetic programming can\nbe viewed as an extension of the genetic\nalgorithm, a model for testing and selecting the\nbest choice among a set of results, each\nrepresented by a string.\nhttp://whatis.techtarget.com/definition/0%2C%2Csid9_gci214639%2C00.html\n2",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-02.png"
+    },
+    {
+      "number": 3,
+      "width": 720,
+      "height": 540,
+      "text": "Why Programming?\nGenetic\n• “It is difficult, unnatural, and overly restrictive to attempt to represent\nhierarchies of dynamically varying size and shape with fixed length\ncharacter strings.” “For many problems in machine learning and\nartificial intelligence, the most natural representation for a solution is a\ncomputer program.” [Koza, 1994]\n• A parse tree is a good representation of a computer program for\nGenetic Programming\n• Cramer and Koza suggested that a tree structure (parse tree) should\nbe used as the program representation in a genome. They demonstrated\nits feasibility for automatic programming in general in1992.\n– A programming language LISP was used for problem\nrepresentation.\n3",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-03.png"
+    },
+    {
+      "number": 4,
+      "width": 720,
+      "height": 540,
+      "text": "Using Trees To Represent\nComputer Programs\nAn example LISP program:\n(+ 2 3 (* X 7) (/ Y 5))\nFunctions\n+\n2 3 * /\nX 7 Y 5\nTerminals\n4\nhttps://www.tutorialspoint.com/lisp/index.htm",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-04.png"
+    },
+    {
+      "number": 5,
+      "width": 720,
+      "height": 540,
+      "text": "GP Algorithm Sketch (called\nGenerational GP)\n(1) Initialize the population that consists of random programs.\n(2) Evaluate each individual program and assign a fitness to each\nindividual.\n(3) Do the followings until the new population is fully populated:\nSelect individuals using the selection algorithm.\nPerform genetic operations on the selected individuals.\nInsert the results of the genetic operations into the new population.\n(4) Stop if the termination criterion is fulfilled else go back to step (2) with\nthe new population.\n(5) Present the best individual in the population as the output from the\nalgorithm.\n5",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-05.png"
+    },
+    {
+      "number": 6,
+      "width": 720,
+      "height": 540,
+      "text": "Genetic Operations\n• Random Generation of the initial population\nof possible solutions\n• Mutation of promising solutions to create\nnew possible solutions\n• Genetic Crossover of two promising\nsolutions to create new possible solutions\n6",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-06.png"
+    },
+    {
+      "number": 7,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n• Randomly generate a program that takes two\narguments and uses basic arithmetic to return an\nanswer\n– Function set = {+, -, *, /}\n– Terminal set = {integers, X, Y}\n• Randomly select either a function or a terminal to\nrepresent our program\n• If a function was selected, recursively generate\nrandom programs to act as arguments\n7",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-07.png"
+    },
+    {
+      "number": 8,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ …)\n+\n8",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-08.png"
+    },
+    {
+      "number": 9,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ 2 …)\n+\n2\n9",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-09.png"
+    },
+    {
+      "number": 10,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ 2 3 …)\n+\n2 3\n10",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-10.png"
+    },
+    {
+      "number": 11,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ 2 3 (* …) …)\n+\n2 3 *\n11",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-11.png"
+    },
+    {
+      "number": 12,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ 2 3 (* X 7) (/ …))\n+\n2 3 * /\nX 7\n12",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-12.png"
+    },
+    {
+      "number": 13,
+      "width": 720,
+      "height": 540,
+      "text": "Randomly Generating Programs\n(+ 2 3 (* X 7) (/ Y 5))\n+\n2 3 * /\nX 7 Y 5\n13",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-13.png"
+    },
+    {
+      "number": 14,
+      "width": 720,
+      "height": 540,
+      "text": "Mutation\n(+ 2 3 (* X 7) (/ Y 5))\n+\n2 3 * /\nX 7 Y 5\n14",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-14.png"
+    },
+    {
+      "number": 15,
+      "width": 720,
+      "height": 540,
+      "text": "Mutation\nFirst pick a random node:\n(+ 2 3 (* X 7) (/ Y 5))\nleaf or non-leaf\n+\n2 3 * /\nX 7 Y 5\n15",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-15.png"
+    },
+    {
+      "number": 16,
+      "width": 720,
+      "height": 540,
+      "text": "Mutation\nDelete the node and its\n(+ 2 3 (+ (* 4 2) 3) (/ Y 5))\nchildren, and replace\nwith a randomly\n+ generated program\n2 3 + /\n* 3 Y 5\nGA mutation: only fixed length\nGP mutation: any length\n4 2\n16",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-16.png"
+    },
+    {
+      "number": 17,
+      "width": 720,
+      "height": 540,
+      "text": "Crossover\n(+ X (* 3 Y))\n(- (/ 25 X) 7)\n+\n-\nX *\n/ 7\n3 Y\n25 X\n17",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-17.png"
+    },
+    {
+      "number": 18,
+      "width": 720,
+      "height": 540,
+      "text": "Crossover\n(+ X (* 3 Y))\n(- (/ 25 X) 7)\nPick a random node in\neach program\n+\n-\nX *\n/ 7\n3 Y\n25 X\nNote: For GP, you don’t create parse trees for crossover. It’s just demo to explain\nhow crossover works. Actual implementation is just string manipulation of\n18\nprogram statements.",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-18.png"
+    },
+    {
+      "number": 19,
+      "width": 720,
+      "height": 540,
+      "text": "Crossover\n(+ X (* (/ 25 X) Y))\n(- 3 7)\nSwap the two nodes\n+\n-\nX *\n3 7\n/ Y\nGA crossover: only fixed length\n25 X\nGP crossover: any length\n19",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-19.png"
+    },
+    {
+      "number": 20,
+      "width": 720,
+      "height": 540,
+      "text": "What About Just Randomly\nGenerating Programs?\n• Is Genetic Programming really better than just randomly\ncreating new functions?\n• Yes!\n– Pete Angeline compared the result of evolving a tic-tac-toe\nalgorithm for 200 generations, with a population size of 1000 per\ngeneration, against 200,000 randomly generated algorithms\n– The best evolved program was found to be significantly superior to\nthe best randomly generated program [Genetic Programming FAQ,\n2002]\n• The key lies in using a fitness measure to determine which\nfunctions survive to reproduce in each generation\n20",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-20.png"
+    },
+    {
+      "number": 21,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\n• Apply Genetic Programming to the problem of\nnavigating a maze\n• What are our terminal and function sets?\n– Function Set =\n{If-Movement-Blocked, While-Not-At-Cheese*}\n– Terminal Set =\n{Move-Forward, Turn-Left, Turn-Right}\n* While-Not-At-Cheese will be used exclusively as the root node of the parse tree\n21",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-21.png"
+    },
+    {
+      "number": 22,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\nHow to get the starving mouse to the\ncheese?\nOne possible solution:\nWhile not at the cheese\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nMove forward\nCheese?\nTurn right 90 degrees\nBlocked?\nIs there a better solution for this maze?\nHow good is this solution?\n22",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-22.png"
+    },
+    {
+      "number": 23,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\nA fitness function:\n• Each function and terminal other than the\nroot node shall cost one unit to execute\n• If the mouse spends more than 100 units, it\ndies of hunger\n• The fitness measure for a program is\ndetermined be executing the program, then\nsquaring the sum of the total units spent\nand the final distance from the exit\n0\nCheese? • A lower fitness measure is preferable to a\nhigher fitness measure\n1 Blocked?\nOur mouse will die 10 moves from the exit\nafter spending 100 units, so the fitness measure\n1\nfor our program is 12100 = (100+10)^2\n23\n1\n1",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-23.png"
+    },
+    {
+      "number": 24,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\nWhile not at the cheese (12996)\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nMove forward one space\nWhile not at the cheese (12996)\nMove forward one space\nTurn right 90 degrees\nTurn left 90 degrees\n24",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-24.png"
+    },
+    {
+      "number": 25,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\nWhile not at the cheese (12996)\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nMove forward one space\nWhile not at the cheese (12996)\nMove forward one space\nTurn right 90 degrees\nTurn left 90 degrees\nMutation:\nWhile not at the cheese (12996)\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nTurn left 90 degrees\n25",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-25.png"
+    },
+    {
+      "number": 26,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\nWhile not at the cheese (12996)\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nMove forward one space\nWhile not at the cheese (12996)\nMove forward one space\nTurn right 90 degrees\nTurn left 90 degrees\nCrossover:\nWhile not at the cheese (11664) While not at the cheese (12996)\nIf the way ahead is blocked Turn left 90 degrees\nMove forward one space Turn left 90 degrees\nTurn right 90 degrees\nOtherwise\nMove forward one space\n26",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-26.png"
+    },
+    {
+      "number": 27,
+      "width": 720,
+      "height": 540,
+      "text": "Building a Better Mouse\n(after 4202 generations, with 1000 programs per generation)\nWhile not at the cheese\nIf the way ahead is blocked\nTurn right 90 degrees\nMove forward one space\nMove forward one space\nMove forward one space\nOtherwise\nMove forward one space\nTurn right 90 degrees\nMove forward one space\nIs this better?\nMove forward one space\nTurn left 90 degrees\nFitness measure: 2809\nIf the way ahead is blocked\nTurn left 90 degrees\nOtherwise\nMove forward one space\n27",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-27.png"
+    },
+    {
+      "number": 28,
+      "width": 720,
+      "height": 540,
+      "text": "Desirable Properties of Programs\nand Parameters for GP\n• Desirable properties of programs for GP\n– The functions and terminals used for a GP run should be powerful\nenough (sufficiency) to be able to represent solutions to the problem.\n– The functions and terminals should be application-specific and be\nselected to fit the problem domain (parsimony)\n• Parsimony is related to search space.\n– Each function in the function set should be able to handle gracefully all\nvalues it might receive as input (closure).\n• This property is less important in solving many real-world problems.\n• Parameters for GP\n– Population size, number of generations, probability of genetic operators,\ntermination conditions, etc.\n28",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-28.png"
+    },
+    {
+      "number": 29,
+      "width": 720,
+      "height": 540,
+      "text": "Tournament GP Algorithm\n• Algorithm sketch for tournament GP:\n(1) Initialize the population.\n(2) Randomly choose a subset of the population to take part in the tournament.\n(3) Evaluate the fitness value of each competitor in the tournament.\n(4) Select the winner or winners from the competitors in the tournament using the\nselection algorithm.\n(5) Apply genetic operators to the winner or winners of the tournament.\n(6) Replace the losers in the tournament with the results of the application of the\ngenetic operators to the winners of the tournament.\n(7) Repeat steps 2~6 until the termination criterion is met.\n(8) Choose the best individual in the population as the output from the algorithm.\n• Notes:\n– Also called steady state because the genetic operators are applied asynchronously and there is\nno centralized mechanism for explicit generations unlike generational GP.\n– The offspring replace existing individuals in the same population. There is a continuous flow\nof individuals meeting, mating, and producing offspring.\n29",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-29.png"
+    },
+    {
+      "number": 30,
+      "width": 720,
+      "height": 540,
+      "text": "Genetic Learning for a Function Fitting\n• Regression analysis\n– Involves the learning of the function that map a data item to a real valued prediction\nvariable.\n• Possible parameters for GP to learn a function\n• Objective: evolve functions fitting the values of the cases in training data set\nParameters: Values\n– Terminal set: variable x (input) and integer constants between –5 and +5\n– Function set: +, -, *, %\nTraining data set\n– Fitness function: Error function recordID Input Output\n1 0.000 0.000\n– Population size: 600\n2 0.100 0.005\n– Crossover probability: 90%\n3 0.200 0.020\n– Mutation probability: 5%\n4 0.300 0.045\n– Selection: tournament selection, size 4 5 0.400 0.080\n6 0.500 0.125\n– Tolerant error: 0.001\n7 0.600 0.180\n– Maximum number of generations: 100\n8 0.700 0.245\n– Maximum depth of tree after crossover: 200 9 0.800 0.320\n10 0.900 0.405\n– Maximum mutant depth: 4\n– Initialization method: grow A function learned, f(x) = x2/2\n• Why GP for regression analysis? What are pros and cons?\n30",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-30.png"
+    },
+    {
+      "number": 31,
+      "width": 720,
+      "height": 540,
+      "text": "GA/GP Algorithms Visualized as\nParallel Hill Climbing\n*The dots on the curve\nrepresent candidate solutions.\n*After n generations, they tend\nto cluster around areas of\nhigher solution quality. Why?\n*Why may the solution\nquality in each generation be\nfluctuating?\n• GA/GP works similarly to simulated annealing.\n• GA/GP works great for many optimization problems.\n• However, they may not be desirable for problems that can be solved algorithmically.\n• Support implicit parallelism.\n31",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-31.png"
+    },
+    {
+      "number": 32,
+      "width": 720,
+      "height": 540,
+      "text": "Real World Applications\n• Lockheed Martin Missiles and Space Co. - Near-Minimum-Time Spacecraft\nManeuvers [Howley, 96]\n• GP applied to the problem of rest-to-rest reorientation maneuvers for satellites\n• Optimal time solution is a vector of nonlinear differential equations, which are\ndifficult to solve\n• An approximate solution is necessary for a real-time controller\n• Results: Rest-to-Rest Maneuver Times (8 test cases)\n– Optimal Solution: 287.93 seconds\n– Expert Solution: 300.3 seconds\n– GP Solution: 292.8 seconds\n• Neural Network Optimization [Zhang, Mühlenbein, 1993]\n• Image Analysis [Poli, 1996a]\n• Generation of a knowledge base for expert systems [Bojarczuk, Lopes, Freitas,\n2000]\n• Fuzzy Logic Control [Akbarzadeh, Kumbla, Tunstel, Jamshidi, 2000]\n• Hardware Evolution (Field-Programmable Gate Array) [Thompson, 1997]\n32",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-32.png"
+    },
+    {
+      "number": 33,
+      "width": 720,
+      "height": 540,
+      "text": "References\n• Genetic Programming FAQ, 2002. http://www.cs.ucl.ac.uk/research/genprog/gp2faq/gp2faq.html\n• Akbarzadeh, M.R., Kumbla, K., Tunstel, E., Jarnshidi, M., “Soft Comuting for Autonomous Robotic Systems”,\nComputers and Electrivcal Engineering, 2002: 26, pp. 5-32.\n• Bojarczuk, C.C., Lopes, H.S., Freitas, A.A., “Genetic Programming for Knowledge Discovery In Chest-Pain\nDiagnosis”, IEEE Engineering in Medicine and Biology Magazine, 2000: 19, v. 4, pp. 38-44.\n• Howley, B., “Genetic Programming of Near-Minimum-Time Spacecraft Attitude Maneuvers”, Proceedings of Genetic\nProgramming 1996, Koza, J.R. et al. (Eds), MIT Press, 1996, pp. 98-109.\n• Koza, J., “Genetic Programming as a Means for Programming Computers by Natural Selection“, 1994.\n• Poli, R., “Genetic Programming for Image Analysis”, Proceedings of Genetic Programming 1996, Koza, J.R. et al.\n(Eds), MIT Press, 1996, pp. 363-368.\n• Poli, R., “Parallel Distributed Genetic Programming”, Technical report, The University of Birmingham, School of\nComputer Science, 1996.\n• Pujol, J.C.F., Poli, R., “Efficient Evolution of Asymetric Recurrent Neural Networks Using a Two-dimensional\nRepresentation”, 1997.\n• Thompson, A., “Artificial Evolution in the Physical World”, Evolutionary Robotics: From Intelligent Robots to\nArtificial Life, Gomi, T. (Ed.), AAI Books, 1997, pp. 101-125.\n• Zhang, B.T., Mühlenbein, H., “Genetic Programming of Minimal Neural Nets Using Occam’s Razor”, Proc. Of 5th\nInt. Conf. On Genetic Algorithms, 1993, pp. 342-349.\n• G. Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapter 12,\nAddison Wesley, 2009.\n• D. Sadava, D.M. Hillis, H.C. Heller, M. Berenbaum, Life: The Science of Biology, Vol. II. W.H. Freeman, 2009.\n• J. Koza, Genetic Programming: On the Programming of Computers by Means of Natural Selection (Complex\nAdaptive Systems), The MIT press, 1992.\n• D. Goldberg, Genetic Algorithms in Search, Optimization, and Machine Learning, Addison-Wesley, 1989.\n• R.C. Eberhart, Y. Shi, and J. Kennedy, Swarm Intelligence, The Morgan Kaufmann, 2001.\n33",
+      "render": "public/course-source/l07-gp-l08-alife/l07-source-slides/slide-33.png"
+    }
+  ]
+}

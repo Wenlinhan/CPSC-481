@@ -1,0 +1,902 @@
+{
+  "source": "L08_ArtificialLife.pptx",
+  "sourceFilename": "L08_ArtificialLife.pptx",
+  "sourceSha256": "17504bd6d3a9f56838496cb61d6ac8e2cae5e9038b184b3b43fb745d24f7c162",
+  "slideCount": 28,
+  "mediaCount": 22,
+  "media": [
+    {
+      "file": "hdphoto1.wdp",
+      "archivePath": "ppt/media/hdphoto1.wdp",
+      "bytes": 23938,
+      "sha256": "7c18dbe935ceb0f28b91974e9fdcc02d86d2c34dc6ce8caef15456f4ca42fb7e",
+      "format": "WDP"
+    },
+    {
+      "file": "image1.png",
+      "archivePath": "ppt/media/image1.png",
+      "bytes": 145664,
+      "sha256": "f52235208db987d3370068fe0c8d2a7583710ef99298645181c73e2f8ac23ba0",
+      "width": 333,
+      "height": 281,
+      "format": "PNG"
+    },
+    {
+      "file": "image10.png",
+      "archivePath": "ppt/media/image10.png",
+      "bytes": 67045,
+      "sha256": "47d940829bfc0dbca4485e6ecb8348ebec0777f74ed445582b417c3bf5132774",
+      "width": 216,
+      "height": 148,
+      "format": "PNG"
+    },
+    {
+      "file": "image11.png",
+      "archivePath": "ppt/media/image11.png",
+      "bytes": 24879,
+      "sha256": "1ee5426a8ff97a324a230e2c1573ea1efecf199784f4409ded150f6640c04259",
+      "width": 382,
+      "height": 237,
+      "format": "PNG"
+    },
+    {
+      "file": "image110.png",
+      "archivePath": "ppt/media/image110.png",
+      "bytes": 627,
+      "sha256": "25a649ec7af3ee65db203a5170876ea263926f2a8724b14e5c195beb35904dd7",
+      "width": 92,
+      "height": 50,
+      "format": "PNG"
+    },
+    {
+      "file": "image12.png",
+      "archivePath": "ppt/media/image12.png",
+      "bytes": 31403,
+      "sha256": "398d4bf0953912119f5e348c35fc8ffd3f70f3bdec06765555d9ca2baf665cc0",
+      "width": 319,
+      "height": 234,
+      "format": "PNG"
+    },
+    {
+      "file": "image120.png",
+      "archivePath": "ppt/media/image120.png",
+      "bytes": 636,
+      "sha256": "8efe49826a29aff15d5c16c29d7e3f4391ffded70bd1c6759af8be501c4dd816",
+      "width": 93,
+      "height": 50,
+      "format": "PNG"
+    },
+    {
+      "file": "image13.png",
+      "archivePath": "ppt/media/image13.png",
+      "bytes": 34390,
+      "sha256": "749a2d51c56263dd2487556d58e98d11303db4d5eda6067fd5c4aabb2123cc48",
+      "width": 405,
+      "height": 361,
+      "format": "PNG"
+    },
+    {
+      "file": "image130.png",
+      "archivePath": "ppt/media/image130.png",
+      "bytes": 617,
+      "sha256": "c8aeb7d309508270d17cbe251e9994a8e5e634b8f21f88bbffa37d0a4fc3461a",
+      "width": 92,
+      "height": 50,
+      "format": "PNG"
+    },
+    {
+      "file": "image14.jpeg",
+      "archivePath": "ppt/media/image14.jpeg",
+      "bytes": 9114,
+      "sha256": "8cbfcfc616e062ace0978344da2752ed477d53238aa387e63e9581efc2eb4ac7",
+      "width": 381,
+      "height": 191,
+      "format": "JPEG"
+    },
+    {
+      "file": "image15.png",
+      "archivePath": "ppt/media/image15.png",
+      "bytes": 19900,
+      "sha256": "6da3511ea26e96b99675549e3fa47eada974d743ae104bca1d02306100a39870",
+      "width": 168,
+      "height": 330,
+      "format": "PNG"
+    },
+    {
+      "file": "image16.png",
+      "archivePath": "ppt/media/image16.png",
+      "bytes": 3111,
+      "sha256": "8a162264f26c06578e1355e26a7c2400a5cc96af8a26b679d7379c1c9c34980d",
+      "width": 57,
+      "height": 112,
+      "format": "PNG"
+    },
+    {
+      "file": "image17.png",
+      "archivePath": "ppt/media/image17.png",
+      "bytes": 163527,
+      "sha256": "66667452e84decddc609fe5bd5f0265239429f7207625ae599840bf3a6b74ccf",
+      "width": 362,
+      "height": 252,
+      "format": "PNG"
+    },
+    {
+      "file": "image2.png",
+      "archivePath": "ppt/media/image2.png",
+      "bytes": 135805,
+      "sha256": "22960f89e47956e50951aff0932aea66ad6937c6113b6f6fd72d5ff4e6b7a1a8",
+      "width": 357,
+      "height": 211,
+      "format": "PNG"
+    },
+    {
+      "file": "image3.png",
+      "archivePath": "ppt/media/image3.png",
+      "bytes": 75716,
+      "sha256": "26cdac9551ceddc12b811f00442edd3fe5242254e2728b8c16e1bb49e3f822c1",
+      "width": 229,
+      "height": 180,
+      "format": "PNG"
+    },
+    {
+      "file": "image4.png",
+      "archivePath": "ppt/media/image4.png",
+      "bytes": 50601,
+      "sha256": "41ffa02e77c01dee0f1bd611728f0dbc369726e3c29f4627b488a5e481965329",
+      "width": 257,
+      "height": 155,
+      "format": "PNG"
+    },
+    {
+      "file": "image5.png",
+      "archivePath": "ppt/media/image5.png",
+      "bytes": 39628,
+      "sha256": "cccfcf57dd39a90a24d11a62a0ea5caaa9b26ef68e821e0eb035ead7f72cf262",
+      "width": 198,
+      "height": 113,
+      "format": "PNG"
+    },
+    {
+      "file": "image6.png",
+      "archivePath": "ppt/media/image6.png",
+      "bytes": 58581,
+      "sha256": "1d92c6e6038a60557797c4391f1a495e3e7bb8f1377ebf2cda99b7c2ba89fdc5",
+      "width": 205,
+      "height": 155,
+      "format": "PNG"
+    },
+    {
+      "file": "image7.png",
+      "archivePath": "ppt/media/image7.png",
+      "bytes": 38163,
+      "sha256": "1caa306ea09528846fd6765f613782d4993ad7fb092539e030964bef28da3bb0",
+      "width": 416,
+      "height": 225,
+      "format": "PNG"
+    },
+    {
+      "file": "image8.png",
+      "archivePath": "ppt/media/image8.png",
+      "bytes": 57850,
+      "sha256": "40dd958bf61b3885d503467aa27ede0436ffd5c5f0878f817f6aefc8bfd30f1a",
+      "width": 192,
+      "height": 126,
+      "format": "PNG"
+    },
+    {
+      "file": "image9.png",
+      "archivePath": "ppt/media/image9.png",
+      "bytes": 26320,
+      "sha256": "26c37eaf84b000de91702061292f06049e6a640bdd71c3053d4fb2b6f4e89f32",
+      "width": 168,
+      "height": 131,
+      "format": "PNG"
+    },
+    {
+      "file": "image90.png",
+      "archivePath": "ppt/media/image90.png",
+      "bytes": 2760,
+      "sha256": "3dd85b60cc51ccd23bebc49848487099de021c717a11fb2b0f47e8f70e57944f",
+      "width": 388,
+      "height": 60,
+      "format": "PNG"
+    }
+  ],
+  "slides": [
+    {
+      "number": 1,
+      "textBlocks": [
+        "Artificial Life",
+        "1",
+        "Artificial Life (ALife or A-Life) is a field of study on systems related to natural life, its processes, and its evolution, through the use of computer simulations, robotics, and biochemistry.\nto understand the underlying mechanics of biological phenomena.\nmostly created using simulators"
+      ],
+      "notes": "",
+      "media": [
+        "image1.png",
+        "image2.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 2,
+      "textBlocks": [
+        "Some of Notable Simulators",
+        "2",
+        "Polyworld (1990~) driven by neural net\n\nAvida (1993~) driven by executable DNA\n\nEcoSim (2009~) driven by fuzzy cognitive map\nhttps://sites.google.com/site/ecosimgroup/research/ecosystem-simulation\n\nOpenWorm (2011~) driven by Geppetto (simulation platform)\n\n\nNeurokernel (2014~) driven by Geppetto",
+        "http://www.openworm.org/",
+        "https://neurokernel.github.io/"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 3,
+      "textBlocks": [
+        "Swarm Intelligence",
+        "Swarm Intelligence (SI) is the collective behavior of decentralized, self-organized systems, natural or artificial.\nFirst introduced by G. Beni and J. Wang (1989), in the context of cellular robotic systems.\nSwarm is a loosely structured collection of interacting agents, showing a collective behavior.\nAn agent is an autonomous entity which observes through sensors and acts upon an environment using actuators.\nExample swarms are ant colonies, bee colonies, bird flocking, animal herding, crowd, etc.",
+        "3"
+      ],
+      "notes": "",
+      "media": [
+        "image3.png",
+        "image4.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 4,
+      "textBlocks": [
+        "Swarm Intelligence",
+        "SI systems consist typically of a population of simple agents interacting locally with one another and with their environment.\nAgents (such as ants, birds, people) follow very simple rules, local, and to a certain degree random. Interactions between such agents lead to the emergence of intelligent global group behavior without centralized control indicating how individual agents should behave.\nAdvantages: scalable, flexible, robust, adaptable.\nSome applications of swarm principles\nNetwork routing, crowd simulation, distributed problem solving, forecasting, data mining, military/space, optimization, etc.",
+        "4"
+      ],
+      "notes": "",
+      "media": [
+        "image3.png",
+        "image4.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 5,
+      "textBlocks": [
+        "Particle Swarm Optimization (PSO)",
+        "Inspired by the flocking and schooling patterns of birds and fish (R. Eberhart and J. Kennedy,1995). \nCommonly used for optimization problems",
+        "5",
+        "Parameters\n    A: Population of agents (particles)\n    f(): fitness function\nAlgorithm: to find an optimal value (location of food/shelter)\n    A = Particle_Initialization(); //random generated solutions\n    do \n         for each particle p in A do {\n              fp = f(p); \n              if fp is better than f(pBest)\n                  pBest = p; //pBest is the best p so far\n         }\n         gBest = pBest that is best p in A; //best p for the swarm\n\n         for each particle p in A { //update all agents in the population\n              v = v + c1*rand*(pBest – p) + c2*rand*(gBest – p);\n              p = p + v;  //position update by v\n         }\n    until termination condition",
+        "p: position of an agent (particle) in the solution space\nv: velocity of an agent’s (for path direction)\nc1 and c2: weights of local information ≈ 2 and (∑ci ≈ 4)\nrand: random  value 0 ~ 1\npBest: best position of the particle so far\ngBest: best position of the swarm\n(pBest – p): for personal influence, \n(gBest – p): social influence",
+        "What is the primary difference between PSO and GA?"
+      ],
+      "notes": "+ v is velocity\nbut is the amount of change in position (or rate of distance change in time).\n+ position update based on local\nbest (instead of crossover and mutation and fitness) using velocity\nis different from GA\n+\nthe optimal value can be the location of food source or destination of migration",
+      "media": [
+        "image5.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 6,
+      "textBlocks": [
+        "Demos",
+        "SpotMini Robots hauling a truck\nSpotMini Robots banana peel\nSpotMini Robots open doors\nSpotMini Robots dance",
+        "6"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 7,
+      "textBlocks": [
+        "Bees Algorithm",
+        "Behavior of bees\nScout bees search randomly from one flower patch to another, looking for nectar/pollen.\nThe bees return to the hive, deposit nectar/pollen, and advertise the patch at the dance floor to perform a waggle dance, providing the following information:\nDirection of flow patches (angle between the sun and the patch)\nDistance from the hive (duration of the dance)\nQuality rating (frequency of the dance)\nFollower bees go after the dancer bee to the path to gather food efficiently. \nThe same patch may be advertised in the waggle dance again by other bees, attracting more bees to the patches.\nUltimately a flower patch can be abandoned.\nBees algorithm emulates the behavior of real bees.",
+        "7",
+        "http://beesalgorithmsite.altervista.org/BeesAlgorithm.htm"
+      ],
+      "notes": "+\nA colony of honey bees can extend itself over long distances in multiple directions (e.g., 10km).\n+Flower patches with plentiful amounts of nectar or pollen are visited by more bees, whereas patches with less nectar or pollen receive fewer bees.\nand evaluate the different patches depending on certain quality threshold (e.g., sugar content)",
+      "media": [
+        "image10.png",
+        "image11.png",
+        "image6.png",
+        "image7.png",
+        "image8.png",
+        "image9.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 8,
+      "textBlocks": [
+        "Ant Colony Optimization (ACO)",
+        "Ants are capable of finding the shortest path from the food source to their nest using a chemical substance called pheromone to guide their search.\nAn ant may start an random walk, looking for food, leaving pheromone to remember the trail.\nA passing lost ant will follow a trail, depending on the quality of the pheromone laid on the ground as the ants move.\nRandom walk can be sometimes beneficial. \nPheromone is evaporated. So the more ants follow a path the stronger the path becomes, attracting more ants.\nACO emulates the behaviour of real ants.",
+        "8"
+      ],
+      "notes": "",
+      "media": [
+        "image12.png",
+        "image13.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 9,
+      "textBlocks": [
+        "9",
+        "Slides 8-21 are revised based on webcourse.cs.technion.ac.il/236818/Spring2013/ho/WCFiles/final22.pptx"
+      ],
+      "notes": "",
+      "media": [
+        "image110.png",
+        "image120.png",
+        "image130.png",
+        "image14.jpeg",
+        "image15.png",
+        "image90.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 10,
+      "textBlocks": [
+        "Pheromone trails: reconnect a broken line",
+        "This elementary behavior of real ants can be used to explain how they can find the shortest path that reconnects a broken line after the sudden appearance of an unexpected obstacle has interrupted the initial path.",
+        "Let us consider the following scenario:",
+        "Ants are moving on a straight line that connects a food source to their nest.",
+        "10"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 11,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path around an obstacle",
+        "An obstacle appears on the path.",
+        "This elementary behavior of real ants can be used to explain how they can find the shortest path that reconnects a broken line after the sudden appearance of an unexpected obstacle has interrupted the initial path.",
+        "11"
+      ],
+      "notes": "",
+      "media": [
+        "hdphoto1.wdp",
+        "image14.jpeg",
+        "image16.png",
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 12,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path around an obstacle",
+        "Those ants which are just in front of the obstacle cannot continue to follow the pheromone trail and therefore they have to choose between turning right or left. In this situation we can expect half the ants to choose to turn right and the other half to turn left.",
+        "This elementary behavior of real ants can be used to explain how they can find the shortest path that reconnects a broken line after the sudden appearance of an unexpected obstacle has interrupted the initial path.",
+        "12"
+      ],
+      "notes": "",
+      "media": [
+        "hdphoto1.wdp",
+        "image14.jpeg",
+        "image16.png",
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 13,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path around an obstacle",
+        "Those ants which choose, by chance, the shorter\npath around the obstacle will more rapidly reconstitute the interrupted pheromone trail compared to those which choose the longer path. Thus, the shorter path will receive a greater amount of pheromone per time unit and in turn a larger number of ants will choose the shorter path.",
+        "This elementary behavior of real ants can be used to explain how they can find the shortest path that reconnects a broken line after the sudden appearance of an unexpected obstacle has interrupted the initial path.",
+        "13"
+      ],
+      "notes": "",
+      "media": [
+        "hdphoto1.wdp",
+        "image14.jpeg",
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 14,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path around an obstacle",
+        "Shortest path is being obtained.",
+        "This elementary behavior of real ants can be used to explain how they can find the shortest path that reconnects a broken line after the sudden appearance of an unexpected obstacle has interrupted the initial path.",
+        "14"
+      ],
+      "notes": "",
+      "media": [
+        "hdphoto1.wdp",
+        "image14.jpeg",
+        "image16.png",
+        "image17.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 15,
+      "textBlocks": [
+        "Pheromone trails: sudden appearance of a food source",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "Let us describe the algorithm:",
+        "A small amount of ants travel randomly around the nest.",
+        "N",
+        "15"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 16,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "One of the ants find food source.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "16"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 17,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "When ant finds food, it returns to the nest while laying down pheromones trail.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "17"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 18,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "When other ants find a pheromone trail, they are likely not to keep travelling at random, but to instead follow the trail.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "18",
+        "May not be the shortest path"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 19,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "If an ant eventually find food by following a pheromone trail, it returning to the nest while reinforcing the trail with more pheromones.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "19"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 20,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "Due to their stochastic behavior, some ants are not following the pheromone trails, and thus uncover more possible paths.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "20",
+        "Shortest path"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 21,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "Over time, however, the pheromones trails starts to evaporate, thus reducing its attractive strength.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "21",
+        "The shortest path lays more pheromones over time"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 22,
+      "textBlocks": [
+        "Pheromone trails",
+        "Shortest path from the nest to the food source",
+        "Shortest path is being obtained.",
+        "Ants are able, without using any spatial Information, to identify a sudden appearance of a food source around their nest, and to find the shortest available path to it.",
+        "22",
+        "More details in “ACO algorithm and example” on Titanium, supplemental material"
+      ],
+      "notes": "",
+      "media": [
+        "image14.jpeg",
+        "image16.png"
+      ],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 23,
+      "textBlocks": [
+        "Summary",
+        "Basics of molecular biology\nBiology and computer analogy\nConcepts of evolutionary computation\nEvolutionary algorithms\nGenetic algorithm\nGenetic programming\nEvolutionary computation and creativity\nArtificial life\nSwarm intelligence\nSwarm particle optimization\nAnt colony optimization\nBees algorithm",
+        "23"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 24,
+      "textBlocks": [
+        "Review Questions",
+        "What are DNA, Chromosome, Amino Acid, and Proteins? \nWhat are the importance of DNA and Proteins? How are they related each other? \nWhat are the basic sequence characters of DNA? \nWhy is DNA considered as 1D media? \nWhy is protein considered as 3D or 4D media? \nWhat is codon? What is gene? \nWhat is genome? \nHow does genetic variation in a population occur? What are two genetic operators that cause genetic variations? \nWhat is the concept of inheritance, natural selection, and survival of fittest? \nWhat is biological meaning of evolution? \nWhy is diversity in a population important in evolution? What may be possible consequences when there is lack of diversity in a population? \nThink about the analogies between life system and computer system.",
+        "24"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 25,
+      "textBlocks": [
+        "What have we learned from biologists about evolution? How can we use the knowledge we learned from biologist to solve problems using computer? \nWhat is the basic strategy used in evolutionary computation? \nWhat are the key steps commonly used in solving a problem using an evolutionary algorithm? \nHow does Genetic Algorithm (GA) work\nHow is an individual represented in GA? \nHow can an individual and a population be created in GA? Try some examples. \nWhat are the key steps needed to solve a problem using GA? \nWhy do we need encoding and decoding steps when we use GA to solve a problem? \nWhen do we stop the evolutionary cycle when solving a problem using evolutionary algorithm? \nHow do mutation and crossover operator work in general? How do they work in GA?\nWhat is fitness function? Why is it important? How do we define a fitness function? Try some examples.",
+        "25"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 26,
+      "textBlocks": [
+        "If a fitness function is poorly defined, what may be the main consequence in problem solving? \nWhat are the other necessary parameters for GA?\nWhat are the crossover points and how do we determine them in GA and GP?\nWhat are the primary strengths and weaknesses of GA? \nHow can we deal with the weakness of GA?\nHow does Genetic Programming (GP) work? \nHow can an individual (candidate solution) and a population be created in GP? Try some examples. \nWhat’s the primary difference between GP and GA? \nWhat are the primary strengths and weaknesses of GP? \nWhat are function set and terminal set in GP? How can we determine them? \nWhat’s the concept of parsimony and sufficiency? Why are they important?  \nWhat’s the primary difference between Generational GP and Tournament GP algorithm? \nHow can an evolutionary algorithm be used in finding a function from a data set (regression analysis)? How can a fitness function be defined? Try an example.",
+        "26"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 27,
+      "textBlocks": [
+        "Why may the parallelism of an evolutionary algorithm in general be easy?\nWhy may the solution quality in a population fluctuate in an evolution process? \nWhat is “Creativity”? Think about how human creates something new.\nCan evolutionary approaches be used for implementing “Creativity”?\nWhat are possible applications of evolutionary algorithms? \nBriefly explain about Artificial Life (AL): the key idea, the purpose, techniques used, and applications. \nBriefly explain about Swarm Intelligence (SI): the key idea, the purpose, techniques used, applications, and pros and cons of SI algorithms.\nWhat is Swarm Particle Optimization (PSO), how does it work, and what can we do with it? What’s the main difference between PSO and GA?\nWhat is Ant Colony Optimization (ACO), how does it work, and what can we do with it?\nWhat is Bees algorithm, how does it work, and what can we do with it?\nThink about possible applications of AL and SI.",
+        "27"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    },
+    {
+      "number": 28,
+      "textBlocks": [
+        "References",
+        "G. Fluger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th edition, Chapter 12, Addison Wesley, 2009.\nD. Sadava, D.M. Hillis, H.C. Heller, M. Berenbaum, Life: The Science of Biology, Vol. II. W.H. Freeman, 2009.\nJ. Koza, Genetic Programming: On the Programming of Computers by Means of Natural Selection (Complex Adaptive Systems), The MIT press, 1992. \nD. Goldberg, Genetic Algorithms in Search, Optimization, and Machine Learning, Addison-Wesley, 1989.\nR.C. Eberhart, Y. Shi, and J. Kennedy, Swarm Intelligence, The Morgan Kaufmann, 2001.",
+        "28"
+      ],
+      "notes": "",
+      "media": [],
+      "timing": {
+        "hasTiming": false,
+        "conditionCount": 0,
+        "effectCount": 0,
+        "clickGroupCount": 0,
+        "clickEffectCount": 0,
+        "withEffectCount": 0,
+        "afterEffectCount": 0,
+        "visibilitySetCount": 0,
+        "targetShapeIds": []
+      }
+    }
+  ]
+}

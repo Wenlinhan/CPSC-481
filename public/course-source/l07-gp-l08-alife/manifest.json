@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "lesson": 10,
+  "route": "/lessons/10",
+  "preservationPolicy": "Every historical source page is mapped to at least one of the 28 native lesson pages; full-page renders appear only in the optional Course source dialog.",
+  "sources": [
+    {
+      "label": "L07_GP.pdf",
+      "sourceSha256": "b3ada7dc2e21589a6eec80220b03d086de4cacd842f37b769bd59972efe7a693",
+      "pageCount": 33,
+      "inventory": {
+        "file": "l07-source-inventory.json",
+        "sha256": "baed81c29640b20f5baba5038f6db4b49e0cc5412f2cd638955ffe10ca250158"
+      },
+      "renderDirectory": "l07-source-slides",
+      "sourcePageToLessonPages": {
+        "1": [1],
+        "2": [2],
+        "3": [2, 3],
+        "4": [3, 4],
+        "5": [5, 6],
+        "6": [6],
+        "7": [7],
+        "8": [8],
+        "9": [8],
+        "10": [8],
+        "11": [8],
+        "12": [8],
+        "13": [8],
+        "14": [9],
+        "15": [9],
+        "16": [9],
+        "17": [10],
+        "18": [10],
+        "19": [10],
+        "20": [11],
+        "21": [12],
+        "22": [12],
+        "23": [13],
+        "24": [14],
+        "25": [14],
+        "26": [14],
+        "27": [15],
+        "28": [16],
+        "29": [17],
+        "30": [18],
+        "31": [19],
+        "32": [19],
+        "33": [19]
+      }
+    },
+    {
+      "label": "L08_ArtificialLife.pptx",
+      "sourceSha256": "17504bd6d3a9f56838496cb61d6ac8e2cae5e9038b184b3b43fb745d24f7c162",
+      "pageCount": 28,
+      "inventory": {
+        "file": "l08-source-inventory.json",
+        "sha256": "4b0c536102ad9290addefe1bdc4245cf8f852699197e5df8f6fd62771deb80bf"
+      },
+      "renderDirectory": "l08-pptx-source-slides",
+      "sourcePageToLessonPages": {
+        "1": [20],
+        "2": [20],
+        "3": [21],
+        "4": [21],
+        "5": [22],
+        "6": [21],
+        "7": [23],
+        "8": [24],
+        "9": [24],
+        "10": [24],
+        "11": [24],
+        "12": [24],
+        "13": [24],
+        "14": [24],
+        "15": [25],
+        "16": [25],
+        "17": [25],
+        "18": [25],
+        "19": [25],
+        "20": [25],
+        "21": [25],
+        "22": [25],
+        "23": [26],
+        "24": [27],
+        "25": [27],
+        "26": [27],
+        "27": [27],
+        "28": [28]
+      }
+    }
+  ]
+}
