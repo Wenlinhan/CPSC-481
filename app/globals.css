@@ -3020,11 +3020,13 @@ kbd {
   width: 100%;
 }
 
-.source-reference-pages a {
+.source-reference-pages a,
+.source-reference-pages .image-lightbox-trigger {
   align-items: center;
   display: flex;
   justify-content: center;
   max-height: calc(100vh - 210px);
+  width: 100%;
 }
 
 .source-reference-pages img {
@@ -3037,6 +3039,7 @@ kbd {
 }
 
 .source-reference-pages.multiple a,
+.source-reference-pages.multiple .image-lightbox-trigger,
 .source-reference-pages.multiple img {
   max-height: min(46vh, 440px);
 }
@@ -5279,6 +5282,11 @@ kbd {
   }
 }
 
+@page {
+  margin: 0;
+  size: 10in 7.5in;
+}
+
 @media print {
   body {
     background: white;
@@ -5287,11 +5295,15 @@ kbd {
 
   .deck {
     display: block;
+    height: auto;
     min-height: auto;
+    overflow: visible;
+    position: static;
   }
 
   .deck-header,
   .deck-footer,
+  .course-home-link,
   .speaker-notes,
   .overview-backdrop,
   .source-reference-backdrop {
@@ -5301,11 +5313,17 @@ kbd {
   .slide {
     animation: none;
     break-after: page;
+    break-inside: avoid;
     display: grid;
     height: 7.5in;
+    margin: 0;
     max-height: none;
     padding: 0.35in;
     width: 10in;
+  }
+
+  .slide:last-child {
+    break-after: auto;
   }
 }
 
@@ -5382,7 +5400,8 @@ kbd {
   width: 100%;
 }
 
-.source-deck .source-figure > a {
+.source-deck .source-figure > a,
+.source-deck .source-figure > .image-lightbox-trigger {
   align-items: center;
   cursor: zoom-in;
   display: flex;
@@ -8356,15 +8375,22 @@ kbd {
   z-index: 400;
 }
 
+.image-lightbox-trigger {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: zoom-in;
+  margin: 0;
+  padding: 0;
+}
+
 .source-image-lightbox > img {
   background: white;
   border-radius: 12px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
-  height: auto;
-  max-height: 82vh;
-  max-width: 92vw;
+  height: 82vh;
   object-fit: contain;
-  width: auto;
+  width: 92vw;
 }
 
 .source-image-lightbox > p {

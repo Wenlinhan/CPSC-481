@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import "../styles/evolutionary-computation.css";
+import { EnlargeableImage } from "./SearchLessonPrimitives";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 const IMAGE_ROOT = "/course-source/l06-bio-ga/generated";
@@ -19,7 +20,7 @@ function slide(eyebrow: string, title: string, content: ReactNode, sourceSlides:
 }
 
 function GeneratedVisual({ file, alt }: { file: string; alt: string }) {
-  return <figure className="l9-generated"><img alt={alt} src={`${IMAGE_ROOT}/${file}`} /></figure>;
+  return <figure className="l9-generated"><EnlargeableImage alt={alt} src={`${IMAGE_ROOT}/${file}`} /></figure>;
 }
 
 function Pill({ children, tone = "indigo" }: { children: ReactNode; tone?: "indigo" | "teal" | "amber" }) {
@@ -203,6 +204,6 @@ export const lesson09Slides: SourceLessonSlide[] = [
   slide("Synthesis · exit", "Representation determines what evolution can discover", <Synthesis/>, [21,22], 2),
 ];
 
-export function Lesson09Deck() {
-  return <SourceDeckShell meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" slides={lesson09Slides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
+export function Lesson09Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
+  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" slides={lesson09Slides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
 }

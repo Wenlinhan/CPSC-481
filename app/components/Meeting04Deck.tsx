@@ -659,9 +659,10 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function UninformedSearchDeck() {
+export function UninformedSearchDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
+      forcePrintAll={forcePrintAll}
       hoverEffects
       lectureVideoUrl={LESSON_04_VIDEO_URL}
       meetingLabel="Module 3 · Lesson 4"

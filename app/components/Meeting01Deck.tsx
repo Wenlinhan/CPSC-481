@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState } from "react";
 import { L01DeckShell, type LessonSlide } from "./L01DeckShell";
+import { EnlargeableImage } from "./SearchLessonPrimitives";
 
 const sourceRoot = "/course-source/l01-ai";
 
@@ -13,9 +14,7 @@ function CourseImage({ name, alt, className = "" }: { name: string; alt: string;
   const source = `${sourceRoot}/${name}`;
   return (
     <figure className={`source-figure ${className}`.trim()}>
-      <a aria-label={`Enlarge: ${alt}`} href={source} rel="noreferrer" target="_blank">
-        <img alt={alt} src={source} />
-      </a>
+      <EnlargeableImage alt={alt} src={source} />
     </figure>
   );
 }
@@ -385,6 +384,6 @@ const slides: LessonSlide[] = [
   },
 ];
 
-export function AiFoundationsDeck() {
-  return <L01DeckShell hoverEffects meetingLabel="Module 2 · Lesson 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
+export function AiFoundationsDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
+  return <L01DeckShell forcePrintAll={forcePrintAll} hoverEffects meetingLabel="Module 2 · Lesson 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
 }

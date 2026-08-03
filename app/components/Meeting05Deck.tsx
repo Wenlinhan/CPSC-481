@@ -1014,9 +1014,10 @@ for t ← 1 to ∞ do
   },
 ];
 
-export function HeuristicLocalSearchDeck() {
+export function HeuristicLocalSearchDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
+      forcePrintAll={forcePrintAll}
       hoverEffects
       meetingLabel="Module 4 · Lesson 5"
       meetingTitle="Heuristic Search and Local Search"

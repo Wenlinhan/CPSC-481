@@ -886,9 +886,10 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function Meeting07Deck() {
+export function Meeting07Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
+      forcePrintAll={forcePrintAll}
       hoverEffects
       meetingLabel="Module 5 · Lesson 7"
       meetingTitle="Game Trees, Minimax, and Evaluation Functions"

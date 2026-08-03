@@ -1089,9 +1089,10 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function Meeting06Deck() {
+export function Meeting06Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
+      forcePrintAll={forcePrintAll}
       hoverEffects
       lectureVideoUrl={LESSON_06_VIDEO_URL}
       meetingLabel="Module 4 · Lesson 6"

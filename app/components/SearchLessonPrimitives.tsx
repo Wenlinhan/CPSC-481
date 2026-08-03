@@ -1,9 +1,71 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 const defaultSourceRoot = "/course-source/l02-state-space";
+
+export function EnlargeableImage({
+  src,
+  alt,
+  caption,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  className?: string;
+}) {
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setZoomed(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [zoomed]);
+
+  return (
+    <>
+      <button
+        aria-label={`Enlarge: ${alt}`}
+        className={`image-lightbox-trigger ${className}`.trim()}
+        onClick={() => setZoomed(true)}
+        type="button"
+      >
+        <img alt={alt} src={src} />
+      </button>
+      {zoomed && createPortal(
+        <div
+          aria-label={`Enlarged source figure: ${alt}`}
+          aria-modal="true"
+          className="source-image-lightbox"
+          onClick={() => setZoomed(false)}
+          role="dialog"
+        >
+          <button
+            aria-label="Close enlarged image"
+            className="source-image-close"
+            onClick={() => setZoomed(false)}
+            type="button"
+          >
+            ×
+          </button>
+          <img alt={alt} onClick={event => event.stopPropagation()} src={src} />
+          {caption && <p>{caption}</p>}
+        </div>,
+        document.body,
+      )}
+    </>
+  );
+}
 
 export function SearchSourceImage({
   file,

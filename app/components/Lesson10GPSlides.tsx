@@ -5,6 +5,7 @@ import { useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNo
 import "../styles/lesson10-gp.css";
 import "../styles/lesson10-illustrations.css";
 import type { CourseSourceReference } from "./L01DeckShell";
+import { EnlargeableImage } from "./SearchLessonPrimitives";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 const ROOT = "/course-source/l07-gp-l08-alife";
@@ -32,7 +33,7 @@ function Tag({ children, tone = "indigo" }: { children: ReactNode; tone?: "indig
 }
 
 function GeneratedVisual({ file, alt }: { file: string; alt: string }) {
-  return <figure className="l10-generated"><img alt={alt} src={`${IMAGE_ROOT}/${file}`} /></figure>;
+  return <figure className="l10-generated"><EnlargeableImage alt={alt} src={`${IMAGE_ROOT}/${file}`} /></figure>;
 }
 
 type TreeNode = { label: string; x: number; y: number; parent?: number; kind?: "function" | "terminal"; hot?: boolean };
@@ -318,6 +319,6 @@ export const lesson10Slides: SourceLessonSlide[] = [
   slide("Synthesis · Exit ticket", "A population method is only as meaningful as its representation and feedback", <Exit/>, alife(28), 2),
 ];
 
-export function Lesson10Deck() {
-  return <SourceDeckShell meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
+export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
+  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }

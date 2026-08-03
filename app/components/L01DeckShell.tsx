@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode, type TouchEvent, useEffect, useState } from "react";
+import { EnlargeableImage } from "./SearchLessonPrimitives";
 
 export type LessonSlide = {
   eyebrow: string;
@@ -20,6 +21,7 @@ export type CourseSourceReference = {
 };
 
 type L01DeckShellProps = {
+  forcePrintAll?: boolean;
   hoverEffects?: boolean;
   lectureVideoUrl?: string;
   meetingLabel: string;
@@ -56,6 +58,7 @@ function noteStartsWithTiming(note: string): boolean {
 }
 
 export function L01DeckShell({
+  forcePrintAll = false,
   hoverEffects = true,
   lectureVideoUrl,
   meetingLabel,
@@ -72,7 +75,7 @@ export function L01DeckShell({
   const [sourceView, setSourceView] = useState(false);
   const [motion, setMotion] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [printAll, setPrintAll] = useState(false);
+  const [printAll, setPrintAll] = useState(forcePrintAll);
   const total = slides.length;
 
   const go = (requested: number) => {
@@ -84,8 +87,8 @@ export function L01DeckShell({
   };
 
   useEffect(() => {
-    setPrintAll(new URLSearchParams(window.location.search).get("print") === "all");
-  }, []);
+    setPrintAll(forcePrintAll || new URLSearchParams(window.location.search).get("print") === "all");
+  }, [forcePrintAll]);
 
   useEffect(() => {
     const match = window.location.hash.match(/slide-(\d+)/);
@@ -268,12 +271,10 @@ export function L01DeckShell({
             <div className={sourceReferences.length > 1 ? "source-reference-pages multiple" : "source-reference-pages"}>
               {sourceReferences.map(reference => (
                 <figure key={reference.key}>
-                  <a href={reference.image} rel="noreferrer" target="_blank">
-                    <img
-                      alt={`Complete ${reference.deckLabel} course source page ${reference.page}`}
-                      src={reference.image}
-                    />
-                  </a>
+                  <EnlargeableImage
+                    alt={`Complete ${reference.deckLabel} course source page ${reference.page}`}
+                    src={reference.image}
+                  />
                   <figcaption>{reference.deckLabel} · page {reference.page} · select to enlarge</figcaption>
                 </figure>
               ))}

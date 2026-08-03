@@ -550,9 +550,10 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function StateSpaceFoundationsDeck() {
+export function StateSpaceFoundationsDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
+      forcePrintAll={forcePrintAll}
       hoverEffects
       meetingLabel="Module 3 · Lesson 3"
       meetingTitle="State-Space Search Foundations"
