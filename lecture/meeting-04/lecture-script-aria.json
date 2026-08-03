@@ -1,0 +1,3182 @@
+{
+  "version": 1,
+  "lesson": "04",
+  "meeting": "04",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Lesson 4: Uninformed Graph Search",
+  "route": "/lessons/04",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Uninformed Graph Search",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Uninformed search decides which frontier state to expand without a heuristic estimate of closeness to a goal. The frontier contains generated states waiting for examination; a strategy is the rule that removes one waiting state next.",
+          "visualDesign": {
+            "focusSelector": ".search-hero section",
+            "focusIndex": 0,
+            "focusPhrase": "Uninformed search decides which",
+            "kineticPhrase": "without a heuristic estimate",
+            "emoji": "🧭",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Uninformed search decides which",
+                "selector": ".search-hero section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Imagine exploring a dark building with a flashlight: the floor plan and legal doors exist, but the beam reveals only the next choices. The same state space produces different traces when DFS, BFS, or UCS organizes that frontier differently. Suppose OPEN contains B at depth two, C at depth one, and D at depth three. DFS selects D, BFS selects C, and UCS ignores depth unless the path costs make one entry cheapest. The state labels did not change; only the priority rule did.",
+          "visualDesign": {
+            "focusSelector": ".search-hero section",
+            "focusIndex": 0,
+            "focusPhrase": "exploring a dark building",
+            "kineticPhrase": "and legal doors exist",
+            "emoji": "🔦",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "exploring a dark building",
+                "selector": ".search-hero section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 1,
+                "segment": 2,
+                "phrase": "dark building with a flashlight",
+                "type": "emoji",
+                "emoji": "🔦",
+                "label": "Flashlight search",
+                "route": "sweep-center",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Uninformed does not mean stupid or random. The algorithm still uses a representation, successor function, goal test, and disciplined frontier policy. Uninformed means no heuristic h(n); it does not remove the successor function, goal test, or frontier discipline. Think of uninformed search as entering a museum after the lights fail. You still have the room map, the door rules, and a test for recognizing the exit; what you lack is an arrow saying warmer or colder. DFS, BFS, and UCS are therefore not guesses. They are disciplined ways to organize the same waiting list. The comedy begins only when someone calls a queue random because it refuses to read minds.",
+          "visualDesign": {
+            "focusSelector": ".search-hero section",
+            "focusIndex": 0,
+            "focusPhrase": "does not mean stupid",
+            "kineticPhrase": "uses a representation, successor",
+            "emoji": "🧠",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "does not mean stupid",
+                "selector": ".search-hero section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Retrieve the Meeting 3 tuple and ask which component specifies legal moves, then identify what new choice a search strategy must make. Lesson 4 adds frontier policy, duplicate handling, goal timing, and path records to the state-space model.",
+          "visualDesign": {
+            "focusSelector": ".search-hero section",
+            "focusIndex": 0,
+            "focusPhrase": "the Meeting 3 tuple",
+            "kineticPhrase": "legal moves, then identify",
+            "emoji": "❓",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "the Meeting 3 tuple",
+                "selector": ".search-hero section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Five strategies, four evaluation questions",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "We will compare depth-first, breadth-first, bounded and iterative deepening, uniform-cost, and backtracking search. DFS chooses depth, BFS chooses a level, bounded search limits depth, UCS chooses accumulated cost, and backtracking exposes path recovery.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-map article",
+            "focusIndex": 0,
+            "focusPhrase": "We will compare depth-first",
+            "kineticPhrase": "and iterative deepening, uniform-cost",
+            "emoji": "🌲",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "DFS chooses depth",
+                "selector": ".algorithm-map article",
+                "index": 0,
+                "label": "DFS"
+              },
+              {
+                "phrase": "BFS chooses a level",
+                "selector": ".algorithm-map article",
+                "index": 1,
+                "label": "BFS"
+              },
+              {
+                "phrase": "bounded search limits depth",
+                "selector": ".algorithm-map article",
+                "index": 2,
+                "label": "Bounded and deepening"
+              },
+              {
+                "phrase": "UCS chooses accumulated cost",
+                "selector": ".algorithm-map article",
+                "index": 3,
+                "label": "Uniform-cost"
+              },
+              {
+                "phrase": "backtracking exposes path recovery",
+                "selector": ".algorithm-map article",
+                "index": 4,
+                "label": "Backtracking"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Every strategy should face the same interview questions: complete, optimal, time-hungry, and memory-hungry. Algorithms dislike interviews, but students benefit. Completeness asks whether a solution will be found; optimality asks whether it is best; time and space measure different resources. Consider a delivery robot. A shallow equal-cost hallway map supports BFS, a massive deep warehouse under a memory cap may justify DFS, variable travel times require UCS, and an unknown shelf depth makes iterative deepening attractive. One application can demand different strategies after one condition changes.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-map article",
+            "focusIndex": 1,
+            "focusPhrase": "Every strategy should face",
+            "kineticPhrase": "optimal, time-hungry, and memory-hungry",
+            "emoji": "📋",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Completeness asks",
+                "selector": ".algorithm-map aside p",
+                "index": 0,
+                "label": "Completeness"
+              },
+              {
+                "phrase": "optimality asks",
+                "selector": ".algorithm-map aside p",
+                "index": 1,
+                "label": "Optimality"
+              },
+              {
+                "phrase": "time and space",
+                "selector": ".algorithm-map aside p",
+                "index": 2,
+                "label": "Time"
+              },
+              {
+                "phrase": "different resources",
+                "selector": ".algorithm-map aside p",
+                "index": 3,
+                "label": "Space"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 2,
+                "segment": 2,
+                "phrase": "time-hungry, and memory-hungry",
+                "type": "popup",
+                "emoji": "⏱️ 💾",
+                "label": "Time and space costs",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "A strategy name alone is not an evaluation. Each guarantee depends on conditions such as finite branching, positive costs, or a reachable depth bound. Finite branching, step costs, depth bounds, duplicate policy, and memory turn those guarantees on or off. Treat the four evaluation questions like a job interview for algorithms. Completeness asks whether the candidate eventually finishes the assignment. Optimality asks whether the result is the best acceptable one. Time asks how much work accumulates, and space asks how much must remain on the desk at once. A charming acronym does not get hired; the problem conditions and guarantees do. Even algorithms need references, although theirs are usually asymptotic.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-map article",
+            "focusIndex": 2,
+            "focusPhrase": "strategy name alone is",
+            "kineticPhrase": "on conditions such as",
+            "emoji": "⚖",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "strategy name alone is",
+                "selector": ".algorithm-map article",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Choose one strategy and predict its strongest advantage and most embarrassing failure before the formal comparison. Match shallow equal-cost goals to BFS, tight memory to DFS, unknown depth to deepening, and variable costs to UCS.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-map article",
+            "focusIndex": 3,
+            "focusPhrase": "Choose one strategy and",
+            "kineticPhrase": "advantage and most embarrassing",
+            "emoji": "️",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Choose one strategy and",
+                "selector": ".algorithm-map article",
+                "index": 3,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The graph is not handed to the algorithm",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "A search algorithm normally generates the graph incrementally from the start state by applying legal operators. A real program starts with A and generates later nodes only by applying legal operators to removed states.",
+          "visualDesign": {
+            "focusSelector": ".tree-challenge li",
+            "focusIndex": 0,
+            "focusPhrase": "A search algorithm normally",
+            "kineticPhrase": "incrementally from the start",
+            "emoji": "🌳",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "A search algorithm normally",
+                "selector": ".tree-challenge li",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 3,
+                "segment": 1,
+                "phrase": "generates the graph incrementally",
+                "type": "emoji",
+                "emoji": "🌱🌳",
+                "label": "The tree grows on demand",
+                "route": "branch-center",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "On the shared tree, DFS and BFS see the same children but remove them in different orders. The difference lives in frontier management. DFS and BFS see the same children but place and remove them in different orders. Starting from A, the program applies the successor function to create B, C, and D. It does not allocate every descendant in the picture. When B is removed, only then are E and F generated. Incremental generation is why frontier management matters operationally.",
+          "visualDesign": {
+            "focusSelector": ".tree-challenge li",
+            "focusIndex": 1,
+            "focusPhrase": "the shared tree, DFS",
+            "kineticPhrase": "but remove them in",
+            "emoji": "↔",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the shared tree, DFS",
+                "selector": ".tree-challenge li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Do not confuse generated with examined. A goal sitting in OPEN has been discovered, but some algorithms guarantee success only when it is removed. Generated means waiting on OPEN; examined means removed, tested, and processed. Those events are not interchangeable. Incremental generation resembles building a city only as travelers reach each intersection. The planner does not pour concrete for every possible street before leaving home. It creates the start, applies legal operators, and materializes successors when their parent is examined. That saves work, but it also makes order consequential: a state that waits deep in OPEN has not yet donated its children to the graph. The visible tree is a teaching summary, not a preloaded warehouse inventory.",
+          "visualDesign": {
+            "focusSelector": ".tree-challenge li",
+            "focusIndex": 2,
+            "focusPhrase": "not confuse generated with",
+            "kineticPhrase": "has been discovered, but",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "not confuse generated with",
+                "selector": ".tree-challenge li",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Predict the first ten removals for DFS and BFS and circle where goal S is removed, not merely drawn on the page. Locate S in both removal orders and mark when it is removed under the stated goal-test policy.",
+          "visualDesign": {
+            "focusSelector": ".tree-challenge li",
+            "focusIndex": 0,
+            "focusPhrase": "the first ten removals",
+            "kineticPhrase": "circle where goal S",
+            "emoji": "🚩",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Predict the first ten removals",
+                "selector": ".tree-challenge li",
+                "index": 0,
+                "label": "DFS order"
+              },
+              {
+                "phrase": "circle where goal S is removed",
+                "selector": ".tree-challenge li",
+                "index": 2,
+                "label": "Goal removal"
+              },
+              {
+                "phrase": "not merely drawn on the page",
+                "selector": ".tree-challenge li",
+                "index": 2,
+                "label": "Removed, not generated"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Read the frontier state before comparing two snapshots",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The two source snapshots show different moments, so labels and frontier contents must be read before visual comparison. Before comparing pictures, read the selected state, OPEN, CLOSED, and the event named by each label.",
+          "visualDesign": {
+            "focusSelector": ".iteration-comparison article",
+            "focusIndex": 0,
+            "focusPhrase": "The two source snapshots",
+            "kineticPhrase": "labels and frontier contents",
+            "emoji": "📸",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The two source snapshots",
+                "selector": ".iteration-comparison article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "DFS iteration six follows a deep branch, while the BFS image is specifically the state after expanding C. Context is part of the evidence. The BFS picture is after expanding C, not another iteration-six snapshot. Imagine comparing a photo taken after six DFS removals with a photo taken immediately after BFS expands C. Different OPEN contents are expected because both the algorithm and timestamp differ. Relabeling the pictures with the exact event prevents a false conclusion about which method expanded more nodes.",
+          "visualDesign": {
+            "focusSelector": ".iteration-comparison article",
+            "focusIndex": 1,
+            "focusPhrase": "iteration six follows a",
+            "kineticPhrase": "is specifically the state",
+            "emoji": "🔍",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "iteration six follows a",
+                "selector": ".iteration-comparison article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "A screenshot can look authoritative while answering a different question. This is the algorithmic version of comparing Tuesday's weather with Friday's umbrella. Visual similarity cannot normalize two different algorithmic moments; the event context is part of the evidence. A trace without an event label is like a laboratory photo without a timestamp. It may be perfectly sharp and still support the wrong conclusion. To compare DFS and BFS fairly, freeze both after the same kind of event: state removed, goal tested, children inserted, or expansion count completed. Then compare selected state, ordered OPEN, and CLOSED. Otherwise we are timing one runner at kilometer six and another after tying a shoe, then publishing a very confident sports report.",
+          "visualDesign": {
+            "focusSelector": ".iteration-comparison article",
+            "focusIndex": 0,
+            "focusPhrase": "screenshot can look authoritative",
+            "kineticPhrase": "This is the algorithmic",
+            "emoji": "⚠",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "screenshot can look authoritative",
+                "selector": ".iteration-comparison article",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 4,
+                "segment": 3,
+                "phrase": "Tuesday's weather with Friday's umbrella",
+                "type": "emoji",
+                "emoji": "🌦️☂️",
+                "label": "Mismatched snapshots",
+                "route": "split-center",
+                "durationSeconds": 5.4
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "State selected node, OPEN, and CLOSED for each image, then say which comparison is valid and which would be misleading. A fair comparison aligns expansion count, selected node, frontier order, explored set, and goal timing.",
+          "visualDesign": {
+            "focusSelector": ".iteration-comparison article",
+            "focusIndex": 1,
+            "focusPhrase": "selected node, OPEN, and",
+            "kineticPhrase": "then say which comparison",
+            "emoji": "️",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "selected node, OPEN, and",
+                "selector": ".iteration-comparison article",
+                "index": 1,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "DFS examines descendants before siblings",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Depth-first search removes the deepest available frontier state, examining descendants before returning to siblings. Deepest means greatest depth among waiting states, so descendants outrank older siblings.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 0,
+            "focusPhrase": "Depth-first search removes the",
+            "kineticPhrase": "frontier state, examining descendants",
+            "emoji": "🧗",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Depth-first search removes the",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "A stack or recursive call chain naturally supports this order. DFS packs light, like a hiker carrying one trail and a few remembered forks. Prepending children produces LIFO stack behavior and a narrow stored frontier. With OPEN equal to B, C, D, DFS removes B. If B generates E and F, prepending produces E, F, C, D. The next removal is E, then E's child if one exists. C waits even though it is shallower and was generated earlier.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 1,
+            "focusPhrase": "stack or recursive call",
+            "kineticPhrase": "packs light, like a",
+            "emoji": "🎒",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "stack or recursive call",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Low memory does not imply good answers. DFS can dive forever, loop, or return a long solution while a short one waits nearby waving politely. That memory advantage permits infinite descent, cycles, and a long first solution while a shallow goal waits elsewhere. DFS behaves like a spelunker who chooses one tunnel, keeps a compact rope back to the entrance, and postpones neighboring tunnels. This is why memory can remain modest: the active path and alternatives matter more than a whole breadth layer. The risk is equally physical. A tunnel may be extremely long, cyclic, or bottomless in the model. Courage is not completeness; without loop checks or a bound, the brave spelunker can become a permanent resident of the left branch.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 2,
+            "focusPhrase": "memory does not imply",
+            "kineticPhrase": "or return a long",
+            "emoji": "🕳",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "memory does not imply",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 5,
+                "segment": 3,
+                "phrase": "dive forever, loop",
+                "type": "emoji-swap",
+                "emoji": "🌲",
+                "emojiAfter": "🔁",
+                "label": "Infinite descent",
+                "route": "swap-center",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Name a problem with a deep solution and tight memory, then name one condition that would make DFS a dangerous choice. Use DFS when depth is plausible and memory is tight, not when shortest-path guarantees are required.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 3,
+            "focusPhrase": "a problem with a",
+            "kineticPhrase": "then name one condition",
+            "emoji": "️",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "a problem with a",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 3,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "DFS uses OPEN, CLOSED, and a loop check",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The source algorithm removes the leftmost OPEN state, goal-tests it, generates children, and records examined states on CLOSED. OPEN begins with Start and CLOSED begins empty; the loop continues until OPEN is exhausted.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout li",
+            "focusIndex": 0,
+            "focusPhrase": "The source algorithm removes",
+            "kineticPhrase": "goal-tests it, generates children",
+            "emoji": "📜",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The source algorithm removes",
+                "selector": ".algorithm-source-layout li",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Click to enlarge the pseudocode and follow one iteration: select X, test X, expand X, filter duplicates, and prepend survivors. Execute the enlarged lines in order: remove X, test X, generate children, close X, filter duplicates, and prepend survivors. Let OPEN be B, C, D. Removing B and generating E and F gives E, F, C, D after duplicate filtering. B moves to CLOSED. If E was already waiting on OPEN, it must not be inserted again. Parent records still remember which surviving child came from B.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout li",
+            "focusIndex": 1,
+            "focusPhrase": "to enlarge the pseudocode",
+            "kineticPhrase": "select X, test X",
+            "emoji": "🔎",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "select X",
+                "selector": ".algorithm-source-layout li",
+                "index": 1,
+                "label": "Remove X"
+              },
+              {
+                "phrase": "test X",
+                "selector": ".algorithm-source-layout li",
+                "index": 2,
+                "label": "Goal test"
+              },
+              {
+                "phrase": "generate children",
+                "selector": ".algorithm-source-layout li",
+                "index": 3,
+                "label": "Generate children"
+              },
+              {
+                "phrase": "close X",
+                "selector": ".algorithm-source-layout li",
+                "index": 3,
+                "label": "Update CLOSED"
+              },
+              {
+                "phrase": "filter duplicates",
+                "selector": ".algorithm-source-layout li",
+                "index": 4,
+                "label": "Duplicate check"
+              },
+              {
+                "phrase": "prepend survivors",
+                "selector": ".algorithm-source-layout li",
+                "index": 5,
+                "label": "Stack insertion"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-figure button",
+            "index": 0,
+            "label": "Enlarge the DFS pseudocode"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Without the OPEN and CLOSED duplicate test, a reversible action can create an endless ping-pong match between two states. Checking both OPEN and CLOSED prevents pending duplicates and repeated examination. Read the pseudocode as a state-transition contract. Removing X changes OPEN; goal testing may terminate; generating children invokes the successor function; moving X to CLOSED records examination; duplicate filtering protects the graph invariant; and left insertion creates stack behavior. Each line owns one effect. If an implementation produces the wrong trace, compare these effects one at a time. Debugging six responsibilities at once is like asking which ingredient ruined a soup after adding the pantry with a shovel.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout li",
+            "focusIndex": 4,
+            "focusPhrase": "Without the OPEN and",
+            "kineticPhrase": "action can create an",
+            "emoji": "🔁",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "Without the OPEN and",
+                "selector": ".algorithm-source-layout li",
+                "index": 4,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 6,
+                "segment": 3,
+                "phrase": "both OPEN and CLOSED",
+                "type": "popup",
+                "emoji": "OPEN + CLOSED",
+                "label": "Check both lists",
+                "durationSeconds": 5.2
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged DFS pseudocode"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Explain why putting children on the left creates stack behavior and why parent pointers are still needed to return a path. Failure occurs only when OPEN is empty; returning a path additionally requires parent pointers.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout li",
+            "focusIndex": 5,
+            "focusPhrase": "why putting children on",
+            "kineticPhrase": "and why parent pointers",
+            "emoji": "🧵",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "why putting children on",
+                "selector": ".algorithm-source-layout li",
+                "index": 5,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "OPEN records alternatives; CLOSED records examined states",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "OPEN stores generated alternatives not yet examined, while CLOSED records states already removed and processed. The leftmost OPEN entry is always next; that invariant comes from prepending children.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "OPEN stores generated alternatives",
+            "kineticPhrase": "while CLOSED records states",
+            "emoji": "📚",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "OPEN stores generated alternatives",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "In the trace, newly generated descendants jump ahead of older siblings. The left edge of OPEN is therefore a live promise about the next removal. When B expands, E and F move ahead of older alternatives C and D. Read the transition from OPEN B, C, D and CLOSED A. After B expands, OPEN becomes E, F, C, D and CLOSED becomes B, A. The front changed because children were prepended; the history changed because B was examined; the path map changes because E and F point to B.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "the trace, newly generated",
+            "kineticPhrase": "left edge of OPEN",
+            "emoji": "⬅",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the trace, newly generated",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "OPEN and CLOSED do not automatically preserve the winning route. A giant explored list can still shrug when asked, how did we get here? OPEN and CLOSED describe search status, but parent pointers explain how the goal was reached. OPEN and CLOSED answer different temporal questions. OPEN says which generated states are still waiting; CLOSED says which states have already been examined. A parent table answers a third question: how did each surviving state first enter the search? Picture an airport with a departure board, a passport stamp, and a baggage claim tag. Mixing those records loses either pending work, duplicate protection, or the route home. One heroic list cannot safely perform every administrative job.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "and CLOSED do not",
+            "kineticPhrase": "giant explored list can",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "and CLOSED do not",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 7,
+                "segment": 3,
+                "phrase": "parent pointers",
+                "type": "popup",
+                "emoji": "GOAL ← PARENT ← START",
+                "label": "Reconstruct the path",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Verify one row transition and specify the parent information required to reconstruct the solution path. Verify one row transition by accounting for the removal, new children, CLOSED update, and parents.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Verify one row transition",
+            "kineticPhrase": "parent information required to",
+            "emoji": "🗺",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Verify one row transition",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Advance the frontier one state at a time",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The DFS trace makes frontier order observable rather than leaving it as punctuation inside pseudocode. At iteration one, A is closed and B is the leftmost waiting state.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 0,
+            "focusPhrase": "The DFS trace makes",
+            "kineticPhrase": "rather than leaving it",
+            "emoji": "👆",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The DFS trace makes",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Predict the next selected state, then click Next. Watch new children enter the left side of OPEN while CLOSED grows. After B expands, E and F are prepended before C and D, exposing stack behavior. Before clicking Next, cover the screen and predict all fields. At iteration two the selected state should be B, OPEN should begin with E and F, and CLOSED should begin with B. Revealing the state tests the entire update rule, not merely the next node label.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 1,
+            "focusPhrase": "the next selected state",
+            "kineticPhrase": "new children enter the",
+            "emoji": "🌿",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the next selected state",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the DFS trace"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "If your prediction differs, diagnose the exact rule you used: queue behavior, stack behavior, or accidental alphabetical sorting. Choosing C would reveal queue reasoning; choosing alphabetically would invent a rule the algorithm never stated. The interactive trace is an instrument panel, not a slot machine. Before each click, predict the selected state, the exact ordered OPEN list, the CLOSED update, and any new parent links. Then one mismatch identifies one faulty rule. If only the next node is predicted, a broken duplicate check can hide for several iterations. Good tracing converts surprise into diagnosis. Bad tracing repeatedly clicks Next and hopes understanding will arrive by express shipping.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 0,
+            "focusPhrase": "If your prediction differs",
+            "kineticPhrase": "you used: queue behavior",
+            "emoji": "🧮",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "If your prediction differs",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 8,
+                "segment": 3,
+                "phrase": "queue reasoning",
+                "type": "emoji",
+                "emoji": "📥 ↔️ 📚",
+                "label": "Diagnose the policy",
+                "route": "split-center",
+                "durationSeconds": 5.4
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the DFS trace again"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Advance several iterations and explain why the current deepest branch wins over an older shallow alternative. Narrate the next update with remove, test, expand, and prepend.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 1,
+            "focusPhrase": "Advance several iterations and",
+            "kineticPhrase": "current deepest branch wins",
+            "emoji": "🔍",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Advance several iterations and",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the DFS trace a third time"
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "BFS explores the space level by level",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Breadth-first search removes the shallowest frontier state and examines every depth n state before depth n plus one. Shallowest means minimum depth from the initial state; every depth-n state precedes depth n plus one.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 0,
+            "focusPhrase": "Breadth-first search removes the",
+            "kineticPhrase": "examines every depth n",
+            "emoji": "🌊",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Shallowest means minimum depth",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 0,
+                "label": "BFS selection rule"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "A queue preserves arrival order. BFS is the friend who checks every room on one floor before charging upstairs. A FIFO queue keeps older frontier states ahead of newly generated children. For the same OPEN B, C, D, BFS removes B and appends E and F, producing C, D, E, F. C stays first because it entered before E and F. That simple queue invariant generates complete level order across the whole tree.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 1,
+            "focusPhrase": "A queue preserves arrival",
+            "kineticPhrase": "who checks every room",
+            "emoji": "🛒",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "A queue preserves arrival",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 9,
+                "segment": 2,
+                "phrase": "checks every room on one floor",
+                "type": "emoji",
+                "emoji": "🏢🔍",
+                "label": "Level-order search",
+                "route": "rise-center",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Shallowest means cheapest only when step costs are equal. A one-edge private jet can cost more than a three-edge bus route. Finite branching gives completeness, and equal step costs make a shallowest goal minimum cost. BFS is the airport agent who boards passengers by zone: everyone in zone one goes before anyone in zone two, even if a zone-two passenger waves enthusiastically. FIFO order preserves that layer discipline because older shallow states remain ahead of newly generated deeper ones. This yields a shallowest-goal guarantee under finite branching. It does not magically minimize dollars, fuel, or danger; depth counts actions. A cheap six-step route can lose to an expensive five-step route unless costs are equal.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 2,
+            "focusPhrase": "means cheapest only when",
+            "kineticPhrase": "one-edge private jet can",
+            "emoji": "💸",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "Finite branching gives completeness",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 1,
+                "label": "Completeness"
+              },
+              {
+                "phrase": "equal step costs",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 1,
+                "label": "Equal-cost optimality"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "State the finite-branching and equal-cost conditions behind BFS completeness and optimality. The exponential breadth frontier can still exhaust memory before the guarantee becomes useful.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-definition section, .algorithm-definition article",
+            "focusIndex": 3,
+            "focusPhrase": "State the finite-branching and",
+            "kineticPhrase": "conditions behind BFS completeness",
+            "emoji": "✅",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "State the finite-branching and",
+                "selector": ".algorithm-definition section, .algorithm-definition article",
+                "index": 3,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "One line changes DFS into BFS",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "BFS shares initialization, goal testing, expansion, duplicate handling, and failure logic with DFS. Initialization, removal, testing, expansion, CLOSED, duplicate filtering, and failure match DFS.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "BFS shares initialization, goal",
+            "kineticPhrase": "duplicate handling, and failure",
+            "emoji": "📜",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "BFS shares initialization, goal",
+                "selector": ".algorithm-source-layout section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Enlarge the algorithm and locate the decisive line: remaining children go to the right end of OPEN instead of the left. Only the insertion end changes: surviving children join the right of OPEN. Compare two nearly identical lines: DFS places remaining children on the left; BFS places them on the right. With children E and F and older alternatives C and D, left insertion yields E, F, C, D, while right insertion yields C, D, E, F.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "the algorithm and locate",
+            "kineticPhrase": "go to the right",
+            "emoji": "➡",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the algorithm and locate",
+                "selector": ".algorithm-source-layout section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 10,
+                "segment": 2,
+                "phrase": "right end of OPEN",
+                "type": "popup",
+                "emoji": "OPEN ➡️",
+                "label": "Children join the right",
+                "durationSeconds": 5.2
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-figure button",
+            "index": 0,
+            "label": "Enlarge the BFS pseudocode"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Small code changes can produce enormous behavioral changes. One insertion end decides whether the search dives or spreads. That queue invariant—not the word queue by itself—explains level-order removal. The DFS and BFS procedures differ at a deceptively small hinge: which end receives the children. Imagine a cafeteria line. Place new arrivals at the front and the newest family dominates the next decision, producing stack-like depth. Place them at the rear and older customers retain priority, producing queue-like breadth. The rest of the restaurant can be identical. This is a useful software lesson: a one-line data-structure policy can change global behavior more dramatically than a page of decorative comments.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Small code changes can",
+            "kineticPhrase": "One insertion end decides",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "Small code changes can",
+                "selector": ".algorithm-source-layout section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged BFS pseudocode"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Translate the insertion rule into a queue invariant and identify the oldest frontier state after one expansion. After B expands, C and D remain ahead of E and F because they arrived earlier.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Translate the insertion rule",
+            "kineticPhrase": "and identify the oldest",
+            "emoji": "🦋",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Translate the insertion rule",
+                "selector": ".algorithm-source-layout section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Breadth is visible in the OPEN sequence",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The BFS trace keeps all depth-one states ahead of newly generated depth-two states. B, C, and D enter at depth one, so all remain ahead of E and F at depth two.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "The BFS trace keeps",
+            "kineticPhrase": "states ahead of newly",
+            "emoji": "📋",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The BFS trace keeps",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "After B generates E and F, C and D remain in front because they entered OPEN earlier at a shallower level. C stays next after B expands because of arrival order, not alphabetical order. After A expands, the depth-one states B, C, D wait in that order. Expanding B appends depth-two states E and F. Even if E looks promising, BFS removes C next because C is older and shallower. The trace visualizes that invariant row by row.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "B generates E and",
+            "kineticPhrase": "in front because they",
+            "emoji": "👥",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "B generates E and",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 11,
+                "segment": 2,
+                "phrase": "arrival order",
+                "type": "popup",
+                "emoji": "FIRST IN → FIRST OUT",
+                "label": "FIFO frontier",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Testing a goal on generation versus removal can change timing and, under cost-sensitive search, can change whether a claim of optimality is justified. Testing a goal on generation versus removal changes the stopping event and can change an optimality argument. A BFS OPEN trace should look layered even when node names are distracting. Annotate every state with depth and check that the depths never decrease from left to right. Within one depth, parent expansion and child order break ties. If a depth-two node jumps ahead of an unexamined depth-one node, either children were inserted on the wrong end or the queue was reordered. Alphabetical sorting is especially sneaky: it looks tidy while quietly replacing the algorithm with office filing.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "a goal on generation",
+            "kineticPhrase": "under cost-sensitive search, can",
+            "emoji": "⏱",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "a goal on generation",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Find the first row where every depth-one node is closed and explain what layer appears next. Find the first row where depth one is closed and identify the depth-two frontier order.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Find the first row",
+            "kineticPhrase": "node is closed and",
+            "emoji": "️",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Find the first row",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Advance the queue one state at a time",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The live BFS trace exposes queue behavior with the same graph used for DFS. After A expands, B is the oldest waiting state and therefore the next removal.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 0,
+            "focusPhrase": "The live BFS trace",
+            "kineticPhrase": "behavior with the same",
+            "emoji": "👆",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The live BFS trace",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Predict the next removal, click Next, and watch new children join the right side rather than cutting the line. Expanding B appends E and F, producing C, D, E, F rather than letting new children cut the line. Clicking three times should move CLOSED from A to B, A and then C, B, A, while new children accumulate at OPEN's right edge. If a new child appears at the left, the implementation has silently changed from queue behavior to stack behavior.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 1,
+            "focusPhrase": "Predict the next removal",
+            "kineticPhrase": "children join the right",
+            "emoji": "🛒",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Predict the next removal",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 12,
+                "segment": 2,
+                "phrase": "right side rather than cutting the line",
+                "type": "popup",
+                "emoji": "FIFO",
+                "label": "No cutting the queue",
+                "durationSeconds": 5.2
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the BFS trace"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "If BFS were a grocery queue, DFS would be the shopper who opens a secret checkout inside every shopping cart. Efficient sometimes; socially alarming always. The next step moves C to CLOSED and appends G and H. Use the live trace to test conservation of information. One state leaves OPEN, that state enters CLOSED, legal novel children enter OPEN on the right, and each child receives a parent. Nothing should teleport between lists. If two children are generated but only one appears, ask whether the other was a duplicate before calling it missing. A trace is a small accounting ledger; unlike creative accounting, every state should have a documented reason for appearing or disappearing.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 0,
+            "focusPhrase": "BFS were a grocery",
+            "kineticPhrase": "opens a secret checkout",
+            "emoji": "🤪",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "BFS were a grocery",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the BFS trace again"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Compare the current OPEN order with the DFS trace and identify the first point where their removals diverge. Compare this queue with the DFS trace and identify their first forced disagreement.",
+          "visualDesign": {
+            "focusSelector": ".frontier-queues article",
+            "focusIndex": 1,
+            "focusPhrase": "Compare the current OPEN",
+            "kineticPhrase": "trace and identify the",
+            "emoji": "↔",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Compare the current OPEN",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace button",
+            "index": 1,
+            "label": "Advance the BFS trace a third time"
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Breadth-first removal order finds a shortest move sequence",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "In the eight-puzzle tree, BFS removal order finds a shallowest goal and parent pointers recover the move sequence. The puzzle numbers show removal order; BFS reaches a shallow goal only after earlier frontier entries.",
+          "visualDesign": {
+            "focusSelector": ".puzzle-source-layout li",
+            "focusIndex": 0,
+            "focusPhrase": "In the eight-puzzle tree",
+            "kineticPhrase": "a shallowest goal and",
+            "emoji": "🧩",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "In the eight-puzzle tree",
+                "selector": ".puzzle-source-layout li",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Enlarge the source tree and trace backward from the numbered goal through parents, then reverse that chain to obtain actions. Follow parent pointers backward from the goal, then reverse the chain to recover forward actions. In an eight-puzzle, moving a blank right and later left can recreate an earlier board. CLOSED detects the examined duplicate; OPEN detects a pending duplicate. Once the numbered goal is removed, following parent links backward yields the exact shortest move sequence under equal move costs.",
+          "visualDesign": {
+            "focusSelector": ".puzzle-source-layout li",
+            "focusIndex": 1,
+            "focusPhrase": "the source tree and",
+            "kineticPhrase": "numbered goal through parents",
+            "emoji": "🧵",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the source tree and",
+                "selector": ".puzzle-source-layout li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".puzzle-source-layout .search-source-image button",
+            "index": 0,
+            "label": "Enlarge the BFS puzzle tree"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Different move sequences can reach the same board. Without duplicate detection, the frontier grows copies like a photocopier with trust issues. Reversible moves create duplicate boards, so graph search suppresses copies already on OPEN or CLOSED. The eight-puzzle makes duplicate detection unavoidable because moves are reversible. Slide the blank right and then left, and the board returns wearing no disguise at all. Tree search may treat that return as a new child and reproduce an infinite family reunion. Graph search checks OPEN and CLOSED, retaining the useful first or cheapest record according to policy. Parent pointers then compress the explored mess into one solution path. The search can be large; the submitted directions should not read like its autobiography.",
+          "visualDesign": {
+            "focusSelector": ".puzzle-source-layout li",
+            "focusIndex": 2,
+            "focusPhrase": "move sequences can reach",
+            "kineticPhrase": "detection, the frontier grows",
+            "emoji": "♻",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "move sequences can reach",
+                "selector": ".puzzle-source-layout li",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 13,
+                "segment": 3,
+                "phrase": "photocopier with trust issues",
+                "type": "emoji",
+                "emoji": "📄📄📄",
+                "label": "Duplicate states",
+                "route": "spill-center",
+                "durationSeconds": 5.5
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged puzzle tree"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Point to a repeated arrangement and explain where graph search suppresses it without losing a shorter solution. Point to a repeated board and explain why shortest parent information must be retained.",
+          "visualDesign": {
+            "focusSelector": ".puzzle-source-layout li",
+            "focusIndex": 0,
+            "focusPhrase": "Point to a repeated",
+            "kineticPhrase": "graph search suppresses it",
+            "emoji": "️",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Point to a repeated",
+                "selector": ".puzzle-source-layout li",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "BFS spends memory; DFS risks spending depth",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "BFS purchases shallowest-solution guarantees with a potentially enormous frontier; DFS saves space while accepting depth risk. BFS orders by depth; DFS orders by active branch, changing both memory and first-solution behavior.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 1,
+            "focusPhrase": "BFS purchases shallowest-solution guarantees",
+            "kineticPhrase": "enormous frontier; DFS saves",
+            "emoji": "🧠",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "BFS orders by depth",
+                "selector": ".search-comparison-table > div",
+                "index": 1,
+                "label": "BFS order"
+              },
+              {
+                "phrase": "DFS orders by active branch",
+                "selector": ".search-comparison-table > div",
+                "index": 1,
+                "label": "DFS order"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "For a shallow goal with branching factor ten, BFS may store a small civilization of nodes while DFS stores a narrow expedition. BFS may store a whole breadth layer, while DFS usually stores a path and alternatives. Take branching factor ten and a goal at depth six. BFS may retain hundreds of thousands of frontier nodes near the deepest layer. DFS may store only a path and alternatives, but could chase an unrelated branch far beyond depth six. The resource trade is concrete, not rhetorical.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 2,
+            "focusPhrase": "a shallow goal with",
+            "kineticPhrase": "store a small civilization",
+            "emoji": "🏙",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "BFS may store",
+                "selector": ".search-comparison-table > div",
+                "index": 2,
+                "label": "BFS space"
+              },
+              {
+                "phrase": "DFS usually stores",
+                "selector": ".search-comparison-table > div",
+                "index": 2,
+                "label": "DFS space"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 14,
+                "segment": 2,
+                "phrase": "small civilization of nodes",
+                "type": "emoji",
+                "emoji": "🏙️💾",
+                "label": "Breadth consumes memory",
+                "route": "expand-center",
+                "durationSeconds": 5.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Neither strategy is universally superior. A table of pros and cons without problem conditions is a menu with no prices. BFS fits shallow equal-cost goals; DFS fits deep goals under tight memory but gives up optimality. Compare BFS and DFS as two packing styles. BFS rents a warehouse so every state in the current layer remains accessible; DFS carries a backpack containing the current path and nearby alternatives. The warehouse makes shallow discovery dependable but can bankrupt memory. The backpack travels lightly but may wander far from the nearest goal. Neither is morally superior. Asking which is better without branching factor, goal depth, memory budget, and cost structure is like comparing a canoe with a forklift using only color.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 4,
+            "focusPhrase": "strategy is universally superior",
+            "kineticPhrase": "and cons without problem",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "strategy is universally superior",
+                "selector": ".search-comparison-table > div",
+                "index": 4,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Change one property such as goal depth, memory, or step cost and explain why your preferred strategy reverses. Change goal depth, branching, memory, or cost and explain why the recommendation changes.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 5,
+            "focusPhrase": "Change one property such",
+            "kineticPhrase": "or step cost and",
+            "emoji": "⚖",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Change one property such",
+                "selector": ".search-comparison-table > div",
+                "index": 5,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Match the strategy to the guarantee that matters",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Algorithm selection begins with the required guarantee and the known problem conditions, not personal loyalty to a favorite acronym. Case one favors BFS because shallowest depth equals minimum cost when every step costs the same.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-selection section",
+            "focusIndex": 0,
+            "focusPhrase": "Algorithm selection begins with",
+            "kineticPhrase": "known problem conditions, not",
+            "emoji": "🎯",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Algorithm selection begins with",
+                "selector": ".algorithm-selection section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-selection section > button",
+            "index": 0,
+            "label": "Reveal the first algorithm choice"
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Reveal the shallow equal-cost case, then compare it with a deep memory-limited case, an unknown-depth case, and a variable-cost case. Case two favors DFS's narrow memory footprint while accepting a possibly nonshortest result. Case three demonstrates why a guessed bound is fragile. A limit of four misses a goal at depth five; a huge limit recreates DFS's descent risk. Iterative deepening systematically tries four, then five, paying repeated upper-level work to avoid both guesses.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-selection section",
+            "focusIndex": 0,
+            "focusPhrase": "the shallow equal-cost case",
+            "kineticPhrase": "a deep memory-limited case",
+            "emoji": "🔬",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the shallow equal-cost case",
+                "selector": ".algorithm-selection section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-selection nav button",
+            "index": 1,
+            "label": "Open the deep memory-limited case"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Choosing BFS because it feels thorough is not a technical justification. Thorough can be another word for out of memory. Case three favors iterative deepening because goal depth is unknown. Algorithm selection resembles medical triage: begin with the outcome that must be protected. If a shallowest equal-cost solution is required, BFS may justify its memory bill. If memory is strict and any solution is acceptable, DFS may be reasonable. Unknown depth favors iterative deepening; variable positive costs favor UCS. State the accepted risk explicitly. Choosing an algorithm because it was first in the lecture notes is not engineering; it is alphabetical destiny.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-selection section",
+            "focusIndex": 0,
+            "focusPhrase": "BFS because it feels",
+            "kineticPhrase": "technical justification. Thorough can",
+            "emoji": "💥",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "BFS because it feels",
+                "selector": ".algorithm-selection section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-selection nav button",
+            "index": 2,
+            "label": "Open the unknown-depth case"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "For each case, name the accepted guarantee, the sacrificed guarantee, and the resource most likely to fail first. Case four requires UCS because total path cost, not depth, defines the best solution.",
+          "visualDesign": {
+            "focusSelector": ".algorithm-selection section",
+            "focusIndex": 0,
+            "focusPhrase": "For each case, name",
+            "kineticPhrase": "sacrificed guarantee, and the",
+            "emoji": "🧾",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "For each case, name",
+                "selector": ".algorithm-selection section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 15,
+                "segment": 4,
+                "phrase": "total path cost",
+                "type": "popup",
+                "emoji": "g(n)",
+                "label": "Order by path cost",
+                "durationSeconds": 5.3
+              }
+            ]
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-selection nav button",
+            "index": 3,
+            "label": "Open the variable-cost case"
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A bound prevents infinite descent; deepening removes the guessed bound",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Depth-limited DFS cuts off a path at a specified limit, while iterative deepening repeats DFS with successively larger limits. A cutoff says the chosen bound blocked deeper expansion; it does not prove that no deeper solution exists.",
+          "visualDesign": {
+            "focusSelector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+            "focusIndex": 0,
+            "focusPhrase": "Depth-limited DFS cuts off",
+            "kineticPhrase": "limit, while iterative deepening",
+            "emoji": "🚧",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Depth-limited DFS cuts off",
+                "selector": ".bounded-search-layout article",
+                "index": 0,
+                "label": "Depth limit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Deepening repeats upper levels, but most nodes in a broad tree live near the bottom, so repeated shallow work can be surprisingly affordable. Iterative deepening runs complete bounded searches with limits zero, one, two, and onward. If the bound is two, a node at depth two is examined but its children are cut off. The result is cutoff, not ordinary failure. Iterative deepening reruns with bound three, allowing those children to enter the frontier without storing every earlier breadth layer simultaneously.",
+          "visualDesign": {
+            "focusSelector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+            "focusIndex": 1,
+            "focusPhrase": "repeats upper levels, but",
+            "kineticPhrase": "live near the bottom",
+            "emoji": "🔁",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Iterative deepening runs",
+                "selector": ".bounded-search-layout article",
+                "index": 1,
+                "label": "Iterative deepening"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "A cutoff is not proof of failure. It means the chosen limit prevented this run from seeing farther, not that the goal does not exist. Most nodes in a broad tree lie near the deepest level, so repeating small upper levels can be affordable. A depth bound acts like an elevator whose buttons stop at floor five. Reaching floor five and finding no goal does not prove the building ends; it proves this elevator refuses the next floor. Iterative deepening repeatedly installs one more button. That sounds wasteful, yet broad trees concentrate most nodes near the bottom, so replaying the small lobby levels can cost less than storing an entire crowd. The distinction between cutoff and failure prevents the elevator from making architectural claims.",
+          "visualDesign": {
+            "focusSelector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+            "focusIndex": 2,
+            "focusPhrase": "cutoff is not proof",
+            "kineticPhrase": "prevented this run from",
+            "emoji": "✋",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "repeating small upper levels",
+                "selector": ".bounded-search-layout .search-callout",
+                "index": 0,
+                "label": "Repeated work tradeoff"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 16,
+                "segment": 3,
+                "phrase": "A cutoff is not proof of failure",
+                "type": "popup",
+                "emoji": "CUTOFF ≠ FAILURE",
+                "label": "A bound hides deeper states",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Distinguish failure, cutoff, and success, then explain why iterative deepening can recover shallowest-goal behavior with DFS-like space. Space is roughly b times d while time remains exponential in solution depth.",
+          "visualDesign": {
+            "focusSelector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+            "focusIndex": 1,
+            "focusPhrase": "Distinguish failure, cutoff, and",
+            "kineticPhrase": "iterative deepening can recover",
+            "emoji": "❓",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Distinguish failure, cutoff, and",
+                "selector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+                "index": 1,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "A depth-five cutoff changes what DFS can see",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The depth-five source tree shows exactly which descendants bounded DFS can examine before retreating. The depth-five boundary hides every descendant below it, including a possible goal at depth six.",
+          "visualDesign": {
+            "focusSelector": ".depth-limit-demo section",
+            "focusIndex": 0,
+            "focusPhrase": "The depth-five source tree",
+            "kineticPhrase": "which descendants bounded DFS",
+            "emoji": "5",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The depth-five source tree",
+                "selector": ".depth-limit-demo section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "The linked teaching animation contrasts green DFS with red iterative deepening; predict the repeated layers before watching. Green DFS follows a branch; red iterative deepening revisits upper layers before extending the limit. Suppose each state has four children and the shallowest goal is depth five. Most generated states live at depth five, so re-expanding depths zero through four adds relatively little compared with storing the entire breadth frontier. A narrow branching factor changes that calculation.",
+          "visualDesign": {
+            "focusSelector": ".depth-limit-demo section",
+            "focusIndex": 0,
+            "focusPhrase": "The linked teaching animation",
+            "kineticPhrase": "red iterative deepening; predict",
+            "emoji": "️",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "The linked teaching animation",
+                "selector": ".depth-limit-demo section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "A bound protects time and depth but can hide a valid goal at depth six with the confidence of a locked door pretending the hallway ends. Repeated shallow work can cost less than one disastrous descent when branching is broad and the goal is shallow. On the depth-five tree, mark every node with both its depth and its status: expanded, generated but cut off, or never reached. A node at the limit can be goal-tested while its children remain forbidden. This distinction matters in code because a cutoff must propagate differently from failure. If all branches fail within the bound, report failure; if at least one branch is truncated, report cutoff. Otherwise iterative deepening may stop early and confidently announce that floor six has been canceled.",
+          "visualDesign": {
+            "focusSelector": ".depth-limit-demo section",
+            "focusIndex": 0,
+            "focusPhrase": "bound protects time and",
+            "kineticPhrase": "at depth six with",
+            "emoji": "⃣",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "bound protects time and",
+                "selector": ".depth-limit-demo section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 17,
+                "segment": 3,
+                "phrase": "locked door pretending the hallway ends",
+                "type": "emoji",
+                "emoji": "🚪🔒",
+                "label": "The bound hides depth",
+                "route": "drop-center",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Ask when repeated shallow work costs less than one disastrous descent and connect the answer to branching factor and goal depth. Use branching factor and shallowest goal depth to justify that tradeoff.",
+          "visualDesign": {
+            "focusSelector": ".depth-limit-demo section",
+            "focusIndex": 0,
+            "focusPhrase": "when repeated shallow work",
+            "kineticPhrase": "descent and connect the",
+            "emoji": "🎞",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "when repeated shallow work",
+                "selector": ".depth-limit-demo section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "When step costs differ, expand the smallest accumulated cost g(n)",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Uniform-cost search orders OPEN by accumulated path cost g(n), not by depth or generation time. UCS stores g(n), the accumulated path cost, and removes the frontier state with the smallest value.",
+          "visualDesign": {
+            "focusSelector": ".search-reveal li",
+            "focusIndex": 0,
+            "focusPhrase": "Uniform-cost search orders OPEN",
+            "kineticPhrase": "cost g(n), not by",
+            "emoji": "💰",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Uniform-cost search orders OPEN",
+                "selector": ".search-reveal li",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".search-reveal button",
+            "index": 0,
+            "label": "Reveal the first UCS step"
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Reveal the priority-queue sequence: start at A zero, insert priced children, remove the cheapest frontier state, and update cheaper paths. Insert priced children, remove the cheapest entry, and update a state when a cheaper parent path is discovered. From A, imagine edges to B cost two, C cost five, and D cost one. UCS removes D first even if D is visually deeper. If a later route reaches C for cost three, the priority record for C must be decreased from five to three.",
+          "visualDesign": {
+            "focusSelector": ".search-reveal li",
+            "focusIndex": 1,
+            "focusPhrase": "the priority-queue sequence: start",
+            "kineticPhrase": "priced children, remove the",
+            "emoji": "📈",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the priority-queue sequence: start",
+                "selector": ".search-reveal li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".search-reveal button",
+            "index": 0,
+            "label": "Reveal the second UCS step"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "The first generated goal need not be optimal. With positive costs, optimality arrives when the goal is removed as the minimum-cost frontier state. A generated goal can be expensive; positive costs make it optimal when removed as the cheapest frontier entry. UCS is a road-trip planner that watches toll receipts rather than counting intersections. A path with three roads can cost more than a path with six. The priority queue therefore orders states by accumulated g(n), and a cheaper rediscovery may update an existing entry. Positive lower-bounded costs matter because they prevent infinitely many almost-free detours before the goal. The first goal sign seen through the windshield is not enough; optimality arrives when the goal is the cheapest item removed from the queue.",
+          "visualDesign": {
+            "focusSelector": ".search-reveal li",
+            "focusIndex": 2,
+            "focusPhrase": "first generated goal need",
+            "kineticPhrase": "optimality arrives when the",
+            "emoji": "🏁",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "first generated goal need",
+                "selector": ".search-reveal li",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 18,
+                "segment": 3,
+                "phrase": "first generated goal need not be optimal",
+                "type": "popup",
+                "emoji": "REMOVE GOAL ✓",
+                "label": "Optimal when removed",
+                "durationSeconds": 6
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".search-reveal button",
+            "index": 0,
+            "label": "Reveal the third UCS step"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Connect UCS to BFS by setting every step cost equal and explain why cost layers then become depth layers. If every edge costs one, g(n) equals depth and UCS reproduces BFS layers.",
+          "visualDesign": {
+            "focusSelector": ".search-reveal li",
+            "focusIndex": 4,
+            "focusPhrase": "Connect UCS to BFS",
+            "kineticPhrase": "equal and explain why",
+            "emoji": "🔗",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Connect UCS to BFS",
+                "selector": ".search-reveal li",
+                "index": 4,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "click",
+            "selector": ".search-reveal button",
+            "index": 1,
+            "label": "Reveal the complete UCS sequence"
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Guarantees depend on explicit conditions",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Completeness and optimality are conditional statements, so the conditions belong beside the checkmarks rather than in invisible footnotes. The table contains conditional claims, not unconditional badges.",
+          "visualDesign": {
+            "focusSelector": ".evaluation-matrix > div",
+            "focusIndex": 0,
+            "focusPhrase": "Completeness and optimality are",
+            "kineticPhrase": "conditions belong beside the",
+            "emoji": "✅",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Completeness and optimality are",
+                "selector": ".evaluation-matrix > div",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "BFS needs finite branching; BFS and iterative deepening need equal costs for minimum cost; UCS needs costs bounded above zero. BFS needs finite branching and equal costs for its strongest guarantees; DFS promises neither in infinite depth. A depth limit l of five uses space proportional to b times l, but fails if the only goal is at six. UCS is optimal with positive costs, yet a tiny epsilon can still allow many low-cost expansions. The symbols describe growth patterns, not guaranteed wall-clock comfort.",
+          "visualDesign": {
+            "focusSelector": ".evaluation-matrix > div",
+            "focusIndex": 1,
+            "focusPhrase": "needs finite branching; BFS",
+            "kineticPhrase": "equal costs for minimum",
+            "emoji": "📊",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "BFS needs finite branching",
+                "selector": ".evaluation-matrix > div",
+                "index": 1,
+                "label": "BFS guarantees"
+              },
+              {
+                "phrase": "DFS promises neither",
+                "selector": ".evaluation-matrix > div",
+                "index": 2,
+                "label": "DFS guarantees"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Big-O symbols are not decorative algebra confetti. They describe how branching factor, depth, maximum depth, or limit drives resource growth. A depth limit can hide a goal; deepening repairs that; UCS requires costs bounded by a positive epsilon. Read the guarantee matrix as a legal contract with the conditions printed at normal font size. Completeness and optimality are not personality traits that an algorithm carries everywhere. They are implications: if branching, depth, and costs satisfy stated assumptions, then the guarantee follows. Complexity symbols identify the variables driving growth, not a stopwatch prediction. Big O is a map of the storm system; it does not promise that Tuesday at three o'clock will merely be breezy.",
+          "visualDesign": {
+            "focusSelector": ".evaluation-matrix > div",
+            "focusIndex": 2,
+            "focusPhrase": "symbols are not decorative",
+            "kineticPhrase": "how branching factor, depth",
+            "emoji": "🎊",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "A depth limit can hide a goal",
+                "selector": ".evaluation-matrix > div",
+                "index": 3,
+                "label": "Depth-limited"
+              },
+              {
+                "phrase": "deepening repairs that",
+                "selector": ".evaluation-matrix > div",
+                "index": 4,
+                "label": "Iterative deepening"
+              },
+              {
+                "phrase": "UCS requires costs",
+                "selector": ".evaluation-matrix > div",
+                "index": 5,
+                "label": "Uniform-cost"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 19,
+                "segment": 3,
+                "phrase": "Big-O symbols",
+                "type": "popup",
+                "emoji": "b · d · m · ℓ",
+                "label": "Read the growth variables",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Compare one row at a time and name the assumption whose removal would invalidate its strongest guarantee. Read b as branching, d as shallowest goal depth, m as maximum depth, and l as the limit.",
+          "visualDesign": {
+            "focusSelector": ".evaluation-matrix > div",
+            "focusIndex": 5,
+            "focusPhrase": "Compare one row at",
+            "kineticPhrase": "the assumption whose removal",
+            "emoji": "🧪",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Compare one row at",
+                "selector": ".evaluation-matrix > div",
+                "index": 5,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Backtracking pursues a path and recovers from failure",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Backtracking follows a current path until a goal, dead end, or unacceptable cost forces recovery to a recent alternative. Backtracking keeps a current path until a goal, dead end, or unacceptable cost forces recovery.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-intro section",
+            "focusIndex": 0,
+            "focusPhrase": "Backtracking follows a current",
+            "kineticPhrase": "end, or unacceptable cost",
+            "emoji": "🧵",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Backtracking follows a current",
+                "selector": ".backtracking-intro section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Picture navigating a maze with breadcrumbs and a list of unopened doors. Dead ends are information, not personal criticism from the maze. Recovery selects the nearest ancestor with an untried alternative. In a maze, the current path may be A, B, F. If F is a dead end, record F, return logically to B, and try B's next unvisited alternative. If B has none, continue shrinking toward A. The saved alternatives decide where recovery stops.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-intro section",
+            "focusIndex": 0,
+            "focusPhrase": "navigating a maze with",
+            "kineticPhrase": "unopened doors. Dead ends",
+            "emoji": "🍞",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "navigating a maze with",
+                "selector": ".backtracking-intro section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 20,
+                "segment": 2,
+                "phrase": "maze with breadcrumbs",
+                "type": "emoji",
+                "emoji": "🧵🧭",
+                "label": "Remember the return path",
+                "route": "trail-center",
+                "durationSeconds": 5.5
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "DFS already backtracks through OPEN. This list-based variant makes path, alternatives, and dead ends explicit, but that alone does not make it heuristic search. DFS also returns to alternatives, but this version exposes path, alternatives, dead ends, and optional cost rejection. Backtracking turns failure into routing information. The current path is a stack of commitments; alternatives are unopened doors attached to earlier commitments; dead ends record doors not worth reopening. When the current state fails, retract only far enough to reach the most recent viable alternative. This is more precise than restarting at the entrance and more disciplined than choosing a random door. The maze may judge our choices silently, but DE ensures it does not get to repeat the same joke.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-intro section",
+            "focusIndex": 0,
+            "focusPhrase": "already backtracks through OPEN",
+            "kineticPhrase": "and dead ends explicit",
+            "emoji": "🪦",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "already backtracks through OPEN",
+                "selector": ".backtracking-intro section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Identify the most recent state with an untried alternative and describe what information must survive when the path shrinks. Dead-end memory helps pruning but is not a heuristic estimate of remaining goal distance.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-intro section",
+            "focusIndex": 0,
+            "focusPhrase": "Identify the most recent",
+            "kineticPhrase": "and describe what information",
+            "emoji": "↩",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Identify the most recent",
+                "selector": ".backtracking-intro section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "SL, NSL, DE, and CS make recovery explicit",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The source algorithm names the state list SL, new-state list NSL, dead ends DE, and current state CS. SL is the current path and CS is its current state.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-structures article",
+            "focusIndex": 0,
+            "focusPhrase": "The source algorithm names",
+            "kineticPhrase": "new-state list NSL, dead",
+            "emoji": "🗂",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "SL is the current path",
+                "selector": ".backtracking-structures article",
+                "index": 0,
+                "label": "SL current path"
+              },
+              {
+                "phrase": "CS is its current state",
+                "selector": ".backtracking-structures article",
+                "index": 3,
+                "label": "CS current state"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 21,
+                "segment": 1,
+                "phrase": "state list SL, new-state list NSL, dead ends DE, and current state CS",
+                "type": "popup",
+                "emoji": "SL · NSL · DE · CS",
+                "label": "Four recovery records",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Enlarge the pseudocode and watch one failure: place the failed state in DE, shrink SL, and select the next available alternative from NSL. NSL records available new states; DE records known dead ends. Suppose CS is F, SL is F, B, A, NSL contains F, B, C, D, A, and DE contains E, I, H. If F has no viable child, add F to DE, shrink SL, and choose the next alternative associated with the nearest surviving ancestor.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-structures article",
+            "focusIndex": 1,
+            "focusPhrase": "the pseudocode and watch",
+            "kineticPhrase": "in DE, shrink SL",
+            "emoji": "️",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "NSL records available new states",
+                "selector": ".backtracking-structures article",
+                "index": 1,
+                "label": "NSL alternatives"
+              },
+              {
+                "phrase": "DE records known dead ends",
+                "selector": ".backtracking-structures article",
+                "index": 2,
+                "label": "DE dead ends"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".algorithm-figure button",
+            "index": 0,
+            "label": "Enlarge the backtracking pseudocode"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Failing to exclude states already on SL can create a cycle inside the current path. That is less a search strategy and more a hamster wheel with variables. When CS has no viable child, shrink SL until an ancestor has an available alternative. The four records divide responsibilities. SL represents the active path, CS names its current endpoint, NSL preserves candidate alternatives, and DE remembers recognized dead ends. Test the invariant that CS agrees with the active end of SL after every update. When failure occurs, DE grows while SL contracts; NSL determines the next candidate. If all four lists change arbitrarily, the algorithm is not backtracking—it is a spreadsheet experiencing an emotional event.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-structures article",
+            "focusIndex": 2,
+            "focusPhrase": "to exclude states already",
+            "kineticPhrase": "current path. That is",
+            "emoji": "📜",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "shrink SL",
+                "selector": ".backtracking-structures .search-callout",
+                "index": 0,
+                "label": "Backtrack condition"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged backtracking pseudocode"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Explain each list in one sentence and predict how all four change when the current state has no viable child. Trace one failure by updating DE, shortening SL, selecting from NSL, and assigning CS.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-structures article",
+            "focusIndex": 3,
+            "focusPhrase": "each list in one",
+            "kineticPhrase": "all four change when",
+            "emoji": "🐹",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "each list in one",
+                "selector": ".backtracking-structures article",
+                "index": 3,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The current path can shrink without walking back through the graph",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Ancestor information lets the algorithm recover logically without performing a physical reverse action in the represented world. Ancestor records encode logical recovery without requiring a physical reverse action in the represented world.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Ancestor information lets the",
+            "kineticPhrase": "performing a physical reverse",
+            "emoji": "🧬",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Ancestor information lets the",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "In the trace, failed states enter DE, SL shrinks to a viable ancestor, and NSL supplies the next alternative. A failed state enters DE, SL contracts, and NSL supplies the next alternative. A delivery robot need not physically reverse every meter merely because the planning algorithm backtracks. The planner can retract a hypothetical route in memory, select another branch, and then send only the chosen forward route to the robot for execution.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "In the trace, failed",
+            "kineticPhrase": "to a viable ancestor",
+            "emoji": "↩",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "In the trace, failed",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 22,
+                "segment": 2,
+                "phrase": "failed states enter DE, SL shrinks",
+                "type": "emoji-swap",
+                "emoji": "📈",
+                "emojiAfter": "📉",
+                "label": "Path contracts after failure",
+                "route": "swap-center",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "The data structure models recovery; the robot, theorem prover, or puzzle need not literally undo every real-world step. Search bookkeeping and external-world motion are therefore separate mechanisms. Logical recovery is different from physical reversal. A planner can erase a hypothetical suffix from SL in microseconds without commanding a robot to drive backward through the warehouse. Only the final chosen action sequence must be executed. This separation is common in AI: internal search explores possibilities that the external agent never performs. Confusing planning states with physical motion can multiply execution cost and produce a robot that appears thoughtful mainly because it keeps returning to the same shelf.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "The data structure models",
+            "kineticPhrase": "prover, or puzzle need",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "The data structure models",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Compare two adjacent rows and narrate the update using CS, SL, NSL, and DE in that order. Compare adjacent trace rows in the order CS, SL, NSL, and DE.",
+          "visualDesign": {
+            "focusSelector": ".trace-source-layout section",
+            "focusIndex": 0,
+            "focusPhrase": "Compare two adjacent rows",
+            "kineticPhrase": "using CS, SL, NSL",
+            "emoji": "🤖",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Compare two adjacent rows",
+                "selector": ".trace-source-layout section",
+                "index": 0,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Scrub through the source trace",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The slider turns the backtracking table into a sequence of visible state-management decisions. At iteration zero, CS and SL begin at A while DE is empty.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-trace article",
+            "focusIndex": 0,
+            "focusPhrase": "The slider turns the",
+            "kineticPhrase": "into a sequence of",
+            "emoji": "🎚",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "The slider turns the",
+                "selector": ".backtracking-trace article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Move to iteration three, predict the dead end, then scrub forward and watch SL contract while DE grows. By iteration three, the path has grown and alternatives remain recorded. Scrub from iteration three to five and watch two coupled changes: SL loses the failed suffix while DE gains those failed states. NSL preserves alternatives. The current state CS should always agree with the active end of the recovered path.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-trace article",
+            "focusIndex": 1,
+            "focusPhrase": "Move to iteration three",
+            "kineticPhrase": "then scrub forward and",
+            "emoji": "️",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Move to iteration three",
+                "selector": ".backtracking-trace article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 23,
+                "segment": 2,
+                "phrase": "SL contract while DE grows",
+                "type": "emoji",
+                "emoji": "SL 📉  DE 📈",
+                "label": "Watch both lists",
+                "route": "split-center",
+                "durationSeconds": 5.8
+              }
+            ]
+          },
+          "action": {
+            "type": "range",
+            "selector": ".backtracking-trace input",
+            "index": 0,
+            "value": 3,
+            "label": "Move the trace slider to iteration 3"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "A slider is not understanding by osmosis. Pause at each change and explain which condition in the algorithm fired. At iteration five, failed states appear in DE while SL shows the surviving path. While scrubbing the trace, treat SL and DE like coupled gauges. A failed suffix should leave the path and enter the dead-end record; the selected alternative should come from the nearest surviving ancestor with options. Pause at iterations three, five, and eight and narrate the exact cause of each change. The slider is useful because it exposes history. Dragging it rapidly back and forth without reading the lists is technically interaction, much as shaking a textbook is technically using gravity.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-trace article",
+            "focusIndex": 2,
+            "focusPhrase": "A slider is not",
+            "kineticPhrase": "each change and explain",
+            "emoji": "🧱",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "A slider is not",
+                "selector": ".backtracking-trace article",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "range",
+            "selector": ".backtracking-trace input",
+            "index": 0,
+            "value": 5,
+            "label": "Move the trace slider to iteration 5"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Move across several iterations and identify the first recovery that selects an alternative from an ancestor. At iteration eight, identify the failed state, contracted ancestor, selected alternative, and DE update.",
+          "visualDesign": {
+            "focusSelector": ".backtracking-trace article",
+            "focusIndex": 3,
+            "focusPhrase": "Move across several iterations",
+            "kineticPhrase": "first recovery that selects",
+            "emoji": "🛑",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "failed state",
+                "selector": ".backtracking-trace article",
+                "index": 3,
+                "label": "DE update"
+              },
+              {
+                "phrase": "contracted ancestor",
+                "selector": ".backtracking-trace article",
+                "index": 1,
+                "label": "SL contraction"
+              },
+              {
+                "phrase": "selected alternative",
+                "selector": ".backtracking-trace article",
+                "index": 2,
+                "label": "NSL alternative"
+              },
+              {
+                "phrase": "DE update",
+                "selector": ".backtracking-trace article",
+                "index": 3,
+                "label": "Dead ends"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "range",
+            "selector": ".backtracking-trace input",
+            "index": 0,
+            "value": 8,
+            "label": "Move the trace slider to iteration 8"
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Similar traversal does not mean identical state management",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Depth-first graph search uses OPEN and CLOSED, while the source backtracking method foregrounds SL, NSL, DE, and CS. Graph DFS centers OPEN and CLOSED; backtracking centers SL, NSL, DE, and CS.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 1,
+            "focusPhrase": "Depth-first graph search uses",
+            "kineticPhrase": "the source backtracking method",
+            "emoji": "📚",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Depth-first graph search uses",
+                "selector": ".search-comparison-table > div",
+                "index": 1,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Both are depth-oriented, but recovery is represented differently: a waiting frontier versus an explicitly shrinking current path. DFS recovery selects a waiting OPEN state; backtracking explicitly shrinks the path. Both methods may visit A, B, F and then recover. Graph DFS already has C and D waiting in OPEN. The list-based backtracker instead shrinks SL and consults NSL. Similar traversal order does not imply identical records or recovery code.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 2,
+            "focusPhrase": "Both are depth-oriented, but",
+            "kineticPhrase": "a waiting frontier versus",
+            "emoji": "↩",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Both are depth-oriented, but",
+                "selector": ".search-comparison-table > div",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 24,
+                "segment": 2,
+                "phrase": "waiting frontier versus an explicitly shrinking current path",
+                "type": "popup",
+                "emoji": "OPEN ↔ SL",
+                "label": "Two recovery models",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Calling backtracking informed because it remembers dead ends can overstate the claim. Remembering failure is useful, but worst-case brute force still attends the party. Their pruning signals are duplicate history versus dead ends or unacceptable cost. Graph DFS and explicit backtracking can share a depth-oriented visiting order while maintaining different bookkeeping. DFS leaves alternatives distributed across OPEN and prevents repeats through global history. The backtracking formulation foregrounds one current path, its local alternatives, and dead ends. Similar next states do not imply interchangeable code. Two kitchens can serve the same sandwich while one uses a ticket queue and the other relies on a chef remembering every table—a comparison that becomes exciting during lunch rush.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 3,
+            "focusPhrase": "backtracking informed because it",
+            "kineticPhrase": "claim. Remembering failure is",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "backtracking informed because it",
+                "selector": ".search-comparison-table > div",
+                "index": 3,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Compare primary record, recovery mechanism, pruning signal, and shared limitation without pretending the methods are unrelated or identical. Both remain depth-oriented and can still require exponential exploration.",
+          "visualDesign": {
+            "focusSelector": ".search-comparison-table > div",
+            "focusIndex": 4,
+            "focusPhrase": "Compare primary record, recovery",
+            "kineticPhrase": "shared limitation without pretending",
+            "emoji": "🧠",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Compare primary record, recovery",
+                "selector": ".search-comparison-table > div",
+                "index": 4,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Move deliberately from meaning to implementation",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The pipeline moves from a real problem to a state space, graph, data structures plus algorithm, and finally a state, path, or both. Begin with a real problem whose goals, constraints, observations, and legal actions are explicit.",
+          "visualDesign": {
+            "focusSelector": ".problem-solving-pipeline article",
+            "focusIndex": 0,
+            "focusPhrase": "pipeline moves from a",
+            "kineticPhrase": "graph, data structures plus",
+            "emoji": "🏗",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Begin with a real problem",
+                "selector": ".problem-solving-pipeline article",
+                "index": 0,
+                "label": "Problem"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "A delivery problem becomes variables and operators, then nodes and arcs, then queues, stacks, priority queues, hashes, and parent records. The state space is conceptual; the graph turns states into nodes and legal transitions into arcs. For route planning, the real problem specifies destinations and road rules. A state encodes location and relevant conditions. The graph turns legal moves into arcs. A priority queue and hash set implement the frontier and history. Parent pointers turn the goal into directions.",
+          "visualDesign": {
+            "focusSelector": ".problem-solving-pipeline article",
+            "focusIndex": 1,
+            "focusPhrase": "delivery problem becomes variables",
+            "kineticPhrase": "and arcs, then queues",
+            "emoji": "️",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "state space is conceptual",
+                "selector": ".problem-solving-pipeline article",
+                "index": 1,
+                "label": "State space"
+              },
+              {
+                "phrase": "graph turns states into nodes",
+                "selector": ".problem-solving-pipeline article",
+                "index": 2,
+                "label": "Graph"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 25,
+                "segment": 2,
+                "phrase": "nodes and arcs",
+                "type": "emoji",
+                "emoji": "● ──▶ ●",
+                "label": "Graph representation",
+                "route": "connect-center",
+                "durationSeconds": 5.4
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "An efficient algorithm cannot rescue a representation that erased information needed for legal or goal-directed action. Data structures store the graph, frontier, history, costs, and parents; the algorithm updates them. The five-stage pipeline protects meaning as the solution moves toward code. Real goals and constraints determine the state variables; legal actions determine arcs; data structures preserve frontier, history, cost, and parent information; the algorithm updates those records; the output returns the required goal or path. An error upstream survives every elegant optimization downstream. A priority queue cannot repair a state representation that forgot fuel, just as a faster oven cannot restore an ingredient omitted from the recipe.",
+          "visualDesign": {
+            "focusSelector": ".problem-solving-pipeline article",
+            "focusIndex": 3,
+            "focusPhrase": "An efficient algorithm cannot",
+            "kineticPhrase": "that erased information needed",
+            "emoji": "🚚",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "Data structures store",
+                "selector": ".problem-solving-pipeline article",
+                "index": 3,
+                "label": "Implementation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Locate one representation error, one implementation error, and one evaluation error along the five-stage pipeline. The solution may be a goal, a path, or both, so each stage must preserve needed information.",
+          "visualDesign": {
+            "focusSelector": ".problem-solving-pipeline article",
+            "focusIndex": 4,
+            "focusPhrase": "Locate one representation error",
+            "kineticPhrase": "and one evaluation error",
+            "emoji": "⚠",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "solution may be",
+                "selector": ".problem-solving-pipeline article",
+                "index": 4,
+                "label": "Solution"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Explain, trace, implement, and critique",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "Review should connect definitions to traces and data structures rather than reward isolated vocabulary recitation. The representation tab connects states, state spaces, graphs, operators, and data structures through one modeled problem.",
+          "visualDesign": {
+            "focusSelector": ".search-review-studio li",
+            "focusIndex": 0,
+            "focusPhrase": "Review should connect definitions",
+            "kineticPhrase": "data structures rather than",
+            "emoji": "🧑",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Review should connect definitions",
+                "selector": ".search-review-studio li",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Use the tabs to move from representation questions to solution direction and then algorithms. Each group should draw, trace, and defend one answer. The direction tab distinguishes initial state, goal, path, forward search, and backward search. Answer the queue question operationally: after B expands, which list changes, where do its children enter, and which state leaves next? A correct answer ties the data structure to the visible trace. Saying only queue or stack is a label without a mechanism.",
+          "visualDesign": {
+            "focusSelector": ".search-review-studio li",
+            "focusIndex": 1,
+            "focusPhrase": "the tabs to move",
+            "kineticPhrase": "and then algorithms. Each",
+            "emoji": "‍",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "the tabs to move",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          },
+          "action": {
+            "type": "click",
+            "selector": ".search-review-studio nav button",
+            "index": 1,
+            "label": "Open solutions and direction review"
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Saying BFS uses a queue earns a start, not a parade. Explain which queue invariant produces level order and under which conditions that matters. The algorithms tab requires DFS, BFS, and backtracking mechanisms, invariants, benefits, and limitations. The review tabs ask for layered competence. Explanation states what a concept means; tracing predicts concrete state changes; implementation maps those changes to data structures; critique identifies assumptions and failure modes. Practice one weak layer directly. If queue behavior is unclear, write OPEN after each expansion. If guarantees are unclear, add the missing conditions. Re-reading the acronym ten times may create familiarity, but familiarity is the academic cousin of recognizing someone at a party and still not knowing their name.",
+          "visualDesign": {
+            "focusSelector": ".search-review-studio li",
+            "focusIndex": 2,
+            "focusPhrase": "BFS uses a queue",
+            "kineticPhrase": "Explain which queue invariant",
+            "emoji": "🤝",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "BFS uses a queue",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 26,
+                "segment": 3,
+                "phrase": "queue invariant produces level order",
+                "type": "popup",
+                "emoji": "FIFO ⇒ LEVEL ORDER",
+                "label": "Explain the mechanism",
+                "durationSeconds": 6
+              }
+            ]
+          },
+          "action": {
+            "type": "click",
+            "selector": ".search-review-studio nav button",
+            "index": 2,
+            "label": "Open algorithms review"
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Choose the weakest review category and answer one conceptual question plus one implementation question without consulting the slide. Answer one weak item conceptually and then with a trace or implementation detail.",
+          "visualDesign": {
+            "focusSelector": ".search-review-studio li",
+            "focusIndex": 3,
+            "focusPhrase": "Choose the weakest review",
+            "kineticPhrase": "conceptual question plus one",
+            "emoji": "‍",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Choose the weakest review",
+                "selector": ".search-review-studio li",
+                "index": 3,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3,
+          "action": {
+            "type": "click",
+            "selector": ".search-review-studio nav button",
+            "index": 0,
+            "label": "Return to representation review"
+          }
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "A correct search answer includes the representation and the process",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "A complete explanation names the state model, graph, operators, frontier rule, explored-state handling, goal timing, and returned solution. Outcomes one through three cover representation from state space to computational model.",
+          "visualDesign": {
+            "focusSelector": ".important-points-grid article",
+            "focusIndex": 0,
+            "focusPhrase": "A complete explanation names",
+            "kineticPhrase": "operators, frontier rule, explored-state",
+            "emoji": "🧠",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "Outcomes one",
+                "selector": ".important-points-grid article",
+                "index": 0,
+                "label": "State-space search"
+              },
+              {
+                "phrase": "through three",
+                "selector": ".important-points-grid article",
+                "index": 2,
+                "label": "Computational model"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "Trace and implementation skills must travel together: DFS, BFS, and backtracking are not understood if only their slogans survive. Outcomes four through six require implementing and tracing DFS, BFS, and backtracking. A student who can define BFS but cannot predict OPEN after one expansion has not yet met the trace outcome. A student who can trace but cannot store parents has not yet met the implementation outcome. The grid separates those competencies so practice can target the gap.",
+          "visualDesign": {
+            "focusSelector": ".important-points-grid article",
+            "focusIndex": 3,
+            "focusPhrase": "Trace and implementation skills",
+            "kineticPhrase": "and backtracking are not",
+            "emoji": "🛠",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "Outcomes four",
+                "selector": ".important-points-grid article",
+                "index": 3,
+                "label": "Trace DFS"
+              },
+              {
+                "phrase": "through six",
+                "selector": ".important-points-grid article",
+                "index": 5,
+                "label": "Trace backtracking"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "Brute force is not an insult. It is a warning that systematic exploration may still grow explosively without stronger problem knowledge. DFS and BFS are brute force because neither uses an h(n) estimate of remaining goal distance. Use the outcomes as preflight checks. Can you model the problem, define operators, choose data structures, trace DFS and BFS, implement parent recovery, and diagnose backtracking failure? A yes should be supported by an example or trace, not optimistic weather. The outcomes connect representation to process because search errors often masquerade: a bad state model looks like an algorithm bug, and a missing parent table looks like a successful search that forgot why it came.",
+          "visualDesign": {
+            "focusSelector": ".important-points-grid article",
+            "focusIndex": 5,
+            "focusPhrase": "force is not an",
+            "kineticPhrase": "that systematic exploration may",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "DFS and BFS are brute force",
+                "selector": ".important-points-grid article",
+                "index": 6,
+                "label": "Brute force"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 27,
+                "segment": 3,
+                "phrase": "Brute force is not an insult",
+                "type": "popup",
+                "emoji": "NO h(n)",
+                "label": "Systematic, not heuristic",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Mark each outcome can explain, can trace, or can implement, then select one weak item for deliberate practice. Dead-end information helps backtracking, but worst-case growth can remain exponential.",
+          "visualDesign": {
+            "focusSelector": ".important-points-grid article",
+            "focusIndex": 7,
+            "focusPhrase": "Mark each outcome can",
+            "kineticPhrase": "can implement, then select",
+            "emoji": "💥",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Dead-end information helps",
+                "selector": ".important-points-grid article",
+                "index": 7,
+                "label": "Backtracking boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Choose an algorithm only after stating the problem conditions",
+      "segments": [
+        {
+          "label": "Concept framing",
+          "text": "The exit task requires one expansion trace, a conditional comparison of DFS, BFS, and UCS, and a repaired failure mode. The trace must show selection, children, ordered OPEN, CLOSED, goal timing, and parent information.",
+          "visualDesign": {
+            "focusSelector": ".search-exit article",
+            "focusIndex": 0,
+            "focusPhrase": "exit task requires one",
+            "kineticPhrase": "comparison of DFS, BFS",
+            "emoji": "📝",
+            "kineticLabel": "Frame",
+            "focuses": [
+              {
+                "phrase": "exit task requires one",
+                "selector": ".search-exit article",
+                "index": 0,
+                "label": "Definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Concrete example",
+          "text": "A defensible answer states branching, costs, expected depth, memory limits, duplicate policy, and when the goal test occurs. The comparison must pair each selection rule with a conditional guarantee. If search loops between two states, add duplicate detection. If DFS descends forever, add a bound or deepening. If BFS exhausts memory, reconsider representation or strategy. If a shallow path is expensive, use cost ordering. Each repair addresses a different diagnosed cause.",
+          "visualDesign": {
+            "focusSelector": ".search-exit article",
+            "focusIndex": 1,
+            "focusPhrase": "A defensible answer states",
+            "kineticPhrase": "memory limits, duplicate policy",
+            "emoji": "⚖",
+            "kineticLabel": "Example",
+            "focuses": [
+              {
+                "phrase": "A defensible answer states",
+                "selector": ".search-exit article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and misconception",
+          "text": "The algorithm name is the conclusion, not the opening guess. Otherwise strategy selection becomes horoscope reading for data structures. Diagnose one cycle, depth, memory, hidden-goal, or cost failure and choose the matching repair. The exit task is a mechanic's diagnosis, not an algorithm popularity poll. A loop suggests duplicate handling; unbounded descent suggests a limit or deepening; memory explosion suggests breadth pressure; a cheap deeper path suggests cost ordering. Name the failure, identify the violated condition, and choose the smallest repair that addresses it. Installing UCS because the search engine made a strange noise is like replacing a car's transmission because the cup holder squeaks—expensive, impressive, and unrelated.",
+          "visualDesign": {
+            "focusSelector": ".search-exit article",
+            "focusIndex": 2,
+            "focusPhrase": "The algorithm name is",
+            "kineticPhrase": "guess. Otherwise strategy selection",
+            "emoji": "️",
+            "kineticLabel": "Boundary",
+            "focuses": [
+              {
+                "phrase": "The algorithm name is",
+                "selector": ".search-exit article",
+                "index": 2,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": [
+              {
+                "slide": 28,
+                "segment": 3,
+                "phrase": "horoscope reading for data structures",
+                "type": "emoji",
+                "emoji": "🔮🚫",
+                "label": "Conditions before names",
+                "route": "wobble-center",
+                "durationSeconds": 5.4
+              }
+            ]
+          }
+        },
+        {
+          "label": "Question and takeaway",
+          "text": "Complete the exit ticket and preview Meeting 5: heuristics add problem-specific estimates to decide which frontier state looks promising. Problem conditions come before the algorithm name; heuristics in Lesson 5 add estimates, not permission to skip modeling.",
+          "visualDesign": {
+            "focusSelector": ".search-exit article",
+            "focusIndex": 2,
+            "focusPhrase": "Complete the exit ticket",
+            "kineticPhrase": "add problem-specific estimates to",
+            "emoji": "🔮",
+            "kineticLabel": "Think",
+            "focuses": [
+              {
+                "phrase": "Complete the exit ticket",
+                "selector": ".search-exit article",
+                "index": 2,
+                "label": "Check"
+              }
+            ],
+            "kinetics": []
+          },
+          "pauseAfterSeconds": 3
+        }
+      ]
+    }
+  ]
+}

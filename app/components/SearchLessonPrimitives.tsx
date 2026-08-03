@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode, useState } from "react";
+import { createPortal } from "react-dom";
 
 const defaultSourceRoot = "/course-source/l02-state-space";
 
@@ -30,7 +31,7 @@ export function SearchSourceImage({
         </button>
         {caption && <figcaption>{caption}<span>Click image to enlarge</span></figcaption>}
       </figure>
-      {zoomed && (
+      {zoomed && createPortal(
         <div
           aria-label={`Enlarged source figure: ${alt}`}
           aria-modal="true"
@@ -47,7 +48,8 @@ export function SearchSourceImage({
           </button>
           <img alt={alt} src={`${sourceRoot}/${file}`} />
           {caption && <p>{caption}</p>}
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );

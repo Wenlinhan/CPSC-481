@@ -1,0 +1,1257 @@
+{
+  "route": "/lessons/04",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Uninformed Graph Search",
+      "visibleText": "FROM A STATE SPACE TO AN ALGORITHM\nWhich state should the agent expand next?\n\nThe answer determines search order, memory use, solution guarantees, and failure modes.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "From a state space to an algorithmWhich state should the agent expand next?The answer determines search order, memory use, solution guarantees, and failure modes."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Which state should the agent expand next?"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Five strategies, four evaluation questions",
+      "visibleText": "01\nDFS\n\nGo deeper before siblings\n\n02\nBFS\n\nExplore level by level\n\n03\nBounded / deepening\n\nControl depth, then increase it\n\n04\nUniform-cost\n\nExpand lowest accumulated cost\n\n05\nBacktracking\n\nMaintain a path and recover from dead ends\n\nEVALUATE EVERY STRATEGY\n\nComplete? Will it find a solution if one exists?\n\nOptimal? Will it return the best solution?\n\nTime? How many states may it generate?\n\nSpace? How much frontier and history must it store?",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "01DFSGo deeper before siblings02BFSExplore level by level03Bounded / deepeningControl depth, then increase it04Uniform-costExpand lowest accumulated cost05BacktrackingMaintain a path and recover from dead ends"
+        },
+        {
+          "index": 1,
+          "tag": "article",
+          "className": "",
+          "text": "01DFSGo deeper before siblings"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "DFS"
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "02BFSExplore level by level"
+        },
+        {
+          "index": 4,
+          "tag": "h3",
+          "className": "",
+          "text": "BFS"
+        },
+        {
+          "index": 5,
+          "tag": "article",
+          "className": "",
+          "text": "03Bounded / deepeningControl depth, then increase it"
+        },
+        {
+          "index": 6,
+          "tag": "h3",
+          "className": "",
+          "text": "Bounded / deepening"
+        },
+        {
+          "index": 7,
+          "tag": "article",
+          "className": "",
+          "text": "04Uniform-costExpand lowest accumulated cost"
+        },
+        {
+          "index": 8,
+          "tag": "h3",
+          "className": "",
+          "text": "Uniform-cost"
+        },
+        {
+          "index": 9,
+          "tag": "article",
+          "className": "",
+          "text": "05BacktrackingMaintain a path and recover from dead ends"
+        },
+        {
+          "index": 10,
+          "tag": "h3",
+          "className": "",
+          "text": "Backtracking"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "The graph is not handed to the algorithm",
+      "visibleText": "The common source graph for DFS and BFS.\nCLICK IMAGE TO ENLARGE\nPredict two removal orders\n\nStart at A. Generate children left to right.\n\nWrite the first ten states removed by DFS.\nWrite the first ten states removed by BFS.\nMark when goal S is first removed—not merely generated.\nIMPORTANT MODELING FACT\nIn a real problem, the complete search tree is not given. The algorithm generates it incrementally from the initial state.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "The common source graph for DFS and BFS.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Predict two removal ordersStart at A. Generate children left to right.Write the first ten states removed by DFS.Write the first ten states removed by BFS.Mark when goal S is first removed—not merely generated.Important modeling factIn a rea"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Predict two removal orders"
+        },
+        {
+          "index": 3,
+          "tag": "li",
+          "className": "",
+          "text": "Write the first ten states removed by DFS."
+        },
+        {
+          "index": 4,
+          "tag": "li",
+          "className": "",
+          "text": "Write the first ten states removed by BFS."
+        },
+        {
+          "index": 5,
+          "tag": "li",
+          "className": "",
+          "text": "Mark when goal S is first removed—not merely generated."
+        },
+        {
+          "index": 6,
+          "tag": "aside",
+          "className": "search-callout amber",
+          "text": "Important modeling factIn a real problem, the complete search tree is not given. The algorithm generates it incrementally from the initial state."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "Read the frontier state before comparing two snapshots",
+      "visibleText": "DFS · ITERATION 6\nDFS follows one branch and keeps alternatives for later.\nCLICK IMAGE TO ENLARGE\nBFS · AFTER EXPANDING C\nThis exact source image is after expanding C; its original iteration-6 label was inconsistent with the trace.\nCLICK IMAGE TO ENLARGE",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "article",
+          "className": "",
+          "text": "DFS · iteration 6DFS follows one branch and keeps alternatives for later.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "DFS follows one branch and keeps alternatives for later.Click image to enlarge"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "BFS · after expanding CThis exact source image is after expanding C; its original iteration-6 label was inconsistent with the trace.Click image to enlarge"
+        },
+        {
+          "index": 3,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "This exact source image is after expanding C; its original iteration-6 label was inconsistent with the trace.Click image to enlarge"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 5,
+      "title": "DFS examines descendants before siblings",
+      "visibleText": "SELECTION RULE\nRemove the deepest frontier state next\n\nWhen a state is examined, its children and their descendants are examined before its siblings.\n\nSTRENGTH\n\nLow memory relative to breadth-first search; it may reach a deep solution quickly.\n\nRISK\n\nIt can become lost deep in a graph, loop, or miss a much shorter path in another branch.\n\nIMPLEMENTATION\n\nPlace generated children on the left of OPEN, producing stack behavior.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "Selection ruleRemove the deepest frontier state nextWhen a state is examined, its children and their descendants are examined before its siblings."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Remove the deepest frontier state next"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "StrengthLow memory relative to breadth-first search; it may reach a deep solution quickly."
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "RiskIt can become lost deep in a graph, loop, or miss a much shorter path in another branch."
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "ImplementationPlace generated children on the left of OPEN, producing stack behavior."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "DFS uses OPEN, CLOSED, and a loop check",
+      "visibleText": "The source DFS algorithm; enlarge to inspect each line.\nCLICK IMAGE TO ENLARGE\nInitialize OPEN with the start state and CLOSED as empty.\nRemove the leftmost state X from OPEN.\nIf X is a goal, return success.\nGenerate children of X and place X on CLOSED.\nDiscard a child already on OPEN or CLOSED.\nPlace the remaining children on the left end of OPEN.\nFail only when OPEN is empty.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image algorithm-figure",
+          "text": "The source DFS algorithm; enlarge to inspect each line.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "li",
+          "className": "",
+          "text": "Initialize OPEN with the start state and CLOSED as empty."
+        },
+        {
+          "index": 2,
+          "tag": "li",
+          "className": "",
+          "text": "Remove the leftmost state X from OPEN."
+        },
+        {
+          "index": 3,
+          "tag": "li",
+          "className": "",
+          "text": "If X is a goal, return success."
+        },
+        {
+          "index": 4,
+          "tag": "li",
+          "className": "",
+          "text": "Generate children of X and place X on CLOSED."
+        },
+        {
+          "index": 5,
+          "tag": "li",
+          "className": "",
+          "text": "Discard a child already on OPEN or CLOSED."
+        },
+        {
+          "index": 6,
+          "tag": "li",
+          "className": "",
+          "text": "Place the remaining children on the left end of OPEN."
+        },
+        {
+          "index": 7,
+          "tag": "li",
+          "className": "",
+          "text": "Fail only when OPEN is empty."
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".algorithm-figure button",
+          "index": 0,
+          "label": "Enlarge the DFS pseudocode"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".source-image-close",
+          "index": 0,
+          "label": "Close the enlarged DFS pseudocode"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "OPEN records alternatives; CLOSED records examined states",
+      "visibleText": "Source trace on the shared graph.\nCLICK IMAGE TO ENLARGE\nRead one row as an invariant\n\nThe leftmost OPEN state is always next. Newly generated children go before older alternatives. CLOSED prevents repeated examination.\n\nPATH RECONSTRUCTION\nOPEN and CLOSED alone do not preserve a returned solution path. Store a parent pointer—or an equivalent ancestor structure—for each generated state.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image trace-figure",
+          "text": "Source trace on the shared graph.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Read one row as an invariantThe leftmost OPEN state is always next. Newly generated children go before older alternatives. CLOSED prevents repeated examination.Path reconstructionOPEN and CLOSED alone do not preserve a returned solution pat"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Read one row as an invariant"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout cyan",
+          "text": "Path reconstructionOPEN and CLOSED alone do not preserve a returned solution path. Store a parent pointer—or an equivalent ancestor structure—for each generated state."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 8,
+      "title": "Advance the frontier one state at a time",
+      "visibleText": "DFS TRACE\nIteration 1\n\nRemove A from the left of OPEN, test it, expand it, and place it on CLOSED.\n\nPrevious\nNext\nReset\nOPEN\n[B, C, D]\nnew children go to the left\nCLOSED\n[A]\nalready examined states",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "DFS traceIteration 1Remove A from the left of OPEN, test it, expand it, and place it on CLOSED.PreviousNextReset"
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Iteration 1"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "OPEN[B, C, D]new children go to the left"
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "CLOSED[A]already examined states"
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the DFS trace"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the DFS trace again"
+        },
+        {
+          "segment": 4,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the DFS trace a third time"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "BFS explores the space level by level",
+      "visibleText": "SELECTION RULE\nRemove the shallowest frontier state next\n\nExamine all states at depth n before proceeding to depth n + 1.\n\nSTRENGTH\n\nComplete for finite branching and returns a shallowest solution; with equal step costs, that solution is also minimum cost.\n\nRISK\n\nThe number of stored frontier states grows exponentially and can make a large space intractable.\n\nIMPLEMENTATION\n\nPlace generated children on the right of OPEN, producing queue behavior.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "Selection ruleRemove the shallowest frontier state nextExamine all states at depth n before proceeding to depth n + 1."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Remove the shallowest frontier state next"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "StrengthComplete for finite branching and returns a shallowest solution; with equal step costs, that solution is also minimum cost."
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "RiskThe number of stored frontier states grows exponentially and can make a large space intractable."
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "ImplementationPlace generated children on the right of OPEN, producing queue behavior."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 10,
+      "title": "One line changes DFS into BFS",
+      "visibleText": "The source BFS algorithm; enlarge to inspect each line.\nCLICK IMAGE TO ENLARGE\nChildren go to the right end of OPEN\n\nThe initialization, goal test, expansion, CLOSED update, duplicate test, and failure condition match the DFS framework.\n\nQUEUE INVARIANT\nOlder, shallower frontier states remain ahead of newly generated, deeper states.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image algorithm-figure",
+          "text": "The source BFS algorithm; enlarge to inspect each line.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Children go to the right end of OPENThe initialization, goal test, expansion, CLOSED update, duplicate test, and failure condition match the DFS framework.Queue invariantOlder, shallower frontier states remain ahead of newly generated, deep"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Children go to the right end of OPEN"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout green",
+          "text": "Queue invariantOlder, shallower frontier states remain ahead of newly generated, deeper states."
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".algorithm-figure button",
+          "index": 0,
+          "label": "Enlarge the BFS pseudocode"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".source-image-close",
+          "index": 0,
+          "label": "Close the enlarged BFS pseudocode"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Breadth is visible in the OPEN sequence",
+      "visibleText": "Source BFS trace on the shared graph.\nCLICK IMAGE TO ENLARGE\nDepth-one states stay ahead of depth-two states\n\nAfter A expands, B, C, and D remain ahead of E and F even after B generates them.\n\nGOAL TIMING\nA generated goal is not yet guaranteed to be the next state removed under every cost model. State the goal-test timing assumed by the algorithm.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image trace-figure",
+          "text": "Source BFS trace on the shared graph.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Depth-one states stay ahead of depth-two statesAfter A expands, B, C, and D remain ahead of E and F even after B generates them.Goal timingA generated goal is not yet guaranteed to be the next state removed under every cost model. State the"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Depth-one states stay ahead of depth-two states"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout amber",
+          "text": "Goal timingA generated goal is not yet guaranteed to be the next state removed under every cost model. State the goal-test timing assumed by the algorithm."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 12,
+      "title": "Advance the queue one state at a time",
+      "visibleText": "BFS TRACE\nIteration 1\n\nRemove A from the left of OPEN, test it, expand it, and place it on CLOSED.\n\nPrevious\nNext\nReset\nOPEN\n[B, C, D]\nnew children go to the right\nCLOSED\n[A]\nalready examined states",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "BFS traceIteration 1Remove A from the left of OPEN, test it, expand it, and place it on CLOSED.PreviousNextReset"
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Iteration 1"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "OPEN[B, C, D]new children go to the right"
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "CLOSED[A]already examined states"
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the BFS trace"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the BFS trace again"
+        },
+        {
+          "segment": 4,
+          "type": "click",
+          "selector": ".frontier-trace button",
+          "index": 1,
+          "label": "Advance the BFS trace a third time"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Breadth-first removal order finds a shortest move sequence",
+      "visibleText": "The source tree shows the order in which states are removed from OPEN.\nCLICK IMAGE TO ENLARGE\nTrace the solution path backward\n\nUse parent pointers from the numbered goal state to the initial state. The reversed pointer chain gives the move sequence.\n\nWhat creates duplicate puzzle states?\nWhere would graph search remove them?\nWhy does the frontier become large?",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "The source tree shows the order in which states are removed from OPEN.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Trace the solution path backwardUse parent pointers from the numbered goal state to the initial state. The reversed pointer chain gives the move sequence.What creates duplicate puzzle states?Where would graph search remove them?Why does the"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Trace the solution path backward"
+        },
+        {
+          "index": 3,
+          "tag": "li",
+          "className": "",
+          "text": "What creates duplicate puzzle states?"
+        },
+        {
+          "index": 4,
+          "tag": "li",
+          "className": "",
+          "text": "Where would graph search remove them?"
+        },
+        {
+          "index": 5,
+          "tag": "li",
+          "className": "",
+          "text": "Why does the frontier become large?"
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".puzzle-source-layout .search-source-image button",
+          "index": 0,
+          "label": "Enlarge the BFS puzzle tree"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".source-image-close",
+          "index": 0,
+          "label": "Close the enlarged puzzle tree"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "BFS spends memory; DFS risks spending depth",
+      "visibleText": "CRITERION\nBreadth-first\nDepth-first\nORDER\n\nAll depth n before n + 1\n\nDescendants before siblings\n\nSPACE\n\nPotentially very large frontier\n\nUsually one path plus alternatives\n\nBEST FIT\n\nSmall space or shallow solution\n\nDeep solutions with tight memory\n\nMAIN RISK\n\nIntractable memory growth\n\nInfinite/deep branch or nonshortest result\n\nDECISION\n\nThe problem's properties determine the better choice.\n\nNo strategy is universally superior.",
+      "focusTargets": [],
+      "actions": []
+    },
+    {
+      "number": 15,
+      "title": "Match the strategy to the guarantee that matters",
+      "visibleText": "1\n2\n3\n4\nENGINEERING CASE 1\nShallow goal; every step has equal cost\n\nChoose a strategy and name the guarantee you are accepting or giving up.\n\nReveal one defensible choice",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "Engineering case 1Shallow goal; every step has equal costChoose a strategy and name the guarantee you are accepting or giving up.Reveal one defensible choice"
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Shallow goal; every step has equal cost"
+        }
+      ],
+      "actions": [
+        {
+          "segment": 1,
+          "type": "click",
+          "selector": ".algorithm-selection section > button",
+          "index": 0,
+          "label": "Reveal the first algorithm choice"
+        },
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".algorithm-selection nav button",
+          "index": 1,
+          "label": "Open the deep memory-limited case"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".algorithm-selection nav button",
+          "index": 2,
+          "label": "Open the unknown-depth case"
+        },
+        {
+          "segment": 4,
+          "type": "click",
+          "selector": ".algorithm-selection nav button",
+          "index": 3,
+          "label": "Open the variable-cost case"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A bound prevents infinite descent; deepening removes the guessed bound",
+      "visibleText": "DFS WITH A BOUND\nStop a path below a specified depth or time\n\nTreat the cutoff as failure on that path and try another. This is useful in time-limited game search.\n\nDFS WITH DEEPENING\nRepeat DFS with bounds 0, 1, 2, …\n\nEach iteration conducts a complete depth-limited DFS to the current bound, then increases the bound by one.\n\nTRADEOFF\nIterative deepening combines shallowest-goal behavior with space on the order of b × d, while repeating work in the upper levels. Its time remains exponential in solution depth.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "article",
+          "className": "",
+          "text": "DFS with a boundStop a path below a specified depth or timeTreat the cutoff as failure on that path and try another. This is useful in time-limited game search."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Stop a path below a specified depth or time"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "DFS with deepeningRepeat DFS with bounds 0, 1, 2, …Each iteration conducts a complete depth-limited DFS to the current bound, then increases the bound by one."
+        },
+        {
+          "index": 3,
+          "tag": "h3",
+          "className": "",
+          "text": "Repeat DFS with bounds 0, 1, 2, …"
+        },
+        {
+          "index": 4,
+          "tag": "aside",
+          "className": "search-callout cyan",
+          "text": "TradeoffIterative deepening combines shallowest-goal behavior with space on the order of b × d, while repeating work in the upper levels. Its time remains exponential in solution depth."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 17,
+      "title": "A depth-five cutoff changes what DFS can see",
+      "visibleText": "The source bounded-DFS tree.\nCLICK IMAGE TO ENLARGE\nWatch DFS and iterative deepening side by side\n\nThe verified Moving AI Lab animations use green for DFS and red for depth-first iterative deepening.\n\nOpen the DFS vs. DFID teaching videos ↗\nOBSERVATION PROMPT\nWhen does repeated shallow work cost less than exploring far below the shallowest goal?",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "The source bounded-DFS tree.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Watch DFS and iterative deepening side by sideThe verified Moving AI Lab animations use green for DFS and red for depth-first iterative deepening.Open the DFS vs. DFID teaching videos ↗Observation promptWhen does repeated shallow work cost "
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Watch DFS and iterative deepening side by side"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout amber",
+          "text": "Observation promptWhen does repeated shallow work cost less than exploring far below the shallowest goal?"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 18,
+      "title": "When step costs differ, expand the smallest accumulated cost g(n)",
+      "visibleText": "PREDICT BEFORE REVEAL\nWhat does a cost-sensitive frontier do next?\n\nExplain the next step aloud before advancing.\n\nReveal next\nReveal all\n1\nCommit your next step\n\nReason from the current state.\n\n2\nCommit your next step\n\nReason from the current state.\n\n3\nCommit your next step\n\nReason from the current state.\n\n4\nCommit your next step\n\nReason from the current state.\n\n5\nCommit your next step\n\nReason from the current state.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "Predict before revealWhat does a cost-sensitive frontier do next?Explain the next step aloud before advancing.Reveal nextReveal all"
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "What does a cost-sensitive frontier do next?"
+        },
+        {
+          "index": 2,
+          "tag": "li",
+          "className": "",
+          "text": "1Commit your next stepReason from the current state."
+        },
+        {
+          "index": 3,
+          "tag": "li",
+          "className": "",
+          "text": "2Commit your next stepReason from the current state."
+        },
+        {
+          "index": 4,
+          "tag": "li",
+          "className": "",
+          "text": "3Commit your next stepReason from the current state."
+        },
+        {
+          "index": 5,
+          "tag": "li",
+          "className": "",
+          "text": "4Commit your next stepReason from the current state."
+        },
+        {
+          "index": 6,
+          "tag": "li",
+          "className": "",
+          "text": "5Commit your next stepReason from the current state."
+        }
+      ],
+      "actions": [
+        {
+          "segment": 1,
+          "type": "click",
+          "selector": ".search-reveal button",
+          "index": 0,
+          "label": "Reveal the first UCS step"
+        },
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".search-reveal button",
+          "index": 0,
+          "label": "Reveal the second UCS step"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".search-reveal button",
+          "index": 0,
+          "label": "Reveal the third UCS step"
+        },
+        {
+          "segment": 4,
+          "type": "click",
+          "selector": ".search-reveal button",
+          "index": 1,
+          "label": "Reveal the complete UCS sequence"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Guarantees depend on explicit conditions",
+      "visibleText": "STRATEGY\nComplete?\nOptimal?\nSpace pattern\nBFS\n\nYes, finite b\n\nYes, equal costs\n\nO(b^d)\n\nDFS\n\nNo, in infinite depth\n\nNo\n\nO(bm)\n\nDEPTH-LIMITED\n\nNo if goal is below limit\n\nNo\n\nO(bℓ)\n\nITERATIVE DEEPENING\n\nYes, finite b\n\nYes, equal costs\n\nO(bd)\n\nUNIFORM-COST\n\nYes, costs ≥ ε > 0\n\nYes\n\nPotentially exponential",
+      "focusTargets": [],
+      "actions": []
+    },
+    {
+      "number": 20,
+      "title": "Backtracking pursues a path and recovers from failure",
+      "visibleText": "The source backtracking state space.\nCLICK IMAGE TO ENLARGE\nContinue until goal, dead end, or unacceptable cost\n\nIf the goal is found, return the path. At a dead end—or when the current path is too expensive—return to the most recent state with an untried alternative.\n\nIMPORTANT DISTINCTION\nDFS already backtracks through its frontier. This list-based variant makes the current path, alternatives, and dead ends explicit and may prune by a path-cost rule; that does not automatically make it heuristic informed search.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image",
+          "text": "The source backtracking state space.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Continue until goal, dead end, or unacceptable costIf the goal is found, return the path. At a dead end—or when the current path is too expensive—return to the most recent state with an untried alternative.Important distinctionDFS already b"
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Continue until goal, dead end, or unacceptable cost"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout cyan",
+          "text": "Important distinctionDFS already backtracks through its frontier. This list-based variant makes the current path, alternatives, and dead ends explicit and may prune by a path-cost rule; that does not automatically make it heuristic informed"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 21,
+      "title": "SL, NSL, DE, and CS make recovery explicit",
+      "visibleText": "The source backtracking algorithm; enlarge to inspect each condition.\nCLICK IMAGE TO ENLARGE\nSL\n\nState list: the current path.\n\nNSL\n\nNew-state list: alternatives still available.\n\nDE\n\nDead ends: states known not to continue the current solution.\n\nCS\n\nCurrent state.\n\nBACKTRACK CONDITION\nIf CS has no children after excluding states already on DE, SL, and NSL, remove states from SL until an available alternative becomes current.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image algorithm-figure",
+          "text": "The source backtracking algorithm; enlarge to inspect each condition.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "backtracking-structures",
+          "text": "SLState list: the current path.NSLNew-state list: alternatives still available.DEDead ends: states known not to continue the current solution.CSCurrent state.Backtrack conditionIf CS has no children after excluding states already on DE, SL,"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "SLState list: the current path."
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "NSLNew-state list: alternatives still available."
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "DEDead ends: states known not to continue the current solution."
+        },
+        {
+          "index": 5,
+          "tag": "article",
+          "className": "",
+          "text": "CSCurrent state."
+        },
+        {
+          "index": 6,
+          "tag": "aside",
+          "className": "search-callout amber",
+          "text": "Backtrack conditionIf CS has no children after excluding states already on DE, SL, and NSL, remove states from SL until an available alternative becomes current."
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".algorithm-figure button",
+          "index": 0,
+          "label": "Enlarge the backtracking pseudocode"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".source-image-close",
+          "index": 0,
+          "label": "Close the enlarged backtracking pseudocode"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The current path can shrink without walking back through the graph",
+      "visibleText": "Source trace through iteration eight.\nCLICK IMAGE TO ENLARGE\nAncestors encode the return path\n\nNo physical reverse traversal is required. Maintaining ancestor information produces the same recovery effect.\n\nINTERPRET THE LISTS\nWhen a branch fails, its states enter DE, SL shrinks to a viable ancestor, and NSL supplies the next alternative.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "figure",
+          "className": "search-source-image trace-figure",
+          "text": "Source trace through iteration eight.Click image to enlarge"
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "className": "",
+          "text": "Ancestors encode the return pathNo physical reverse traversal is required. Maintaining ancestor information produces the same recovery effect.Interpret the listsWhen a branch fails, its states enter DE, SL shrinks to a viable ancestor, and "
+        },
+        {
+          "index": 2,
+          "tag": "h3",
+          "className": "",
+          "text": "Ancestors encode the return path"
+        },
+        {
+          "index": 3,
+          "tag": "aside",
+          "className": "search-callout green",
+          "text": "Interpret the listsWhen a branch fails, its states enter DE, SL shrinks to a viable ancestor, and NSL supplies the next alternative."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Scrub through the source trace",
+      "visibleText": "TRACE THE DATA STRUCTURES\nAfter iteration 0\n\nPredict the next current state and which failed states must be recorded.\n\nCS\nA\ncurrent state\nSL\n[A]\ncurrent path\nNSL\n[A]\nnew-state list\nDE\n[ ]\ndead ends",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "section",
+          "className": "",
+          "text": "Trace the data structuresAfter iteration 0Predict the next current state and which failed states must be recorded."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "After iteration 0"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "CSAcurrent state"
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "SL[A]current path"
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "NSL[A]new-state list"
+        },
+        {
+          "index": 5,
+          "tag": "article",
+          "className": "",
+          "text": "DE[ ]dead ends"
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "range",
+          "selector": ".backtracking-trace input",
+          "index": 0,
+          "value": 3,
+          "label": "Move the trace slider to iteration 3"
+        },
+        {
+          "segment": 3,
+          "type": "range",
+          "selector": ".backtracking-trace input",
+          "index": 0,
+          "value": 5,
+          "label": "Move the trace slider to iteration 5"
+        },
+        {
+          "segment": 4,
+          "type": "range",
+          "selector": ".backtracking-trace input",
+          "index": 0,
+          "value": 8,
+          "label": "Move the trace slider to iteration 8"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Similar traversal does not mean identical state management",
+      "visibleText": "CRITERION\nDepth-first graph search\nBacktracking search\nPRIMARY RECORD\n\nOPEN frontier plus CLOSED explored set\n\nCurrent path SL, alternatives NSL, dead ends DE, current state CS\n\nRECOVERY\n\nNext state already waits on OPEN\n\nShrink current path to an ancestor with an alternative\n\nPRUNING SIGNAL\n\nDuplicate/explored-state test\n\nDead end or an unacceptable current path cost\n\nSHARED LIMITATION\n\nSearch order remains depth-oriented and can still require extensive exploration.\n\nBeing “informed” by dead ends does not remove worst-case brute force.",
+      "focusTargets": [],
+      "actions": []
+    },
+    {
+      "number": 25,
+      "title": "Move deliberately from meaning to implementation",
+      "visibleText": "1\nProblem\n\nA real problem to be solved.\n\n→\n2\nState space\n\nConceptual representation.\n\n→\n3\nGraph\n\nSymbolic representation.\n\n→\n4\nData structures + algorithm\n\nComputer implementation.\n\n→\n5\nSolution\n\nA goal, path, or both.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "article",
+          "className": "",
+          "text": "1ProblemA real problem to be solved."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "Problem"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "2State spaceConceptual representation."
+        },
+        {
+          "index": 3,
+          "tag": "h3",
+          "className": "",
+          "text": "State space"
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "3GraphSymbolic representation."
+        },
+        {
+          "index": 5,
+          "tag": "h3",
+          "className": "",
+          "text": "Graph"
+        },
+        {
+          "index": 6,
+          "tag": "article",
+          "className": "",
+          "text": "4Data structures + algorithmComputer implementation."
+        },
+        {
+          "index": 7,
+          "tag": "h3",
+          "className": "",
+          "text": "Data structures + algorithm"
+        },
+        {
+          "index": 8,
+          "tag": "article",
+          "className": "",
+          "text": "5SolutionA goal, path, or both."
+        },
+        {
+          "index": 9,
+          "tag": "h3",
+          "className": "",
+          "text": "Solution"
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 26,
+      "title": "Explain, trace, implement, and critique",
+      "visibleText": "Representation\nSolutions and direction\nAlgorithms\n1\n\nHow do humans solve problems in general? Do we use a general-purpose strategy?\n\n2\n\nWhat are state, state space, search space, and search?\n\n3\n\nWhat information and methods must a useful state maintain?\n\n4\n\nHow can a state and state space be represented in computer data structures?\n\n5\n\nWhat are the basic elements and benefits of graph theory?\n\n6\n\nDescribe state-space problem solving from conceptual representation to implementation.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "li",
+          "className": "",
+          "text": "1How do humans solve problems in general? Do we use a general-purpose strategy?"
+        },
+        {
+          "index": 1,
+          "tag": "li",
+          "className": "",
+          "text": "2What are state, state space, search space, and search?"
+        },
+        {
+          "index": 2,
+          "tag": "li",
+          "className": "",
+          "text": "3What information and methods must a useful state maintain?"
+        },
+        {
+          "index": 3,
+          "tag": "li",
+          "className": "",
+          "text": "4How can a state and state space be represented in computer data structures?"
+        },
+        {
+          "index": 4,
+          "tag": "li",
+          "className": "",
+          "text": "5What are the basic elements and benefits of graph theory?"
+        },
+        {
+          "index": 5,
+          "tag": "li",
+          "className": "",
+          "text": "6Describe state-space problem solving from conceptual representation to implementation."
+        }
+      ],
+      "actions": [
+        {
+          "segment": 2,
+          "type": "click",
+          "selector": ".search-review-studio nav button",
+          "index": 1,
+          "label": "Open solutions and direction review"
+        },
+        {
+          "segment": 3,
+          "type": "click",
+          "selector": ".search-review-studio nav button",
+          "index": 2,
+          "label": "Open algorithms review"
+        },
+        {
+          "segment": 4,
+          "type": "click",
+          "selector": ".search-review-studio nav button",
+          "index": 0,
+          "label": "Return to representation review"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "A correct search answer includes the representation and the process",
+      "visibleText": "01\n\nExplain state-space search as a general problem-solving strategy.\n\n02\n\nExplain why graph theory supports state-space representation.\n\n03\n\nModel a complex problem conceptually, symbolically, and computationally.\n\n04\n\nImplement and trace DFS.\n\n05\n\nImplement and trace BFS.\n\n06\n\nImplement and trace backtracking.\n\n07\n\nExplain why DFS and BFS are brute-force methods.\n\n08\n\nExplain why backtracking remains search-intensive despite using dead-end information.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "article",
+          "className": "",
+          "text": "01Explain state-space search as a general problem-solving strategy."
+        },
+        {
+          "index": 1,
+          "tag": "article",
+          "className": "",
+          "text": "02Explain why graph theory supports state-space representation."
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "03Model a complex problem conceptually, symbolically, and computationally."
+        },
+        {
+          "index": 3,
+          "tag": "article",
+          "className": "",
+          "text": "04Implement and trace DFS."
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "05Implement and trace BFS."
+        },
+        {
+          "index": 5,
+          "tag": "article",
+          "className": "",
+          "text": "06Implement and trace backtracking."
+        },
+        {
+          "index": 6,
+          "tag": "article",
+          "className": "",
+          "text": "07Explain why DFS and BFS are brute-force methods."
+        },
+        {
+          "index": 7,
+          "tag": "article",
+          "className": "",
+          "text": "08Explain why backtracking remains search-intensive despite using dead-end information."
+        }
+      ],
+      "actions": []
+    },
+    {
+      "number": 28,
+      "title": "Choose an algorithm only after stating the problem conditions",
+      "visibleText": "TRACE\nOne expansion\n\nShow selected state, generated children, OPEN, CLOSED, and parent information.\n\nCOMPARE\nDFS vs. BFS vs. UCS\n\nName the selection rule and one conditional guarantee for each.\n\nDIAGNOSE\nOne failure mode\n\nRepair it with a bound, deepening, duplicate detection, or cost ordering.\n\nReferences\n\nGeorge F. Luger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th ed., Chapter 3.\n\nRussell and Norvig, Artificial Intelligence: A Modern Approach, 3rd ed., Chapter 3.",
+      "focusTargets": [
+        {
+          "index": 0,
+          "tag": "article",
+          "className": "",
+          "text": "TraceOne expansionShow selected state, generated children, OPEN, CLOSED, and parent information."
+        },
+        {
+          "index": 1,
+          "tag": "h3",
+          "className": "",
+          "text": "One expansion"
+        },
+        {
+          "index": 2,
+          "tag": "article",
+          "className": "",
+          "text": "CompareDFS vs. BFS vs. UCSName the selection rule and one conditional guarantee for each."
+        },
+        {
+          "index": 3,
+          "tag": "h3",
+          "className": "",
+          "text": "DFS vs. BFS vs. UCS"
+        },
+        {
+          "index": 4,
+          "tag": "article",
+          "className": "",
+          "text": "DiagnoseOne failure modeRepair it with a bound, deepening, duplicate detection, or cost ordering."
+        },
+        {
+          "index": 5,
+          "tag": "h3",
+          "className": "",
+          "text": "One failure mode"
+        }
+      ],
+      "actions": []
+    }
+  ]
+}

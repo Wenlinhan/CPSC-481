@@ -21,6 +21,7 @@ export type CourseSourceReference = {
 
 type L01DeckShellProps = {
   hoverEffects?: boolean;
+  lectureVideoUrl?: string;
   meetingLabel: string;
   meetingTitle: string;
   resolveSourceReference?: (sourceSlide: number) => CourseSourceReference;
@@ -56,6 +57,7 @@ function noteStartsWithTiming(note: string): boolean {
 
 export function L01DeckShell({
   hoverEffects = true,
+  lectureVideoUrl,
   meetingLabel,
   meetingTitle,
   resolveSourceReference,
@@ -199,6 +201,11 @@ export function L01DeckShell({
           <div><strong>CPSC 481</strong><small>Introduction to Artificial Intelligence</small></div>
         </div>
         <div className="header-actions">
+          {lectureVideoUrl && (
+            <button onClick={() => window.open(lectureVideoUrl, "_blank", "noopener,noreferrer")} type="button">
+              Lecture video
+            </button>
+          )}
           <button aria-pressed={motion} onClick={() => setMotion(value => !value)} type="button">
             Motion {motion ? "on" : "off"}
           </button>

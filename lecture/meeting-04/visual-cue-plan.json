@@ -1,0 +1,2473 @@
+{
+  "version": 1,
+  "meeting": "04",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Uninformed Graph Search",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".search-hero section",
+              "index": 0,
+              "sourcePhrase": "Uninformed search decides which",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 37.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".search-hero section",
+              "index": 0,
+              "sourcePhrase": "exploring a dark building",
+              "atSeconds": 0.568,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 50.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-hero section",
+              "index": 0,
+              "sourcePhrase": "does not mean stupid",
+              "atSeconds": 0.794,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 17.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-hero section",
+              "index": 0,
+              "sourcePhrase": "the Meeting 3 tuple",
+              "atSeconds": 0.582,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Five strategies, four evaluation questions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 19.176,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "DFS",
+              "selector": ".algorithm-map article",
+              "index": 0,
+              "sourcePhrase": "DFS chooses depth",
+              "atSeconds": 7.925,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "BFS",
+              "selector": ".algorithm-map article",
+              "index": 1,
+              "sourcePhrase": "BFS chooses a level",
+              "atSeconds": 9.681,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Bounded and deepening",
+              "selector": ".algorithm-map article",
+              "index": 2,
+              "sourcePhrase": "bounded search limits depth",
+              "atSeconds": 11.409,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Uniform-cost",
+              "selector": ".algorithm-map article",
+              "index": 3,
+              "sourcePhrase": "UCS chooses accumulated cost",
+              "atSeconds": 13.218,
+              "durationSeconds": 2.583
+            },
+            {
+              "type": "focus",
+              "label": "Backtracking",
+              "selector": ".algorithm-map article",
+              "index": 4,
+              "sourcePhrase": "backtracking exposes path recovery",
+              "atSeconds": 15.851,
+              "durationSeconds": 3.275
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 45.456,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "popup",
+              "emoji": "⏱️ 💾",
+              "label": "Time and space costs",
+              "durationSeconds": 5.5,
+              "sourcePhrase": "time-hungry, and memory-hungry",
+              "atSeconds": 4.837,
+              "centerHoldSeconds": 3.52
+            },
+            {
+              "type": "focus",
+              "label": "Completeness",
+              "selector": ".algorithm-map aside p",
+              "index": 0,
+              "sourcePhrase": "Completeness asks",
+              "atSeconds": 12.247,
+              "durationSeconds": 3.049
+            },
+            {
+              "type": "focus",
+              "label": "Optimality",
+              "selector": ".algorithm-map aside p",
+              "index": 1,
+              "sourcePhrase": "optimality asks",
+              "atSeconds": 15.346,
+              "durationSeconds": 2.41
+            },
+            {
+              "type": "focus",
+              "label": "Time",
+              "selector": ".algorithm-map aside p",
+              "index": 2,
+              "sourcePhrase": "time and space",
+              "atSeconds": 17.806,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Space",
+              "selector": ".algorithm-map aside p",
+              "index": 3,
+              "sourcePhrase": "different resources",
+              "atSeconds": 18.976,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 52.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".algorithm-map article",
+              "index": 2,
+              "sourcePhrase": "strategy name alone is",
+              "atSeconds": 0.169,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 17.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-map article",
+              "index": 3,
+              "sourcePhrase": "Choose one strategy and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The graph is not handed to the algorithm",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.24,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".tree-challenge li",
+              "index": 0,
+              "sourcePhrase": "A search algorithm normally",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 36.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".tree-challenge li",
+              "index": 1,
+              "sourcePhrase": "the shared tree, DFS",
+              "atSeconds": 0.236,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 54.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".tree-challenge li",
+              "index": 2,
+              "sourcePhrase": "not confuse generated with",
+              "atSeconds": 0.236,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.736,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "DFS order",
+              "selector": ".tree-challenge li",
+              "index": 0,
+              "sourcePhrase": "Predict the first ten removals",
+              "atSeconds": 0.05,
+              "durationSeconds": 3.327
+            },
+            {
+              "type": "focus",
+              "label": "Goal removal",
+              "selector": ".tree-challenge li",
+              "index": 2,
+              "sourcePhrase": "circle where goal S is removed",
+              "atSeconds": 3.427,
+              "durationSeconds": 2.065
+            },
+            {
+              "type": "focus",
+              "label": "Removed, not generated",
+              "selector": ".tree-challenge li",
+              "index": 2,
+              "sourcePhrase": "not merely drawn on the page",
+              "atSeconds": 5.542,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Read the frontier state before comparing two snapshots",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".iteration-comparison article",
+              "index": 0,
+              "sourcePhrase": "The two source snapshots",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 37.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".iteration-comparison article",
+              "index": 1,
+              "sourcePhrase": "iteration six follows a",
+              "atSeconds": 0.728,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 52.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".iteration-comparison article",
+              "index": 0,
+              "sourcePhrase": "screenshot can look authoritative",
+              "atSeconds": 0.169,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 16.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".iteration-comparison article",
+              "index": 1,
+              "sourcePhrase": "selected node, OPEN, and",
+              "atSeconds": 0.475,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "DFS examines descendants before siblings",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 14.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "Depth-first search removes the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 36.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "stack or recursive call",
+              "atSeconds": 0.183,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 52.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 2,
+              "sourcePhrase": "memory does not imply",
+              "atSeconds": 0.329,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 3,
+              "sourcePhrase": "a problem with a",
+              "atSeconds": 0.396,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "DFS uses OPEN, CLOSED, and a loop check",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".algorithm-source-layout li",
+              "index": 0,
+              "sourcePhrase": "The source algorithm removes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 41.376,
+          "cueCount": 6,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Remove X",
+              "selector": ".algorithm-source-layout li",
+              "index": 1,
+              "sourcePhrase": "select X",
+              "atSeconds": 3.494,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Goal test",
+              "selector": ".algorithm-source-layout li",
+              "index": 2,
+              "sourcePhrase": "test X",
+              "atSeconds": 4.571,
+              "durationSeconds": 2.064
+            },
+            {
+              "type": "focus",
+              "label": "Duplicate check",
+              "selector": ".algorithm-source-layout li",
+              "index": 4,
+              "sourcePhrase": "filter duplicates",
+              "atSeconds": 6.685,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Stack insertion",
+              "selector": ".algorithm-source-layout li",
+              "index": 5,
+              "sourcePhrase": "prepend survivors",
+              "atSeconds": 8.082,
+              "durationSeconds": 6.509
+            },
+            {
+              "type": "focus",
+              "label": "Generate children",
+              "selector": ".algorithm-source-layout li",
+              "index": 3,
+              "sourcePhrase": "generate children",
+              "atSeconds": 14.641,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Update CLOSED",
+              "selector": ".algorithm-source-layout li",
+              "index": 3,
+              "sourcePhrase": "close X",
+              "atSeconds": 15.838,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.384,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".algorithm-source-layout li",
+              "index": 4,
+              "sourcePhrase": "Without the OPEN and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "OPEN + CLOSED",
+              "label": "Check both lists",
+              "durationSeconds": 5.2,
+              "sourcePhrase": "both OPEN and CLOSED",
+              "atSeconds": 8.803,
+              "centerHoldSeconds": 3.328
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-source-layout li",
+              "index": 5,
+              "sourcePhrase": "why putting children on",
+              "atSeconds": 0.648,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "OPEN records alternatives; CLOSED records examined states",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "OPEN stores generated alternatives",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 36.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "the trace, newly generated",
+              "atSeconds": 0.209,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 50.904,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "and CLOSED do not",
+              "atSeconds": 0.409,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "GOAL ← PARENT ← START",
+              "label": "Reconstruct the path",
+              "durationSeconds": 6,
+              "sourcePhrase": "parent pointers",
+              "atSeconds": 12.593,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Verify one row transition",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Advance the frontier one state at a time",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "The DFS trace makes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 33.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "the next selected state",
+              "atSeconds": 0.502,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "If your prediction differs",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Advance several iterations and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "BFS explores the space level by level",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "BFS selection rule",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "Shallowest means minimum depth",
+              "atSeconds": 7.779,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 32.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "A queue preserves arrival",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 52.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Completeness",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "Finite branching gives completeness",
+              "atSeconds": 9.202,
+              "durationSeconds": 2.463
+            },
+            {
+              "type": "focus",
+              "label": "Equal-cost optimality",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "equal step costs",
+              "atSeconds": 11.715,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 3,
+              "sourcePhrase": "State the finite-branching and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "One line changes DFS into BFS",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".algorithm-source-layout section",
+              "index": 0,
+              "sourcePhrase": "BFS shares initialization, goal",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 33.264,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".algorithm-source-layout section",
+              "index": 0,
+              "sourcePhrase": "the algorithm and locate",
+              "atSeconds": 0.582,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "OPEN ➡️",
+              "label": "Children join the right",
+              "durationSeconds": 5.2,
+              "sourcePhrase": "right end of OPEN",
+              "atSeconds": 4.638,
+              "centerHoldSeconds": 3.328
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".algorithm-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Small code changes can",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Translate the insertion rule",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Breadth is visible in the OPEN sequence",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.912,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "The BFS trace keeps",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 34.152,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "B generates E and",
+              "atSeconds": 0.435,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "FIRST IN → FIRST OUT",
+              "label": "FIFO frontier",
+              "durationSeconds": 5.5,
+              "sourcePhrase": "arrival order",
+              "atSeconds": 10.465,
+              "centerHoldSeconds": 3.52
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "a goal on generation",
+              "atSeconds": 0.489,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 12.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Find the first row",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Advance the queue one state at a time",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "The live BFS trace",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 32.208,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Predict the next removal",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "FIFO",
+              "label": "No cutting the queue",
+              "durationSeconds": 5.2,
+              "sourcePhrase": "right side rather than cutting the line",
+              "atSeconds": 4.372,
+              "centerHoldSeconds": 3.328
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 48.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "BFS were a grocery",
+              "atSeconds": 0.289,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Compare the current OPEN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Breadth-first removal order finds a shortest move sequence",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".puzzle-source-layout li",
+              "index": 0,
+              "sourcePhrase": "In the eight-puzzle tree",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 34.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".puzzle-source-layout li",
+              "index": 1,
+              "sourcePhrase": "the source tree and",
+              "atSeconds": 0.582,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 54.24,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".puzzle-source-layout li",
+              "index": 2,
+              "sourcePhrase": "move sequences can reach",
+              "atSeconds": 0.449,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 12.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".puzzle-source-layout li",
+              "index": 0,
+              "sourcePhrase": "Point to a repeated",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "BFS spends memory; DFS risks spending depth",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 17.664,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "BFS order",
+              "selector": ".search-comparison-table > div",
+              "index": 1,
+              "sourcePhrase": "BFS orders by depth",
+              "atSeconds": 9.361,
+              "durationSeconds": 1.852
+            },
+            {
+              "type": "focus",
+              "label": "DFS order",
+              "selector": ".search-comparison-table > div",
+              "index": 1,
+              "sourcePhrase": "DFS orders by active branch",
+              "atSeconds": 11.263,
+              "durationSeconds": 6.351
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 37.584,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "BFS space",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "sourcePhrase": "BFS may store",
+              "atSeconds": 2.896,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "DFS space",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "sourcePhrase": "DFS usually stores",
+              "atSeconds": 12.207,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 55.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-comparison-table > div",
+              "index": 4,
+              "sourcePhrase": "strategy is universally superior",
+              "atSeconds": 0.475,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-comparison-table > div",
+              "index": 5,
+              "sourcePhrase": "Change one property such",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Match the strategy to the guarantee that matters",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "sourcePhrase": "Algorithm selection begins with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "sourcePhrase": "the shallow equal-cost case",
+              "atSeconds": 0.555,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 49.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "sourcePhrase": "BFS because it feels",
+              "atSeconds": 0.529,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.336,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "sourcePhrase": "For each case, name",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "g(n)",
+              "label": "Order by path cost",
+              "durationSeconds": 4.844,
+              "sourcePhrase": "total path cost",
+              "atSeconds": 10.492,
+              "centerHoldSeconds": 3.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A bound prevents infinite descent; deepening removes the guessed bound",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 17.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Depth limit",
+              "selector": ".bounded-search-layout article",
+              "index": 0,
+              "sourcePhrase": "Depth-limited DFS cuts off",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Iterative deepening",
+              "selector": ".bounded-search-layout article",
+              "index": 1,
+              "sourcePhrase": "Iterative deepening runs",
+              "atSeconds": 9.375,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.36,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "popup",
+              "emoji": "CUTOFF ≠ FAILURE",
+              "label": "A bound hides deeper states",
+              "durationSeconds": 6,
+              "sourcePhrase": "A cutoff is not proof of failure",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            },
+            {
+              "type": "focus",
+              "label": "Repeated work tradeoff",
+              "selector": ".bounded-search-layout .search-callout",
+              "index": 0,
+              "sourcePhrase": "repeating small upper levels",
+              "atSeconds": 13.298,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".bounded-search-layout article, .bounded-search-layout .search-callout",
+              "index": 1,
+              "sourcePhrase": "Distinguish failure, cutoff, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "A depth-five cutoff changes what DFS can see",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".depth-limit-demo section",
+              "index": 0,
+              "sourcePhrase": "The depth-five source tree",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".depth-limit-demo section",
+              "index": 0,
+              "sourcePhrase": "The linked teaching animation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 49.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".depth-limit-demo section",
+              "index": 0,
+              "sourcePhrase": "bound protects time and",
+              "atSeconds": 0.196,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".depth-limit-demo section",
+              "index": 0,
+              "sourcePhrase": "when repeated shallow work",
+              "atSeconds": 0.422,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "When step costs differ, expand the smallest accumulated cost g(n)",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.792,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".search-reveal li",
+              "index": 0,
+              "sourcePhrase": "Uniform-cost search orders OPEN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".search-reveal li",
+              "index": 1,
+              "sourcePhrase": "the priority-queue sequence: start",
+              "atSeconds": 0.529,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 53.616,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-reveal li",
+              "index": 2,
+              "sourcePhrase": "first generated goal need",
+              "atSeconds": 0.223,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "REMOVE GOAL ✓",
+              "label": "Optimal when removed",
+              "durationSeconds": 6,
+              "sourcePhrase": "first generated goal need not be optimal",
+              "atSeconds": 0.223,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-reveal li",
+              "index": 4,
+              "sourcePhrase": "Connect UCS to BFS",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Guarantees depend on explicit conditions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 13.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".evaluation-matrix > div",
+              "index": 0,
+              "sourcePhrase": "Completeness and optimality are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 39.792,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "BFS guarantees",
+              "selector": ".evaluation-matrix > div",
+              "index": 1,
+              "sourcePhrase": "BFS needs finite branching",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "DFS guarantees",
+              "selector": ".evaluation-matrix > div",
+              "index": 2,
+              "sourcePhrase": "DFS promises neither",
+              "atSeconds": 15.518,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 53.376,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "popup",
+              "emoji": "b · d · m · ℓ",
+              "label": "Read the growth variables",
+              "durationSeconds": 6,
+              "sourcePhrase": "Big-O symbols",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            },
+            {
+              "type": "focus",
+              "label": "Depth-limited",
+              "selector": ".evaluation-matrix > div",
+              "index": 3,
+              "sourcePhrase": "A depth limit can hide a goal",
+              "atSeconds": 10.824,
+              "durationSeconds": 2.025
+            },
+            {
+              "type": "focus",
+              "label": "Iterative deepening",
+              "selector": ".evaluation-matrix > div",
+              "index": 4,
+              "sourcePhrase": "deepening repairs that",
+              "atSeconds": 12.899,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Uniform-cost",
+              "selector": ".evaluation-matrix > div",
+              "index": 5,
+              "sourcePhrase": "UCS requires costs",
+              "atSeconds": 14.415,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 13.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".evaluation-matrix > div",
+              "index": 5,
+              "sourcePhrase": "Compare one row at",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Backtracking pursues a path and recovers from failure",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".backtracking-intro section",
+              "index": 0,
+              "sourcePhrase": "Backtracking follows a current",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".backtracking-intro section",
+              "index": 0,
+              "sourcePhrase": "navigating a maze with",
+              "atSeconds": 0.529,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 55.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".backtracking-intro section",
+              "index": 0,
+              "sourcePhrase": "already backtracks through OPEN",
+              "atSeconds": 0.728,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.016,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".backtracking-intro section",
+              "index": 0,
+              "sourcePhrase": "Identify the most recent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "SL, NSL, DE, and CS make recovery explicit",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.384,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "popup",
+              "emoji": "SL · NSL · DE · CS",
+              "label": "Four recovery records",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "state list SL, new-state list NSL, dead ends DE, and current state CS",
+              "atSeconds": 1.646,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "focus",
+              "label": "SL current path",
+              "selector": ".backtracking-structures article",
+              "index": 0,
+              "sourcePhrase": "SL is the current path",
+              "atSeconds": 8.042,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "CS current state",
+              "selector": ".backtracking-structures article",
+              "index": 3,
+              "sourcePhrase": "CS is its current state",
+              "atSeconds": 9.677,
+              "durationSeconds": 2.657
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 37.44,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "NSL alternatives",
+              "selector": ".backtracking-structures article",
+              "index": 1,
+              "sourcePhrase": "NSL records available new states",
+              "atSeconds": 10.292,
+              "durationSeconds": 2.61
+            },
+            {
+              "type": "focus",
+              "label": "DE dead ends",
+              "selector": ".backtracking-structures article",
+              "index": 2,
+              "sourcePhrase": "DE records known dead ends",
+              "atSeconds": 12.952,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 54.912,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Backtrack condition",
+              "selector": ".backtracking-structures .search-callout",
+              "index": 0,
+              "sourcePhrase": "shrink SL",
+              "atSeconds": 13.577,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".backtracking-structures article",
+              "index": 3,
+              "sourcePhrase": "each list in one",
+              "atSeconds": 0.635,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The current path can shrink without walking back through the graph",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Ancestor information lets the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 33.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "In the trace, failed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 50.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "The data structure models",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.376,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Compare two adjacent rows",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Scrub through the source trace",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".backtracking-trace article",
+              "index": 0,
+              "sourcePhrase": "The slider turns the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 31.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".backtracking-trace article",
+              "index": 1,
+              "sourcePhrase": "Move to iteration three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 49.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".backtracking-trace article",
+              "index": 2,
+              "sourcePhrase": "A slider is not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.888,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "DE update",
+              "selector": ".backtracking-trace article",
+              "index": 3,
+              "sourcePhrase": "failed state",
+              "atSeconds": 9.588,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "SL contraction",
+              "selector": ".backtracking-trace article",
+              "index": 1,
+              "sourcePhrase": "contracted ancestor",
+              "atSeconds": 10.625,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "NSL alternative",
+              "selector": ".backtracking-trace article",
+              "index": 2,
+              "sourcePhrase": "selected alternative",
+              "atSeconds": 12.247,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Dead ends",
+              "selector": ".backtracking-trace article",
+              "index": 3,
+              "sourcePhrase": "DE update",
+              "atSeconds": 13.803,
+              "durationSeconds": 2.035
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Similar traversal does not mean identical state management",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".search-comparison-table > div",
+              "index": 1,
+              "sourcePhrase": "Depth-first graph search uses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 35.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "sourcePhrase": "Both are depth-oriented, but",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "OPEN ↔ SL",
+              "label": "Two recovery models",
+              "durationSeconds": 6,
+              "sourcePhrase": "waiting frontier versus an explicitly shrinking current path",
+              "atSeconds": 4.412,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 54.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-comparison-table > div",
+              "index": 3,
+              "sourcePhrase": "backtracking informed because it",
+              "atSeconds": 0.462,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-comparison-table > div",
+              "index": 4,
+              "sourcePhrase": "Compare primary record, recovery",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Move deliberately from meaning to implementation",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Problem",
+              "selector": ".problem-solving-pipeline article",
+              "index": 0,
+              "sourcePhrase": "Begin with a real problem",
+              "atSeconds": 9.561,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 39.288,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "State space",
+              "selector": ".problem-solving-pipeline article",
+              "index": 1,
+              "sourcePhrase": "state space is conceptual",
+              "atSeconds": 10.971,
+              "durationSeconds": 2.064
+            },
+            {
+              "type": "focus",
+              "label": "Graph",
+              "selector": ".problem-solving-pipeline article",
+              "index": 2,
+              "sourcePhrase": "graph turns states into nodes",
+              "atSeconds": 13.085,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 53.184,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Implementation",
+              "selector": ".problem-solving-pipeline article",
+              "index": 3,
+              "sourcePhrase": "Data structures store",
+              "atSeconds": 8.032,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Solution",
+              "selector": ".problem-solving-pipeline article",
+              "index": 4,
+              "sourcePhrase": "solution may be",
+              "atSeconds": 8.909,
+              "durationSeconds": 6.905
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Explain, trace, implement, and critique",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".search-review-studio li",
+              "index": 0,
+              "sourcePhrase": "Review should connect definitions",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 36.576,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "the tabs to move",
+              "atSeconds": 0.369,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 60.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "BFS uses a queue",
+              "atSeconds": 0.502,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "FIFO ⇒ LEVEL ORDER",
+              "label": "Explain the mechanism",
+              "durationSeconds": 6,
+              "sourcePhrase": "queue invariant produces level order",
+              "atSeconds": 5.691,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-review-studio li",
+              "index": 3,
+              "sourcePhrase": "Choose the weakest review",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "A correct search answer includes the representation and the process",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.368,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "State-space search",
+              "selector": ".important-points-grid article",
+              "index": 0,
+              "sourcePhrase": "Outcomes one",
+              "atSeconds": 10.159,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Computational model",
+              "selector": ".important-points-grid article",
+              "index": 2,
+              "sourcePhrase": "through three",
+              "atSeconds": 11.104,
+              "durationSeconds": 5.214
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 36.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Trace DFS",
+              "selector": ".important-points-grid article",
+              "index": 3,
+              "sourcePhrase": "Outcomes four",
+              "atSeconds": 10.04,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Trace backtracking",
+              "selector": ".important-points-grid article",
+              "index": 5,
+              "sourcePhrase": "through six",
+              "atSeconds": 10.984,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 51.408,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "popup",
+              "emoji": "NO h(n)",
+              "label": "Systematic, not heuristic",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Brute force is not an insult",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Brute force",
+              "selector": ".important-points-grid article",
+              "index": 6,
+              "sourcePhrase": "DFS and BFS are brute force",
+              "atSeconds": 9.84,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Backtracking boundary",
+              "selector": ".important-points-grid article",
+              "index": 7,
+              "sourcePhrase": "Dead-end information helps",
+              "atSeconds": 8.191,
+              "durationSeconds": 6.231
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Choose an algorithm only after stating the problem conditions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 18.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Definition",
+              "selector": ".search-exit article",
+              "index": 0,
+              "sourcePhrase": "exit task requires one",
+              "atSeconds": 0.209,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Concrete example",
+          "durationSeconds": 37.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".search-exit article",
+              "index": 1,
+              "sourcePhrase": "A defensible answer states",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and misconception",
+          "durationSeconds": 53.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary",
+              "selector": ".search-exit article",
+              "index": 2,
+              "sourcePhrase": "The algorithm name is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Question and takeaway",
+          "durationSeconds": 17.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Check",
+              "selector": ".search-exit article",
+              "index": 2,
+              "sourcePhrase": "Complete the exit ticket",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
