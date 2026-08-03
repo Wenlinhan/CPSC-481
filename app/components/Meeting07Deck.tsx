@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   SearchCallout,
@@ -179,13 +179,6 @@ function TicTacToeScoringPractice() {
       <section>
         <span>{item.label} · evaluation practice</span>
         <h3>M(n) = {item.player}; O(n) = {item.opponent}</h3>
-        <div className="m7-score-visual" aria-label={`Open winning lines: X ${item.player}, O ${item.opponent}`}>
-          <div><b>X · M(n)</b><i style={{ "--score-width": `${item.player * 12}%` } as CSSProperties} /><strong>{item.player}</strong></div>
-          <div><b>O · O(n)</b><i style={{ "--score-width": `${item.opponent * 12}%` } as CSSProperties} /><strong>{item.opponent}</strong></div>
-          <aside className={revealed ? (item.score > 0 ? "positive" : "negative") : "hidden"}>
-            <span>E(n)</span><strong>{revealed ? item.score : "?"}</strong>
-          </aside>
-        </div>
         <p>
           Compute <strong>E(n) = M(n) − O(n)</strong>, then say whether the score
           favors X, favors O, or is neutral. Do not reveal until everyone has
@@ -344,71 +337,6 @@ function SourceQuestionClinic() {
   );
 }
 
-function GameSolutionExplorer() {
-  const [mode, setMode] = useState<"path" | "strategy">("path");
-
-  return (
-    <div className="m7-contingency-explorer">
-      <nav aria-label="Compare path search and adversarial strategy">
-        <button className={mode === "path" ? "active" : ""} onClick={() => setMode("path")} type="button">One-agent path</button>
-        <button className={mode === "strategy" ? "active" : ""} onClick={() => setMode("strategy")} type="button">Game strategy</button>
-      </nav>
-      <section className={`m7-contingency-map ${mode}`}>
-        <div className="m7-start-node">Current state<small>MAX chooses</small></div>
-        <div className="m7-choice-row"><span>A</span><span>B</span><span>C</span></div>
-        {mode === "path" ? (
-          <div className="m7-path-result"><i>planned path</i><strong>Goal</strong><small>The same agent controls every selected action.</small></div>
-        ) : (
-          <div className="m7-reply-grid">
-            {["A1", "A2", "B1", "B2", "C1", "C2"].map(reply => <span key={reply}>{reply}<small>MIN reply</small></span>)}
-          </div>
-        )}
-      </section>
-      <aside>
-        <span>{mode === "path" ? "PATH" : "CONTINGENT STRATEGY"}</span>
-        <strong>{mode === "path" ? "One chosen sequence" : "A response for every opponent reply"}</strong>
-        <p>{mode === "path" ? "Ordinary search assumes the agent controls each next step." : "The opponent controls the next edge, so a defensible move must account for all modeled replies."}</p>
-      </aside>
-    </div>
-  );
-}
-
-const backupStages = [
-  { label: "1 · Read leaves", min: [null, null, null], root: null, detail: "Leaf values use MAX's fixed utility perspective. Predict what each MIN node will return." },
-  { label: "2 · Back up MIN", min: [3, 2, 1], root: null, detail: "MIN keeps the smaller reply: min(3,5)=3; min(2,9)=2; min(4,1)=1." },
-  { label: "3 · Choose at MAX", min: [3, 2, 1], root: 3, detail: "MAX selects max(3,2,1)=3, so action A is the safest modeled choice." },
-];
-
-function MinimaxBackupLab() {
-  const [stage, setStage] = useState(0);
-  const state = backupStages[stage];
-  const leaves = [[3, 5], [2, 9], [4, 1]];
-
-  return (
-    <div className="m7-backup-lab">
-      <section className="m7-backup-tree" aria-label="Progressive minimax backup tree">
-        <div className={`m7-tree-root ${state.root !== null ? "resolved" : ""}`}><span>MAX</span><strong>{state.root ?? "?"}</strong></div>
-        <div className="m7-tree-level">
-          {state.min.map((value, index) => <div className={`m7-tree-min ${value !== null ? "resolved" : ""}`} key={index}><span>MIN · {String.fromCharCode(65 + index)}</span><strong>{value ?? "?"}</strong></div>)}
-        </div>
-        <div className="m7-tree-leaves">
-          {leaves.flatMap((pair, branch) => pair.map(value => <span key={`${branch}-${value}`}>{value}</span>))}
-        </div>
-      </section>
-      <aside>
-        <span>{state.label}</span>
-        <h3>{stage === 0 ? "Whose choice controls each level?" : stage === 1 ? "MIN resolves every opponent reply" : "MAX chooses the best worst case"}</h3>
-        <p>{state.detail}</p>
-        <div>
-          <button disabled={stage === 0} onClick={() => setStage(value => value - 1)} type="button">Previous</button>
-          <button disabled={stage === backupStages.length - 1} onClick={() => setStage(value => value + 1)} type="button">Next step</button>
-          <button onClick={() => setStage(0)} type="button">Reset</button>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Module 5 · Lesson 7 · Adversarial search",
@@ -486,7 +414,15 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Games versus ordinary search",
     title: "An unpredictable opponent turns a path into a contingency",
-    content: <GameSolutionExplorer />,
+    content: (
+      <div className="search-comparison-table">
+        <div><span>Issue</span><span>Ordinary search</span><span>Adversarial game search</span></div>
+        <div><span>Who acts?</span><p>The search agent selects each step on its path.</p><p>Control alternates; the opponent selects replies.</p></div>
+        <div><span>Solution form</span><p>One action sequence to a goal.</p><p>A move plus a response for every possible opponent reply.</p></div>
+        <div><span>Time limit</span><p>A goal may be found before execution.</p><p>A clock can force a move before terminal states are reached.</p></div>
+        <div><span>Approximation</span><p>Search depth may be sufficient for exact cost.</p><p>Use a cutoff and evaluation function when full resolution is infeasible.</p></div>
+      </div>
+    ),
     note: "Timing: 2 minutes. Preserve both source contrasts: unpredictable opponent implies a move for every reply; time limits make a full goal search unlikely and force approximation. Ask whether a game solution is a path or policy.",
     sourceSlides: [3],
   },
@@ -630,7 +566,22 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Minimax · Backup rules",
     title: "MAX takes the largest child value; MIN takes the smallest",
-    content: <MinimaxBackupLab />,
+    content: (
+      <div className="algorithm-map">
+        <section>
+          <article><span>1</span><h3>Build</h3><p>Generate legal actions to terminal states or a chosen cutoff depth.</p></article>
+          <article><span>2</span><h3>Evaluate leaves</h3><p>Return exact utility at terminal leaves and an evaluation estimate at nonterminal cutoff leaves.</p></article>
+          <article><span>3</span><h3>Back up</h3><p>At MAX take max(children); at MIN take min(children).</p></article>
+          <article><span>4</span><h3>Choose</h3><p>At the root, select the action whose child returns the best backed-up value.</p></article>
+        </section>
+        <aside>
+          <span>Keep the perspective fixed</span>
+          <p>The player to move determines MAX or MIN.</p>
+          <p>The utility sign convention does not change between levels.</p>
+          <p>Alternation models who controls the next action.</p>
+        </aside>
+      </div>
+    ),
     note: "Timing: 3 minutes. Trace the four source rules. Explicitly correct the claim that root type is selected by whether the heuristic looks like a reward or cost.",
     sourceSlides: [8],
   },

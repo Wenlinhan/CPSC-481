@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   RevealSequence,
@@ -291,132 +291,6 @@ const practiceReveal = [
   },
 ];
 
-const boundStates = [
-  { label: "Open window", alpha: 0, beta: 10, detail: "Before useful alternatives return, the possible value lies in a wide decision window." },
-  { label: "MAX improves α", alpha: 3, beta: 10, detail: "A completed MAX alternative worth 3 raises the lower bound. Alpha never moves left." },
-  { label: "MIN improves β", alpha: 3, beta: 6, detail: "A completed MIN alternative worth 6 lowers the upper bound. Beta never moves right." },
-  { label: "Window closes", alpha: 6, beta: 6, detail: "When α ≥ β, remaining siblings cannot change the ancestor's choice." },
-];
-
-function BoundWindowDemo() {
-  const [step, setStep] = useState(0);
-  const state = boundStates[step];
-
-  return (
-    <div className="m8-bound-demo">
-      <section>
-        <div className="m8-bound-scale" style={{ "--alpha": `${state.alpha * 10}%`, "--beta": `${state.beta * 10}%` } as CSSProperties}>
-          <div className="m8-bound-window" />
-          <i className="alpha"><span>α</span><strong>{state.alpha}</strong></i>
-          <i className="beta"><span>β</span><strong>{state.beta}</strong></i>
-          <ol>{[0, 2, 4, 6, 8, 10].map(value => <li key={value}>{value}</li>)}</ol>
-        </div>
-        <div className="m8-bound-arrows"><span>MAX can already guarantee at least α</span><span>MIN can already hold MAX to at most β</span></div>
-      </section>
-      <aside>
-        <span>{step + 1} / {boundStates.length} · {state.label}</span>
-        <h3>{step === 3 ? "α ≥ β proves a cutoff" : "Keep only the decision-relevant interval"}</h3>
-        <p>{state.detail}</p>
-        <div>
-          <button disabled={step === 0} onClick={() => setStep(value => value - 1)} type="button">Previous</button>
-          <button disabled={step === boundStates.length - 1} onClick={() => setStep(value => value + 1)} type="button">Next bound</button>
-          <button onClick={() => setStep(0)} type="button">Reset</button>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
-function MoveOrderingLab() {
-  const [order, setOrder] = useState<"helpful" | "poor">("helpful");
-  const helpful = order === "helpful";
-  const leaves = helpful ? [9, 7, 5, null, null, 2, null, null] : [2, 3, 4, 5, 6, 7, 8, 9];
-
-  return (
-    <div className="m8-ordering-lab">
-      <nav>
-        <button className={helpful ? "active" : ""} onClick={() => setOrder("helpful")} type="button">Helpful ordering</button>
-        <button className={!helpful ? "active" : ""} onClick={() => setOrder("poor")} type="button">Poor ordering</button>
-      </nav>
-      <section>
-        <div className="m8-order-tree" aria-label={`${order} move ordering example`}>
-          <strong>MAX</strong>
-          <div>{leaves.map((value, index) => <span className={value === null ? "pruned" : "evaluated"} key={index}>{value ?? "×"}</span>)}</div>
-        </div>
-        <div className="m8-order-meter">
-          <span>Evaluated leaves in the same toy tree</span>
-          <i><b style={{ width: helpful ? "62.5%" : "100%" }} /></i>
-          <strong>{helpful ? "5 of 8" : "8 of 8"}</strong>
-        </div>
-      </section>
-      <aside>
-        <span>{helpful ? "TIGHT BOUNDS EARLY" : "USEFUL BOUNDS ARRIVE LATE"}</span>
-        <h3>{helpful ? "Strong MAX moves and weak MIN replies first" : "The search approaches full minimax work"}</h3>
-        <p>Ordering changes which leaves are visited, not the cutoff depth, evaluation function, backed-up root value, or selected minimax action.</p>
-      </aside>
-    </div>
-  );
-}
-
-const nativePracticeBranches = [
-  { label: "Left MIN", groups: [[5, 2], [10, 11]] },
-  { label: "Middle MIN", groups: [[1, 2, 2], [8], [6, 5]] },
-  { label: "Right MIN", groups: [[12], [4, 3], [25, 2]] },
-];
-
-const nativePracticeSteps = [
-  { label: "Start · α=−∞", detail: "Visit left-to-right. Predict each MAX return before updating its MIN parent." },
-  { label: "Left MIN returns 5", detail: "Evaluate 5, 2, and 10. Ten reaches β=5 inside the second MAX child, so 11 is skipped." },
-  { label: "Middle MIN returns at most 2", detail: "Evaluate 1, 2, 2. Because 2≤root α=5, skip 8 and the [6,5] subtree." },
-  { label: "Right MIN tightens to 4", detail: "Evaluate 12, then max(4,3)=4. The right MIN value is now at most 4." },
-  { label: "Right branch cuts off", detail: "Because β=4≤root α=5, skip the final [25,2] subtree." },
-  { label: "Root returns 5", detail: "Alpha-beta evaluated nine of fifteen leaves and returns the same root action and value as full minimax." },
-];
-
-const evaluatedByStep = [[], ["0-0-0", "0-0-1", "0-1-0"], ["1-0-0", "1-0-1", "1-0-2"], ["2-0-0", "2-1-0", "2-1-1"], [], []];
-const prunedByStep = [[], ["0-1-1"], ["1-1-0", "1-2-0", "1-2-1"], [], ["2-2-0", "2-2-1"], []];
-
-function AlphaBetaPracticeTree() {
-  const [step, setStep] = useState(0);
-  const evaluated = new Set(evaluatedByStep.slice(0, step + 1).flat());
-  const pruned = new Set(prunedByStep.slice(0, step + 1).flat());
-  const evaluatedCount = evaluated.size;
-  const prunedCount = pruned.size;
-  const state = nativePracticeSteps[step];
-
-  return (
-    <div className="m8-native-practice">
-      <section className="m8-practice-tree" aria-label="Native alpha-beta practice tree with exact source leaf values">
-        <div className="m8-practice-root"><span>MAX root</span><strong>{step === 5 ? "5" : `α=${step >= 1 ? 5 : "−∞"}`}</strong></div>
-        <div className="m8-practice-branches">
-          {nativePracticeBranches.map((branch, branchIndex) => (
-            <article className={step === 5 && branchIndex === 0 ? "selected" : ""} key={branch.label}>
-              <header><span>{branch.label}</span><strong>{step === 5 ? [5, 2, 4][branchIndex] : "MIN"}</strong></header>
-              <div>
-                {branch.groups.map((group, groupIndex) => <section key={groupIndex}><b>MAX</b><p>{group.map((leaf, leafIndex) => {
-                  const id = `${branchIndex}-${groupIndex}-${leafIndex}`;
-                  const status = evaluated.has(id) ? "evaluated" : pruned.has(id) ? "pruned" : "waiting";
-                  return <span className={status} key={id}>{status === "pruned" ? "×" : leaf}<small>{status}</small></span>;
-                })}</p></section>)}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-      <aside>
-        <span>{step + 1} / {nativePracticeSteps.length} · {state.label}</span>
-        <p>{state.detail}</p>
-        <div className="m8-practice-counts"><b>{evaluatedCount}<small>evaluated</small></b><b>{prunedCount}<small>skipped</small></b><b>{15 - evaluatedCount - prunedCount}<small>unresolved</small></b></div>
-        <div className="m8-practice-controls">
-          <button disabled={step === 0} onClick={() => setStep(value => value - 1)} type="button">Previous</button>
-          <button disabled={step === nativePracticeSteps.length - 1} onClick={() => setStep(value => value + 1)} type="button">Next proof</button>
-          <button onClick={() => setStep(0)} type="button">Reset</button>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Module 5 · Lesson 8 · Adversarial search",
@@ -485,7 +359,36 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Path bounds · Invariants",
     title: "Alpha rises for MAX; beta falls for MIN",
-    content: <BoundWindowDemo />,
+    content: (
+      <div className="algorithm-definition">
+        <section>
+          <span>Active interval</span>
+          <h3>α ≤ possible backed-up value ≤ β</h3>
+          <p>
+            The interval records what the ancestors already know. Once the
+            lower bound meets or exceeds the upper bound, the remaining
+            siblings cannot affect the ancestor’s choice.
+          </p>
+        </section>
+        <div>
+          <article>
+            <strong>Alpha · lower bound</strong>
+            <p>The best value MAX can already guarantee along the current path.</p>
+          </article>
+          <article>
+            <strong>Beta · upper bound</strong>
+            <p>The best value MIN can already guarantee along the current path.</p>
+          </article>
+          <article>
+            <strong>Monotonicity</strong>
+            <p>α never decreases; β never increases as the active path is searched.</p>
+          </article>
+          <SearchCallout label="Cutoff condition" tone="amber">
+            The interval closes when α≥β, equivalently β≤α.
+          </SearchCallout>
+        </div>
+      </div>
+    ),
     note: "Timing: 3 minutes. Ask students to say who owns each bound and why its direction is monotone. Keep utility from MAX’s fixed perspective throughout the tree.",
     sourceSlides: [17, 21],
   },
@@ -642,7 +545,15 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Efficiency · Move ordering",
     title: "Move ordering changes work, not the minimax answer",
-    content: <MoveOrderingLab />,
+    content: (
+      <div className="evaluation-matrix">
+        <div><span>Question</span><span>Best-first ordering</span><span>Worst-first ordering</span><span>Invariant</span></div>
+        <div><span>MAX tries</span><p>High-value moves early</p><p>Low-value moves early</p><p>Same legal actions</p></div>
+        <div><span>MIN tries</span><p>Low-value moves early</p><p>High-value moves early</p><p>Same cutoff depth</p></div>
+        <div><span>Effect</span><p>Tight bounds and earlier cutoffs</p><p>Few cutoffs; near-full minimax</p><p>Same evaluation function</p></div>
+        <div><span>Result</span><p>Fewer leaves evaluated</p><p>More leaves evaluated</p><p>Same minimax result</p></div>
+      </div>
+    ),
     note: "Timing: 2 minutes. Explain that a move-ordering heuristic predicts promising actions only to improve pruning. It does not replace the cutoff evaluation function or alter correctness.",
     sourceSlides: [17, 18, 21],
   },
@@ -911,7 +822,31 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "In-class practice · Independent trace",
     title: "Apply alpha-beta left-to-right to the complete practice tree",
-    content: <AlphaBetaPracticeTree />,
+    content: (
+      <div className="algorithm-source-layout">
+        <SearchSourceImage
+          alt="Original Alpha-Beta Pruning Practice slide: a MAX root has three MIN children above MAX nodes and leaves 5, 2, 10, 11, 1, 2, 2, 8, 6, 5, 12, 4, 3, 25, and 2"
+          caption="The original practice tree preserves the node shapes, player levels, branch grouping, and left-to-right leaf order."
+          file="source-slides/slide-30.png"
+          sourceRoot={sourceRoot}
+        />
+        <section>
+          <h3>Submit a trace, not only an answer</h3>
+          <p>
+            Evaluate leaves in the displayed left-to-right order. At every
+            internal node, record v, α, and β after each returned child.
+          </p>
+          <SearchCallout label="Mark every skipped subtree" tone="amber">
+            Name the cutoff type, write the inequality that justifies it, and
+            count both evaluated and skipped leaves.
+          </SearchCallout>
+          <SearchCallout label="Final claims" tone="cyan">
+            Report the root value, chosen root branch, and whether a different
+            legal move order could change either result.
+          </SearchCallout>
+        </section>
+      </div>
+    ),
     note: "Timing: 5 minutes. Use the original source practice tree and its exact leaf grouping. Students work independently for three minutes, then compare bound tables with a partner.",
     sourceSlides: [30],
   },
