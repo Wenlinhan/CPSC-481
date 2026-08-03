@@ -1,0 +1,2364 @@
+{
+  "version": 1,
+  "meeting": "06",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Best-First Search, A*, and Heuristic Quality",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 28.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "Lesson six adds informed judgment",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 25.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "Think of planning a road",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 28.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 2,
+              "sourcePhrase": "A heuristic is guidance, not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "By the end, you should",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Follow the smallest estimated distance to the goal",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 30.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Greedy best-first search removes from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 27.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Imagine hiking toward a mountain",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 8.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "OPEN is a minimum-priority queue",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Greedy best-first is not generally",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Generate broadly, then select the most promising frontier node",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-source-layout li, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The procedure begins by placing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 31.272,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".algorithm-source-layout li, .algorithm-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "The crucial distinction from hill",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "OPEN → min h(n)",
+              "label": "Frontier priority",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "waiting room sorted by estimated remaining distance",
+              "atSeconds": 21.117,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 28.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".algorithm-source-layout li, .algorithm-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The word backtrack here describes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 25.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-source-layout li, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Duplicate policy must state what",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Trace the heuristic order before seeing the answer",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 30.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "This state-space tree labels nodes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 27.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the figure and begin",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 26.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "From C, node H with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "The final removal order is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The pseudocode needs explicit duplicate and path policy",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 30.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The pseudocode is an implementation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the algorithm and follow",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 29.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The source wording can sound",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 27.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "A robust policy says when",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "OPEN determines every next move",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 29.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .trace-source-layout section, .trace-source-layout p",
+              "index": 0,
+              "sourcePhrase": "The exact trace turns frontier",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .trace-source-layout section, .trace-source-layout p",
+              "index": 1,
+              "sourcePhrase": "Expanding A yields B four,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 29.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .trace-source-layout section, .trace-source-layout p",
+              "index": 2,
+              "sourcePhrase": "Expanding C inserts H three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "O(2) → P(3)",
+              "label": "Heuristic order",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "O two and P three",
+              "atSeconds": 6.635,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 28.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .trace-source-layout section, .trace-source-layout p",
+              "index": 0,
+              "sourcePhrase": "When P is removed, the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Greedy trace state 2",
+          "durationSeconds": 13.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 2",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Advance from initialization and select",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Greedy trace state 3",
+          "durationSeconds": 11.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 3",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Select B four by the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Greedy trace state 4",
+          "durationSeconds": 12.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 4",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Select C four. Its children",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Greedy trace state 5",
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 5",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Select H three and generate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Greedy trace state 6",
+          "durationSeconds": 11.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 6",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Select O two. O fails",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Greedy trace state 7",
+          "durationSeconds": 11.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Greedy trace state 7",
+              "selector": ".trace-source-layout section",
+              "index": 0,
+              "sourcePhrase": "Select P three from OPEN.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "This figure already combines g and h",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 28.44,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "This eight-puzzle picture is sometimes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "f(n) = g(n) + h(n)",
+              "label": "A-star score",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "f of n equals g of n plus h of n",
+              "atSeconds": 9.056,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the boards and count",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 29.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Naming matters because algorithms can",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "For each successor, say the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "OPEN is ordered; CLOSED remembers what was expanded",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .puzzle-source-layout section, .puzzle-source-layout li",
+              "index": 0,
+              "sourcePhrase": "This third-iteration snapshot separates two",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .puzzle-source-layout section, .puzzle-source-layout li",
+              "index": 1,
+              "sourcePhrase": "Enlarge the boards and point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 26.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .puzzle-source-layout section, .puzzle-source-layout li",
+              "index": 2,
+              "sourcePhrase": "Queue ordering and state lookup",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .puzzle-source-layout section, .puzzle-source-layout li",
+              "index": 0,
+              "sourcePhrase": "Parent and best-g fields connect",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "A weak heuristic leaves a large state space alive",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 33.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The large generated puzzle tree",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 32.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the tree and notice",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 32.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "A heuristic can also be",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Measure at least three quantities:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "An admissible heuristic never overestimates remaining optimal cost",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 27,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Admissibility is a pointwise property",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 32.064,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the definition and interpret",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "h(n) ≤ h*(n)",
+              "label": "Never overestimate",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "lower-bound price tag",
+              "atSeconds": 2.669,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 34.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Admissibility belongs to the heuristic,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 30.24,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "At a goal, h should",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Three questions expose three common confusions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 32.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-review-studio nav button, .search-review-studio li",
+              "index": 0,
+              "sourcePhrase": "Question one asks whether admissible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-review-studio nav button, .search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "Question two asks about eight-puzzle",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 34.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-review-studio nav button, .search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Question three exposes abbreviation trouble.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 34.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-review-studio nav button, .search-review-studio li",
+              "index": 3,
+              "sourcePhrase": "The proof habit is the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Estimate the total solution cost through each frontier node",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 12.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "A-star chooses the frontier node",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 1,
+              "sourcePhrase": "Imagine comparing airline itineraries. g",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 27.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 2,
+              "sourcePhrase": "g is computed from edge",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 31.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article",
+              "index": 0,
+              "sourcePhrase": "Two special cases clarify the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Equal depth is not the same as equal estimated total cost",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 28.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Breadth-first search orders by depth,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the comparison and inspect",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 29.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Breadth-first is complete with finite",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 30.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "A-star with h zero becomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "h=0 ⇒ UCS; equal costs ⇒ BFS",
+              "label": "Special-case chain",
+              "route": "center-hold",
+              "durationSeconds": 3.516,
+              "sourcePhrase": "g layers match breadth-first depth layers",
+              "atSeconds": 27.42,
+              "centerHoldSeconds": 2.25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Straight-line distance guides road search",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "In the city graph, nodes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the animation before replaying",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 31.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Replay the animation and predict",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 29.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The transfer question is what",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Configuration-space search routes around obstacles",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 32.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "For robot motion planning, a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 32.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the animation and identify",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 30.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Replay and watch the wave",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "If an obstacle moves after",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A lower-bound geography heuristic focuses a national route",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The rail example searches from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 25.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the map and notice",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 28.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Replay the route and inspect",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 30.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "If the objective becomes ticket",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Set h(n)=0 and A* becomes uniform-cost search",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Setting h of n to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "f(n)=g(n)",
+              "label": "Uniform-cost special case",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "f equals g plus zero",
+              "atSeconds": 2.377,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 28.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the animation and watch",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 30.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Replay and identify the moment",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 33.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".replayable-source-animation, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Breadth-first is equivalent only when",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "A consistent heuristic obeys a triangle inequality on every edge",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 25.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Consistency, also called monotonicity, is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 28.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the definition and picture",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 26.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Consistency makes f values nondecreasing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 27.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Under standard graph-search conditions, consistency",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "An inconsistent heuristic can force a CLOSED node to reopen",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 27.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "This graph uses an admissible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 25.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Expanding A creates goal G",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 30.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "The improved A must leave",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "CLOSED → OPEN",
+              "label": "Propagate improved g",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "leave CLOSED and reopen",
+              "atSeconds": 1.087,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Finally G with g four",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Reopen trace state 2",
+          "durationSeconds": 12.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reopen trace state 2",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Expand S. A enters OPEN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reopen trace state 3",
+          "durationSeconds": 12.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reopen trace state 3",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Expand A too early. It",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Reopen trace state 4",
+          "durationSeconds": 12.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reopen trace state 4",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Select B and discover B-to-A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reopen trace state 5",
+          "durationSeconds": 12.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reopen trace state 5",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Re-expand improved A. Its edge",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Reopen trace state 6",
+          "durationSeconds": 10.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reopen trace state 6",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Select G at g four",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A more informed admissible heuristic gives tighter lower bounds",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 28.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "For two admissible heuristics, h-two",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.288,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the definition and compare",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "hₘᵢₛ ≤ hₘₐₙ ≤ h*",
+              "label": "Tighter safe bound",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Manhattan therefore dominates",
+              "atSeconds": 14.508,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 29.928,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "With comparable tie-breaking, A-star using",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .source-definition-layout article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "More informed does not mean",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Search savings must exceed the cost of control knowledge",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The cost graph separates search",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 28.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Enlarge the curves and locate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 32.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Node count is therefore an",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 31.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-source-image, .puzzle-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The engineering objective is minimum",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Use one lens for h and another for the search algorithm",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 34.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".m6-property-lenses article, .m6-question-sorter nav button, .m6-question-sorter div",
+              "index": 0,
+              "sourcePhrase": "Before evaluating a claim, identify",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 29.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".m6-property-lenses article, .m6-question-sorter nav button, .m6-question-sorter div",
+              "index": 1,
+              "sourcePhrase": "For h-one admissibility, check zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 35.136,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".m6-property-lenses article, .m6-question-sorter nav button, .m6-question-sorter div",
+              "index": 2,
+              "sourcePhrase": "Asking whether DFS is consistent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "h property ≠ DFS property",
+              "label": "Choose the right lens",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "category mismatch",
+              "atSeconds": 2.51,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 33.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".m6-property-lenses article, .m6-question-sorter nav button, .m6-question-sorter div",
+              "index": 3,
+              "sourcePhrase": "Best-first completeness also needs the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Property diagnosis 2",
+          "durationSeconds": 12.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Property diagnosis 2",
+              "selector": ".m6-question-sorter div",
+              "index": 0,
+              "sourcePhrase": "Open the consistency prompt for",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Property diagnosis 3",
+          "durationSeconds": 14.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Property diagnosis 3",
+              "selector": ".m6-question-sorter div",
+              "index": 0,
+              "sourcePhrase": "Open the DFS consistency prompt.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Property diagnosis 4",
+          "durationSeconds": 14.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Property diagnosis 4",
+              "selector": ".m6-question-sorter div",
+              "index": 0,
+              "sourcePhrase": "Open the best-first completeness prompt.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Property diagnosis 5",
+          "durationSeconds": 14.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Property diagnosis 5",
+              "selector": ".m6-question-sorter div",
+              "index": 0,
+              "sourcePhrase": "Open algorithm A admissibility. In",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Can all intelligent tasks use A*?",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 31.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".m6-application-practice nav button, .m6-application-practice section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "A-star is powerful when a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 31.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".m6-application-practice nav button, .m6-application-practice section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "For autopilot, A-star can plan",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 34.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".m6-application-practice nav button, .m6-application-practice section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "For an autonomous drone and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 35.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".m6-application-practice nav button, .m6-application-practice section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Chess and financial investment reveal",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Application 2 model",
+          "durationSeconds": 13.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 2 model",
+              "selector": ".m6-application-practice section",
+              "index": 0,
+              "sourcePhrase": "Select the autonomous drone. Model",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Application 2 analysis",
+          "durationSeconds": 14.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 2 analysis",
+              "selector": ".m6-application-practice .search-callout",
+              "index": 0,
+              "sourcePhrase": "Reveal the drone analysis. A-star",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Application 3 model",
+          "durationSeconds": 12.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 3 model",
+              "selector": ".m6-application-practice section",
+              "index": 0,
+              "sourcePhrase": "Select the robot vacuum. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Application 3 analysis",
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 3 analysis",
+              "selector": ".m6-application-practice .search-callout",
+              "index": 0,
+              "sourcePhrase": "Reveal the vacuum analysis. A-star",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Application 4 model",
+          "durationSeconds": 15.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 4 model",
+              "selector": ".m6-application-practice section",
+              "index": 0,
+              "sourcePhrase": "Select chess. Board positions and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Application 4 analysis",
+          "durationSeconds": 14.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 4 analysis",
+              "selector": ".m6-application-practice .search-callout",
+              "index": 0,
+              "sourcePhrase": "Reveal the chess analysis. Use",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Application 5 model",
+          "durationSeconds": 17.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 5 model",
+              "selector": ".m6-application-practice section",
+              "index": 0,
+              "sourcePhrase": "Select financial investment. States, actions,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Application 5 analysis",
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Application 5 analysis",
+              "selector": ".m6-application-practice .search-callout",
+              "index": 0,
+              "sourcePhrase": "Reveal the investment analysis. Decision-theoretic,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Offline deterministic search is only one corner of agency",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 33.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-map article, .algorithm-map aside p",
+              "index": 0,
+              "sourcePhrase": "Offline deterministic search assumes a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".algorithm-map article, .algorithm-map aside p",
+              "index": 1,
+              "sourcePhrase": "Computational backtracking does not imply",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 35.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".algorithm-map article, .algorithm-map aside p",
+              "index": 2,
+              "sourcePhrase": "Partial observations and unknown dynamics",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.952,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-map article, .algorithm-map aside p",
+              "index": 0,
+              "sourcePhrase": "Use the environment audit aloud:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "emoji": "Observe · Change · Agents",
+              "label": "Environment audit",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "deterministic or stochastic",
+              "atSeconds": 2.257,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Trace it, justify it, and decide when it belongs",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 29.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 0,
+              "sourcePhrase": "The cumulative task has three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked mechanism",
+          "durationSeconds": 30.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked mechanism",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 1,
+              "sourcePhrase": "Second, justify heuristic claims. Use",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and guarantee",
+          "durationSeconds": 33.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and guarantee",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 2,
+              "sourcePhrase": "Third, decide whether the model",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 32.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 0,
+              "sourcePhrase": "The durable sequence is trace,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

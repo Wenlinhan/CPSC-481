@@ -9,6 +9,7 @@ import {
 } from "./SearchLessonPrimitives";
 
 const sourceRoot = "/course-source/l04-best-first-astar";
+const LESSON_06_VIDEO_URL = "https://csufullerton.instructure.com/files/283884598/download?download_frd=1&verifier=avdP0tw2CaBS2HHwmMTdWEqkx8EAuDlbgmbp13ty";
 
 function BestFirstOrderPrediction() {
   const [revealed, setRevealed] = useState(false);
@@ -1092,6 +1093,7 @@ export function Meeting06Deck() {
   return (
     <SourceDeckShell
       hoverEffects
+      lectureVideoUrl={LESSON_06_VIDEO_URL}
       meetingLabel="Module 4 · Lesson 6"
       meetingTitle="Best-First Search, A*, and Heuristic Quality"
       slides={slides}

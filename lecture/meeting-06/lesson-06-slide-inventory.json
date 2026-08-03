@@ -1,0 +1,479 @@
+{
+  "route": "/lessons/06",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Best-First Search, A*, and Heuristic Quality",
+      "visibleText": "DRIVING QUESTION\nWhat deserves to leave the frontier next?\n\nRetrieve four ideas: OPEN, CLOSED, path cost g(n), and parent links. Today a heuristic h(n) changes the expansion order.\n\nGREEDY BEST-FIRST\n\nSelect the frontier node with minimum predicted remaining cost h(n).\n\nA*\n\nSelect the frontier node with minimum estimated total cost g(n)+h(n).\n\nHEURISTIC QUALITY\n\nAsk what h guarantees, how much search it saves, and what it costs to compute.",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Follow the smallest estimated distance to the goal",
+      "visibleText": "SELECTION RULE\nChoose min h(n) from OPEN\n\nThe heuristic estimates cost from n to a goal. Greedy best-first uses that estimate alone, so “looks closest” is not the same as “lies on a least-cost path.”\n\nOPEN · PRIORITY QUEUE\n\nStores generated but unexpanded nodes, keyed here by h(n).\n\nCLOSED · EXPLORED RECORD\n\nRecords expanded states and supports duplicate detection.\n\nPARENTS AND BEST G\n\nRecover a path and decide whether a newly found duplicate is better.\n\nGUARANTEE CHECK\nGreedy best-first is neither generally optimal nor complete in unrestricted spaces. OPEN and CLOSED organize work; they do not create a shortest-path guarantee.",
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "Generate broadly, then select the most promising frontier node",
+      "visibleText": "Put the start node in OPEN; keep CLOSED empty.\nRemove a node with minimum h from OPEN.\nTest whether its state satisfies the goal.\nExpand it and evaluate each successor.\nInsert unseen successors; update a duplicate when the new record is better.\nRecord the expanded state in CLOSED and repeat.\n“Backtrack” means choose the next-best OPEN entry\n\nUnlike hill climbing, the algorithm keeps alternatives. A dead end does not force it to undo physical actions; it simply pops another frontier entry.\n\nPATH RECOVERY\nStore a parent pointer with each accepted record. When a goal is selected, follow parents back to the start and reverse the chain.",
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "Trace the heuristic order before seeing the answer",
+      "visibleText": "Smaller heuristic values are preferred; bold nodes have been expanded.\nCLICK IMAGE TO ENLARGE\nPredict before revealing\nWhich node leaves OPEN next?\n\nGreedy best-first search always selects the frontier node with the smallest heuristic value. Resolve ties in the left-to-right order shown.\n\nWrite the complete selection order from A until the goal P is selected.\n\nReveal the order",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "Smaller heuristic values are preferred; bold nodes have been expanded. CLICK IMAGE TO ENLARGE Predict before revealing Which node leaves OPEN next? Greedy best-first search always selects the frontier node with the smallest heuristic value. Resolve ties in the left-to-right order shown. Write the complete selection order from A until the goal P is selected. Reveal the order"
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "Smaller heuristic values are preferred; bold nodes have been expanded. CLICK IMAGE TO ENLARGE Predict before revealing Which node leaves OPEN next? Greedy best-first search always selects the frontier node with the smallest heuristic value. Resolve ties in the left-to-right order shown. Write the complete selection order from A until the goal P is selected. Reveal the order"
+        },
+        {
+          "segment": 4,
+          "label": "Reveal the predicted greedy selection order",
+          "stateText": "Smaller heuristic values are preferred; bold nodes have been expanded. CLICK IMAGE TO ENLARGE Predict before revealing Which node leaves OPEN next? Greedy best-first search always selects the frontier node with the smallest heuristic value. Resolve ties in the left-to-right order shown. Write the complete selection order from A until the goal P is selected. Hide the order SELECTION ORDER A(5) → B(4) → C(4) → H(3) → O(2) → P(3). O is explored before P, so greedy best-first can recover from a locally attractive branch instead of committing to it forever."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The pseudocode needs explicit duplicate and path policy",
+      "visibleText": "Procedure for maintaining the frontier, explored record, and current path.\nCLICK IMAGE TO ENLARGE\nRead the data structures, then repair the contract\n\nOPEN is a min-priority queue keyed by h. CLOSED records expanded states. Each accepted node stores its state, parent, g value, and h value.\n\nDUPLICATE POLICY\nIf a successor is unseen, insert it. If it represents a known state through a better g, update its record and parent; whether a CLOSED state must reopen depends on the algorithm and heuristic conditions.\nCORRECTED GUARANTEE\nFollowing parent links returns the path the search found. Greedy best-first does not guarantee that this path is shortest.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "Procedure for maintaining the frontier, explored record, and current path. CLICK IMAGE TO ENLARGE Read the data structures, then repair the contract OPEN is a min-priority queue keyed by h. CLOSED records expanded states. Each accepted node stores its state, parent, g value, and h value. DUPLICATE POLICY If a successor is unseen, insert it. If it represents a known state through a better g, update its record and parent; whether a CLOSED state must reopen depends on the algorithm and heuristic conditions. CORRECTED GUARANTEE Following parent links returns the path the search found. Greedy best-first does not guarantee that this path is shortest."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "Procedure for maintaining the frontier, explored record, and current path. CLICK IMAGE TO ENLARGE Read the data structures, then repair the contract OPEN is a min-priority queue keyed by h. CLOSED records expanded states. Each accepted node stores its state, parent, g value, and h value. DUPLICATE POLICY If a successor is unseen, insert it. If it represents a known state through a better g, update its record and parent; whether a CLOSED state must reopen depends on the algorithm and heuristic conditions. CORRECTED GUARANTEE Following parent links returns the path the search found. Greedy best-first does not guarantee that this path is shortest."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "OPEN determines every next move",
+      "visibleText": "The trace selects the minimum-h OPEN entry until goal P is selected.\nCLICK IMAGE TO ENLARGE\nExact priority-queue trace · 1 of 7\nInitialize\n\nPlace the start node A in OPEN with h(A)=5.\n\nSelected: —\n\nOPEN: [A5]\n\nCLOSED: []\n\nPrevious\nNext\nReset",
+      "actions": [
+        {
+          "segment": 1,
+          "label": "Enlarge the exact greedy trace figure",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 1 of 7 Initialize Place the start node A in OPEN with h(A)=5. Selected: — OPEN: [A5] CLOSED: [] Previous Next Reset"
+        },
+        {
+          "segment": 2,
+          "label": "Close the enlarged greedy trace figure",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 1 of 7 Initialize Place the start node A in OPEN with h(A)=5. Selected: — OPEN: [A5] CLOSED: [] Previous Next Reset"
+        },
+        {
+          "segment": 5,
+          "label": "Advance greedy trace to state 2",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 2 of 7 Evaluate A5 Expand A and insert its three children in heuristic order. Selected: A5 OPEN: [B4, C4, D6] CLOSED: [A5] Previous Next Reset"
+        },
+        {
+          "segment": 6,
+          "label": "Advance greedy trace to state 3",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 3 of 7 Evaluate B4 B wins the tie with C because it appears first in OPEN. Selected: B4 OPEN: [C4, E5, F5, D6] CLOSED: [B4, A5] Previous Next Reset"
+        },
+        {
+          "segment": 7,
+          "label": "Advance greedy trace to state 4",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 4 of 7 Evaluate C4 H becomes the most promising frontier node. Selected: C4 OPEN: [H3, G4, E5, F5, D6] CLOSED: [C4, B4, A5] Previous Next Reset"
+        },
+        {
+          "segment": 8,
+          "label": "Advance greedy trace to state 5",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 5 of 7 Evaluate H3 Both O and the goal P enter OPEN; O has the smaller h value. Selected: H3 OPEN: [O2, P3, G4, E5, F5, D6] CLOSED: [H3, C4, B4, A5] Previous Next Reset"
+        },
+        {
+          "segment": 9,
+          "label": "Advance greedy trace to state 6",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 6 of 7 Evaluate O2 O is not a goal, so the search returns to the best remaining node. Selected: O2 OPEN: [P3, G4, E5, F5, D6] CLOSED: [O2, H3, C4, B4, A5] Previous Next Reset"
+        },
+        {
+          "segment": 10,
+          "label": "Advance greedy trace to state 7",
+          "stateText": "The trace selects the minimum-h OPEN entry until goal P is selected. CLICK IMAGE TO ENLARGE Exact priority-queue trace · 7 of 7 Select goal P3 The goal test succeeds when P is removed from OPEN. Selected: P3 OPEN: [G4, E5, F5, D6] CLOSED: [O2, H3, C4, B4, A5] Previous Next Reset"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "This figure already combines g and h",
+      "visibleText": "One move has been taken, so every shown successor has g=1; h counts misplaced tiles.\nCLICK IMAGE TO ENLARGE\nRead each f score aloud\n\nThe start has g=0. Each shown successor has g=1. Counting tiles out of place gives the displayed totals f=6, f=4, and f=6.\n\nNAMING MATTERS\nBecause the ranking uses f(n)=g(n)+h(n), this is A* scoring—not greedy best-first scoring, which would compare h(n) alone.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "One move has been taken, so every shown successor has g=1; h counts misplaced tiles. CLICK IMAGE TO ENLARGE Read each f score aloud The start has g=0. Each shown successor has g=1. Counting tiles out of place gives the displayed totals f=6, f=4, and f=6. NAMING MATTERS Because the ranking uses f(n)=g(n)+h(n), this is A* scoring—not greedy best-first scoring, which would compare h(n) alone."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "One move has been taken, so every shown successor has g=1; h counts misplaced tiles. CLICK IMAGE TO ENLARGE Read each f score aloud The start has g=0. Each shown successor has g=1. Counting tiles out of place gives the displayed totals f=6, f=4, and f=6. NAMING MATTERS Because the ranking uses f(n)=g(n)+h(n), this is A* scoring—not greedy best-first scoring, which would compare h(n) alone."
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "OPEN is ordered; CLOSED remembers what was expanded",
+      "visibleText": "A snapshot after the third iteration of the search.\nCLICK IMAGE TO ENLARGE\nInterrogate the snapshot\n\nOPEN contains generated candidates still eligible for selection. CLOSED contains states already expanded. Parent and best-g records support path recovery and duplicate comparison.\n\nA priority queue answers “which f is smallest?”\nA state-indexed map answers “have we seen this state?”\nA best-g record answers “is this duplicate an improvement?”",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "A snapshot after the third iteration of the search. CLICK IMAGE TO ENLARGE Interrogate the snapshot OPEN contains generated candidates still eligible for selection. CLOSED contains states already expanded. Parent and best-g records support path recovery and duplicate comparison. A priority queue answers “which f is smallest?” A state-indexed map answers “have we seen this state?” A best-g record answers “is this duplicate an improvement?”"
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "A snapshot after the third iteration of the search. CLICK IMAGE TO ENLARGE Interrogate the snapshot OPEN contains generated candidates still eligible for selection. CLOSED contains states already expanded. Parent and best-g records support path recovery and duplicate comparison. A priority queue answers “which f is smallest?” A state-indexed map answers “have we seen this state?” A best-g record answers “is this duplicate an improvement?”"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "A weak heuristic leaves a large state space alive",
+      "visibleText": "A generated state space reveals how much work survives the heuristic.\nCLICK IMAGE TO ENLARGE\nWhat makes h weak or unreasonable?\n\nA weak h gives many states similar priorities, so the search explores broadly. An unreasonable h may be expensive, unrelated to remaining cost, or systematically misleading.\n\nDESIGN TEST\nCompare the number of expanded nodes, the cost of computing h, and whether h preserves the guarantee your algorithm needs.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "A generated state space reveals how much work survives the heuristic. CLICK IMAGE TO ENLARGE What makes h weak or unreasonable? A weak h gives many states similar priorities, so the search explores broadly. An unreasonable h may be expensive, unrelated to remaining cost, or systematically misleading. DESIGN TEST Compare the number of expanded nodes, the cost of computing h, and whether h preserves the guarantee your algorithm needs."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "A generated state space reveals how much work survives the heuristic. CLICK IMAGE TO ENLARGE What makes h weak or unreasonable? A weak h gives many states similar priorities, so the search explores broadly. An unreasonable h may be expensive, unrelated to remaining cost, or systematically misleading. DESIGN TEST Compare the number of expanded nodes, the cost of computing h, and whether h preserves the guarantee your algorithm needs."
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "An admissible heuristic never overestimates remaining optimal cost",
+      "visibleText": "The intended idea is a lower bound on true optimal remaining cost.\nCLICK IMAGE TO ENLARGE\nTRUE REMAINING COST\n\nh*(n) is the cost of an optimal path from n to a goal.\n\nADMISSIBILITY\n\n0 ≤ h(n) ≤ h*(n) for every n, with h(goal)=0.\n\nA* SELECTION\n\nf(n)=g(n)+h(n); admissibility belongs to h, not to greedy selection.\n\nOPTIMALITY CONDITIONS\nTree-search A* is optimal with an admissible h under standard nonnegative-cost and termination assumptions. Graph-search A* additionally needs consistency or a correct reopen policy.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "The intended idea is a lower bound on true optimal remaining cost. CLICK IMAGE TO ENLARGE TRUE REMAINING COST h*(n) is the cost of an optimal path from n to a goal. ADMISSIBILITY 0 ≤ h(n) ≤ h*(n) for every n, with h(goal)=0. A* SELECTION f(n)=g(n)+h(n); admissibility belongs to h, not to greedy selection. OPTIMALITY CONDITIONS Tree-search A* is optimal with an admissible h under standard nonnegative-cost and termination assumptions. Graph-search A* additionally needs consistency or a correct reopen policy."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "The intended idea is a lower bound on true optimal remaining cost. CLICK IMAGE TO ENLARGE TRUE REMAINING COST h*(n) is the cost of an optimal path from n to a goal. ADMISSIBILITY 0 ≤ h(n) ≤ h*(n) for every n, with h(goal)=0. A* SELECTION f(n)=g(n)+h(n); admissibility belongs to h, not to greedy selection. OPTIMALITY CONDITIONS Tree-search A* is optimal with an admissible h under standard nonnegative-cost and termination assumptions. Graph-search A* additionally needs consistency or a correct reopen policy."
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Three questions expose three common confusions",
+      "visibleText": "Q1 · Perfect?\nQ2 · 8-puzzle\nQ3 · “BFS”\nASK\n\nMust an admissible heuristic predict the exact remaining cost?\n\nANSWER\n\nNo. It may underestimate. The requirement is 0 ≤ h(n) ≤ h*(n), not h(n)=h*(n). A more accurate admissible heuristic usually saves more search.\n\nPROVE\n\nState the relevant inequality or cost assumption. A familiar name is not a proof of admissibility.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Open the eight-puzzle admissibility question",
+          "stateText": "Q1 · Perfect? Q2 · 8-puzzle Q3 · “BFS” ASK Which familiar 8-puzzle heuristics are admissible? ANSWER Misplaced tiles and Manhattan distance. With unit-cost legal moves, each misplaced tile needs at least one move and each tile must travel at least its Manhattan distance. Any third heuristic must be proved pointwise: if h3(n)>h*(n) anywhere, it is not admissible. PROVE State the relevant inequality or cost assumption. A familiar name is not a proof of admissibility."
+        },
+        {
+          "segment": 3,
+          "label": "Open the BFS abbreviation question",
+          "stateText": "Q1 · Perfect? Q2 · 8-puzzle Q3 · “BFS” ASK Is “BFS” the same algorithm as A*? ANSWER The abbreviation is too ambiguous. Breadth-first search matches uniform-cost search, and therefore A* with h=0, when every action has the same positive cost (often normalized to one). Greedy best-first search orders by h alone and is not A*. PROVE State the relevant inequality or cost assumption. A familiar name is not a proof of admissibility."
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Estimate the total solution cost through each frontier node",
+      "visibleText": "A* SELECTION RULE\nChoose min f(n)=g(n)+h(n)\n\ng is cost already paid from the start. h estimates optimal cost remaining to a goal. Their sum estimates the cost of a complete solution constrained to pass through n.\n\nG(N) · KNOWN SO FAR\n\nComputed from the accepted parent path and edge costs.\n\nH(N) · PREDICTED REMAINDER\n\nProblem knowledge that should be cheaper than solving the remainder exactly.\n\nF(N) · ESTIMATED TOTAL\n\nThe key used by A*’s minimum priority queue.",
+      "actions": []
+    },
+    {
+      "number": 13,
+      "title": "Equal depth is not the same as equal estimated total cost",
+      "visibleText": "The two methods impose different frontier priorities.\nCLICK IMAGE TO ENLARGE\nName the assumptions behind each guarantee\n\nBreadth-first search is complete with finite branching and is optimal when every action has the same cost. A* can handle unequal nonnegative costs when its heuristic and graph policy satisfy the required conditions.\n\nEQUIVALENCE CONDITION\nA* with h=0 orders by g, which is uniform-cost search. Depth and g induce the same ordering when every step has the same positive cost, often normalized to one.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "The two methods impose different frontier priorities. CLICK IMAGE TO ENLARGE Name the assumptions behind each guarantee Breadth-first search is complete with finite branching and is optimal when every action has the same cost. A* can handle unequal nonnegative costs when its heuristic and graph policy satisfy the required conditions. EQUIVALENCE CONDITION A* with h=0 orders by g, which is uniform-cost search. Depth and g induce the same ordering when every step has the same positive cost, often normalized to one."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "The two methods impose different frontier priorities. CLICK IMAGE TO ENLARGE Name the assumptions behind each guarantee Breadth-first search is complete with finite branching and is optimal when every action has the same cost. A* can handle unequal nonnegative costs when its heuristic and graph policy satisfy the required conditions. EQUIVALENCE CONDITION A* with h=0 orders by g, which is uniform-cost search. Depth and g induce the same ordering when every step has the same positive cost, often normalized to one."
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Straight-line distance guides road search",
+      "visibleText": "A* expands road-network nodes using traveled distance plus straight-line distance to the goal.\nCLICK IMAGE TO ENLARGE\nCountingPine · Own work · CC0 · Wikimedia Commons curid=31958129\nReplay animation\nPredict the next expansion before replay\n\nHere g is road distance already traveled. A straight-line distance to the destination supplies h because roads cannot beat the direct geometric distance.\n\nWATCH FOR\nThe visually nearest node need not win: A* compares g+h, not h alone.",
+      "actions": [
+        {
+          "segment": 1,
+          "label": "Enlarge the animation before explaining it",
+          "stateText": "A* expands road-network nodes using traveled distance plus straight-line distance to the goal. CLICK IMAGE TO ENLARGE CountingPine · Own work · CC0 · Wikimedia Commons curid=31958129 Replay animation Predict the next expansion before replay Here g is road distance already traveled. A straight-line distance to the destination supplies h because roads cannot beat the direct geometric distance. WATCH FOR The visually nearest node need not win: A* compares g+h, not h alone."
+        },
+        {
+          "segment": 2,
+          "label": "Close the enlarged animation",
+          "stateText": "A* expands road-network nodes using traveled distance plus straight-line distance to the goal. CLICK IMAGE TO ENLARGE CountingPine · Own work · CC0 · Wikimedia Commons curid=31958129 Replay animation Predict the next expansion before replay Here g is road distance already traveled. A straight-line distance to the destination supplies h because roads cannot beat the direct geometric distance. WATCH FOR The visually nearest node need not win: A* compares g+h, not h alone."
+        },
+        {
+          "segment": 3,
+          "label": "Replay the source animation while narrating the visible search",
+          "stateText": "A* expands road-network nodes using traveled distance plus straight-line distance to the goal. CLICK IMAGE TO ENLARGE CountingPine · Own work · CC0 · Wikimedia Commons curid=31958129 Replay animation Predict the next expansion before replay Here g is road distance already traveled. A straight-line distance to the destination supplies h because roads cannot beat the direct geometric distance. WATCH FOR The visually nearest node need not win: A* compares g+h, not h alone."
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Configuration-space search routes around obstacles",
+      "visibleText": "Open circles show frontier configurations; filled circles show expanded configurations.\nCLICK IMAGE TO ENLARGE\nSubh83 · Own work · CC BY 3.0 · Wikimedia Commons curid=14916867\nReplay animation\nThe state is a robot configuration\n\nEdges represent feasible local motions, g accumulates motion cost, and h estimates remaining distance. Obstacles invalidate direct moves and force the frontier to route around them.\n\nINTERPRET THE MARKS\nOpen circles are OPEN; filled circles are CLOSED. Color encodes the distance measure used in the visualization.",
+      "actions": [
+        {
+          "segment": 1,
+          "label": "Enlarge the animation before explaining it",
+          "stateText": "Open circles show frontier configurations; filled circles show expanded configurations. CLICK IMAGE TO ENLARGE Subh83 · Own work · CC BY 3.0 · Wikimedia Commons curid=14916867 Replay animation The state is a robot configuration Edges represent feasible local motions, g accumulates motion cost, and h estimates remaining distance. Obstacles invalidate direct moves and force the frontier to route around them. INTERPRET THE MARKS Open circles are OPEN; filled circles are CLOSED. Color encodes the distance measure used in the visualization."
+        },
+        {
+          "segment": 2,
+          "label": "Close the enlarged animation",
+          "stateText": "Open circles show frontier configurations; filled circles show expanded configurations. CLICK IMAGE TO ENLARGE Subh83 · Own work · CC BY 3.0 · Wikimedia Commons curid=14916867 Replay animation The state is a robot configuration Edges represent feasible local motions, g accumulates motion cost, and h estimates remaining distance. Obstacles invalidate direct moves and force the frontier to route around them. INTERPRET THE MARKS Open circles are OPEN; filled circles are CLOSED. Color encodes the distance measure used in the visualization."
+        },
+        {
+          "segment": 3,
+          "label": "Replay the source animation while narrating the visible search",
+          "stateText": "Open circles show frontier configurations; filled circles show expanded configurations. CLICK IMAGE TO ENLARGE Subh83 · Own work · CC BY 3.0 · Wikimedia Commons curid=14916867 Replay animation The state is a robot configuration Edges represent feasible local motions, g accumulates motion cost, and h estimates remaining distance. Obstacles invalidate direct moves and force the frontier to route around them. INTERPRET THE MARKS Open circles are OPEN; filled circles are CLOSED. Color encodes the distance measure used in the visualization."
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A lower-bound geography heuristic focuses a national route",
+      "visibleText": "A* searches a rail network from Washington, D.C. to Los Angeles.\nCLICK IMAGE TO ENLARGE\nSrossd · Own work · CC BY-SA 3.0 · Wikimedia Commons curid=35900474\nReplay animation\nGreat-circle distance is a useful lower bound\n\nRail distance already traveled supplies g. Great-circle distance to Los Angeles supplies h because a rail route cannot be shorter than the direct surface distance between its endpoints.\n\nASSUMPTION\nThe comparison is valid only when edge costs and h use compatible units and the route cost cannot undercut direct distance.",
+      "actions": [
+        {
+          "segment": 1,
+          "label": "Enlarge the animation before explaining it",
+          "stateText": "A* searches a rail network from Washington, D.C. to Los Angeles. CLICK IMAGE TO ENLARGE Srossd · Own work · CC BY-SA 3.0 · Wikimedia Commons curid=35900474 Replay animation Great-circle distance is a useful lower bound Rail distance already traveled supplies g. Great-circle distance to Los Angeles supplies h because a rail route cannot be shorter than the direct surface distance between its endpoints. ASSUMPTION The comparison is valid only when edge costs and h use compatible units and the route cost cannot undercut direct distance."
+        },
+        {
+          "segment": 2,
+          "label": "Close the enlarged animation",
+          "stateText": "A* searches a rail network from Washington, D.C. to Los Angeles. CLICK IMAGE TO ENLARGE Srossd · Own work · CC BY-SA 3.0 · Wikimedia Commons curid=35900474 Replay animation Great-circle distance is a useful lower bound Rail distance already traveled supplies g. Great-circle distance to Los Angeles supplies h because a rail route cannot be shorter than the direct surface distance between its endpoints. ASSUMPTION The comparison is valid only when edge costs and h use compatible units and the route cost cannot undercut direct distance."
+        },
+        {
+          "segment": 3,
+          "label": "Replay the source animation while narrating the visible search",
+          "stateText": "A* searches a rail network from Washington, D.C. to Los Angeles. CLICK IMAGE TO ENLARGE Srossd · Own work · CC BY-SA 3.0 · Wikimedia Commons curid=35900474 Replay animation Great-circle distance is a useful lower bound Rail distance already traveled supplies g. Great-circle distance to Los Angeles supplies h because a rail route cannot be shorter than the direct surface distance between its endpoints. ASSUMPTION The comparison is valid only when edge costs and h use compatible units and the route cost cannot undercut direct distance."
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Set h(n)=0 and A* becomes uniform-cost search",
+      "visibleText": "With h=0, the frontier is ordered entirely by accumulated path cost g.\nCLICK IMAGE TO ENLARGE\nIbmua · Work by uploader · Public Domain · Wikimedia Commons curid=6282617\nReplay animation\nf(n)=g(n)+0=g(n)\n\nOn a graph with nonnegative edge costs, this is uniform-cost/Dijkstra-style search: expand the unsettled node with minimum known distance from the start.\n\nDO NOT OVERGENERALIZE\nBreadth-first search is equivalent only when the same positive step cost makes shallowest depth and smallest g the same ordering.",
+      "actions": [
+        {
+          "segment": 1,
+          "label": "Enlarge the animation before explaining it",
+          "stateText": "With h=0, the frontier is ordered entirely by accumulated path cost g. CLICK IMAGE TO ENLARGE Ibmua · Work by uploader · Public Domain · Wikimedia Commons curid=6282617 Replay animation f(n)=g(n)+0=g(n) On a graph with nonnegative edge costs, this is uniform-cost/Dijkstra-style search: expand the unsettled node with minimum known distance from the start. DO NOT OVERGENERALIZE Breadth-first search is equivalent only when the same positive step cost makes shallowest depth and smallest g the same ordering."
+        },
+        {
+          "segment": 2,
+          "label": "Close the enlarged animation",
+          "stateText": "With h=0, the frontier is ordered entirely by accumulated path cost g. CLICK IMAGE TO ENLARGE Ibmua · Work by uploader · Public Domain · Wikimedia Commons curid=6282617 Replay animation f(n)=g(n)+0=g(n) On a graph with nonnegative edge costs, this is uniform-cost/Dijkstra-style search: expand the unsettled node with minimum known distance from the start. DO NOT OVERGENERALIZE Breadth-first search is equivalent only when the same positive step cost makes shallowest depth and smallest g the same ordering."
+        },
+        {
+          "segment": 3,
+          "label": "Replay the source animation while narrating the visible search",
+          "stateText": "With h=0, the frontier is ordered entirely by accumulated path cost g. CLICK IMAGE TO ENLARGE Ibmua · Work by uploader · Public Domain · Wikimedia Commons curid=6282617 Replay animation f(n)=g(n)+0=g(n) On a graph with nonnegative edge costs, this is uniform-cost/Dijkstra-style search: expand the unsettled node with minimum known distance from the start. DO NOT OVERGENERALIZE Breadth-first search is equivalent only when the same positive step cost makes shallowest depth and smallest g the same ordering."
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "A consistent heuristic obeys a triangle inequality on every edge",
+      "visibleText": "Consistency compares the estimate at a node with one step plus the estimate at its successor.\nCLICK IMAGE TO ENLARGE\nEDGE CONDITION\n\nh(n) ≤ c(n,n′)+h(n′) for every successor n′, with h(goal)=0.\n\nMONOTONE F\n\nAlong a path, consistency makes f(n′) ≥ f(n).\n\nCONSEQUENCE\n\nUnder standard conditions, consistency implies admissibility and lets graph-search A* close a node at its best g.\n\nDIAGNOSTIC\nCheck one edge at a time. A violation means a later path may improve a state that was already expanded.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "Consistency compares the estimate at a node with one step plus the estimate at its successor. CLICK IMAGE TO ENLARGE EDGE CONDITION h(n) ≤ c(n,n′)+h(n′) for every successor n′, with h(goal)=0. MONOTONE F Along a path, consistency makes f(n′) ≥ f(n). CONSEQUENCE Under standard conditions, consistency implies admissibility and lets graph-search A* close a node at its best g. DIAGNOSTIC Check one edge at a time. A violation means a later path may improve a state that was already expanded."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "Consistency compares the estimate at a node with one step plus the estimate at its successor. CLICK IMAGE TO ENLARGE EDGE CONDITION h(n) ≤ c(n,n′)+h(n′) for every successor n′, with h(goal)=0. MONOTONE F Along a path, consistency makes f(n′) ≥ f(n). CONSEQUENCE Under standard conditions, consistency implies admissibility and lets graph-search A* close a node at its best g. DIAGNOSTIC Check one edge at a time. A violation means a later path may improve a state that was already expanded."
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "An inconsistent heuristic can force a CLOSED node to reopen",
+      "visibleText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 1 OF 6\nInitialize S\n\nStart with S. Its true optimal cost is 4 and h(S)=3.\n\nPrevious\nNext\nReset\nGraph and heuristic\nS—3→A · S—1→B · B—1→A · A—2→G\nh(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible.\nOPEN\n[S: g0, f3]\nCLOSED\n[]\nConsistency fails on B→A: 3 > 1+0. A better g must reopen A.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Advance reopen trace to state 2",
+          "stateText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 2 OF 6 Expand S A has the smallest f, so it is selected before B. Previous Next Reset Graph and heuristic S—3→A · S—1→B · B—1→A · A—2→G h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible. OPEN [A: g3, f3; B: g1, f4] CLOSED [S] Consistency fails on B→A: 3 > 1+0. A better g must reopen A."
+        },
+        {
+          "segment": 6,
+          "label": "Advance reopen trace to state 3",
+          "stateText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 3 OF 6 Expand A too early The first path to A costs 3; it produces a goal path costing 5. Previous Next Reset Graph and heuristic S—3→A · S—1→B · B—1→A · A—2→G h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible. OPEN [B: g1, f4; G: g5, f5] CLOSED [S, A] Consistency fails on B→A: 3 > 1+0. A better g must reopen A."
+        },
+        {
+          "segment": 7,
+          "label": "Advance reopen trace to state 4",
+          "stateText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 4 OF 6 Discover a better A B→A improves g(A) from 3 to 2. Remove A from CLOSED and reopen it. Previous Next Reset Graph and heuristic S—3→A · S—1→B · B—1→A · A—2→G h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible. OPEN [A: g2, f2; G: g5, f5] CLOSED [S, B] Consistency fails on B→A: 3 > 1+0. A better g must reopen A."
+        },
+        {
+          "segment": 8,
+          "label": "Advance reopen trace to state 5",
+          "stateText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 5 OF 6 Propagate the improvement Re-expanding A updates the goal from cost 5 to cost 4. Previous Next Reset Graph and heuristic S—3→A · S—1→B · B—1→A · A—2→G h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible. OPEN [G: g4, f4] CLOSED [S, B, A] Consistency fails on B→A: 3 > 1+0. A better g must reopen A."
+        },
+        {
+          "segment": 9,
+          "label": "Advance reopen trace to state 6",
+          "stateText": "ADMISSIBLE BUT INCONSISTENT HEURISTIC · 6 OF 6 Return the optimal goal The recovered path is S→B→A→G with total cost 4. Previous Next Reset Graph and heuristic S—3→A · S—1→B · B—1→A · A—2→G h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible. OPEN [] CLOSED [S, B, A] Consistency fails on B→A: 3 > 1+0. A better g must reopen A."
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A more informed admissible heuristic gives tighter lower bounds",
+      "visibleText": "Pointwise larger admissible values supply tighter lower bounds.\nCLICK IMAGE TO ENLARGE\nDOMINANCE\n\nIf admissible h1 and h2 satisfy h1(n) ≤ h2(n) for all n, h2 dominates h1.\n\n8-PUZZLE EXAMPLE\n\nManhattan distance dominates misplaced-tile count for the standard unit-cost puzzle.\n\nSEARCH EFFECT\n\nWith comparable tie-breaking, A* using h2 typically expands no more nodes than A* using h1.\n\nENGINEERING QUALIFICATION\n“More informed” does not mean free. Count the time and memory needed to compute or retrieve the stronger heuristic.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "Pointwise larger admissible values supply tighter lower bounds. CLICK IMAGE TO ENLARGE DOMINANCE If admissible h1 and h2 satisfy h1(n) ≤ h2(n) for all n, h2 dominates h1. 8-PUZZLE EXAMPLE Manhattan distance dominates misplaced-tile count for the standard unit-cost puzzle. SEARCH EFFECT With comparable tie-breaking, A* using h2 typically expands no more nodes than A* using h1. ENGINEERING QUALIFICATION “More informed” does not mean free. Count the time and memory needed to compute or retrieve the stronger heuristic."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "Pointwise larger admissible values supply tighter lower bounds. CLICK IMAGE TO ENLARGE DOMINANCE If admissible h1 and h2 satisfy h1(n) ≤ h2(n) for all n, h2 dominates h1. 8-PUZZLE EXAMPLE Manhattan distance dominates misplaced-tile count for the standard unit-cost puzzle. SEARCH EFFECT With comparable tie-breaking, A* using h2 typically expands no more nodes than A* using h1. ENGINEERING QUALIFICATION “More informed” does not mean free. Count the time and memory needed to compute or retrieve the stronger heuristic."
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Search savings must exceed the cost of control knowledge",
+      "visibleText": "Total problem-solving cost can be U-shaped as heuristic effort increases.\nCLICK IMAGE TO ENLARGE\nOptimize total cost, not node count alone\n\nA stronger heuristic can reduce search and rule-application cost, yet require more preprocessing, memory, sensing, or computation at every node.\n\nMEASURE\nTotal effort = search work + heuristic/control work. The most informed available heuristic is not automatically the fastest end-to-end system.",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Enlarge the source figure while explaining it",
+          "stateText": "Total problem-solving cost can be U-shaped as heuristic effort increases. CLICK IMAGE TO ENLARGE Optimize total cost, not node count alone A stronger heuristic can reduce search and rule-application cost, yet require more preprocessing, memory, sensing, or computation at every node. MEASURE Total effort = search work + heuristic/control work. The most informed available heuristic is not automatically the fastest end-to-end system."
+        },
+        {
+          "segment": 3,
+          "label": "Close the enlarged source figure",
+          "stateText": "Total problem-solving cost can be U-shaped as heuristic effort increases. CLICK IMAGE TO ENLARGE Optimize total cost, not node count alone A stronger heuristic can reduce search and rule-application cost, yet require more preprocessing, memory, sensing, or computation at every node. MEASURE Total effort = search work + heuristic/control work. The most informed available heuristic is not automatically the fastest end-to-end system."
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Use one lens for h and another for the search algorithm",
+      "visibleText": "01\nHeuristic function h\nJudge an estimate\n\nAdmissibility\n0 ≤ h(n) ≤ h*(n)\nNever overestimates true remaining cost.\n\nConsistency\nh(n) ≤ c(n,n′)+h(n′)\nAlso monotonicity or local admissibility.\n\nInformedness\nh1(n) ≤ h2(n) ≤ h*(n)\nh2 is the tighter admissible lower bound.\n\n02\nSearch algorithm\nJudge the whole procedure\n\nComplete?\nFinds a solution if one exists.\n\nOptimal?\nReturns a least-cost solution.\n\nTime?\nHow much work grows?\n\nSpace?\nHow much must be stored?\n\nAlgorithm admissibility is the classical synonym for an optimality guarantee—not heuristic admissibility.\nIs h1 admissible?\nIs h2 consistent?\nIs DFS consistent?\nIs best-first search complete?\nIs algorithm A admissible?\nHEURISTIC h\nIs h1 admissible?\n\nCheck 0 ≤ h1(n) ≤ h*(n) for every state.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Open property diagnosis 2",
+          "stateText": "01 Heuristic function h Judge an estimate Admissibility 0 ≤ h(n) ≤ h*(n) Never overestimates true remaining cost. Consistency h(n) ≤ c(n,n′)+h(n′) Also monotonicity or local admissibility. Informedness h1(n) ≤ h2(n) ≤ h*(n) h2 is the tighter admissible lower bound. 02 Search algorithm Judge the whole procedure Complete? Finds a solution if one exists. Optimal? Returns a least-cost solution. Time? How much work grows? Space? How much must be stored? Algorithm admissibility is the classical synonym for an optimality guarantee—not heuristic admissibility. Is h1 admissible? Is h2 consistent? Is DFS consistent? Is best-first search complete? Is algorithm A admissible? HEURISTIC h Is h2 consistent? Check h2(n) ≤ c(n,n′)+h2(n′) on every edge."
+        },
+        {
+          "segment": 6,
+          "label": "Open property diagnosis 3",
+          "stateText": "01 Heuristic function h Judge an estimate Admissibility 0 ≤ h(n) ≤ h*(n) Never overestimates true remaining cost. Consistency h(n) ≤ c(n,n′)+h(n′) Also monotonicity or local admissibility. Informedness h1(n) ≤ h2(n) ≤ h*(n) h2 is the tighter admissible lower bound. 02 Search algorithm Judge the whole procedure Complete? Finds a solution if one exists. Optimal? Returns a least-cost solution. Time? How much work grows? Space? How much must be stored? Algorithm admissibility is the classical synonym for an optimality guarantee—not heuristic admissibility. Is h1 admissible? Is h2 consistent? Is DFS consistent? Is best-first search complete? Is algorithm A admissible? CATEGORY MISMATCH Is DFS consistent? Consistency here is a property of h. Evaluate DFS for completeness, optimality, time, and space instead."
+        },
+        {
+          "segment": 7,
+          "label": "Open property diagnosis 4",
+          "stateText": "01 Heuristic function h Judge an estimate Admissibility 0 ≤ h(n) ≤ h*(n) Never overestimates true remaining cost. Consistency h(n) ≤ c(n,n′)+h(n′) Also monotonicity or local admissibility. Informedness h1(n) ≤ h2(n) ≤ h*(n) h2 is the tighter admissible lower bound. 02 Search algorithm Judge the whole procedure Complete? Finds a solution if one exists. Optimal? Returns a least-cost solution. Time? How much work grows? Space? How much must be stored? Algorithm admissibility is the classical synonym for an optimality guarantee—not heuristic admissibility. Is h1 admissible? Is h2 consistent? Is DFS consistent? Is best-first search complete? Is algorithm A admissible? SEARCH ALGORITHM Is best-first search complete? State which best-first variant and the space, cycle, and termination assumptions."
+        },
+        {
+          "segment": 8,
+          "label": "Open property diagnosis 5",
+          "stateText": "01 Heuristic function h Judge an estimate Admissibility 0 ≤ h(n) ≤ h*(n) Never overestimates true remaining cost. Consistency h(n) ≤ c(n,n′)+h(n′) Also monotonicity or local admissibility. Informedness h1(n) ≤ h2(n) ≤ h*(n) h2 is the tighter admissible lower bound. 02 Search algorithm Judge the whole procedure Complete? Finds a solution if one exists. Optimal? Returns a least-cost solution. Time? How much work grows? Space? How much must be stored? Algorithm admissibility is the classical synonym for an optimality guarantee—not heuristic admissibility. Is h1 admissible? Is h2 consistent? Is DFS consistent? Is best-first search complete? Is algorithm A admissible? SEARCH ALGORITHM Is algorithm A admissible? In the classical algorithm sense, ask whether A is guaranteed to return an optimal solution."
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Can all intelligent tasks use A*?",
+      "visibleText": "Autopilot\nAutonomous drone\nRobot vacuum\nChess\nFinancial investment\nApplication 1 · Autopilot\nWould A* be a defensible model?\n\nName the state, actions, edge cost, heuristic, and environmental assumptions before deciding.\n\nReveal one defensible analysis",
+      "actions": [
+        {
+          "segment": 2,
+          "label": "Reveal the autopilot analysis",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 1 · Autopilot Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Hide analysis A* CAN PLAN A BOUNDED ROUTE COMPONENT, NOT THE WHOLE CONTROLLER. Real flight is dynamic, partially observable, and stochastic. A* needs a state graph, an objective, and replanning or a richer decision model around it."
+        },
+        {
+          "segment": 5,
+          "label": "Select application 2",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 2 · Autonomous drone Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Reveal one defensible analysis"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal application 2 analysis",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 2 · Autonomous drone Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Hide analysis A* FITS A DISCRETIZED, KNOWN MOTION-PLANNING MAP. Cells or configurations can be states and energy or distance can be edge cost. Wind, moving obstacles, and uncertain sensing demand online replanning."
+        },
+        {
+          "segment": 7,
+          "label": "Select application 3",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 3 · Robot vacuum Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Reveal one defensible analysis"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal application 3 analysis",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 3 · Robot vacuum Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Hide analysis A* FITS POINT-TO-POINT TRAVEL ON A KNOWN FLOOR PLAN. It does not by itself decide coverage, discover an unknown room, or react safely to people and pets; those require additional online behavior."
+        },
+        {
+          "segment": 9,
+          "label": "Select application 4",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 4 · Chess Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Reveal one defensible analysis"
+        },
+        {
+          "segment": 10,
+          "label": "Reveal application 4 analysis",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 4 · Chess Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Hide analysis USE ADVERSARIAL SEARCH, NOT ORDINARY A*. An opponent chooses actions against us. Minimax and alpha-beta model alternating competitive decisions; a shortest-path frontier does not."
+        },
+        {
+          "segment": 11,
+          "label": "Select application 5",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 5 · Financial investment Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Reveal one defensible analysis"
+        },
+        {
+          "segment": 12,
+          "label": "Reveal application 5 analysis",
+          "stateText": "Autopilot Autonomous drone Robot vacuum Chess Financial investment Application 5 · Financial investment Would A* be a defensible model? Name the state, actions, edge cost, heuristic, and environmental assumptions before deciding. Hide analysis A* ALONE IS USUALLY THE WRONG MODEL. Returns and observations are uncertain, the environment changes, and objectives include risk. A deterministic offline path-cost model hides the central difficulty."
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Offline deterministic search is only one corner of agency",
+      "visibleText": "1\nPhysical action\n\nBacking up may be costly or impossible; computational backtracking is not physical reversal.\n\n2\nUncertainty\n\nPartial observations, stochastic outcomes, and unknown models break a fixed deterministic graph.\n\n3\nChange\n\nDynamic worlds require online sensing, replanning, or policies rather than one offline path.\n\n4\nOther agents\n\nCooperation changes coordination; competition requires adversarial reasoning.\n\nENVIRONMENT AUDIT\n\nDeterministic, stochastic, or nondeterministic?\n\nFully observable, partially observable, or unknown?\n\nEpisodic or sequential; static or dynamic?\n\nDiscrete or continuous; known or learned?\n\nSingle-agent, cooperative, or competitive?",
+      "actions": []
+    },
+    {
+      "number": 25,
+      "title": "Trace it, justify it, and decide when it belongs",
+      "visibleText": "1 · TRACE\nExecute the frontier\n\nGiven a weighted graph and h table, show every OPEN, CLOSED, parent, g, and f update—including a reopened state.\n\n2 · JUSTIFY\nProve the heuristic claim\n\nUse 0≤h≤h* for admissibility and h(n)≤c+h(n′) for consistency. State all cost and termination assumptions.\n\n3 · DECIDE\nDefend the model\n\nChoose greedy best-first, A*, uniform-cost, breadth-first, or a non-path-search model—and name the guarantee and tradeoff.\n\nReading and bibliography\n\nRead George F. Luger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th ed., Chapter 4 (Addison-Wesley, 2009); and review Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach, 3rd ed., Chapter 3 (Prentice Hall, 2010).",
+      "actions": []
+    }
+  ]
+}

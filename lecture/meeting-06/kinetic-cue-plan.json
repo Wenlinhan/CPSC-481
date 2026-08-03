@@ -1,0 +1,3246 @@
+{
+  "version": 1,
+  "meeting": "06",
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultDurationSeconds": 6.2,
+    "minimumCenterHoldSeconds": 2,
+    "maximumStillSeconds": 12
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Best-First Search, A*, and Heuristic Quality",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 28.992,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.704,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🧾 🧭",
+              "label": "Paid cost plus predicted remainder",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "keeps both the receipt and the compass",
+              "atSeconds": 14.135,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 28.584,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.208,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Follow the smallest estimated distance to the goal",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 30.84,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 27.192,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "emoji",
+              "emoji": "⛰️ 🐦",
+              "label": "Looks close, route may be costly",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "walking toward the peak as the crow flies",
+              "atSeconds": 2.43,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.43,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.43,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 8.808,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.208,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.158,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Generate broadly, then select the most promising frontier node",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 31.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 28.464,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 25.944,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Trace the heuristic order before seeing the answer",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 30.312,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 27.984,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 26.712,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🎯",
+              "label": "Goal still waits for selection",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "giant metaphorical sign saying GOAL",
+              "atSeconds": 12.354,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.354,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.832,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The pseudocode needs explicit duplicate and path policy",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 30.624,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.232,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 29.304,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "📝 ≠ THEOREM",
+              "label": "Claims require proof",
+              "route": "center-hold",
+              "durationSeconds": 3.227,
+              "sourcePhrase": "Code comments are not legally binding",
+              "atSeconds": 26.077,
+              "centerHoldSeconds": 2.065
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 27.552,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "OPEN determines every next move",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 29.088,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.088,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 29.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 16.635,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 26.635,
+              "durationSeconds": 2.789,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 28.872,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 13.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.342,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 11.28,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 12.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.022,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.07,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 11.496,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 11.52,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "This figure already combines g and h",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 28.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 19.056,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 29.832,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.472,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "OPEN is ordered; CLOSED remembers what was expanded",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.2,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.52,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 26.52,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "📄📄📄",
+              "label": "Duplicate states",
+              "route": "center-hold",
+              "durationSeconds": 4.02,
+              "sourcePhrase": "priority queue can reference",
+              "atSeconds": 22.5,
+              "centerHoldSeconds": 2.573
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.112,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "A weak heuristic leaves a large state space alive",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 33.384,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 3.334,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 32.496,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🧲",
+              "label": "Weak directional guidance",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "refrigerator magnet",
+              "atSeconds": 14.627,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 24.627,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 32.352,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.302,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.568,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "An admissible heuristic never overestimates remaining optimal cost",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 27,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 32.064,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.669,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.669,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 34.656,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 30.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Three questions expose three common confusions",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 32.952,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.902,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.432,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 34.296,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 34.248,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🔤⚠️",
+              "label": "State the full algorithm",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Acronyms cannot carry those assumptions",
+              "atSeconds": 17.127,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 27.127,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Estimate the total solution cost through each frontier node",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 12.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.046,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.384,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🧾 + 🧭",
+              "label": "g plus h",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "A-star balances both ledgers",
+              "atSeconds": 17.965,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 27.965,
+              "durationSeconds": 2.419,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 27.744,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 31.224,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Equal depth is not the same as equal estimated total cost",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 28.584,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.6,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 29.736,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 30.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Straight-line distance guides road search",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.296,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.4,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 31.272,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🅿️🌀",
+              "label": "The metric still needs proof",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Campus parking may feel non-Euclidean",
+              "atSeconds": 15.213,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 25.213,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 29.256,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Configuration-space search routes around obstacles",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 32.688,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.638,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 32.496,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.446,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 30.336,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.472,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🎻 🤖",
+              "label": "Planner is one component",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "one instrument, not the entire orchestra",
+              "atSeconds": 16.875,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 26.875,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A lower-bound geography heuristic focuses a national route",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.416,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.272,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 28.44,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 30.504,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🚆 😤",
+              "label": "Real objectives add constraints",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "grumpier optimization problem",
+              "atSeconds": 16.303,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 26.303,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Set h(n)=0 and A* becomes uniform-cost search",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.377,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.377,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 28.032,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 30.84,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 33.696,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 3.646,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "A consistent heuristic obeys a triangle inequality on every edge",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 25.488,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 28.008,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🏷️📉",
+              "label": "Consistency violation",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "price tag that falls suspiciously faster",
+              "atSeconds": 14.295,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 24.295,
+              "durationSeconds": 3.713,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 26.856,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 27.696,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "An inconsistent heuristic can force a CLOSED node to reopen",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 27.528,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.776,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 30.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.087,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 21.087,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.256,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.206,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 12.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.094,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 12.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.358,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 12.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.286,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 12.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.934,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 10.416,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A more informed admissible heuristic gives tighter lower bounds",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 28.512,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.288,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 24.508,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 29.928,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.88,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.83,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Search savings must exceed the cost of control knowledge",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.848,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 28.008,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "emoji": "🏢💸",
+              "label": "Control cost can dominate",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "magnificent heuristic department",
+              "atSeconds": 10.093,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.093,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 32.424,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.374,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 31.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Use one lens for h and another for the search algorithm",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 34.704,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 29.088,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 35.136,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.51,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.51,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 32.51,
+              "durationSeconds": 2.626,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 33.528,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 3.478,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 12.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.622,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 14.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 14.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 14.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Can all intelligent tasks use A*?",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 31.728,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 31.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 34.224,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.174,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 35.424,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "♟️ 📈",
+              "label": "Adversarial and stochastic limits",
+              "route": "center-hold",
+              "durationSeconds": 3.217,
+              "sourcePhrase": "fixed deterministic graph assumption",
+              "atSeconds": 32.207,
+              "centerHoldSeconds": 2.059
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 13.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.774,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 14.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 12.024,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 15.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "durationSeconds": 14.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "durationSeconds": 17.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Offline deterministic search is only one corner of agency",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 33.528,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 3.478,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.12,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 35.304,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.952,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.257,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.257,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Trace it, justify it, and decide when it belongs",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 29.76,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 30.528,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 33.984,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 3.934,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 32.688,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "emoji": "🔮🚫",
+              "label": "Conditions before algorithm names",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "horoscope reading for priority queues",
+              "atSeconds": 12.314,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.314,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
