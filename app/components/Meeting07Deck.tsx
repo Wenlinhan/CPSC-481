@@ -97,6 +97,39 @@ function RecursiveMinimaxTrace() {
   );
 }
 
+// Native reconstruction of the knowledge carried by source asset minimax-pseudocode.png.
+function NativeMinimaxAlgorithm() {
+  return (
+    <figure className="meeting07-minimax-code" aria-labelledby="meeting07-minimax-caption">
+      <figcaption id="meeting07-minimax-caption">
+        <span>Minimax algorithm</span>
+        <small>Read top to bottom; recursive calls alternate MAX and MIN.</small>
+      </figcaption>
+      <section aria-label="Minimax decision procedure">
+        <h3><b>function</b> MINIMAX-DECISION(<i>state</i>) <em>returns an action</em></h3>
+        <code><mark className="decision">v ← MAX-VALUE(state)</mark></code>
+        <code><mark className="decision">return the action in SUCCESSORS(state) with value v</mark></code>
+      </section>
+      <section aria-label="Maximum value procedure">
+        <h3><b>function</b> MAX-VALUE(<i>state</i>) <em>returns a utility value</em></h3>
+        <code><mark className="terminal">if TERMINAL-TEST(state) then return UTILITY(state)</mark></code>
+        <code>v ← −∞</code>
+        <code>for a, s in SUCCESSORS(state) do</code>
+        <code className="indent"><mark className="recursive">v ← MAX(v, MIN-VALUE(s))</mark></code>
+        <code>return v</code>
+      </section>
+      <section aria-label="Minimum value procedure">
+        <h3><b>function</b> MIN-VALUE(<i>state</i>) <em>returns a utility value</em></h3>
+        <code><mark className="terminal">if TERMINAL-TEST(state) then return UTILITY(state)</mark></code>
+        <code>v ← +∞</code>
+        <code>for a, s in SUCCESSORS(state) do</code>
+        <code className="indent"><mark className="recursive">v ← MIN(v, MAX-VALUE(s))</mark></code>
+        <code>return v</code>
+      </section>
+    </figure>
+  );
+}
+
 const scoringCases = [
   {
     label: "State A",
@@ -556,13 +589,8 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Exact algorithm · Recursive minimax",
     title: "The recursion alternates value functions until a leaf returns",
     content: (
-      <div className="source-definition-layout">
-        <SearchSourceImage
-          alt="Recursive Minimax-Decision, Max-Value, and Min-Value pseudocode"
-          caption="The complete recursive minimax procedure adapted from Russell and Norvig."
-          file="minimax-pseudocode.png"
-          sourceRoot={SOURCE_ROOT}
-        />
+      <div className="source-definition-layout meeting07-minimax-layout">
+        <NativeMinimaxAlgorithm />
         <section>
           <article><span>Terminal test</span><p>Return exact Utility(state) when the game is over.</p></article>
           <article><span>MAX-VALUE</span><p>Return the largest value produced by MIN-VALUE over legal actions.</p></article>

@@ -209,7 +209,7 @@
 }
 
 .heuristic-symmetry-assessment > .search-quick-check > div {
-  gap: 8px;
+  gap: 5px;
 }
 
 .heuristic-symmetry-assessment > .search-quick-check > div > button {
@@ -8896,6 +8896,105 @@ kbd {
   min-height: 0;
 }
 
+/* Lesson 7, page 12: reproduce the source algorithm as crisp native text. */
+.meeting07-minimax-layout {
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+}
+
+.meeting07-minimax-code {
+  align-content: start;
+  background: #fff;
+  border: 1px solid #cbd8ea;
+  border-radius: 18px;
+  box-shadow: 0 16px 38px rgba(15, 31, 57, 0.08);
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 11px 17px 9px;
+}
+
+.meeting07-minimax-code figcaption {
+  align-items: baseline;
+  border-bottom: 2px solid #17233a;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 0 2px 5px;
+}
+
+.meeting07-minimax-code figcaption span {
+  color: #17233a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 1.55vw, 27px);
+  font-weight: 700;
+}
+
+.meeting07-minimax-code figcaption small {
+  color: #52627a;
+  font-size: clamp(10px, 0.74vw, 12px);
+  text-align: right;
+}
+
+.meeting07-minimax-code section {
+  border-bottom: 1px solid #dce4ef;
+  display: grid;
+  gap: 2px;
+  padding: 1px 3px 5px;
+}
+
+.meeting07-minimax-code section:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 2px;
+}
+
+.meeting07-minimax-code h3 {
+  color: #17233a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(12px, 0.86vw, 15px);
+  line-height: 1.2;
+  margin: 0 0 2px;
+}
+
+.meeting07-minimax-code h3 b {
+  color: #5138d3;
+  font-family: var(--font-sans, Arial, sans-serif);
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meeting07-minimax-code h3 em {
+  color: #52627a;
+  font-size: 0.86em;
+  font-weight: 400;
+}
+
+.meeting07-minimax-code code {
+  color: #111827;
+  display: block;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: clamp(11px, 0.82vw, 14px);
+  font-weight: 600;
+  line-height: 1.28;
+  white-space: nowrap;
+}
+
+.meeting07-minimax-code code.indent {
+  padding-left: 22px;
+}
+
+.meeting07-minimax-code mark {
+  border-radius: 4px;
+  color: inherit;
+  padding: 0 3px;
+}
+
+.meeting07-minimax-code mark.terminal { background: #dcfce7; }
+.meeting07-minimax-code mark.recursive { background: #e0e7ff; }
+.meeting07-minimax-code mark.decision { background: #fef3c7; }
+
 .source-definition-layout > *,
 .tree-layout > *,
 .iteration-comparison > article,
@@ -10045,6 +10144,23 @@ kbd {
 }
 
 @media (max-width: 1050px) {
+  .meeting07-minimax-layout {
+    gap: 14px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+  }
+
+  .meeting07-minimax-code {
+    padding: 11px 12px 9px;
+  }
+
+  .meeting07-minimax-code figcaption small {
+    display: none;
+  }
+
+  .meeting07-minimax-code code.indent {
+    padding-left: 14px;
+  }
+
   .search-objectives {
     grid-template-columns: 1fr 1fr;
   }
