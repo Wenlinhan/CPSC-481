@@ -94,8 +94,10 @@ if (mode === "--apply-page") {
   const publication = JSON.parse(await readFile(publicationFile, "utf8"));
   const { page, module, item } = await context();
   const lessonUrl = `https://cpsc481-introduction-to-ai.winniechef.chatgpt.site/lessons/04?v=${siteVersion}`;
-  const marker = /<!-- lesson-04-video:start -->[\s\S]*?<!-- lesson-04-video:end -->/;
-  const videoBlock = `<!-- lesson-04-video:start -->\n<div style="margin:16px 0;padding:16px;border:1px solid #d7dde8;border-radius:10px;background:#f7f9fc;">\n  <h3 style="margin:0 0 8px;">Lesson 4 lecture video</h3>\n  <p style="margin:0 0 10px;">Uninformed Graph Search · 58 minutes · captions included</p>\n  <p style="margin:0;"><a href="${publication.previewUrl}" target="_blank">Watch the lecture video in Canvas</a></p>\n</div>\n<!-- lesson-04-video:end -->`;
+  // Canvas strips HTML comments and normalizes file links. Match the visible block
+  // as well as our stable id so repeated publication remains idempotent.
+  const marker = /(?:<!-- lesson-04-video:start -->\s*)?<div\b[^>]*>\s*<h3\b[^>]*>Lesson 4 lecture video<\/h3>[\s\S]*?<\/div>\s*(?:<!-- lesson-04-video:end -->)?/i;
+  const videoBlock = `<div id="lesson-04-video" style="margin:16px 0;padding:16px;border:1px solid #d7dde8;border-radius:10px;background:#f7f9fc;">\n  <h3 style="margin:0 0 8px;">Lesson 4 lecture video</h3>\n  <p style="margin:0 0 10px;">Uninformed Graph Search · 58 minutes · captions included</p>\n  <p style="margin:0;"><a href="${publication.previewUrl}" target="_blank">Watch the lecture video in Canvas</a></p>\n</div>`;
   let body = page.body ?? "";
   body = marker.test(body) ? body.replace(marker, videoBlock) : body.replace(/(<iframe\b)/i, `${videoBlock}\n$1`);
   body = body.replace(/https:\/\/cpsc481-introduction-to-ai\.winniechef\.chatgpt\.site\/(?:meetings\/04|lessons\/04)(?:\?v=\d+)?/g, lessonUrl);
@@ -115,11 +117,14 @@ if (mode === "--apply-page") {
     body: JSON.stringify({ module: { published: true } }),
   });
   const verified = await context();
+  const storedBody = verified.page.body ?? "";
+  const storedPreviewPath = `/courses/${courseId}/files/${publication.fileId}/file_preview`;
   console.log(JSON.stringify({
     applied: true,
     lessonUrl,
-    siteEmbedExact: verified.page.body?.includes(lessonUrl) === true,
-    videoLinkExact: verified.page.body?.includes(publication.previewUrl) === true,
+    siteEmbedExact: storedBody.includes(lessonUrl),
+    videoLinkExact: storedBody.includes(storedPreviewPath),
+    videoBlockCount: (storedBody.match(/Lesson 4 lecture video/g) ?? []).length,
     pagePublished: verified.page.published,
     modulePublished: verified.module.published,
     itemPublished: verified.item.published,
