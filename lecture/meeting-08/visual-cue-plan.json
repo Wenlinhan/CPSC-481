@@ -1,0 +1,2627 @@
+{
+  "version": 1,
+  "meeting": "06",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Alpha-Beta Pruning and Modern Game Search",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 25.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-driving-question section, .search-driving-question article",
+              "index": 0,
+              "sourcePhrase": "Lesson eight begins with a promise",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-driving-question section, .search-driving-question article",
+              "index": 1,
+              "sourcePhrase": "Picture a restaurant menu where your",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 23.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-driving-question section, .search-driving-question article",
+              "index": 2,
+              "sourcePhrase": "The four cards establish our contract.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 22.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-driving-question section, .search-driving-question article",
+              "index": 3,
+              "sourcePhrase": "By the end, you should trace",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Minimax may pursue branches whose values cannot matter",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 23.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Depth-limited minimax normally evaluates every reachable",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 23.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Imagine interviewing every applicant after one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 23.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Notice what remains fixed: terminal utility,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 21.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 3,
+              "sourcePhrase": "The structural insight connects nonadjacent levels.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Alpha rises for MAX; beta falls for MIN",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 21.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Alpha is the best value MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 20.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Think of alpha as an elevator",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Monotone bounds",
+              "text": "α rises · β falls",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "elevator that only travels upward",
+              "atSeconds": 1.22,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 22.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The displayed interval says alpha is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 20.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 3,
+              "sourcePhrase": "Keep utility from MAX's fixed perspective",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Finish a child, return its value, then update the parent",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 24.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Alpha-beta is depth-first. It chooses one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 21,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "The stack behaves like a set",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 25.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "At a terminal state return exact",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 22.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Use the live control as a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Depth-first state 2",
+          "durationSeconds": 16.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Depth-first state 2",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Advance to the MIN child. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Depth-first state 3",
+          "durationSeconds": 15.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Depth-first state 3",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Advance to the terminal or cutoff",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Depth-first state 4",
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Depth-first state 4",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Advance through the return to MIN.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Depth-first state 5",
+          "durationSeconds": 16.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Depth-first state 5",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Advance back to the MAX root.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "A cutoff says an ancestor already has a better alternative",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 19.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-objectives article",
+              "index": 0,
+              "sourcePhrase": "At a MAX node, stop when",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 22.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-objectives article",
+              "index": 1,
+              "sourcePhrase": "The family-veto metaphor helps. MAX is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-objectives article",
+              "index": 2,
+              "sourcePhrase": "At a MIN node, stop when",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-objectives article",
+              "index": 0,
+              "sourcePhrase": "Names come from the ancestor bound",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "MAX returns as soon as its value reaches beta",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 21.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "MAX-VALUE begins with v equal to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 19.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Read the return test before the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The order matters in code and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 20.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 3,
+              "sourcePhrase": "At the root, Alpha-Beta-Search calls MAX-VALUE",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "At MAX, v ≥ β proves that remaining siblings cannot help",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 20.376,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "This compact trace gives MAX an",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 19.68,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "After child three returns, v becomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "MAX cutoff test",
+              "text": "continue while v < β",
+              "route": "center-hold",
+              "durationSeconds": 4.348,
+              "sourcePhrase": "The interval is open",
+              "atSeconds": 15.332,
+              "centerHoldSeconds": 2.783
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "After child seven returns, v becomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 21.216,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 3,
+              "sourcePhrase": "Notice the saving is one child",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "MAX trace state 2",
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "MAX trace state 2",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Advance after evaluating child three. MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "MAX trace state 3",
+          "durationSeconds": 15.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "MAX trace state 3",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Advance after evaluating child seven. MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "MIN returns as soon as its value falls to alpha",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 22.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "MIN-VALUE mirrors MAX-VALUE. It initializes v",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 20.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "After updating v, MIN tests whether",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 20.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The visible pseudocode is worth enlarging",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 18.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 3,
+              "sourcePhrase": "Do not switch the meaning of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "At MIN, v ≤ α proves that remaining siblings cannot hurt MAX",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 23.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "The MIN trace arrives with alpha",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 17.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "After eight returns, v becomes eight",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "After two returns, v becomes two.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 21.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 3,
+              "sourcePhrase": "Report the exact proof: evaluated eight",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "MIN trace state 2",
+          "durationSeconds": 13.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "MIN trace state 2",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Advance after evaluating child eight. MIN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "MIN trace state 3",
+          "durationSeconds": 15.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "MIN trace state 3",
+              "selector": ".frontier-trace section, .frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Advance after evaluating child two. MIN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Alpha and beta summarize alternatives outside the current subtree",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 22.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The active alpha-beta window is path",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 18.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Think of courtroom precedent rather than",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The temporary v belongs to the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 21.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 3,
+              "sourcePhrase": "A common misconception says examine only",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Move ordering changes work, not the minimax answer",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 21.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".evaluation-matrix > div",
+              "index": 0,
+              "sourcePhrase": "Alpha-beta's result is order invariant under",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 21.216,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".evaluation-matrix > div",
+              "index": 1,
+              "sourcePhrase": "Imagine packing a suitcase with the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 22.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".evaluation-matrix > div",
+              "index": 2,
+              "sourcePhrase": "A move-ordering heuristic predicts which actions",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 22.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".evaluation-matrix > div",
+              "index": 3,
+              "sourcePhrase": "Read across the matrix. Best-first ordering",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Start left-to-right with no bounds at the root",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 20.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The worked tree starts at a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 20.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Prepare a trace with columns for",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 20.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Before each leaf, predict which node",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 20.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-definition section, .algorithm-definition article, .search-callout",
+              "index": 3,
+              "sourcePhrase": "This bookkeeping may feel fussy, but",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "The first MIN branch sets β=3 and root α=3",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 18.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "In the left branch, MIN first",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 17.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "The complete MIN child returns three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "No pruning occurred inside the first",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 16.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Read the enlarged figure in event",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Seeing 2 at MIN is enough to skip its remaining siblings",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 18.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The middle MIN node inherits root",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 20.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "The ancestor explanation is the heart",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 18.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "This is an alpha cutoff at",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 17.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Use the enlarged tree to distinguish",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "The third MIN branch first establishes an upper bound of 14",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 19.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The third MIN branch also inherits",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 18.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "A large first value at MIN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 17.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The situation resembles an auction where",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 17.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "In the enlarged image, point to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A second child tightens beta from 14 to 5",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 18.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The next leaf returns five. MIN",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 17.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Compare beta five with root alpha",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "This intermediate state is pedagogically valuable",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 16.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Enlarge the figure and say the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "β reaches 2, but no remaining work is left to save",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 15.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The final leaf returns two, so",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 14.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "However, the triggering leaf was already",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "Precise analysis separates a cutoff condition",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Inspect the completed tree and count",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".tree-challenge .search-source-image, .tree-challenge section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "A large MIN value does not trigger an alpha cutoff",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 19.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 0,
+              "sourcePhrase": "The concept check gives root MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 16.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 1,
+              "sourcePhrase": "Eight is not less than or",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 2,
+              "sourcePhrase": "Option A reverses the logic by",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 3,
+              "sourcePhrase": "We will click every option, not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Alpha-cutoff option A",
+          "durationSeconds": 15.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Alpha-cutoff option A",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 0,
+              "sourcePhrase": "Choose option A to expose the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Alpha-cutoff option B",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Alpha-cutoff option B",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 1,
+              "sourcePhrase": "Choose option B. This is correct:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Alpha-cutoff option C",
+          "durationSeconds": 15.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Alpha-cutoff option C",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 2,
+              "sourcePhrase": "Choose option C to test the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A MAX value that reaches beta ends the remaining sibling search",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 16.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 0,
+              "sourcePhrase": "Now a MAX node receives beta",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 18.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 1,
+              "sourcePhrase": "This is a beta cutoff because",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 2,
+              "sourcePhrase": "Option A states the correct inequality",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.176,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-quick-check section, .search-quick-check button",
+              "index": 3,
+              "sourcePhrase": "As we click each option, keep",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Complete cutoff proof",
+              "text": "inequality → ancestor choice → skipped work",
+              "route": "center-hold",
+              "durationSeconds": 5.174,
+              "sourcePhrase": "Arithmetic, agent preference, and skipped work",
+              "atSeconds": 14.002,
+              "centerHoldSeconds": 3.311
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Beta-cutoff option A",
+          "durationSeconds": 14.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Beta-cutoff option A",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 0,
+              "sourcePhrase": "Choose option A. Correct: v equals",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Beta-cutoff option B",
+          "durationSeconds": 14.016,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Beta-cutoff option B",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 1,
+              "sourcePhrase": "Choose option B to expose the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Beta-cutoff option C",
+          "durationSeconds": 16.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Beta-cutoff option C",
+              "selector": ".search-quick-check button, .search-check-feedback",
+              "index": 2,
+              "sourcePhrase": "Choose option C to expose full-tree",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Every skipped subtree follows from a completed bound",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 21.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".trace-source-layout .search-source-image, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The hypothetical state space combines several",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 21.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".trace-source-layout .search-source-image, .trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Begin at MIN node A. Its",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".trace-source-layout .search-source-image, .trace-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "A returns three to root MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 21.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".trace-source-layout .search-source-image, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Finally C returns max of the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".trace-source-layout .search-source-image, .trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Hypothetical proof state 2",
+          "durationSeconds": 13.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hypothetical proof state 2",
+              "selector": ".trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Advance to the beta cutoff inside",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Hypothetical proof state 3",
+          "durationSeconds": 13.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hypothetical proof state 3",
+              "selector": ".trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Advance to root update C. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Hypothetical proof state 4",
+          "durationSeconds": 13.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hypothetical proof state 4",
+              "selector": ".trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Advance to D. Its first completed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Hypothetical proof state 5",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hypothetical proof state 5",
+              "selector": ".trace-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "Advance to E. Its first completed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Hypothetical proof state 6",
+          "durationSeconds": 13.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hypothetical proof state 6",
+              "selector": ".trace-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Advance to the final root value.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Correct alpha-beta must agree with full minimax",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 20.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".evaluation-matrix > div",
+              "index": 0,
+              "sourcePhrase": "Verification needs an oracle, and full",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 18.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".evaluation-matrix > div",
+              "index": 1,
+              "sourcePhrase": "Root values must match exactly. Selected",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".evaluation-matrix > div",
+              "index": 2,
+              "sourcePhrase": "Comparing only current and parent heuristic",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".evaluation-matrix > div",
+              "index": 3,
+              "sourcePhrase": "Treat testing like a science experiment.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Ordering reduces evaluations; other game models change the backup rule",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-map article, .algorithm-map aside",
+              "index": 0,
+              "sourcePhrase": "Poor ordering delays useful bounds, so",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 19.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-map article, .algorithm-map aside",
+              "index": 1,
+              "sourcePhrase": "Measure more than leaf count. Record",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 18.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-map article, .algorithm-map aside",
+              "index": 2,
+              "sourcePhrase": "Expectimax changes the model by adding",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 23.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-map article, .algorithm-map aside",
+              "index": 3,
+              "sourcePhrase": "Monte Carlo tree search selectively grows",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Apply alpha-beta left-to-right to the complete practice tree",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 18.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "The practice tree has a MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 17.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 1,
+              "sourcePhrase": "For every internal node, record temporary",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 21.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 2,
+              "sourcePhrase": "The leaf sequence is five, two,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 18.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 3,
+              "sourcePhrase": "Your final report needs the root",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interactive figure enlargement",
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interactive figure enlargement",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "sourcePhrase": "Open the source figure and hold",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Figure-to-trace synthesis",
+          "durationSeconds": 18.672,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Figure-to-trace synthesis",
+              "selector": ".algorithm-source-layout .search-source-image, .algorithm-source-layout section, .search-callout",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged figure after the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "The practice tree returns 5 after evaluating nine of fifteen leaves",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 20.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-reveal section, .search-reveal li",
+              "index": 0,
+              "sourcePhrase": "The reveal sequence checks the independent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 19.152,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-reveal section, .search-reveal li",
+              "index": 1,
+              "sourcePhrase": "On the left, the first MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 19.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-reveal section, .search-reveal li",
+              "index": 2,
+              "sourcePhrase": "The middle MIN branch's first MAX",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-reveal section, .search-reveal li",
+              "index": 3,
+              "sourcePhrase": "The root returns max of five,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Practice reveal 1",
+          "durationSeconds": 16.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice reveal 1",
+              "selector": ".search-reveal li",
+              "index": 0,
+              "sourcePhrase": "Reveal the left MIN result. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Practice reveal 2",
+          "durationSeconds": 14.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice reveal 2",
+              "selector": ".search-reveal li",
+              "index": 1,
+              "sourcePhrase": "Reveal the middle result. Its first",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Practice reveal 3",
+          "durationSeconds": 14.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice reveal 3",
+              "selector": ".search-reveal li",
+              "index": 2,
+              "sourcePhrase": "Reveal the right branch's first tightening.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Practice reveal 4",
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice reveal 4",
+              "selector": ".search-reveal li",
+              "index": 3,
+              "sourcePhrase": "Reveal the right-branch cutoff. Beta four",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Practice reveal 5",
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice reveal 5",
+              "selector": ".search-reveal li",
+              "index": 4,
+              "sourcePhrase": "Reveal the root decision. MAX chooses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "A cutoff is a proof that remaining work cannot change the choice",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept framing",
+          "durationSeconds": 21.576,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept framing",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 0,
+              "sourcePhrase": "The exit task asks for three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism and metaphor",
+          "durationSeconds": 21.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism and metaphor",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 1,
+              "sourcePhrase": "A useful summary is inequality, owner,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Cutoff explanation",
+              "text": "inequality · owner · consequence",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "inequality, owner, consequence",
+              "atSeconds": 1.38,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and proof",
+          "durationSeconds": 23.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and proof",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 2,
+              "sourcePhrase": "Move ordering changes running time because",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and takeaway",
+          "durationSeconds": 20.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and takeaway",
+              "selector": ".search-exit article, .search-exit aside",
+              "index": 3,
+              "sourcePhrase": "Before leaving, identify one operation you",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

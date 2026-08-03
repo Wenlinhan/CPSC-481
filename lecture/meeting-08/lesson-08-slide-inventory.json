@@ -1,0 +1,380 @@
+{
+  "route": "/lessons/08",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Alpha-Beta Pruning and Modern Game Search",
+      "visibleText": "DRIVING QUESTION\nWhen is a branch irrelevant?\n\nMinimax gives the decision rule. Alpha-beta adds path bounds that let a depth-first search stop evaluating branches that cannot change the backed-up choice.\n\nRESULT\nSame minimax action\nAt the same depth and with the same evaluation function.\nMECHANISM\nα and β bounds\nThey summarize already established alternatives on the active path.\nEFFICIENCY\nOrder matters\nGood moves first can expose cutoffs earlier.\nEVIDENCE\nTrace every return\nA cutoff must follow from a bound, not intuition.",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Minimax may pursue branches whose values cannot matter",
+      "visibleText": "SEARCH PROBLEM\nThe game tree grows faster than the search budget\n\nFull depth-limited minimax evaluates every reachable leaf to its ply limit—even after an ancestor has a demonstrably better alternative.\n\nALPHA-BETA PROMISE\n\nReturn the same minimax value and action at the same search depth.\n\nWHAT DOES NOT CHANGE\n\nTerminal utility, cutoff depth, and evaluation function remain the same.\n\nWHAT DOES CHANGE\n\nDepth-first visitation and move ordering expose bounds that skip remaining siblings.\n\nSTRUCTURAL INSIGHT\nA value found below ply n+1 can establish a relation between the decision at ply n and a descendant at ply n+2, proving the entire intervening subtree irrelevant.",
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "Alpha rises for MAX; beta falls for MIN",
+      "visibleText": "ACTIVE INTERVAL\nα ≤ possible backed-up value ≤ β\n\nThe interval records what the ancestors already know. Once the lower bound meets or exceeds the upper bound, the remaining siblings cannot affect the ancestor’s choice.\n\nALPHA · LOWER BOUND\n\nThe best value MAX can already guarantee along the current path.\n\nBETA · UPPER BOUND\n\nThe best value MIN can already guarantee along the current path.\n\nMONOTONICITY\n\nα never decreases; β never increases as the active path is searched.\n\nCUTOFF CONDITION\nThe interval closes when α≥β, equivalently β≤α.",
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "Finish a child, return its value, then update the parent",
+      "visibleText": "DEPTH-FIRST TRACE · 1 OF 5\nEnter the root\n\nChoose the leftmost action and carry both path bounds to its child.\n\nPrevious\nNext\nReset\nCurrent node\nMAX root\nOnly one active depth-first path is being evaluated.\nCurrent path bounds\nα = −∞ · β = +∞\nAlpha never decreases; beta never increases along the active search.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Advance depth-first demonstration to state 2",
+          "stateText": "DEPTH-FIRST TRACE · 2 OF 5 Descend one ply Do not evaluate every sibling first. Alpha-beta follows one branch depth-first. Previous Next Reset Current node MIN child Only one active depth-first path is being evaluated. Current path bounds α = −∞ · β = +∞ Alpha never decreases; beta never increases along the active search."
+        },
+        {
+          "segment": 6,
+          "label": "Advance depth-first demonstration to state 3",
+          "stateText": "DEPTH-FIRST TRACE · 3 OF 5 Reach a leaf Use exact utility at a terminal state or the same cutoff evaluation used by depth-limited minimax. Previous Next Reset Current node Terminal or cutoff state Only one active depth-first path is being evaluated. Current path bounds return utility/evaluation Alpha never decreases; beta never increases along the active search."
+        },
+        {
+          "segment": 7,
+          "label": "Advance depth-first demonstration to state 4",
+          "stateText": "DEPTH-FIRST TRACE · 4 OF 5 Back up one edge Update the current node only after the child value is known; then decide whether another sibling matters. Previous Next Reset Current node MIN child Only one active depth-first path is being evaluated. Current path bounds β ← min(β, returned value) Alpha never decreases; beta never increases along the active search."
+        },
+        {
+          "segment": 8,
+          "label": "Advance depth-first demonstration to state 5",
+          "stateText": "DEPTH-FIRST TRACE · 5 OF 5 Return to the parent Values return to parents one level at a time. A bound may then make a different subtree irrelevant. Previous Next Reset Current node MAX root Only one active depth-first path is being evaluated. Current path bounds α ← max(α, child value) Alpha never decreases; beta never increases along the active search."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "A cutoff says an ancestor already has a better alternative",
+      "visibleText": "AT A MAX NODE\nv ≥ β\n\nStop evaluating its remaining children. An ancestor MIN node can force an outcome no larger than β.\n\nSTANDARD NAME\nBeta cutoff\n\nThe MAX node reached or exceeded the MIN ancestor’s upper bound.\n\nAT A MIN NODE\nv ≤ α\n\nThis is an alpha cutoff. An ancestor MAX node already guarantees at least α elsewhere.",
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "MAX returns as soon as its value reaches beta",
+      "visibleText": "The exact pseudocode tests v ≥ β inside MAX-VALUE.\nCLICK IMAGE TO ENLARGE\nRead the return condition before the bound update\n\nMAX initializes v to −∞, recursively asks MIN for each child value, and retains the maximum result.\n\nSTANDARD CUTOFF NAME\nif v ≥ β, return v is a beta cutoff at a MAX node. Only if search continues does α update to max(α,v).\nROOT CALL\nAlpha-Beta-Search begins with MAX-VALUE(state, −∞, +∞) and returns an action having the backed-up value.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "The exact pseudocode tests v ≥ β inside MAX-VALUE. CLICK IMAGE TO ENLARGE Read the return condition before the bound update MAX initializes v to −∞, recursively asks MIN for each child value, and retains the maximum result. STANDARD CUTOFF NAME if v ≥ β, return v is a beta cutoff at a MAX node. Only if search continues does α update to max(α,v). ROOT CALL Alpha-Beta-Search begins with MAX-VALUE(state, −∞, +∞) and returns an action having the backed-up value."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "The exact pseudocode tests v ≥ β inside MAX-VALUE. CLICK IMAGE TO ENLARGE Read the return condition before the bound update MAX initializes v to −∞, recursively asks MIN for each child value, and retains the maximum result. STANDARD CUTOFF NAME if v ≥ β, return v is a beta cutoff at a MAX node. Only if search continues does α update to max(α,v). ROOT CALL Alpha-Beta-Search begins with MAX-VALUE(state, −∞, +∞) and returns an action having the backed-up value."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "At MAX, v ≥ β proves that remaining siblings cannot help",
+      "visibleText": "MAX-VALUE TRACE · 1 OF 3\nInitialize MAX\n\nMAX seeks a larger value, but an ancestor MIN node already has an alternative worth 6.\n\nPrevious\nNext\nReset\nEvaluated children\nnone\nTemporary value and bounds\nv = −∞\nα = 3 · β = 6\nChildren still on the board\n3, 7, 9",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Advance MAX cutoff trace to state 2",
+          "stateText": "MAX-VALUE TRACE · 2 OF 3 Evaluate first child The returned value does not yet reach beta, so another child can still matter. Previous Next Reset Evaluated children 3 Temporary value and bounds v = max(−∞, 3) = 3 α = max(3, 3) = 3 · β = 6 Children still on the board 7, 9"
+        },
+        {
+          "segment": 6,
+          "label": "Advance MAX cutoff trace to state 3",
+          "stateText": "MAX-VALUE TRACE · 3 OF 3 Evaluate second child This is a beta cutoff at a MAX node. MIN will never choose the ancestor path that allows 7. Previous Next Reset Evaluated children 3, 7 Temporary value and bounds v = max(3, 7) = 7 v ≥ β because 7 ≥ 6 Children still on the board 9 is skipped"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "MIN returns as soon as its value falls to alpha",
+      "visibleText": "The exact pseudocode tests v ≤ α inside MIN-VALUE.\nCLICK IMAGE TO ENLARGE\nMIN mirrors MAX with reversed comparisons\n\nMIN initializes v to +∞, recursively asks MAX for each child value, and retains the minimum result.\n\nSTANDARD CUTOFF NAME\nif v ≤ α, return v is an alpha cutoff at a MIN node. Only if search continues does β update to min(β,v).\nFIXED PERSPECTIVE\nMIN chooses the action that minimizes MAX’s utility; utility signs do not switch perspectives between levels.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "The exact pseudocode tests v ≤ α inside MIN-VALUE. CLICK IMAGE TO ENLARGE MIN mirrors MAX with reversed comparisons MIN initializes v to +∞, recursively asks MAX for each child value, and retains the minimum result. STANDARD CUTOFF NAME if v ≤ α, return v is an alpha cutoff at a MIN node. Only if search continues does β update to min(β,v). FIXED PERSPECTIVE MIN chooses the action that minimizes MAX’s utility; utility signs do not switch perspectives between levels."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "The exact pseudocode tests v ≤ α inside MIN-VALUE. CLICK IMAGE TO ENLARGE MIN mirrors MAX with reversed comparisons MIN initializes v to +∞, recursively asks MAX for each child value, and retains the minimum result. STANDARD CUTOFF NAME if v ≤ α, return v is an alpha cutoff at a MIN node. Only if search continues does β update to min(β,v). FIXED PERSPECTIVE MIN chooses the action that minimizes MAX’s utility; utility signs do not switch perspectives between levels."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "At MIN, v ≤ α proves that remaining siblings cannot hurt MAX",
+      "visibleText": "MIN-VALUE TRACE · 1 OF 3\nInitialize MIN\n\nMIN seeks a smaller value, but an ancestor MAX node already has an alternative worth 4.\n\nPrevious\nNext\nReset\nEvaluated children\nnone\nTemporary value and bounds\nv = +∞\nα = 4 · β = 9\nChildren still on the board\n8, 2, 0",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Advance MIN cutoff trace to state 2",
+          "stateText": "MIN-VALUE TRACE · 2 OF 3 Evaluate first child Eight remains above alpha, so the subtree may still return a value MAX would prefer. Previous Next Reset Evaluated children 8 Temporary value and bounds v = min(+∞, 8) = 8 α = 4 · β = min(9, 8) = 8 Children still on the board 2, 0"
+        },
+        {
+          "segment": 6,
+          "label": "Advance MIN cutoff trace to state 3",
+          "stateText": "MIN-VALUE TRACE · 3 OF 3 Evaluate second child This is an alpha cutoff at a MIN node. MAX already has a better ancestor alternative. Previous Next Reset Evaluated children 8, 2 Temporary value and bounds v = min(8, 2) = 2 v ≤ α because 2 ≤ 4 Children still on the board 0 is skipped"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Alpha and beta summarize alternatives outside the current subtree",
+      "visibleText": "PATH MEMORY\n[α, β] is a decision-relevant window\n\nBounds are not predictions and not prefilters. They become valid only from values already returned by completed search.\n\nΑ · MAX’S FLOOR\n\nA MAX ancestor can obtain at least α through an explored alternative.\n\nΒ · MIN’S CEILING\n\nA MIN ancestor can hold MAX to at most β through an explored alternative.\n\nV · CURRENT EVIDENCE\n\nThe temporary value at this node after one or more child returns.\n\nDO NOT PREFILTER\nExamine children in order until a returned value proves α≥β. “Only examine values above α or below β” is not a valid rule.",
+      "actions": []
+    },
+    {
+      "number": 11,
+      "title": "Move ordering changes work, not the minimax answer",
+      "visibleText": "QUESTION\nBEST-FIRST ORDERING\nWORST-FIRST ORDERING\nINVARIANT\nMAX TRIES\n\nHigh-value moves early\n\nLow-value moves early\n\nSame legal actions\n\nMIN TRIES\n\nLow-value moves early\n\nHigh-value moves early\n\nSame cutoff depth\n\nEFFECT\n\nTight bounds and earlier cutoffs\n\nFew cutoffs; near-full minimax\n\nSame evaluation function\n\nRESULT\n\nFewer leaves evaluated\n\nMore leaves evaluated\n\nSame minimax result",
+      "actions": []
+    },
+    {
+      "number": 12,
+      "title": "Start left-to-right with no bounds at the root",
+      "visibleText": "INITIAL CALL\nMAX(root, −∞, +∞)\n\nSearch two plies to the shown leaf evaluations. Visit children left-to-right and return each completed MIN value to the root.\n\nLEFT MIN\n\nLeaves 3, 12, and 8 establish the first root alternative.\n\nMIDDLE MIN\n\nIts first leaf is 2; decide whether its remaining siblings matter.\n\nRIGHT MIN\n\nIts observed leaves arrive in the order 14, 5, and 2.\n\nTRACE DISCIPLINE\nAt every return, record node type, temporary v, α, β, and any siblings that remain unvisited.",
+      "actions": []
+    },
+    {
+      "number": 13,
+      "title": "The first MIN branch sets β=3 and root α=3",
+      "visibleText": "MIN returns min(3,12,8)=3; the root now guarantees at least 3.\nCLICK IMAGE TO ENLARGE\nBack up the completed branch\n\nMIN observes 3 first, so β becomes 3. Values 12 and 8 do not lower that bound. MIN returns 3 to MAX.\n\nROOT UPDATE\nα ← max(−∞,3)=3. Every later root child is now compared against a known alternative worth 3.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "MIN returns min(3,12,8)=3; the root now guarantees at least 3. CLICK IMAGE TO ENLARGE Back up the completed branch MIN observes 3 first, so β becomes 3. Values 12 and 8 do not lower that bound. MIN returns 3 to MAX. ROOT UPDATE α ← max(−∞,3)=3. Every later root child is now compared against a known alternative worth 3."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "MIN returns min(3,12,8)=3; the root now guarantees at least 3. CLICK IMAGE TO ENLARGE Back up the completed branch MIN observes 3 first, so β becomes 3. Values 12 and 8 do not lower that bound. MIN returns 3 to MAX. ROOT UPDATE α ← max(−∞,3)=3. Every later root child is now compared against a known alternative worth 3."
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Seeing 2 at MIN is enough to skip its remaining siblings",
+      "visibleText": "The middle MIN node reaches β=2 while root α=3.\nCLICK IMAGE TO ENLARGE\nβ=2 ≤ α=3\n\nThe middle MIN node can already force MAX to 2 or less. Root MAX has a completed alternative worth 3, so it will not choose this branch.\n\nALPHA CUTOFF\nSkip the two unvisited siblings. Their values cannot make MIN’s result exceed the root’s existing 3.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "The middle MIN node reaches β=2 while root α=3. CLICK IMAGE TO ENLARGE β=2 ≤ α=3 The middle MIN node can already force MAX to 2 or less. Root MAX has a completed alternative worth 3, so it will not choose this branch. ALPHA CUTOFF Skip the two unvisited siblings. Their values cannot make MIN’s result exceed the root’s existing 3."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "The middle MIN node reaches β=2 while root α=3. CLICK IMAGE TO ENLARGE β=2 ≤ α=3 The middle MIN node can already force MAX to 2 or less. Root MAX has a completed alternative worth 3, so it will not choose this branch. ALPHA CUTOFF Skip the two unvisited siblings. Their values cannot make MIN’s result exceed the root’s existing 3."
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "The third MIN branch first establishes an upper bound of 14",
+      "visibleText": "After one child, the third MIN node has β=14.\nCLICK IMAGE TO ENLARGE\nNo cutoff yet\n\nRoot α remains 3. The third MIN node has β=14, and 14≤3 is false. A later sibling could still lower this branch below the root’s best alternative.\n\nCONTINUE\nBounds tell us when to stop; they do not guarantee that every promising first value produces a cutoff.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "After one child, the third MIN node has β=14. CLICK IMAGE TO ENLARGE No cutoff yet Root α remains 3. The third MIN node has β=14, and 14≤3 is false. A later sibling could still lower this branch below the root’s best alternative. CONTINUE Bounds tell us when to stop; they do not guarantee that every promising first value produces a cutoff."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "After one child, the third MIN node has β=14. CLICK IMAGE TO ENLARGE No cutoff yet Root α remains 3. The third MIN node has β=14, and 14≤3 is false. A later sibling could still lower this branch below the root’s best alternative. CONTINUE Bounds tell us when to stop; they do not guarantee that every promising first value produces a cutoff."
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A second child tightens beta from 14 to 5",
+      "visibleText": "MIN keeps the smaller returned value, so β becomes 5.\nCLICK IMAGE TO ENLARGE\nStill no cutoff\n\nβ ← min(14,5)=5. Because β=5 remains greater than root α=3, the third child can still affect the root decision.\n\nINVARIANT CHECK\nBeta decreased, as required. Alpha at the root has not changed.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "MIN keeps the smaller returned value, so β becomes 5. CLICK IMAGE TO ENLARGE Still no cutoff β ← min(14,5)=5. Because β=5 remains greater than root α=3, the third child can still affect the root decision. INVARIANT CHECK Beta decreased, as required. Alpha at the root has not changed."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "MIN keeps the smaller returned value, so β becomes 5. CLICK IMAGE TO ENLARGE Still no cutoff β ← min(14,5)=5. Because β=5 remains greater than root α=3, the third child can still affect the root decision. INVARIANT CHECK Beta decreased, as required. Alpha at the root has not changed."
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "β reaches 2, but no remaining work is left to save",
+      "visibleText": "The final observed value makes β=2≤α=3 after every child in that branch has been evaluated.\nCLICK IMAGE TO ENLARGE\nThe condition is true; the saving is zero\n\nβ ← min(5,2)=2, so β≤α. However, this was the branch’s last child. There are no remaining siblings to skip.\n\nPRECISE LANGUAGE\nThe bound condition holds, but this particular late cutoff saves no additional evaluation.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "The final observed value makes β=2≤α=3 after every child in that branch has been evaluated. CLICK IMAGE TO ENLARGE The condition is true; the saving is zero β ← min(5,2)=2, so β≤α. However, this was the branch’s last child. There are no remaining siblings to skip. PRECISE LANGUAGE The bound condition holds, but this particular late cutoff saves no additional evaluation."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "The final observed value makes β=2≤α=3 after every child in that branch has been evaluated. CLICK IMAGE TO ENLARGE The condition is true; the saving is zero β ← min(5,2)=2, so β≤α. However, this was the branch’s last child. There are no remaining siblings to skip. PRECISE LANGUAGE The bound condition holds, but this particular late cutoff saves no additional evaluation."
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "A large MIN value does not trigger an alpha cutoff",
+      "visibleText": "CHECK FOR UNDERSTANDING\nRoot MAX has α=3. Its next MIN child sees leaves 8 and 10. After seeing 8, is there an alpha cutoff?\n\nCommit to an answer, then defend the representation or search rule.\n\nA\nYes—8 is larger than alpha, so stop.\nB\nNo—MIN has not fallen to alpha or below.\nC\nYes—every completed MIN child causes a cutoff.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Select alpha-cutoff answer A",
+          "stateText": "CHECK FOR UNDERSTANDING Root MAX has α=3. Its next MIN child sees leaves 8 and 10. After seeing 8, is there an alpha cutoff? Commit to an answer, then defend the representation or search rule. A Yes—8 is larger than alpha, so stop. B No—MIN has not fallen to alpha or below. C Yes—every completed MIN child causes a cutoff. Reconsider. At the MIN node, β becomes 8. Since 8≤α=3 is false, no alpha cutoff occurs. Evaluating 10 leaves β at 8; the node returns 8 and root MAX updates α from 3 to 8."
+        },
+        {
+          "segment": 6,
+          "label": "Select alpha-cutoff answer B",
+          "stateText": "CHECK FOR UNDERSTANDING Root MAX has α=3. Its next MIN child sees leaves 8 and 10. After seeing 8, is there an alpha cutoff? Commit to an answer, then defend the representation or search rule. A Yes—8 is larger than alpha, so stop. B No—MIN has not fallen to alpha or below. C Yes—every completed MIN child causes a cutoff. Correct. At the MIN node, β becomes 8. Since 8≤α=3 is false, no alpha cutoff occurs. Evaluating 10 leaves β at 8; the node returns 8 and root MAX updates α from 3 to 8."
+        },
+        {
+          "segment": 7,
+          "label": "Select alpha-cutoff answer C",
+          "stateText": "CHECK FOR UNDERSTANDING Root MAX has α=3. Its next MIN child sees leaves 8 and 10. After seeing 8, is there an alpha cutoff? Commit to an answer, then defend the representation or search rule. A Yes—8 is larger than alpha, so stop. B No—MIN has not fallen to alpha or below. C Yes—every completed MIN child causes a cutoff. Reconsider. At the MIN node, β becomes 8. Since 8≤α=3 is false, no alpha cutoff occurs. Evaluating 10 leaves β at 8; the node returns 8 and root MAX updates α from 3 to 8."
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A MAX value that reaches beta ends the remaining sibling search",
+      "visibleText": "CHECK FOR UNDERSTANDING\nA MAX node receives β=4 from a MIN ancestor. Its first child returns 8. What happens?\n\nCommit to an answer, then defend the representation or search rule.\n\nA\nBeta cutoff: 8≥4, so skip the remaining MAX children.\nB\nAlpha cutoff: 8 is larger than alpha.\nC\nNo cutoff: every child must be evaluated.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Select beta-cutoff answer A",
+          "stateText": "CHECK FOR UNDERSTANDING A MAX node receives β=4 from a MIN ancestor. Its first child returns 8. What happens? Commit to an answer, then defend the representation or search rule. A Beta cutoff: 8≥4, so skip the remaining MAX children. B Alpha cutoff: 8 is larger than alpha. C No cutoff: every child must be evaluated. Correct. At a MAX node, the first returned value gives v=8. Since v≥β=4, a beta cutoff returns immediately. It is not an alpha cutoff because the proof uses the MIN ancestor’s beta bound."
+        },
+        {
+          "segment": 6,
+          "label": "Select beta-cutoff answer B",
+          "stateText": "CHECK FOR UNDERSTANDING A MAX node receives β=4 from a MIN ancestor. Its first child returns 8. What happens? Commit to an answer, then defend the representation or search rule. A Beta cutoff: 8≥4, so skip the remaining MAX children. B Alpha cutoff: 8 is larger than alpha. C No cutoff: every child must be evaluated. Reconsider. At a MAX node, the first returned value gives v=8. Since v≥β=4, a beta cutoff returns immediately. It is not an alpha cutoff because the proof uses the MIN ancestor’s beta bound."
+        },
+        {
+          "segment": 7,
+          "label": "Select beta-cutoff answer C",
+          "stateText": "CHECK FOR UNDERSTANDING A MAX node receives β=4 from a MIN ancestor. Its first child returns 8. What happens? Commit to an answer, then defend the representation or search rule. A Beta cutoff: 8≥4, so skip the remaining MAX children. B Alpha cutoff: 8 is larger than alpha. C No cutoff: every child must be evaluated. Reconsider. At a MAX node, the first returned value gives v=8. Since v≥β=4, a beta cutoff returns immediately. It is not an alpha cutoff because the proof uses the MIN ancestor’s beta bound."
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Every skipped subtree follows from a completed bound",
+      "visibleText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds.\nCLICK IMAGE TO ENLARGE\nDepth-first proof · 1 of 6\nEvaluate A\n\nA is a MIN node. Its first completed MAX child returns 3, so A has β=3.\n\nBOUND ESTABLISHED\nA ≤ 3\nPrevious\nNext\nReset",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 1 of 6 Evaluate A A is a MIN node. Its first completed MAX child returns 3, so A has β=3. BOUND ESTABLISHED A ≤ 3 Previous Next Reset"
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 1 of 6 Evaluate A A is a MIN node. Its first completed MAX child returns 3, so A has β=3. BOUND ESTABLISHED A ≤ 3 Previous Next Reset"
+        },
+        {
+          "segment": 7,
+          "label": "Advance hypothetical proof to state 2",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 2 of 6 Skip the rest of B Inside B, a MAX node, the first leaf returns 5. Because 5≥β=3, a beta cutoff skips B’s remaining leaf. BOUND ESTABLISHED B ≥ 5 cannot improve A Previous Next Reset"
+        },
+        {
+          "segment": 8,
+          "label": "Advance hypothetical proof to state 3",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 3 of 6 Update C A returns 3 to root C, a MAX node. C now has α=3. BOUND ESTABLISHED C ≥ 3 Previous Next Reset"
+        },
+        {
+          "segment": 9,
+          "label": "Advance hypothetical proof to state 4",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 4 of 6 Skip the rest of D D is MIN. Its first completed child returns 0, so 0≤α=3 and an alpha cutoff skips D’s remaining subtree. BOUND ESTABLISHED D ≤ 0 cannot improve C Previous Next Reset"
+        },
+        {
+          "segment": 10,
+          "label": "Advance hypothetical proof to state 5",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 5 of 6 Skip the rest of E E is MIN. Its first completed child returns 2, so 2≤α=3 and an alpha cutoff skips E’s remaining subtree. BOUND ESTABLISHED E ≤ 2 cannot improve C Previous Next Reset"
+        },
+        {
+          "segment": 11,
+          "label": "Advance hypothetical proof to state 6",
+          "stateText": "States without numbers were not evaluated; follow the depth-first path and backed-up bounds. CLICK IMAGE TO ENLARGE Depth-first proof · 6 of 6 Return the root value C returns 3—the same value full minimax returns at the same depth with the same evaluation function. BOUND ESTABLISHED C = max(3, 0, 2) = 3 Previous Next Reset"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Correct alpha-beta must agree with full minimax",
+      "visibleText": "EVIDENCE\nFULL MINIMAX\nALPHA-BETA\nPASS CONDITION\nROOT VALUE\n\nCompute every leaf at depth d\n\nCompute only decision-relevant leaves\n\nValues are equal\n\nSELECTED ACTION\n\nArgmax of child values\n\nArgmax of returned bounds/values\n\nActions match, allowing ties\n\nLEAF COUNT\n\nBaseline count\n\nCount evaluated leaves\n\nAlpha-beta evaluates no more\n\nCONTROLLED VARIABLES\n\nDepth d and evaluation E\n\nSame depth d and evaluation E\n\nOnly ordering/pruning differs",
+      "actions": []
+    },
+    {
+      "number": 22,
+      "title": "Ordering reduces evaluations; other game models change the backup rule",
+      "visibleText": "1\nPoor ordering\n\nFew early bounds; alpha-beta approaches full minimax work.\n\n2\nGood ordering\n\nLikely strong MAX moves and weak MIN moves first; more cutoffs occur early.\n\n3\nCorrectness\n\nEither order returns the same depth-limited minimax result.\n\n4\nMeasurement\n\nRecord evaluated leaves, internal nodes, time, and ordering overhead.\n\nMODERN SUPPLEMENTS\n\nExpectimax: chance nodes back up probability-weighted expected utility when outcomes are stochastic.\n\nMonte Carlo Tree Search: selectively grows a tree using repeated selection, expansion, simulation, and backup.\n\nThese alter the game-search model; they are not alpha-beta shortcuts for deterministic minimax.",
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Apply alpha-beta left-to-right to the complete practice tree",
+      "visibleText": "The original practice tree preserves the node shapes, player levels, branch grouping, and left-to-right leaf order.\nCLICK IMAGE TO ENLARGE\nSubmit a trace, not only an answer\n\nEvaluate leaves in the displayed left-to-right order. At every internal node, record v, α, and β after each returned child.\n\nMARK EVERY SKIPPED SUBTREE\nName the cutoff type, write the inequality that justifies it, and count both evaluated and skipped leaves.\nFINAL CLAIMS\nReport the root value, chosen root branch, and whether a different legal move order could change either result.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Enlarge the instructional source figure",
+          "stateText": "The original practice tree preserves the node shapes, player levels, branch grouping, and left-to-right leaf order. CLICK IMAGE TO ENLARGE Submit a trace, not only an answer Evaluate leaves in the displayed left-to-right order. At every internal node, record v, α, and β after each returned child. MARK EVERY SKIPPED SUBTREE Name the cutoff type, write the inequality that justifies it, and count both evaluated and skipped leaves. FINAL CLAIMS Report the root value, chosen root branch, and whether a different legal move order could change either result."
+        },
+        {
+          "segment": 6,
+          "label": "Close the enlarged instructional source figure",
+          "stateText": "The original practice tree preserves the node shapes, player levels, branch grouping, and left-to-right leaf order. CLICK IMAGE TO ENLARGE Submit a trace, not only an answer Evaluate leaves in the displayed left-to-right order. At every internal node, record v, α, and β after each returned child. MARK EVERY SKIPPED SUBTREE Name the cutoff type, write the inequality that justifies it, and count both evaluated and skipped leaves. FINAL CLAIMS Report the root value, chosen root branch, and whether a different legal move order could change either result."
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "The practice tree returns 5 after evaluating nine of fifteen leaves",
+      "visibleText": "PREDICT BEFORE REVEAL\nCan your partner justify every cutoff from an ancestor alternative?\n\nExplain the next step aloud before advancing.\n\nReveal next\nReveal all\n1\nCommit your next step\n\nReason from the current state.\n\n2\nCommit your next step\n\nReason from the current state.\n\n3\nCommit your next step\n\nReason from the current state.\n\n4\nCommit your next step\n\nReason from the current state.\n\n5\nCommit your next step\n\nReason from the current state.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Reveal practice proof step 1",
+          "stateText": "PREDICT BEFORE REVEAL Can your partner justify every cutoff from an ancestor alternative? Explain the next step aloud before advancing. Reveal next Reveal all 1 Left MIN returns 5 Evaluate 5 and 2, so the first MAX child returns 5. In the second MAX child, 10 reaches β=5; beta cutoff skips 11. Root α becomes 5. 2 Commit your next step Reason from the current state. 3 Commit your next step Reason from the current state. 4 Commit your next step Reason from the current state. 5 Commit your next step Reason from the current state."
+        },
+        {
+          "segment": 6,
+          "label": "Reveal practice proof step 2",
+          "stateText": "PREDICT BEFORE REVEAL Can your partner justify every cutoff from an ancestor alternative? Explain the next step aloud before advancing. Reveal next Reveal all 1 Left MIN returns 5 Evaluate 5 and 2, so the first MAX child returns 5. In the second MAX child, 10 reaches β=5; beta cutoff skips 11. Root α becomes 5. 2 Middle MIN returns at most 2 Its first MAX child evaluates 1, 2, 2 and returns 2. Because 2≤root α=5, alpha cutoff skips the [8] and [6,5] subtrees. 3 Commit your next step Reason from the current state. 4 Commit your next step Reason from the current state. 5 Commit your next step Reason from the current state."
+        },
+        {
+          "segment": 7,
+          "label": "Reveal practice proof step 3",
+          "stateText": "PREDICT BEFORE REVEAL Can your partner justify every cutoff from an ancestor alternative? Explain the next step aloud before advancing. Reveal next Reveal all 1 Left MIN returns 5 Evaluate 5 and 2, so the first MAX child returns 5. In the second MAX child, 10 reaches β=5; beta cutoff skips 11. Root α becomes 5. 2 Middle MIN returns at most 2 Its first MAX child evaluates 1, 2, 2 and returns 2. Because 2≤root α=5, alpha cutoff skips the [8] and [6,5] subtrees. 3 Right MIN tightens from 12 to 4 The first MAX child returns 12. The next returns max(4,3)=4, so β becomes 4. 4 Commit your next step Reason from the current state. 5 Commit your next step Reason from the current state."
+        },
+        {
+          "segment": 8,
+          "label": "Reveal practice proof step 4",
+          "stateText": "PREDICT BEFORE REVEAL Can your partner justify every cutoff from an ancestor alternative? Explain the next step aloud before advancing. Reveal next Reveal all 1 Left MIN returns 5 Evaluate 5 and 2, so the first MAX child returns 5. In the second MAX child, 10 reaches β=5; beta cutoff skips 11. Root α becomes 5. 2 Middle MIN returns at most 2 Its first MAX child evaluates 1, 2, 2 and returns 2. Because 2≤root α=5, alpha cutoff skips the [8] and [6,5] subtrees. 3 Right MIN tightens from 12 to 4 The first MAX child returns 12. The next returns max(4,3)=4, so β becomes 4. 4 Right branch cuts off Because β=4≤root α=5, alpha cutoff skips the final MAX child [25,2]. 5 Commit your next step Reason from the current state."
+        },
+        {
+          "segment": 9,
+          "label": "Reveal practice proof step 5",
+          "stateText": "PREDICT BEFORE REVEAL Can your partner justify every cutoff from an ancestor alternative? Explain the next step aloud before advancing. Reveal next Reset 1 Left MIN returns 5 Evaluate 5 and 2, so the first MAX child returns 5. In the second MAX child, 10 reaches β=5; beta cutoff skips 11. Root α becomes 5. 2 Middle MIN returns at most 2 Its first MAX child evaluates 1, 2, 2 and returns 2. Because 2≤root α=5, alpha cutoff skips the [8] and [6,5] subtrees. 3 Right MIN tightens from 12 to 4 The first MAX child returns 12. The next returns max(4,3)=4, so β becomes 4. 4 Right branch cuts off Because β=4≤root α=5, alpha cutoff skips the final MAX child [25,2]. 5 Root chooses 5 The root backs up max(5,2,4)=5. Nine of fifteen leaves were evaluated; full minimax and alpha-beta choose the same action."
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "A cutoff is a proof that remaining work cannot change the choice",
+      "visibleText": "1 · EXPLAIN\nName the ancestor alternative\n\nFor one beta cutoff and one alpha cutoff, state whose existing choice makes the siblings irrelevant.\n\n2 · TRACE\nMaintain v, α, and β\n\nShow the exact child return that closes the interval and identify any work actually saved.\n\n3 · VERIFY\nCompare with full minimax\n\nHold depth and evaluation fixed; compare root value, chosen action, and evaluated leaves.\n\nCorrected references and next reading\n\nGeorge F. Luger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th ed., Chapter 4 (Addison-Wesley, 2009). Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach, 3rd ed. (Prentice Hall, 2010). Exit ticket: explain why move ordering can change running time without changing the minimax decision.",
+      "actions": []
+    }
+  ]
+}

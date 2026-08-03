@@ -10,6 +10,7 @@ import {
 } from "./SearchLessonPrimitives";
 
 const sourceRoot = "/course-source/l05-minimax-pruning";
+const LESSON_08_VIDEO_URL = "https://csufullerton.instructure.com/files/283889902/download?download_frd=1&verifier=CUxBCDRpcugkXDGArfXa4uoOWEePwld576VCDsvD";
 
 const depthFirstSteps = [
   {
@@ -904,6 +905,7 @@ export function Meeting08Deck() {
   return (
     <SourceDeckShell
       hoverEffects
+      lectureVideoUrl={LESSON_08_VIDEO_URL}
       meetingLabel="Module 5 · Lesson 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
       slides={slides}
