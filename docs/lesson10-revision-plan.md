@@ -46,6 +46,24 @@ Lesson 10 is a 75-minute, 28-page native HTML lecture grounded in all 33 pages o
 | 27 | Cumulative review studio | L08 24–27 | Require explanation and transfer | Interactive prompt/reveal cards | Answers required |
 | 28 | Exit ticket and references | L08 28 | Synthesize GP and swarm methods | Native synthesis map | Final-page completeness |
 
+## Pages 12–13 interactive maze repair
+
+| Knowledge point | Source evidence | Explanation | Visual/demo | Student task | Check | Minutes |
+|---|---|---|---|---|---|---:|
+| GP primitives execute as behavior | L07 pages 21–22 | `IF-BLOCKED`, `WHILE-NOT-AT-CHEESE`, `FORWARD`, `LEFT`, and `RIGHT` operate in an environment rather than changing a tree cosmetically | Native raised-wall maze with a recognizable rat, cheese target, legal-move trail, keyboard input, and directional controls | Navigate to the cheese, then identify which observations and actions a GP controller requires | Invalid moves remain in place and announce the blocking wall; successful arrival is explicit | 3 |
+| Fitness converts behavior into search feedback | L07 page 23 | Execution cost and remaining distance jointly determine the source fitness example | The same interactive maze reports legal moves, exact corridor distance, and a live score while retaining the source benchmark `(100 + 10)^2 = 12,100` | Compare a short legal route, a detour, and a blocked move | Explain why lower is better and why a poorly specified score can reward unintended behavior | 3 |
+
+Visual QA: derive the path only from accepted grid moves so it cannot cross a wall; test arrow keys and buttons; expose focus and status text; verify raised walls, rat, cheese, and route at 1536×723 and a narrower viewport; preserve reduced-motion behavior.
+
+## Additional recognizable-object visual repairs
+
+| Page | Learning purpose | Visual repair | Interaction | Asset type |
+|---|---|---|---|---|
+| 15 | Compare evolved controllers fairly | Reuse the legal raised-wall maze and recognizable rat/cheese system from pages 12–13 so neither candidate route crosses a wall | Static comparison with legal route overlays | Native SVG |
+| 21 | Explain flocking as emergence from local rules | Replace abstract agent shapes with illustrated birds showing bodies, wings, beaks, tails, and changing flock geometry | Four-stage separation, alignment, cohesion, emergence demo | Native SVG |
+| 23 | Explain the Bees Algorithm lifecycle | Replace circles with a recognizable wooden hive, striped bees, and flower patches | Five-stage Scout, Evaluate, Waggle dance, Recruit + exploit, Abandon or revisit demo | Native SVG |
+| 24 | Explain ACO around an obstacle | Replace labeled circles and polygon with illustrated ants, a soil nest, irregular rock, and visible food | Five-stage trail interruption and shortest-path reinforcement demo | Native SVG |
+
 ## Source-page destinations
 
 - L07 pages 1–4 → lesson pages 1–4.

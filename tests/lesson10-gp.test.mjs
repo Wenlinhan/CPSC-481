@@ -5,6 +5,7 @@ import { test } from "node:test";
 const deckPath = new URL("../app/components/Lesson10GPSlides.tsx", import.meta.url);
 const routePath = new URL("../app/lessons/[lesson]/page.tsx", import.meta.url);
 const manifestPath = new URL("../public/course-source/l07-gp-l08-alife/manifest.json", import.meta.url);
+const illustrationStylesPath = new URL("../app/styles/lesson10-illustrations.css", import.meta.url);
 
 test("Lesson 10 is a 28-page, 75-minute source-grounded deck", async () => {
   const deck = await readFile(deckPath, "utf8");
@@ -48,4 +49,24 @@ test("Lesson 10 route uses the rebuilt deck", async () => {
   const route = await readFile(routePath, "utf8");
   assert.match(route, /Lesson10GPSlides/);
   assert.match(route, /10:"Genetic Programming, Artificial Life, and Swarm Intelligence"/);
+});
+
+test("Lesson 10 uses legal interactive maze movement and recognizable swarm illustrations", async () => {
+  const deck = await readFile(deckPath, "utf8");
+  const styles = await readFile(illustrationStylesPath, "utf8");
+  for (const concept of [
+    "InteractiveMouseMaze",
+    "Blocked: that move would hit a raised wall.",
+    "Success! The rat reached the cheese.",
+    "Move mouse up",
+    "Emergent flock",
+    "Waggle dance",
+    "Recruit + exploit",
+    "AntNest",
+    "AntFood",
+    "Rock",
+  ]) assert.match(deck, new RegExp(concept.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  for (const selector of [".l10-bird", ".l10-hive", ".l10-bee", ".l10-ant-real", ".l10-ant-nest", ".l10-ant-food", ".l10-rock"]) {
+    assert.match(styles, new RegExp(selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
 });
