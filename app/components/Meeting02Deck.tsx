@@ -569,5 +569,5 @@ const slides: LessonSlide[] = [
 ];
 
 export function AiFoundationsDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <L01DeckShell forcePrintAll={forcePrintAll} hoverEffects meetingLabel="Module 2 · Lesson 2" meetingTitle="Intelligent Agents, Task Environments, and the Turing Test" slides={slides} />;
+  return <L01DeckShell forcePrintAll={forcePrintAll} hoverEffects meetingLabel="Module 2 · Lesson 2" meetingTitle="Intelligent Agents, Task Environments, and the Turing Test" notesMode="key-points" slides={slides} />;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { lessonNarrationNotes } from "../data/lessonNarrationNotes";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   RevealSequence,
@@ -11,7 +10,6 @@ import {
 } from "./SearchLessonPrimitives";
 
 const sourceRoot = "/course-source/l05-minimax-pruning";
-const LESSON_08_VIDEO_URL = "https://csufullerton.instructure.com/files/283889902/download?download_frd=1&verifier=CUxBCDRpcugkXDGArfXa4uoOWEePwld576VCDsvD";
 
 const depthFirstSteps = [
   {
@@ -907,10 +905,9 @@ export function Meeting08Deck({ forcePrintAll = false }: { forcePrintAll?: boole
     <SourceDeckShell
       forcePrintAll={forcePrintAll}
       hoverEffects
-      lectureVideoUrl={LESSON_08_VIDEO_URL}
       meetingLabel="Module 5 · Lesson 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
-      narrationNotes={lessonNarrationNotes(8)}
+      notesMode="key-points"
       slides={slides}
       sourceCollectionLabel="L05_MiniMax&Pruning.pptx"
       sourceCollectionPath="l05-minimax-pruning"

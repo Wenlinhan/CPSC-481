@@ -11,7 +11,6 @@
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "notes:sync": "node scripts/sync_lesson_notes_from_narration.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

@@ -12,7 +12,6 @@ import {
 } from "./SearchLessonPrimitives";
 
 const MEETING_04_TIMING = [2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 3, 4, 3, 2, 3, 2, 3, 4, 3, 3, 3, 2, 4, 3, 3, 2, 2, 4] as const;
-const LESSON_04_VIDEO_URL = "https://csufullerton.instructure.com/files/283866258/download?download_frd=1&verifier=DxvvCQ6i04tSehnzKHKdBEa3UcZHDV7Virdc58oo";
 
 function AlgorithmSelectionLab() {
   const cases = [
@@ -664,9 +663,9 @@ export function UninformedSearchDeck({ forcePrintAll = false }: { forcePrintAll?
     <SourceDeckShell
       forcePrintAll={forcePrintAll}
       hoverEffects
-      lectureVideoUrl={LESSON_04_VIDEO_URL}
       meetingLabel="Module 3 · Lesson 4"
       meetingTitle="Uninformed Graph Search"
+      notesMode="key-points"
       slides={slides}
       sourceCollectionLabel="L02_StateSpaceSearch.pptx"
       sourceCollectionPath="l02-state-space"

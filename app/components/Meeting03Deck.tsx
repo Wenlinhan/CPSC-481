@@ -557,6 +557,7 @@ export function StateSpaceFoundationsDeck({ forcePrintAll = false }: { forcePrin
       hoverEffects
       meetingLabel="Module 3 · Lesson 3"
       meetingTitle="State-Space Search Foundations"
+      notesMode="key-points"
       slides={slides}
       sourceCollectionLabel="L02_StateSpaceSearch.pptx"
       sourceCollectionPath="l02-state-space"

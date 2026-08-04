@@ -385,5 +385,5 @@ const slides: LessonSlide[] = [
 ];
 
 export function AiFoundationsDeck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <L01DeckShell forcePrintAll={forcePrintAll} hoverEffects meetingLabel="Module 2 · Lesson 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" slides={slides} />;
+  return <L01DeckShell forcePrintAll={forcePrintAll} hoverEffects meetingLabel="Module 2 · Lesson 1" meetingTitle="AI Applications, History, Intelligence, and Definitions" notesMode="key-points" slides={slides} />;
 }

@@ -49,26 +49,33 @@ test("all 22 sequential lesson routes render", async () => {
   }
 });
 
-test("Lessons 7 through 10 expose Canvas videos and complete narration in Notes", async () => {
-  const narration = JSON.parse(await readFile(new URL("../app/data/lesson-narration-notes.json", import.meta.url), "utf8"));
-  const expectedCounts = { 7: 25, 8: 25, 9: 26, 10: 28 };
-  const componentFiles = {
-    7: "Meeting07Deck.tsx",
-    8: "Meeting08Deck.tsx",
-    9: "Lesson09GASlides.tsx",
-    10: "Lesson10GPSlides.tsx",
-  };
+test("Lessons 1 through 10 show concise page key points in Notes", async () => {
+  const componentFiles = [
+    "Meeting01Deck.tsx",
+    "Meeting02Deck.tsx",
+    "Meeting03Deck.tsx",
+    "Meeting04Deck.tsx",
+    "Meeting05Deck.tsx",
+    "Meeting06Deck.tsx",
+    "Meeting07Deck.tsx",
+    "Meeting08Deck.tsx",
+    "Lesson09GASlides.tsx",
+    "Lesson10GPSlides.tsx",
+  ];
 
-  for (const [lesson, count] of Object.entries(expectedCounts)) {
-    assert.equal(narration[lesson].notes.length, count);
-    assert.ok(narration[lesson].notes.every(note => note.trim().length > 0));
-    const component = await readFile(new URL(`../app/components/${componentFiles[lesson]}`, import.meta.url), "utf8");
-    assert.match(component, new RegExp(`narrationNotes=\\{lessonNarrationNotes\\(${lesson}\\)\\}`));
-    assert.match(component, /lectureVideoUrl=/);
+  for (const [index, filename] of componentFiles.entries()) {
+    const component = await readFile(new URL(`../app/components/${filename}`, import.meta.url), "utf8");
+    assert.match(component, /notesMode="key-points"/, `Lesson ${index + 1} must opt into key-point Notes`);
+    assert.doesNotMatch(component, /narrationNotes|lessonNarrationNotes/);
   }
 
   const shell = await readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8");
-  assert.match(shell, /Narration script/);
+  assert.match(shell, /Page key points/);
+  assert.match(shell, /speaker-note-points/);
+  assert.match(shell, /collectKeyPoints/);
+  assert.match(shell, /querySelectorAll\("h2, h3, h4, p, li, figcaption/);
+  assert.doesNotMatch(shell, /Narration script|narrationNotes/);
+  assert.doesNotMatch(shell, /Lecture video|lectureVideoUrl/);
   assert.doesNotMatch(shell, />\s*Course source\s*</);
   assert.doesNotMatch(shell, /setSourceView/);
 });

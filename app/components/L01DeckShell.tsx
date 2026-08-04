@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, type TouchEvent, useEffect, useState } from "react";
+import { type ReactNode, type TouchEvent, useEffect, useRef, useState } from "react";
 
 export type LessonSlide = {
   eyebrow: string;
@@ -22,10 +22,9 @@ export type CourseSourceReference = {
 type L01DeckShellProps = {
   forcePrintAll?: boolean;
   hoverEffects?: boolean;
-  lectureVideoUrl?: string;
   meetingLabel: string;
   meetingTitle: string;
-  narrationNotes?: readonly string[];
+  notesMode?: "instructor" | "key-points";
   resolveSourceReference?: (sourceSlide: number) => CourseSourceReference;
   slides: LessonSlide[];
   sourceCollectionLabel?: string;
@@ -57,13 +56,56 @@ function noteStartsWithTiming(note: string): boolean {
   return /^(?:Timing:|\d+\s*[–-]\s*\d+\s+minutes?|Allocate\s+\w+\s+minutes?)/i.test(note);
 }
 
+function normalizeKeyPoint(value: string): string {
+  return value.replace(/\s+/g, " ").replace(/\s+([,.;:!?])/g, "$1").trim();
+}
+
+function shortenKeyPoint(value: string): string {
+  if (value.length <= 220) return value;
+  const firstSentence = value.match(/^.{40,220}?[.!?](?:\s|$)/)?.[0]?.trim();
+  if (firstSentence) return firstSentence;
+  return `${value.slice(0, 217).replace(/\s+\S*$/, "")}…`;
+}
+
+function collectKeyPoints(root: HTMLDivElement | null, slide: LessonSlide): string[] {
+  if (!root) return slide.subtitle ? [slide.subtitle] : [slide.title];
+  const candidates = [
+    slide.subtitle ?? "",
+    ...Array.from(root.querySelectorAll("h2, h3, h4, p, li, figcaption, article > strong, section > strong"))
+      .map(element => element.textContent ?? ""),
+  ];
+  const points: string[] = [];
+
+  for (const raw of candidates) {
+    const point = shortenKeyPoint(normalizeKeyPoint(raw));
+    if (point.length < 18 || point.toLowerCase() === slide.title.toLowerCase()) continue;
+    if (/^(?:next|previous|reset|reveal|hide|check answer|try again)$/i.test(point)) continue;
+    if (points.some(existing => existing.toLowerCase() === point.toLowerCase())) continue;
+    points.push(point);
+    if (points.length === 5) break;
+  }
+
+  if (points.length < 3) {
+    const fallback = normalizeKeyPoint(root.innerText)
+      .split(/(?<=[.!?])\s+/)
+      .map(shortenKeyPoint);
+    for (const point of fallback) {
+      if (point.length < 24) continue;
+      if (points.some(existing => existing.toLowerCase() === point.toLowerCase())) continue;
+      points.push(point);
+      if (points.length === 5) break;
+    }
+  }
+
+  return points.length ? points : [slide.subtitle ?? slide.title];
+}
+
 export function L01DeckShell({
   forcePrintAll = false,
   hoverEffects = true,
-  lectureVideoUrl,
   meetingLabel,
   meetingTitle,
-  narrationNotes,
+  notesMode = "instructor",
   resolveSourceReference,
   slides,
   sourceCollectionLabel = DEFAULT_SOURCE_COLLECTION_LABEL,
@@ -76,6 +118,8 @@ export function L01DeckShell({
   const [motion, setMotion] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [printAll, setPrintAll] = useState(forcePrintAll);
+  const [keyPoints, setKeyPoints] = useState<string[]>([]);
+  const slideContentRef = useRef<HTMLDivElement>(null);
   const total = slides.length;
 
   const go = (requested: number) => {
@@ -137,11 +181,18 @@ export function L01DeckShell({
 
   const slide = slides[current];
   const currentMinutes = timingPlan?.[current] ?? inferMinutes(slide);
-  const activeNote = narrationNotes?.[current] ?? slide.note;
-  const noteParagraphs = activeNote.split(/\n{2,}/).map(paragraph => paragraph.trim()).filter(Boolean);
+  const noteParagraphs = slide.note.split(/\n{2,}/).map(paragraph => paragraph.trim()).filter(Boolean);
   void resolveSourceReference;
   void sourceCollectionLabel;
   void sourceCollectionPath;
+
+  useEffect(() => {
+    if (notesMode !== "key-points") return;
+    const frame = window.requestAnimationFrame(() => {
+      setKeyPoints(collectKeyPoints(slideContentRef.current, slides[current]));
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [current, notesMode, slides]);
 
   if (printAll) {
     return (
@@ -176,11 +227,6 @@ export function L01DeckShell({
           <div><strong>CPSC 481</strong><small>Introduction to Artificial Intelligence</small></div>
         </div>
         <div className="header-actions">
-          {lectureVideoUrl && (
-            <button onClick={() => window.open(lectureVideoUrl, "_blank", "noopener,noreferrer")} type="button">
-              Lecture video
-            </button>
-          )}
           <button aria-pressed={motion} onClick={() => setMotion(value => !value)} type="button">
             Motion {motion ? "on" : "off"}
           </button>
@@ -200,20 +246,26 @@ export function L01DeckShell({
           <h1>{slide.title}</h1>
           {slide.subtitle && <p>{slide.subtitle}</p>}
         </div>
-        <div className="slide-content">{slide.content}</div>
+        <div className="slide-content" ref={slideContentRef}>{slide.content}</div>
       </section>
 
       {notes && (
         <aside className="speaker-notes">
-          <div><span>{narrationNotes ? "Narration script" : "Instructor note"} · Slide {current + 1}</span><button onClick={() => setNotes(false)} type="button">×</button></div>
-          <div className="speaker-note-body">
-            {noteParagraphs.map((paragraph, index) => (
-              <p key={`${current}-${index}`}>
-                {!narrationNotes && index === 0 && currentMinutes && !noteStartsWithTiming(slide.note) ? `Timing: ${currentMinutes} minutes. ` : ""}
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <div><span>{notesMode === "key-points" ? "Page key points" : "Instructor note"} · Slide {current + 1}</span><button aria-label="Close notes" onClick={() => setNotes(false)} type="button">×</button></div>
+          {notesMode === "key-points" ? (
+            <ul className="speaker-note-points">
+              {keyPoints.map((point, index) => <li key={`${current}-${index}`}>{point}</li>)}
+            </ul>
+          ) : (
+            <div className="speaker-note-body">
+              {noteParagraphs.map((paragraph, index) => (
+                <p key={`${current}-${index}`}>
+                  {index === 0 && currentMinutes && !noteStartsWithTiming(slide.note) ? `Timing: ${currentMinutes} minutes. ` : ""}
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
         </aside>
       )}
 

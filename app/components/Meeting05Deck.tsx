@@ -1021,6 +1021,7 @@ export function HeuristicLocalSearchDeck({ forcePrintAll = false }: { forcePrint
       hoverEffects
       meetingLabel="Module 4 · Lesson 5"
       meetingTitle="Heuristic Search and Local Search"
+      notesMode="key-points"
       slides={slides}
       sourceCollectionLabel="L03_Heuristic, HillClimbing&SA.pptx"
       sourceCollectionPath="l03-heuristic-local-search"

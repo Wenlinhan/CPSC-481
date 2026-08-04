@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { lessonNarrationNotes } from "../data/lessonNarrationNotes";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   SearchCallout,
@@ -10,7 +9,6 @@ import {
 } from "./SearchLessonPrimitives";
 
 const SOURCE_ROOT = "/course-source/l05-minimax-pruning";
-const LESSON_07_VIDEO_URL = "https://csufullerton.instructure.com/files/283892688/download?download_frd=1&verifier=ClwFJOp6Q3IFULAXs0lRbhFOIJZX6ixDVPdEjnFu";
 
 const recursiveTrace = [
   {
@@ -893,10 +891,9 @@ export function Meeting07Deck({ forcePrintAll = false }: { forcePrintAll?: boole
     <SourceDeckShell
       forcePrintAll={forcePrintAll}
       hoverEffects
-      lectureVideoUrl={LESSON_07_VIDEO_URL}
       meetingLabel="Module 5 · Lesson 7"
       meetingTitle="Game Trees, Minimax, and Evaluation Functions"
-      narrationNotes={lessonNarrationNotes(7)}
+      notesMode="key-points"
       slides={slides}
       sourceCollectionLabel="L05_MiniMax&Pruning.pptx"
       sourceCollectionPath="l05-minimax-pruning"
