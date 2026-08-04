@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import "../styles/meeting13.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
@@ -80,6 +80,129 @@ function SourcePair({
     <div className="m13-source-pair">
       <SourceFrame {...left} />
       <SourceFrame {...right} />
+    </div>
+  );
+}
+
+function SourceMediaFigure({
+  file,
+  alt,
+  caption,
+  className = "",
+}: {
+  file: "image1.jpeg" | "image2.jpeg" | "image3.jpeg" | "image4.jpeg" | "image5.jpeg" | "image6.png";
+  alt: string;
+  caption: string;
+  className?: string;
+}) {
+  return (
+    <figure className={`m13-source-media ${className}`.trim()}>
+      <div><img alt={alt} src={`${SOURCE_MEDIA_ROOT}/${file}`} /></div>
+      <figcaption><span>Exact course figure</span>{caption}</figcaption>
+    </figure>
+  );
+}
+
+function CoverConceptMap() {
+  return (
+    <div className="m13-cover-map" aria-label="Lesson path from examples to a learned concept">
+      <div><b>Examples</b><span>positive and negative evidence</span></div>
+      <i aria-hidden="true">→</i>
+      <div><b>Operators</b><span>generalize and specialize</span></div>
+      <i aria-hidden="true">→</i>
+      <div><b>Concept</b><span>a reusable decision boundary</span></div>
+    </div>
+  );
+}
+
+const learningCurveModes = [
+  { label: "Practice", level: 82, note: "Performance improves across varied trials: plausible evidence of transferable learning." },
+  { label: "Memorize", level: 64, note: "The repeated item improves, but a new item may reveal that the system memorized instead of generalized." },
+  { label: "No feedback", level: 35, note: "More experience alone does not guarantee improvement when errors never guide an update." },
+];
+
+function LearningCurveLab() {
+  const [active, setActive] = useState(0);
+  const mode = learningCurveModes[active];
+  return (
+    <div className="m13-learning-curve-lab">
+      <nav aria-label="Learning curve conditions">
+        {learningCurveModes.map((entry, index) => (
+          <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>
+        ))}
+      </nav>
+      <div className="m13-learning-curve" style={{ "--curve-level": `${mode.level}%` } as CSSProperties}>
+        <i />
+        <span>performance</span>
+        <b>experience or time →</b>
+        {[1, 2, 3, 4].map(point => <em key={point} style={{ left: `${16 + point * 16}%`, bottom: `${22 + (mode.level * point) / 5}%` }} />)}
+      </div>
+      <p><strong>{mode.label}:</strong> {mode.note}</p>
+    </div>
+  );
+}
+
+const processStages = [
+  { label: "Input", title: "Attention selects experience", note: "Reading, observing, touching, and doing provide signals; not every signal enters working memory." },
+  { label: "Process", title: "Working processes connect new and known", note: "Processing speed, working memory, logic, and sensory processing transform the selected input." },
+  { label: "Store", title: "Long-term memory becomes a knowledge bank", note: "Learning changes what can be retrieved later, not just what is visible in the moment." },
+  { label: "Output", title: "Performance makes learning observable", note: "An answer or action is evidence only when the task and measure are clearly specified." },
+];
+
+function CognitiveProcessExplorer() {
+  const [active, setActive] = useState(0);
+  const item = processStages[active];
+  return (
+    <div className="m13-process-explorer">
+      <SourceMediaFigure file="image1.jpeg" alt="How We Learn model showing input, automatic processing, higher thinking, a knowledge bank, and output" caption="Input is processed and connected with known information before learned knowledge supports output." />
+      <section>
+        <nav aria-label="Human learning process stages">
+          {processStages.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button"><span>{index + 1}</span>{entry.label}</button>)}
+        </nav>
+        <div className="m13-process-detail"><span>Trace stage {active + 1}</span><h3>{item.title}</h3><p>{item.note}</p></div>
+      </section>
+    </div>
+  );
+}
+
+const conceptLevels = [
+  { label: "Label", value: "ball", role: "A shared name points to a class, but the word alone does not explain membership." },
+  { label: "Concept", value: "round object", role: "Properties and relations provide a reusable description of possible members." },
+  { label: "Knowledge", value: "ball game → sport", role: "Connections place the concept inside a larger system of meaning." },
+  { label: "Use", value: "recognize · reason · act", role: "A represented concept supports classification, inference, and action." },
+];
+
+function ConceptMeaningExplorer() {
+  const [active, setActive] = useState(0);
+  const item = conceptLevels[active];
+  return (
+    <div className="m13-concept-explorer">
+      <nav aria-label="From label to concept use">{conceptLevels.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button"><span>{index + 1}</span><b>{entry.label}</b></button>)}</nav>
+      <section><span>{item.label}</span><h3>{item.value}</h3><p>{item.role}</p><div aria-hidden="true"><i className="ball" /><i className="arrow">→</i><i className="network">●—●—●</i></div></section>
+    </div>
+  );
+}
+
+const animalClasses = [
+  { label: "Dogs", file: "image2.jpeg" as const, alt: "A diverse group of dogs", clue: "Many sizes, colors, and shapes share enough recurring properties to support one dog class." },
+  { label: "Cats", file: "image3.jpeg" as const, alt: "A group of kittens", clue: "Similarity within one image is useful, but varied examples are needed to avoid a kitten-only concept." },
+  { label: "Birds", file: "image4.jpeg" as const, alt: "Several bird species including duck, pheasant, pigeon, goose, guinea fowl, and turkey", clue: "A broad bird concept must tolerate large variation while excluding non-birds." },
+];
+
+function AnimalConceptLab() {
+  const [activeClass, setActiveClass] = useState(0);
+  const [answer, setAnswer] = useState<number | null>(null);
+  const item = animalClasses[activeClass];
+  return (
+    <div className="m13-animal-lab">
+      <section>
+        <nav aria-label="Animal class source examples">{animalClasses.map((entry, index) => <button className={activeClass === index ? "active" : ""} key={entry.label} onClick={() => { setActiveClass(index); setAnswer(null); }} type="button">{entry.label}</button>)}</nav>
+        <SourceMediaFigure file={item.file} alt={item.alt} caption={item.clue} />
+      </section>
+      <div>
+        <AnimalInquiry />
+        <div className="m13-animal-check"><strong>Quick check: what does one labeled photo justify?</strong><button className={answer === 0 ? "incorrect" : ""} onClick={() => setAnswer(0)} type="button">The complete class concept</button><button className={answer === 1 ? "correct" : ""} onClick={() => setAnswer(1)} type="button">One example plus a tentative hypothesis</button>{answer !== null && <p>{answer === 1 ? "Correct: more varied examples and feedback test whether the hypothesis generalizes." : "Not yet: one photo can be memorized and may hide important class variation."}</p>}</div>
+      </div>
     </div>
   );
 }
@@ -201,6 +324,26 @@ function LearningMethodStudio() {
         <p>{item.example}</p>
         <small>Instructor prompt: What information changed, and what reusable knowledge was produced?</small>
       </section>
+    </div>
+  );
+}
+
+const simonCases = [
+  { label: "Same quiz", change: true, better: true, population: false, verdict: "Possible memorization", explanation: "The system changed and improved, but repeating identical questions does not establish performance on another task from the same population." },
+  { label: "New quiz", change: true, better: true, population: true, verdict: "Evidence of learning", explanation: "The system changed after experience and improved on unseen but related cases drawn from the same population." },
+  { label: "No update", change: false, better: true, population: true, verdict: "Not system learning", explanation: "A lucky score increase without a change in the system does not satisfy Simon's definition." },
+];
+
+function SimonDefinitionDemo() {
+  const [active, setActive] = useState(1);
+  const item = simonCases[active];
+  return (
+    <div className="m13-simon-demo">
+      <nav aria-label="Test cases for Simon's machine-learning definition">{simonCases.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}</nav>
+      <div className="m13-simon-criteria">
+        {[['System changed', item.change], ['Performance improved', item.better], ['Related population', item.population]].map(([label, pass]) => <article className={pass ? "pass" : "fail"} key={String(label)}><span>{pass ? "✓" : "×"}</span><strong>{label}</strong></article>)}
+      </div>
+      <section><span>{item.verdict}</span><p>{item.explanation}</p></section>
     </div>
   );
 }
@@ -364,6 +507,48 @@ function CoverageLab() {
         <p><strong>Covers:</strong> {item.covers}</p>
         <p>{item.result}</p>
       </section>
+    </div>
+  );
+}
+
+const conceptSpaceViews = [
+  { label: "Specific", focus: "specific", title: "Examples sit near the bottom", detail: "Descriptions such as obj(small, red, ball) cover few instances and preserve many constants." },
+  { label: "Generalize", focus: "generalize", title: "Move upward by removing restrictions", detail: "Replacing constants with variables or moving to a parent class increases coverage." },
+  { label: "Specialize", focus: "specialize", title: "Move downward by adding restrictions", detail: "A counterexample can force a return toward a narrower candidate that excludes it." },
+  { label: "Boundary", focus: "boundary", title: "Stop at a useful candidate boundary", detail: "The goal is not the top or bottom of the space, but a description consistent with the available evidence." },
+];
+
+function ConceptSpaceExplorer() {
+  const [active, setActive] = useState(1);
+  const item = conceptSpaceViews[active];
+  return (
+    <div className={`m13-concept-space-explorer ${item.focus}`}>
+      <SourceMediaFigure file="image6.png" alt="Concept space lattice from specific object descriptions to the fully general obj(X, Y, Z)" caption="Each connecting line is a legal move between neighboring candidate concepts." />
+      <section>
+        <nav aria-label="Explore directions in the concept space">{conceptSpaceViews.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}</nav>
+        <div><span>Concept-space trace</span><h3>{item.title}</h3><p>{item.detail}</p><i aria-hidden="true">{item.focus === "specialize" ? "↓" : item.focus === "specific" ? "●" : "↑"}</i></div>
+      </section>
+    </div>
+  );
+}
+
+const designCases = [
+  { label: "Face", target: "identity or face/non-face", representation: "visual features and class labels", method: "induction from labeled images", evidence: "unseen people, lighting, and demographic groups" },
+  { label: "Voice", target: "speaker, words, or intent", representation: "audio features over time", method: "pattern learning from recordings", evidence: "unseen voices, accents, noise, and devices" },
+  { label: "Go", target: "a move-selection strategy", representation: "board state and action values", method: "experience, search, and feedback", evidence: "games against unseen opponents and strategies" },
+  { label: "Credit", target: "repayment-risk estimate", representation: "applicant variables and score", method: "induction from historical outcomes", evidence: "future cohorts plus subgroup error checks" },
+];
+
+function LearningSystemDesignLab() {
+  const [active, setActive] = useState(0);
+  const item = designCases[active];
+  return (
+    <div className="m13-design-lab">
+      <nav aria-label="Learning system cases">{designCases.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}</nav>
+      <section>
+        {[["Target", item.target], ["Representation", item.representation], ["Method", item.method], ["Evidence", item.evidence]].map(([label, value], index) => <article key={label}><span>{index + 1}</span><div><strong>{label}</strong><p>{value}</p></div></article>)}
+      </section>
+      <SearchCallout label="Pair prompt" tone="amber">Change one design choice. Which other choices must change with it, and why?</SearchCallout>
     </div>
   );
 }
@@ -745,11 +930,12 @@ const slides: SourceLessonSlide[] = [
     subtitle: "From human learning actions to Winston's arch-learning program.",
     content: (
       <div className="m13-cover">
-        <SourceFrame
-          slide={1}
-          alt="CPSC 481 Machine Learning Part A title page"
-          caption="CPSC 481 course context and links to advanced machine-learning study."
-        />
+        <div className="m13-cover-visual">
+          <span>CPSC 481 · Machine learning Part A</span>
+          <h3>Examples change what a learner can cover.</h3>
+          <CoverConceptMap />
+          <small>Concept formation is a search through possible descriptions.</small>
+        </div>
         <section>
           <span>Meeting 13 · 75 minutes</span>
           <h3>How can examples change a system&apos;s knowledge?</h3>
@@ -787,11 +973,7 @@ const slides: SourceLessonSlide[] = [
         <section>
           <blockquote>Learning is acquiring new knowledge, skills, values, or understanding.</blockquote>
           <p>It can occur through training or education, personal development, or experience.</p>
-          <div className="m13-learning-curve">
-            <i />
-            <span>performance</span>
-            <b>experience or time →</b>
-          </div>
+          <LearningCurveLab />
           <SearchCallout label="Interpret the curve" tone="amber">
             A learning curve is evidence of changing performance, not by itself proof of understanding.
           </SearchCallout>
@@ -805,22 +987,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Human learning · Cognitive process",
     title: "Learning actions transform experience into knowledge",
     content: (
-      <div className="m13-explain-source">
-        <SourceFrame
-          slide={3}
-          alt="Cognitive process of human learning with people reading, observing, touching, doing, and thinking"
-          caption="The people and actions in the source image are instructional content, not decoration."
-        />
-        <section>
-          <div className="m13-action-chain">
-            {["read", "observe", "touch", "do", "think"].map((action, index) => (
-              <span key={action}><b>{String(index + 1).padStart(2, "0")}</b>{action}</span>
-            ))}
-          </div>
-          <h3>Physical action can strengthen what is learned.</h3>
-          <p>For a computer system, identify the corresponding observations, interactions, stored representation, and performance change.</p>
-        </section>
-      </div>
+      <CognitiveProcessExplorer />
     ),
     note: "Timing: 3 minutes. Use the source speaker note: compare examples of human-brain learning with computer systems. Students map observe, act, and think to data, interaction, and computation without claiming that the processes are identical.",
     sourceSlides: [3],
@@ -837,12 +1004,7 @@ const slides: SourceLessonSlide[] = [
         />
         <section>
           <blockquote>A concept is a cognitive unit of meaning, an abstract idea or a mental symbol defined as a “unit of knowledge.”</blockquote>
-          <div className="m13-concept-ladder">
-            <article><span>Label</span><strong>ball</strong><p>a name</p></article>
-            <article><span>Concept</span><strong>round object</strong><p>properties and relations</p></article>
-            <article><span>Knowledge</span><strong>ball game → sport</strong><p>connected concepts</p></article>
-            <article><span>Use</span><strong>recognize · reason · act</strong><p>application</p></article>
-          </div>
+          <ConceptMeaningExplorer />
         </section>
       </div>
     ),
@@ -853,14 +1015,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Concept learning · Inquiry",
     title: "A baby's animal classes expose the central learning questions",
     content: (
-      <div className="m13-source-practice">
-        <SourceFrame
-          slide={5}
-          alt="Baby animal-class learning page with dog, cat, bird, and animal images"
-          caption="Four animal classes anchor five questions about how concepts are learned."
-        />
-        <AnimalInquiry />
-      </div>
+      <AnimalConceptLab />
     ),
     note: "Timing: 4 minutes. Move through all five source questions. Assign one question to each group, then compare the roles of labels, similarity, examples, and feedback.",
     sourceSlides: [5],
@@ -896,11 +1051,7 @@ const slides: SourceLessonSlide[] = [
           <blockquote>
             “Any change in a system that allows it to perform better the second time on repetition of the same task or on another task drawn from the same population.”
           </blockquote>
-          <div>
-            <article><strong>change</strong><p>the system is different after experience</p></article>
-            <article><strong>performance</strong><p>the improvement needs a task measure</p></article>
-            <article><strong>population</strong><p>the claim extends beyond one memorized case</p></article>
-          </div>
+          <SimonDefinitionDemo />
         </section>
       </div>
     ),
@@ -1017,23 +1168,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Concept space · Visual model",
     title: "Generalize upward; specialize downward",
-    content: (
-      <div className="m13-explain-source">
-        <SourceFrame
-          slide={10}
-          alt="Concept-space diagram with generalization and specialization directions"
-          caption="Candidate expressions span a structured path from specific to general."
-        />
-        <section className="m13-concept-space-notes">
-          <article><span>Too specific</span><strong>obj</strong><p>It names almost no reusable concept.</p></article>
-          <article><span>Candidate boundary</span><strong>obj(Y, Z, ball)</strong><p>Variable size and color; ball shape retained.</p></article>
-          <article><span>Too general</span><strong>obj(X, Y, Z)</strong><p>It may cover non-balls such as cubes or bricks.</p></article>
-          <SearchCallout label="Source note" tone="amber">
-            Here “ball” is treated as a shape category—contrasted with cube or brick—not merely as the property “round.”
-          </SearchCallout>
-        </section>
-      </div>
-    ),
+    content: <ConceptSpaceExplorer />,
     note: "Timing: 2 minutes. Trace the direction arrows on the exact diagram. Preserve the speaker-note clarification about ball as a shape category.",
     sourceSlides: [10],
   },
@@ -1047,12 +1182,7 @@ const slides: SourceLessonSlide[] = [
           alt="Developing learning systems questions from balls and arches to faces, voices, games, credit, and investment"
           caption="The complete problem list stays visible as a bridge from concepts to systems."
         />
-        <section className="m13-design-grid">
-          <article><span>Target</span><p>What concept, strategy, pattern, or forecast should be learned?</p></article>
-          <article><span>Representation</span><p>How will the learned knowledge be stored and used?</p></article>
-          <article><span>Method</span><p>Which operators transform examples into a candidate?</p></article>
-          <article><span>Evidence</span><p>What examples and performance tests justify the claim?</p></article>
-        </section>
+        <LearningSystemDesignLab />
       </div>
     ),
     note: "Timing: 3 minutes. Preserve all source problems: ball, arch, face, voice, chess or Go, credit, and investment. Assign one system to each pair and require answers for all four design questions.",
