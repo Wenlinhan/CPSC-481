@@ -1,0 +1,4063 @@
+{
+  "version": 1,
+  "lesson": "10",
+  "meeting": "10",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Lesson 10: Genetic Programming, Artificial Life, and Swarm Intelligence",
+  "route": "/lessons/10",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Can a computer search over programs—not just numbers?",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Lesson ten asks what changes when the candidate solution is itself a program. In ordinary genetic algorithms, a chromosome may encode numbers or a fixed route. Genetic programming, or GP, evolves executable structure. The individuals are little programs that can run, fail, surprise us, and occasionally behave like an intern who discovered recursion before discovering comments.",
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Lesson ten asks what changes when the",
+            "focuses": [
+              {
+                "phrase": "Lesson ten asks what changes when the",
+                "selector": ".l10-hero > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The driving question has four verbs: represent, execute, score, and vary. We need a language for candidate programs, an interpreter that runs them, a fitness function that evaluates behavior, and operators that change program structure without producing nonsense. Selection then makes useful partial programs more likely to survive and recombine.",
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "The driving question has four verbs: represent,",
+            "focuses": [
+              {
+                "phrase": "The driving question has four verbs: represent,",
+                "selector": ".l10-hero > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The driving question has four verbs: represent,",
+                "type": "popup",
+                "label": "Programs become the population",
+                "text": "Programs become the population",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The lesson broadens from GP to artificial life and swarm intelligence. Artificial life asks which life-like processes become visible when we construct systems. Swarm methods ask how local rules and shared signals create organized global behavior. The unifying idea is emergence: complex results can grow from repeated simple interactions.",
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "The lesson broadens from GP to artificial",
+            "focuses": [
+              {
+                "phrase": "The lesson broadens from GP to artificial",
+                "selector": ".l10-hero > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Use a recipe metaphor carefully. A fixed chromosome is like a list of ingredient quantities; a GP individual is closer to the entire recipe, including conditional steps and loops. Changing one subtree can replace a whole cooking procedure. That flexibility expands the search space and makes validity, cost, and interpretability central design problems.",
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "Use a recipe metaphor carefully. A fixed",
+            "focuses": [
+              {
+                "phrase": "Use a recipe metaphor carefully. A fixed",
+                "selector": ".l10-hero > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "By the end, you should be able to contrast GA and GP representations, trace program-tree generation, explain subtree mutation and crossover, design a maze fitness function, and distinguish PSO, bee recruitment, and ant pheromone memory. The goal is not to memorize animal mascots. It is to identify representation, feedback, and state in each algorithm.",
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "By the end, you should be able",
+            "focuses": [
+              {
+                "phrase": "By the end, you should be able",
+                "selector": ".l10-hero > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Enlarge program search visual",
+          "text": "Open the program-search visual. The enlarged image makes the contrast literal: ordinary optimization adjusts values inside a fixed recipe, while genetic programming can rearrange the recipe itself. It is like a cooking contest where evolution may change not only the amount of salt, but also the order of the steps and whether a blender suddenly joins the team.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-generated .image-lightbox-trigger",
+            "index": 0,
+            "label": "Enlarge the program-search visual"
+          },
+          "visualDesign": {
+            "focusSelector": ".source-image-lightbox img",
+            "focusIndex": 0,
+            "focusPhrase": "Open the program-search visual. The enlarged image",
+            "focuses": [
+              {
+                "phrase": "Open the program-search visual. The enlarged image",
+                "selector": ".source-image-lightbox img",
+                "index": 0,
+                "label": "Enlarge program search visual"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Close program search visual",
+          "text": "Close the enlarged visual and return to the complete slide. Keep the distinction: parameter search asks which settings work, while program search asks which executable structure works.",
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged program-search visual"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Close the enlarged visual and return to",
+            "focuses": [
+              {
+                "phrase": "Close the enlarged visual and return to",
+                "selector": ".l10-hero > *",
+                "index": 0,
+                "label": "Close program search visual"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Genetic programming evolves executable structures",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The definition has three cards. A candidate is an executable program, not merely a parameter vector. Its quality can only be judged after execution on tasks or examples. That means evaluation may be expensive, noisy, unsafe, or capable of timing out, so the runtime environment becomes part of the optimization problem.",
+          "visualDesign": {
+            "focusSelector": ".l10-definition > *",
+            "focusIndex": 0,
+            "focusPhrase": "The definition has three cards. A candidate",
+            "focuses": [
+              {
+                "phrase": "The definition has three cards. A candidate",
+                "selector": ".l10-definition > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The representation is usually a parse tree whose size and shape can change. Internal nodes are functions and leaves are terminals. Unlike a fixed twenty-two-bit chromosome, two program trees may contain different numbers of nodes. Variable length lets GP discover structure, but it also creates the danger of uncontrolled growth called bloat.",
+          "visualDesign": {
+            "focusSelector": ".l10-definition > *",
+            "focusIndex": 1,
+            "focusPhrase": "The representation is usually a parse tree",
+            "focuses": [
+              {
+                "phrase": "The representation is usually a parse tree",
+                "selector": ".l10-definition > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The representation is usually a parse tree",
+                "type": "popup",
+                "label": "Candidate programs and variable trees",
+                "text": "Candidate programs and variable trees",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The search mechanism remains evolutionary: initialize programs, execute and score them, select parents, apply program-aware variation, and update the population. GP is therefore not a different universe from GA. It is the same outer evolutionary contract with a representation that carries syntax, control, and executable meaning.",
+          "visualDesign": {
+            "focusSelector": ".l10-definition > *",
+            "focusIndex": 0,
+            "focusPhrase": "The search mechanism remains evolutionary: initialize programs,",
+            "focuses": [
+              {
+                "phrase": "The search mechanism remains evolutionary: initialize programs,",
+                "selector": ".l10-definition > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "A useful boundary: evolving source text character by character is technically possible but usually gives terrible neighborhoods. Most random edits break syntax, and small textual changes may have arbitrary effects. Tree or grammar representations bias variation toward structurally valid programs. Representation supplies the search with a usable grammar.",
+          "visualDesign": {
+            "focusSelector": ".l10-definition > *",
+            "focusIndex": 1,
+            "focusPhrase": "A useful boundary: evolving source text character",
+            "focuses": [
+              {
+                "phrase": "A useful boundary: evolving source text character",
+                "selector": ".l10-definition > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Ask the three-card audit on any GP claim. What exactly executes? How is it represented? What evidence determines reproduction? If a paper says programs evolved but never specifies these three items, the method description has the nutritional value of a menu that says only, 'food happened.'",
+          "visualDesign": {
+            "focusSelector": ".l10-definition > *",
+            "focusIndex": 0,
+            "focusPhrase": "Ask the three-card audit on any GP",
+            "focuses": [
+              {
+                "phrase": "Ask the three-card audit on any GP",
+                "selector": ".l10-definition > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Lisp makes hierarchical program structure visible",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Lisp places a function before its arguments. In the displayed prefix expression, the outer plus is the root call. The values two and three are direct arguments, while the multiplication and division expressions are nested arguments that become complete child subtrees.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-context > *",
+            "focusIndex": 0,
+            "focusPhrase": "Lisp places a function before its arguments.",
+            "focuses": [
+              {
+                "phrase": "Lisp places a function before its arguments.",
+                "selector": ".l10-lisp-context > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Parentheses make hierarchy explicit. Read an opening parenthesis, then a function, then the arguments required by that function. Nested parentheses mean evaluate a child call before passing its result upward. Lisp is the source example's language; genetic programming itself is not restricted to Lisp.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-context > *",
+            "focusIndex": 1,
+            "focusPhrase": "Parentheses make hierarchy explicit. Read an opening",
+            "focuses": [
+              {
+                "phrase": "Parentheses make hierarchy explicit. Read an opening",
+                "selector": ".l10-lisp-context > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Parentheses make hierarchy explicit. Read an opening",
+                "type": "popup",
+                "label": "Prefix syntax exposes the tree",
+                "text": "Prefix syntax exposes the tree",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The slide defines three terms. A function is an operator with argument positions. A terminal is a variable, constant, sensor, or action with no children. A parse tree records the hierarchical evaluation structure connecting those functions and terminals.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-context > *",
+            "focusIndex": 0,
+            "focusPhrase": "The slide defines three terms. A function",
+            "focuses": [
+              {
+                "phrase": "The slide defines three terms. A function",
+                "selector": ".l10-lisp-context > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Prefix notation is convenient because there is no ambiguity about precedence. The tree and expression carry the same computation. Translation between them should be testable in both directions: parse text into a tree, then serialize the tree and confirm that evaluation stays equivalent.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-context > *",
+            "focusIndex": 1,
+            "focusPhrase": "Prefix notation is convenient because there is",
+            "focuses": [
+              {
+                "phrase": "Prefix notation is convenient because there is",
+                "selector": ".l10-lisp-context > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Do not mistake readable syntax for a good search space. Lisp can express the tree cleanly, but designers must still choose safe primitives, arities, types, depth limits, and fitness. Parentheses organize the guests; they do not guarantee the dinner conversation is productive.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-context > *",
+            "focusIndex": 0,
+            "focusPhrase": "Do not mistake readable syntax for a",
+            "focuses": [
+              {
+                "phrase": "Do not mistake readable syntax for a",
+                "selector": ".l10-lisp-context > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "The program text and tree encode the same computation",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Read the displayed tree from its leaves upward. Internal nodes come from the function set: addition, subtraction, multiplication, and protected division. Each function has an arity, the number of children it requires. A binary plus node is incomplete until it has two child programs.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-tree > *",
+            "focusIndex": 0,
+            "focusPhrase": "Read the displayed tree from its leaves",
+            "focuses": [
+              {
+                "phrase": "Read the displayed tree from its leaves",
+                "selector": ".l10-lisp-tree > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Leaves come from the terminal set: constants such as two, three, seven, and five, plus variables X and Y. Terminals end recursion because they require no child expressions. When a variable leaf executes, its value comes from the current input case; a constant supplies the same value every time.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-tree > *",
+            "focusIndex": 1,
+            "focusPhrase": "Leaves come from the terminal set: constants",
+            "focuses": [
+              {
+                "phrase": "Leaves come from the terminal set: constants",
+                "selector": ".l10-lisp-tree > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Leaves come from the terminal set: constants",
+                "type": "popup",
+                "label": "Text and parse tree are equivalent",
+                "text": "Text and parse tree are equivalent",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The tree encodes a prefix-style expression. Execution recursively evaluates children and sends their results to the parent function. This makes the tree both data and a program. It is a blueprint that can be traversed, copied, replaced, and executed without first flattening it into a line of text.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-tree > *",
+            "focusIndex": 0,
+            "focusPhrase": "The tree encodes a prefix-style expression. Execution",
+            "focuses": [
+              {
+                "phrase": "The tree encodes a prefix-style expression. Execution",
+                "selector": ".l10-lisp-tree > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Protected division illustrates closure. Ordinary division can fail at zero. GP often defines protected division to return a safe fallback when the denominator is zero. Then any generated tree composed from the primitive set can run. We change the operator slightly so evolution cannot discover that crashing is a creative answer.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-tree > *",
+            "focusIndex": 1,
+            "focusPhrase": "Protected division illustrates closure. Ordinary division can",
+            "focuses": [
+              {
+                "phrase": "Protected division illustrates closure. Ordinary division can",
+                "selector": ".l10-lisp-tree > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Before running GP, test the primitive set independently. Verify arity, types, boundary behavior, and execution limits. The search will combine primitives in arrangements no human would volunteer to write. If one primitive is unsafe, evolution will eventually find the unsafe corner with the persistence of a toddler testing cabinet locks.",
+          "visualDesign": {
+            "focusSelector": ".l10-lisp-tree > *",
+            "focusIndex": 0,
+            "focusPhrase": "Before running GP, test the primitive set",
+            "focuses": [
+              {
+                "phrase": "Before running GP, test the primitive set",
+                "selector": ".l10-lisp-tree > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Initialize, evaluate, select, vary, replace, and repeat",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Begin with random programs. Each tree must obey the grammar, depth constraints, and type rules. Random generation should create structural diversity without filling the population with programs so enormous that the first evaluation finishes during the next academic catalog cycle.",
+          "visualDesign": {
+            "focusSelector": ".l10-pseudocode > *",
+            "focusIndex": 0,
+            "focusPhrase": "Begin with random programs. Each tree must",
+            "focuses": [
+              {
+                "phrase": "Begin with random programs. Each tree must",
+                "selector": ".l10-pseudocode > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Execute every program on the evaluation cases and compute fitness. Fitness may reward prediction accuracy, navigation success, low resource use, or a combination. If behavior is stochastic, repeat trials or share scenarios so lucky programs do not receive a hereditary title.",
+          "visualDesign": {
+            "focusSelector": ".l10-pseudocode > *",
+            "focusIndex": 1,
+            "focusPhrase": "Execute every program on the evaluation cases",
+            "focuses": [
+              {
+                "phrase": "Execute every program on the evaluation cases",
+                "selector": ".l10-pseudocode > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Execute every program on the evaluation cases",
+                "type": "popup",
+                "label": "The complete GP control contract",
+                "text": "The complete GP control contract",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Selection chooses programs to reproduce. Subtree crossover exchanges components between parents; subtree mutation replaces one component with a new random subtree. These operators preserve syntactic structure when they cut at node boundaries, but they do not automatically preserve good behavior.",
+          "visualDesign": {
+            "focusSelector": ".l10-pseudocode > *",
+            "focusIndex": 0,
+            "focusPhrase": "Selection chooses programs to reproduce. Subtree crossover",
+            "focuses": [
+              {
+                "phrase": "Selection chooses programs to reproduce. Subtree crossover",
+                "selector": ".l10-pseudocode > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Create the new population using a generational or steady-state replacement policy. Elitism can preserve the best known program, while diversity mechanisms prevent one family from monopolizing the population. The population is a portfolio of executable hypotheses, not merely a queue waiting behind the current champion.",
+          "visualDesign": {
+            "focusSelector": ".l10-pseudocode > *",
+            "focusIndex": 1,
+            "focusPhrase": "Create the new population using a generational",
+            "focuses": [
+              {
+                "phrase": "Create the new population using a generational",
+                "selector": ".l10-pseudocode > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Check termination after a target fitness, evaluation budget, generation limit, or lack of improvement. Return the best supported program and report its held-out performance, size, and cost. A long family tree is evidence of compute spent, not proof that the final descendant is optimal.",
+          "visualDesign": {
+            "focusSelector": ".l10-pseudocode > *",
+            "focusIndex": 0,
+            "focusPhrase": "Check termination after a target fitness, evaluation",
+            "focuses": [
+              {
+                "phrase": "Check termination after a target fitness, evaluation",
+                "selector": ".l10-pseudocode > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Fitness guides reproduction; operators create the next programs",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The lifecycle begins with random programs, then executes and scores every individual. Selection samples parents using fitness evidence. Variation edits or recombines their trees, and the resulting valid offspring fill a complete new population P prime.",
+          "visualDesign": {
+            "focusSelector": ".l10-cycle > *",
+            "focusIndex": 0,
+            "focusPhrase": "The lifecycle begins with random programs, then",
+            "focuses": [
+              {
+                "phrase": "The lifecycle begins with random programs, then",
+                "selector": ".l10-cycle > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Fitness guides reproductive probability; it does not directly edit code. A high score increases sampling opportunity, while crossover and mutation perform the structural changes. Keeping those roles separate prevents the common explanation that fitness somehow reaches into a tree and repairs it.",
+          "visualDesign": {
+            "focusSelector": ".l10-cycle > *",
+            "focusIndex": 1,
+            "focusPhrase": "Fitness guides reproductive probability; it does not",
+            "focuses": [
+              {
+                "phrase": "Fitness guides reproductive probability; it does not",
+                "selector": ".l10-cycle > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Fitness guides reproductive probability; it does not",
+                "type": "popup",
+                "label": "One complete GP population cycle",
+                "text": "One complete GP population cycle",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Replacement determines whether the whole parent generation disappears, whether elites survive, or whether updates occur continuously. The diagram shows a generational cycle: complete P prime, assign it as the new P, evaluate, and repeat.",
+          "visualDesign": {
+            "focusSelector": ".l10-cycle > *",
+            "focusIndex": 0,
+            "focusPhrase": "Replacement determines whether the whole parent generation",
+            "focuses": [
+              {
+                "phrase": "Replacement determines whether the whole parent generation",
+                "selector": ".l10-cycle > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The stop decision may use target performance, evaluation budget, generation limit, or stalled improvement. A yes exits with the best supported program. A no returns to the cycle. Stopping is evidence policy, not a tiny finish-line flag discovered inside the tree.",
+          "visualDesign": {
+            "focusSelector": ".l10-cycle > *",
+            "focusIndex": 1,
+            "focusPhrase": "The stop decision may use target performance,",
+            "focuses": [
+              {
+                "phrase": "The stop decision may use target performance,",
+                "selector": ".l10-cycle > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Audit one loop by following a single useful subtree. It appears in a parent, wins reproductive opportunity, survives a legal operator, enters P prime, and receives a new score in context. That trace explains cumulative search more clearly than a cloud of animated family-tree arrows.",
+          "visualDesign": {
+            "focusSelector": ".l10-cycle > *",
+            "focusIndex": 0,
+            "focusPhrase": "Audit one loop by following a single",
+            "focuses": [
+              {
+                "phrase": "Audit one loop by following a single",
+                "selector": ".l10-cycle > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Function and terminal sets define what GP can build",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The function set contains plus, minus, multiplication, and protected division. Every function declares an arity. Choosing a binary function creates two open child positions that recursive generation must fill.",
+          "visualDesign": {
+            "focusSelector": ".l10-primitives > *",
+            "focusIndex": 0,
+            "focusPhrase": "The function set contains plus, minus, multiplication,",
+            "focuses": [
+              {
+                "phrase": "The function set contains plus, minus, multiplication,",
+                "selector": ".l10-primitives > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The terminal set contains integers, X, and Y. A terminal closes a branch because it needs no children. Variables receive values from the current task input, while constants supply fixed numeric material.",
+          "visualDesign": {
+            "focusSelector": ".l10-primitives > *",
+            "focusIndex": 1,
+            "focusPhrase": "The terminal set contains integers, X, and",
+            "focuses": [
+              {
+                "phrase": "The terminal set contains integers, X, and",
+                "selector": ".l10-primitives > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The terminal set contains integers, X, and",
+                "type": "popup",
+                "label": "The GP grammar contract",
+                "text": "The GP grammar contract",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The validity rule combines membership and arity: internal nodes come from the function set, leaves come from the terminal set, and each function receives exactly its required arguments. That rule is a grammar for executable candidates.",
+          "visualDesign": {
+            "focusSelector": ".l10-primitives > *",
+            "focusIndex": 2,
+            "focusPhrase": "The validity rule combines membership and arity:",
+            "focuses": [
+              {
+                "phrase": "The validity rule combines membership and arity:",
+                "selector": ".l10-primitives > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Sufficiency asks whether this grammar can express a solution. Closure asks whether every legal combination can execute. Protected division supports closure by defining safe behavior at a zero denominator instead of letting evolution submit a crash report as a candidate.",
+          "visualDesign": {
+            "focusSelector": ".l10-primitives > *",
+            "focusIndex": 0,
+            "focusPhrase": "Sufficiency asks whether this grammar can express",
+            "focuses": [
+              {
+                "phrase": "Sufficiency asks whether this grammar can express",
+                "selector": ".l10-primitives > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Primitive design embeds domain knowledge and bias. Too few primitives exclude useful programs; too many create an enormous, redundant search space. The toolbox should contain what the job needs, not every object found in the garage after midnight.",
+          "visualDesign": {
+            "focusSelector": ".l10-primitives > *",
+            "focusIndex": 1,
+            "focusPhrase": "Primitive design embeds domain knowledge and bias.",
+            "focuses": [
+              {
+                "phrase": "Primitive design embeds domain knowledge and bias.",
+                "selector": ".l10-primitives > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Random generation recursively fills every argument position",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The interactive builder starts with an incomplete root expression. Program generation is recursive: choose either a function or terminal where a node is needed. Choosing a function creates new child positions; choosing a terminal closes that branch.",
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 0,
+            "focusPhrase": "The interactive builder starts with an incomplete",
+            "focuses": [
+              {
+                "phrase": "The interactive builder starts with an incomplete",
+                "selector": ".l10-builder > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A full method forces functions until a minimum depth and then places terminals at the boundary. A grow method allows functions or terminals earlier, producing varied shapes. Ramped half-and-half mixes methods and depth limits to create a more diverse initial population.",
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 1,
+            "focusPhrase": "A full method forces functions until a",
+            "focuses": [
+              {
+                "phrase": "A full method forces functions until a",
+                "selector": ".l10-builder > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "A full method forces functions until a",
+                "type": "popup",
+                "label": "Recursive program generation",
+                "text": "Recursive program generation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Every choice must respect arity. If we place multiplication, two child expressions are required. If we place X or five, recursion stops at that leaf. The generator is like assembling a legal sentence from grammar rules: creativity is welcome, but verbs cannot wander off without their required arguments.",
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 0,
+            "focusPhrase": "Every choice must respect arity. If we",
+            "focuses": [
+              {
+                "phrase": "Every choice must respect arity. If we",
+                "selector": ".l10-builder > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Depth and node limits control resource use. Without them, recursive generation can create huge trees before fitness has evaluated anything. Limits are search biases: they exclude some programs, but they make evaluation feasible and reduce the chance that size alone consumes the experiment.",
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 1,
+            "focusPhrase": "Depth and node limits control resource use.",
+            "focuses": [
+              {
+                "phrase": "Depth and node limits control resource use.",
+                "selector": ".l10-builder > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "As we advance the builder, track which positions are still open. A program is executable only when every function has all required children and every branch ends in a terminal. The final tree is one candidate, not a guarantee that its arithmetic is useful.",
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 0,
+            "focusPhrase": "As we advance the builder, track which",
+            "focuses": [
+              {
+                "phrase": "As we advance the builder, track which",
+                "selector": ".l10-builder > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Builder state 2",
+          "text": "Choose generation step two. Terminal two fills the first open argument of the root plus. The branch closes because a terminal has no children, while other root arguments remain open.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-builder section > div button",
+            "index": 1,
+            "label": "Show generation step 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose generation step two. Terminal two fills",
+            "focuses": [
+              {
+                "phrase": "Choose generation step two. Terminal two fills",
+                "selector": ".l10-builder > *",
+                "index": 1,
+                "label": "Builder state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Builder state 3",
+          "text": "Choose generation step three. Terminal three fills the next root argument. The partial expression is legal but incomplete; every remaining function position still needs a recursively generated child.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-builder section > div button",
+            "index": 2,
+            "label": "Show generation step 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose generation step three. Terminal three fills",
+            "focuses": [
+              {
+                "phrase": "Choose generation step three. Terminal three fills",
+                "selector": ".l10-builder > *",
+                "index": 0,
+                "label": "Builder state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Builder state 4",
+          "text": "Choose generation step four. Multiplication becomes a nested function. Selecting a function creates new argument obligations, so the generator must later supply both operands before this branch can execute.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-builder section > div button",
+            "index": 3,
+            "label": "Show generation step 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose generation step four. Multiplication becomes a",
+            "focuses": [
+              {
+                "phrase": "Choose generation step four. Multiplication becomes a",
+                "selector": ".l10-builder > *",
+                "index": 1,
+                "label": "Builder state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Builder state 5",
+          "text": "Choose generation step five. Division is added and the multiplication branch receives X and seven. The hot node marks the newest structural choice, while division still contains open positions.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-builder section > div button",
+            "index": 4,
+            "label": "Show generation step 5"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose generation step five. Division is added",
+            "focuses": [
+              {
+                "phrase": "Choose generation step five. Division is added",
+                "selector": ".l10-builder > *",
+                "index": 0,
+                "label": "Builder state 5"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Builder state 6",
+          "text": "Choose generation step six. Y and five close the division branch. Every function now has its required children and every path ends in a terminal, producing a syntactically complete executable program.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-builder section > div button",
+            "index": 5,
+            "label": "Show generation step 6"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-builder > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose generation step six. Y and five",
+            "focuses": [
+              {
+                "phrase": "Choose generation step six. Y and five",
+                "selector": ".l10-builder > *",
+                "index": 1,
+                "label": "Builder state 6"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Mutation replaces one selected subtree with a random program",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Mutation begins by selecting a node in one parent tree. That node represents the root of a complete subprogram. Delete the selected subtree, generate a replacement that satisfies grammar and depth constraints, and splice it into the same position.",
+          "visualDesign": {
+            "focusSelector": ".l10-operator > *",
+            "focusIndex": 0,
+            "focusPhrase": "Mutation begins by selecting a node in",
+            "focuses": [
+              {
+                "phrase": "Mutation begins by selecting a node in",
+                "selector": ".l10-operator > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Selecting a leaf makes a small structural change, such as replacing X with a constant. Selecting a node near the root can replace most of the program. Mutation severity therefore depends on selection depth and replacement size, not merely on a single probability.",
+          "visualDesign": {
+            "focusSelector": ".l10-operator > *",
+            "focusIndex": 1,
+            "focusPhrase": "Selecting a leaf makes a small structural",
+            "focuses": [
+              {
+                "phrase": "Selecting a leaf makes a small structural",
+                "selector": ".l10-operator > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Selecting a leaf makes a small structural",
+                "type": "popup",
+                "label": "Subtree mutation",
+                "text": "Subtree mutation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The new subtree may improve, harm, or leave fitness unchanged. Neutral mutations can still matter because they alter structure available for future crossover. However, repeated neutral additions may cause bloat, where programs grow without corresponding behavioral improvement.",
+          "visualDesign": {
+            "focusSelector": ".l10-operator > *",
+            "focusIndex": 2,
+            "focusPhrase": "The new subtree may improve, harm, or",
+            "focuses": [
+              {
+                "phrase": "The new subtree may improve, harm, or",
+                "selector": ".l10-operator > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "A type-aware system must ensure the replacement returns the value expected at that position. An arithmetic expression cannot be replaced with a robot action unless the language defines how those types interact. Strongly typed GP turns semantic categories into enforceable constraints.",
+          "visualDesign": {
+            "focusSelector": ".l10-operator > *",
+            "focusIndex": 0,
+            "focusPhrase": "A type-aware system must ensure the replacement",
+            "focuses": [
+              {
+                "phrase": "A type-aware system must ensure the replacement",
+                "selector": ".l10-operator > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Mutation introduces novel structure that may not exist in either parent. It is the evolutionary equivalent of renovating one room without demolishing the whole house. Occasionally the contractor replaces the kitchen with a trampoline; fitness then decides whether that innovation reproduces.",
+          "visualDesign": {
+            "focusSelector": ".l10-operator > *",
+            "focusIndex": 1,
+            "focusPhrase": "Mutation introduces novel structure that may not",
+            "focuses": [
+              {
+                "phrase": "Mutation introduces novel structure that may not",
+                "selector": ".l10-operator > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Crossover swaps subtrees between two parent programs",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Crossover selects one node in each parent. Each selected node defines a complete subtree. Swap those subtrees to create offspring. Cutting at node boundaries preserves syntax because every moved object is already a valid subprogram.",
+          "visualDesign": {
+            "focusSelector": ".l10-crossover > *",
+            "focusIndex": 0,
+            "focusPhrase": "Crossover selects one node in each parent.",
+            "focuses": [
+              {
+                "phrase": "Crossover selects one node in each parent.",
+                "selector": ".l10-crossover > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The operator transmits building blocks: a useful arithmetic transformation, condition, or navigation routine can move into a different context. But context changes meaning. A subtree that helps beneath multiplication may be harmful beneath division, so syntactic validity does not imply semantic compatibility.",
+          "visualDesign": {
+            "focusSelector": ".l10-crossover > *",
+            "focusIndex": 1,
+            "focusPhrase": "The operator transmits building blocks: a useful",
+            "focuses": [
+              {
+                "phrase": "The operator transmits building blocks: a useful",
+                "selector": ".l10-crossover > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The operator transmits building blocks: a useful",
+                "type": "popup",
+                "label": "Subtree crossover",
+                "text": "Subtree crossover",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Depth limits may reject a swap if the inserted subtree makes an offspring too deep. Size-fair crossover tries to exchange similarly sized material, reducing bloat. Typed crossover restricts swaps to subtrees with compatible return types.",
+          "visualDesign": {
+            "focusSelector": ".l10-crossover > *",
+            "focusIndex": 2,
+            "focusPhrase": "Depth limits may reject a swap if",
+            "focuses": [
+              {
+                "phrase": "Depth limits may reject a swap if",
+                "selector": ".l10-crossover > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Compare this with one-point crossover on bits. Bit crossover preserves positions around a cut; subtree crossover preserves hierarchical units. Both encode a hypothesis about what should survive recombination. Operator design is therefore a statement about meaningful modularity.",
+          "visualDesign": {
+            "focusSelector": ".l10-crossover > *",
+            "focusIndex": 0,
+            "focusPhrase": "Compare this with one-point crossover on bits.",
+            "focuses": [
+              {
+                "phrase": "Compare this with one-point crossover on bits.",
+                "selector": ".l10-crossover > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "After crossover, execute unit tests before expensive fitness evaluation. Catch invalid numeric values, timeouts, and unsafe actions. Evolution is permitted to be imaginative; the sandbox is permitted to be unimpressed and pull the plug.",
+          "visualDesign": {
+            "focusSelector": ".l10-crossover > *",
+            "focusIndex": 1,
+            "focusPhrase": "After crossover, execute unit tests before expensive",
+            "focuses": [
+              {
+                "phrase": "After crossover, execute unit tests before expensive",
+                "selector": ".l10-crossover > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Fitness-guided inheritance accumulates useful structure",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The question contrasts evolutionary search with independently random programs. Random generation can occasionally create a good tree, but it does not accumulate discoveries. Every sample forgets what previous samples learned.",
+          "visualDesign": {
+            "focusSelector": ".l10-random > *",
+            "focusIndex": 0,
+            "focusPhrase": "The question contrasts evolutionary search with independently",
+            "focuses": [
+              {
+                "phrase": "The question contrasts evolutionary search with independently",
+                "selector": ".l10-random > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Fitness-based selection creates continuity. Programs containing useful partial structure reproduce more often, allowing mutation and crossover to refine or recombine those parts. Evolution becomes a biased sampling process whose distribution changes with evidence.",
+          "visualDesign": {
+            "focusSelector": ".l10-random > *",
+            "focusIndex": 1,
+            "focusPhrase": "Fitness-based selection creates continuity. Programs containing useful",
+            "focuses": [
+              {
+                "phrase": "Fitness-based selection creates continuity. Programs containing useful",
+                "selector": ".l10-random > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Fitness-based selection creates continuity. Programs containing useful",
+                "type": "popup",
+                "label": "Guided search versus random programs",
+                "text": "Guided search versus random programs",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Trees are not always shorter, random programs can execute, and mutation never guarantees optimality. The correct mechanism is preservation plus variation. A useful building block receives additional trials in related contexts.",
+          "visualDesign": {
+            "focusSelector": ".l10-random > *",
+            "focusIndex": 2,
+            "focusPhrase": "Trees are not always shorter, random programs",
+            "focuses": [
+              {
+                "phrase": "Trees are not always shorter, random programs",
+                "selector": ".l10-random > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The claim still needs conditions. Selection pressure that is too weak resembles random search; pressure that is too strong erases diversity and may lock onto a mediocre family. Cumulative improvement needs both memory of evidence and continued exploration.",
+          "visualDesign": {
+            "focusSelector": ".l10-random > *",
+            "focusIndex": 0,
+            "focusPhrase": "The claim still needs conditions. Selection pressure",
+            "focuses": [
+              {
+                "phrase": "The claim still needs conditions. Selection pressure",
+                "selector": ".l10-random > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Imagine solving a puzzle by keeping promising partial assemblies versus dumping the table after every attempt. Random restart may eventually succeed, but selection lets the algorithm remember that two corner pieces already cooperate. It is less dramatic and much kinder to the carpet.",
+          "visualDesign": {
+            "focusSelector": ".l10-random > *",
+            "focusIndex": 1,
+            "focusPhrase": "Imagine solving a puzzle by keeping promising",
+            "focuses": [
+              {
+                "phrase": "Imagine solving a puzzle by keeping promising",
+                "selector": ".l10-random > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Sensors, actions, and control flow become GP primitives",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "In the maze case, programs control a mouse seeking cheese. The function set contains control structures such as IF movement-blocked and WHILE not-at-cheese. Terminals are executable actions such as move forward, turn left, and turn right.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse > *",
+            "focusIndex": 0,
+            "focusPhrase": "In the maze case, programs control a",
+            "focuses": [
+              {
+                "phrase": "In the maze case, programs control a",
+                "selector": ".l10-mouse > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "This primitive set embeds domain knowledge. IF movement-blocked gives the controller a relevant sensor; movement actions give it legal effectors. If the language lacks a needed observation or action, no amount of evolution can represent the missing behavior.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse > *",
+            "focusIndex": 1,
+            "focusPhrase": "This primitive set embeds domain knowledge. IF",
+            "focuses": [
+              {
+                "phrase": "This primitive set embeds domain knowledge. IF",
+                "selector": ".l10-mouse > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "This primitive set embeds domain knowledge. IF",
+                "type": "popup",
+                "label": "Interactive mouse controller",
+                "text": "Interactive mouse controller",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The displayed program loops until the cheese is reached. When blocked it turns left; otherwise it moves forward. Whether this works depends on maze geometry and execution limits. A loop can navigate, circle forever, or discover that one wall deserves a long-term relationship.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse > *",
+            "focusIndex": 0,
+            "focusPhrase": "The displayed program loops until the cheese",
+            "focuses": [
+              {
+                "phrase": "The displayed program loops until the cheese",
+                "selector": ".l10-mouse > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Sufficiency asks whether the primitives can express successful navigation. Closure asks whether every composition can run. Parsimony asks whether the language and pressure avoid needless complexity. These properties shape the candidate space before fitness begins selecting.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse > *",
+            "focusIndex": 1,
+            "focusPhrase": "Sufficiency asks whether the primitives can express",
+            "focuses": [
+              {
+                "phrase": "Sufficiency asks whether the primitives can express",
+                "selector": ".l10-mouse > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Test controllers on multiple mazes, not only the training layout. A program can memorize one corridor pattern without learning general navigation. Held-out mazes reveal whether the evolved logic transfers when the walls rearrange the furniture.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse > *",
+            "focusIndex": 0,
+            "focusPhrase": "Test controllers on multiple mazes, not only",
+            "focuses": [
+              {
+                "phrase": "Test controllers on multiple mazes, not only",
+                "selector": ".l10-mouse > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mouse FORWARD",
+          "text": "Click FORWARD. The rat moves one legal cell in its current heading and the trail extends. A terminal action changes the simulated environment, so program meaning is visible behavior rather than tree appearance.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 0,
+            "label": "Mouse FORWARD"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse > section",
+            "focusIndex": 0,
+            "focusPhrase": "Click FORWARD. The rat moves one legal",
+            "focuses": [
+              {
+                "phrase": "Click FORWARD. The rat moves one legal",
+                "selector": ".l10-maze-demo, .l10-mouse > section",
+                "index": 0,
+                "label": "Mouse FORWARD"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mouse LEFT",
+          "text": "Click LEFT. The rat rotates ninety degrees in place; its cell does not change. The action still costs one execution unit, which matters when fitness includes computational or behavioral cost.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 1,
+            "label": "Mouse LEFT"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse > section",
+            "focusIndex": 1,
+            "focusPhrase": "Click LEFT. The rat rotates ninety degrees",
+            "focuses": [
+              {
+                "phrase": "Click LEFT. The rat rotates ninety degrees",
+                "selector": ".l10-maze-demo, .l10-mouse > section",
+                "index": 1,
+                "label": "Mouse LEFT"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mouse RIGHT",
+          "text": "Click RIGHT. The heading rotates back without translation. LEFT and RIGHT are distinct terminals even though both preserve position, because their next FORWARD consequences differ.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 2,
+            "label": "Mouse RIGHT"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse > section",
+            "focusIndex": 0,
+            "focusPhrase": "Click RIGHT. The heading rotates back without",
+            "focuses": [
+              {
+                "phrase": "Click RIGHT. The heading rotates back without",
+                "selector": ".l10-maze-demo, .l10-mouse > section",
+                "index": 0,
+                "label": "Mouse RIGHT"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mouse reset",
+          "text": "Click Reset. Position, heading, trail, and action count return to the starting state. Resetting is essential before comparing sibling controllers so one program does not inherit another program's partially solved maze.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 3,
+            "label": "Mouse reset"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse > section",
+            "focusIndex": 1,
+            "focusPhrase": "Click Reset. Position, heading, trail, and action",
+            "focuses": [
+              {
+                "phrase": "Click Reset. Position, heading, trail, and action",
+                "selector": ".l10-maze-demo, .l10-mouse > section",
+                "index": 1,
+                "label": "Mouse reset"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Execute the controller, then score cost and remaining distance",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The maze score is the square of units spent plus remaining distance. Lower is better. A mouse that uses one hundred units and remains ten units from the cheese receives one hundred ten squared, or twelve thousand one hundred.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-fitness > *",
+            "focusIndex": 0,
+            "focusPhrase": "The maze score is the square of",
+            "focuses": [
+              {
+                "phrase": "The maze score is the square of",
+                "selector": ".l10-mouse-fitness > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Units spent rewards efficiency; remaining distance gives partial credit when the mouse fails to finish. Squaring magnifies differences among poor outcomes. The formula therefore defines a specific tradeoff, not an objective truth about navigation.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-fitness > *",
+            "focusIndex": 1,
+            "focusPhrase": "Units spent rewards efficiency; remaining distance gives",
+            "focuses": [
+              {
+                "phrase": "Units spent rewards efficiency; remaining distance gives",
+                "selector": ".l10-mouse-fitness > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Units spent rewards efficiency; remaining distance gives",
+                "type": "popup",
+                "label": "Interactive fitness accounting",
+                "text": "Interactive fitness accounting",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The execution budget is one hundred units. Beyond that, the mouse starves or the run terminates. This prevents infinite loops from consuming unlimited evaluation time. Resource limits are part of fitness semantics because they determine which behaviors receive scores.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-fitness > *",
+            "focusIndex": 0,
+            "focusPhrase": "The execution budget is one hundred units.",
+            "focuses": [
+              {
+                "phrase": "The execution budget is one hundred units.",
+                "selector": ".l10-mouse-fitness > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Inspect loopholes. Could a controller stop early near the cheese and beat a longer successful route? Does turning cost the same as moving? Is Euclidean distance misleading behind walls? A proxy score can reward behavior that looks good numerically while remaining trapped physically.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-fitness > *",
+            "focusIndex": 1,
+            "focusPhrase": "Inspect loopholes. Could a controller stop early",
+            "focuses": [
+              {
+                "phrase": "Inspect loopholes. Could a controller stop early",
+                "selector": ".l10-mouse-fitness > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Fitness is the judge, and evolution is an attorney who reads every clause literally. If the contract rewards standing beside the cheese outside a wall, expect a population of extremely confident wall admirers.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-fitness > *",
+            "focusIndex": 0,
+            "focusPhrase": "Fitness is the judge, and evolution is",
+            "focuses": [
+              {
+                "phrase": "Fitness is the judge, and evolution is",
+                "selector": ".l10-mouse-fitness > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Fitness FORWARD",
+          "text": "Click FORWARD on the scored maze. The action count increases, corridor distance changes, and the live score recomputes as their sum squared. One visible move demonstrates all three parts of the evaluation pipeline.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 0,
+            "label": "Fitness FORWARD"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse-fitness > section",
+            "focusIndex": 0,
+            "focusPhrase": "Click FORWARD on the scored maze. The",
+            "focuses": [
+              {
+                "phrase": "Click FORWARD on the scored maze. The",
+                "selector": ".l10-maze-demo, .l10-mouse-fitness > section",
+                "index": 0,
+                "label": "Fitness FORWARD"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Fitness LEFT",
+          "text": "Click LEFT. Position stays fixed but cost increases because rotation executes a terminal. The live score can worsen even without movement, showing why efficient control matters alongside final distance.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 1,
+            "label": "Fitness LEFT"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse-fitness > section",
+            "focusIndex": 1,
+            "focusPhrase": "Click LEFT. Position stays fixed but cost",
+            "focuses": [
+              {
+                "phrase": "Click LEFT. Position stays fixed but cost",
+                "selector": ".l10-maze-demo, .l10-mouse-fitness > section",
+                "index": 1,
+                "label": "Fitness LEFT"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Fitness RIGHT",
+          "text": "Click RIGHT. The rat changes heading again and pays another unit. Fitness sees consequences defined by the cost model; it does not reward a visually dramatic turn merely for flair.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 2,
+            "label": "Fitness RIGHT"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse-fitness > section",
+            "focusIndex": 0,
+            "focusPhrase": "Click RIGHT. The rat changes heading again",
+            "focuses": [
+              {
+                "phrase": "Click RIGHT. The rat changes heading again",
+                "selector": ".l10-maze-demo, .l10-mouse-fitness > section",
+                "index": 0,
+                "label": "Fitness RIGHT"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Fitness reset",
+          "text": "Click Reset to restore the benchmark start. Score, action count, distance, heading, and trail return together. A reproducible evaluation must initialize every candidate under the same conditions.",
+          "action": {
+            "type": "click",
+            "selector": ".maze-controls button",
+            "index": 3,
+            "label": "Fitness reset"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-maze-demo, .l10-mouse-fitness > section",
+            "focusIndex": 1,
+            "focusPhrase": "Click Reset to restore the benchmark start.",
+            "focuses": [
+              {
+                "phrase": "Click Reset to restore the benchmark start.",
+                "selector": ".l10-maze-demo, .l10-mouse-fitness > section",
+                "index": 1,
+                "label": "Fitness reset"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Mutation and crossover change behavior—not only tree shape",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The table compares a parent with mutation and crossover outcomes. The parent fitness is twelve thousand nine hundred ninety-six. A mutation may remain neutral at the same score, while crossover reaches eleven thousand six hundred sixty-four. Because lower is better, the crossover offspring improves this trial.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-variation > *",
+            "focusIndex": 0,
+            "focusPhrase": "The table compares a parent with mutation",
+            "focuses": [
+              {
+                "phrase": "The table compares a parent with mutation",
+                "selector": ".l10-mouse-variation > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "One result does not establish an operator hierarchy. Mutation can be neutral because the changed subtree never executes, produces equivalent behavior, or affects a case absent from this maze. Crossover can improve one child and damage another.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-variation > *",
+            "focusIndex": 1,
+            "focusPhrase": "One result does not establish an operator",
+            "focuses": [
+              {
+                "phrase": "One result does not establish an operator",
+                "selector": ".l10-mouse-variation > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "One result does not establish an operator",
+                "type": "popup",
+                "label": "Behavioral consequences of variation",
+                "text": "Behavioral consequences of variation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "GP does not understand cheese, walls, or purpose. It changes syntax, executes behavior, and receives a number. Apparent intelligence arises from the interaction between representation, environment, evaluation, and selection.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-variation > *",
+            "focusIndex": 2,
+            "focusPhrase": "GP does not understand cheese, walls, or",
+            "focuses": [
+              {
+                "phrase": "GP does not understand cheese, walls, or",
+                "selector": ".l10-mouse-variation > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "To compare operators, run many offspring across many parents and mazes. Report distributions, success rates, program sizes, and evaluation budgets. A single improved child is a worked example, not a statistical coronation.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-variation > *",
+            "focusIndex": 0,
+            "focusPhrase": "To compare operators, run many offspring across",
+            "focuses": [
+              {
+                "phrase": "To compare operators, run many offspring across",
+                "selector": ".l10-mouse-variation > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Neutral structure can become useful later when crossover moves it into an active context. This is one reason GP populations may contain introns—code that currently has little effect. Some introns protect useful regions; too many turn the tree into a junk drawer with excellent ancestry records.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-variation > *",
+            "focusIndex": 1,
+            "focusPhrase": "Neutral structure can become useful later when",
+            "focuses": [
+              {
+                "phrase": "Neutral structure can become useful later when",
+                "selector": ".l10-mouse-variation > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "The evolved controller improves the stated fitness from 12,996 to 2,809",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "After four thousand two hundred two generations, the run reports a best fitness of two thousand eight hundred nine. This is strong evidence that evolution found a much better controller under the stated setup.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-result > *",
+            "focusIndex": 0,
+            "focusPhrase": "After four thousand two hundred two generations,",
+            "focuses": [
+              {
+                "phrase": "After four thousand two hundred two generations,",
+                "selector": ".l10-mouse-result > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "It is not proof of optimality. The search is stochastic, the space is large, and the score depends on particular mazes and limits. Another run may find a better or worse program. The result should be accompanied by seeds, repeated trials, and evaluation counts.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-result > *",
+            "focusIndex": 1,
+            "focusPhrase": "It is not proof of optimality. The",
+            "focuses": [
+              {
+                "phrase": "It is not proof of optimality. The",
+                "selector": ".l10-mouse-result > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "It is not proof of optimality. The",
+                "type": "popup",
+                "label": "Run evidence, not proof",
+                "text": "Run evidence, not proof",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Run the best program on unseen mazes. Generalization is the real test if the goal is navigation rather than memorizing one environment. Also inspect behavior: a low score may exploit a simulator quirk rather than perform the intended strategy.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-result > *",
+            "focusIndex": 2,
+            "focusPhrase": "Run the best program on unseen mazes.",
+            "focuses": [
+              {
+                "phrase": "Run the best program on unseen mazes.",
+                "selector": ".l10-mouse-result > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Measure program size and runtime. A slightly better score from a tree ten times larger may be undesirable in an embedded robot. Multiobjective GP can treat accuracy, size, energy, and safety as separate criteria instead of hiding every concern inside one mysterious weighted sum.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-result > *",
+            "focusIndex": 0,
+            "focusPhrase": "Measure program size and runtime. A slightly",
+            "focuses": [
+              {
+                "phrase": "Measure program size and runtime. A slightly",
+                "selector": ".l10-mouse-result > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The proper conclusion is calibrated: under this representation, fitness, population policy, budget, and test set, the run produced a controller with measured performance. That sentence is less glamorous than 'we evolved intelligence,' but it survives contact with a methods section.",
+          "visualDesign": {
+            "focusSelector": ".l10-mouse-result > *",
+            "focusIndex": 1,
+            "focusPhrase": "The proper conclusion is calibrated: under this",
+            "focuses": [
+              {
+                "phrase": "The proper conclusion is calibrated: under this",
+                "selector": ".l10-mouse-result > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Sufficiency, parsimony, and closure constrain the search",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Sufficiency means the primitive set can represent solutions. If the mouse needs to sense a blocked path but no primitive exposes that information, successful reactive navigation may be impossible. The optimum cannot be discovered if the language cannot say it.",
+          "visualDesign": {
+            "focusSelector": ".l10-properties > *",
+            "focusIndex": 0,
+            "focusPhrase": "Sufficiency means the primitive set can represent",
+            "focuses": [
+              {
+                "phrase": "Sufficiency means the primitive set can represent",
+                "selector": ".l10-properties > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Parsimony favors simpler programs when performance is comparable. Size limits, depth limits, or explicit complexity penalties reduce bloat. Simpler trees are usually cheaper to execute, easier to inspect, and less likely to contain accidental behavior.",
+          "visualDesign": {
+            "focusSelector": ".l10-properties > *",
+            "focusIndex": 1,
+            "focusPhrase": "Parsimony favors simpler programs when performance is",
+            "focuses": [
+              {
+                "phrase": "Parsimony favors simpler programs when performance is",
+                "selector": ".l10-properties > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Parsimony favors simpler programs when performance is",
+                "type": "popup",
+                "label": "The GP design contract",
+                "text": "The GP design contract",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Closure means every permitted composition produces a valid executable result. Protected division, typed nodes, and safe action wrappers support closure. Without it, random generation and variation create candidates that crash before fitness can compare them.",
+          "visualDesign": {
+            "focusSelector": ".l10-properties > *",
+            "focusIndex": 0,
+            "focusPhrase": "Closure means every permitted composition produces a",
+            "focuses": [
+              {
+                "phrase": "Closure means every permitted composition produces a",
+                "selector": ".l10-properties > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The three properties trade off. Adding primitives can improve sufficiency but enlarge the search space. Strong parsimony can exclude a necessary complex solution. Strict closure may require protected operators whose behavior differs from ordinary mathematics.",
+          "visualDesign": {
+            "focusSelector": ".l10-properties > *",
+            "focusIndex": 1,
+            "focusPhrase": "The three properties trade off. Adding primitives",
+            "focuses": [
+              {
+                "phrase": "The three properties trade off. Adding primitives",
+                "selector": ".l10-properties > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Think of the primitive set as a box of construction pieces. Sufficiency asks whether the bridge can be built, closure asks whether pieces actually connect, and parsimony asks whether we needed four hundred decorative gargoyles on the handrail.",
+          "visualDesign": {
+            "focusSelector": ".l10-properties > *",
+            "focusIndex": 0,
+            "focusPhrase": "Think of the primitive set as a",
+            "focuses": [
+              {
+                "phrase": "Think of the primitive set as a",
+                "selector": ".l10-properties > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Steady-state GP replaces sampled losers continuously",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Tournament GP samples a small subset of the population. Evaluate or compare those programs, select a winner as parent, apply variation, and replace a loser. The population changes incrementally rather than being rebuilt as a whole generation.",
+          "visualDesign": {
+            "focusSelector": ".l10-tournament > *",
+            "focusIndex": 0,
+            "focusPhrase": "Tournament GP samples a small subset of",
+            "focuses": [
+              {
+                "phrase": "Tournament GP samples a small subset of",
+                "selector": ".l10-tournament > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Tournament size controls selection pressure. A large tournament makes strong programs likely to win; a small tournament preserves more randomness. Replacement policy matters too: replacing the worst sampled member differs from replacing a random member.",
+          "visualDesign": {
+            "focusSelector": ".l10-tournament > *",
+            "focusIndex": 1,
+            "focusPhrase": "Tournament size controls selection pressure. A large",
+            "focuses": [
+              {
+                "phrase": "Tournament size controls selection pressure. A large",
+                "selector": ".l10-tournament > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Tournament size controls selection pressure. A large",
+                "type": "popup",
+                "label": "Tournament GP",
+                "text": "Tournament GP",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Steady-state updates can use evaluations efficiently because each new child immediately enters the population. They also blur generation boundaries, so report progress by evaluation count rather than pretending every arbitrary batch is a biological birthday.",
+          "visualDesign": {
+            "focusSelector": ".l10-tournament > *",
+            "focusIndex": 0,
+            "focusPhrase": "Steady-state updates can use evaluations efficiently because",
+            "focuses": [
+              {
+                "phrase": "Steady-state updates can use evaluations efficiently because",
+                "selector": ".l10-tournament > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Parallel evaluation requires care. Several workers may select parents from slightly different population states. Asynchronous updates can improve throughput but change the algorithm's sampling dynamics. Reproducibility requires documenting concurrency and random seeds.",
+          "visualDesign": {
+            "focusSelector": ".l10-tournament > *",
+            "focusIndex": 1,
+            "focusPhrase": "Parallel evaluation requires care. Several workers may",
+            "focuses": [
+              {
+                "phrase": "Parallel evaluation requires care. Several workers may",
+                "selector": ".l10-tournament > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The causal chain is sample, compare, reproduce, vary, replace, repeat. If fitness is noisy, one lucky tournament can spread a weak program. Repeated evaluation or uncertainty-aware selection can keep the population from electing a champion because it sneezed at the right moment.",
+          "visualDesign": {
+            "focusSelector": ".l10-tournament > *",
+            "focusIndex": 0,
+            "focusPhrase": "The causal chain is sample, compare, reproduce,",
+            "focuses": [
+              {
+                "phrase": "The causal chain is sample, compare, reproduce,",
+                "selector": ".l10-tournament > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "GP can evolve a function that fits training examples",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Symbolic regression receives input-output examples and searches for an expression whose outputs fit the table. Unlike ordinary regression with a fixed formula, GP may evolve both the structure and constants of the function.",
+          "visualDesign": {
+            "focusSelector": ".l10-regression > *",
+            "focusIndex": 0,
+            "focusPhrase": "Symbolic regression receives input-output examples and searches",
+            "focuses": [
+              {
+                "phrase": "Symbolic regression receives input-output examples and searches",
+                "selector": ".l10-regression > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The displayed learned expression is f of x equals x squared divided by two. Fitness aggregates prediction error across training examples, perhaps mean squared error. Lower error gives a program more reproductive opportunity.",
+          "visualDesign": {
+            "focusSelector": ".l10-regression > *",
+            "focusIndex": 1,
+            "focusPhrase": "The displayed learned expression is f of",
+            "focuses": [
+              {
+                "phrase": "The displayed learned expression is f of",
+                "selector": ".l10-regression > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The displayed learned expression is f of",
+                "type": "popup",
+                "label": "Symbolic regression",
+                "text": "Symbolic regression",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Function and terminal sets define the hypothesis space. With plus, multiply, protected divide, x, and constants, some expressions are reachable and others are not. Adding sine may improve sufficiency for periodic data while greatly expanding search.",
+          "visualDesign": {
+            "focusSelector": ".l10-regression > *",
+            "focusIndex": 0,
+            "focusPhrase": "Function and terminal sets define the hypothesis",
+            "focuses": [
+              {
+                "phrase": "Function and terminal sets define the hypothesis",
+                "selector": ".l10-regression > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Hold out validation examples. A large tree can interpolate training points while behaving wildly between them. Parsimony and validation discourage this symbolic overfitting. An equation can wear a lab coat and still memorize the answer key.",
+          "visualDesign": {
+            "focusSelector": ".l10-regression > *",
+            "focusIndex": 1,
+            "focusPhrase": "Hold out validation examples. A large tree",
+            "focuses": [
+              {
+                "phrase": "Hold out validation examples. A large tree",
+                "selector": ".l10-regression > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Compare GP with domain alternatives. If linear regression or a known physical model fits well, it may be faster and more interpretable. GP is attractive when useful structure is unknown and approximation is acceptable, not because equations look more impressive when discovered by a tree.",
+          "visualDesign": {
+            "focusSelector": ".l10-regression > *",
+            "focusIndex": 0,
+            "focusPhrase": "Compare GP with domain alternatives. If linear",
+            "focuses": [
+              {
+                "phrase": "Compare GP with domain alternatives. If linear",
+                "selector": ".l10-regression > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A population explores many program structures at once",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The landscape shows candidate programs scattered across regions of different fitness. Selection and variation can maintain several lineages, so GP resembles multiple interacting hill climbers rather than one point following one local gradient.",
+          "visualDesign": {
+            "focusSelector": ".l10-parallel > *",
+            "focusIndex": 0,
+            "focusPhrase": "The landscape shows candidate programs scattered across",
+            "focuses": [
+              {
+                "phrase": "The landscape shows candidate programs scattered across",
+                "selector": ".l10-parallel > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Crossover lets lineages exchange substructures, which ordinary independent hill climbers cannot do. Mutation explores local and occasionally large structural changes. Population diversity therefore acts as distributed search memory.",
+          "visualDesign": {
+            "focusSelector": ".l10-parallel > *",
+            "focusIndex": 1,
+            "focusPhrase": "Crossover lets lineages exchange substructures, which ordinary",
+            "focuses": [
+              {
+                "phrase": "Crossover lets lineages exchange substructures, which ordinary",
+                "selector": ".l10-parallel > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Crossover lets lineages exchange substructures, which ordinary",
+                "type": "popup",
+                "label": "Parallel search, applications, and limits",
+                "text": "Parallel search, applications, and limits",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The metaphor is imperfect because program neighborhoods are not smooth geometric hills. A one-node change may have no effect or cause a large behavioral jump. Fitness distance and tree-edit distance can disagree dramatically.",
+          "visualDesign": {
+            "focusSelector": ".l10-parallel > *",
+            "focusIndex": 0,
+            "focusPhrase": "The metaphor is imperfect because program neighborhoods",
+            "focuses": [
+              {
+                "phrase": "The metaphor is imperfect because program neighborhoods",
+                "selector": ".l10-parallel > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "GP has been applied to control, including spacecraft maneuver policies; to model structure, including neural-network components; and to domain programs for images, fuzzy systems, and hardware. The common feature is a search over executable or compositional structure.",
+          "visualDesign": {
+            "focusSelector": ".l10-parallel > *",
+            "focusIndex": 1,
+            "focusPhrase": "GP has been applied to control, including",
+            "focuses": [
+              {
+                "phrase": "GP has been applied to control, including",
+                "selector": ".l10-parallel > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "These applications require domain-specific primitives and simulators. A spacecraft controller needs safe dynamics and constraints; an image program needs operators over pixels or features. The GP engine is generic, but the language and evidence are intensely specific.",
+          "visualDesign": {
+            "focusSelector": ".l10-parallel > *",
+            "focusIndex": 0,
+            "focusPhrase": "These applications require domain-specific primitives and simulators.",
+            "focuses": [
+              {
+                "phrase": "These applications require domain-specific primitives and simulators.",
+                "selector": ".l10-parallel > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Construct life-like systems to expose their mechanisms",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Artificial life studies life-like processes by building systems rather than observing only existing organisms. The constructive question is: if we implement local mechanisms, what organized behavior emerges? The goal may be understanding, engineering, or both.",
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 0,
+            "focusPhrase": "Artificial life studies life-like processes by building",
+            "focuses": [
+              {
+                "phrase": "Artificial life studies life-like processes by building",
+                "selector": ".l10-alife > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Wet ALife uses biochemical materials and processes. Hard ALife uses embodied robots. Soft ALife uses digital simulations and artificial organisms. These categories differ in substrate, but all make assumptions explicit through construction.",
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 1,
+            "focusPhrase": "Wet ALife uses biochemical materials and processes.",
+            "focuses": [
+              {
+                "phrase": "Wet ALife uses biochemical materials and processes.",
+                "selector": ".l10-alife > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Wet ALife uses biochemical materials and processes.",
+                "type": "popup",
+                "label": "Wet, hard, and soft artificial life",
+                "text": "Wet, hard, and soft artificial life",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "A simulation is a model, not a miniature universe. Results depend on update rules, resource models, mutation, sensors, and boundary conditions. Emergent behavior demonstrates consequences of those assumptions, not automatic truth about biological life.",
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 0,
+            "focusPhrase": "A simulation is a model, not a",
+            "focuses": [
+              {
+                "phrase": "A simulation is a model, not a",
+                "selector": ".l10-alife > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Construction can reveal gaps in explanation. It is easy to say local interaction causes organization; it is harder to write rules that actually produce stable organization. Failed simulations are informative when they expose missing mechanisms.",
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 1,
+            "focusPhrase": "Construction can reveal gaps in explanation. It",
+            "focuses": [
+              {
+                "phrase": "Construction can reveal gaps in explanation. It",
+                "selector": ".l10-alife > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The philosophical temptation is strong: a moving digital creature looks alive, especially after midnight. Scientific analysis asks operational questions instead. Does it reproduce, adapt, maintain organization, compete for resources, or merely animate according to a script?",
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 0,
+            "focusPhrase": "The philosophical temptation is strong: a moving",
+            "focuses": [
+              {
+                "phrase": "The philosophical temptation is strong: a moving",
+                "selector": ".l10-alife > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Enlarge artificial-life visual",
+          "text": "Open the artificial-life visual. At this scale, the point is easier to see: the researcher specifies local materials and rules, then watches for a system-level pattern that was never issued as a single central command. No tiny manager crab is hiding behind the simulation with a clipboard.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-generated .image-lightbox-trigger",
+            "index": 0,
+            "label": "Enlarge the artificial-life visual"
+          },
+          "visualDesign": {
+            "focusSelector": ".source-image-lightbox img",
+            "focusIndex": 0,
+            "focusPhrase": "Open the artificial-life visual. At this scale,",
+            "focuses": [
+              {
+                "phrase": "Open the artificial-life visual. At this scale,",
+                "selector": ".source-image-lightbox img",
+                "index": 0,
+                "label": "Enlarge artificial-life visual"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Close artificial-life visual",
+          "text": "Close the visual and return to the three forms of artificial life. Wet systems use biochemical substrates, hard systems use embodied robots, and soft systems use simulations; all three test whether lifelike organization can arise from explicit mechanisms.",
+          "action": {
+            "type": "click",
+            "selector": ".source-image-close",
+            "index": 0,
+            "label": "Close the enlarged artificial-life visual"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-alife > *",
+            "focusIndex": 1,
+            "focusPhrase": "Close the visual and return to the",
+            "focuses": [
+              {
+                "phrase": "Close the visual and return to the",
+                "selector": ".l10-alife > *",
+                "index": 1,
+                "label": "Close artificial-life visual"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Simple local rules can produce organized collective behavior",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Swarm intelligence uses many relatively simple autonomous agents. Each agent senses locally and acts without a central commander. Interaction among agents and the environment can produce collective organization.",
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 0,
+            "focusPhrase": "Swarm intelligence uses many relatively simple autonomous",
+            "focuses": [
+              {
+                "phrase": "Swarm intelligence uses many relatively simple autonomous",
+                "selector": ".l10-swarm-concept > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Local interaction may be direct, such as observing neighbors, or indirect through the environment, called stigmergy. Ant pheromone is the classic indirect signal: one ant changes the shared trail, affecting later ants it may never meet.",
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 1,
+            "focusPhrase": "Local interaction may be direct, such as",
+            "focuses": [
+              {
+                "phrase": "Local interaction may be direct, such as",
+                "selector": ".l10-swarm-concept > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Local interaction may be direct, such as",
+                "type": "popup",
+                "label": "Flocking as local-rule emergence",
+                "text": "Flocking as local-rule emergence",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Emergence means the global pattern is not explicitly commanded by one agent. It does not mean the system is mysterious or uncaused. The pattern follows from local rules, feedback, constraints, and repeated interaction.",
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 0,
+            "focusPhrase": "Emergence means the global pattern is not",
+            "focuses": [
+              {
+                "phrase": "Emergence means the global pattern is not",
+                "selector": ".l10-swarm-concept > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The robot examples require careful interpretation. Several robots hauling one object demonstrate coordination if their actions adapt to shared forces or positions. A robot opening a door or dancing alone may be impressive embodied control but not evidence of swarm intelligence.",
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 1,
+            "focusPhrase": "The robot examples require careful interpretation. Several",
+            "focuses": [
+              {
+                "phrase": "The robot examples require careful interpretation. Several",
+                "selector": ".l10-swarm-concept > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Ask where memory lives. It may be inside each agent, in neighbor positions, or in an external trail. Swarm methods differ less by animal costume than by candidate representation, update rule, and shared information. The bees and ants are metaphors; the state equations are the actual employees.",
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 0,
+            "focusPhrase": "Ask where memory lives. It may be",
+            "focuses": [
+              {
+                "phrase": "Ask where memory lives. It may be",
+                "selector": ".l10-swarm-concept > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "flocking state 2",
+          "text": "Choose flocking state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-stage-buttons button",
+            "index": 1,
+            "label": "Show flocking state 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose flocking state 2. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose flocking state 2. The visible state",
+                "selector": ".l10-swarm-concept > *",
+                "index": 1,
+                "label": "flocking state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "flocking state 3",
+          "text": "Choose flocking state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-stage-buttons button",
+            "index": 2,
+            "label": "Show flocking state 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose flocking state 3. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose flocking state 3. The visible state",
+                "selector": ".l10-swarm-concept > *",
+                "index": 0,
+                "label": "flocking state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "flocking state 4",
+          "text": "Choose flocking state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-stage-buttons button",
+            "index": 3,
+            "label": "Show flocking state 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-swarm-concept > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose flocking state 4. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose flocking state 4. The visible state",
+                "selector": ".l10-swarm-concept > *",
+                "index": 1,
+                "label": "flocking state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "A particle combines momentum, personal memory, and social information",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "In particle swarm optimization, each particle is a candidate position in a numerical search space. It also carries velocity, its personal best position pBest, and access to a neighborhood or global best gBest.",
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 0,
+            "focusPhrase": "In particle swarm optimization, each particle is",
+            "focuses": [
+              {
+                "phrase": "In particle swarm optimization, each particle is",
+                "selector": ".l10-pso > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The velocity update combines inertia with two pulls. The cognitive term draws the particle toward its own best experience; the social term draws it toward the swarm's best known position. Random coefficients vary the pull each update.",
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 1,
+            "focusPhrase": "The velocity update combines inertia with two",
+            "focuses": [
+              {
+                "phrase": "The velocity update combines inertia with two",
+                "selector": ".l10-pso > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The velocity update combines inertia with two",
+                "type": "popup",
+                "label": "Particle swarm optimization",
+                "text": "Particle swarm optimization",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Then position changes by adding velocity. Repeating this process creates trajectories that balance exploration and convergence. Too much inertia may overshoot; too much social attraction may collapse the swarm prematurely.",
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 0,
+            "focusPhrase": "Then position changes by adding velocity. Repeating",
+            "focuses": [
+              {
+                "phrase": "Then position changes by adding velocity. Repeating",
+                "selector": ".l10-pso > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Unlike GP, a PSO particle is not a program tree and does not reproduce through crossover. Memory is explicit in pBest and gBest. The swarm shares evidence through best positions rather than through genetic inheritance.",
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 1,
+            "focusPhrase": "Unlike GP, a PSO particle is not",
+            "focuses": [
+              {
+                "phrase": "Unlike GP, a PSO particle is not",
+                "selector": ".l10-pso > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Picture hikers in fog. Each remembers the highest point personally visited and hears a radio report of the group's best. Momentum keeps them moving; memory and gossip bend the route. The method works only if the radio report refers to the same mountain.",
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 0,
+            "focusPhrase": "Picture hikers in fog. Each remembers the",
+            "focuses": [
+              {
+                "phrase": "Picture hikers in fog. Each remembers the",
+                "selector": ".l10-pso > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "PSO state 2",
+          "text": "Choose PSO state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-pso section > div button",
+            "index": 1,
+            "label": "Show PSO state 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose PSO state 2. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose PSO state 2. The visible state",
+                "selector": ".l10-pso > *",
+                "index": 1,
+                "label": "PSO state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "PSO state 3",
+          "text": "Choose PSO state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-pso section > div button",
+            "index": 2,
+            "label": "Show PSO state 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose PSO state 3. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose PSO state 3. The visible state",
+                "selector": ".l10-pso > *",
+                "index": 0,
+                "label": "PSO state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "PSO state 4",
+          "text": "Choose PSO state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-pso section > div button",
+            "index": 3,
+            "label": "Show PSO state 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-pso > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose PSO state 4. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose PSO state 4. The visible state",
+                "selector": ".l10-pso > *",
+                "index": 1,
+                "label": "PSO state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Recruitment allocates more search effort to promising patches",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The bees algorithm begins with scouts exploring candidate patches. Each patch represents a region of the search space. Scouts evaluate quality and report promising locations.",
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 0,
+            "focusPhrase": "The bees algorithm begins with scouts exploring",
+            "focuses": [
+              {
+                "phrase": "The bees algorithm begins with scouts exploring",
+                "selector": ".l10-bees > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Recruitment allocates more search effort to better patches. The waggle-dance metaphor represents communication of location and quality. Elite sites receive more recruited bees or tighter local search, while weaker sites receive less.",
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 1,
+            "focusPhrase": "Recruitment allocates more search effort to better",
+            "focuses": [
+              {
+                "phrase": "Recruitment allocates more search effort to better",
+                "selector": ".l10-bees > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Recruitment allocates more search effort to better",
+                "type": "popup",
+                "label": "Bees algorithm",
+                "text": "Bees algorithm",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Some scouts continue random exploration. Without them, the colony may spend all effort around an early good patch and miss a better region. Abandonment releases resources when a patch stops improving.",
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 0,
+            "focusPhrase": "Some scouts continue random exploration. Without them,",
+            "focuses": [
+              {
+                "phrase": "Some scouts continue random exploration. Without them,",
+                "selector": ".l10-bees > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The engineering abstraction is adaptive resource allocation: explore broadly, estimate region quality, exploit promising neighborhoods, and periodically restart. No honey is required, although parameter tuning may still feel sticky.",
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 1,
+            "focusPhrase": "The engineering abstraction is adaptive resource allocation:",
+            "focuses": [
+              {
+                "phrase": "The engineering abstraction is adaptive resource allocation:",
+                "selector": ".l10-bees > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "Compare with PSO. PSO updates every particle using vectors and best positions. Bees methods allocate agents to patches and perform neighborhood searches. Both mix exploration and exploitation, but their state and update mechanisms differ.",
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 0,
+            "focusPhrase": "Compare with PSO. PSO updates every particle",
+            "focuses": [
+              {
+                "phrase": "Compare with PSO. PSO updates every particle",
+                "selector": ".l10-bees > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "bees state 2",
+          "text": "Choose bees state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-bees section > div button",
+            "index": 1,
+            "label": "Show bees state 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose bees state 2. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose bees state 2. The visible state",
+                "selector": ".l10-bees > *",
+                "index": 1,
+                "label": "bees state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "bees state 3",
+          "text": "Choose bees state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-bees section > div button",
+            "index": 2,
+            "label": "Show bees state 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose bees state 3. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose bees state 3. The visible state",
+                "selector": ".l10-bees > *",
+                "index": 0,
+                "label": "bees state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "bees state 4",
+          "text": "Choose bees state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-bees section > div button",
+            "index": 3,
+            "label": "Show bees state 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose bees state 4. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose bees state 4. The visible state",
+                "selector": ".l10-bees > *",
+                "index": 1,
+                "label": "bees state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "bees state 5",
+          "text": "Choose bees state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-bees section > div button",
+            "index": 4,
+            "label": "Show bees state 5"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-bees > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose bees state 5. The visible state",
+            "focuses": [
+              {
+                "phrase": "Choose bees state 5. The visible state",
+                "selector": ".l10-bees > *",
+                "index": 0,
+                "label": "bees state 5"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "The shorter detour reinforces faster and attracts more ants",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Ant colony optimization constructs solutions through probabilistic local choices. Artificial ants favor edges with stronger pheromone and often combine that signal with heuristic desirability such as inverse distance.",
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 0,
+            "focusPhrase": "Ant colony optimization constructs solutions through probabilistic",
+            "focuses": [
+              {
+                "phrase": "Ant colony optimization constructs solutions through probabilistic",
+                "selector": ".l10-aco > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Initially, exploration is broad. An ant that completes a shorter route returns sooner or deposits more pheromone, increasing the probability that later ants follow those edges. Positive feedback can rapidly amplify a useful path.",
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 1,
+            "focusPhrase": "Initially, exploration is broad. An ant that",
+            "focuses": [
+              {
+                "phrase": "Initially, exploration is broad. An ant that",
+                "selector": ".l10-aco > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Initially, exploration is broad. An ant that",
+                "type": "popup",
+                "label": "ACO obstacle trace",
+                "text": "ACO obstacle trace",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Evaporation weakens old trails. Without evaporation, early random choices could dominate forever. Decay preserves exploration and lets the colony adapt when evidence changes. Memory exists in the environment rather than in one ant's private notebook.",
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 0,
+            "focusPhrase": "Evaporation weakens old trails. Without evaporation, early",
+            "focuses": [
+              {
+                "phrase": "Evaporation weakens old trails. Without evaporation, early",
+                "selector": ".l10-aco > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Positive feedback can also cause premature convergence. Parameter choices control pheromone influence, heuristic influence, deposit amount, and evaporation. The shortest observed route may dominate before alternatives are adequately sampled.",
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 1,
+            "focusPhrase": "Positive feedback can also cause premature convergence.",
+            "focuses": [
+              {
+                "phrase": "Positive feedback can also cause premature convergence.",
+                "selector": ".l10-aco > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The interactive trace shows five states: random exploration, faster return on the short route, reinforcement, evaporation of the weak trail, and short-route dominance. We will advance one state at a time so the mechanism is visible instead of asking the ants to perform interpretive dance at full speed.",
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 0,
+            "focusPhrase": "The interactive trace shows five states: random",
+            "focuses": [
+              {
+                "phrase": "The interactive trace shows five states: random",
+                "selector": ".l10-aco > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO obstacle state 2",
+          "text": "Choose ACO obstacle state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-aco section > div button",
+            "index": 1,
+            "label": "Show ACO obstacle state 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose ACO obstacle state 2. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO obstacle state 2. The visible",
+                "selector": ".l10-aco > *",
+                "index": 1,
+                "label": "ACO obstacle state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO obstacle state 3",
+          "text": "Choose ACO obstacle state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-aco section > div button",
+            "index": 2,
+            "label": "Show ACO obstacle state 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose ACO obstacle state 3. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO obstacle state 3. The visible",
+                "selector": ".l10-aco > *",
+                "index": 0,
+                "label": "ACO obstacle state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO obstacle state 4",
+          "text": "Choose ACO obstacle state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-aco section > div button",
+            "index": 3,
+            "label": "Show ACO obstacle state 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose ACO obstacle state 4. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO obstacle state 4. The visible",
+                "selector": ".l10-aco > *",
+                "index": 1,
+                "label": "ACO obstacle state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO obstacle state 5",
+          "text": "Choose ACO obstacle state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-aco section > div button",
+            "index": 4,
+            "label": "Show ACO obstacle state 5"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-aco > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose ACO obstacle state 5. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO obstacle state 5. The visible",
+                "selector": ".l10-aco > *",
+                "index": 0,
+                "label": "ACO obstacle state 5"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Exploration, reinforcement, and evaporation create adaptive shared memory",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The discovery trace begins with random scouts leaving the nest without a reliable trail. Local stochastic motion gives the colony broad coverage. Most scouts fail, but exploration creates the possibility that one ant encounters food.",
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 0,
+            "focusPhrase": "The discovery trace begins with random scouts",
+            "focuses": [
+              {
+                "phrase": "The discovery trace begins with random scouts",
+                "selector": ".l10-discovery > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A successful scout returns while depositing pheromone. The trail is external memory: later ants can sense and follow evidence left in the environment by an agent they never met. This indirect coordination is called stigmergy.",
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 1,
+            "focusPhrase": "A successful scout returns while depositing pheromone.",
+            "focuses": [
+              {
+                "phrase": "A successful scout returns while depositing pheromone.",
+                "selector": ".l10-discovery > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "A successful scout returns while depositing pheromone.",
+                "type": "popup",
+                "label": "ACO food discovery",
+                "text": "ACO food discovery",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Followers choose the marked path probabilistically and strengthen it after successful trips. Reinforcement makes useful evidence self-amplifying, while stochastic alternatives remain available long enough to discover a better route.",
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 0,
+            "focusPhrase": "Followers choose the marked path probabilistically and",
+            "focuses": [
+              {
+                "phrase": "Followers choose the marked path probabilistically and",
+                "selector": ".l10-discovery > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Evaporation removes unsupported history. A trail stays strong only where repeated traffic renews it. If food moves or a path becomes blocked, decay lets the colony shift rather than obeying yesterday's directions forever.",
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 1,
+            "focusPhrase": "Evaporation removes unsupported history. A trail stays",
+            "focuses": [
+              {
+                "phrase": "Evaporation removes unsupported history. A trail stays",
+                "selector": ".l10-discovery > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The five states form a causal story: explore, discover, recruit, retain alternatives, and forget weak evidence. That is adaptive shared memory without a central database administrator—although the pheromone backup policy is admittedly terrible.",
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 0,
+            "focusPhrase": "The five states form a causal story:",
+            "focuses": [
+              {
+                "phrase": "The five states form a causal story:",
+                "selector": ".l10-discovery > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO discovery state 2",
+          "text": "Choose ACO discovery state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-discovery section > div button",
+            "index": 1,
+            "label": "Show ACO discovery state 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose ACO discovery state 2. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO discovery state 2. The visible",
+                "selector": ".l10-discovery > *",
+                "index": 1,
+                "label": "ACO discovery state 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO discovery state 3",
+          "text": "Choose ACO discovery state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-discovery section > div button",
+            "index": 2,
+            "label": "Show ACO discovery state 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose ACO discovery state 3. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO discovery state 3. The visible",
+                "selector": ".l10-discovery > *",
+                "index": 0,
+                "label": "ACO discovery state 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO discovery state 4",
+          "text": "Choose ACO discovery state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-discovery section > div button",
+            "index": 3,
+            "label": "Show ACO discovery state 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 1,
+            "focusPhrase": "Choose ACO discovery state 4. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO discovery state 4. The visible",
+                "selector": ".l10-discovery > *",
+                "index": 1,
+                "label": "ACO discovery state 4"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "ACO discovery state 5",
+          "text": "Choose ACO discovery state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-discovery section > div button",
+            "index": 4,
+            "label": "Show ACO discovery state 5"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-discovery > *",
+            "focusIndex": 0,
+            "focusPhrase": "Choose ACO discovery state 5. The visible",
+            "focuses": [
+              {
+                "phrase": "Choose ACO discovery state 5. The visible",
+                "selector": ".l10-discovery > *",
+                "index": 0,
+                "label": "ACO discovery state 5"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Match each method to its candidate, feedback, operator, and memory",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The comparison table begins with the candidate. GA uses a fixed encoding; GP uses a program tree; PSO uses a numerical position and velocity; ACO incrementally constructs a path or combinatorial solution.",
+          "visualDesign": {
+            "focusSelector": ".l10-comparison > *",
+            "focusIndex": 0,
+            "focusPhrase": "The comparison table begins with the candidate.",
+            "focuses": [
+              {
+                "phrase": "The comparison table begins with the candidate.",
+                "selector": ".l10-comparison > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Updates differ. GA uses crossover and mutation, GP uses subtree operators, PSO moves particles using personal and social bests, and ACO changes probabilistic choices through pheromone reinforcement and evaporation.",
+          "visualDesign": {
+            "focusSelector": ".l10-comparison > *",
+            "focusIndex": 1,
+            "focusPhrase": "Updates differ. GA uses crossover and mutation,",
+            "focuses": [
+              {
+                "phrase": "Updates differ. GA uses crossover and mutation,",
+                "selector": ".l10-comparison > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Updates differ. GA uses crossover and mutation,",
+                "type": "popup",
+                "label": "Cumulative method comparison",
+                "text": "Cumulative method comparison",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Memory also differs. GA and GP store evidence mainly in population composition and fitness. PSO explicitly retains pBest and gBest. ACO stores shared memory in an external pheromone trail.",
+          "visualDesign": {
+            "focusSelector": ".l10-comparison > *",
+            "focusIndex": 0,
+            "focusPhrase": "Memory also differs. GA and GP store",
+            "focuses": [
+              {
+                "phrase": "Memory also differs. GA and GP store",
+                "selector": ".l10-comparison > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The quiz asks which method uses an evaporating external trail. That is ACO. PSO shares a best location but does not evaporate a path; GP evolves syntax; GA recombines encodings.",
+          "visualDesign": {
+            "focusSelector": ".l10-comparison > *",
+            "focusIndex": 1,
+            "focusPhrase": "The quiz asks which method uses an",
+            "focuses": [
+              {
+                "phrase": "The quiz asks which method uses an",
+                "selector": ".l10-comparison > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "A reliable comparison avoids animal names and asks three questions: what is one candidate, how does evidence change future sampling, and where is memory stored? Those questions work even if researchers replace ants with delivery drones and bees with extremely organized office interns.",
+          "visualDesign": {
+            "focusSelector": ".l10-comparison > *",
+            "focusIndex": 0,
+            "focusPhrase": "A reliable comparison avoids animal names and",
+            "focuses": [
+              {
+                "phrase": "A reliable comparison avoids animal names and",
+                "selector": ".l10-comparison > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Comparison GP trees",
+          "text": "Select GP trees. This is incorrect because a GP population stores program structure and fitness within individuals and the population, not in an external evaporating medium.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-comparison section button",
+            "index": 0,
+            "label": "Comparison GP trees"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-comparison section button, .l10-comparison section p",
+            "focusIndex": 0,
+            "focusPhrase": "Select GP trees. This is incorrect because",
+            "focuses": [
+              {
+                "phrase": "Select GP trees. This is incorrect because",
+                "selector": ".l10-comparison section button, .l10-comparison section p",
+                "index": 0,
+                "label": "Comparison GP trees"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Comparison PSO pBest",
+          "text": "Select PSO pBest. This is also incorrect. Personal best belongs to one particle, while gBest is shared position evidence; neither forms an environmental trail that evaporates.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-comparison section button",
+            "index": 1,
+            "label": "Comparison PSO pBest"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-comparison section button, .l10-comparison section p",
+            "focusIndex": 1,
+            "focusPhrase": "Select PSO pBest. This is also incorrect.",
+            "focuses": [
+              {
+                "phrase": "Select PSO pBest. This is also incorrect.",
+                "selector": ".l10-comparison section button, .l10-comparison section p",
+                "index": 1,
+                "label": "Comparison PSO pBest"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Comparison GA chromosomes",
+          "text": "Select GA chromosomes. The answer remains incorrect: chromosomes carry candidate information and population composition carries search history, but there is no pheromone field outside the agents.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-comparison section button",
+            "index": 3,
+            "label": "Comparison GA chromosomes"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-comparison section button, .l10-comparison section p",
+            "focusIndex": 3,
+            "focusPhrase": "Select GA chromosomes. The answer remains incorrect:",
+            "focuses": [
+              {
+                "phrase": "Select GA chromosomes. The answer remains incorrect:",
+                "selector": ".l10-comparison section button, .l10-comparison section p",
+                "index": 3,
+                "label": "Comparison GA chromosomes"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Comparison ACO pheromone",
+          "text": "Select ACO pheromone. Correct. Many ants can read and reinforce the same external trail, while evaporation removes evidence that is not repeatedly supported.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-comparison section button",
+            "index": 2,
+            "label": "Comparison ACO pheromone"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-comparison section button, .l10-comparison section p",
+            "focusIndex": 2,
+            "focusPhrase": "Select ACO pheromone. Correct. Many ants can",
+            "focuses": [
+              {
+                "phrase": "Select ACO pheromone. Correct. Many ants can",
+                "selector": ".l10-comparison section button, .l10-comparison section p",
+                "index": 2,
+                "label": "Comparison ACO pheromone"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Explain representation, fitness, update, and emergence",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The review studio asks for explanations, not labels. For GP, name the executable tree representation, the fitness evidence, and the subtree operators that update the population. A method name alone is not a mechanism.",
+          "visualDesign": {
+            "focusSelector": ".l10-review > *",
+            "focusIndex": 0,
+            "focusPhrase": "The review studio asks for explanations, not",
+            "focuses": [
+              {
+                "phrase": "The review studio asks for explanations, not",
+                "selector": ".l10-review > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "For PSO, explain position, velocity, pBest, and gBest. For bees, explain patches, scout evaluation, recruitment, exploitation, and abandonment. For ACO, explain constructed paths, pheromone reinforcement, stochastic choice, and evaporation.",
+          "visualDesign": {
+            "focusSelector": ".l10-review > *",
+            "focusIndex": 1,
+            "focusPhrase": "For PSO, explain position, velocity, pBest, and",
+            "focuses": [
+              {
+                "phrase": "For PSO, explain position, velocity, pBest, and",
+                "selector": ".l10-review > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "For PSO, explain position, velocity, pBest, and",
+                "type": "popup",
+                "label": "Cumulative mechanism review",
+                "text": "Cumulative mechanism review",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Each expected answer should connect local state to population behavior. The point is causal compression: identify what one candidate or agent knows, how evidence changes its next update, and how repeated updates create an organized search pattern.",
+          "visualDesign": {
+            "focusSelector": ".l10-review > *",
+            "focusIndex": 2,
+            "focusPhrase": "Each expected answer should connect local state",
+            "focuses": [
+              {
+                "phrase": "Each expected answer should connect local state",
+                "selector": ".l10-review > *",
+                "index": 2,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "Use the reveal only after predicting. Retrieval practice works because the learner must construct an explanation before comparing it with the expected one. Clicking reveal immediately is the academic equivalent of opening an umbrella indoors because rain exists somewhere.",
+          "visualDesign": {
+            "focusSelector": ".l10-review > *",
+            "focusIndex": 0,
+            "focusPhrase": "Use the reveal only after predicting. Retrieval",
+            "focuses": [
+              {
+                "phrase": "Use the reveal only after predicting. Retrieval",
+                "selector": ".l10-review > *",
+                "index": 0,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "A strong final comparison names representation, evaluation, local operator, shared memory, and emergence. Those five lenses distinguish methods even when animal metaphors or implementation details change.",
+          "visualDesign": {
+            "focusSelector": ".l10-review > *",
+            "focusIndex": 1,
+            "focusPhrase": "A strong final comparison names representation, evaluation,",
+            "focuses": [
+              {
+                "phrase": "A strong final comparison names representation, evaluation,",
+                "selector": ".l10-review > *",
+                "index": 1,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal representation",
+          "text": "Reveal the representation answer. GP uses variable-size hierarchical trees because they express nested executable structure and support subtree operators. The expected answer should confirm the mechanism you predicted, not replace the prediction.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review section > button",
+            "index": 0,
+            "label": "Reveal representation answer"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review section > *",
+            "focusIndex": 3,
+            "focusPhrase": "Reveal the representation answer. GP uses variable-size",
+            "focuses": [
+              {
+                "phrase": "Reveal the representation answer. GP uses variable-size",
+                "selector": ".l10-review section > *",
+                "index": 3,
+                "label": "Reveal representation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Fitness",
+          "text": "Choose the Fitness prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review nav button",
+            "index": 1,
+            "label": "Choose Fitness prompt"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review nav button",
+            "focusIndex": 1,
+            "focusPhrase": "Choose the Fitness prompt. Read the new",
+            "focuses": [
+              {
+                "phrase": "Choose the Fitness prompt. Read the new",
+                "selector": ".l10-review nav button",
+                "index": 1,
+                "label": "Choose Fitness"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal Fitness",
+          "text": "Reveal the Fitness expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review section > button",
+            "index": 0,
+            "label": "Reveal Fitness answer"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review section > *",
+            "focusIndex": 3,
+            "focusPhrase": "Reveal the Fitness expected answer. Compare each",
+            "focuses": [
+              {
+                "phrase": "Reveal the Fitness expected answer. Compare each",
+                "selector": ".l10-review section > *",
+                "index": 3,
+                "label": "Reveal Fitness"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose PSO versus GA",
+          "text": "Choose the PSO versus GA prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review nav button",
+            "index": 2,
+            "label": "Choose PSO versus GA prompt"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review nav button",
+            "focusIndex": 2,
+            "focusPhrase": "Choose the PSO versus GA prompt. Read",
+            "focuses": [
+              {
+                "phrase": "Choose the PSO versus GA prompt. Read",
+                "selector": ".l10-review nav button",
+                "index": 2,
+                "label": "Choose PSO versus GA"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal PSO versus GA",
+          "text": "Reveal the PSO versus GA expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review section > button",
+            "index": 0,
+            "label": "Reveal PSO versus GA answer"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review section > *",
+            "focusIndex": 3,
+            "focusPhrase": "Reveal the PSO versus GA expected answer.",
+            "focuses": [
+              {
+                "phrase": "Reveal the PSO versus GA expected answer.",
+                "selector": ".l10-review section > *",
+                "index": 3,
+                "label": "Reveal PSO versus GA"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Emergence",
+          "text": "Choose the Emergence prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review nav button",
+            "index": 3,
+            "label": "Choose Emergence prompt"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review nav button",
+            "focusIndex": 3,
+            "focusPhrase": "Choose the Emergence prompt. Read the new",
+            "focuses": [
+              {
+                "phrase": "Choose the Emergence prompt. Read the new",
+                "selector": ".l10-review nav button",
+                "index": 3,
+                "label": "Choose Emergence"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal Emergence",
+          "text": "Reveal the Emergence expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.",
+          "action": {
+            "type": "click",
+            "selector": ".l10-review section > button",
+            "index": 0,
+            "label": "Reveal Emergence answer"
+          },
+          "visualDesign": {
+            "focusSelector": ".l10-review section > *",
+            "focusIndex": 3,
+            "focusPhrase": "Reveal the Emergence expected answer. Compare each",
+            "focuses": [
+              {
+                "phrase": "Reveal the Emergence expected answer. Compare each",
+                "selector": ".l10-review section > *",
+                "index": 3,
+                "label": "Reveal Emergence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "title": "A population method is only as meaningful as its representation and feedback",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "First contrast GA and GP. GA normally evolves fixed-form encodings, while GP evolves variable executable structures. Both require population, fitness, selection, variation, replacement, and stopping evidence.",
+          "visualDesign": {
+            "focusSelector": ".l10-exit > *",
+            "focusIndex": 0,
+            "focusPhrase": "First contrast GA and GP. GA normally",
+            "focuses": [
+              {
+                "phrase": "First contrast GA and GP. GA normally",
+                "selector": ".l10-exit > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Second define a function set, terminal set, and fitness for one task. The primitive set determines what programs can exist; fitness determines which behaviors reproduce. Include safety, resource limits, and held-out cases.",
+          "visualDesign": {
+            "focusSelector": ".l10-exit > *",
+            "focusIndex": 1,
+            "focusPhrase": "Second define a function set, terminal set,",
+            "focuses": [
+              {
+                "phrase": "Second define a function set, terminal set,",
+                "selector": ".l10-exit > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Second define a function set, terminal set,",
+                "type": "popup",
+                "label": "Lesson 10 synthesis",
+                "text": "Lesson 10 synthesis",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Third explain one swarm as local rule, interaction, and global outcome. In PSO, particles move using personal and social memory. In bees, recruitment allocates effort to patches. In ACO, pheromone feedback and evaporation reshape path probabilities.",
+          "visualDesign": {
+            "focusSelector": ".l10-exit > *",
+            "focusIndex": 0,
+            "focusPhrase": "Third explain one swarm as local rule,",
+            "focuses": [
+              {
+                "phrase": "Third explain one swarm as local rule,",
+                "selector": ".l10-exit > *",
+                "index": 0,
+                "label": "Example and metaphor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary",
+          "text": "The reading connects these methods to evolutionary computation and collective intelligence. While reading, annotate candidate representation, update rule, memory, and evidence. Metaphors become useful only when you can translate them back into state and mechanism.",
+          "visualDesign": {
+            "focusSelector": ".l10-exit > *",
+            "focusIndex": 1,
+            "focusPhrase": "The reading connects these methods to evolutionary",
+            "focuses": [
+              {
+                "phrase": "The reading connects these methods to evolutionary",
+                "selector": ".l10-exit > *",
+                "index": 1,
+                "label": "Boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Transfer and audit",
+          "text": "The final claim is compact: complex behavior can emerge from evolving executable structures or repeated local interactions, but the result is governed by representation, feedback, constraints, and evaluation. No central brain does not mean no design. Someone still wrote the rules—and should probably add tests.",
+          "visualDesign": {
+            "focusSelector": ".l10-exit > *",
+            "focusIndex": 0,
+            "focusPhrase": "The final claim is compact: complex behavior",
+            "focuses": [
+              {
+                "phrase": "The final claim is compact: complex behavior",
+                "selector": ".l10-exit > *",
+                "index": 0,
+                "label": "Transfer and audit"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    }
+  ]
+}

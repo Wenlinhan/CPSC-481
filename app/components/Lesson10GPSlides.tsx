@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- course-source assets are versioned static files */
 
 import { useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
+import { lessonNarrationNotes } from "../data/lessonNarrationNotes";
 import "../styles/lesson10-gp.css";
 import "../styles/lesson10-illustrations.css";
 import type { CourseSourceReference } from "./L01DeckShell";
@@ -10,6 +11,7 @@ import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 const ROOT = "/course-source/l07-gp-l08-alife";
 const IMAGE_ROOT = `${ROOT}/generated`;
+const LESSON_10_VIDEO_URL = "https://csufullerton.instructure.com/files/283901264/download?download_frd=1&verifier=Z2M48rQxpVO0hMRXGQ7VBwl1q1y3oRVohi1l8K3y";
 const alife = (...pages: number[]) => pages.map(page => 100 + page);
 
 function resolveSource(sourceSlide: number): CourseSourceReference {
@@ -320,5 +322,5 @@ export const lesson10Slides: SourceLessonSlide[] = [
 ];
 
 export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
+  return <SourceDeckShell forcePrintAll={forcePrintAll} lectureVideoUrl={LESSON_10_VIDEO_URL} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" narrationNotes={lessonNarrationNotes(10)} resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }

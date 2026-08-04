@@ -1,0 +1,3243 @@
+{
+  "version": 1,
+  "meeting": "07",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Game Trees, Minimax, and Evaluation Functions",
+  "route": "/lessons/07",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Game Trees, Minimax, and Evaluation Functions",
+      "segments": [
+        {
+          "label": "From a route to a strategy",
+          "text": "Ordinary search asks which path reaches a goal when the agent controls every step. A game changes one small word with enormous consequences: the next action may belong to an opponent. Now a good move is not merely followed by our favorite continuation. It must survive the strongest legal reply. The solution therefore becomes a contingent strategy—a plan with an answer for each opponent response.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "next action may belong",
+              "selector": ".search-hero section",
+              "index": 0,
+              "label": "Opponent controls the reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "contingent strategy",
+              "label": "A game solution branches on opponent replies",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "The chess-table metaphor",
+          "text": "Imagine planning a picnic while someone across the table actively moves the sandwiches. That is adversarial search: the environment is not merely uncertain; another decision-maker selects actions against your objective. Chess gives us clean rules, visible turns, and outcomes, but the logic also appears in cybersecurity, negotiation, auctions, and competitive scheduling.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "moves the sandwiches",
+              "emoji": "♟️ 🥪",
+              "label": "The environment answers strategically",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            },
+            {
+              "type": "focus",
+              "phrase": "Chess",
+              "selector": "figure.search-source-image",
+              "index": 0,
+              "label": "Alternating strategic control",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Lesson contract",
+          "text": "We will formulate a game tree, keep utility from one fixed perspective, alternate MAX and MIN, trace recursive minimax, distinguish terminal utility from cutoff evaluation, calculate complete backups, and critique what minimax actually guarantees. The central habit is simple: never select a shiny leaf until you know who controls the branch leading to it.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "fixed perspective",
+              "label": "One utility convention throughout the tree",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            },
+            {
+              "type": "emoji",
+              "phrase": "shiny leaf",
+              "emoji": "✨ 🍃",
+              "label": "A large leaf may be unreachable against optimal reply",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Transfer: cybersecurity",
+          "text": "In intrusion response, a defender chooses monitoring or containment actions while an attacker adapts. A game-state model must represent privileges, observations, and whose action occurs next. Minimax can express worst-case defense in a simplified deterministic model, but real attackers have hidden information and unequal action spaces. The transfer is useful precisely because it reveals which clean classroom assumptions break first.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "intrusion response",
+              "emoji": "🛡️ 🕵️",
+              "label": "Adversarial planning beyond boards",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            },
+            {
+              "type": "popup",
+              "phrase": "assumptions break",
+              "label": "Transfer the logic, re-check the model",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "A three-move thought experiment",
+          "text": "Suppose MAX can choose Calm or Flashy. Calm guarantees a draw against every reply. Flashy wins if MIN cooperates but loses if MIN notices one counter. Minimax chooses Calm because the branch value is set by the counter, not the promotional brochure. That tiny example is the whole lesson in pocket size.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "promotional brochure",
+              "label": "A move is valued by the strongest reply it permits",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Game playing is formal, nontrivial, and easy to compare",
+      "segments": [
+        {
+          "label": "A reasoning laboratory",
+          "text": "The first card describes games as a reasoning laboratory. Legal moves and victory conditions are explicit, so an incorrect decision cannot blame a vague task definition. Yet the tree can grow explosively, forcing representation, search, evaluation, and resource management to work together. Games are tidy laboratories with extremely untidy combinatorics.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first card",
+              "selector": ".search-objectives article",
+              "index": 0,
+              "label": "Formal but difficult",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Measurable progress",
+          "text": "The second card is direct comparison. Humans and programs can play under identical boards, clocks, rules, and starting positions. Win rate is visible, but serious evaluation also controls opponent strength, color or first-move advantage, time budget, and repeated trials. One dramatic victory is evidence; it is not a complete performance distribution.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "second card",
+              "selector": ".search-objectives article",
+              "index": 1,
+              "label": "Direct comparison",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "repeated trials",
+              "label": "Compare under matched conditions",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Multi-agent ideas",
+          "text": "The third card expands beyond winning. Games expose conflict, partial cooperation, incentives, beliefs about other agents, and strategic interaction. A traffic merge, market bid, or shared-resource negotiation may not be zero-sum, but each requires reasoning about choices that depend on other choices. The board is small; the conceptual luggage is carry-on size only in theory.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third card",
+              "selector": ".search-objectives article",
+              "index": 2,
+              "label": "Conflict and cooperation",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "conceptual luggage",
+              "emoji": "🧳 🧠",
+              "label": "Games carry broad multi-agent ideas",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Benchmarks need opponent diversity",
+          "text": "A game program evaluated only against one opponent may overfit that opponent's style. Strong evidence uses opponents with different strategies, matched compute, alternating starting advantages, and many games. Report draws and confidence intervals, not merely wins. The same principle applies to agent benchmarks: a narrow adversary can turn a brittle trick into a heroic-looking score.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Strong evidence",
+              "selector": ".search-objectives article",
+              "index": 1,
+              "label": "Evaluate fairly",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "different strategies",
+              "label": "Opponent diversity tests robustness",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Why games accelerated AI",
+          "text": "Games offered repeatable experiments long before robots could safely roam messy streets. Researchers could change a search rule, replay thousands of positions, and compare outcomes. The environment was controlled enough for science yet difficult enough to expose weaknesses. A board became a wind tunnel for reasoning algorithms.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "wind tunnel",
+              "emoji": "🎮 🌬️",
+              "label": "Controlled tests for reasoning systems",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Games of strategy specify what can happen and how outcomes are valued",
+      "segments": [
+        {
+          "label": "Sequence and legality",
+          "text": "Begin with the first two cards. A game unfolds as a sequence of moves, and the rules define which moves are legal from each state. In tic-tac-toe, alternating marks and empty squares determine legality. In chess, piece movement, check, and special rules matter. Without legality, the tree is fan fiction rather than a game model.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "sequence of moves",
+              "selector": ".algorithm-map section article",
+              "index": 0,
+              "label": "1. Sequence",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "rules define",
+              "selector": ".algorithm-map section article",
+              "index": 1,
+              "label": "2. Legality",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Outcome and objective",
+          "text": "The third card introduces completed outcomes: a terminal test detects win, loss, draw, or another end condition. The fourth card gives the objective. Each player chooses actions to maximize utility from a fixed perspective. Utility summarizes preference; it need not be money, points, or happiness measured with suspicious confidence.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third card",
+              "selector": ".algorithm-map section article",
+              "index": 2,
+              "label": "3. Outcome",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "fourth card",
+              "selector": ".algorithm-map section article",
+              "index": 3,
+              "label": "4. Objective",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Terminal versus cutoff values",
+          "text": "The correction in the side panel matters. We do not need a reward after every move. A completed game receives exact terminal utility. If time forces search to stop at a nonterminal state, an evaluation function estimates its value. Mixing those two sources is like replacing a final exam grade with a weather forecast because both contain numbers.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "side panel",
+              "selector": ".algorithm-map aside",
+              "index": 0,
+              "label": "Terminal utility versus cutoff evaluation",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "evaluation function",
+              "label": "Estimate only at nonterminal cutoff states",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Rules define the transition model",
+          "text": "Small rule differences can reshape the entire tree. Allowing a pass move, repetition draw, or hidden card changes actions, terminal tests, and sometimes the state representation. Before reusing an algorithm trace, verify that the formal game is identical. A chess engine asked to play checkers is not confused by strategy; it has been handed the wrong universe.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "rule differences",
+              "selector": ".algorithm-map section article",
+              "index": 1,
+              "label": "Rules define legal transitions",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "wrong universe",
+              "emoji": "♟️ ➡️ ⛀",
+              "label": "Correct algorithm, wrong game",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Utility is ordinal before it is emotional",
+          "text": "If win, draw, and loss receive ten, zero, and minus ten, the numbers primarily encode preference order. They need not measure ten units of joy. Magnitudes matter when evaluators compare nonterminal states, so document whether differences have semantic meaning or merely preserve ranking.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "preference order",
+              "selector": ".algorithm-map section article",
+              "index": 3,
+              "label": "Utility expresses preference",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "An unpredictable opponent turns a path into a contingency",
+      "segments": [
+        {
+          "label": "Who controls actions",
+          "text": "Read the first comparison row. Ordinary search assumes the searching agent selects every step. Adversarial search alternates control, so the opponent chooses replies. This is not ordinary environmental randomness. A rational opponent prefers outcomes that are good for them, which under a zero-sum convention are bad for MAX.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first comparison row",
+              "selector": ".search-comparison-table > div",
+              "index": 1,
+              "label": "Who acts?",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Solution form",
+          "text": "The second row changes the shape of an answer. A route is one sequence. A strategy says: if the opponent replies A, do this; if B, do that. It resembles an emergency phone tree rather than a single itinerary. The agent chooses one move now while preserving a response for every modeled reply.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "second row",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "label": "Path versus contingent strategy",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "phone tree",
+              "emoji": "📞 🌳",
+              "label": "One move, many conditional replies",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Time and approximation",
+          "text": "The final rows explain why game programs often cannot search to the end. A clock demands a move while the tree remains unfinished. The program chooses a cutoff depth and evaluates those frontier positions. Deeper search usually helps, but only if computation finishes on time and the evaluator is meaningful. A perfect move submitted tomorrow is still a forfeit today.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "clock",
+              "selector": ".search-comparison-table > div",
+              "index": 3,
+              "label": "Time limit",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "cutoff depth",
+              "selector": ".search-comparison-table > div",
+              "index": 4,
+              "label": "Approximation",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Strategies are policies",
+          "text": "A deterministic strategy maps every reachable decision state to an action. A stochastic strategy maps states to probability distributions over actions. Today's minimax policy is deterministic when tie-breaking is fixed, but the contingency structure still matters. Writing only the chosen root move hides the responses that justify its safety.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "deterministic strategy",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "label": "A strategy covers contingencies",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "maps every reachable",
+              "label": "Policy: state to action",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Contingency size matters",
+          "text": "A strategy can be far larger than the single line eventually played because it must specify actions for replies that never occur. Planning therefore spends computation on counterfactual branches. Those unused branches are not waste; they are the evidence that the chosen move remains defensible when the opponent selects another path.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "A strategy can",
+              "selector": ".search-comparison-table > div",
+              "index": 2,
+              "label": "Solution form",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "counterfactual branches",
+              "label": "Unplayed replies justify the current decision",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Observe, generate, evaluate, move—and repeat",
+      "segments": [
+        {
+          "label": "Observe and generate",
+          "text": "Follow the pipeline from left to right. First observe the opponent's move and obtain the new legal position. Second generate the legal successors. The state must contain enough information to determine whose turn it is, which actions are possible, and whether history-dependent rules apply. A missing turn label can make MAX confidently optimize the opponent's move.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "First observe",
+              "selector": ".problem-solving-pipeline article",
+              "index": 0,
+              "label": "1. Opponent moves",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Second generate",
+              "selector": ".problem-solving-pipeline article",
+              "index": 1,
+              "label": "2. Generate",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Test and evaluate",
+          "text": "Third test whether the game is over. A terminal state returns exact utility immediately. Fourth, if the search continues, evaluate successors and back their values through alternating layers. The order matters: terminal facts outrank heuristic impressions. Never tell a checkmated king that the material score still looks promising.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Third test",
+              "selector": ".problem-solving-pipeline article",
+              "index": 2,
+              "label": "3. Terminal test",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Fourth",
+              "selector": ".problem-solving-pipeline article",
+              "index": 3,
+              "label": "4. Evaluate",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Move and repeat",
+          "text": "Finally MAX selects the successor with the highest backed-up value, executes the move, and waits. The opponent then changes the state, so the loop begins again. The repeated cycle explains why a game-playing system is not a one-time solver; it is a decision process synchronized with another agent.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Finally",
+              "selector": ".problem-solving-pipeline article",
+              "index": 4,
+              "label": "5. Move",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "loop begins again",
+              "emoji": "🔁 ♟️",
+              "label": "Observe, search, act, repeat",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Decision latency is part of performance",
+          "text": "A game agent has both intellectual and temporal constraints. Deeper search can improve a move until the clock expires and converts wisdom into a loss. Practical systems allocate time by position complexity, reuse prior search, and keep a legal fallback move. Runtime is not a footnote; in games it participates directly in utility.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "game agent",
+              "selector": ".problem-solving-pipeline article",
+              "index": 4,
+              "label": "Act before the deadline",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "clock expires",
+              "emoji": "⏱️ 💥",
+              "label": "Late perfection is failure",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Fallback moves",
+          "text": "Real programs often preserve the best completed result from an earlier depth while searching deeper. If the clock interrupts, they still have a legal move backed by finished analysis. This iterative-deepening pattern turns time uncertainty into graceful degradation instead of a dramatic stare at the board followed by forfeiture.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Move",
+              "selector": ".problem-solving-pipeline article",
+              "index": 4,
+              "label": "Always retain a legal completed choice",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Conflict and cooperation can both be modeled mathematically",
+      "segments": [
+        {
+          "label": "Game theory definition",
+          "text": "The definition panel frames game theory as mathematical models of conflict and cooperation among rational decision-makers. The crucial word is interdependent: my best action depends on what others choose, and their best actions may depend on what they expect from me. The model turns mutual side-eye into mathematics.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "definition panel",
+              "selector": ".search-driving-question section",
+              "index": 0,
+              "label": "Game theory definition",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "mutual side-eye",
+              "emoji": "👀 ↔️ 👀",
+              "label": "Interdependent decisions",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Origins and modern scope",
+          "text": "The first two cards distinguish history from scope. Early formal work emphasized two-person zero-sum games. Modern game theory studies decisions involving people, animals, software agents, firms, and institutions. Minimax is therefore one precise tool within a much wider field, not a universal recipe for every interaction.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first two cards",
+              "selector": ".search-driving-question div article",
+              "index": 0,
+              "label": "Origins",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Modern game theory",
+              "selector": ".search-driving-question div article",
+              "index": 1,
+              "label": "Modern scope",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Conflict and cooperation",
+          "text": "The last two cards show opposing and partially aligned goals. In conflict, improving one player's outcome may reduce another's. In cooperation, participants may share gains, bargain, or form coalitions. Lesson 7 deliberately narrows to deterministic, alternating, two-player, zero-sum, perfect-information games so the minimax logic is visible before the assumptions are relaxed.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "conflict",
+              "selector": ".search-driving-question div article",
+              "index": 2,
+              "label": "Conflict",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "cooperation",
+              "selector": ".search-driving-question div article",
+              "index": 3,
+              "label": "Cooperation",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Rationality is model-relative",
+          "text": "A rational action maximizes expected preference given a model, information, and constraints. If utility omits safety, fairness, or long-term effects, perfectly rational optimization can produce an undesirable result. Game theory does not certify the values supplied to it. Mathematics can optimize a scoreboard while politely declining responsibility for who designed the scoreboard.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "rational action",
+              "selector": ".search-driving-question section",
+              "index": 0,
+              "label": "Rational decision-makers",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "designed the scoreboard",
+              "label": "Utility encodes what the model values",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "From games to institutions",
+          "text": "Voting rules, auctions, and bargaining protocols shape which strategies are attractive. Changing the rules changes incentives even when the participants remain the same. Game-theoretic analysis therefore studies mechanism design as well as individual play: sometimes the intelligent action is redesigning the game rather than searching harder inside it.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Voting rules",
+              "selector": ".search-driving-question div article",
+              "index": 1,
+              "label": "Broader strategic systems",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Zero-sum is one game type—not a synonym for every game",
+      "segments": [
+        {
+          "label": "Zero-sum",
+          "text": "The first card defines zero-sum: gains and losses balance exactly. If utility is written from MAX's perspective, MIN can use the same number and prefer smaller values. This single scale is why minimax can alternate max and min operations without changing the meaning of utility halfway down the tree.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first card",
+              "selector": ".search-objectives article",
+              "index": 0,
+              "label": "Zero-sum",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Non-zero-sum",
+          "text": "The second card describes non-zero-sum games, where total welfare can rise or fall. The prisoner's dilemma is famous because individually tempting choices can produce a jointly worse result. A single scalar for MAX may no longer represent both players' preferences, so ordinary two-player zero-sum minimax is not automatically appropriate.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "second card",
+              "selector": ".search-objectives article",
+              "index": 1,
+              "label": "Non-zero-sum",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "jointly worse",
+              "label": "Individual incentives can conflict with joint welfare",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Independent dimensions",
+          "text": "The third card prevents taxonomy soup. Zero-sum does not imply alternating turns, determinism, symmetry, or perfect information. Those are separate dimensions. Poker is competitive yet stochastic and imperfect-information; rock-paper-scissors is simultaneous; cooperative games may still be sequential. Label assumptions separately instead of ordering one deluxe game-description combo.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third card",
+              "selector": ".search-objectives article",
+              "index": 2,
+              "label": "Other game dimensions",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "taxonomy soup",
+              "emoji": "🥣 🏷️",
+              "label": "Keep game properties separate",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Zero-sum transformation",
+          "text": "For a truly constant-sum two-player game, subtracting a constant can transform utilities into zero-sum form without changing preferences. But games with variable joint welfare cannot be repaired by arithmetic cosmetics. Determine whether interests are strictly opposed before applying one shared scalar and the ordinary min operator.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Zero-sum",
+              "selector": ".search-objectives article",
+              "index": 0,
+              "label": "Strictly opposed utility",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "variable joint welfare",
+              "label": "Non-zero-sum needs richer solution concepts",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Perfect information is separate",
+          "text": "Chess and tic-tac-toe reveal the full position to both players. Poker does not. In imperfect-information games, a search state may include beliefs over hidden cards and strategies may randomize to avoid exploitation. Ordinary minimax on one visible tree cannot simply pretend the hidden information has taken a coffee break.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "imperfect-information",
+              "label": "Hidden state requires beliefs and strategic uncertainty",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "A good move anticipates the opponent's best reply",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the chess image and imagine one tempting move. The board after our move is not the end of the analysis; it is the starting point for the opponent's strongest legal reply. Strategic quality belongs to the move-and-reply structure, not to how impressive our move looks in isolation.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the chess image",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Chess and alternating control",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the chess image",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Think like the opponent",
+          "text": "Close the image. The list asks us to know the rules, alternate turns, and keep utility consistent. For each candidate move, temporarily sit in the other chair and find the reply that hurts MAX most. This is not pessimism as a personality trait. It is robust planning under optimal opposition.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "know the rules",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Know legal moves",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "alternate turns",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Opponent replies",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "A tactical metaphor",
+          "text": "Minimax resembles choosing an umbrella after asking the cloud for its strongest rebuttal. A move that wins a queen but permits checkmate is not good because the opponent controls the checkmating reply. The source callout invites a partner example: propose a strong-looking move, then deliberately search for its refutation.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "source callout",
+              "selector": ".search-callout",
+              "index": 0,
+              "label": "Try one move and reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "umbrella",
+              "emoji": "☂️ ⚡",
+              "label": "Plan against the strongest response",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Opponent modeling versus robust play",
+          "text": "Minimax is robust against the modeled strongest reply. A predictive opponent model instead estimates what this particular opponent is likely to do. Exploitation may score better against a weak pattern but become vulnerable if the pattern changes. Practical agents sometimes balance safe minimax play with opponent-specific opportunities.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "opponent",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Model the strongest reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "robust",
+              "label": "Safe policy differs from behavioral prediction",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Refutations shape expertise",
+          "text": "Strong human players do not merely generate brilliant moves; they rapidly reject moves with tactical refutations. Minimax formalizes that habit. For each candidate, ask what the opponent would love to play next. Expertise often looks like creativity, but much of it is efficient prevention of embarrassment.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "refutations",
+              "emoji": "🔍 ♟️",
+              "label": "Search for the opponent's best counter",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "A game tree needs states, turns, actions, outcomes, and utilities",
+      "segments": [
+        {
+          "label": "State, player, actions",
+          "text": "The first column defines state, player, and actions. A state is the complete position needed for future legal play. Player identifies who controls the next action. Actions lists that player's legal moves. For tic-tac-toe, the board alone is insufficient if we do not know whose mark comes next.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "state",
+              "selector": ".definition-stack article",
+              "index": 0,
+              "label": "State S",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Player",
+              "selector": ".definition-stack article",
+              "index": 1,
+              "label": "Player to move",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Actions",
+              "selector": ".definition-stack article",
+              "index": 2,
+              "label": "Legal actions",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Result, terminal, utility",
+          "text": "The second column completes the model. Result applies an action to produce a successor. Terminal identifies completed games. Utility gives an exact preference for a player at terminal states. These are definitions, not optional implementation decorations; minimax calls each one in a specific place.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Result",
+              "selector": ".definition-stack article",
+              "index": 3,
+              "label": "Result(s,a)",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Terminal",
+              "selector": ".definition-stack article",
+              "index": 4,
+              "label": "Terminal(s)",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Utility",
+              "selector": ".definition-stack article",
+              "index": 5,
+              "label": "Utility(s,p)",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Tic-tac-toe formulation",
+          "text": "For tic-tac-toe, state contains nine cells and player to move; actions are empty squares; result adds the current mark; terminal detects three-in-a-row or a full board; utility might be plus one, zero, or minus one for X. This compact tuple is the contract that turns a familiar game into a searchable decision problem.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "nine cells",
+              "emoji": "❌ ⭕",
+              "label": "Formulate the game before searching",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            },
+            {
+              "type": "popup",
+              "phrase": "contract",
+              "label": "State · player · actions · result · terminal · utility",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "State completeness test",
+          "text": "Two histories may show the same board but differ in legal futures because of repetition rules, castling rights, or move counters. If future actions or terminal status differ, they are not the same search state. The Markov test is practical: can the stored state determine every legal continuation and value-relevant condition without consulting hidden history?",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "State",
+              "selector": ".definition-stack article",
+              "index": 0,
+              "label": "Complete game state",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "same board",
+              "label": "Visual equality need not imply state equality",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Utility perspective test",
+          "text": "A simple consistency test is to narrate every value as good or bad for the same player. If positive three means good for X at one layer but good for O at the next, the tree has changed languages mid-sentence. Fix the perspective before applying MAX or MIN.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "consistency test",
+              "selector": ".definition-stack article",
+              "index": 5,
+              "label": "Fixed utility language",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Plan against an opponent who also searches rationally",
+      "segments": [
+        {
+          "label": "The opponent model",
+          "text": "The large assumption states that the opponent knows the same modeled rules and consistently tries to obtain its best result. This does not claim every human is perfectly rational. It defines the decision standard used to compute a safe move. Minimax asks what remains achievable even if the opponent refuses to cooperate with our lecture example.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "large assumption",
+              "selector": ".algorithm-definition > section",
+              "index": 0,
+              "label": "Rational-opponent model",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Shared rules and optimal opposition",
+          "text": "The first card gives shared rules: both sides agree on actions, transitions, terminal tests, and utility. The second gives optimal opposition: evaluate each candidate by its worst reply. If the model is wrong—perhaps hidden information exists—the guarantee applies to the model, not by magic to reality.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first card",
+              "selector": ".algorithm-definition > div article",
+              "index": 0,
+              "label": "Shared rules",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".algorithm-definition > div article",
+              "index": 1,
+              "label": "Optimal opposition",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Safe is not predictive",
+          "text": "The third card calls minimax a safe policy. It protects against the strongest modeled reply but does not predict which reply a particular opponent will choose. If the opponent blunders, the agent observes the new state and may achieve a better outcome. Insurance does not predict a kitchen fire; it limits the damage if one occurs.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third card",
+              "selector": ".algorithm-definition > div article",
+              "index": 2,
+              "label": "Safe policy",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "Insurance",
+              "emoji": "🛡️ 🔥",
+              "label": "Protection is not prediction",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Worst-case reasoning and conservatism",
+          "text": "Minimax can be conservative when opponents are predictably imperfect. That conservatism is appropriate when failure is costly or adversaries adapt. In low-stakes repeated play, an exploitative policy might intentionally choose a move with a worse worst case but better expected payoff against observed behavior. The correct choice depends on objective and risk tolerance, not algorithm fandom.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Minimax can be conservative",
+              "selector": ".algorithm-definition > div article",
+              "index": 2,
+              "label": "Worst-case protection",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "risk tolerance",
+              "label": "Robust and exploitative policies answer different goals",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Model mismatch",
+          "text": "If an opponent has a legal action missing from our generator, minimax may certify a move that fails immediately. Search cannot compensate for an incomplete rules model. Robustness begins with correct actions and results; optimal reasoning over the wrong tree is optimized surprise.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "legal action",
+              "selector": ".algorithm-definition > div article",
+              "index": 0,
+              "label": "Correct shared game model",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "MAX takes the largest child value; MIN takes the smallest",
+      "segments": [
+        {
+          "label": "Build and evaluate leaves",
+          "text": "The first card builds legal actions until terminal states or a cutoff depth. The second evaluates leaves: exact utility for terminal leaves, an estimate for nonterminal cutoff leaves. That distinction preserves semantics. A terminal win is a fact; a cutoff score is an informed opinion wearing numerical shoes.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first card",
+              "selector": ".algorithm-map section article",
+              "index": 0,
+              "label": "1. Build",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".algorithm-map section article",
+              "index": 1,
+              "label": "2. Evaluate leaves",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Back up and choose",
+          "text": "The third card performs backup. MAX keeps the largest child value; MIN keeps the smallest, always using MAX's fixed utility scale. The fourth card chooses the root action whose child returns the best backed-up value. Internal values are consequences of descendants, not independent evaluations pasted onto convenient nodes.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third card",
+              "selector": ".algorithm-map section article",
+              "index": 2,
+              "label": "3. Back up",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "fourth",
+              "selector": ".algorithm-map section article",
+              "index": 3,
+              "label": "4. Choose",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Keep perspective fixed",
+          "text": "The side panel separates player-to-move from sign convention. Whose turn it is determines MAX or MIN. Utility meaning stays fixed. Changing the sign perspective at every layer and also taking min is double-counting the opponent, like reversing a map and then driving backward to compensate.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "side panel",
+              "selector": ".algorithm-map aside",
+              "index": 0,
+              "label": "Fixed utility perspective",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "driving backward",
+              "emoji": "🗺️ ↩️ 🚗",
+              "label": "Do not switch perspective twice",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Tie-breaking is part of the algorithm",
+          "text": "If two root actions have equal minimax value, either is optimal under the modeled utility, but their secondary properties may differ. Choose by faster win, slower loss, lower variance, simpler explanation, or a fixed deterministic order. State that rule so identical runs do not appear to change personality on alternate Tuesdays.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Choose",
+              "selector": ".algorithm-map section article",
+              "index": 3,
+              "label": "Root tie-breaking",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "secondary properties",
+              "label": "Equal minimax value permits a documented tie-break",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Backup is not averaging",
+          "text": "Minimax does not average child values unless the model contains random chance nodes with known probabilities. MAX selects one child and MIN selects one child because players control actions. Averaging would answer an expectation question about random choice, not the adversarial decision modeled here.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "does not average",
+              "selector": ".algorithm-map section article",
+              "index": 2,
+              "label": "Select max or min, do not average",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "The recursion alternates value functions until a leaf returns",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the exact minimax pseudocode. Minimax-Decision compares actions at the root. Max-Value returns terminal utility or the maximum result of recursive Min-Value calls. Min-Value mirrors it with a minimum over Max-Value. The code is short because recursion reuses the same logic at every alternating layer.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the exact minimax",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Recursive minimax pseudocode",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the exact minimax",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Terminal and recursive cases",
+          "text": "Close the image and focus on the first three definition cards. The terminal test stops descent and returns exact utility. Otherwise MAX loops over legal actions and asks MIN for each successor's value; MIN loops and asks MAX. Each call trusts the next layer to summarize everything below it.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "terminal test",
+              "selector": ".source-definition-layout section article",
+              "index": 0,
+              "label": "Terminal return",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "MAX loops",
+              "selector": ".source-definition-layout section article",
+              "index": 1,
+              "label": "MAX-VALUE",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "MIN loops",
+              "selector": ".source-definition-layout section article",
+              "index": 2,
+              "label": "MIN-VALUE",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Action versus value",
+          "text": "The decision card is subtle. Recursive value functions return numbers, but Minimax-Decision returns the root action associated with the largest value. Saying the algorithm returns three confuses evaluation with behavior. It chooses action A; three is the backed-up reason.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "decision card",
+              "selector": ".source-definition-layout section article",
+              "index": 3,
+              "label": "Decision returns an action",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "chooses action A",
+              "label": "Return the action, retain its backed-up value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Complexity preview",
+          "text": "For branching factor b and depth m, full minimax examines on the order of b to the m nodes and stores a depth-first path on the order of b times m in a straightforward implementation. Exponential time is why cutoff evaluation and alpha-beta pruning matter. The pseudocode is short; its family tree is not.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "full minimax",
+              "selector": ".source-definition-layout section article",
+              "index": 1,
+              "label": "Recursive expansion",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "family tree",
+              "emoji": "🌳 📈",
+              "label": "Short code, exponential search",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Base cases protect recursion",
+          "text": "Every recursive algorithm needs a base case. Here the terminal or cutoff condition prevents infinite descent and supplies the numbers that recursion can combine. Without a meaningful base value, alternating MAX and MIN is a beautifully organized meeting with no agenda and no decisions.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "terminal or cutoff condition",
+              "selector": ".source-definition-layout section article",
+              "index": 0,
+              "label": "Recursive base case",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "One action is resolved before the next sibling is searched",
+      "segments": [
+        {
+          "label": "Enter the root",
+          "text": "The trace begins at Minimax-Decision and Max-Value for the root. No result exists yet. MAX will compare A, B, and C, but recursive depth-first execution resolves one action before opening the next sibling. The call stack behaves like a very disciplined librarian: finish this book before pulling the next one.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "trace begins",
+              "selector": ".frontier-trace section",
+              "index": 0,
+              "label": "Trace step 1",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "disciplined librarian",
+              "emoji": "📚 ⬇️",
+              "label": "Depth-first recursive control",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".frontier-trace section button",
+              "index": 2,
+              "label": "Reset recursive trace"
+            }
+          ]
+        },
+        {
+          "label": "Resolve action A",
+          "text": "Advance to action A. MIN sees leaf values three and five, chooses three, and returns it to MAX. The physical game has not executed A and then walked backward. Only a computational call has returned a number. Search explores hypothetical states; the board remains where it was.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "action A",
+              "selector": ".frontier-trace section",
+              "index": 0,
+              "label": "Trace step 2",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "returns it",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "label": "Returned value 3",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".frontier-trace section button",
+              "index": 1,
+              "label": "Advance to action A"
+            }
+          ]
+        },
+        {
+          "label": "Resolve action B",
+          "text": "Advance to B. MIN chooses two instead of nine, so B returns two. The attractive nine never reaches the root because MIN controls that reply. This is the minimizing half of minimax: the opponent selects the branch least favorable to MAX.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "B returns two",
+              "selector": ".frontier-trace section",
+              "index": 0,
+              "label": "Trace step 3",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "nine never reaches",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "label": "MIN selects 2, not 9",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".frontier-trace section button",
+              "index": 1,
+              "label": "Advance to action B"
+            }
+          ]
+        },
+        {
+          "label": "Resolve action C",
+          "text": "Advance again to C. MIN chooses one instead of four, so C returns one. MAX now has three completed sibling values: A returns three, B returns two, and C returns one. Each number summarizes the strongest reply available to MIN under that root action.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "C returns one",
+              "selector": ".frontier-trace section",
+              "index": 0,
+              "label": "Trace step 4",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "three completed sibling values",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "label": "A = 3 · B = 2 · C = 1",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".frontier-trace section button",
+              "index": 1,
+              "label": "Advance to action C"
+            }
+          ]
+        },
+        {
+          "label": "Return the decision",
+          "text": "Advance to the final step. MAX compares A three, B two, and C one, so it chooses A with backed-up value three. The root returns an action after all sibling values are known. Reset the trace so students can replay the control flow from a clean state.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "chooses A",
+              "selector": ".frontier-trace section",
+              "index": 0,
+              "label": "Trace step 5",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "backed-up value three",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "label": "Final returned decision",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".frontier-trace section button",
+              "index": 1,
+              "label": "Advance to final decision"
+            }
+          ]
+        },
+        {
+          "label": "Trace invariants",
+          "text": "At every trace step, three invariants should hold: utility perspective remains MAX's, node operator matches the player to move, and a returned value summarizes a fully resolved searched subtree. If any invariant fails, stop before continuing arithmetic. Debugging one layer early is cheaper than beautifully backing up the wrong tree.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "every trace step",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "label": "Depth-first invariants",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "three invariants",
+              "label": "Perspective · player · resolved subtree",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Replay challenge",
+          "text": "Replay the trace mentally in reverse: final action A depends on values three, two, and one; each depends on a MIN comparison; each leaf provides the base value. Reverse explanation checks whether students understand dependency rather than merely remembering the order in which buttons were clicked.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Replay the trace",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "label": "Explain dependencies in reverse",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "A cutoff leaf is where the search horizon ends—not necessarily where the game ends",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the fixed three-ply tree and read the bottom values before trusting internal labels. A ply is one player's move, so three-ply search looks ahead three alternating actions. The eleven leaves mark the search horizon; some could be terminal facts, while nonterminal cutoff leaves require an evaluation estimate.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the fixed three-ply",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Fixed three-ply minimax tree",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the fixed three-ply",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Terminal utility versus evaluation",
+          "text": "Close the image. The first bullet says a terminal leaf gets exact utility. The second says a depth-limited nonterminal leaf gets an evaluation function. Both appear at leaves of the search tree, but only one represents the actual end of the game. Leaf means no deeper search in this computation, not necessarily game over.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first bullet",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Terminal utility",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Cutoff evaluation",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Do not evaluate internal nodes independently",
+          "text": "The final bullet says internal nodes receive backed-up values. Evaluating each internal node with a separate horizon would mix apples, oranges, and a suspicious pineapple. Minimax compares branches only when their values share the same terminal or cutoff semantics.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "final bullet",
+              "selector": ".tree-layout section li",
+              "index": 2,
+              "label": "Internal values are backed up",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "suspicious pineapple",
+              "emoji": "🍎 🍊 🍍",
+              "label": "Compare values from a consistent horizon",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Horizon effects",
+          "text": "A cutoff can hide a decisive event just beyond the search depth. An evaluator may prefer a move at depth three that loses at depth four. This horizon effect motivates deeper search, quiescence search for tactically unstable positions, and evaluators that recognize immediate threats. A cutoff is a computational horizon, not a wall the opponent promises to respect.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "A cutoff",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Cutoff horizon",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "horizon effect",
+              "label": "Important consequences may sit one ply deeper",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Depth counts moves, not rounds",
+          "text": "A ply is one move by one player. A full round in a two-player alternating game contains two plies. Confusing the terms doubles the intended horizon and can multiply work by another factor of the branching rate. In exponential search, vocabulary can have a surprisingly large electricity bill.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "ply",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "One player move",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Each MIN node keeps the reply least favorable to MAX",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the same tree and work from the bottom. Lower MAX nodes become three, nine, zero, seven, two, and six after selecting their largest leaves. Only then can each MIN parent compare completed child values. Backup is layered arithmetic with turn labels, not a scavenger hunt for the largest number anywhere.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the same tree",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "MIN backup on fixed tree",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the same tree",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Three MIN calculations",
+          "text": "Close the image. The list computes left as minimum of three and nine, giving three; middle as minimum of zero and seven, giving zero; right as minimum of two and six, giving two. Say MIN before each calculation. That verbal label prevents arithmetic from floating free of control.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "left",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Left MIN = 3",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "middle",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Middle MIN = 0",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "right",
+              "selector": ".tree-layout section li",
+              "index": 2,
+              "label": "Right MIN = 2",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Interpret MIN correctly",
+          "text": "MIN is not choosing a foolish move for itself. It chooses its strongest reply, expressed as the smallest utility for MAX under a shared zero-sum scale. From MIN's perspective, shrinking MAX's outcome is precisely rational. The label least favorable to MAX is clearer than saying worst move without naming for whom.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "strongest reply",
+              "selector": ".search-callout",
+              "index": 0,
+              "label": "MIN's best reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "for whom",
+              "label": "Always name the utility perspective",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Backup as dynamic programming",
+          "text": "Minimax backup composes small solved subproblems. Once a child subtree value is known, the parent needs only max or min over those summaries. Transposition tables exploit this by storing repeated state values. The challenge is preserving depth, bound type, and evaluation conditions so yesterday's summary still answers today's question.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Minimax backup",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Bottom-up value composition",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "storing repeated state values",
+              "label": "Cache only semantically compatible results",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Layer labels before numbers",
+          "text": "When solving a tree by hand, mark each internal layer MAX or MIN before touching arithmetic. Then circle groups of siblings and write the operator beside each parent. This simple annotation separates structural errors from calculation errors and makes partial credit less dependent on telepathy.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "mark each internal layer",
+              "label": "Label control before calculating values",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "MAX selects the action whose worst reply is best",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the completed tree. The root receives three branch summaries: three, zero, and two. Each already represents the reply MIN would choose. MAX therefore computes maximum of three, zero, and two, selecting the left action with value three.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the completed tree.",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Completed minimax root backup",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the completed tree.",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Why leaf nine loses",
+          "text": "Close the image. The visible nine lives below a MIN choice. MIN can select sibling value three instead, so MAX cannot guarantee nine. A large descendant matters only if every controlling choice on the path allows it. Minimax values permissions, not wishful sightseeing.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "visible nine",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Largest leaf is not selected",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "cannot guarantee nine",
+              "label": "Opponent controls which reply follows",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "State the guarantee precisely",
+          "text": "The callout supplies the careful claim. Under the modeled rules, fixed utility perspective, complete three-ply search, evaluation semantics, and optimal opposition, the selected move guarantees a backed-up cutoff value of at least three. Change the depth or evaluator and the recommendation may change. Guarantees have assumptions, not capes.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "careful claim",
+              "selector": ".search-callout",
+              "index": 0,
+              "label": "Conditional minimax guarantee",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "not capes",
+              "emoji": "🦸 🚫",
+              "label": "Every guarantee carries assumptions",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "A guarantee is a lower bound",
+          "text": "At a MAX root, minimax value three means MAX can force at least three under the modeled search and evaluation, regardless of MIN's reply. MIN might choose poorly and allow more. This lower-bound interpretation explains both safety and opportunity: the policy protects three without forbidding the agent from accepting a gift.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "minimax value three",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Root value 3",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "at least three",
+              "label": "Worst-case guarantee, better outcomes possible",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Principal variation",
+          "text": "The selected root action plus the best replies along its backed-up path form a principal variation—the line currently considered best under the search. It is useful for explanation, but it is not the whole strategy. If the opponent deviates, the agent follows a different stored or recomputed response.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "root",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Selected root action and principal line",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Count open winning lines for X and subtract those for O",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the tic-tac-toe evaluation figure. M of n counts winning lines still open for X; O of n counts lines still open for O. The estimate E of n equals M minus O. The three source examples are one, negative two, and one, showing that different boards can compress to the same score.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the tic-tac-toe evaluation",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Tic-tac-toe evaluation function",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the tic-tac-toe evaluation",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Read the three definitions",
+          "text": "Close the image. The first card defines M, the second O, and the third their difference. Larger values favor X because utility is written from X's perspective. The minus sign does not alternate with turns. MIN later chooses the smaller X-perspective value.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first card",
+              "selector": ".source-definition-layout section article",
+              "index": 0,
+              "label": "M(n): X lines",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".source-definition-layout section article",
+              "index": 1,
+              "label": "O(n): O lines",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "third",
+              "selector": ".source-definition-layout section article",
+              "index": 2,
+              "label": "E(n)=M(n)-O(n)",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Scope and limitation",
+          "text": "The callout limits this score to nonterminal cutoff states. A completed win or loss receives exact terminal utility even if line counting produces an ordinary finite number. The evaluator also ignores forks, move order, and tactical immediacy. Compression makes search affordable by forgetting details; testing discovers whether it forgot the plot.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "callout",
+              "selector": ".search-callout",
+              "index": 0,
+              "label": "Use only at cutoff states",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "forgetting details",
+              "label": "A heuristic is a lossy summary",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Feature engineering for games",
+          "text": "A stronger tic-tac-toe evaluator could count immediate wins, blocks, forks, center control, or weighted open lines. More features are not automatically better; correlated counts can double-count evidence, and tactical rules can dominate strategic structure. Compare evaluator choices against deeper exact search on held-out positions.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "stronger tic-tac-toe evaluator",
+              "selector": ".source-definition-layout section article",
+              "index": 2,
+              "label": "Evaluation feature",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "held-out positions",
+              "label": "Test heuristic agreement with deeper search",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Evaluator calibration",
+          "text": "Line-count features can be compared with exact solved positions. Measure how often score order agrees with true minimax order, especially near tactical threats. Calibration turns a plausible formula into empirical evidence. Without testing, an evaluation function is a confident opinion with excellent formatting.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Line-count features",
+              "selector": ".search-callout",
+              "index": 0,
+              "label": "Validate the cutoff evaluator",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The arithmetic is simple; the representation does the work",
+      "segments": [
+        {
+          "label": "Score State A",
+          "text": "Choose State A and reveal. M is six, O is five, so E equals one. The result favors X by one open line under this feature. The calculation is easy; deciding what counts as still open requires the board representation and game rules.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "State A",
+              "selector": ".algorithm-selection nav button",
+              "index": 0,
+              "label": "State A",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "E equals one",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "label": "State A result",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".algorithm-selection nav button",
+              "index": 0,
+              "label": "Choose State A"
+            },
+            {
+              "type": "click",
+              "selector": ".algorithm-selection section > button",
+              "index": 0,
+              "label": "Reveal State A result"
+            }
+          ]
+        },
+        {
+          "label": "Score State B",
+          "text": "Choose State B and reveal. Four minus six equals negative two, so the position favors O on the fixed X-perspective scale. Negative does not mean illegal or impossible; it means the selected feature sees more opportunity for the opponent.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "State B",
+              "selector": ".algorithm-selection nav button",
+              "index": 1,
+              "label": "State B",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "negative two",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "label": "State B result",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".algorithm-selection nav button",
+              "index": 1,
+              "label": "Choose State B"
+            },
+            {
+              "type": "click",
+              "selector": ".algorithm-selection section > button",
+              "index": 0,
+              "label": "Reveal State B result"
+            }
+          ]
+        },
+        {
+          "label": "Score State C",
+          "text": "Choose State C and reveal. Five minus four returns one, tying State A. The boards are not identical; the heuristic has compressed them to the same scalar. A tie-breaking rule or richer features may be needed. Equal thermometer readings do not prove two patients have the same illness.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "State C",
+              "selector": ".algorithm-selection nav button",
+              "index": 2,
+              "label": "State C",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "tying State A",
+              "selector": ".algorithm-selection section",
+              "index": 0,
+              "label": "State C result",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "thermometer",
+              "emoji": "🌡️ ≠ 🩺",
+              "label": "Equal scores can hide different structure",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".algorithm-selection nav button",
+              "index": 2,
+              "label": "Choose State C"
+            },
+            {
+              "type": "click",
+              "selector": ".algorithm-selection section > button",
+              "index": 0,
+              "label": "Reveal State C result"
+            }
+          ]
+        },
+        {
+          "label": "Ties reveal missing resolution",
+          "text": "States A and C both score one, but their tactical futures may differ. A tie can be harmless if deeper minimax separates them, or dangerous if the cutoff forces an arbitrary choice. Record tie frequency and inspect tied positions. When a heuristic frequently shrugs at important distinctions, it is asking for better features, not louder arithmetic.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "States A and C",
+              "selector": ".algorithm-selection nav button",
+              "index": 2,
+              "label": "Tied score",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "shrugs",
+              "emoji": "🤷 🔢",
+              "label": "A tie may expose missing information",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Representation does the hidden labor",
+          "text": "The subtraction on this slide takes milliseconds; producing correct M and O counts requires recognizing blocked lines, player identity, and board geometry. In AI, the final formula is often the smallest part. Representation quietly does the difficult work and then lets arithmetic take the applause.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "arithmetic",
+              "emoji": "🧮 👏",
+              "label": "Simple formula, substantial representation",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The opponent's best reply determines each opening's value",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the two-ply opening tree. MAX has three symmetry-distinct openings. Under each opening, MIN examines replies and backs up the smallest evaluation. The resulting branch summaries are negative one, negative two, and one. Those summaries—not the largest raw leaves—are what the root may compare.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the two-ply opening",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Two-ply tic-tac-toe opening tree",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the two-ply opening",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Three-pass reading",
+          "text": "Close the image. First identify MAX's opening choices. Second compute the minimum reply under each. Third select the maximum of those branch values at the root. This three-pass discipline separates tree structure from arithmetic and prevents the eye from teleporting directly to a favorite leaf.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "First identify",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Pass 1: MAX openings",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Second",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Pass 2: MIN replies",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "Third",
+              "selector": ".tree-layout section li",
+              "index": 2,
+              "label": "Pass 3: MAX decision",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Prediction before reveal",
+          "text": "The branch values are negative one, negative two, and one. Pause before the next page and predict the root move. If MAX controls the root and utility favors MAX, the answer should be the branch with value one. Commitment before feedback makes a misconception visible instead of letting it escape wearing hindsight glasses.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "predict the root move",
+              "label": "Commit before seeing the answer",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            },
+            {
+              "type": "emoji",
+              "phrase": "hindsight glasses",
+              "emoji": "🤓 ⏪",
+              "label": "Prediction reveals reasoning",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Symmetry and transpositions",
+          "text": "The opening tree groups rotationally equivalent moves, while later search may encounter the same board through different move orders. Symmetry reduction and transposition tables both avoid duplicated reasoning, but their equivalence tests differ. Canonicalization must preserve player to move and value semantics, not merely make boards look alike.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "rotationally equivalent",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Symmetry representatives",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "same board",
+              "label": "Canonical state must preserve game meaning",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Two-ply limitation",
+          "text": "The opening tree sees only one reply after MAX's move. A branch valued at one may conceal a tactical problem at ply three. Depth-limited conclusions are conditional on the horizon and evaluator. Deeper search can reverse preferences, which is why iterative deepening watches for unstable decisions.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "opening tree",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Limited search horizon",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "What value reaches the root?",
+      "segments": [
+        {
+          "label": "Expose the root-player error",
+          "text": "Choose the first answer deliberately: negative two because MIN chooses at the root. The feedback rejects it. MIN produced each branch value, but MAX controls the root choice. Confusing who summarized a branch with who selects among branches is a common two-level error.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first answer",
+              "selector": ".search-quick-check button",
+              "index": 0,
+              "label": "Incorrect: MIN at root",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-quick-check button",
+              "index": 0,
+              "label": "Choose MIN-at-root misconception"
+            }
+          ]
+        },
+        {
+          "label": "Reveal the correct backup",
+          "text": "Now choose the third answer. MAX receives negative one, negative two, and one, then selects the largest: one. The rightmost opening is chosen. Notice that the root does not rerun MIN arithmetic; it trusts the already backed-up child values.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third answer",
+              "selector": ".search-quick-check button",
+              "index": 2,
+              "label": "Correct: MAX selects 1",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "selects the largest",
+              "label": "max(-1,-2,1)=1",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-quick-check button",
+              "index": 2,
+              "label": "Choose correct root value"
+            }
+          ]
+        },
+        {
+          "label": "A compact audit recipe",
+          "text": "When checking a minimax result, ask four questions: whose turn is the root, whose perspective defines utility, have child values already been backed up, and does the chosen action match the correct max or min operator? This audit is faster than staring harder at the tree and hoping guilt produces insight.",
+          "cues": [
+            {
+              "type": "emoji",
+              "phrase": "four questions",
+              "emoji": "4️⃣ ✅",
+              "label": "Root · perspective · backup · operator",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            },
+            {
+              "type": "popup",
+              "phrase": "audit",
+              "label": "Verify structure before arithmetic",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Why wrong answers are valuable",
+          "text": "Selecting the MIN-at-root option reveals a structural misconception, not a subtraction mistake. Good formative assessment targets the decision rule students are likely to misapply. The correction should name the root player, explain that branch values are already minimized, and then perform the final max. Feedback that says only incorrect wastes a perfectly useful error.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "MIN-at-root",
+              "selector": ".search-quick-check button",
+              "index": 0,
+              "label": "Diagnose structure",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "structural misconception",
+              "label": "Explain why the rule fails",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Backed-up values are interfaces",
+          "text": "Once MIN has summarized a branch as one number, the root does not need every leaf to perform its max comparison. The branch value acts like an interface: complex internal reasoning becomes a compact promise about the outcome MIN can force. Good abstractions hide detail without changing meaning.",
+          "cues": [
+            {
+              "type": "popup",
+              "phrase": "branch value",
+              "label": "A subtree summary is a semantic interface",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "After the opponent moves, advance the root to the observed state",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the second-turn tree. The opponent's actual reply selects one child of the previous search tree. That observed position becomes the new root, with the player-to-move label advanced. Search continues from reality, not from branches that did not occur.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the second-turn tree.",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Re-rooted tic-tac-toe tree",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the second-turn tree.",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Reuse valid work",
+          "text": "Close the image. The first bullet permits reusing a matching subtree when state, rules, and depth semantics still match. The second permits transposition-table entries whose stored depth and bounds remain valid. Reuse saves computation, but stale information can be worse than no information because it arrives wearing a name badge.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first bullet",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Reuse matching subtree",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Reuse valid transpositions",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Rebuild only what changed",
+          "text": "The final bullet says rebuild the parts invalidated by the new state or search budget. A fresh root may change remaining depth, timing, or legal actions. The principle is neither discard everything nor trust everything. Verify provenance, then reuse. This is memoization with adult supervision.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "final bullet",
+              "selector": ".tree-layout section li",
+              "index": 2,
+              "label": "Rebuild invalidated parts",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "adult supervision",
+              "emoji": "🗃️ 👀",
+              "label": "Reuse only valid cached work",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Tree reuse and moving horizons",
+          "text": "When the root advances one ply, a subtree previously searched to depth four may now extend only three plies beyond the new root, depending on how depth was stored. Iterative deepening and transposition tables track depth precisely. Reuse is not copying a folder; it is preserving a claim with its scope attached.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "root advances",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Reuse with depth semantics",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "scope attached",
+              "label": "Cached value needs state, depth, and bound metadata",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Transpositions versus subtrees",
+          "text": "A transposition occurs when different action sequences reach the same complete game state. A subtree reuse follows the actual previous branch; a transposition table may reuse work reached by another order. Both require state equivalence, but transpositions make good hashing and canonical representation especially important.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "transposition table",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "Reuse repeated states",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Terminal losses override attractive cutoff features",
+      "segments": [
+        {
+          "label": "Enlarge and inspect the source figure",
+          "text": "Enlarge the late-game tree and locate the branches with exact losing outcomes. A terminal loss is not merely a very unattractive estimate. It is a resolved fact and receives exact losing utility, shown with an infinite-style value to dominate finite cutoff scores.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Enlarge the late-game tree",
+              "selector": ".source-image-lightbox",
+              "index": 0,
+              "label": "Late-game minimax threats",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "Enlarge the late-game tree",
+              "label": "Inspect the evidence before backing up a value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": "figure.search-source-image > button",
+              "index": 0,
+              "label": "Enlarge source figure"
+            }
+          ]
+        },
+        {
+          "label": "Terminal test before heuristic",
+          "text": "Close the image. The first bullet says terminal losses use exact utility. The second reminds us that MIN will choose any available reply forcing the worst value for MAX. A feature score cannot vote to overrule checkmate, three-in-a-row, or another completed loss.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first bullet",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Exact terminal loss",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "second",
+              "selector": ".tree-layout section li",
+              "index": 1,
+              "label": "MIN forces the worst reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".source-image-close",
+              "index": 0,
+              "label": "Close enlarged source figure"
+            }
+          ]
+        },
+        {
+          "label": "Safety means every reply",
+          "text": "The third bullet gives the robust condition: a move is safe only if every modeled opponent reply preserves the claimed lower bound. One attractive continuation is insufficient. Choosing a branch because one child looks wonderful is like declaring a bridge safe because one plank is excellent.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "third bullet",
+              "selector": ".tree-layout section li",
+              "index": 2,
+              "label": "Every reply must preserve the bound",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "one plank",
+              "emoji": "🌉 🪵",
+              "label": "A strategy must cover every opponent reply",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Terminal values must dominate",
+          "text": "Implementations often use large finite constants instead of infinity. Those constants must exceed any possible nonterminal evaluation magnitude, and faster wins or slower losses may add depth adjustments. Otherwise an enthusiastic heuristic can numerically outrank an actual victory, which is an impressive way to lose while winning the spreadsheet.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "large finite constants",
+              "selector": ".tree-layout section li",
+              "index": 0,
+              "label": "Exact terminal outcome",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "outrank an actual victory",
+              "label": "Terminal utility outranks cutoff estimates",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Threat-first extensions",
+          "text": "When a cutoff lands in the middle of a forcing tactic, programs may extend search until the position becomes quieter. In chess this is quiescence search; in tic-tac-toe it could mean resolving immediate wins and blocks. Selective extension spends depth where the evaluator is least trustworthy.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "a cutoff",
+              "selector": ".tree-layout section",
+              "index": 0,
+              "label": "Resolve forcing tactics",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Minimax is safe under assumptions—not magic",
+      "segments": [
+        {
+          "label": "Best-first misconception",
+          "text": "Choose Best-first. The claim says ordinary best-first should work because it follows the best-looking state. The revision explains the missing alternation: ordinary best-first assumes one search agent controls the path, whereas minimax backs up decisions made by MAX and MIN. A priority queue does not automatically grow an opponent model.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Best-first",
+              "selector": ".search-review-studio nav button",
+              "index": 0,
+              "label": "Best-first misconception",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "revision",
+              "selector": ".search-review-studio ol li",
+              "index": 2,
+              "label": "Revised claim",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 0,
+              "label": "Choose best-first misconception"
+            }
+          ]
+        },
+        {
+          "label": "Opponent mistake misconception",
+          "text": "Choose Opponent mistake. A blunder does not invalidate minimax. Observe the resulting state, re-root or re-search, and exploit the improved opportunity. Minimax guarantees protection against strong opposition; it does not require the opponent to remain strong for the agent to function.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Opponent mistake",
+              "selector": ".search-review-studio nav button",
+              "index": 1,
+              "label": "Opponent mistake misconception",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "improved opportunity",
+              "label": "A mistake can raise the achievable value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 1,
+              "label": "Choose opponent-mistake misconception"
+            }
+          ]
+        },
+        {
+          "label": "Guaranteed-win misconception",
+          "text": "Choose Guaranteed win. Minimax guarantees the best worst-case outcome under its assumptions, not victory from every position. A losing position remains losing against perfect play; a drawable position may guarantee only a draw. The algorithm is a careful strategist, not a coupon code for victory.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Guaranteed win",
+              "selector": ".search-review-studio nav button",
+              "index": 2,
+              "label": "Guaranteed-win misconception",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "coupon code",
+              "emoji": "🎟️ 🚫 🏆",
+              "label": "Minimax cannot manufacture a winning position",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 2,
+              "label": "Choose guaranteed-win misconception"
+            }
+          ]
+        },
+        {
+          "label": "Guarantee language checklist",
+          "text": "A defensible minimax claim names the game model, utility perspective, search depth or completeness, evaluation function, opponent assumption, and result type. Remove any one and guarantees can inflate. Saying minimax guarantees a win is almost always missing the starting position; saying it guarantees the best worst-case modeled outcome is precise.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "names the game model",
+              "selector": ".search-review-studio ol li",
+              "index": 3,
+              "label": "Test the revised claim",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "names the game model",
+              "label": "Precise claims expose assumptions",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Mistakes do not break safety",
+          "text": "If minimax planned for the strongest reply, a weaker reply cannot make the guaranteed value worse in the same deterministic model. It may open better opportunities. The agent still recalculates because the new root differs, but the opponent's mistake is a gift, not a software exception.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "opponent's mistake",
+              "selector": ".search-review-studio nav button",
+              "index": 1,
+              "label": "Exploit a weaker reply",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Six questions that reveal whether minimax is understood",
+      "segments": [
+        {
+          "label": "Question one",
+          "text": "Choose Q1. Root type follows the player to move, while utility perspective remains fixed. If MAX moves, the root maximizes; if MIN moves, the root minimizes. Name both facts before backing up a single number.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q1",
+              "selector": ".search-review-studio nav button",
+              "index": 0,
+              "label": "Root MAX or MIN",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 0,
+              "label": "Choose Q1"
+            }
+          ]
+        },
+        {
+          "label": "Question two",
+          "text": "Now choose Q2. MAX and MIN alternate because legal control alternates. The numeric perspective does not flip with the operator. This distinction establishes the skeleton of every correct minimax trace.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q2",
+              "selector": ".search-review-studio nav button",
+              "index": 1,
+              "label": "Why alternate",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 1,
+              "label": "Choose Q2"
+            }
+          ]
+        },
+        {
+          "label": "Question three",
+          "text": "Choose Q3. MIN chooses its own best move, which minimizes MAX utility. Calling it the worst move without naming the perspective is misleading: it is worst for MAX and best for MIN.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q3",
+              "selector": ".search-review-studio nav button",
+              "index": 2,
+              "label": "MIN's objective",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 2,
+              "label": "Choose Q3"
+            }
+          ]
+        },
+        {
+          "label": "Question four",
+          "text": "Choose Q4. Terminal leaves use exact utility, cutoff leaves use evaluation, and internal nodes use backed-up child values. The search horizon determines the source of a leaf value.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q4",
+              "selector": ".search-review-studio nav button",
+              "index": 3,
+              "label": "Leaf evaluation semantics",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 3,
+              "label": "Choose Q4"
+            }
+          ]
+        },
+        {
+          "label": "Question five",
+          "text": "Choose Q5. No player chooses at a leaf. Instead, the terminal rule or cutoff rule returns a number to the waiting recursive call. Game control and recursive computation are different layers.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q5",
+              "selector": ".search-review-studio nav button",
+              "index": 4,
+              "label": "No choice at a leaf",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 4,
+              "label": "Choose Q5"
+            }
+          ]
+        },
+        {
+          "label": "Question six",
+          "text": "Finally choose Q6. After an opponent move, advance the root to the observed child and reuse only subtrees or transpositions that remain valid. Re-rooting separates the plan we imagined from the move that actually occurred.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Q6",
+              "selector": ".search-review-studio nav button",
+              "index": 5,
+              "label": "Re-root and reuse",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ],
+          "actionsBefore": [
+            {
+              "type": "click",
+              "selector": ".search-review-studio nav button",
+              "index": 5,
+              "label": "Choose Q6"
+            }
+          ]
+        },
+        {
+          "label": "Explain to learn",
+          "text": "The six-question clinic is not trivia. Each answer forces a causal explanation: who acts, why operators alternate, where values originate, and when work can be reused. If an explanation relies on memorized arrows without a fixed utility perspective, construct a two-level counterexample and make the speaker predict the root value.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "ANSWER",
+              "selector": ".search-review-studio ol li",
+              "index": 1,
+              "label": "Explain the mechanism",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "emoji",
+              "phrase": "causal explanation",
+              "emoji": "🗣️ 🧩",
+              "label": "Teach the rule through a trace",
+              "durationSeconds": 5.4,
+              "centerHoldSeconds": 2.6,
+              "route": "open-center"
+            }
+          ]
+        },
+        {
+          "label": "Oral exam shortcut",
+          "text": "Ask a student to explain why MIN selects the smallest MAX-perspective value without using the words because that is the rule. A good answer mentions opposed utilities and control of the action. Requiring mechanism instead of recitation distinguishes a mental model from a memorized traffic signal.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "ASK",
+              "selector": ".search-review-studio ol li",
+              "index": 0,
+              "label": "Explain, do not recite",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Formulate, back up, evaluate, and defend",
+      "segments": [
+        {
+          "label": "Formulate",
+          "text": "The first exit card asks you to formulate the game: state, player, actions, result, terminal test, utility, and assumptions. If one component is missing, minimax may still produce numbers, but the numbers answer a different question. Formulation is where correctness begins, long before recursion begins looking clever.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "first exit card",
+              "selector": ".search-exit article",
+              "index": 0,
+              "label": "1. Formulate",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Trace and critique",
+          "text": "The second card asks for a complete backup with MAX and MIN labels, terminal and cutoff semantics, and a circled root action. The third asks you to critique an evaluator by naming a feature, a failure case, and an experiment. Calculation shows what the algorithm did; critique asks whether it was worth doing.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "second card",
+              "selector": ".search-exit article",
+              "index": 1,
+              "label": "2. Trace",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "focus",
+              "phrase": "third",
+              "selector": ".search-exit article",
+              "index": 2,
+              "label": "3. Critique",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        },
+        {
+          "label": "Prepare for alpha-beta",
+          "text": "The final panel previews Lesson 8. Alpha-beta pruning returns the same depth-limited minimax decision while proving that some branches cannot affect the result. It changes efficiency, not the decision rule. Today's exit sentence is: MAX chooses the best outcome that MIN cannot prevent, under explicit assumptions and a fixed utility perspective.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "final panel",
+              "selector": ".search-exit aside",
+              "index": 0,
+              "label": "Next: alpha-beta pruning",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "same depth-limited minimax decision",
+              "label": "Pruning changes work, not minimax value",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "Bridge to alpha-beta",
+          "text": "Alpha-beta will maintain lower and upper path bounds. When those bounds prove a remaining branch cannot improve the current decision, the branch is skipped without changing the minimax result. Move ordering changes how much is pruned, not correctness. The conceptual prerequisite is today's exact backup rule; pruning is a proof layered on top.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "Alpha-beta",
+              "selector": ".search-exit aside",
+              "index": 0,
+              "label": "Alpha-beta preview",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            },
+            {
+              "type": "popup",
+              "phrase": "without changing",
+              "label": "Same minimax value, fewer evaluated nodes",
+              "durationSeconds": 5.8,
+              "centerHoldSeconds": 2.8
+            }
+          ]
+        },
+        {
+          "label": "One-sentence synthesis",
+          "text": "Minimax chooses the action with the greatest value that an optimal opponent cannot push lower, using terminal utilities or cutoff estimates backed through alternating control. If that sentence feels dense, draw a two-level tree and attach each phrase to a layer. Compression should follow understanding, not replace it.",
+          "cues": [
+            {
+              "type": "focus",
+              "phrase": "draw a two-level tree",
+              "selector": ".search-exit article",
+              "index": 1,
+              "label": "Complete minimax synthesis",
+              "durationSeconds": 5.8,
+              "targetMode": "explicit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode, type TouchEvent, useEffect, useState } from "react";
-import { EnlargeableImage } from "./SearchLessonPrimitives";
 
 export type LessonSlide = {
   eyebrow: string;
@@ -26,6 +25,7 @@ type L01DeckShellProps = {
   lectureVideoUrl?: string;
   meetingLabel: string;
   meetingTitle: string;
+  narrationNotes?: readonly string[];
   resolveSourceReference?: (sourceSlide: number) => CourseSourceReference;
   slides: LessonSlide[];
   sourceCollectionLabel?: string;
@@ -63,6 +63,7 @@ export function L01DeckShell({
   lectureVideoUrl,
   meetingLabel,
   meetingTitle,
+  narrationNotes,
   resolveSourceReference,
   slides,
   sourceCollectionLabel = DEFAULT_SOURCE_COLLECTION_LABEL,
@@ -72,7 +73,6 @@ export function L01DeckShell({
   const [current, setCurrent] = useState(0);
   const [overview, setOverview] = useState(false);
   const [notes, setNotes] = useState(false);
-  const [sourceView, setSourceView] = useState(false);
   const [motion, setMotion] = useState(true);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [printAll, setPrintAll] = useState(forcePrintAll);
@@ -82,7 +82,6 @@ export function L01DeckShell({
     const next = Math.max(0, Math.min(total - 1, requested));
     setCurrent(next);
     setOverview(false);
-    setSourceView(false);
     window.history.replaceState(null, "", `#slide-${next + 1}`);
   };
 
@@ -117,14 +116,11 @@ export function L01DeckShell({
         setOverview(value => !value);
       } else if (event.key.toLowerCase() === "n") {
         setNotes(value => !value);
-      } else if (event.key.toLowerCase() === "s") {
-        setSourceView(value => !value);
       } else if (event.key.toLowerCase() === "f") {
         document.documentElement.requestFullscreen?.();
       } else if (event.key === "Escape") {
         setOverview(false);
         setNotes(false);
-        setSourceView(false);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -141,35 +137,11 @@ export function L01DeckShell({
 
   const slide = slides[current];
   const currentMinutes = timingPlan?.[current] ?? inferMinutes(slide);
-  const sourceReferenceResolver = resolveSourceReference ?? (
-    sourceCollectionPath === "l01-ai" && sourceCollectionLabel === DEFAULT_SOURCE_COLLECTION_LABEL
-      ? resolveL01SourceReference
-      : (sourceSlide: number): CourseSourceReference => ({
-        deckLabel: sourceCollectionLabel,
-        image: `/course-source/${sourceCollectionPath}/source-slides/slide-${String(sourceSlide).padStart(2, "0")}.png`,
-        key: `${sourceCollectionPath}:${sourceSlide}`,
-        page: sourceSlide,
-      })
-  );
-  const sourceReferences = slide.sourceSlides.reduce<CourseSourceReference[]>((references, sourceSlide) => {
-    const reference = sourceReferenceResolver(sourceSlide);
-    const key = reference.key ?? `${reference.deckLabel}:${reference.page}:${reference.image}`;
-    if (!references.some(item => (item.key ?? `${item.deckLabel}:${item.page}:${item.image}`) === key)) {
-      references.push({ ...reference, key });
-    }
-    return references;
-  }, []);
-  const sourceReferenceGroups = sourceReferences.reduce<Map<string, number[]>>((groups, reference) => {
-    const pages = groups.get(reference.deckLabel) ?? [];
-    pages.push(reference.page);
-    groups.set(reference.deckLabel, pages);
-    return groups;
-  }, new Map());
-  const sourceReferenceHeading = sourceReferenceGroups.size
-    ? [...sourceReferenceGroups.entries()]
-      .map(([deckLabel, pages]) => `${deckLabel} · ${pages.length === 1 ? "page" : "pages"} ${pages.join(", ")}`)
-      .join("; ")
-    : "No exact course source page is attached to this lesson page";
+  const activeNote = narrationNotes?.[current] ?? slide.note;
+  const noteParagraphs = activeNote.split(/\n{2,}/).map(paragraph => paragraph.trim()).filter(Boolean);
+  void resolveSourceReference;
+  void sourceCollectionLabel;
+  void sourceCollectionPath;
 
   if (printAll) {
     return (
@@ -213,16 +185,6 @@ export function L01DeckShell({
             Motion {motion ? "on" : "off"}
           </button>
           <button aria-pressed={notes} onClick={() => setNotes(value => !value)} type="button">Notes</button>
-          <button
-            aria-pressed={sourceView}
-            onClick={() => {
-              setOverview(false);
-              setSourceView(value => !value);
-            }}
-            type="button"
-          >
-            Course source
-          </button>
           <button onClick={() => setOverview(true)} type="button">Overview</button>
           <button onClick={() => window.print()} type="button">Print</button>
         </div>
@@ -243,44 +205,16 @@ export function L01DeckShell({
 
       {notes && (
         <aside className="speaker-notes">
-          <div><span>Instructor note · Slide {current + 1}</span><button onClick={() => setNotes(false)} type="button">×</button></div>
-          <p>{currentMinutes && !noteStartsWithTiming(slide.note) ? `Timing: ${currentMinutes} minutes. ` : ""}{slide.note}</p>
+          <div><span>{narrationNotes ? "Narration script" : "Instructor note"} · Slide {current + 1}</span><button onClick={() => setNotes(false)} type="button">×</button></div>
+          <div className="speaker-note-body">
+            {noteParagraphs.map((paragraph, index) => (
+              <p key={`${current}-${index}`}>
+                {!narrationNotes && index === 0 && currentMinutes && !noteStartsWithTiming(slide.note) ? `Timing: ${currentMinutes} minutes. ` : ""}
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </aside>
-      )}
-
-      {sourceView && (
-        <div className="source-reference-backdrop" role="presentation">
-          <section
-            aria-label={`Course source for lesson page ${current + 1}`}
-            aria-modal="true"
-            className="source-reference"
-            role="dialog"
-          >
-            <div className="source-reference-heading">
-              <div>
-                <span>Course source · {sourceCollectionLabel}</span>
-                <h2>{sourceReferenceHeading}</h2>
-                <p>
-                  {sourceReferences.length
-                    ? "Inspect the complete wording, emphasis, and figures connected to this lesson page."
-                    : "This lesson page is a labeled supplement or synthesis without a directly attached source page."}
-                </p>
-              </div>
-              <button aria-label="Close course source" onClick={() => setSourceView(false)} type="button">×</button>
-            </div>
-            <div className={sourceReferences.length > 1 ? "source-reference-pages multiple" : "source-reference-pages"}>
-              {sourceReferences.map(reference => (
-                <figure key={reference.key}>
-                  <EnlargeableImage
-                    alt={`Complete ${reference.deckLabel} course source page ${reference.page}`}
-                    src={reference.image}
-                  />
-                  <figcaption>{reference.deckLabel} · page {reference.page} · select to enlarge</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        </div>
       )}
 
       <footer className="deck-footer">

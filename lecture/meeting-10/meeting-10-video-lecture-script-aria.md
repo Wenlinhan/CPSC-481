@@ -1,0 +1,900 @@
+# Lesson 10 video lecture script
+
+- Route: /lessons/10
+- Voice: Microsoft Aria Neural (en-US-AriaNeural)
+- Speaking rate: 0.94x (-6%)
+- Slides: 28
+- Narration words: 6,859
+- Captions: burned in at the bottom of the final video
+
+## Slide 01 - Can a computer search over programs—not just numbers?
+
+### 1. Concept
+
+Lesson ten asks what changes when the candidate solution is itself a program. In ordinary genetic algorithms, a chromosome may encode numbers or a fixed route. Genetic programming, or GP, evolves executable structure. The individuals are little programs that can run, fail, surprise us, and occasionally behave like an intern who discovered recursion before discovering comments.
+
+### 2. Mechanism
+
+The driving question has four verbs: represent, execute, score, and vary. We need a language for candidate programs, an interpreter that runs them, a fitness function that evaluates behavior, and operators that change program structure without producing nonsense. Selection then makes useful partial programs more likely to survive and recombine.
+
+### 3. Example and metaphor
+
+The lesson broadens from GP to artificial life and swarm intelligence. Artificial life asks which life-like processes become visible when we construct systems. Swarm methods ask how local rules and shared signals create organized global behavior. The unifying idea is emergence: complex results can grow from repeated simple interactions.
+
+### 4. Boundary
+
+Use a recipe metaphor carefully. A fixed chromosome is like a list of ingredient quantities; a GP individual is closer to the entire recipe, including conditional steps and loops. Changing one subtree can replace a whole cooking procedure. That flexibility expands the search space and makes validity, cost, and interpretability central design problems.
+
+### 5. Transfer and audit
+
+By the end, you should be able to contrast GA and GP representations, trace program-tree generation, explain subtree mutation and crossover, design a maze fitness function, and distinguish PSO, bee recruitment, and ant pheromone memory. The goal is not to memorize animal mascots. It is to identify representation, feedback, and state in each algorithm.
+
+### 6. Enlarge program search visual
+
+**Instructor action before narration:** Enlarge the program-search visual.
+
+Open the program-search visual. The enlarged image makes the contrast literal: ordinary optimization adjusts values inside a fixed recipe, while genetic programming can rearrange the recipe itself. It is like a cooking contest where evolution may change not only the amount of salt, but also the order of the steps and whether a blender suddenly joins the team.
+
+### 7. Close program search visual
+
+**Instructor action before narration:** Close the enlarged program-search visual.
+
+Close the enlarged visual and return to the complete slide. Keep the distinction: parameter search asks which settings work, while program search asks which executable structure works.
+
+## Slide 02 - Genetic programming evolves executable structures
+
+### 1. Concept
+
+The definition has three cards. A candidate is an executable program, not merely a parameter vector. Its quality can only be judged after execution on tasks or examples. That means evaluation may be expensive, noisy, unsafe, or capable of timing out, so the runtime environment becomes part of the optimization problem.
+
+### 2. Mechanism
+
+The representation is usually a parse tree whose size and shape can change. Internal nodes are functions and leaves are terminals. Unlike a fixed twenty-two-bit chromosome, two program trees may contain different numbers of nodes. Variable length lets GP discover structure, but it also creates the danger of uncontrolled growth called bloat.
+
+### 3. Example and metaphor
+
+The search mechanism remains evolutionary: initialize programs, execute and score them, select parents, apply program-aware variation, and update the population. GP is therefore not a different universe from GA. It is the same outer evolutionary contract with a representation that carries syntax, control, and executable meaning.
+
+### 4. Boundary
+
+A useful boundary: evolving source text character by character is technically possible but usually gives terrible neighborhoods. Most random edits break syntax, and small textual changes may have arbitrary effects. Tree or grammar representations bias variation toward structurally valid programs. Representation supplies the search with a usable grammar.
+
+### 5. Transfer and audit
+
+Ask the three-card audit on any GP claim. What exactly executes? How is it represented? What evidence determines reproduction? If a paper says programs evolved but never specifies these three items, the method description has the nutritional value of a menu that says only, 'food happened.'
+
+## Slide 03 - Lisp makes hierarchical program structure visible
+
+### 1. Concept
+
+Lisp places a function before its arguments. In the displayed prefix expression, the outer plus is the root call. The values two and three are direct arguments, while the multiplication and division expressions are nested arguments that become complete child subtrees.
+
+### 2. Mechanism
+
+Parentheses make hierarchy explicit. Read an opening parenthesis, then a function, then the arguments required by that function. Nested parentheses mean evaluate a child call before passing its result upward. Lisp is the source example's language; genetic programming itself is not restricted to Lisp.
+
+### 3. Example and metaphor
+
+The slide defines three terms. A function is an operator with argument positions. A terminal is a variable, constant, sensor, or action with no children. A parse tree records the hierarchical evaluation structure connecting those functions and terminals.
+
+### 4. Boundary
+
+Prefix notation is convenient because there is no ambiguity about precedence. The tree and expression carry the same computation. Translation between them should be testable in both directions: parse text into a tree, then serialize the tree and confirm that evaluation stays equivalent.
+
+### 5. Transfer and audit
+
+Do not mistake readable syntax for a good search space. Lisp can express the tree cleanly, but designers must still choose safe primitives, arities, types, depth limits, and fitness. Parentheses organize the guests; they do not guarantee the dinner conversation is productive.
+
+## Slide 04 - The program text and tree encode the same computation
+
+### 1. Concept
+
+Read the displayed tree from its leaves upward. Internal nodes come from the function set: addition, subtraction, multiplication, and protected division. Each function has an arity, the number of children it requires. A binary plus node is incomplete until it has two child programs.
+
+### 2. Mechanism
+
+Leaves come from the terminal set: constants such as two, three, seven, and five, plus variables X and Y. Terminals end recursion because they require no child expressions. When a variable leaf executes, its value comes from the current input case; a constant supplies the same value every time.
+
+### 3. Example and metaphor
+
+The tree encodes a prefix-style expression. Execution recursively evaluates children and sends their results to the parent function. This makes the tree both data and a program. It is a blueprint that can be traversed, copied, replaced, and executed without first flattening it into a line of text.
+
+### 4. Boundary
+
+Protected division illustrates closure. Ordinary division can fail at zero. GP often defines protected division to return a safe fallback when the denominator is zero. Then any generated tree composed from the primitive set can run. We change the operator slightly so evolution cannot discover that crashing is a creative answer.
+
+### 5. Transfer and audit
+
+Before running GP, test the primitive set independently. Verify arity, types, boundary behavior, and execution limits. The search will combine primitives in arrangements no human would volunteer to write. If one primitive is unsafe, evolution will eventually find the unsafe corner with the persistence of a toddler testing cabinet locks.
+
+## Slide 05 - Initialize, evaluate, select, vary, replace, and repeat
+
+### 1. Concept
+
+Begin with random programs. Each tree must obey the grammar, depth constraints, and type rules. Random generation should create structural diversity without filling the population with programs so enormous that the first evaluation finishes during the next academic catalog cycle.
+
+### 2. Mechanism
+
+Execute every program on the evaluation cases and compute fitness. Fitness may reward prediction accuracy, navigation success, low resource use, or a combination. If behavior is stochastic, repeat trials or share scenarios so lucky programs do not receive a hereditary title.
+
+### 3. Example and metaphor
+
+Selection chooses programs to reproduce. Subtree crossover exchanges components between parents; subtree mutation replaces one component with a new random subtree. These operators preserve syntactic structure when they cut at node boundaries, but they do not automatically preserve good behavior.
+
+### 4. Boundary
+
+Create the new population using a generational or steady-state replacement policy. Elitism can preserve the best known program, while diversity mechanisms prevent one family from monopolizing the population. The population is a portfolio of executable hypotheses, not merely a queue waiting behind the current champion.
+
+### 5. Transfer and audit
+
+Check termination after a target fitness, evaluation budget, generation limit, or lack of improvement. Return the best supported program and report its held-out performance, size, and cost. A long family tree is evidence of compute spent, not proof that the final descendant is optimal.
+
+## Slide 06 - Fitness guides reproduction; operators create the next programs
+
+### 1. Concept
+
+The lifecycle begins with random programs, then executes and scores every individual. Selection samples parents using fitness evidence. Variation edits or recombines their trees, and the resulting valid offspring fill a complete new population P prime.
+
+### 2. Mechanism
+
+Fitness guides reproductive probability; it does not directly edit code. A high score increases sampling opportunity, while crossover and mutation perform the structural changes. Keeping those roles separate prevents the common explanation that fitness somehow reaches into a tree and repairs it.
+
+### 3. Example and metaphor
+
+Replacement determines whether the whole parent generation disappears, whether elites survive, or whether updates occur continuously. The diagram shows a generational cycle: complete P prime, assign it as the new P, evaluate, and repeat.
+
+### 4. Boundary
+
+The stop decision may use target performance, evaluation budget, generation limit, or stalled improvement. A yes exits with the best supported program. A no returns to the cycle. Stopping is evidence policy, not a tiny finish-line flag discovered inside the tree.
+
+### 5. Transfer and audit
+
+Audit one loop by following a single useful subtree. It appears in a parent, wins reproductive opportunity, survives a legal operator, enters P prime, and receives a new score in context. That trace explains cumulative search more clearly than a cloud of animated family-tree arrows.
+
+## Slide 07 - Function and terminal sets define what GP can build
+
+### 1. Concept
+
+The function set contains plus, minus, multiplication, and protected division. Every function declares an arity. Choosing a binary function creates two open child positions that recursive generation must fill.
+
+### 2. Mechanism
+
+The terminal set contains integers, X, and Y. A terminal closes a branch because it needs no children. Variables receive values from the current task input, while constants supply fixed numeric material.
+
+### 3. Example and metaphor
+
+The validity rule combines membership and arity: internal nodes come from the function set, leaves come from the terminal set, and each function receives exactly its required arguments. That rule is a grammar for executable candidates.
+
+### 4. Boundary
+
+Sufficiency asks whether this grammar can express a solution. Closure asks whether every legal combination can execute. Protected division supports closure by defining safe behavior at a zero denominator instead of letting evolution submit a crash report as a candidate.
+
+### 5. Transfer and audit
+
+Primitive design embeds domain knowledge and bias. Too few primitives exclude useful programs; too many create an enormous, redundant search space. The toolbox should contain what the job needs, not every object found in the garage after midnight.
+
+## Slide 08 - Random generation recursively fills every argument position
+
+### 1. Concept
+
+The interactive builder starts with an incomplete root expression. Program generation is recursive: choose either a function or terminal where a node is needed. Choosing a function creates new child positions; choosing a terminal closes that branch.
+
+### 2. Mechanism
+
+A full method forces functions until a minimum depth and then places terminals at the boundary. A grow method allows functions or terminals earlier, producing varied shapes. Ramped half-and-half mixes methods and depth limits to create a more diverse initial population.
+
+### 3. Example and metaphor
+
+Every choice must respect arity. If we place multiplication, two child expressions are required. If we place X or five, recursion stops at that leaf. The generator is like assembling a legal sentence from grammar rules: creativity is welcome, but verbs cannot wander off without their required arguments.
+
+### 4. Boundary
+
+Depth and node limits control resource use. Without them, recursive generation can create huge trees before fitness has evaluated anything. Limits are search biases: they exclude some programs, but they make evaluation feasible and reduce the chance that size alone consumes the experiment.
+
+### 5. Transfer and audit
+
+As we advance the builder, track which positions are still open. A program is executable only when every function has all required children and every branch ends in a terminal. The final tree is one candidate, not a guarantee that its arithmetic is useful.
+
+### 6. Builder state 2
+
+**Instructor action before narration:** Show generation step 2.
+
+Choose generation step two. Terminal two fills the first open argument of the root plus. The branch closes because a terminal has no children, while other root arguments remain open.
+
+### 7. Builder state 3
+
+**Instructor action before narration:** Show generation step 3.
+
+Choose generation step three. Terminal three fills the next root argument. The partial expression is legal but incomplete; every remaining function position still needs a recursively generated child.
+
+### 8. Builder state 4
+
+**Instructor action before narration:** Show generation step 4.
+
+Choose generation step four. Multiplication becomes a nested function. Selecting a function creates new argument obligations, so the generator must later supply both operands before this branch can execute.
+
+### 9. Builder state 5
+
+**Instructor action before narration:** Show generation step 5.
+
+Choose generation step five. Division is added and the multiplication branch receives X and seven. The hot node marks the newest structural choice, while division still contains open positions.
+
+### 10. Builder state 6
+
+**Instructor action before narration:** Show generation step 6.
+
+Choose generation step six. Y and five close the division branch. Every function now has its required children and every path ends in a terminal, producing a syntactically complete executable program.
+
+## Slide 09 - Mutation replaces one selected subtree with a random program
+
+### 1. Concept
+
+Mutation begins by selecting a node in one parent tree. That node represents the root of a complete subprogram. Delete the selected subtree, generate a replacement that satisfies grammar and depth constraints, and splice it into the same position.
+
+### 2. Mechanism
+
+Selecting a leaf makes a small structural change, such as replacing X with a constant. Selecting a node near the root can replace most of the program. Mutation severity therefore depends on selection depth and replacement size, not merely on a single probability.
+
+### 3. Example and metaphor
+
+The new subtree may improve, harm, or leave fitness unchanged. Neutral mutations can still matter because they alter structure available for future crossover. However, repeated neutral additions may cause bloat, where programs grow without corresponding behavioral improvement.
+
+### 4. Boundary
+
+A type-aware system must ensure the replacement returns the value expected at that position. An arithmetic expression cannot be replaced with a robot action unless the language defines how those types interact. Strongly typed GP turns semantic categories into enforceable constraints.
+
+### 5. Transfer and audit
+
+Mutation introduces novel structure that may not exist in either parent. It is the evolutionary equivalent of renovating one room without demolishing the whole house. Occasionally the contractor replaces the kitchen with a trampoline; fitness then decides whether that innovation reproduces.
+
+## Slide 10 - Crossover swaps subtrees between two parent programs
+
+### 1. Concept
+
+Crossover selects one node in each parent. Each selected node defines a complete subtree. Swap those subtrees to create offspring. Cutting at node boundaries preserves syntax because every moved object is already a valid subprogram.
+
+### 2. Mechanism
+
+The operator transmits building blocks: a useful arithmetic transformation, condition, or navigation routine can move into a different context. But context changes meaning. A subtree that helps beneath multiplication may be harmful beneath division, so syntactic validity does not imply semantic compatibility.
+
+### 3. Example and metaphor
+
+Depth limits may reject a swap if the inserted subtree makes an offspring too deep. Size-fair crossover tries to exchange similarly sized material, reducing bloat. Typed crossover restricts swaps to subtrees with compatible return types.
+
+### 4. Boundary
+
+Compare this with one-point crossover on bits. Bit crossover preserves positions around a cut; subtree crossover preserves hierarchical units. Both encode a hypothesis about what should survive recombination. Operator design is therefore a statement about meaningful modularity.
+
+### 5. Transfer and audit
+
+After crossover, execute unit tests before expensive fitness evaluation. Catch invalid numeric values, timeouts, and unsafe actions. Evolution is permitted to be imaginative; the sandbox is permitted to be unimpressed and pull the plug.
+
+## Slide 11 - Fitness-guided inheritance accumulates useful structure
+
+### 1. Concept
+
+The question contrasts evolutionary search with independently random programs. Random generation can occasionally create a good tree, but it does not accumulate discoveries. Every sample forgets what previous samples learned.
+
+### 2. Mechanism
+
+Fitness-based selection creates continuity. Programs containing useful partial structure reproduce more often, allowing mutation and crossover to refine or recombine those parts. Evolution becomes a biased sampling process whose distribution changes with evidence.
+
+### 3. Example and metaphor
+
+Trees are not always shorter, random programs can execute, and mutation never guarantees optimality. The correct mechanism is preservation plus variation. A useful building block receives additional trials in related contexts.
+
+### 4. Boundary
+
+The claim still needs conditions. Selection pressure that is too weak resembles random search; pressure that is too strong erases diversity and may lock onto a mediocre family. Cumulative improvement needs both memory of evidence and continued exploration.
+
+### 5. Transfer and audit
+
+Imagine solving a puzzle by keeping promising partial assemblies versus dumping the table after every attempt. Random restart may eventually succeed, but selection lets the algorithm remember that two corner pieces already cooperate. It is less dramatic and much kinder to the carpet.
+
+## Slide 12 - Sensors, actions, and control flow become GP primitives
+
+### 1. Concept
+
+In the maze case, programs control a mouse seeking cheese. The function set contains control structures such as IF movement-blocked and WHILE not-at-cheese. Terminals are executable actions such as move forward, turn left, and turn right.
+
+### 2. Mechanism
+
+This primitive set embeds domain knowledge. IF movement-blocked gives the controller a relevant sensor; movement actions give it legal effectors. If the language lacks a needed observation or action, no amount of evolution can represent the missing behavior.
+
+### 3. Example and metaphor
+
+The displayed program loops until the cheese is reached. When blocked it turns left; otherwise it moves forward. Whether this works depends on maze geometry and execution limits. A loop can navigate, circle forever, or discover that one wall deserves a long-term relationship.
+
+### 4. Boundary
+
+Sufficiency asks whether the primitives can express successful navigation. Closure asks whether every composition can run. Parsimony asks whether the language and pressure avoid needless complexity. These properties shape the candidate space before fitness begins selecting.
+
+### 5. Transfer and audit
+
+Test controllers on multiple mazes, not only the training layout. A program can memorize one corridor pattern without learning general navigation. Held-out mazes reveal whether the evolved logic transfers when the walls rearrange the furniture.
+
+### 6. Mouse FORWARD
+
+**Instructor action before narration:** Mouse FORWARD.
+
+Click FORWARD. The rat moves one legal cell in its current heading and the trail extends. A terminal action changes the simulated environment, so program meaning is visible behavior rather than tree appearance.
+
+### 7. Mouse LEFT
+
+**Instructor action before narration:** Mouse LEFT.
+
+Click LEFT. The rat rotates ninety degrees in place; its cell does not change. The action still costs one execution unit, which matters when fitness includes computational or behavioral cost.
+
+### 8. Mouse RIGHT
+
+**Instructor action before narration:** Mouse RIGHT.
+
+Click RIGHT. The heading rotates back without translation. LEFT and RIGHT are distinct terminals even though both preserve position, because their next FORWARD consequences differ.
+
+### 9. Mouse reset
+
+**Instructor action before narration:** Mouse reset.
+
+Click Reset. Position, heading, trail, and action count return to the starting state. Resetting is essential before comparing sibling controllers so one program does not inherit another program's partially solved maze.
+
+## Slide 13 - Execute the controller, then score cost and remaining distance
+
+### 1. Concept
+
+The maze score is the square of units spent plus remaining distance. Lower is better. A mouse that uses one hundred units and remains ten units from the cheese receives one hundred ten squared, or twelve thousand one hundred.
+
+### 2. Mechanism
+
+Units spent rewards efficiency; remaining distance gives partial credit when the mouse fails to finish. Squaring magnifies differences among poor outcomes. The formula therefore defines a specific tradeoff, not an objective truth about navigation.
+
+### 3. Example and metaphor
+
+The execution budget is one hundred units. Beyond that, the mouse starves or the run terminates. This prevents infinite loops from consuming unlimited evaluation time. Resource limits are part of fitness semantics because they determine which behaviors receive scores.
+
+### 4. Boundary
+
+Inspect loopholes. Could a controller stop early near the cheese and beat a longer successful route? Does turning cost the same as moving? Is Euclidean distance misleading behind walls? A proxy score can reward behavior that looks good numerically while remaining trapped physically.
+
+### 5. Transfer and audit
+
+Fitness is the judge, and evolution is an attorney who reads every clause literally. If the contract rewards standing beside the cheese outside a wall, expect a population of extremely confident wall admirers.
+
+### 6. Fitness FORWARD
+
+**Instructor action before narration:** Fitness FORWARD.
+
+Click FORWARD on the scored maze. The action count increases, corridor distance changes, and the live score recomputes as their sum squared. One visible move demonstrates all three parts of the evaluation pipeline.
+
+### 7. Fitness LEFT
+
+**Instructor action before narration:** Fitness LEFT.
+
+Click LEFT. Position stays fixed but cost increases because rotation executes a terminal. The live score can worsen even without movement, showing why efficient control matters alongside final distance.
+
+### 8. Fitness RIGHT
+
+**Instructor action before narration:** Fitness RIGHT.
+
+Click RIGHT. The rat changes heading again and pays another unit. Fitness sees consequences defined by the cost model; it does not reward a visually dramatic turn merely for flair.
+
+### 9. Fitness reset
+
+**Instructor action before narration:** Fitness reset.
+
+Click Reset to restore the benchmark start. Score, action count, distance, heading, and trail return together. A reproducible evaluation must initialize every candidate under the same conditions.
+
+## Slide 14 - Mutation and crossover change behavior—not only tree shape
+
+### 1. Concept
+
+The table compares a parent with mutation and crossover outcomes. The parent fitness is twelve thousand nine hundred ninety-six. A mutation may remain neutral at the same score, while crossover reaches eleven thousand six hundred sixty-four. Because lower is better, the crossover offspring improves this trial.
+
+### 2. Mechanism
+
+One result does not establish an operator hierarchy. Mutation can be neutral because the changed subtree never executes, produces equivalent behavior, or affects a case absent from this maze. Crossover can improve one child and damage another.
+
+### 3. Example and metaphor
+
+GP does not understand cheese, walls, or purpose. It changes syntax, executes behavior, and receives a number. Apparent intelligence arises from the interaction between representation, environment, evaluation, and selection.
+
+### 4. Boundary
+
+To compare operators, run many offspring across many parents and mazes. Report distributions, success rates, program sizes, and evaluation budgets. A single improved child is a worked example, not a statistical coronation.
+
+### 5. Transfer and audit
+
+Neutral structure can become useful later when crossover moves it into an active context. This is one reason GP populations may contain introns—code that currently has little effect. Some introns protect useful regions; too many turn the tree into a junk drawer with excellent ancestry records.
+
+## Slide 15 - The evolved controller improves the stated fitness from 12,996 to 2,809
+
+### 1. Concept
+
+After four thousand two hundred two generations, the run reports a best fitness of two thousand eight hundred nine. This is strong evidence that evolution found a much better controller under the stated setup.
+
+### 2. Mechanism
+
+It is not proof of optimality. The search is stochastic, the space is large, and the score depends on particular mazes and limits. Another run may find a better or worse program. The result should be accompanied by seeds, repeated trials, and evaluation counts.
+
+### 3. Example and metaphor
+
+Run the best program on unseen mazes. Generalization is the real test if the goal is navigation rather than memorizing one environment. Also inspect behavior: a low score may exploit a simulator quirk rather than perform the intended strategy.
+
+### 4. Boundary
+
+Measure program size and runtime. A slightly better score from a tree ten times larger may be undesirable in an embedded robot. Multiobjective GP can treat accuracy, size, energy, and safety as separate criteria instead of hiding every concern inside one mysterious weighted sum.
+
+### 5. Transfer and audit
+
+The proper conclusion is calibrated: under this representation, fitness, population policy, budget, and test set, the run produced a controller with measured performance. That sentence is less glamorous than 'we evolved intelligence,' but it survives contact with a methods section.
+
+## Slide 16 - Sufficiency, parsimony, and closure constrain the search
+
+### 1. Concept
+
+Sufficiency means the primitive set can represent solutions. If the mouse needs to sense a blocked path but no primitive exposes that information, successful reactive navigation may be impossible. The optimum cannot be discovered if the language cannot say it.
+
+### 2. Mechanism
+
+Parsimony favors simpler programs when performance is comparable. Size limits, depth limits, or explicit complexity penalties reduce bloat. Simpler trees are usually cheaper to execute, easier to inspect, and less likely to contain accidental behavior.
+
+### 3. Example and metaphor
+
+Closure means every permitted composition produces a valid executable result. Protected division, typed nodes, and safe action wrappers support closure. Without it, random generation and variation create candidates that crash before fitness can compare them.
+
+### 4. Boundary
+
+The three properties trade off. Adding primitives can improve sufficiency but enlarge the search space. Strong parsimony can exclude a necessary complex solution. Strict closure may require protected operators whose behavior differs from ordinary mathematics.
+
+### 5. Transfer and audit
+
+Think of the primitive set as a box of construction pieces. Sufficiency asks whether the bridge can be built, closure asks whether pieces actually connect, and parsimony asks whether we needed four hundred decorative gargoyles on the handrail.
+
+## Slide 17 - Steady-state GP replaces sampled losers continuously
+
+### 1. Concept
+
+Tournament GP samples a small subset of the population. Evaluate or compare those programs, select a winner as parent, apply variation, and replace a loser. The population changes incrementally rather than being rebuilt as a whole generation.
+
+### 2. Mechanism
+
+Tournament size controls selection pressure. A large tournament makes strong programs likely to win; a small tournament preserves more randomness. Replacement policy matters too: replacing the worst sampled member differs from replacing a random member.
+
+### 3. Example and metaphor
+
+Steady-state updates can use evaluations efficiently because each new child immediately enters the population. They also blur generation boundaries, so report progress by evaluation count rather than pretending every arbitrary batch is a biological birthday.
+
+### 4. Boundary
+
+Parallel evaluation requires care. Several workers may select parents from slightly different population states. Asynchronous updates can improve throughput but change the algorithm's sampling dynamics. Reproducibility requires documenting concurrency and random seeds.
+
+### 5. Transfer and audit
+
+The causal chain is sample, compare, reproduce, vary, replace, repeat. If fitness is noisy, one lucky tournament can spread a weak program. Repeated evaluation or uncertainty-aware selection can keep the population from electing a champion because it sneezed at the right moment.
+
+## Slide 18 - GP can evolve a function that fits training examples
+
+### 1. Concept
+
+Symbolic regression receives input-output examples and searches for an expression whose outputs fit the table. Unlike ordinary regression with a fixed formula, GP may evolve both the structure and constants of the function.
+
+### 2. Mechanism
+
+The displayed learned expression is f of x equals x squared divided by two. Fitness aggregates prediction error across training examples, perhaps mean squared error. Lower error gives a program more reproductive opportunity.
+
+### 3. Example and metaphor
+
+Function and terminal sets define the hypothesis space. With plus, multiply, protected divide, x, and constants, some expressions are reachable and others are not. Adding sine may improve sufficiency for periodic data while greatly expanding search.
+
+### 4. Boundary
+
+Hold out validation examples. A large tree can interpolate training points while behaving wildly between them. Parsimony and validation discourage this symbolic overfitting. An equation can wear a lab coat and still memorize the answer key.
+
+### 5. Transfer and audit
+
+Compare GP with domain alternatives. If linear regression or a known physical model fits well, it may be faster and more interpretable. GP is attractive when useful structure is unknown and approximation is acceptable, not because equations look more impressive when discovered by a tree.
+
+## Slide 19 - A population explores many program structures at once
+
+### 1. Concept
+
+The landscape shows candidate programs scattered across regions of different fitness. Selection and variation can maintain several lineages, so GP resembles multiple interacting hill climbers rather than one point following one local gradient.
+
+### 2. Mechanism
+
+Crossover lets lineages exchange substructures, which ordinary independent hill climbers cannot do. Mutation explores local and occasionally large structural changes. Population diversity therefore acts as distributed search memory.
+
+### 3. Example and metaphor
+
+The metaphor is imperfect because program neighborhoods are not smooth geometric hills. A one-node change may have no effect or cause a large behavioral jump. Fitness distance and tree-edit distance can disagree dramatically.
+
+### 4. Boundary
+
+GP has been applied to control, including spacecraft maneuver policies; to model structure, including neural-network components; and to domain programs for images, fuzzy systems, and hardware. The common feature is a search over executable or compositional structure.
+
+### 5. Transfer and audit
+
+These applications require domain-specific primitives and simulators. A spacecraft controller needs safe dynamics and constraints; an image program needs operators over pixels or features. The GP engine is generic, but the language and evidence are intensely specific.
+
+## Slide 20 - Construct life-like systems to expose their mechanisms
+
+### 1. Concept
+
+Artificial life studies life-like processes by building systems rather than observing only existing organisms. The constructive question is: if we implement local mechanisms, what organized behavior emerges? The goal may be understanding, engineering, or both.
+
+### 2. Mechanism
+
+Wet ALife uses biochemical materials and processes. Hard ALife uses embodied robots. Soft ALife uses digital simulations and artificial organisms. These categories differ in substrate, but all make assumptions explicit through construction.
+
+### 3. Example and metaphor
+
+A simulation is a model, not a miniature universe. Results depend on update rules, resource models, mutation, sensors, and boundary conditions. Emergent behavior demonstrates consequences of those assumptions, not automatic truth about biological life.
+
+### 4. Boundary
+
+Construction can reveal gaps in explanation. It is easy to say local interaction causes organization; it is harder to write rules that actually produce stable organization. Failed simulations are informative when they expose missing mechanisms.
+
+### 5. Transfer and audit
+
+The philosophical temptation is strong: a moving digital creature looks alive, especially after midnight. Scientific analysis asks operational questions instead. Does it reproduce, adapt, maintain organization, compete for resources, or merely animate according to a script?
+
+### 6. Enlarge artificial-life visual
+
+**Instructor action before narration:** Enlarge the artificial-life visual.
+
+Open the artificial-life visual. At this scale, the point is easier to see: the researcher specifies local materials and rules, then watches for a system-level pattern that was never issued as a single central command. No tiny manager crab is hiding behind the simulation with a clipboard.
+
+### 7. Close artificial-life visual
+
+**Instructor action before narration:** Close the enlarged artificial-life visual.
+
+Close the visual and return to the three forms of artificial life. Wet systems use biochemical substrates, hard systems use embodied robots, and soft systems use simulations; all three test whether lifelike organization can arise from explicit mechanisms.
+
+## Slide 21 - Simple local rules can produce organized collective behavior
+
+### 1. Concept
+
+Swarm intelligence uses many relatively simple autonomous agents. Each agent senses locally and acts without a central commander. Interaction among agents and the environment can produce collective organization.
+
+### 2. Mechanism
+
+Local interaction may be direct, such as observing neighbors, or indirect through the environment, called stigmergy. Ant pheromone is the classic indirect signal: one ant changes the shared trail, affecting later ants it may never meet.
+
+### 3. Example and metaphor
+
+Emergence means the global pattern is not explicitly commanded by one agent. It does not mean the system is mysterious or uncaused. The pattern follows from local rules, feedback, constraints, and repeated interaction.
+
+### 4. Boundary
+
+The robot examples require careful interpretation. Several robots hauling one object demonstrate coordination if their actions adapt to shared forces or positions. A robot opening a door or dancing alone may be impressive embodied control but not evidence of swarm intelligence.
+
+### 5. Transfer and audit
+
+Ask where memory lives. It may be inside each agent, in neighbor positions, or in an external trail. Swarm methods differ less by animal costume than by candidate representation, update rule, and shared information. The bees and ants are metaphors; the state equations are the actual employees.
+
+### 6. flocking state 2
+
+**Instructor action before narration:** Show flocking state 2.
+
+Choose flocking state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 7. flocking state 3
+
+**Instructor action before narration:** Show flocking state 3.
+
+Choose flocking state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 8. flocking state 4
+
+**Instructor action before narration:** Show flocking state 4.
+
+Choose flocking state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+## Slide 22 - A particle combines momentum, personal memory, and social information
+
+### 1. Concept
+
+In particle swarm optimization, each particle is a candidate position in a numerical search space. It also carries velocity, its personal best position pBest, and access to a neighborhood or global best gBest.
+
+### 2. Mechanism
+
+The velocity update combines inertia with two pulls. The cognitive term draws the particle toward its own best experience; the social term draws it toward the swarm's best known position. Random coefficients vary the pull each update.
+
+### 3. Example and metaphor
+
+Then position changes by adding velocity. Repeating this process creates trajectories that balance exploration and convergence. Too much inertia may overshoot; too much social attraction may collapse the swarm prematurely.
+
+### 4. Boundary
+
+Unlike GP, a PSO particle is not a program tree and does not reproduce through crossover. Memory is explicit in pBest and gBest. The swarm shares evidence through best positions rather than through genetic inheritance.
+
+### 5. Transfer and audit
+
+Picture hikers in fog. Each remembers the highest point personally visited and hears a radio report of the group's best. Momentum keeps them moving; memory and gossip bend the route. The method works only if the radio report refers to the same mountain.
+
+### 6. PSO state 2
+
+**Instructor action before narration:** Show PSO state 2.
+
+Choose PSO state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 7. PSO state 3
+
+**Instructor action before narration:** Show PSO state 3.
+
+Choose PSO state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 8. PSO state 4
+
+**Instructor action before narration:** Show PSO state 4.
+
+Choose PSO state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+## Slide 23 - Recruitment allocates more search effort to promising patches
+
+### 1. Concept
+
+The bees algorithm begins with scouts exploring candidate patches. Each patch represents a region of the search space. Scouts evaluate quality and report promising locations.
+
+### 2. Mechanism
+
+Recruitment allocates more search effort to better patches. The waggle-dance metaphor represents communication of location and quality. Elite sites receive more recruited bees or tighter local search, while weaker sites receive less.
+
+### 3. Example and metaphor
+
+Some scouts continue random exploration. Without them, the colony may spend all effort around an early good patch and miss a better region. Abandonment releases resources when a patch stops improving.
+
+### 4. Boundary
+
+The engineering abstraction is adaptive resource allocation: explore broadly, estimate region quality, exploit promising neighborhoods, and periodically restart. No honey is required, although parameter tuning may still feel sticky.
+
+### 5. Transfer and audit
+
+Compare with PSO. PSO updates every particle using vectors and best positions. Bees methods allocate agents to patches and perform neighborhood searches. Both mix exploration and exploitation, but their state and update mechanisms differ.
+
+### 6. bees state 2
+
+**Instructor action before narration:** Show bees state 2.
+
+Choose bees state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 7. bees state 3
+
+**Instructor action before narration:** Show bees state 3.
+
+Choose bees state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 8. bees state 4
+
+**Instructor action before narration:** Show bees state 4.
+
+Choose bees state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 9. bees state 5
+
+**Instructor action before narration:** Show bees state 5.
+
+Choose bees state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+## Slide 24 - The shorter detour reinforces faster and attracts more ants
+
+### 1. Concept
+
+Ant colony optimization constructs solutions through probabilistic local choices. Artificial ants favor edges with stronger pheromone and often combine that signal with heuristic desirability such as inverse distance.
+
+### 2. Mechanism
+
+Initially, exploration is broad. An ant that completes a shorter route returns sooner or deposits more pheromone, increasing the probability that later ants follow those edges. Positive feedback can rapidly amplify a useful path.
+
+### 3. Example and metaphor
+
+Evaporation weakens old trails. Without evaporation, early random choices could dominate forever. Decay preserves exploration and lets the colony adapt when evidence changes. Memory exists in the environment rather than in one ant's private notebook.
+
+### 4. Boundary
+
+Positive feedback can also cause premature convergence. Parameter choices control pheromone influence, heuristic influence, deposit amount, and evaporation. The shortest observed route may dominate before alternatives are adequately sampled.
+
+### 5. Transfer and audit
+
+The interactive trace shows five states: random exploration, faster return on the short route, reinforcement, evaporation of the weak trail, and short-route dominance. We will advance one state at a time so the mechanism is visible instead of asking the ants to perform interpretive dance at full speed.
+
+### 6. ACO obstacle state 2
+
+**Instructor action before narration:** Show ACO obstacle state 2.
+
+Choose ACO obstacle state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 7. ACO obstacle state 3
+
+**Instructor action before narration:** Show ACO obstacle state 3.
+
+Choose ACO obstacle state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 8. ACO obstacle state 4
+
+**Instructor action before narration:** Show ACO obstacle state 4.
+
+Choose ACO obstacle state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 9. ACO obstacle state 5
+
+**Instructor action before narration:** Show ACO obstacle state 5.
+
+Choose ACO obstacle state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+## Slide 25 - Exploration, reinforcement, and evaporation create adaptive shared memory
+
+### 1. Concept
+
+The discovery trace begins with random scouts leaving the nest without a reliable trail. Local stochastic motion gives the colony broad coverage. Most scouts fail, but exploration creates the possibility that one ant encounters food.
+
+### 2. Mechanism
+
+A successful scout returns while depositing pheromone. The trail is external memory: later ants can sense and follow evidence left in the environment by an agent they never met. This indirect coordination is called stigmergy.
+
+### 3. Example and metaphor
+
+Followers choose the marked path probabilistically and strengthen it after successful trips. Reinforcement makes useful evidence self-amplifying, while stochastic alternatives remain available long enough to discover a better route.
+
+### 4. Boundary
+
+Evaporation removes unsupported history. A trail stays strong only where repeated traffic renews it. If food moves or a path becomes blocked, decay lets the colony shift rather than obeying yesterday's directions forever.
+
+### 5. Transfer and audit
+
+The five states form a causal story: explore, discover, recruit, retain alternatives, and forget weak evidence. That is adaptive shared memory without a central database administrator—although the pheromone backup policy is admittedly terrible.
+
+### 6. ACO discovery state 2
+
+**Instructor action before narration:** Show ACO discovery state 2.
+
+Choose ACO discovery state 2. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 7. ACO discovery state 3
+
+**Instructor action before narration:** Show ACO discovery state 3.
+
+Choose ACO discovery state 3. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 8. ACO discovery state 4
+
+**Instructor action before narration:** Show ACO discovery state 4.
+
+Choose ACO discovery state 4. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+### 9. ACO discovery state 5
+
+**Instructor action before narration:** Show ACO discovery state 5.
+
+Choose ACO discovery state 5. The visible state changes before this explanation begins, so the highlighted rule, positions, or shared signal now matches the narrated mechanism. Compare it with the prior state and name exactly what information changed.
+
+## Slide 26 - Match each method to its candidate, feedback, operator, and memory
+
+### 1. Concept
+
+The comparison table begins with the candidate. GA uses a fixed encoding; GP uses a program tree; PSO uses a numerical position and velocity; ACO incrementally constructs a path or combinatorial solution.
+
+### 2. Mechanism
+
+Updates differ. GA uses crossover and mutation, GP uses subtree operators, PSO moves particles using personal and social bests, and ACO changes probabilistic choices through pheromone reinforcement and evaporation.
+
+### 3. Example and metaphor
+
+Memory also differs. GA and GP store evidence mainly in population composition and fitness. PSO explicitly retains pBest and gBest. ACO stores shared memory in an external pheromone trail.
+
+### 4. Boundary
+
+The quiz asks which method uses an evaporating external trail. That is ACO. PSO shares a best location but does not evaporate a path; GP evolves syntax; GA recombines encodings.
+
+### 5. Transfer and audit
+
+A reliable comparison avoids animal names and asks three questions: what is one candidate, how does evidence change future sampling, and where is memory stored? Those questions work even if researchers replace ants with delivery drones and bees with extremely organized office interns.
+
+### 6. Comparison GP trees
+
+**Instructor action before narration:** Comparison GP trees.
+
+Select GP trees. This is incorrect because a GP population stores program structure and fitness within individuals and the population, not in an external evaporating medium.
+
+### 7. Comparison PSO pBest
+
+**Instructor action before narration:** Comparison PSO pBest.
+
+Select PSO pBest. This is also incorrect. Personal best belongs to one particle, while gBest is shared position evidence; neither forms an environmental trail that evaporates.
+
+### 8. Comparison GA chromosomes
+
+**Instructor action before narration:** Comparison GA chromosomes.
+
+Select GA chromosomes. The answer remains incorrect: chromosomes carry candidate information and population composition carries search history, but there is no pheromone field outside the agents.
+
+### 9. Comparison ACO pheromone
+
+**Instructor action before narration:** Comparison ACO pheromone.
+
+Select ACO pheromone. Correct. Many ants can read and reinforce the same external trail, while evaporation removes evidence that is not repeatedly supported.
+
+## Slide 27 - Explain representation, fitness, update, and emergence
+
+### 1. Concept
+
+The review studio asks for explanations, not labels. For GP, name the executable tree representation, the fitness evidence, and the subtree operators that update the population. A method name alone is not a mechanism.
+
+### 2. Mechanism
+
+For PSO, explain position, velocity, pBest, and gBest. For bees, explain patches, scout evaluation, recruitment, exploitation, and abandonment. For ACO, explain constructed paths, pheromone reinforcement, stochastic choice, and evaporation.
+
+### 3. Example and metaphor
+
+Each expected answer should connect local state to population behavior. The point is causal compression: identify what one candidate or agent knows, how evidence changes its next update, and how repeated updates create an organized search pattern.
+
+### 4. Boundary
+
+Use the reveal only after predicting. Retrieval practice works because the learner must construct an explanation before comparing it with the expected one. Clicking reveal immediately is the academic equivalent of opening an umbrella indoors because rain exists somewhere.
+
+### 5. Transfer and audit
+
+A strong final comparison names representation, evaluation, local operator, shared memory, and emergence. Those five lenses distinguish methods even when animal metaphors or implementation details change.
+
+### 6. Reveal representation
+
+**Instructor action before narration:** Reveal representation answer.
+
+Reveal the representation answer. GP uses variable-size hierarchical trees because they express nested executable structure and support subtree operators. The expected answer should confirm the mechanism you predicted, not replace the prediction.
+
+### 7. Choose Fitness
+
+**Instructor action before narration:** Choose Fitness prompt.
+
+Choose the Fitness prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.
+
+### 8. Reveal Fitness
+
+**Instructor action before narration:** Reveal Fitness answer.
+
+Reveal the Fitness expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.
+
+### 9. Choose PSO versus GA
+
+**Instructor action before narration:** Choose PSO versus GA prompt.
+
+Choose the PSO versus GA prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.
+
+### 10. Reveal PSO versus GA
+
+**Instructor action before narration:** Reveal PSO versus GA answer.
+
+Reveal the PSO versus GA expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.
+
+### 11. Choose Emergence
+
+**Instructor action before narration:** Choose Emergence prompt.
+
+Choose the Emergence prompt. Read the new question before revealing anything and identify representation, evidence, and update rule from memory. The active tab changes while the answer is deliberately hidden.
+
+### 12. Reveal Emergence
+
+**Instructor action before narration:** Reveal Emergence answer.
+
+Reveal the Emergence expected answer. Compare each causal link with your prediction: what state exists, what evidence is measured, what local update occurs, and what population-level behavior follows.
+
+## Slide 28 - A population method is only as meaningful as its representation and feedback
+
+### 1. Concept
+
+First contrast GA and GP. GA normally evolves fixed-form encodings, while GP evolves variable executable structures. Both require population, fitness, selection, variation, replacement, and stopping evidence.
+
+### 2. Mechanism
+
+Second define a function set, terminal set, and fitness for one task. The primitive set determines what programs can exist; fitness determines which behaviors reproduce. Include safety, resource limits, and held-out cases.
+
+### 3. Example and metaphor
+
+Third explain one swarm as local rule, interaction, and global outcome. In PSO, particles move using personal and social memory. In bees, recruitment allocates effort to patches. In ACO, pheromone feedback and evaporation reshape path probabilities.
+
+### 4. Boundary
+
+The reading connects these methods to evolutionary computation and collective intelligence. While reading, annotate candidate representation, update rule, memory, and evidence. Metaphors become useful only when you can translate them back into state and mechanism.
+
+### 5. Transfer and audit
+
+The final claim is compact: complex behavior can emerge from evolving executable structures or repeated local interactions, but the result is governed by representation, feedback, constraints, and evaluation. No central brain does not mean no design. Someone still wrote the rules—and should probably add tests.

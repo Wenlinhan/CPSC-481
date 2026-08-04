@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState } from "react";
 import "../styles/evolutionary-computation.css";
+import { type CourseSourceReference } from "./L01DeckShell";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 type Box = { label: string; title: string; text: string };
@@ -70,6 +71,19 @@ function Table() {
 
 const boxes=(...rows:[string,string,string][]):Box[]=>rows.map(([label,title,text])=>({label,title,text}));
 const slide=(eyebrow:string,title:string,content:ReactNode,sourceSlides:number[],minutes=3,subtitle?:string):SourceLessonSlide=>({eyebrow,title,content,sourceSlides,minutes,subtitle,note:`Timing: ${minutes} minutes. Explain, illustrate, and check the stated knowledge point using source pages ${sourceSlides.join(", ") || "supplement"}.`});
+const alife=(...pages:number[])=>pages.map(page=>100+page);
+
+function resolveLesson10SourceReference(sourceSlide:number):CourseSourceReference {
+  const isArtificialLife=sourceSlide>=100;
+  const page=isArtificialLife?sourceSlide-100:sourceSlide;
+  const deckLabel=isArtificialLife?"L08_ArtificialLife.pdf":"L07_GP.pdf";
+  return {
+    deckLabel,
+    image:`/course-source/l07-gp-l08-alife/${isArtificialLife?"l08-pptx-source-slides":"l07-source-slides"}/slide-${String(page).padStart(2,"0")}.png`,
+    key:`${isArtificialLife ? "l08-alife" : "l07-gp"}:${page}`,
+    page,
+  };
+}
 
 const gaSlides:SourceLessonSlide[]=[
  slide("Module 6 · Lesson 9","Evolutionary Computation and Genetic Algorithms",<div className="ec-hero"><Landscape/><Note label="Driving question">How can a population of imperfect candidates become a useful solution?</Note></div>,[1,2],2,"From biological metaphor to representation, selection, crossover, and mutation"),
@@ -117,16 +131,16 @@ const gpSlides:SourceLessonSlide[]=[
  slide("Tournament GP","Steady-state replacement updates one population continuously",<Process items={["sample","evaluate","select winner","vary","replace loser","repeat"]}/>,[29],4),
  slide("Symbolic regression","GP can evolve a function that fits examples",<div className="ec-split"><Landscape/><Boxes columns={1} items={boxes(["Learned expression","f(x)=x²/2","Fitness is error across the training table."])}/></div>,[30],4),
  slide("Parallel hill-climbing view","A population explores several regions at once",<Landscape/>,[31]),
- slide("Applications and limits","GP searches executable structure where approximation is useful",<Boxes items={boxes(["Control","spacecraft","near-minimum-time maneuver"],["Models","neural networks","structure search"],["Systems","image/fuzzy/hardware","domain-specific programs"])}/>,[32]),
- slide("Artificial Life","ALife studies life-like processes by constructing them",<Boxes items={boxes(["Wet","Biochemistry","material life processes"],["Hard","Robotics","embodied agents"],["Soft","Simulation","digital organisms and ecosystems"])}/>,[1]),
- slide("ALife simulators","Different models make different mechanisms observable",<Boxes columns={5} items={boxes(["1990","Polyworld","neural agents"],["1993","Avida","executable DNA"],["2009","EcoSim","fuzzy maps"],["2011","OpenWorm","biological model"],["2014","Neurokernel","neural simulation"])}/>,[2]),
- slide("Swarm intelligence","Local rules can produce organized global behavior without central control",<Boxes items={boxes(["Agents","Simple + autonomous","sense and act locally"],["Interaction","Local + stochastic","neighbors and environment signal"],["Emergence","Collective behavior","global order is not commanded"])}/>,[3,4],4),
- slide("Particle Swarm Optimization","Each particle combines momentum, personal memory, and social information",<div className="ec-split"><Swarm kind="PSO"/><div className="ec-work"><code>v ← v + c₁r₁(pBest−p) + c₂r₂(gBest−p)</code><code>p ← p + v</code></div></div>,[5],4),
- slide("Bees algorithm","Recruitment allocates more effort to promising patches",<div className="ec-split"><Swarm kind="Bees"/><Process items={["scout","evaluate","waggle","recruit","exploit or abandon"]}/></div>,[6]),
- slide("Ant Colony Optimization","Positive feedback strengthens useful paths; evaporation preserves exploration",<AntLab/>,[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],5),
- slide("Cumulative comparison","Match representation, feedback, and shared memory",<div className="ec-comparison"><Table/><Check question="Which method uses an evaporating external trail as shared memory?" options={["GA","GP","PSO","ACO"]} correct={3} why="ACO agents follow and reinforce pheromone while old trails evaporate."/></div>,[5,7,22],4),
- slide("Exit ticket · reading","Explain emergence without a central brain",<div className="ec-exit"><ol><li>Contrast GA and GP representation.</li><li>Define function set, terminal set, and fitness for one task.</li><li>Explain one swarm as local rule → interaction → global outcome.</li></ol><p>Luger 6e, Ch. 12 · Koza (1992) · Eberhart, Shi &amp; Kennedy (2001)</p></div>,[22,23,24,25,26,27]),
+ slide("Applications and limits","GP searches executable structure where approximation is useful",<Boxes items={boxes(["Control","spacecraft","near-minimum-time maneuver"],["Models","neural networks","structure search"],["Systems","image/fuzzy/hardware","domain-specific programs"])}/>,[32,33]),
+ slide("Artificial Life","ALife studies life-like processes by constructing them",<Boxes items={boxes(["Wet","Biochemistry","material life processes"],["Hard","Robotics","embodied agents"],["Soft","Simulation","digital organisms and ecosystems"])}/>,alife(1)),
+ slide("ALife simulators","Different models make different mechanisms observable",<Boxes columns={5} items={boxes(["1990","Polyworld","neural agents"],["1993","Avida","executable DNA"],["2009","EcoSim","fuzzy maps"],["2011","OpenWorm","biological model"],["2014","Neurokernel","neural simulation"])}/>,alife(2)),
+ slide("Swarm intelligence","Local rules can produce organized global behavior without central control",<div><Boxes items={boxes(["Agents","Simple + autonomous","sense and act locally"],["Interaction","Local + stochastic","neighbors and environment signal"],["Emergence","Collective behavior","global order is not commanded"])}/><Note label="Embodied demo prompt">Compare the source examples: SpotMini robots hauling a truck, reacting to a banana peel, opening doors, and dancing. Which behaviors require coordination, and which are not evidence of swarm intelligence?</Note></div>,alife(3,4,6),4),
+ slide("Particle Swarm Optimization","Each particle combines momentum, personal memory, and social information",<div className="ec-split"><Swarm kind="PSO"/><div className="ec-work"><code>v ← v + c₁r₁(pBest−p) + c₂r₂(gBest−p)</code><code>p ← p + v</code></div></div>,alife(5),4),
+ slide("Bees algorithm","Recruitment allocates more effort to promising patches",<div className="ec-split"><Swarm kind="Bees"/><Process items={["scout","evaluate","waggle","recruit","exploit or abandon"]}/></div>,alife(7)),
+ slide("Ant Colony Optimization","Positive feedback strengthens useful paths; evaporation preserves exploration",<AntLab/>,alife(8,9,10,11,12,13,14,15,16,17,18,19,20,21,22),5),
+ slide("Cumulative comparison","Match representation, feedback, and shared memory",<div className="ec-comparison"><Table/><Check question="Which method uses an evaporating external trail as shared memory?" options={["GA","GP","PSO","ACO"]} correct={3} why="ACO agents follow and reinforce pheromone while old trails evaporate."/></div>,[5,...alife(8,23)],4),
+ slide("Exit ticket · reading","Explain emergence without a central brain",<div className="ec-exit"><ol><li>Contrast GA and GP representation.</li><li>Define function set, terminal set, and fitness for one task.</li><li>Explain one swarm as local rule → interaction → global outcome.</li></ol><p>Luger 6e, Ch. 12 · Koza (1992) · Eberhart, Shi &amp; Kennedy (2001)</p></div>,alife(23,24,25,26,27,28)),
 ];
 
 export function Lesson09Deck(){return <SourceDeckShell meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" slides={gaSlides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>}
-export function Lesson10Deck(){return <SourceDeckShell meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" slides={gpSlides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>}
+export function Lesson10Deck(){return <SourceDeckShell meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" resolveSourceReference={resolveLesson10SourceReference} slides={gpSlides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>}

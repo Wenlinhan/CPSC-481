@@ -49,6 +49,97 @@ test("all 22 sequential lesson routes render", async () => {
   }
 });
 
+test("Lessons 7 through 10 expose Canvas videos and complete narration in Notes", async () => {
+  const narration = JSON.parse(await readFile(new URL("../app/data/lesson-narration-notes.json", import.meta.url), "utf8"));
+  const expectedCounts = { 7: 25, 8: 25, 9: 26, 10: 28 };
+  const componentFiles = {
+    7: "Meeting07Deck.tsx",
+    8: "Meeting08Deck.tsx",
+    9: "Lesson09GASlides.tsx",
+    10: "Lesson10GPSlides.tsx",
+  };
+
+  for (const [lesson, count] of Object.entries(expectedCounts)) {
+    assert.equal(narration[lesson].notes.length, count);
+    assert.ok(narration[lesson].notes.every(note => note.trim().length > 0));
+    const component = await readFile(new URL(`../app/components/${componentFiles[lesson]}`, import.meta.url), "utf8");
+    assert.match(component, new RegExp(`narrationNotes=\\{lessonNarrationNotes\\(${lesson}\\)\\}`));
+    assert.match(component, /lectureVideoUrl=/);
+  }
+
+  const shell = await readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8");
+  assert.match(shell, /Narration script/);
+  assert.doesNotMatch(shell, />\s*Course source\s*</);
+  assert.doesNotMatch(shell, /setSourceView/);
+});
+
+test("Lessons 9 and 10 preserve the complete evolutionary-computation source packages", async () => {
+  const packages = [
+    ["l06-bio-ga", 9, [["source-inventory.json", "source-slides", 22]]],
+    ["l07-gp-l08-alife", 10, [
+      ["l07-source-inventory.json", "l07-source-slides", 33],
+      ["l08-source-inventory.json", "l08-pptx-source-slides", 28],
+    ]],
+  ];
+  for (const [directory, lesson, expectedSources] of packages) {
+    const manifest = JSON.parse(await readFile(new URL(`../public/course-source/${directory}/manifest.json`, import.meta.url), "utf8"));
+    assert.equal(manifest.lesson, lesson);
+    assert.equal(manifest.route, `/lessons/${String(lesson).padStart(2, "0")}`);
+    assert.equal(manifest.sources.length, expectedSources.length);
+    for (const [inventoryFile, renderDirectory, pageCount] of expectedSources) {
+      const source = manifest.sources.find((candidate) => candidate.inventory.file === inventoryFile);
+      assert.ok(source, `${inventoryFile} must be represented in ${directory}`);
+      const inventoryContent = await readFile(new URL(`../public/course-source/${directory}/${inventoryFile}`, import.meta.url));
+      const inventory = JSON.parse(inventoryContent);
+      assert.equal(source.inventory.sha256, createHash("sha256").update(inventoryContent).digest("hex"));
+      assert.equal(inventory.pageCount ?? inventory.slideCount, pageCount);
+      assert.equal(source.pageCount, pageCount);
+      assert.deepEqual(Object.keys(source.sourcePageToLessonPages).map(Number), Array.from({length:pageCount},(_,index)=>index+1));
+      for (let page = 1; page <= pageCount; page += 1) {
+        assert.ok(source.sourcePageToLessonPages[page].length > 0, `${source.label} page ${page} needs a lesson destination`);
+        const render = await readFile(new URL(`../public/course-source/${directory}/${renderDirectory}/slide-${String(page).padStart(2,"0")}.png`, import.meta.url));
+        assert.deepEqual(pngDimensions(render), {width:1600,height:1200});
+      }
+    }
+  }
+  const deck = await readFile(new URL("../app/components/EvolutionaryComputationDecks.tsx", import.meta.url), "utf8");
+  assert.match(deck, /resolveLesson10SourceReference/);
+  assert.match(deck, /l07-source-slides/);
+  assert.match(deck, /l08-pptx-source-slides/);
+  assert.match(deck, /\[32,33\]/);
+  assert.match(deck, /alife\(23,24,25,26,27,28\)/);
+});
+
+test("Lesson 9 restores the GA algorithm and both complete representation cases", async () => {
+  const source = await readFile(new URL("../app/components/Lesson09GASlides.tsx", import.meta.url), "utf8");
+  assert.equal((source.match(/\bslide\("/g) ?? []).length, 26);
+  for (const required of [
+    "initialize population P(t)",
+    "while termination condition is not met",
+    "evaluate fitness of every member of P(t)",
+    "produce offspring using crossover and mutation",
+    "f(x) = x sin(10πx) + 1",
+    "3,000,001 representable values",
+    "1000101110110101000111",
+    "2,288,967",
+    "0.637197",
+    "P(0) contains 300 candidates",
+    "pᶜ=.50 · pᵐ=.01",
+    "Encoding #1: 4 bits per city",
+    "Encoding #2: a permutation",
+    "Order crossover",
+    "2 3 9 | 4 6 5 7 | 1 8",
+  ]) assert.ok(source.includes(required), `Lesson 9 must preserve: ${required}`);
+  for (const image of ["evolutionary-search.png", "cell-to-dna.png", "tsp-nine-city-loop.png"]) {
+    const content = await readFile(new URL(`../public/course-source/l06-bio-ga/generated/${image}`, import.meta.url));
+    const dimensions = pngDimensions(content);
+    assert.ok(dimensions.width >= 1500 && dimensions.height >= 900, `${image} must remain presentation resolution`);
+  }
+  const minutes = [...source.matchAll(/, \[[^\]]*\], (\d+)(?:,|\))/g)].map(match => Number(match[1]));
+  assert.equal(minutes.length, 26);
+  assert.equal(minutes.reduce((sum, value) => sum + value, 0), 75);
+});
+
 test("all 30 meeting routes render and retain their titles", async () => {
   const plan = await readFile(new URL("../app/data/course.ts", import.meta.url), "utf8");
   const ids = [...plan.matchAll(/\bid:\s*(\d+),\s*week:/g)].map((match) => Number(match[1]));
@@ -172,9 +263,7 @@ test("Meetings 1 and 2 account for the complete L01 v2 source-evidence package",
   assert.doesNotMatch(combined, /\b(?:original|old)\s+slides?\b/i);
 
   const shell = await readFile(new URL("../app/components/L01DeckShell.tsx", import.meta.url), "utf8");
-  assert.match(shell, /Course source/);
-  assert.match(shell, /source-slides\/slide-/);
-  assert.match(shell, /select to enlarge/i);
+  assert.doesNotMatch(shell, />\s*Course source\s*</);
 
   const manifest = JSON.parse(manifestText);
   const inventory = JSON.parse(inventoryContent.toString("utf8"));
@@ -348,7 +437,7 @@ test("Meetings 3 and 4 account for every authoritative L02 source slide and imag
   }
 });
 
-test("Meetings 3 through 8 route Course source to the matching complete historical deck", async () => {
+test("Meetings 3 through 8 retain the matching complete historical deck provenance", async () => {
   const deckGroups = [
     {
       components: ["Meeting03Deck.tsx", "Meeting04Deck.tsx"],
@@ -604,8 +693,7 @@ test("Meetings 9 and 10 preserve source coverage while presenting concepts as na
   assert.deepEqual(l12Coverage, expectedL12Slides);
 
   assert.match(deckShell, /resolveSourceReference\?: \(sourceSlide: number\) => CourseSourceReference/);
-  assert.match(deckShell, /const sourceReferenceResolver = resolveSourceReference \?\?/);
-  assert.match(deckShell, /\? resolveL01SourceReference/);
+  assert.doesNotMatch(deckShell, /setSourceView|>\s*Course source\s*</);
   assert.match(meeting9, /resolveSourceReference=\{resolveMeeting09SourceReference\}/);
   assert.match(meeting10, /resolveSourceReference=\{resolveMeeting10SourceReference\}/);
   assert.match(meeting9, /\/course-source\/l11-probability-bayes/);

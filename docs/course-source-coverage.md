@@ -27,15 +27,30 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 | `L03_Heuristic, HillClimbing&SA.pptx` | Heuristics, hill climbing, local search, simulated annealing | 31 | Preserve in Meeting 5 |
 | `L04_BFS&AStar.pptx` | Best-first search, A*, admissibility, consistency, informedness | 22 | Preserve in Meeting 6 |
 | `L05_MiniMax&Pruning.pptx` | Game trees, minimax, evaluation, alpha-beta pruning | 31 | Preserve across Meetings 7–8; add expectimax and MCTS |
-| `L06_Bio&GA.pptx` | Biological motivation and genetic algorithms | 22 | Move to optional historical/evolutionary-computation supplement unless restored to the core plan |
-| `L07_GP.ppt` | Genetic programming | 33 | Move to optional historical/evolutionary-computation supplement unless restored to the core plan |
-| `L08_ArtificialLife.pptx` | Artificial life, swarm intelligence, PSO, ant-colony methods | 28 | Preserve selected still-relevant optimization ideas as optional supplements |
+| `L06_Bio&GA.pptx` | Biological motivation and genetic algorithms | 22 | **Restored to core Module 6, Lesson 9.** All 22 source pages map to 26 native lesson pages, including the GA pseudocode, complete continuous-optimization setup, and complete TSP representation/operator sequence. |
+| `L07_GP.ppt` | Genetic programming | 33 | **Restored to core Module 6, Lesson 10.** All 33 source pages map to the GP sequence. |
+| `L08_ArtificialLife.pptx` | Artificial life, swarm intelligence, PSO, ant-colony methods | 27 PDF pages | **Restored to core Module 6, Lesson 10.** All 27 PDF source pages map to the ALife and swarm sequence. |
 | `L09_MachineLearning Part A.pptx` | ML framing, concept learning, Winston, decision trees, ID3, entropy | 40 | Preserve the ML and decision-tree bridge across Meetings 13–15 |
 | `L10_MachineLearning Part B.pptx` | Neural networks, backpropagation, clustering, reinforcement learning | 36 | Preserve relevant material across Meetings 12 and 17–18; assess clustering gap |
 | `L11_stochasticmethods - Part A.pptx` | Probability rules, Bayes, conditional independence, Naive Bayes | 44 | Preserve probability bridge across Meetings 9–10 |
 | `L12_StochasticMethods - Part B.pptx` | Markov models, HMMs, filtering, PageRank-related stochastic reasoning | 53 objects, 49 shown | Preserve selected foundations in Meetings 10–11 or an explicit optional supplement |
 
 ## Meeting implementation ledger
+
+The student-facing course now uses 22 sequential lesson routes. Historical meeting IDs remain available as archival routes, while the course hub and Canvas use this module sequence:
+
+| Module | Student-facing lessons | Historical meeting sources |
+|---:|---|---|
+| 6 | Lessons 9–10: Evolutionary Computation; Genetic Programming, Artificial Life, and Swarm Intelligence | New native lessons grounded in L06, L07, and L08 |
+| 7 | Midterm Review | Review module; no lesson route |
+| 8 | Midterm Exam | Exam module; no lesson route |
+| 9 | Lessons 11–12: AI Literacy and AAB Evidence | Meetings 25–26 |
+| 10 | Lessons 13–14: Reasoning Under Uncertainty | Meetings 9–10 |
+| 11 | Lessons 15–16: Machine Learning Foundations | Meetings 13–14 |
+| 12 | Lessons 17–18: Applied Machine Learning and Neural Networks | Meeting 15; merged Meetings 17–18 |
+| 13 | Lessons 19–20: Transformers and Large Language Models | Meetings 19–20 |
+| 14 | Lessons 21–22: Retrieval-Augmented Generation | Meetings 21–22 |
+| 15 | Final Review | Review module; no lesson route |
 
 | Meeting | Revised topic | Historical source | Status and source-fidelity action |
 |---:|---|---|---|
@@ -72,13 +87,16 @@ The source decks are evidence, not a visual template. New meeting decks may reor
 
 ## Deliberate curriculum decisions
 
-- Genetic algorithms, genetic programming, and artificial-life material are not deleted from the archive. They are provisionally moved out of the core sequence because the revised plan prioritizes probabilistic reasoning, modern ML, transformers, RAG, and tool-using systems. Selected optimization ideas may return as optional comparison material.
+- Genetic algorithms, genetic programming, artificial life, and swarm intelligence are restored as the two core lessons in Module 6. The new native decks preserve every L06, L07, and L08 PDF source page through an explicit mapping and optional source viewer.
 - Constraint satisfaction and planning remain outside the core plan by instructor decision.
 - AAB involvement is concentrated in one instructional week and two required assignments, not spread across five weeks.
 - “AI literacy” includes explaining AI accurately and accessibly to nontechnical audiences age five and older; it is not framed only as K–12 pedagogy.
 - Contemporary material must use current primary documentation or research and must be reverified when each meeting is built.
 
 ## Verified source packages in the site
+
+- `public/course-source/l06-bio-ga/manifest.json`: all 22 pages of the exact `L06_Bio&GA.pptx` are mapped to the 26 native pages in Lesson 9, with a hash-pinned text inventory and complete 1600×1200 source renders available only through the Course source dialog.
+- `public/course-source/l07-gp-l08-alife/manifest.json`: all 33 pages of `L07_GP.pdf` and all 27 pages of `L08_ArtificialLife.pdf` are kept as distinct, hash-pinned inventories and render collections, mapped to the 26 native pages in Lesson 10 without conflating their page numbers.
 
 - `public/course-source/l01-ai/manifest.json`: schema-v2 package for the exact `L01_AI.pptx` hash, with an explicit slide-to-meeting map (slides 1–10 in Meeting 1; 11–32 in Meeting 2), 12 exact source-image roles and hashes, 12 slides with speaker notes, and native timing recorded on slides 5 and 14.
 - `public/course-source/l01-ai/source-inventory.json`: read-only object-level evidence for all 32 slides, 99 text blocks, 12 embedded media files, 14 slide-to-media relationships, speaker notes, timing metadata, and per-render hashes. Its SHA-256 is pinned in the v2 manifest.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { lessonNarrationNotes } from "../data/lessonNarrationNotes";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
   RevealSequence,
@@ -909,6 +910,7 @@ export function Meeting08Deck({ forcePrintAll = false }: { forcePrintAll?: boole
       lectureVideoUrl={LESSON_08_VIDEO_URL}
       meetingLabel="Module 5 · Lesson 8"
       meetingTitle="Alpha-Beta Pruning and Modern Game Search"
+      narrationNotes={lessonNarrationNotes(8)}
       slides={slides}
       sourceCollectionLabel="L05_MiniMax&Pruning.pptx"
       sourceCollectionPath="l05-minimax-pruning"
