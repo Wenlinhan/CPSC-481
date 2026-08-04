@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 import "../styles/meeting14.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import {
@@ -19,8 +20,87 @@ const loanRecords = [
   [13,"low","good","high","none","over $35k"], [14,"high","bad","high","none","$15–$35k"],
 ] as const;
 
-function LoanDataTable() {
-  return <div className="m14-loan-table-wrap"><table className="m14-loan-table"><thead><tr><th>No.</th><th>Risk</th><th>Credit history</th><th>Debt</th><th>Collateral</th><th>Income</th></tr></thead><tbody>{loanRecords.map(row => <tr key={row[0]}>{row.map((cell,index) => <td key={`${row[0]}-${index}`}>{cell}</td>)}</tr>)}</tbody></table></div>;
+const loanHeaders = ["No.", "Risk", "Credit history", "Debt", "Collateral", "Income"] as const;
+
+function LoanDataTable({ label = "Loan-risk training data" }: { label?: string }) {
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
+  const [selectedColumn, setSelectedColumn] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  const selectedRecord = selectedRow === null ? null : loanRecords.find(row => row[0] === selectedRow) ?? null;
+  const selection = selectedRecord
+    ? `Row ${selectedRecord[0]}: ${selectedRecord[1]} risk · ${selectedRecord[2]} credit · ${selectedRecord[3]} debt · ${selectedRecord[4]} collateral · ${selectedRecord[5]} income`
+    : selectedColumn === null
+      ? "Select any row or column to inspect the evidence."
+      : `${loanHeaders[selectedColumn]} column selected · compare this attribute across all 14 applications.`;
+
+  const onRowKey = (event: KeyboardEvent<HTMLTableRowElement>, rowNumber: number) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setSelectedRow(rowNumber);
+    }
+  };
+
+  const table = (
+    <div className="m14-loan-table-wrap">
+      <table className="m14-loan-table">
+        <caption className="sr-only">{label}. Select a column heading or application row for explanation.</caption>
+        <thead><tr>{loanHeaders.map((header, index) => <th className={selectedColumn === index ? "selected" : ""} key={header} scope="col"><button aria-pressed={selectedColumn === index} onClick={() => { setSelectedColumn(index); setSelectedRow(null); }} type="button">{header}</button></th>)}</tr></thead>
+        <tbody>{loanRecords.map(row => <tr aria-selected={selectedRow === row[0]} className={selectedRow === row[0] ? "selected" : ""} key={row[0]} onClick={() => { setSelectedRow(row[0]); setSelectedColumn(null); }} onKeyDown={event => onRowKey(event, row[0])} tabIndex={0}>{row.map((cell,index) => <td className={selectedColumn === index ? "selected-column" : ""} key={`${row[0]}-${index}`}>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+  );
+
+  useEffect(() => {
+    if (!expanded) return;
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setExpanded(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [expanded]);
+
+  const enlargedTable = expanded && typeof document !== "undefined"
+    ? createPortal(
+        <div className="m14-table-modal" role="presentation">
+          <section aria-label={`Enlarged ${label}`} aria-modal="true" role="dialog">
+            <header><div><span>Interactive dataset</span><h2>{label}</h2></div><button aria-label="Close enlarged table" onClick={() => setExpanded(false)} type="button">×</button></header>
+            {table}
+            <p aria-live="polite">{selection}</p>
+          </section>
+        </div>,
+        document.body,
+      )
+    : null;
+
+  return (
+    <div className="m14-data-explorer">
+      <div className="m14-table-toolbar"><strong>{label}</strong><div><button onClick={() => setExpanded(true)} type="button">⛶ Enlarge</button><button disabled={selectedRow === null && selectedColumn === null} onClick={() => { setSelectedRow(null); setSelectedColumn(null); }} type="button">Clear</button></div></div>
+      {table}
+      <p aria-live="polite">{selection}</p>
+      {enlargedTable}
+    </div>
+  );
+}
+
+const lessonObjectives = [
+  { label: "Represent", detail: "Read internal tests, branches, leaves, and the rules encoded by a tree.", cue: "Start by separating predictor columns from the risk label." },
+  { label: "Induce", detail: "Trace ID3's top-down recursive, greedy construction procedure.", cue: "Each split partitions these 14 records into smaller learning problems." },
+  { label: "Calculate", detail: "Compute entropy, expected entropy, and information gain.", cue: "Class counts in the selected rows supply every probability." },
+  { label: "Evaluate", detail: "Audit generalization, error types, calibration, and subgroup behavior.", cue: "A fitted table is not deployment evidence; unseen cases are required." },
+];
+
+function LessonRoadmapExplorer() {
+  const [active, setActive] = useState(0);
+  const item = lessonObjectives[active];
+  return (
+    <div className="m14-roadmap-explorer">
+      <LoanDataTable label="The shared evidence for today's four objectives" />
+      <section>
+        <nav aria-label="Lesson 16 objectives">{lessonObjectives.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button"><span>{String(index + 1).padStart(2, "0")}</span>{entry.label}</button>)}</nav>
+        <article><span>Objective {active + 1}</span><h3>{item.label}</h3><p>{item.detail}</p><strong>{item.cue}</strong></article>
+      </section>
+    </div>
+  );
 }
 
 function CompactRiskTree({ picnic = false }: { picnic?: boolean }) {
@@ -50,7 +130,8 @@ function M14SourceReconstruction({ slide, alt, className = "" }: { slide: number
   const page = pageText[slide] ?? { title:`Course source page ${slide}`, points:[] };
   const usesTable = slide === 20 || slide === 23;
   const usesTree = slide === 22 || [24,27,32,33].includes(slide);
-  return <article className={`m14-source-frame m14-source-rebuilt ${className}`.trim()} aria-label={alt}><span>Course-source reconstruction · page {slide}</span><h3>{page.title}</h3>{usesTable ? <LoanDataTable /> : usesTree ? <CompactRiskTree picnic={slide === 22} /> : <ol>{page.points.map(point => <li key={point}>{point}</li>)}</ol>}{(usesTable || usesTree) && <small>{page.points.join(" · ")}</small>}</article>;
+  const visualLabel = usesTable ? "Loan-risk dataset · 14 labeled applications" : usesTree ? "Decision-tree visual" : "Decision-tree concept";
+  return <article className={`m14-source-frame m14-source-rebuilt ${className}`.trim()} aria-label={alt}><span>{visualLabel}</span><h3>{page.title}</h3>{usesTable ? <LoanDataTable label={slide === 20 ? "Loan applications and historical risk labels" : "Complete training dataset"} /> : usesTree ? <CompactRiskTree picnic={slide === 22} /> : <ol>{page.points.map(point => <li key={point}>{point}</li>)}</ol>}{(usesTable || usesTree) && <small>{page.points.join(" · ")}</small>}</article>;
 }
 const SOURCE_DECK_LABEL = "L09 Machine Learning · Part A";
 
@@ -375,14 +456,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Learning objectives · Knowledge map",
     title: "Represent, induce, calculate, interpret, and evaluate",
-    content: (
-      <div className="m14-objectives">
-        <article><span>01</span><strong>Represent</strong><p>a classification concept as internal tests, branches, leaves, and rules</p></article>
-        <article><span>02</span><strong>Induce</strong><p>a tree through ID3&apos;s top-down recursive, greedy search</p></article>
-        <article><span>03</span><strong>Calculate</strong><p>entropy, expected entropy, and information gain for the loan data</p></article>
-        <article><span>04</span><strong>Evaluate</strong><p>overfitting, pruning, error types, ranking, calibration, and subgroup behavior</p></article>
-      </div>
-    ),
+    content: <LessonRoadmapExplorer />,
     note: "Timing: 1 minute. The assessment evidence will be one tree trace, one information-gain explanation, one rule, and one justified metric choice.",
     sourceSlides: [],
   },
@@ -410,19 +484,17 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Knowledge point 1 · Training examples",
     title: "A training table is a set of labeled input–output examples",
     content: (
-      <SourceExplanation
-        alt="Complete 14-row loan-risk training data table"
-        caption="Exact source page 23 · all 14 records and their attribute values remain visible and enlargeable."
-        reverse
-        slide={23}
-      >
-        <div className="m14-data-anatomy">
-          <article><span>x</span><strong>Input vector</strong><p>(credit history, debt, collateral, income)</p></article>
-          <article><span>y</span><strong>Class label</strong><p>financial risk ∈ {`{high, moderate, low}`}</p></article>
-          <article><span>D</span><strong>Training set</strong><p>14 observed pairs (xᵢ, yᵢ)</p></article>
-        </div>
-        <SearchCallout label="Think · pair · share" tone="cyan">Which attribute looks most predictive by inspection? State the evidence in the table, not just your intuition.</SearchCallout>
-      </SourceExplanation>
+      <div className="m14-table-focus">
+        <LoanDataTable label="Four predictors and one class label" />
+        <section>
+          <div className="m14-data-anatomy">
+            <article><span>x</span><strong>Input vector</strong><p>(credit history, debt, collateral, income)</p></article>
+            <article><span>y</span><strong>Class label</strong><p>financial risk ∈ {`{high, moderate, low}`}</p></article>
+            <article><span>D</span><strong>Training set</strong><p>14 observed pairs (xᵢ, yᵢ)</p></article>
+          </div>
+          <SearchCallout label="Think · pair · share" tone="cyan">Select a column, compare its values against risk, and justify which attribute looks most predictive.</SearchCallout>
+        </section>
+      </div>
     ),
     note: "Timing: 4 minutes. Let pairs inspect the exact data. Surface that visual inspection can suggest a split, but ID3 needs a quantitative selection rule.",
     sourceSlides: [23],

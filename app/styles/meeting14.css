@@ -1116,7 +1116,7 @@
     transition: none;
   }
 }
-/* Native source reconstructions: tables, algorithms, equations, and trees. */
+/* Native classroom visuals: tables, algorithms, equations, and trees. */
 .m14-source-rebuilt { align-content: center; background:#fff; border:1px solid #d5deeb; border-radius:17px; display:grid; min-height:0; overflow:hidden; padding:clamp(12px,1.5vw,22px); }
 .m14-source-rebuilt > span { color:#6740d9; font-size:9px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
 .m14-source-rebuilt h3 { color:#24124f; font-size:clamp(18px,1.45vw,24px); line-height:1.12; margin:6px 0 8px; }
@@ -1146,3 +1146,240 @@
 .m14-rebuilt-tree > div { display:grid; gap:8px; grid-template-columns:repeat(3,1fr); }
 .m14-rebuilt-tree span { background:#fff; border:1px solid #bfcbe0; border-radius:9px; color:#24324a; font-size:11px; padding:9px 5px; }
 .m14-rebuilt-tree small { color:#5a687e; }
+
+/* Lesson 16 dataset explorer, larger classroom type, and inspection states. */
+.m14-data-explorer {
+  background: #fff;
+  border: 1px solid #cbd7e5;
+  border-radius: 14px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 6px;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.m14-table-toolbar {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.m14-table-toolbar > strong {
+  color: #173854;
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.m14-table-toolbar > div { display: flex; gap: 6px; }
+.m14-table-toolbar button,
+.m14-roadmap-explorer button {
+  background: #fff;
+  border: 1px solid #9fb2c8;
+  border-radius: 8px;
+  color: #173854;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 850;
+  padding: 6px 8px;
+}
+
+.m14-table-toolbar button:first-child {
+  background: #0b7285;
+  border-color: #0b7285;
+  color: #fff;
+}
+
+.m14-table-toolbar button:disabled { cursor: default; opacity: .4; }
+.m14-data-explorer > p,
+.m14-table-modal section > p {
+  background: #eaf7f8;
+  border-radius: 8px;
+  color: #174852;
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.25;
+  margin: 0;
+  padding: 6px 8px;
+}
+
+.m14-data-explorer .m14-loan-table-wrap {
+  border: 1px solid #bdcad9;
+  border-radius: 9px;
+  max-height: none;
+  min-height: 0;
+  overflow: auto;
+}
+
+.m14-data-explorer .m14-loan-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+  line-height: 1.15;
+  width: 100%;
+}
+
+.m14-data-explorer .m14-loan-table th,
+.m14-data-explorer .m14-loan-table td {
+  border-color: #ccd7e4;
+  padding: 4px 6px;
+  transition: background 150ms ease, box-shadow 150ms ease;
+}
+
+.m14-data-explorer .m14-loan-table th {
+  background: #e9f4f7;
+  padding: 0;
+  z-index: 1;
+}
+
+.m14-data-explorer .m14-loan-table th button {
+  background: transparent;
+  border: 0;
+  color: #173854;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+  height: 100%;
+  padding: 7px 6px;
+  width: 100%;
+}
+
+.m14-data-explorer .m14-loan-table th.selected,
+.m14-data-explorer .m14-loan-table td.selected-column {
+  background: #fff3c4;
+  box-shadow: inset 2px 0 #d59b17, inset -2px 0 #d59b17;
+}
+
+.m14-data-explorer .m14-loan-table tbody tr { cursor: pointer; }
+.m14-data-explorer .m14-loan-table tbody tr:nth-child(even) { background: #f7fafc; }
+.m14-data-explorer .m14-loan-table tbody tr:hover td { background: #e8f6f8; }
+.m14-data-explorer .m14-loan-table tbody tr.selected td { background: #dff4f0; box-shadow: inset 0 2px #0a8f76, inset 0 -2px #0a8f76; }
+.m14-data-explorer .m14-loan-table td:nth-child(2) { color: #6040c7; font-weight: 900; }
+
+.m14-table-modal {
+  align-items: center;
+  background: rgba(10, 22, 38, .76);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 28px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.m14-table-modal > section {
+  background: #f6f9fc;
+  border-radius: 20px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+  display: grid;
+  gap: 12px;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: min(88vh, 760px);
+  padding: 20px;
+  width: min(94vw, 1320px);
+}
+
+.m14-table-modal header { align-items: center; display: flex; justify-content: space-between; }
+.m14-table-modal header span { color: #0b7285; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.m14-table-modal header h2 { color: #17233a; font-size: 30px; margin: 3px 0 0; }
+.m14-table-modal header > button { background: #17233a; border: 0; border-radius: 50%; color: #fff; cursor: pointer; font-size: 27px; height: 42px; width: 42px; }
+.m14-table-modal .m14-loan-table { font-size: clamp(16px, 1.35vw, 20px); }
+.m14-table-modal .m14-loan-table-wrap { height: 100%; max-height: none; }
+.m14-table-modal .m14-loan-table th button { padding: 10px 8px; }
+.m14-table-modal .m14-loan-table td { padding: 8px 10px; }
+
+.m14-roadmap-explorer,
+.m14-table-focus {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+  height: 100%;
+  min-height: 0;
+}
+
+.m14-roadmap-explorer > section,
+.m14-table-focus > section {
+  align-content: center;
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.m14-roadmap-explorer nav { display: grid; gap: 7px; grid-template-columns: 1fr 1fr; }
+.m14-roadmap-explorer nav button { align-items: center; display: grid; gap: 7px; grid-template-columns: 24px 1fr; text-align: left; }
+.m14-roadmap-explorer nav button span { color: #0b7285; font-size: 10px; }
+.m14-roadmap-explorer nav button.active { background: #0b7285; border-color: #0b7285; color: #fff; }
+.m14-roadmap-explorer nav button.active span { color: #fff; }
+.m14-roadmap-explorer > section > article { background: #fff; border: 1px solid #d5deeb; border-radius: 14px; padding: 16px; }
+.m14-roadmap-explorer article > span { color: #0b7285; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+.m14-roadmap-explorer article h3 { color: #17233a; font-size: 25px; margin: 6px 0; }
+.m14-roadmap-explorer article p { color: #425168; font-size: 15px; line-height: 1.35; margin: 0 0 10px; }
+.m14-roadmap-explorer article strong { color: #6040c7; font-size: 13px; line-height: 1.35; }
+
+.m14-table-focus { grid-template-columns: minmax(0, 1.5fr) minmax(280px, .5fr); }
+.m14-table-focus .m14-data-anatomy article { padding: 10px 12px; }
+.m14-table-focus .search-callout { font-size: 13px; padding: 10px 12px; }
+
+/* Remove production-process language from student pages and prioritize data. */
+.m14-cover > .m14-source-rebuilt > span,
+.m14-cover > .m14-source-rebuilt > h3,
+.m14-cover > .m14-source-rebuilt > small { display: none; }
+.m14-cover > .m14-source-rebuilt { align-content: stretch; padding: 0; }
+.m14-cover > .m14-source-rebuilt > .m14-data-explorer { border: 0; border-radius: 17px; }
+
+/* Larger presentation-distance type across Lesson 16. */
+.m14-source-rebuilt > span { font-size: 11px; }
+.m14-source-rebuilt h3 { font-size: clamp(21px, 1.65vw, 28px); }
+.m14-source-rebuilt li { font-size: clamp(14px, 1.02vw, 16px); }
+.m14-source-rebuilt > small { font-size: 12px; }
+.m14-role-grid span,
+.m14-data-anatomy span,
+.m14-definition-stack span,
+.m14-pseudocode-map span,
+.m14-simplicity-compare span,
+.m14-mml article span,
+.m14-stage-map span,
+.m14-final-tree-notes span,
+.m14-rule-grammar article span,
+.m14-search-map span,
+.m14-modern-grid article span,
+.m14-metrics-lab article span { font-size: 12px; }
+.m14-role-grid p,
+.m14-data-anatomy p,
+.m14-definition-stack p,
+.m14-pseudocode-map p,
+.m14-simplicity-compare p,
+.m14-entropy-cases p,
+.m14-stage-map p,
+.m14-final-tree-notes p,
+.m14-modern-grid article p { font-size: 14px; }
+.m14-rebuilt-tree span { font-size: 13px; }
+.m14-rebuilt-tree small { font-size: 12px; }
+.m14-path-steps li,
+.m14-tree-trace p,
+.m14-build-reveal p,
+.m14-gain-reveal section p,
+.m14-rule-practice p,
+.m14-rule-grammar > p,
+.m14-gain-note { font-size: 14px; }
+.m14-formulas code,
+.m14-calculation code,
+.m14-rule-grammar code,
+.m14-rule-practice code,
+.m14-mml code { font-size: 13px; }
+.m14-exit article p,
+.m14-exit ol,
+.m14-exit ul { font-size: 13px; }
+
+@media (max-width: 1040px) {
+  .m14-roadmap-explorer,
+  .m14-table-focus { grid-template-columns: minmax(0, 1.4fr) minmax(270px, .6fr); }
+  .m14-data-explorer .m14-loan-table { font-size: 11px; }
+  .m14-data-explorer .m14-loan-table th,
+  .m14-data-explorer .m14-loan-table td { padding: 3px 4px; }
+  .m14-roadmap-explorer article p { font-size: 13px; }
+}
