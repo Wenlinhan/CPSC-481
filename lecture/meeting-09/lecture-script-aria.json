@@ -1,0 +1,3055 @@
+{
+  "version": 1,
+  "lesson": "09",
+  "meeting": "09",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Lesson 9: Evolutionary Computation and Genetic Algorithms",
+  "route": "/lessons/09",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Evolutionary Computation and Genetic Algorithms",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Lesson nine asks a wonderfully practical question: how can a population of imperfect candidates become a useful solution? A genetic algorithm, or GA, does not wait for one heroic guess. It keeps many guesses, scores them, gives better guesses more chances to reproduce, and introduces variation. Think of a cooking contest in which recipes are copied, spliced, and occasionally seasoned by a very enthusiastic intern.",
+          "visualDesign": {
+            "focusSelector": ".l9-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Lesson nine asks a wonderfully practical question:",
+            "focuses": [
+              {
+                "phrase": "Lesson nine asks a wonderfully practical question:",
+                "selector": ".l9-hero > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The slide names seven design choices we must keep visible: candidate, encoding, fitness, selection, variation, replacement, and stopping. These are not decorative vocabulary. Together they define the search. If the encoding cannot represent a legal answer, or the fitness function rewards a loophole, evolution will become extremely efficient at solving the wrong problem. Evolution is clever, but it reads the contract literally.",
+          "visualDesign": {
+            "focusSelector": ".l9-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "The slide names seven design choices we",
+            "focuses": [
+              {
+                "phrase": "The slide names seven design choices we",
+                "selector": ".l9-hero > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The slide names seven design choices we",
+                "type": "popup",
+                "label": "The genetic-algorithm contract",
+                "text": "The genetic-algorithm contract",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Our goal is not to claim that software is alive. Biology supplies a metaphor and several mechanisms; computation turns them into an explicit algorithm. By the end, we will run two complete cases: a real-valued function encoded with twenty-two bits and a traveling-salesperson tour encoded as a permutation. The recurring question is simple: what can exist, what tends to win, and what is allowed to change?",
+          "visualDesign": {
+            "focusSelector": ".l9-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Our goal is not to claim that",
+            "focuses": [
+              {
+                "phrase": "Our goal is not to claim that",
+                "selector": ".l9-hero > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Consider a warehouse robot whose controller is encoded as numbers. A candidate is one complete controller, the encoding is the number sequence, fitness might combine delivery speed and collisions, selection decides which controllers become parents, variation changes their parameters, replacement forms the next test group, and stopping uses a safety and evaluation budget. Each noun on the opening slide now points to an observable engineering decision.",
+          "visualDesign": {
+            "focusSelector": ".l9-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "Consider a warehouse robot whose controller is",
+            "focuses": [
+              {
+                "phrase": "Consider a warehouse robot whose controller is",
+                "selector": ".l9-hero > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "A useful diagnostic is to imagine removing one term. Without fitness, the algorithm has no evidence for preferring candidates. Without variation, it can only resample what already exists. Without replacement, there is no evolving population. Without stopping, the robot may optimize until graduation. The GA is therefore a coordinated loop, not a bag of biology-flavored tricks.",
+          "visualDesign": {
+            "focusSelector": ".l9-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "A useful diagnostic is to imagine removing",
+            "focuses": [
+              {
+                "phrase": "A useful diagnostic is to imagine removing",
+                "selector": ".l9-hero > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "The lecture moves from metaphor to executable specification",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Here is the route. We begin with biology: stored information, inherited structure, and variation. Then we strip away the lab coat and write a population-based algorithm. The metaphor gets us to the door; the specification tells the computer where the door handle is.",
+          "visualDesign": {
+            "focusSelector": ".l9-journey article",
+            "focusIndex": 0,
+            "focusPhrase": "Here is the route. We begin with",
+            "focuses": [
+              {
+                "phrase": "Here is the route. We begin with",
+                "selector": ".l9-journey article",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Our first worked case turns a real number into a twenty-two-bit chromosome. That lets us see encoding, decoding, initialization, fitness, selection, crossover, mutation, replacement, and stopping with actual numbers. The second case uses a nine-city tour to expose a trap: a compact bit string can be easy to store while making legal offspring surprisingly hard to produce.",
+          "visualDesign": {
+            "focusSelector": ".l9-journey article",
+            "focusIndex": 1,
+            "focusPhrase": "Our first worked case turns a real",
+            "focuses": [
+              {
+                "phrase": "Our first worked case turns a real",
+                "selector": ".l9-journey article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Our first worked case turns a real",
+                "type": "popup",
+                "label": "From metaphor to audit",
+                "text": "From metaphor to audit",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Finally, we audit the design. For every GA, ask whether every chromosome decodes, whether fitness represents the real objective, whether variation preserves validity, and whether stopping evidence is persuasive. A colorful population animation is not evidence by itself. Otherwise a screen saver with ambition could earn a research grant.",
+          "visualDesign": {
+            "focusSelector": ".l9-journey article",
+            "focusIndex": 2,
+            "focusPhrase": "Finally, we audit the design. For every",
+            "focuses": [
+              {
+                "phrase": "Finally, we audit the design. For every",
+                "selector": ".l9-journey article",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The continuous function and TSP examples deliberately contrast representations. In the first, every twenty-two-bit pattern has a valid numeric interpretation. In the second, an arbitrary bit pattern may fail the visit-once constraint. This contrast will let us ask not only whether an encoding is compact, but whether its neighborhood and operators match the structure of the problem.",
+          "visualDesign": {
+            "focusSelector": ".l9-journey article",
+            "focusIndex": 3,
+            "focusPhrase": "The continuous function and TSP examples deliberately",
+            "focuses": [
+              {
+                "phrase": "The continuous function and TSP examples deliberately",
+                "selector": ".l9-journey article",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "During the audit phase, separate correctness from performance. Correctness asks whether decoding and operators preserve the problem definition. Performance asks how quickly high-quality candidates appear and how reliably results repeat. A fast algorithm that produces invalid tours is not approximately correct; it is precisely speedy at leaving the assignment.",
+          "visualDesign": {
+            "focusSelector": ".l9-journey article",
+            "focusIndex": 4,
+            "focusPhrase": "During the audit phase, separate correctness from",
+            "focuses": [
+              {
+                "phrase": "During the audit phase, separate correctness from",
+                "selector": ".l9-journey article",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "From atom to species, cells connect three crucial molecules",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Biology operates at nested scales. Atoms form molecules, molecules participate in cells, cells build organisms, and organisms belong to populations and species. Evolutionary computation borrows mainly from the population and inheritance story, but the lower levels explain how biological information can persist while still producing different traits.",
+          "visualDesign": {
+            "focusSelector": ".l9-foundation > *",
+            "focusIndex": 0,
+            "focusPhrase": "Biology operates at nested scales. Atoms form",
+            "focuses": [
+              {
+                "phrase": "Biology operates at nested scales. Atoms form",
+                "selector": ".l9-foundation > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Inside the cell, DNA stores hereditary instructions. RNA carries a working message copied from part of that DNA. Proteins perform much of the cell's structure and behavior. A useful metaphor is a guarded recipe archive: DNA is the master cookbook, RNA is a copied recipe card taken to the kitchen, and protein is the finished dish or kitchen tool.",
+          "visualDesign": {
+            "focusSelector": ".l9-foundation > *",
+            "focusIndex": 1,
+            "focusPhrase": "Inside the cell, DNA stores hereditary instructions.",
+            "focuses": [
+              {
+                "phrase": "Inside the cell, DNA stores hereditary instructions.",
+                "selector": ".l9-foundation > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Inside the cell, DNA stores hereditary instructions.",
+                "type": "popup",
+                "label": "Biological scale and information flow",
+                "text": "Biological scale and information flow",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The metaphor has limits. DNA is not a JavaScript file, and a protein is not simply the printed output of one command. Cellular regulation, chemistry, and environment all matter. For our algorithmic abstraction, however, three ideas survive: information can be encoded, interpreted, and expressed as behavior whose consequences affect future reproduction.",
+          "visualDesign": {
+            "focusSelector": ".l9-foundation > *",
+            "focusIndex": 0,
+            "focusPhrase": "The metaphor has limits. DNA is not",
+            "focuses": [
+              {
+                "phrase": "The metaphor has limits. DNA is not",
+                "selector": ".l9-foundation > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "At the molecular level, copying is remarkably reliable but not perfect. Occasional changes create variation, while repair mechanisms reduce many errors. At the population level, heritable variation interacts with environment and reproduction. Evolutionary computation compresses this multilayer story into explicit data structures and probability rules, so we should remember how much biology the abstraction intentionally leaves outside the model.",
+          "visualDesign": {
+            "focusSelector": ".l9-foundation > *",
+            "focusIndex": 1,
+            "focusPhrase": "At the molecular level, copying is remarkably",
+            "focuses": [
+              {
+                "phrase": "At the molecular level, copying is remarkably",
+                "selector": ".l9-foundation > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Cells also illustrate interpretation. The same stored sequence can have different consequences depending on regulation and context. In optimization, the decoder and evaluation environment play similar roles: identical bits can mean nothing until rules map them to a candidate and test behavior. Storage is necessary, but meaning arrives through a process.",
+          "visualDesign": {
+            "focusSelector": ".l9-foundation > *",
+            "focusIndex": 0,
+            "focusPhrase": "Cells also illustrate interpretation. The same stored",
+            "focuses": [
+              {
+                "phrase": "Cells also illustrate interpretation. The same stored",
+                "selector": ".l9-foundation > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A one-dimensional sequence helps produce a three-dimensional protein over time",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The image zooms from a cell to chromosomes and then to the DNA double helix. That journey matters because a compact linear sequence participates in building complicated three-dimensional machinery. The sequence is not the final object; it is information used through a process.",
+          "visualDesign": {
+            "focusSelector": ".l9-split > *",
+            "focusIndex": 0,
+            "focusPhrase": "The image zooms from a cell to",
+            "focuses": [
+              {
+                "phrase": "The image zooms from a cell to",
+                "selector": ".l9-split > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The central dogma is often summarized as DNA to RNA to protein. Transcription makes an RNA message from DNA. Translation reads that message over time to assemble an amino-acid chain. The chain then folds into a three-dimensional protein whose shape helps determine function. A one-dimensional grocery list can become a three-dimensional dinner, although the ribosome never asks whether anyone has allergies.",
+          "visualDesign": {
+            "focusSelector": ".l9-split > *",
+            "focusIndex": 1,
+            "focusPhrase": "The central dogma is often summarized as",
+            "focuses": [
+              {
+                "phrase": "The central dogma is often summarized as",
+                "selector": ".l9-split > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The central dogma is often summarized as",
+                "type": "popup",
+                "label": "Sequence becomes structure",
+                "text": "Sequence becomes structure",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "For computation, distinguish genotype from phenotype. The genotype is the stored representation, such as bits or a permutation. The phenotype is the interpreted candidate solution, such as a real number or a tour. Fitness normally evaluates the phenotype. If we confuse representation with meaning, we may recombine symbols in a way that destroys the structure the task needs.",
+          "visualDesign": {
+            "focusSelector": ".l9-split > *",
+            "focusIndex": 0,
+            "focusPhrase": "For computation, distinguish genotype from phenotype. The",
+            "focuses": [
+              {
+                "phrase": "For computation, distinguish genotype from phenotype. The",
+                "selector": ".l9-split > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Folding illustrates why small representational changes can have nonlinear consequences. One changed symbol might barely alter a protein, or it might disrupt a crucial interaction. Likewise, flipping a high-order bit in a binary real-number encoding can move the phenotype much farther than flipping a low-order bit. Local change in genotype is not automatically local change in phenotype.",
+          "visualDesign": {
+            "focusSelector": ".l9-split > *",
+            "focusIndex": 1,
+            "focusPhrase": "Folding illustrates why small representational changes can",
+            "focuses": [
+              {
+                "phrase": "Folding illustrates why small representational changes can",
+                "selector": ".l9-split > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "This motivates representation-aware operators. If nearby chromosomes decode to wildly unrelated solutions, mutation may behave like teleportation. If many chromosomes decode to the same phenotype, search may waste effort on redundant codes. Before celebrating an elegant string representation, inspect the geometry it creates after decoding.",
+          "visualDesign": {
+            "focusSelector": ".l9-split > *",
+            "focusIndex": 0,
+            "focusPhrase": "This motivates representation-aware operators. If nearby chromosomes",
+            "focuses": [
+              {
+                "phrase": "This motivates representation-aware operators. If nearby chromosomes",
+                "selector": ".l9-split > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Complementary strands preserve information; codons make the sequence interpretable",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "DNA has two complementary strands. Adenine pairs with thymine, and cytosine pairs with guanine. Complementarity supports copying and repair because one strand contains information about the other. The five-prime and three-prime labels show direction: the strands run antiparallel rather than behaving like two identical sentences printed side by side.",
+          "visualDesign": {
+            "focusSelector": ".l9-dna-code > *",
+            "focusIndex": 0,
+            "focusPhrase": "DNA has two complementary strands. Adenine pairs",
+            "focuses": [
+              {
+                "phrase": "DNA has two complementary strands. Adenine pairs",
+                "selector": ".l9-dna-code > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The sequence is read in groups called codons. A codon contains three bases and helps specify an amino acid or a control signal. A gene is a coded region involved in producing a functional product, often a protein. Changing one base can be harmless, harmful, or useful depending on where it occurs and how expression and environment interact.",
+          "visualDesign": {
+            "focusSelector": ".l9-dna-code > *",
+            "focusIndex": 1,
+            "focusPhrase": "The sequence is read in groups called",
+            "focuses": [
+              {
+                "phrase": "The sequence is read in groups called",
+                "selector": ".l9-dna-code > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The sequence is read in groups called",
+                "type": "popup",
+                "label": "Complementarity and coding",
+                "text": "Complementarity and coding",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "In a GA, we also choose an alphabet and meaningful groups. A bit may be analogous to a base, but the analogy does not automatically tell us how many bits encode one variable, how boundaries are handled, or what an operator is allowed to cut. Those are engineering decisions. Biology offers inspiration, not a free implementation manual tucked under the double helix.",
+          "visualDesign": {
+            "focusSelector": ".l9-dna-code > *",
+            "focusIndex": 2,
+            "focusPhrase": "In a GA, we also choose an",
+            "focuses": [
+              {
+                "phrase": "In a GA, we also choose an",
+                "selector": ".l9-dna-code > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Codon boundaries also warn us about crossover. Cutting a sequence at an arbitrary position can disrupt meaningful groups. Computational crossover has the same issue when useful building blocks span the chosen cut or when variables occupy fixed blocks. Operator design should respect the units that carry meaning, not merely the positions that are convenient to index.",
+          "visualDesign": {
+            "focusSelector": ".l9-dna-code > *",
+            "focusIndex": 3,
+            "focusPhrase": "Codon boundaries also warn us about crossover.",
+            "focuses": [
+              {
+                "phrase": "Codon boundaries also warn us about crossover.",
+                "selector": ".l9-dna-code > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Redundancy in the genetic code means different codons can specify the same amino acid. Optimization encodings can also be redundant, with multiple genotypes mapping to one phenotype. Redundancy may make search more robust or may waste evaluations. The important point is to document the mapping and test its consequences.",
+          "visualDesign": {
+            "focusSelector": ".l9-dna-code > *",
+            "focusIndex": 0,
+            "focusPhrase": "Redundancy in the genetic code means different",
+            "focuses": [
+              {
+                "phrase": "Redundancy in the genetic code means different",
+                "selector": ".l9-dna-code > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Inheritance preserves; crossover and mutation vary; selection changes frequencies",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Natural selection requires variation, inheritance, and differences in reproductive success. Members of a population are not identical. Some differences can be inherited. In a particular environment, those differences influence which individuals leave more descendants. Across generations, trait frequencies can change.",
+          "visualDesign": {
+            "focusSelector": ".l9-selection > *",
+            "focusIndex": 0,
+            "focusPhrase": "Natural selection requires variation, inheritance, and differences",
+            "focuses": [
+              {
+                "phrase": "Natural selection requires variation, inheritance, and differences",
+                "selector": ".l9-selection > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Inheritance preserves useful structure. Crossover combines material from parents, while mutation introduces local changes. Selection does not deliberately manufacture the trait a species needs. It changes reproductive frequency after variation already exists. Nature is not an engineer reading tomorrow's requirements document; it is more like a relentless historical filter with no customer-support number.",
+          "visualDesign": {
+            "focusSelector": ".l9-selection > *",
+            "focusIndex": 1,
+            "focusPhrase": "Inheritance preserves useful structure. Crossover combines material",
+            "focuses": [
+              {
+                "phrase": "Inheritance preserves useful structure. Crossover combines material",
+                "selector": ".l9-selection > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Inheritance preserves useful structure. Crossover combines material",
+                "type": "popup",
+                "label": "Variation inheritance and selection",
+                "text": "Variation inheritance and selection",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The diagram shows a population at time t and a changed population at time t plus one. Favored variants become more common, not because every individual transforms into the winner, but because reproduction is biased. A GA copies this population-level logic: evaluate candidates, bias parent selection, create offspring, and construct the next population.",
+          "visualDesign": {
+            "focusSelector": ".l9-selection > *",
+            "focusIndex": 2,
+            "focusPhrase": "The diagram shows a population at time",
+            "focuses": [
+              {
+                "phrase": "The diagram shows a population at time",
+                "selector": ".l9-selection > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Selection operates on relative success in a context. A trait useful in one environment may be neutral or costly in another. Similarly, a candidate's fitness depends on the cases, constraints, and weights chosen by the designer. Change the evaluation environment and the evolutionary pressure changes, even if the chromosome and operators remain identical.",
+          "visualDesign": {
+            "focusSelector": ".l9-selection > *",
+            "focusIndex": 0,
+            "focusPhrase": "Selection operates on relative success in a",
+            "focuses": [
+              {
+                "phrase": "Selection operates on relative success in a",
+                "selector": ".l9-selection > *",
+                "index": 0,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Population diversity matters because future environments or combinations may reward structures that are not currently best. In a GA, diversity can be measured with genotype distances, phenotype spread, or fitness distribution. If all candidates become clones too early, crossover merely exchanges identical homework and exploration collapses.",
+          "visualDesign": {
+            "focusSelector": ".l9-selection > *",
+            "focusIndex": 1,
+            "focusPhrase": "Population diversity matters because future environments or",
+            "focuses": [
+              {
+                "phrase": "Population diversity matters because future environments or",
+                "selector": ".l9-selection > *",
+                "index": 1,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Life and software both store instructions—but the mapping has limits",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The analogy pairs base pair with bit, gene with instruction, translation with execution order, protein with function, repair with debugging, and mutation with maintenance or change. Each pair suggests a question we can ask about a computational representation. What is stored? How is it interpreted? What changes are legal? What behavior results?",
+          "visualDesign": {
+            "focusSelector": ".l9-analogy > *",
+            "focusIndex": 0,
+            "focusPhrase": "The analogy pairs base pair with bit,",
+            "focuses": [
+              {
+                "phrase": "The analogy pairs base pair with bit,",
+                "selector": ".l9-analogy > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "But analogy is not identity. A gene is not one instruction in a simple program; biological expression depends on networks, context, and environment. DNA repair is not a programmer stepping through a debugger. Mutation is not purposeful maintenance. If we push the mapping too literally, the metaphor stops teaching and starts wearing a fake mustache.",
+          "visualDesign": {
+            "focusSelector": ".l9-analogy > *",
+            "focusIndex": 1,
+            "focusPhrase": "But analogy is not identity. A gene",
+            "focuses": [
+              {
+                "phrase": "But analogy is not identity. A gene",
+                "selector": ".l9-analogy > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "But analogy is not identity. A gene",
+                "type": "popup",
+                "label": "Analogy with guardrails",
+                "text": "Analogy with guardrails",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Use the analogy as a design prompt. Bits suggest encodings; genes suggest meaningful building blocks; translation suggests a decoder; mutation suggests local exploration; selection suggests unequal reproductive probability. Then justify each computational choice using the problem, not using the sentence 'because biology does it.'",
+          "visualDesign": {
+            "focusSelector": ".l9-analogy > *",
+            "focusIndex": 2,
+            "focusPhrase": "Use the analogy as a design prompt.",
+            "focuses": [
+              {
+                "phrase": "Use the analogy as a design prompt.",
+                "selector": ".l9-analogy > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The base-pair-to-bit mapping is especially tempting because both use small alphabets. Yet biological DNA uses four bases, while many GAs use two symbols, real numbers, trees, or permutations. The right representation follows the candidate structure. Biology did not issue a regulation requiring every optimization problem to wear a binary chromosome.",
+          "visualDesign": {
+            "focusSelector": ".l9-analogy > *",
+            "focusIndex": 3,
+            "focusPhrase": "The base-pair-to-bit mapping is especially tempting because",
+            "focuses": [
+              {
+                "phrase": "The base-pair-to-bit mapping is especially tempting because",
+                "selector": ".l9-analogy > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Likewise, execution order is only a loose analogy for translation. A decoder may be a formula, simulation, compiler, route constructor, or neural-network parameter loader. State the actual mapping. Analogies help us generate hypotheses; tests and definitions decide whether those hypotheses belong in the implementation.",
+          "visualDesign": {
+            "focusSelector": ".l9-analogy > *",
+            "focusIndex": 4,
+            "focusPhrase": "Likewise, execution order is only a loose",
+            "focuses": [
+              {
+                "phrase": "Likewise, execution order is only a loose",
+                "selector": ".l9-analogy > *",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "The metaphor creates five computational commitments",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "A population means we retain many hypotheses at once rather than one current state. This can explore several regions of a search space in parallel. It also costs memory and evaluation time, so population size is a policy choice, not a magical constant.",
+          "visualDesign": {
+            "focusSelector": ".l9-commitments article",
+            "focusIndex": 0,
+            "focusPhrase": "A population means we retain many hypotheses",
+            "focuses": [
+              {
+                "phrase": "A population means we retain many hypotheses",
+                "selector": ".l9-commitments article",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Representation defines one candidate. Fitness scores task quality. Variation explores nearby candidates or combines material from parents. Selection biases which candidates reproduce. Notice the chain: selection can only use the evidence fitness provides, and variation can only create structures the representation and operators permit.",
+          "visualDesign": {
+            "focusSelector": ".l9-commitments article",
+            "focusIndex": 1,
+            "focusPhrase": "Representation defines one candidate. Fitness scores task",
+            "focuses": [
+              {
+                "phrase": "Representation defines one candidate. Fitness scores task",
+                "selector": ".l9-commitments article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Representation defines one candidate. Fitness scores task",
+                "type": "popup",
+                "label": "Five computational commitments",
+                "text": "Five computational commitments",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "These five commitments form a dependency system. A poor representation makes legal variation difficult. A misleading fitness function rewards undesirable behavior. Excessive selection pressure can erase diversity, while too little pressure turns search into a leisurely random walk. The GA is an orchestra: improving one trumpet does not rescue a score in which every section is playing a different song.",
+          "visualDesign": {
+            "focusSelector": ".l9-commitments article",
+            "focusIndex": 2,
+            "focusPhrase": "These five commitments form a dependency system.",
+            "focuses": [
+              {
+                "phrase": "These five commitments form a dependency system.",
+                "selector": ".l9-commitments article",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Population size mediates breadth and cost. Ten candidates may explore cheaply but miss regions; ten thousand may improve coverage while making each generation expensive. Representation determines how distance and diversity are interpreted, so population size cannot be chosen independently of the search space and evaluation budget.",
+          "visualDesign": {
+            "focusSelector": ".l9-commitments article",
+            "focusIndex": 3,
+            "focusPhrase": "Population size mediates breadth and cost. Ten",
+            "focuses": [
+              {
+                "phrase": "Population size mediates breadth and cost. Ten",
+                "selector": ".l9-commitments article",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Selection and variation also interact. Strong selection plus tiny mutation can converge quickly to one family. Weak selection plus huge mutation may wander. Practical tuning watches best fitness, average fitness, diversity, and constraint violations together. One curve rarely tells the whole evolutionary soap opera.",
+          "visualDesign": {
+            "focusSelector": ".l9-commitments article",
+            "focusIndex": 4,
+            "focusPhrase": "Selection and variation also interact. Strong selection",
+            "focuses": [
+              {
+                "phrase": "Selection and variation also interact. Strong selection",
+                "selector": ".l9-commitments article",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Initialization, evaluation, variation, and replacement form a search loop",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The loop begins by initializing a population. Each member is a candidate solution encoded in the chosen representation. Initialization may be random, seeded with known solutions, or mixed, but it should cover useful regions without quietly violating constraints.",
+          "visualDesign": {
+            "focusSelector": ".l9-loop svg g, .l9-loop svg .exit-label",
+            "focusIndex": 0,
+            "focusPhrase": "The loop begins by initializing a population.",
+            "focuses": [
+              {
+                "phrase": "The loop begins by initializing a population.",
+                "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Next evaluate fitness, select parents, and apply variation. Selection allocates reproductive opportunities; crossover recombines parental material; mutation introduces local novelty. Replacement decides which parents or offspring survive into the next generation. Generational replacement swaps most of the population; steady-state policies may replace only a few candidates at a time.",
+          "visualDesign": {
+            "focusSelector": ".l9-loop svg g, .l9-loop svg .exit-label",
+            "focusIndex": 1,
+            "focusPhrase": "Next evaluate fitness, select parents, and apply",
+            "focuses": [
+              {
+                "phrase": "Next evaluate fitness, select parents, and apply",
+                "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Next evaluate fitness, select parents, and apply",
+                "type": "popup",
+                "label": "The evolutionary search loop",
+                "text": "The evolutionary search loop",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Finally ask whether to stop. We might reach a target quality, exhaust a generation or evaluation budget, or observe no improvement for a chosen interval. If the answer is no, loop through another generation. If yes, return the best available solution, not a philosophical guarantee that the global optimum has signed a notarized affidavit.",
+          "visualDesign": {
+            "focusSelector": ".l9-loop svg g, .l9-loop svg .exit-label",
+            "focusIndex": 2,
+            "focusPhrase": "Finally ask whether to stop. We might",
+            "focuses": [
+              {
+                "phrase": "Finally ask whether to stop. We might",
+                "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Replacement deserves special attention because it controls memory. Elitism copies one or more top candidates forward, preventing accidental loss of the best known solution. Too much elitism, however, can crowd out diversity. A steady-state policy changes a few members at a time, while generational replacement creates a more abrupt population turnover.",
+          "visualDesign": {
+            "focusSelector": ".l9-loop svg g, .l9-loop svg .exit-label",
+            "focusIndex": 3,
+            "focusPhrase": "Replacement deserves special attention because it controls",
+            "focuses": [
+              {
+                "phrase": "Replacement deserves special attention because it controls",
+                "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Stopping should be tied to evidence cost. One thousand generations with population three hundred implies up to three hundred thousand evaluations, excluding reused elites. When fitness requires an expensive simulation, evaluation count is often more meaningful than generation count. Report both so the budget cannot hide behind a convenient unit.",
+          "visualDesign": {
+            "focusSelector": ".l9-loop svg g, .l9-loop svg .exit-label",
+            "focusIndex": 4,
+            "focusPhrase": "Stopping should be tied to evidence cost.",
+            "focuses": [
+              {
+                "phrase": "Stopping should be tied to evidence cost.",
+                "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "The population P(t) is the state that evolves",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Read the pseudocode in execution order. Set generation t to zero and initialize population P of t. While the termination condition is not met, evaluate every member, select parents based on fitness, produce offspring with crossover and mutation, replace candidates with offspring, and increment t.",
+          "visualDesign": {
+            "focusSelector": ".l9-pseudocode li",
+            "focusIndex": 0,
+            "focusPhrase": "Read the pseudocode in execution order. Set",
+            "focuses": [
+              {
+                "phrase": "Read the pseudocode in execution order. Set",
+                "selector": ".l9-pseudocode li",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The state is the entire population, not merely the current best individual. That matters because diversity supplies alternative building blocks and escape routes. Keeping only the champion after every generation would be like running a university by retaining the highest exam score and dismissing all other students. Efficient, perhaps, but pedagogically alarming.",
+          "visualDesign": {
+            "focusSelector": ".l9-pseudocode li",
+            "focusIndex": 1,
+            "focusPhrase": "The state is the entire population, not",
+            "focuses": [
+              {
+                "phrase": "The state is the entire population, not",
+                "selector": ".l9-pseudocode li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The state is the entire population, not",
+                "type": "popup",
+                "label": "GA pseudocode and hidden policies",
+                "text": "GA pseudocode and hidden policies",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Every line hides a policy. How large is P? Are fitness values noisy? Is parent selection proportional, tournament-based, or rank-based? Does replacement preserve elites? How are invalid offspring repaired? Does stopping use generations or evaluations? A runnable GA must answer these questions, because pseudocode verbs do not choose their own parameters.",
+          "visualDesign": {
+            "focusSelector": ".l9-pseudocode li",
+            "focusIndex": 2,
+            "focusPhrase": "Every line hides a policy. How large",
+            "focuses": [
+              {
+                "phrase": "Every line hides a policy. How large",
+                "selector": ".l9-pseudocode li",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The while loop does not specify synchronous or asynchronous evaluation. If candidate simulations take unequal time, an implementation may evaluate in parallel. That improves throughput but can alter selection timing if early results reproduce before slower results arrive. Reproducibility therefore includes scheduling assumptions as well as random seeds.",
+          "visualDesign": {
+            "focusSelector": ".l9-pseudocode li",
+            "focusIndex": 3,
+            "focusPhrase": "The while loop does not specify synchronous",
+            "focuses": [
+              {
+                "phrase": "The while loop does not specify synchronous",
+                "selector": ".l9-pseudocode li",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Returning the best available solutions in plural can be useful when several candidates have similar fitness but different tradeoffs. In multiobjective optimization, there may be a Pareto front rather than one champion. Even in a single-objective case, retaining alternatives helps diagnose whether the apparent optimum is robust or a fragile accident.",
+          "visualDesign": {
+            "focusSelector": ".l9-pseudocode li",
+            "focusIndex": 4,
+            "focusPhrase": "Returning the best available solutions in plural",
+            "focuses": [
+              {
+                "phrase": "Returning the best available solutions in plural",
+                "selector": ".l9-pseudocode li",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "A problem is not ready until five questions have concrete answers",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "First, encode: what does a chromosome mean, and how is it decoded? Second, initialize: how is the first population created? These decisions define the candidates the algorithm can begin with and whether every stored object has a valid interpretation.",
+          "visualDesign": {
+            "focusSelector": ".l9-contract article",
+            "focusIndex": 0,
+            "focusPhrase": "First, encode: what does a chromosome mean,",
+            "focuses": [
+              {
+                "phrase": "First, encode: what does a chromosome mean,",
+                "selector": ".l9-contract article",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Third, evaluate: what measurable evidence becomes fitness? Fourth, vary and replace: which crossover, mutation, and survivor rules preserve validity and useful structure? An operator that works beautifully on a binary string may be disastrous on a permutation where every city must appear exactly once.",
+          "visualDesign": {
+            "focusSelector": ".l9-contract article",
+            "focusIndex": 1,
+            "focusPhrase": "Third, evaluate: what measurable evidence becomes fitness?",
+            "focuses": [
+              {
+                "phrase": "Third, evaluate: what measurable evidence becomes fitness?",
+                "selector": ".l9-contract article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Third, evaluate: what measurable evidence becomes fitness?",
+                "type": "popup",
+                "label": "The five-part GA contract",
+                "text": "The five-part GA contract",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Fifth, stop: what counts as sufficient evidence? A defensible contract gives precise answers and test cases. Before launching ten thousand generations, decode sample chromosomes, test extreme values, apply each operator, verify invariants, and inspect whether the fitness function has loopholes. This is cheaper than discovering after lunch that evolution has optimized the font size of your error message.",
+          "visualDesign": {
+            "focusSelector": ".l9-contract article",
+            "focusIndex": 2,
+            "focusPhrase": "Fifth, stop: what counts as sufficient evidence?",
+            "focuses": [
+              {
+                "phrase": "Fifth, stop: what counts as sufficient evidence?",
+                "selector": ".l9-contract article",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "A contract should also state constraint handling. For a constrained numeric problem, candidates may be clipped, repaired, rejected, or penalized. For a tour, specialized operators may preserve validity by construction. These strategies produce different search landscapes, so constraint handling is part of the algorithm rather than janitorial work performed afterward.",
+          "visualDesign": {
+            "focusSelector": ".l9-contract article",
+            "focusIndex": 3,
+            "focusPhrase": "A contract should also state constraint handling.",
+            "focuses": [
+              {
+                "phrase": "A contract should also state constraint handling.",
+                "selector": ".l9-contract article",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Testing the contract begins with invariants. Decode must always return an allowed type and range. Mutation and crossover must satisfy declared validity rules. Fitness must be finite and directionally correct. Replacement must return the intended population size. These unit tests catch conceptual bugs before stochastic behavior makes every failure look mysterious.",
+          "visualDesign": {
+            "focusSelector": ".l9-contract article",
+            "focusIndex": 4,
+            "focusPhrase": "Testing the contract begins with invariants. Decode",
+            "focuses": [
+              {
+                "phrase": "Testing the contract begins with invariants. Decode",
+                "selector": ".l9-contract article",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Maximize a rippled function on [−1, 2]",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Our first case maximizes f of x equals x times sine of ten pi x, plus one, for x between negative one and two. The curve has many local peaks. A hill-climber may reach a nearby peak and declare victory while a taller one is waving from across the valley.",
+          "visualDesign": {
+            "focusSelector": ".l9-plot > *",
+            "focusIndex": 0,
+            "focusPhrase": "Our first case maximizes f of x",
+            "focuses": [
+              {
+                "phrase": "Our first case maximizes f of x",
+                "selector": ".l9-plot > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The displayed best point is approximately x equals 1.850547 with function value 2.850274. We require six digits after the decimal. That precision requirement is not cosmetic; it determines how many distinct values our chromosome must represent across the three-unit interval.",
+          "visualDesign": {
+            "focusSelector": ".l9-plot > *",
+            "focusIndex": 1,
+            "focusPhrase": "The displayed best point is approximately x",
+            "focuses": [
+              {
+                "phrase": "The displayed best point is approximately x",
+                "selector": ".l9-plot > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The displayed best point is approximately x",
+                "type": "popup",
+                "label": "A multimodal optimization target",
+                "text": "A multimodal optimization target",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "This case is useful because every GA choice can be written explicitly. The chromosome is a bit string, decoding maps it to x, fitness is f of x, the population has three hundred candidates, crossover and mutation operate on bits, and stopping uses target quality or a thousand-generation limit. Now the metaphor has to pay rent in arithmetic.",
+          "visualDesign": {
+            "focusSelector": ".l9-plot > *",
+            "focusIndex": 0,
+            "focusPhrase": "This case is useful because every GA",
+            "focuses": [
+              {
+                "phrase": "This case is useful because every GA",
+                "selector": ".l9-plot > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The sine term creates repeated oscillations while multiplication by x changes their amplitude. That combination produces several peaks of different heights. A population can occupy multiple peaks at once, while selection gradually allocates more sampling to promising regions. Diversity mechanisms may help prevent every candidate from settling on the first respectable hill.",
+          "visualDesign": {
+            "focusSelector": ".l9-plot > *",
+            "focusIndex": 1,
+            "focusPhrase": "The sine term creates repeated oscillations while",
+            "focuses": [
+              {
+                "phrase": "The sine term creates repeated oscillations while",
+                "selector": ".l9-plot > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Because the target value is known for this teaching case, we can compare error from the best known optimum. In a real problem, the optimum may be unknown. Then evaluation relies on repeated runs, baselines, bounds, held-out cases, or domain-specific acceptance criteria. The absence of a known answer makes experimental design more important, not less.",
+          "visualDesign": {
+            "focusSelector": ".l9-plot > *",
+            "focusIndex": 0,
+            "focusPhrase": "Because the target value is known for",
+            "focuses": [
+              {
+                "phrase": "Because the target value is known for",
+                "selector": ".l9-plot > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Six-decimal precision requires at least 22 bits",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "From negative one to two is a range of three. Six decimal places create one million intervals per unit, so the full range contains three million intervals. Including both endpoints gives three million and one representable values. That plus one is easy to miss; endpoints are tiny bureaucrats who demand to be counted.",
+          "visualDesign": {
+            "focusSelector": ".l9-resolution > *",
+            "focusIndex": 0,
+            "focusPhrase": "From negative one to two is a",
+            "focuses": [
+              {
+                "phrase": "From negative one to two is a",
+                "selector": ".l9-resolution > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Twenty-one bits provide two to the twenty-first codes, or 2,097,152, which is not enough. Twenty-two bits provide 4,194,304 codes, which is enough. Therefore the chromosome needs at least twenty-two bits to meet the requested resolution across this interval.",
+          "visualDesign": {
+            "focusSelector": ".l9-resolution > *",
+            "focusIndex": 1,
+            "focusPhrase": "Twenty-one bits provide two to the twenty-first",
+            "focuses": [
+              {
+                "phrase": "Twenty-one bits provide two to the twenty-first",
+                "selector": ".l9-resolution > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Twenty-one bits provide two to the twenty-first",
+                "type": "popup",
+                "label": "Deriving the bit length",
+                "text": "Deriving the bit length",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "More codes than requested do not create a problem if we use a continuous affine mapping from every integer code to the interval. The actual spacing is three divided by two to the twenty-second minus one, slightly finer than one millionth. The representation decision is now justified by range and precision rather than by the traditional scientific method of choosing a number that looks confident.",
+          "visualDesign": {
+            "focusSelector": ".l9-resolution > *",
+            "focusIndex": 2,
+            "focusPhrase": "More codes than requested do not create",
+            "focuses": [
+              {
+                "phrase": "More codes than requested do not create",
+                "selector": ".l9-resolution > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The general calculation is choose the smallest length l such that two to the l is at least the number of required values. Equivalently, take the ceiling of base-two logarithm of that count. Here the ceiling of log base two of 3,000,001 is twenty-two. This formula transfers to other ranges and precision requirements.",
+          "visualDesign": {
+            "focusSelector": ".l9-resolution > *",
+            "focusIndex": 0,
+            "focusPhrase": "The general calculation is choose the smallest",
+            "focuses": [
+              {
+                "phrase": "The general calculation is choose the smallest",
+                "selector": ".l9-resolution > *",
+                "index": 0,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Be careful about decimal precision versus binary resolution. Twenty-two bits do not store six decimal digits as decimal characters. They create enough distinct codes that the mapped spacing is no larger than one millionth across the interval. The guarantee comes from code count and mapping, not from the visual appearance of the bit string.",
+          "visualDesign": {
+            "focusSelector": ".l9-resolution > *",
+            "focusIndex": 1,
+            "focusPhrase": "Be careful about decimal precision versus binary",
+            "focuses": [
+              {
+                "phrase": "Be careful about decimal precision versus binary",
+                "selector": ".l9-resolution > *",
+                "index": 1,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "A chromosome becomes an integer, then a real value in the interval",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Take the twenty-two-bit chromosome shown. Interpret it as a base-two integer x prime. For this sample, x prime equals 2,288,967. That integer is an index into our representable grid; it is not yet the real-valued candidate evaluated by the objective function.",
+          "visualDesign": {
+            "focusSelector": ".l9-decoder > *",
+            "focusIndex": 0,
+            "focusPhrase": "Take the twenty-two-bit chromosome shown. Interpret it",
+            "focuses": [
+              {
+                "phrase": "Take the twenty-two-bit chromosome shown. Interpret it",
+                "selector": ".l9-decoder > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Use the affine map x equals negative one plus x prime times three divided by two to the twenty-second minus one. This sends the all-zero chromosome to negative one and the all-one chromosome to two. Our sample decodes to approximately 0.637197.",
+          "visualDesign": {
+            "focusSelector": ".l9-decoder > *",
+            "focusIndex": 1,
+            "focusPhrase": "Use the affine map x equals negative",
+            "focuses": [
+              {
+                "phrase": "Use the affine map x equals negative",
+                "selector": ".l9-decoder > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Use the affine map x equals negative",
+                "type": "popup",
+                "label": "Decode bits into a real number",
+                "text": "Decode bits into a real number",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Always test the endpoints and at least one interior value. Endpoint tests catch off-by-one errors; an interior test catches integer division, wrong bit order, or a missing offset. Encoding and decoding should behave like a reliable translator. If every sentence becomes 'banana,' the translator is consistent but not useful.",
+          "visualDesign": {
+            "focusSelector": ".l9-decoder > *",
+            "focusIndex": 2,
+            "focusPhrase": "Always test the endpoints and at least",
+            "focuses": [
+              {
+                "phrase": "Always test the endpoints and at least",
+                "selector": ".l9-decoder > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "To encode in the opposite direction, subtract the lower bound, divide by the range, multiply by two to the twenty-second minus one, and round according to a documented rule. Decode after encoding and measure the error. This round trip should stay within roughly half a grid interval when nearest-code rounding is used.",
+          "visualDesign": {
+            "focusSelector": ".l9-decoder > *",
+            "focusIndex": 3,
+            "focusPhrase": "To encode in the opposite direction, subtract",
+            "focuses": [
+              {
+                "phrase": "To encode in the opposite direction, subtract",
+                "selector": ".l9-decoder > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Bit significance affects mutation. Flipping the leftmost bit changes x prime by about two million, while flipping the rightmost changes it by one. A Gray-code representation can make adjacent integers differ by one bit, reducing some discontinuities. This shows that even after choosing bit length, symbol arrangement still shapes the mutation neighborhood.",
+          "visualDesign": {
+            "focusSelector": ".l9-decoder > *",
+            "focusIndex": 4,
+            "focusPhrase": "Bit significance affects mutation. Flipping the leftmost",
+            "focuses": [
+              {
+                "phrase": "Bit significance affects mutation. Flipping the leftmost",
+                "selector": ".l9-decoder > *",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Create P(0) as 300 random 22-bit candidates",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Initialization creates P of zero with three hundred chromosomes. Each chromosome contains twenty-two randomly initialized bits. Random initialization spreads candidates across the representable interval, though the exact distribution should be checked after decoding rather than assumed from the word random.",
+          "visualDesign": {
+            "focusSelector": ".l9-population > *",
+            "focusIndex": 0,
+            "focusPhrase": "Initialization creates P of zero with three",
+            "focuses": [
+              {
+                "phrase": "Initialization creates P of zero with three",
+                "selector": ".l9-population > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The table shows sample candidates, decoded x values, and fitness values. Candidate s one decodes to 0.637197 and obtains fitness about 1.579. Candidate s four decodes near 1.844682 and scores about 2.815, already close to a strong peak.",
+          "visualDesign": {
+            "focusSelector": ".l9-population > *",
+            "focusIndex": 1,
+            "focusPhrase": "The table shows sample candidates, decoded x",
+            "focuses": [
+              {
+                "phrase": "The table shows sample candidates, decoded x",
+                "selector": ".l9-population > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The table shows sample candidates, decoded x",
+                "type": "popup",
+                "label": "Initialize and inspect P zero",
+                "text": "Initialize and inspect P zero",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Do not confuse a good initial member with a completed search. The population may contain promising and poor candidates, and selection will bias reproduction without necessarily deleting every weak member immediately. Diversity is exploratory capital. Spending all of it on the first flashy peak is the evolutionary equivalent of buying one mysterious cryptocurrency because the logo had a rocket.",
+          "visualDesign": {
+            "focusSelector": ".l9-population > *",
+            "focusIndex": 2,
+            "focusPhrase": "Do not confuse a good initial member",
+            "focuses": [
+              {
+                "phrase": "Do not confuse a good initial member",
+                "selector": ".l9-population > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Uniform random bits generate uniform random integer codes, which map approximately uniformly across x under the affine decoder. If prior knowledge suggests promising regions, we could seed part of the population there while retaining random members elsewhere. Seeded initialization should be reported because it changes the starting advantage.",
+          "visualDesign": {
+            "focusSelector": ".l9-population > *",
+            "focusIndex": 3,
+            "focusPhrase": "Uniform random bits generate uniform random integer",
+            "focuses": [
+              {
+                "phrase": "Uniform random bits generate uniform random integer",
+                "selector": ".l9-population > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Check duplicates in P zero. Duplicate chromosomes reduce effective population diversity, although with more than four million possible codes and only three hundred draws, extensive duplication is unlikely. The birthday effect is not zero, so an implementation may measure uniqueness or deliberately enforce it when evaluations are expensive.",
+          "visualDesign": {
+            "focusSelector": ".l9-population > *",
+            "focusIndex": 4,
+            "focusPhrase": "Check duplicates in P zero. Duplicate chromosomes",
+            "focuses": [
+              {
+                "phrase": "Check duplicates in P zero. Duplicate chromosomes",
+                "selector": ".l9-population > *",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Decode first, evaluate f(x), then bias parent choice",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Fitness follows a pipeline. Begin with chromosome s sub i, decode it to phenotype x sub i, then evaluate f of x sub i. The sample chromosome becomes x equals 1.844682 and fitness about 2.815. Higher values are better because this is a maximization problem.",
+          "visualDesign": {
+            "focusSelector": ".l9-fitness > *",
+            "focusIndex": 0,
+            "focusPhrase": "Fitness follows a pipeline. Begin with chromosome",
+            "focuses": [
+              {
+                "phrase": "Fitness follows a pipeline. Begin with chromosome",
+                "selector": ".l9-fitness > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Selection converts fitness evidence into reproductive probability. A higher score may create more entries in a parent pool, a better rank, or a higher chance of winning a tournament. Fitness does not prove correctness, and selection is not obliged to choose only the current best. Some randomness helps preserve exploration.",
+          "visualDesign": {
+            "focusSelector": ".l9-fitness > *",
+            "focusIndex": 1,
+            "focusPhrase": "Selection converts fitness evidence into reproductive probability.",
+            "focuses": [
+              {
+                "phrase": "Selection converts fitness evidence into reproductive probability.",
+                "selector": ".l9-fitness > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Selection converts fitness evidence into reproductive probability.",
+                "type": "popup",
+                "label": "Fitness evidence becomes selection bias",
+                "text": "Fitness evidence becomes selection bias",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Beware raw fitness-proportionate selection when values are negative, extremely close, or dominated by one outlier. Scaling, ranking, or tournament selection may behave more predictably. The principle is bias, not coronation. A candidate with a slightly better score gets an advantage, not a tiny crown and lifetime tenure.",
+          "visualDesign": {
+            "focusSelector": ".l9-fitness > *",
+            "focusIndex": 2,
+            "focusPhrase": "Beware raw fitness-proportionate selection when values are",
+            "focuses": [
+              {
+                "phrase": "Beware raw fitness-proportionate selection when values are",
+                "selector": ".l9-fitness > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Tournament selection offers a concrete example. Sample a small group, then select the highest-fitness member. Larger tournaments increase selection pressure; smaller tournaments preserve more randomness. Rank selection orders candidates and assigns probability by rank, reducing sensitivity to extreme raw values.",
+          "visualDesign": {
+            "focusSelector": ".l9-fitness > *",
+            "focusIndex": 3,
+            "focusPhrase": "Tournament selection offers a concrete example. Sample",
+            "focuses": [
+              {
+                "phrase": "Tournament selection offers a concrete example. Sample",
+                "selector": ".l9-fitness > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Fitness can be noisy when it comes from simulation or sampled data. Re-evaluation, averaging, confidence intervals, or common random scenarios can prevent lucky candidates from dominating. Otherwise evolution may select the controller that encountered the fewest obstacles by chance rather than the one that navigates best.",
+          "visualDesign": {
+            "focusSelector": ".l9-fitness > *",
+            "focusIndex": 4,
+            "focusPhrase": "Fitness can be noisy when it comes",
+            "focuses": [
+              {
+                "phrase": "Fitness can be noisy when it comes",
+                "selector": ".l9-fitness > *",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Crossover recombines; mutation introduces local novelty",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The crossover tab shows two parents and one chosen cut. Copy each prefix and swap the suffixes to create two children. Recombination joins material already present in the parents. The highlighted cut is an operator decision, and different cuts preserve different blocks of bits.",
+          "visualDesign": {
+            "focusSelector": ".l9-operators > *",
+            "focusIndex": 0,
+            "focusPhrase": "The crossover tab shows two parents and",
+            "focuses": [
+              {
+                "phrase": "The crossover tab shows two parents and",
+                "selector": ".l9-operators > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The mutation tab flips one selected bit. Mutation introduces local novelty that crossover cannot create when both parents share the same value at a position. With mutation probability point zero one, each bit receives a probabilistic opportunity to flip; we do not command exactly one mutation per chromosome.",
+          "visualDesign": {
+            "focusSelector": ".l9-operators > *",
+            "focusIndex": 1,
+            "focusPhrase": "The mutation tab flips one selected bit.",
+            "focuses": [
+              {
+                "phrase": "The mutation tab flips one selected bit.",
+                "selector": ".l9-operators > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The mutation tab flips one selected bit.",
+                "type": "popup",
+                "label": "Crossover and mutation",
+                "text": "Crossover and mutation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The rates control exploration. Too little variation may cause premature convergence; too much can destroy useful structure and resemble random search wearing a lab badge. We will click both tabs because the two operators have distinct jobs: crossover rearranges existing material, while mutation can introduce a value absent from both parents at a locus.",
+          "visualDesign": {
+            "focusSelector": ".l9-operators > *",
+            "focusIndex": 2,
+            "focusPhrase": "The rates control exploration. Too little variation",
+            "focuses": [
+              {
+                "phrase": "The rates control exploration. Too little variation",
+                "selector": ".l9-operators > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "One-point crossover assumes adjacent loci form meaningful blocks. Uniform crossover decides each position independently and breaks blocks more aggressively. Multi-point crossover sits between them. None is universally best; inspect how variables are laid out and which interactions should survive recombination.",
+          "visualDesign": {
+            "focusSelector": ".l9-operators > *",
+            "focusIndex": 0,
+            "focusPhrase": "One-point crossover assumes adjacent loci form meaningful",
+            "focuses": [
+              {
+                "phrase": "One-point crossover assumes adjacent loci form meaningful",
+                "selector": ".l9-operators > *",
+                "index": 0,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Mutation probability point zero one is per bit in this example. For twenty-two bits, the expected number of flips per offspring is point twenty-two, so most offspring receive no mutation and some receive one or more. Probability describes a distribution over events, not a schedule promising a mutation every hundredth bit with Swiss-watch punctuality.",
+          "visualDesign": {
+            "focusSelector": ".l9-operators > *",
+            "focusIndex": 1,
+            "focusPhrase": "Mutation probability point zero one is per",
+            "focuses": [
+              {
+                "phrase": "Mutation probability point zero one is per",
+                "selector": ".l9-operators > *",
+                "index": 1,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mutation state",
+          "text": "Click Mutation and compare the state directly. The highlighted locus changes from one to zero, turning 1100101010 into 1100100010. Nothing is copied from a second parent. This one-bit change may move the decoded candidate slightly or dramatically depending on positional significance, which is why mutation behavior depends on representation as well as rate.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-operators nav button",
+            "index": 1,
+            "label": "Show mutation"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-operators nav button",
+            "focusIndex": 1,
+            "focusPhrase": "Click Mutation",
+            "focuses": [
+              {
+                "phrase": "Click Mutation",
+                "selector": ".l9-operators nav button",
+                "index": 1,
+                "label": "Mutation tab"
+              },
+              {
+                "phrase": "highlighted locus changes from one",
+                "selector": ".l9-mutate section",
+                "index": 0,
+                "label": "Mutation before state"
+              },
+              {
+                "phrase": "turning 1100101010 into 1100100010",
+                "selector": ".l9-mutate section",
+                "index": 1,
+                "label": "Mutation after state"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Crossover state",
+          "text": "Return to Crossover. Two parents are visible, the cut is highlighted, and suffixes exchange to create two children. This reset makes the comparison explicit: crossover recombines existing parental material, whereas mutation can introduce a local allele not shared at that position. Both create variation, but they do not perform the same job.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-operators nav button",
+            "index": 0,
+            "label": "Return to crossover"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-operators nav button",
+            "focusIndex": 0,
+            "focusPhrase": "Return to Crossover",
+            "focuses": [
+              {
+                "phrase": "Return to Crossover",
+                "selector": ".l9-operators nav button",
+                "index": 0,
+                "label": "Crossover tab"
+              },
+              {
+                "phrase": "Two parents are visible",
+                "selector": ".l9-cross section",
+                "index": 0,
+                "label": "Crossover parents"
+              },
+              {
+                "phrase": "create two children",
+                "selector": ".l9-cross section",
+                "index": 1,
+                "label": "Crossover children"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The complete setup now runs from P(t) to P(t+1)",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "One generation begins with three hundred chromosomes in P of t. Decode and evaluate them, select parents, apply crossover with probability point five and mutation with probability point zero one, and use a replacement policy to build P of t plus one.",
+          "visualDesign": {
+            "focusSelector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+            "focusIndex": 0,
+            "focusPhrase": "One generation begins with three hundred chromosomes",
+            "focuses": [
+              {
+                "phrase": "One generation begins with three hundred chromosomes",
+                "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The best-fitness curve may rise unevenly, stay flat, or even dip if the replacement policy does not preserve elites. Stochastic search does not promise improvement every generation. For fair experiments, record seeds, evaluation counts, best and average fitness, diversity, and multiple independent runs.",
+          "visualDesign": {
+            "focusSelector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+            "focusIndex": 1,
+            "focusPhrase": "The best-fitness curve may rise unevenly, stay",
+            "focuses": [
+              {
+                "phrase": "The best-fitness curve may rise unevenly, stay",
+                "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The best-fitness curve may rise unevenly, stay",
+                "type": "popup",
+                "label": "A complete GA generation",
+                "text": "A complete GA generation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Stop at a target quality or after at most one thousand generations. A plateau can suggest convergence, but it does not prove the global maximum has been found. Report the best available solution and the evidence budget. Evolutionary algorithms are excellent explorers; they are terrible notaries.",
+          "visualDesign": {
+            "focusSelector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+            "focusIndex": 2,
+            "focusPhrase": "Stop at a target quality or after",
+            "focuses": [
+              {
+                "phrase": "Stop at a target quality or after",
+                "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Replacement can compare offspring only with one another, mix parents and offspring, or preserve a fixed elite. In a plus strategy, survivors come from parents and offspring; in a comma strategy, only offspring compete. These policies affect monotonic best fitness and diversity, so the graph must be interpreted alongside the replacement rule.",
+          "visualDesign": {
+            "focusSelector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+            "focusIndex": 3,
+            "focusPhrase": "Replacement can compare offspring only with one",
+            "focuses": [
+              {
+                "phrase": "Replacement can compare offspring only with one",
+                "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "A proper experiment repeats the GA with multiple seeds. Report median, spread, success rate, and evaluation budget rather than one heroic run. Stochastic algorithms can produce a beautiful screenshot once. Science asks whether they can do it again when the screenshot knows nobody is watching.",
+          "visualDesign": {
+            "focusSelector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+            "focusIndex": 4,
+            "focusPhrase": "A proper experiment repeats the GA with",
+            "focuses": [
+              {
+                "phrase": "A proper experiment repeats the GA with",
+                "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A nine-city tour exposes why representation changes the operators",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Our second case is a nine-city traveling-salesperson problem. A valid tour visits every city exactly once, returns to the start, and minimizes total distance. The route in the image is closed, so the final city connects back to the first.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Our second case is a nine-city traveling-salesperson",
+            "focuses": [
+              {
+                "phrase": "Our second case is a nine-city traveling-salesperson",
+                "selector": ".l9-tsp-hero > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The search space contains nine factorial tours before accounting for symmetries. For larger instances, exhaustive search grows rapidly. A GA seems attractive, but representation becomes the main event because ordinary crossover can duplicate a city, omit another, or invent a code that is not a city at all.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "The search space contains nine factorial tours",
+            "focuses": [
+              {
+                "phrase": "The search space contains nine factorial tours",
+                "selector": ".l9-tsp-hero > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The search space contains nine factorial tours",
+                "type": "popup",
+                "label": "The TSP representation challenge",
+                "text": "The TSP representation challenge",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Ask what chromosome makes validity easy to preserve. We will compare two encodings: four bits per city and a direct permutation. The compact-looking choice is not automatically the useful one. Suitcases and chromosomes share this property: maximum compression is less impressive when the contents arrive in another country.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Ask what chromosome makes validity easy to",
+            "focuses": [
+              {
+                "phrase": "Ask what chromosome makes validity easy to",
+                "selector": ".l9-tsp-hero > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Tour distance is computed by summing the edge from each listed city to the next plus the closing edge from the final city back to the first. Forgetting that closing edge changes the objective and can make an open path masquerade as a tour. Unit tests should include a small route whose distance is calculated by hand.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-hero > *",
+            "focusIndex": 1,
+            "focusPhrase": "Tour distance is computed by summing the",
+            "focuses": [
+              {
+                "phrase": "Tour distance is computed by summing the",
+                "selector": ".l9-tsp-hero > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Tours also have symmetry: rotating the sequence may describe the same cycle, and reversing it has equal length in a symmetric distance matrix. A representation may retain these duplicate descriptions or canonicalize them. Redundancy is acceptable if documented, but it influences diversity measurements and effective search-space size.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-hero > *",
+            "focusIndex": 0,
+            "focusPhrase": "Tours also have symmetry: rotating the sequence",
+            "focuses": [
+              {
+                "phrase": "Tours also have symmetry: rotating the sequence",
+                "selector": ".l9-tsp-hero > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Four bits per city are compact—but generic crossover breaks the route",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Encoding number one assigns four bits to each city. City one might be zero-zero-zero-one, city two zero-zero-one-zero, and so on. Concatenating nine codes creates a compact binary chromosome that an ordinary bit-string GA can store and cut easily.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "Encoding number one assigns four bits to",
+            "focuses": [
+              {
+                "phrase": "Encoding number one assigns four bits to",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Unfortunately, generic crossover does not understand the visit-once constraint. A child may repeat city two, omit city three, or contain code ten even though only cities one through nine exist. The genotype is syntactically binary but the decoded phenotype is not a legal tour.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 1,
+            "focusPhrase": "Unfortunately, generic crossover does not understand the",
+            "focuses": [
+              {
+                "phrase": "Unfortunately, generic crossover does not understand the",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Unfortunately, generic crossover does not understand the",
+                "type": "popup",
+                "label": "Why generic bit crossover fails",
+                "text": "Why generic bit crossover fails",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "We could reject invalid offspring, repair them, or design specialized operators. Each choice changes the search distribution and cost. The larger lesson is that a representation cannot be judged alone; judge representation together with decoding and variation. A beautifully compact key is useless when it opens three doors twice and never opens the fourth.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "We could reject invalid offspring, repair them,",
+            "focuses": [
+              {
+                "phrase": "We could reject invalid offspring, repair them,",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Suppose ordinary crossover cuts between city blocks rather than inside them. That prevents invalid four-bit city codes but still allows duplicated and missing cities because both parents contain the same city set in different positions. The constraint is global uniqueness, not merely local code validity.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 1,
+            "focusPhrase": "Suppose ordinary crossover cuts between city blocks",
+            "focuses": [
+              {
+                "phrase": "Suppose ordinary crossover cuts between city blocks",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Repair may scan duplicates and replace them with missing cities. This guarantees a valid child but introduces a repair heuristic whose choices affect inheritance. Rejection wastes evaluations when invalidity is common. Specialized permutation operators avoid much of this cleanup by preserving membership during variation.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "Repair may scan duplicates and replace them",
+            "focuses": [
+              {
+                "phrase": "Repair may scan duplicates and replace them",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "A permutation directly represents visit order",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Encoding number two stores a permutation such as one, nine, two, four, six, five, seven, eight, three. Decode it by visiting cities in that order and returning to the first. Every valid permutation contains each city exactly once, so the representation matches the structure of a tour.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "Encoding number two stores a permutation such",
+            "focuses": [
+              {
+                "phrase": "Encoding number two stores a permutation such",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Fitness may be the negative total distance, the reciprocal of distance, or a transformed score in which shorter is better. Mutation can swap two cities and preserve validity. But ordinary one-point crossover still risks duplicates, so crossover must be specialized.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 1,
+            "focusPhrase": "Fitness may be the negative total distance,",
+            "focuses": [
+              {
+                "phrase": "Fitness may be the negative total distance,",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Fitness may be the negative total distance,",
+                "type": "popup",
+                "label": "Permutation encoding and legal mutation",
+                "text": "Permutation encoding and legal mutation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "A permutation makes some invariants easy: membership and uniqueness are visible. It does not solve optimization by itself. The operator must preserve those invariants while transmitting useful ordering or adjacency information. Representation is the grammar; operators must produce grammatical sentences, even when the plot remains questionable.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "A permutation makes some invariants easy: membership",
+            "focuses": [
+              {
+                "phrase": "A permutation makes some invariants easy: membership",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Swap mutation exchanges two positions. Inversion mutation reverses a subsequence and often changes fewer tour edges, making it especially meaningful for routing. Insertion removes one city and inserts it elsewhere. Each operator defines a different neighborhood over tours, so mutation is not one universal verb with a single geometric effect.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 1,
+            "focusPhrase": "Swap mutation exchanges two positions. Inversion mutation",
+            "focuses": [
+              {
+                "phrase": "Swap mutation exchanges two positions. Inversion mutation",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Fitness based on reciprocal distance keeps higher-is-better semantics but can exaggerate differences near zero. Negative distance is simpler when the selection method permits negative values. Rank or tournament selection avoids dependence on the numerical scale. The representation and fitness interface must agree with the selection rule.",
+          "visualDesign": {
+            "focusSelector": ".l9-tsp-encoding > *",
+            "focusIndex": 0,
+            "focusPhrase": "Fitness based on reciprocal distance keeps higher-is-better",
+            "focuses": [
+              {
+                "phrase": "Fitness based on reciprocal distance keeps higher-is-better",
+                "selector": ".l9-tsp-encoding > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Copy a segment, then fill with the other parent's unused order",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Order crossover preserves a selected segment from parent one and fills remaining positions using the relative order of parent two. The initial parents and two cut points are visible. Parent one contributes the middle segment four, six, five, seven.",
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+            "focusIndex": 0,
+            "focusPhrase": "Order crossover preserves a selected segment from",
+            "focuses": [
+              {
+                "phrase": "Order crossover preserves a selected segment from",
+                "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Then read parent two starting just after the second cut and wrap around. Remove cities already present in the copied segment. The remaining sequence fills the open positions from left to right, producing two, three, nine, then the fixed segment, then one, eight.",
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+            "focusIndex": 1,
+            "focusPhrase": "Then read parent two starting just after",
+            "focuses": [
+              {
+                "phrase": "Then read parent two starting just after",
+                "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Then read parent two starting just after",
+                "type": "popup",
+                "label": "Order crossover step by step",
+                "text": "Order crossover step by step",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The result contains every city exactly once. We will click through all five states, because the operator is not learned by admiring its final answer. Watch what remains fixed, what order is inherited, and where duplicate prevention occurs. This is a tiny airport-security line for cities: everyone appears once, and duplicate passports do not board.",
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+            "focusIndex": 2,
+            "focusPhrase": "The result contains every city exactly once.",
+            "focuses": [
+              {
+                "phrase": "The result contains every city exactly once.",
+                "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "Order crossover preserves relative order from the donor parent but does not necessarily preserve every adjacency. Other permutation crossovers emphasize positions, edges, or cycles. Choose based on which building blocks the problem rewards. For TSP, useful edges may matter more than absolute city positions.",
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+            "focusIndex": 3,
+            "focusPhrase": "Order crossover preserves relative order from the",
+            "focuses": [
+              {
+                "phrase": "Order crossover preserves relative order from the",
+                "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "To implement the fill precisely, maintain a set of copied cities, iterate through the wrapped donor sequence, skip any city in that set, and write each remaining city into the next open slot. Assert that the child length is nine and that its sorted contents equal cities one through nine. The invariant becomes executable evidence.",
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+            "focusIndex": 4,
+            "focusPhrase": "To implement the fill precisely, maintain a",
+            "focuses": [
+              {
+                "phrase": "To implement the fill precisely, maintain a",
+                "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Order crossover step 2",
+          "text": "Advance to step two. Copy parent one's selected middle segment, four, six, five, seven, into the child. The blank positions are intentional. We have preserved one contiguous block, but we have not yet decided which unused cities occupy the remaining slots.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-order-controls button",
+            "index": 1,
+            "label": "Advance order crossover to step 2"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *",
+            "focusIndex": 0,
+            "focusPhrase": "Advance to step two",
+            "focuses": [
+              {
+                "phrase": "Advance to step two",
+                "selector": ".l9-order-stage > *",
+                "index": 0,
+                "label": "Copy segment label"
+              },
+              {
+                "phrase": "four, six, five, seven",
+                "selector": ".l9-order-stage > *",
+                "index": 1,
+                "label": "Copied segment"
+              },
+              {
+                "phrase": "blank positions are intentional",
+                "selector": ".l9-order-stage > *",
+                "index": 2,
+                "label": "Open positions"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Order crossover step 3",
+          "text": "Advance to step three. Read parent two beginning after the second cut, then wrap to its beginning. The displayed order is two, three, four, five, nine, one, eight, seven, six. This circular reading order is the donor sequence for the open positions.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-order-controls button",
+            "index": 1,
+            "label": "Advance order crossover to step 3"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *",
+            "focusIndex": 0,
+            "focusPhrase": "Advance to step three",
+            "focuses": [
+              {
+                "phrase": "Advance to step three",
+                "selector": ".l9-order-stage > *",
+                "index": 0,
+                "label": "Wrapped donor label"
+              },
+              {
+                "phrase": "two, three, four, five, nine",
+                "selector": ".l9-order-stage > *",
+                "index": 1,
+                "label": "Wrapped donor order"
+              },
+              {
+                "phrase": "donor sequence for the open positions",
+                "selector": ".l9-order-stage > *",
+                "index": 2,
+                "label": "Donor sequence meaning"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Order crossover step 4",
+          "text": "Advance to step four. Remove every donor city already present in the copied segment: four, five, seven, and six. The remaining order is two, three, nine, one, eight. Duplicate removal is the validity-preserving gate; skipping it would recreate the ordinary crossover problem.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-order-controls button",
+            "index": 1,
+            "label": "Advance order crossover to step 4"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *",
+            "focusIndex": 0,
+            "focusPhrase": "Advance to step four",
+            "focuses": [
+              {
+                "phrase": "Advance to step four",
+                "selector": ".l9-order-stage > *",
+                "index": 0,
+                "label": "Remove duplicates label"
+              },
+              {
+                "phrase": "Remove every donor city already present",
+                "selector": ".l9-order-stage > *",
+                "index": 1,
+                "label": "Removed donor cities"
+              },
+              {
+                "phrase": "remaining order is two, three, nine",
+                "selector": ".l9-order-stage > *",
+                "index": 2,
+                "label": "Remaining donor order"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Order crossover step 5",
+          "text": "Advance to step five. Fill the open positions with two, three, nine, one, eight in that order. The completed child is two, three, nine, four, six, five, seven, one, eight. Count once: every city one through nine appears exactly one time.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-order-controls button",
+            "index": 1,
+            "label": "Advance order crossover to step 5"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-order-stage > *",
+            "focusIndex": 0,
+            "focusPhrase": "Advance to step five",
+            "focuses": [
+              {
+                "phrase": "Advance to step five",
+                "selector": ".l9-order-stage > *",
+                "index": 0,
+                "label": "Fill positions label"
+              },
+              {
+                "phrase": "completed child is two, three, nine",
+                "selector": ".l9-order-stage > *",
+                "index": 1,
+                "label": "Completed child"
+              },
+              {
+                "phrase": "every city one through nine",
+                "selector": ".l9-order-stage > *",
+                "index": 2,
+                "label": "Permutation invariant"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Validity is a property students can inspect, not a promise",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The middle segment four, six, five, seven is fixed. We must fill the other positions with unused cities in parent two's wrapped order. A valid child contains each city one through nine exactly once.",
+          "visualDesign": {
+            "focusSelector": ".l9-practice > *",
+            "focusIndex": 0,
+            "focusPhrase": "The middle segment four, six, five, seven",
+            "focuses": [
+              {
+                "phrase": "The middle segment four, six, five, seven",
+                "selector": ".l9-practice > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Option A is two, three, nine, then the fixed segment, then one, eight. Option B repeats city four. Option C repeats city seven. Repetition automatically implies that some other city is missing because the chromosome length stays nine.",
+          "visualDesign": {
+            "focusSelector": ".l9-practice > *",
+            "focusIndex": 1,
+            "focusPhrase": "Option A is two, three, nine, then",
+            "focuses": [
+              {
+                "phrase": "Option A is two, three, nine, then",
+                "selector": ".l9-practice > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Option A is two, three, nine, then",
+                "type": "popup",
+                "label": "Inspect validity explicitly",
+                "text": "Inspect validity explicitly",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "We will click every option and read the feedback, not just reward the correct one. Wrong answers reveal the precise invariant: membership and uniqueness. This is a useful debugging habit. Instead of saying 'the route looks odd,' count occurrences and name the missing city. Algorithms prefer specific complaints; so do teaching assistants before coffee.",
+          "visualDesign": {
+            "focusSelector": ".l9-practice > *",
+            "focusIndex": 0,
+            "focusPhrase": "We will click every option and read",
+            "focuses": [
+              {
+                "phrase": "We will click every option and read",
+                "selector": ".l9-practice > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "For option B, identify both consequences: city four is duplicated and city eight is missing. For option C, city seven is duplicated and city eight is missing. Naming the missing member follows from comparing the candidate's set with the required set, not merely from noticing a repeated symbol.",
+          "visualDesign": {
+            "focusSelector": ".l9-practice > *",
+            "focusIndex": 1,
+            "focusPhrase": "For option B, identify both consequences: city",
+            "focuses": [
+              {
+                "phrase": "For option B, identify both consequences: city",
+                "selector": ".l9-practice > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "This checking method generalizes. For any permutation chromosome, compare length, allowed membership, and uniqueness. A fast implementation may use a Boolean seen array. During debugging, report the first duplicate and the complete missing set. Precise feedback makes operator repair much faster than the timeless message 'invalid somehow.'",
+          "visualDesign": {
+            "focusSelector": ".l9-practice > *",
+            "focusIndex": 0,
+            "focusPhrase": "This checking method generalizes. For any permutation",
+            "focuses": [
+              {
+                "phrase": "This checking method generalizes. For any permutation",
+                "selector": ".l9-practice > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Practice option B",
+          "text": "Select option B first. The feedback says to check city membership. City four appears once in the copied segment and again before it, so another city is missing. The chromosome has nine positions, but it is not a permutation of one through nine. This is an invalid child, even though every symbol individually names a real city.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-practice button",
+            "index": 1,
+            "label": "Select practice option B"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-practice button",
+            "focusIndex": 1,
+            "focusPhrase": "Select option B",
+            "focuses": [
+              {
+                "phrase": "Select option B",
+                "selector": ".l9-practice button",
+                "index": 1,
+                "label": "Practice option B"
+              },
+              {
+                "phrase": "feedback says to check city membership",
+                "selector": ".l9-practice aside",
+                "index": 0,
+                "label": "Practice feedback B"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Practice option C",
+          "text": "Select option C. The feedback again directs us to membership. City seven appears in the fixed segment and again at the end. A route cannot earn validity by having the correct length and an adventurous duplicate. Uniqueness must hold across the complete chromosome.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-practice button",
+            "index": 2,
+            "label": "Select practice option C"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-practice button",
+            "focusIndex": 2,
+            "focusPhrase": "Select option C",
+            "focuses": [
+              {
+                "phrase": "Select option C",
+                "selector": ".l9-practice button",
+                "index": 2,
+                "label": "Practice option C"
+              },
+              {
+                "phrase": "feedback again directs us to membership",
+                "selector": ".l9-practice aside",
+                "index": 0,
+                "label": "Practice feedback C"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Practice option A",
+          "text": "Select option A. The feedback confirms the result. The fixed segment remains four, six, five, seven, and the unused cities fill the gaps in parent two's wrapped order. Every city one through nine occurs exactly once, so the child is a valid permutation and a valid order-crossover result.",
+          "action": {
+            "type": "click",
+            "selector": ".l9-practice button",
+            "index": 0,
+            "label": "Select practice option A"
+          },
+          "visualDesign": {
+            "focusSelector": ".l9-practice button",
+            "focusIndex": 0,
+            "focusPhrase": "Select option A",
+            "focuses": [
+              {
+                "phrase": "Select option A",
+                "selector": ".l9-practice button",
+                "index": 0,
+                "label": "Practice option A"
+              },
+              {
+                "phrase": "feedback confirms the result",
+                "selector": ".l9-practice aside",
+                "index": 0,
+                "label": "Practice feedback A"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Power comes from representation–operator fit; so does fragility",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The strength of a GA is compact population search. Once representation, fitness, and operators fit the problem, the method can explore complicated spaces without derivatives or an exact constructive model. It can combine partial structures and tolerate noisy or irregular landscapes.",
+          "visualDesign": {
+            "focusSelector": ".l9-evaluation > *",
+            "focusIndex": 0,
+            "focusPhrase": "The strength of a GA is compact",
+            "focuses": [
+              {
+                "phrase": "The strength of a GA is compact",
+                "selector": ".l9-evaluation > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The limitation is the same dependency viewed from the other side. Encoding may be difficult, fitness may invite loopholes, and generic operators may create invalid candidates or destroy useful building blocks. Computational cost can also be dominated by evaluating a large population over many generations.",
+          "visualDesign": {
+            "focusSelector": ".l9-evaluation > *",
+            "focusIndex": 1,
+            "focusPhrase": "The limitation is the same dependency viewed",
+            "focuses": [
+              {
+                "phrase": "The limitation is the same dependency viewed",
+                "selector": ".l9-evaluation > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "The limitation is the same dependency viewed",
+                "type": "popup",
+                "label": "Strengths limits and alternatives",
+                "text": "Strengths limits and alternatives",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The balance in the center says representation determines reachable candidates and legal variation. Ask whether a specialized exact algorithm, dynamic program, local-search heuristic, or constraint solver offers stronger guarantees or better efficiency. A GA is a tool, not a ceremonial cape we place on every optimization problem to make it look evolutionary.",
+          "visualDesign": {
+            "focusSelector": ".l9-evaluation > *",
+            "focusIndex": 2,
+            "focusPhrase": "The balance in the center says representation",
+            "focuses": [
+              {
+                "phrase": "The balance in the center says representation",
+                "selector": ".l9-evaluation > *",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "GAs are attractive when objective evaluation is available but gradients are absent, variables are mixed or discrete, the landscape is irregular, and approximate solutions are acceptable. They are less attractive when exact dynamic programming, linear programming, or specialized combinatorial methods exploit strong structure and provide guarantees efficiently.",
+          "visualDesign": {
+            "focusSelector": ".l9-evaluation > *",
+            "focusIndex": 0,
+            "focusPhrase": "GAs are attractive when objective evaluation is",
+            "focuses": [
+              {
+                "phrase": "GAs are attractive when objective evaluation is",
+                "selector": ".l9-evaluation > *",
+                "index": 0,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "No-free-lunch intuition reminds us that success depends on matching assumptions to problems. A GA's biases come from representation, initialization, selection, and operators. Those biases are useful when they align with the task. Calling the method general-purpose does not make its design choices neutral.",
+          "visualDesign": {
+            "focusSelector": ".l9-evaluation > *",
+            "focusIndex": 1,
+            "focusPhrase": "No-free-lunch intuition reminds us that success depends",
+            "focuses": [
+              {
+                "phrase": "No-free-lunch intuition reminds us that success depends",
+                "selector": ".l9-evaluation > *",
+                "index": 1,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Specify one defensible GA, then trade designs for an adversarial audit",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "A defensible GA specification names the candidate and its encode-decode rules. Provide examples, endpoints, and an invalid case. If a chromosome cannot be decoded, say whether it is rejected, repaired, or penalized rather than hoping it develops better manners.",
+          "visualDesign": {
+            "focusSelector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+            "focusIndex": 0,
+            "focusPhrase": "A defensible GA specification names the candidate",
+            "focuses": [
+              {
+                "phrase": "A defensible GA specification names the candidate",
+                "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Define fitness and identify a possible loophole. State population size and initialization. Choose crossover and mutation that preserve validity. Explain replacement, elitism if any, and stopping evidence. These choices should form one coherent system rather than five favorite techniques collected like souvenir magnets.",
+          "visualDesign": {
+            "focusSelector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+            "focusIndex": 1,
+            "focusPhrase": "Define fitness and identify a possible loophole.",
+            "focuses": [
+              {
+                "phrase": "Define fitness and identify a possible loophole.",
+                "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Define fitness and identify a possible loophole.",
+                "type": "popup",
+                "label": "Design and adversarial audit",
+                "text": "Design and adversarial audit",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "For the peer audit, attack the specification constructively. Point to one undecodable chromosome, one fitness loophole, or one operator that breaks an invariant. Then propose a repair and describe its tradeoff. Adversarial review is not rudeness; it is free testing performed by someone whose computer is not currently on fire.",
+          "visualDesign": {
+            "focusSelector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+            "focusIndex": 2,
+            "focusPhrase": "For the peer audit, attack the specification",
+            "focuses": [
+              {
+                "phrase": "For the peer audit, attack the specification",
+                "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+                "index": 2,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The audit should include one miniature example that can be solved exhaustively. Compare the GA's decoded candidates, fitness values, and best result with the known small-case answers. Small exhaustive checks reveal encoding and objective errors that large stochastic runs can conceal behind impressive motion.",
+          "visualDesign": {
+            "focusSelector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+            "focusIndex": 3,
+            "focusPhrase": "The audit should include one miniature example",
+            "focuses": [
+              {
+                "phrase": "The audit should include one miniature example",
+                "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+                "index": 3,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "Also specify data and evaluation separation when candidates are models or policies. Optimizing fitness on one fixed set can overfit. Use validation scenarios or held-out simulations to estimate generalization. Evolution can overfit just as enthusiastically as gradient descent; it merely does so with a more cinematic family tree.",
+          "visualDesign": {
+            "focusSelector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+            "focusIndex": 4,
+            "focusPhrase": "Also specify data and evaluation separation when",
+            "focuses": [
+              {
+                "phrase": "Also specify data and evaluation separation when",
+                "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+                "index": 4,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Representation determines what evolution can discover",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The triangle connects representation, fitness, and variation. Representation defines what candidates exist. Fitness determines what tends to win. Variation determines what can change and which candidates are reachable from the current population. Weakness in any corner reshapes the entire search.",
+          "visualDesign": {
+            "focusSelector": ".l9-synthesis > *",
+            "focusIndex": 0,
+            "focusPhrase": "The triangle connects representation, fitness, and variation.",
+            "focuses": [
+              {
+                "phrase": "The triangle connects representation, fitness, and variation.",
+                "selector": ".l9-synthesis > *",
+                "index": 0,
+                "label": "Concept"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A GA does not remove problem formulation. It relocates formulation into the chromosome, decoder, fitness function, population policy, operators, and stopping evidence. Explain the loop without biology: maintain candidates, measure them, allocate sampling toward better evidence, generate new candidates, update the set, and stop under an explicit rule.",
+          "visualDesign": {
+            "focusSelector": ".l9-synthesis > *",
+            "focusIndex": 1,
+            "focusPhrase": "A GA does not remove problem formulation.",
+            "focuses": [
+              {
+                "phrase": "A GA does not remove problem formulation.",
+                "selector": ".l9-synthesis > *",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "A GA does not remove problem formulation.",
+                "type": "popup",
+                "label": "Representation fitness variation",
+                "text": "Representation fitness variation",
+                "route": "center-hold",
+                "durationSeconds": 5.8
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Use either worked case to show why representation matters. Twenty-two bits made precision and decoding explicit; a permutation made tour validity inspectable and demanded order-preserving crossover. Finally, name when a specialized exact method is preferable: when the instance size and structure permit guarantees at acceptable cost. The durable lesson is not 'evolution solves everything.' It is 'search behavior follows the contract we write.'",
+          "visualDesign": {
+            "focusSelector": ".l9-synthesis > *",
+            "focusIndex": 0,
+            "focusPhrase": "Use either worked case to show why",
+            "focuses": [
+              {
+                "phrase": "Use either worked case to show why",
+                "selector": ".l9-synthesis > *",
+                "index": 0,
+                "label": "Boundary and transfer"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Detailed example",
+          "text": "The triangle also describes failure modes. If representation excludes the optimum, no amount of selection can recover it. If fitness rewards the wrong behavior, selection amplifies the error. If variation cannot connect useful regions, the population may remain trapped even when those regions are representable.",
+          "visualDesign": {
+            "focusSelector": ".l9-synthesis > *",
+            "focusIndex": 1,
+            "focusPhrase": "The triangle also describes failure modes. If",
+            "focuses": [
+              {
+                "phrase": "The triangle also describes failure modes. If",
+                "selector": ".l9-synthesis > *",
+                "index": 1,
+                "label": "Detailed example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Design consequence",
+          "text": "A strong final explanation therefore follows a causal chain: define candidate space, map genotype to phenotype, evaluate evidence, allocate reproduction, apply validity-preserving changes, update population, and stop under a budget. Then state uncertainty. The returned solution is supported by experiments and comparisons, not guaranteed merely because many generations scrolled past.",
+          "visualDesign": {
+            "focusSelector": ".l9-synthesis > *",
+            "focusIndex": 0,
+            "focusPhrase": "A strong final explanation therefore follows a",
+            "focuses": [
+              {
+                "phrase": "A strong final explanation therefore follows a",
+                "selector": ".l9-synthesis > *",
+                "index": 0,
+                "label": "Design consequence"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    }
+  ]
+}

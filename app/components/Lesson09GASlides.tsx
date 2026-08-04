@@ -6,6 +6,7 @@ import { EnlargeableImage } from "./SearchLessonPrimitives";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 const IMAGE_ROOT = "/course-source/l06-bio-ga/generated";
+const LESSON_09_VIDEO_URL = "https://csufullerton.instructure.com/files/283899679/download?download_frd=1&verifier=Lt3ZuNRIyp47WwjZRl7kJYjbfHCUz6fKSOC15Coa";
 
 function slide(eyebrow: string, title: string, content: ReactNode, sourceSlides: number[], minutes: number, subtitle?: string): SourceLessonSlide {
   return {
@@ -205,5 +206,5 @@ export const lesson09Slides: SourceLessonSlide[] = [
 ];
 
 export function Lesson09Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" slides={lesson09Slides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
+  return <SourceDeckShell forcePrintAll={forcePrintAll} lectureVideoUrl={LESSON_09_VIDEO_URL} meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" slides={lesson09Slides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
 }

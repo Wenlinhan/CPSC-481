@@ -1,0 +1,2937 @@
+{
+  "version": 1,
+  "meeting": "09",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Evolutionary Computation and Genetic Algorithms",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 30.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-hero > *",
+              "index": 0,
+              "sourcePhrase": "Lesson nine asks a wonderfully practical question:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 31.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-hero > *",
+              "index": 1,
+              "sourcePhrase": "The slide names seven design choices we",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The genetic-algorithm contract",
+              "text": "The genetic-algorithm contract",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The slide names seven design choices we",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 29.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-hero > *",
+              "index": 0,
+              "sourcePhrase": "Our goal is not to claim that",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 29.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-hero > *",
+              "index": 1,
+              "sourcePhrase": "Consider a warehouse robot whose controller is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 29.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-hero > *",
+              "index": 0,
+              "sourcePhrase": "A useful diagnostic is to imagine removing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "The lecture moves from metaphor to executable specification",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-journey article",
+              "index": 0,
+              "sourcePhrase": "Here is the route. We begin with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 26.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-journey article",
+              "index": 1,
+              "sourcePhrase": "Our first worked case turns a real",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "From metaphor to audit",
+              "text": "From metaphor to audit",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Our first worked case turns a real",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-journey article",
+              "index": 2,
+              "sourcePhrase": "Finally, we audit the design. For every",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 26.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-journey article",
+              "index": 3,
+              "sourcePhrase": "The continuous function and TSP examples deliberately",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-journey article",
+              "index": 4,
+              "sourcePhrase": "During the audit phase, separate correctness from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "From atom to species, cells connect three crucial molecules",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 25.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-foundation > *",
+              "index": 0,
+              "sourcePhrase": "Biology operates at nested scales. Atoms form",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 26.4,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-foundation > *",
+              "index": 1,
+              "sourcePhrase": "Inside the cell, DNA stores hereditary instructions.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Biological scale and information flow",
+              "text": "Biological scale and information flow",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Inside the cell, DNA stores hereditary instructions.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-foundation > *",
+              "index": 0,
+              "sourcePhrase": "The metaphor has limits. DNA is not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 32.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-foundation > *",
+              "index": 1,
+              "sourcePhrase": "At the molecular level, copying is remarkably",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-foundation > *",
+              "index": 0,
+              "sourcePhrase": "Cells also illustrate interpretation. The same stored",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A one-dimensional sequence helps produce a three-dimensional protein over time",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-split > *",
+              "index": 0,
+              "sourcePhrase": "The image zooms from a cell to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 29.712,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-split > *",
+              "index": 1,
+              "sourcePhrase": "The central dogma is often summarized as",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Sequence becomes structure",
+              "text": "Sequence becomes structure",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The central dogma is often summarized as",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-split > *",
+              "index": 0,
+              "sourcePhrase": "For computation, distinguish genotype from phenotype. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 27.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-split > *",
+              "index": 1,
+              "sourcePhrase": "Folding illustrates why small representational changes can",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-split > *",
+              "index": 0,
+              "sourcePhrase": "This motivates representation-aware operators. If nearby chromosomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Complementary strands preserve information; codons make the sequence interpretable",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 25.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-dna-code > *",
+              "index": 0,
+              "sourcePhrase": "DNA has two complementary strands. Adenine pairs",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.056,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-dna-code > *",
+              "index": 1,
+              "sourcePhrase": "The sequence is read in groups called",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Complementarity and coding",
+              "text": "Complementarity and coding",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The sequence is read in groups called",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 26.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-dna-code > *",
+              "index": 2,
+              "sourcePhrase": "In a GA, we also choose an",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 25.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-dna-code > *",
+              "index": 3,
+              "sourcePhrase": "Codon boundaries also warn us about crossover.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 24.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-dna-code > *",
+              "index": 0,
+              "sourcePhrase": "Redundancy in the genetic code means different",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Inheritance preserves; crossover and mutation vary; selection changes frequencies",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 24.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-selection > *",
+              "index": 0,
+              "sourcePhrase": "Natural selection requires variation, inheritance, and differences",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 29.64,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-selection > *",
+              "index": 1,
+              "sourcePhrase": "Inheritance preserves useful structure. Crossover combines material",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Variation inheritance and selection",
+              "text": "Variation inheritance and selection",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Inheritance preserves useful structure. Crossover combines material",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 26.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-selection > *",
+              "index": 2,
+              "sourcePhrase": "The diagram shows a population at time",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 25.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-selection > *",
+              "index": 0,
+              "sourcePhrase": "Selection operates on relative success in a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 24.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-selection > *",
+              "index": 1,
+              "sourcePhrase": "Population diversity matters because future environments or",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Life and software both store instructions—but the mapping has limits",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 27.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-analogy > *",
+              "index": 0,
+              "sourcePhrase": "The analogy pairs base pair with bit,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 26.448,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-analogy > *",
+              "index": 1,
+              "sourcePhrase": "But analogy is not identity. A gene",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Analogy with guardrails",
+              "text": "Analogy with guardrails",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "But analogy is not identity. A gene",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-analogy > *",
+              "index": 2,
+              "sourcePhrase": "Use the analogy as a design prompt.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 26.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-analogy > *",
+              "index": 3,
+              "sourcePhrase": "The base-pair-to-bit mapping is especially tempting because",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 24.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-analogy > *",
+              "index": 4,
+              "sourcePhrase": "Likewise, execution order is only a loose",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "The metaphor creates five computational commitments",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-commitments article",
+              "index": 0,
+              "sourcePhrase": "A population means we retain many hypotheses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 26.616,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-commitments article",
+              "index": 1,
+              "sourcePhrase": "Representation defines one candidate. Fitness scores task",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Five computational commitments",
+              "text": "Five computational commitments",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Representation defines one candidate. Fitness scores task",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 28.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-commitments article",
+              "index": 2,
+              "sourcePhrase": "These five commitments form a dependency system.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-commitments article",
+              "index": 3,
+              "sourcePhrase": "Population size mediates breadth and cost. Ten",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-commitments article",
+              "index": 4,
+              "sourcePhrase": "Selection and variation also interact. Strong selection",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Initialization, evaluation, variation, and replacement form a search loop",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+              "index": 0,
+              "sourcePhrase": "The loop begins by initializing a population.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 29.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+              "index": 1,
+              "sourcePhrase": "Next evaluate fitness, select parents, and apply",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The evolutionary search loop",
+              "text": "The evolutionary search loop",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Next evaluate fitness, select parents, and apply",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.792,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+              "index": 2,
+              "sourcePhrase": "Finally ask whether to stop. We might",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 25.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+              "index": 3,
+              "sourcePhrase": "Replacement deserves special attention because it controls",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-loop svg g, .l9-loop svg .exit-label",
+              "index": 4,
+              "sourcePhrase": "Stopping should be tied to evidence cost.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "The population P(t) is the state that evolves",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 22.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-pseudocode li",
+              "index": 0,
+              "sourcePhrase": "Read the pseudocode in execution order. Set",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-pseudocode li",
+              "index": 1,
+              "sourcePhrase": "The state is the entire population, not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "GA pseudocode and hidden policies",
+              "text": "GA pseudocode and hidden policies",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The state is the entire population, not",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 29.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-pseudocode li",
+              "index": 2,
+              "sourcePhrase": "Every line hides a policy. How large",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 26.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-pseudocode li",
+              "index": 3,
+              "sourcePhrase": "The while loop does not specify synchronous",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 23.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-pseudocode li",
+              "index": 4,
+              "sourcePhrase": "Returning the best available solutions in plural",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "A problem is not ready until five questions have concrete answers",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 18.48,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-contract article",
+              "index": 0,
+              "sourcePhrase": "First, encode: what does a chromosome mean,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-contract article",
+              "index": 1,
+              "sourcePhrase": "Third, evaluate: what measurable evidence becomes fitness?",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The five-part GA contract",
+              "text": "The five-part GA contract",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Third, evaluate: what measurable evidence becomes fitness?",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 29.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-contract article",
+              "index": 2,
+              "sourcePhrase": "Fifth, stop: what counts as sufficient evidence?",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 26.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-contract article",
+              "index": 3,
+              "sourcePhrase": "A contract should also state constraint handling.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 28.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-contract article",
+              "index": 4,
+              "sourcePhrase": "Testing the contract begins with invariants. Decode",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Maximize a rippled function on [−1, 2]",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-plot > *",
+              "index": 0,
+              "sourcePhrase": "Our first case maximizes f of x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 23.544,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-plot > *",
+              "index": 1,
+              "sourcePhrase": "The displayed best point is approximately x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A multimodal optimization target",
+              "text": "A multimodal optimization target",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The displayed best point is approximately x",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-plot > *",
+              "index": 0,
+              "sourcePhrase": "This case is useful because every GA",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 26.376,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-plot > *",
+              "index": 1,
+              "sourcePhrase": "The sine term creates repeated oscillations while",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 26.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-plot > *",
+              "index": 0,
+              "sourcePhrase": "Because the target value is known for",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Six-decimal precision requires at least 22 bits",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 23.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-resolution > *",
+              "index": 0,
+              "sourcePhrase": "From negative one to two is a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 23.616,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-resolution > *",
+              "index": 1,
+              "sourcePhrase": "Twenty-one bits provide two to the twenty-first",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Deriving the bit length",
+              "text": "Deriving the bit length",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Twenty-one bits provide two to the twenty-first",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.752,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-resolution > *",
+              "index": 2,
+              "sourcePhrase": "More codes than requested do not create",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-resolution > *",
+              "index": 0,
+              "sourcePhrase": "The general calculation is choose the smallest",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 23.376,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-resolution > *",
+              "index": 1,
+              "sourcePhrase": "Be careful about decimal precision versus binary",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "A chromosome becomes an integer, then a real value in the interval",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 22.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-decoder > *",
+              "index": 0,
+              "sourcePhrase": "Take the twenty-two-bit chromosome shown. Interpret it",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 20.112,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-decoder > *",
+              "index": 1,
+              "sourcePhrase": "Use the affine map x equals negative",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Decode bits into a real number",
+              "text": "Decode bits into a real number",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Use the affine map x equals negative",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-decoder > *",
+              "index": 2,
+              "sourcePhrase": "Always test the endpoints and at least",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 21.576,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-decoder > *",
+              "index": 3,
+              "sourcePhrase": "To encode in the opposite direction, subtract",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-decoder > *",
+              "index": 4,
+              "sourcePhrase": "Bit significance affects mutation. Flipping the leftmost",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Create P(0) as 300 random 22-bit candidates",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 20.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-population > *",
+              "index": 0,
+              "sourcePhrase": "Initialization creates P of zero with three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 24.72,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-population > *",
+              "index": 1,
+              "sourcePhrase": "The table shows sample candidates, decoded x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Initialize and inspect P zero",
+              "text": "Initialize and inspect P zero",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The table shows sample candidates, decoded x",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-population > *",
+              "index": 2,
+              "sourcePhrase": "Do not confuse a good initial member",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-population > *",
+              "index": 3,
+              "sourcePhrase": "Uniform random bits generate uniform random integer",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 24.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-population > *",
+              "index": 4,
+              "sourcePhrase": "Check duplicates in P zero. Duplicate chromosomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Decode first, evaluate f(x), then bias parent choice",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 23.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-fitness > *",
+              "index": 0,
+              "sourcePhrase": "Fitness follows a pipeline. Begin with chromosome",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 23.232,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-fitness > *",
+              "index": 1,
+              "sourcePhrase": "Selection converts fitness evidence into reproductive probability.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Fitness evidence becomes selection bias",
+              "text": "Fitness evidence becomes selection bias",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Selection converts fitness evidence into reproductive probability.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-fitness > *",
+              "index": 2,
+              "sourcePhrase": "Beware raw fitness-proportionate selection when values are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-fitness > *",
+              "index": 3,
+              "sourcePhrase": "Tournament selection offers a concrete example. Sample",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 22.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-fitness > *",
+              "index": 4,
+              "sourcePhrase": "Fitness can be noisy when it comes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Crossover recombines; mutation introduces local novelty",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 20.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-operators > *",
+              "index": 0,
+              "sourcePhrase": "The crossover tab shows two parents and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.656,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-operators > *",
+              "index": 1,
+              "sourcePhrase": "The mutation tab flips one selected bit.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Crossover and mutation",
+              "text": "Crossover and mutation",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The mutation tab flips one selected bit.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-operators > *",
+              "index": 2,
+              "sourcePhrase": "The rates control exploration. Too little variation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-operators > *",
+              "index": 0,
+              "sourcePhrase": "One-point crossover assumes adjacent loci form meaningful",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 24.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-operators > *",
+              "index": 1,
+              "sourcePhrase": "Mutation probability point zero one is per",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Mutation state",
+          "durationSeconds": 32.76,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mutation tab",
+              "selector": ".l9-operators nav button",
+              "index": 1,
+              "sourcePhrase": "Click Mutation",
+              "atSeconds": 0.05,
+              "durationSeconds": 3.796
+            },
+            {
+              "type": "focus",
+              "label": "Mutation before state",
+              "selector": ".l9-mutate section",
+              "index": 0,
+              "sourcePhrase": "highlighted locus changes from one",
+              "atSeconds": 3.896,
+              "durationSeconds": 2.889
+            },
+            {
+              "type": "focus",
+              "label": "Mutation after state",
+              "selector": ".l9-mutate section",
+              "index": 1,
+              "sourcePhrase": "turning 1100101010 into 1100100010",
+              "atSeconds": 6.835,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Crossover state",
+          "durationSeconds": 25.464,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Crossover tab",
+              "selector": ".l9-operators nav button",
+              "index": 0,
+              "sourcePhrase": "Return to Crossover",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.253
+            },
+            {
+              "type": "focus",
+              "label": "Crossover parents",
+              "selector": ".l9-cross section",
+              "index": 0,
+              "sourcePhrase": "Two parents are visible",
+              "atSeconds": 2.353,
+              "durationSeconds": 4.352
+            },
+            {
+              "type": "focus",
+              "label": "Crossover children",
+              "selector": ".l9-cross section",
+              "index": 1,
+              "sourcePhrase": "create two children",
+              "atSeconds": 6.755,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The complete setup now runs from P(t) to P(t+1)",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 17.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+              "index": 0,
+              "sourcePhrase": "One generation begins with three hundred chromosomes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.608,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+              "index": 1,
+              "sourcePhrase": "The best-fitness curve may rise unevenly, stay",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A complete GA generation",
+              "text": "A complete GA generation",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The best-fitness curve may rise unevenly, stay",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+              "index": 2,
+              "sourcePhrase": "Stop at a target quality or after",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 24.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+              "index": 3,
+              "sourcePhrase": "Replacement can compare offspring only with one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-trace article, .l9-trace svg, .l9-trace p",
+              "index": 4,
+              "sourcePhrase": "A proper experiment repeats the GA with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A nine-city tour exposes why representation changes the operators",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 17.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-tsp-hero > *",
+              "index": 0,
+              "sourcePhrase": "Our second case is a nine-city traveling-salesperson",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.296,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-tsp-hero > *",
+              "index": 1,
+              "sourcePhrase": "The search space contains nine factorial tours",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The TSP representation challenge",
+              "text": "The TSP representation challenge",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The search space contains nine factorial tours",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-tsp-hero > *",
+              "index": 0,
+              "sourcePhrase": "Ask what chromosome makes validity easy to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 20.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-tsp-hero > *",
+              "index": 1,
+              "sourcePhrase": "Tour distance is computed by summing the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 23.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-tsp-hero > *",
+              "index": 0,
+              "sourcePhrase": "Tours also have symmetry: rotating the sequence",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Four bits per city are compact—but generic crossover breaks the route",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "Encoding number one assigns four bits to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 20.4,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 1,
+              "sourcePhrase": "Unfortunately, generic crossover does not understand the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Why generic bit crossover fails",
+              "text": "Why generic bit crossover fails",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Unfortunately, generic crossover does not understand the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "We could reject invalid offspring, repair them,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 21.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 1,
+              "sourcePhrase": "Suppose ordinary crossover cuts between city blocks",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 23.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "Repair may scan duplicates and replace them",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "A permutation directly represents visit order",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 22.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "Encoding number two stores a permutation such",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 19.416,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 1,
+              "sourcePhrase": "Fitness may be the negative total distance,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Permutation encoding and legal mutation",
+              "text": "Permutation encoding and legal mutation",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Fitness may be the negative total distance,",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "A permutation makes some invariants easy: membership",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 25.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 1,
+              "sourcePhrase": "Swap mutation exchanges two positions. Inversion mutation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 23.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-tsp-encoding > *",
+              "index": 0,
+              "sourcePhrase": "Fitness based on reciprocal distance keeps higher-is-better",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Copy a segment, then fill with the other parent's unused order",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 17.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+              "index": 0,
+              "sourcePhrase": "Order crossover preserves a selected segment from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 18.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+              "index": 1,
+              "sourcePhrase": "Then read parent two starting just after",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Order crossover step by step",
+              "text": "Order crossover step by step",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Then read parent two starting just after",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 12.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+              "index": 2,
+              "sourcePhrase": "The result contains every city exactly once.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+              "index": 3,
+              "sourcePhrase": "Order crossover preserves relative order from the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 22.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-order-stage > *, .l9-order-progress button, .l9-order-controls > *",
+              "index": 4,
+              "sourcePhrase": "To implement the fill precisely, maintain a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Order crossover step 2",
+          "durationSeconds": 20.424,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Copy segment label",
+              "selector": ".l9-order-stage > *",
+              "index": 0,
+              "sourcePhrase": "Advance to step two",
+              "atSeconds": 0.05,
+              "durationSeconds": 4.953
+            },
+            {
+              "type": "focus",
+              "label": "Copied segment",
+              "selector": ".l9-order-stage > *",
+              "index": 1,
+              "sourcePhrase": "four, six, five, seven",
+              "atSeconds": 5.053,
+              "durationSeconds": 4.564
+            },
+            {
+              "type": "focus",
+              "label": "Open positions",
+              "selector": ".l9-order-stage > *",
+              "index": 2,
+              "sourcePhrase": "blank positions are intentional",
+              "atSeconds": 9.667,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Order crossover step 3",
+          "durationSeconds": 20.856,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Wrapped donor label",
+              "selector": ".l9-order-stage > *",
+              "index": 0,
+              "sourcePhrase": "Advance to step three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Wrapped donor order",
+              "selector": ".l9-order-stage > *",
+              "index": 1,
+              "sourcePhrase": "two, three, four, five, nine",
+              "atSeconds": 9.149,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Donor sequence meaning",
+              "selector": ".l9-order-stage > *",
+              "index": 2,
+              "sourcePhrase": "donor sequence for the open positions",
+              "atSeconds": 17.54,
+              "durationSeconds": 3.266
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Order crossover step 4",
+          "durationSeconds": 22.272,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Remove duplicates label",
+              "selector": ".l9-order-stage > *",
+              "index": 0,
+              "sourcePhrase": "Advance to step four",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.347
+            },
+            {
+              "type": "focus",
+              "label": "Removed donor cities",
+              "selector": ".l9-order-stage > *",
+              "index": 1,
+              "sourcePhrase": "Remove every donor city already present",
+              "atSeconds": 2.447,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Remaining donor order",
+              "selector": ".l9-order-stage > *",
+              "index": 2,
+              "sourcePhrase": "remaining order is two, three, nine",
+              "atSeconds": 10.133,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Order crossover step 5",
+          "durationSeconds": 20.904,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Fill positions label",
+              "selector": ".l9-order-stage > *",
+              "index": 0,
+              "sourcePhrase": "Advance to step five",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Completed child",
+              "selector": ".l9-order-stage > *",
+              "index": 1,
+              "sourcePhrase": "completed child is two, three, nine",
+              "atSeconds": 8.497,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Permutation invariant",
+              "selector": ".l9-order-stage > *",
+              "index": 2,
+              "sourcePhrase": "every city one through nine",
+              "atSeconds": 16.795,
+              "durationSeconds": 4.059
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Validity is a property students can inspect, not a promise",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-practice > *",
+              "index": 0,
+              "sourcePhrase": "The middle segment four, six, five, seven",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 18.96,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-practice > *",
+              "index": 1,
+              "sourcePhrase": "Option A is two, three, nine, then",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Inspect validity explicitly",
+              "text": "Inspect validity explicitly",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Option A is two, three, nine, then",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-practice > *",
+              "index": 0,
+              "sourcePhrase": "We will click every option and read",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 21.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-practice > *",
+              "index": 1,
+              "sourcePhrase": "For option B, identify both consequences: city",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-practice > *",
+              "index": 0,
+              "sourcePhrase": "This checking method generalizes. For any permutation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Practice option B",
+          "durationSeconds": 24.504,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice option B",
+              "selector": ".l9-practice button",
+              "index": 1,
+              "sourcePhrase": "Select option B",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.746
+            },
+            {
+              "type": "focus",
+              "label": "Practice feedback B",
+              "selector": ".l9-practice aside",
+              "index": 0,
+              "sourcePhrase": "feedback says to check city membership",
+              "atSeconds": 2.846,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Practice option C",
+          "durationSeconds": 20.16,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice option C",
+              "selector": ".l9-practice button",
+              "index": 2,
+              "sourcePhrase": "Select option C",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.506
+            },
+            {
+              "type": "focus",
+              "label": "Practice feedback C",
+              "selector": ".l9-practice aside",
+              "index": 0,
+              "sourcePhrase": "feedback again directs us to membership",
+              "atSeconds": 2.606,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Practice option A",
+          "durationSeconds": 22.512,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Practice option A",
+              "selector": ".l9-practice button",
+              "index": 0,
+              "sourcePhrase": "Select option A",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.413
+            },
+            {
+              "type": "focus",
+              "label": "Practice feedback A",
+              "selector": ".l9-practice aside",
+              "index": 0,
+              "sourcePhrase": "feedback confirms the result",
+              "atSeconds": 2.513,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Power comes from representation–operator fit; so does fragility",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 20.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-evaluation > *",
+              "index": 0,
+              "sourcePhrase": "The strength of a GA is compact",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.416,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-evaluation > *",
+              "index": 1,
+              "sourcePhrase": "The limitation is the same dependency viewed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Strengths limits and alternatives",
+              "text": "Strengths limits and alternatives",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The limitation is the same dependency viewed",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-evaluation > *",
+              "index": 2,
+              "sourcePhrase": "The balance in the center says representation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 24.48,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-evaluation > *",
+              "index": 0,
+              "sourcePhrase": "GAs are attractive when objective evaluation is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 22.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-evaluation > *",
+              "index": 1,
+              "sourcePhrase": "No-free-lunch intuition reminds us that success depends",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Specify one defensible GA, then trade designs for an adversarial audit",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+              "index": 0,
+              "sourcePhrase": "A defensible GA specification names the candidate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 24.48,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+              "index": 1,
+              "sourcePhrase": "Define fitness and identify a possible loophole.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Design and adversarial audit",
+              "text": "Design and adversarial audit",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Define fitness and identify a possible loophole.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+              "index": 2,
+              "sourcePhrase": "For the peer audit, attack the specification",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 21.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+              "index": 3,
+              "sourcePhrase": "The audit should include one miniature example",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 25.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-studio article, .l9-studio-center, .l9-studio aside",
+              "index": 4,
+              "sourcePhrase": "Also specify data and evaluation separation when",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Representation determines what evolution can discover",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 22.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept",
+              "selector": ".l9-synthesis > *",
+              "index": 0,
+              "sourcePhrase": "The triangle connects representation, fitness, and variation.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.896,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".l9-synthesis > *",
+              "index": 1,
+              "sourcePhrase": "A GA does not remove problem formulation.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Representation fitness variation",
+              "text": "Representation fitness variation",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "A GA does not remove problem formulation.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 31.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".l9-synthesis > *",
+              "index": 0,
+              "sourcePhrase": "Use either worked case to show why",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed example",
+          "durationSeconds": 23.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed example",
+              "selector": ".l9-synthesis > *",
+              "index": 1,
+              "sourcePhrase": "The triangle also describes failure modes. If",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Design consequence",
+          "durationSeconds": 28.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Design consequence",
+              "selector": ".l9-synthesis > *",
+              "index": 0,
+              "sourcePhrase": "A strong final explanation therefore follows a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
