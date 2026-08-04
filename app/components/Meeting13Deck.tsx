@@ -8,6 +8,7 @@ import {
 } from "./SearchLessonPrimitives";
 
 const SOURCE_ROOT = "/course-source/l09-machine-learning-part-a";
+const SOURCE_MEDIA_ROOT = `${SOURCE_ROOT}/media`;
 const SOURCE_DECK_LABEL = "L09 Machine Learning · Part A";
 
 function resolveMeeting13SourceReference(sourceSlide: number) {
@@ -378,6 +379,210 @@ function SemanticArch() {
         <article><b>top</b><small>polygon</small></article>
       </div>
       <p>A supports top · B supports top · A must-not-touch B</p>
+    </div>
+  );
+}
+
+function ArchSourceFigure({
+  file,
+  alt,
+  caption,
+  className = "",
+}: {
+  file: "image7.png" | "image8.png" | "image9.png" | "image10.png" | "image11.png" | "image12.png";
+  alt: string;
+  caption: string;
+  className?: string;
+}) {
+  return (
+    <figure className={`m13-arch-source-figure ${className}`.trim()}>
+      <div><img alt={alt} src={`${SOURCE_MEDIA_ROOT}/${file}`} /></div>
+      <figcaption><span>Exact Winston course figure</span>{caption}</figcaption>
+    </figure>
+  );
+}
+
+const architectureViews = [
+  {
+    label: "Parts",
+    heading: "Three physical parts become three part nodes",
+    explanation: "Two upright bricks and one top piece are represented separately so the learner can reason about both type and relation.",
+    trace: "arch -has-part-> support A, support B, top",
+  },
+  {
+    label: "Types",
+    heading: "Each part carries a type that can be generalized",
+    explanation: "The first top is a brick and the second is a pyramid. Background knowledge later permits both to match the parent type polygon.",
+    trace: "support A: brick | support B: brick | top: brick or pyramid",
+  },
+  {
+    label: "Relations",
+    heading: "Support relations distinguish an arch from a bag of parts",
+    explanation: "The lower parts must each support the top. Winston learns relational structure, not a pixel template or a list of object names.",
+    trace: "supports(support A, top) AND supports(support B, top)",
+  },
+];
+
+function ArchArchitectureExplorer() {
+  const [active, setActive] = useState(0);
+  const item = architectureViews[active];
+  return (
+    <div className="m13-arch-architecture">
+      <ArchSourceFigure
+        file="image7.png"
+        alt="Two valid arches paired with their semantic-network descriptions"
+        caption="The physical examples and their network descriptions are kept together so every node and support relation can be traced."
+      />
+      <section>
+        <nav aria-label="Inspect Winston semantic-network layers">
+          {architectureViews.map((entry, index) => (
+            <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>
+          ))}
+        </nav>
+        <span>Representation layer {active + 1} of {architectureViews.length}</span>
+        <h3>{item.heading}</h3>
+        <p>{item.explanation}</p>
+        <code>{item.trace}</code>
+      </section>
+    </div>
+  );
+}
+
+const evidenceExamples = [
+  { label: "Positive A", sign: "+", kind: "positive", observation: "Two separated brick supports hold a rectangular brick top.", operation: "Initialize a candidate that records three typed parts and two support relations." },
+  { label: "Positive B", sign: "+", kind: "positive", observation: "The same support pattern holds, but the top is a pyramid.", operation: "Generalize only the varying top type after consulting the type hierarchy." },
+  { label: "Near miss A", sign: "−", kind: "negative", observation: "The three pieces exist, but the lower pieces do not support the top.", operation: "Specialize by requiring both support relations." },
+  { label: "Near miss B", sign: "−", kind: "negative", observation: "Both lower bricks support the top, but the supports touch each other.", operation: "Specialize with a must-not-touch relation between the supports." },
+];
+
+function ArchEvidenceExplorer() {
+  const [active, setActive] = useState(0);
+  const item = evidenceExamples[active];
+  return (
+    <div className="m13-arch-evidence-explorer">
+      <ArchSourceFigure
+        file="image8.png"
+        alt="Two positive arch examples and two negative near-miss examples"
+        caption="Top row: valid arches. Bottom row: near misses used to expose missing constraints."
+      />
+      <section>
+        <nav aria-label="Inspect positive and negative arch evidence">
+          {evidenceExamples.map((entry, index) => (
+            <button className={`${active === index ? "active" : ""} ${entry.kind}`} key={entry.label} onClick={() => setActive(index)} type="button"><b>{entry.sign}</b>{entry.label}</button>
+          ))}
+        </nav>
+        <span>{item.kind === "positive" ? "Generalization evidence" : "Specialization evidence"}</span>
+        <h3>{item.observation}</h3>
+        <p><strong>Minimal update:</strong> {item.operation}</p>
+        <SearchCallout label="Predict before advancing" tone="cyan">Which node type or relation must change—and which parts of the current concept should remain untouched?</SearchCallout>
+      </section>
+    </div>
+  );
+}
+
+const positiveGeneralizationStages = [
+  { label: "1 · Compare", file: "image7.png" as const, heading: "Align corresponding parts and relations", detail: "Both examples have two brick supports, three total parts, and the same two support links.", rule: "shared: parts = 3; supports(A, top); supports(B, top)" },
+  { label: "2 · Differ", file: "image7.png" as const, heading: "Isolate the one varying property", detail: "Only the top-part type changes: one example uses a brick and the other uses a pyramid.", rule: "top type: brick -> pyramid (variation observed)" },
+  { label: "3 · Generalize", file: "image9.png" as const, heading: "Move one step up the supplied hierarchy", detail: "Because brick and pyramid are both polygons, replace the top's specific type with polygon while preserving every support relation.", rule: "top isa polygon; generalize no further than needed" },
+];
+
+function PositiveGeneralizationDemo() {
+  const [active, setActive] = useState(0);
+  const item = positiveGeneralizationStages[active];
+  return (
+    <div className="m13-arch-procedure">
+      <ArchSourceFigure
+        className={item.file === "image9.png" ? "hierarchy-figure" : ""}
+        file={item.file}
+        alt={item.file === "image7.png" ? "Two positive arches and their semantic networks" : "Brick and pyramid type hierarchy with generalized arch network"}
+        caption={item.file === "image7.png" ? "Compare the two valid examples before changing the candidate." : "The background hierarchy licenses the minimal type generalization."}
+      />
+      <section>
+        <nav aria-label="Positive-example generalization procedure">
+          {positiveGeneralizationStages.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}
+        </nav>
+        <span>Procedure step {active + 1} of {positiveGeneralizationStages.length}</span>
+        <h3>{item.heading}</h3>
+        <p>{item.detail}</p>
+        <code>{item.rule}</code>
+      </section>
+    </div>
+  );
+}
+
+const hierarchyNodes = [
+  { label: "brick", detail: "Observed as the top type in positive example A." },
+  { label: "pyramid", detail: "Observed as the top type in positive example B." },
+  { label: "polygon", detail: "Background parent that covers both observed top types without accepting every possible object." },
+];
+
+function HierarchyExplorer() {
+  const [active, setActive] = useState(2);
+  const item = hierarchyNodes[active];
+  return (
+    <div className="m13-hierarchy-explorer">
+      <ArchSourceFigure file="image9.png" alt="Brick and pyramid are shown as children of polygon above the generalized semantic network" caption="The figure explicitly separates supplied background knowledge from relations observed in the examples." />
+      <section>
+        <span>Inspect a type</span>
+        <div>{hierarchyNodes.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}</div>
+        <h3>{item.label}</h3>
+        <p>{item.detail}</p>
+        <SearchCallout label="Inductive commitment" tone="amber">The hierarchy is supplied knowledge. Examples alone do not determine that brick and pyramid should meet at polygon.</SearchCallout>
+      </section>
+    </div>
+  );
+}
+
+const specializationStages = [
+  { label: "1 · Loose pieces", file: "image10.png" as const, heading: "Reject an arrangement with no support structure", observation: "Having two uprights and one crosspiece is insufficient when the parts are disconnected.", update: "require supports(A, top) AND supports(B, top)" },
+  { label: "2 · Touching supports", file: "image11.png" as const, heading: "Reject the remaining relational near miss", observation: "Both lower bricks support the top, yet their contact collapses the opening that distinguishes the intended arch.", update: "add must-not-touch(A, B)" },
+  { label: "3 · Final candidate", file: "image11.png" as const, heading: "Keep the positive structure and add only the needed constraint", observation: "The specialized network retains three parts, polygon top, and both support links while excluding touching supports.", update: "polygon top + 2 support links + must-not-touch(A, B)" },
+];
+
+function NegativeSpecializationDemo() {
+  const [active, setActive] = useState(0);
+  const item = specializationStages[active];
+  return (
+    <div className="m13-arch-procedure negative-demo">
+      <ArchSourceFigure
+        className={item.file === "image10.png" ? "near-miss-figure" : "specialization-figure"}
+        file={item.file}
+        alt={item.file === "image10.png" ? "Two negative arch near misses: loose parts and touching supports" : "Candidate arch network specialized with must-not-touch constraints"}
+        caption={item.file === "image10.png" ? "Diagnose why each arrangement is not an arch." : "The course figure traces candidate, near miss, and minimally specialized network."}
+      />
+      <section>
+        <nav aria-label="Negative-example specialization procedure">
+          {specializationStages.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}
+        </nav>
+        <span>Procedure step {active + 1} of {specializationStages.length}</span>
+        <h3>{item.heading}</h3>
+        <p>{item.observation}</p>
+        <code>{item.update}</code>
+      </section>
+    </div>
+  );
+}
+
+const boundaryViews = [
+  { label: "Positives only", heading: "Coverage expands, but the boundary is weakly constrained", detail: "Every plus must remain inside. The question marks show unobserved cases that the current concept may accept without evidence.", test: "Ask: what invalid arrangement could still match?" },
+  { label: "+ Near misses", heading: "Informative negatives remove specific invalid regions", detail: "The learner specializes around observed negatives while retaining all positives. The result is better supported, not universally proven.", test: "Ask: which new negative would be most informative next?" },
+];
+
+function BoundaryExplorer() {
+  const [active, setActive] = useState(0);
+  const item = boundaryViews[active];
+  return (
+    <div className="m13-boundary-explorer">
+      <ArchSourceFigure file="image12.png" alt="Concept boundary learned from positive examples only compared with a boundary learned from positive and negative examples" caption="The same course figure juxtaposes an underconstrained positive-only region with a boundary shaped by near misses." />
+      <section>
+        <nav aria-label="Compare Winston concept boundaries">
+          {boundaryViews.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.label} onClick={() => setActive(index)} type="button">{entry.label}</button>)}
+        </nav>
+        <span>Boundary view {active + 1} of {boundaryViews.length}</span>
+        <h3>{item.heading}</h3>
+        <p>{item.detail}</p>
+        <SearchCallout label="Student check" tone="cyan">{item.test}</SearchCallout>
+      </section>
     </div>
   );
 }
@@ -856,132 +1061,43 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Winston 1975 · Program architecture",
     title: "Winston's program learned an arch concept in a semantic network",
-    content: (
-      <div className="m13-source-practice">
-        <SourceFrame
-          slide={12}
-          alt="Winston learning program semantic-network page"
-          caption="Learning goal, representation, and semantic-network diagram."
-        />
-        <div className="m13-winston-intro">
-          <article><span>Learning goal</span><strong>arch concept</strong></article>
-          <article><span>Representation</span><strong>semantic networks</strong></article>
-          <article><span>Operators</span><strong>generalization + specialization</strong></article>
-          <SemanticArch />
-        </div>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Name Winston 1975, the learning goal, the representation, and both operators. Point to nodes and labeled relations in the exact source image before using the simplified network.",
+    content: <ArchArchitectureExplorer />,
+    note: "Timing: 4 minutes. Use all three representation-layer controls. First identify the three physical parts, then match each part to its type node, then trace both supports relations. Emphasize that Winston learns a relational semantic network rather than a visual pixel template. Name the learning goal and the generalization and specialization operators.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Training evidence · Positive and negative examples",
     title: "Positive examples expand coverage; near misses constrain it",
-    content: (
-      <div className="m13-explain-source">
-        <SourceFrame
-          slide={13}
-          alt="Positive arch examples and negative near-miss examples"
-          caption="Positive and negative examples define the training evidence."
-        />
-        <section className="m13-evidence-roles">
-          <article className="positive"><span>Positive examples · arches</span><h3>Cover all positives</h3><p>Use generalization to include patterns shared by valid arches.</p></article>
-          <article className="negative"><span>Negative examples · near misses</span><h3>Cover no negatives</h3><p>Use specialization to exclude patterns found in non-arches.</p></article>
-          <SearchCallout label="Training data" tone="cyan">
-            The historical learner requires both positive and negative examples for training.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Students point to one positive and one near miss in the complete source image. Require the verbs cover, exclude, generalize, and specialize.",
+    content: <ArchEvidenceExplorer />,
+    note: "Timing: 4 minutes. Select all four examples. Before each selection, ask students to classify it as positive or near miss and predict the smallest network change. Require the verbs cover, exclude, generalize, and specialize. The exact course figure keeps the two valid arches above the two near misses.",
     sourceSlides: [13],
   },
   {
     eyebrow: "Winston demo · Positive examples",
     title: "Generalize only the property that differs across valid arches",
-    content: (
-      <SourcePair
-        left={{
-          slide: 14,
-          alt: "Two positive arches and their semantic-network descriptions",
-          caption: "Both arches have brick supports; their top parts differ.",
-        }}
-        right={{
-          slide: 15,
-          alt: "Generalization hierarchy and generalized semantic network for arches",
-          caption: "Background knowledge makes brick and pyramid children of polygon.",
-        }}
-      />
-    ),
-    note: "Timing: 4 minutes. Before showing page 15, ask which node differs. Then reveal the hierarchy: brick isa polygon; pyramid isa polygon. The top-part type generalizes to polygon while support relations remain.",
+    content: <PositiveGeneralizationDemo />,
+    note: "Timing: 5 minutes. Advance through compare, differ, and generalize. Students must name every invariant before changing the top node. At step 3, reveal the exact hierarchy figure: brick isa polygon and pyramid isa polygon. Generalize only the top-part type; preserve the part count and both support relations.",
     sourceSlides: [14, 15],
   },
   {
     eyebrow: "Background knowledge · Generalization hierarchy",
     title: "Examples alone do not say that brick and pyramid share the parent polygon",
-    content: (
-      <div className="m13-explain-source">
-        <SourceFrame
-          slide={15}
-          alt="Generalization hierarchy from brick and pyramid to polygon"
-          caption="The complete source image links the hierarchy to the generalized arch semantic network."
-        />
-        <section className="m13-hierarchy">
-          <strong>polygon</strong>
-          <i aria-hidden="true" />
-          <div><span>brick</span><span>pyramid</span></div>
-          <p>The hierarchy is background knowledge. It determines which generalization is available to the learner.</p>
-          <SearchCallout label="Inductive commitment" tone="amber">
-            A different hierarchy could produce a different candidate concept from the same examples.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Distinguish training examples from background knowledge. Ask students whether “top is any object” would cover both positives and why it would be less constrained than “top is a polygon.”",
+    content: <HierarchyExplorer />,
+    note: "Timing: 4 minutes. Select brick, pyramid, and polygon in order. Distinguish observed example types from the supplied parent relation. Ask whether top isa object would cover both positives and why it is less constrained than top isa polygon. A different hierarchy can yield a different candidate from the same examples.",
     sourceSlides: [15],
   },
   {
     eyebrow: "Winston demo · Near misses",
     title: "Specialization adds the smallest constraints needed to reject non-arches",
-    content: (
-      <SourcePair
-        left={{
-          slide: 16,
-          alt: "Two negative near-miss arch examples"
-          ,
-          caption: "One arrangement lacks support relations; another has touching supports.",
-        }}
-        right={{
-          slide: 17,
-          alt: "Semantic-network specialization with must-not-touch constraints"
-          ,
-          caption: "The learned network is specialized so it cannot match the touching-support near miss.",
-        }}
-      />
-    ),
-    note: "Timing: 4 minutes. Use both exact images. For the loose pieces, require support relations. For the touching supports, add must-not-touch between the two supports. Emphasize minimal specialization rather than memorizing the entire negative example.",
+    content: <NegativeSpecializationDemo />,
+    note: "Timing: 5 minutes. Advance through loose pieces, touching supports, and final candidate. Students diagnose the first failed relation before seeing the update. For the second near miss, add must-not-touch between supports. Emphasize that minimal specialization keeps all existing positive matches and does not memorize the complete negative example.",
     sourceSlides: [16, 17],
   },
   {
     eyebrow: "Decision boundary · Overgeneralization",
     title: "Negative examples carve away regions that positive examples alone leave ambiguous",
-    content: (
-      <div className="m13-explain-source">
-        <SourceFrame
-          slide={18}
-          alt="Concept regions learned from positive examples alone and from positive plus negative examples"
-          caption="The question marks in the left region become evidence-tested boundary decisions on the right."
-        />
-        <section className="m13-boundary-notes">
-          <article><span>Positives only</span><h3>Large plausible region</h3><p>Many unobserved cases remain accepted because nothing has contradicted them.</p></article>
-          <article><span>Positives + negatives</span><h3>Constrained boundary</h3><p>Near misses identify where the concept must become more specific.</p></article>
-          <SearchCallout label="Not proof of perfection" tone="amber">
-            The boundary is justified only relative to the examples and representation supplied so far.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
-    note: "Timing: 3 minutes. Compare the two source regions. Ask students to explain one question mark on the left and how a nearby negative example changes the candidate boundary.",
+    content: <BoundaryExplorer />,
+    note: "Timing: 4 minutes. Toggle between positives only and positives plus near misses while keeping the exact side-by-side boundary figure visible. Ask students to explain one question mark and propose the most informative next negative. Reinforce that the learned boundary is justified only relative to the examples, hierarchy, and representation supplied so far.",
     sourceSlides: [18],
   },
   {
