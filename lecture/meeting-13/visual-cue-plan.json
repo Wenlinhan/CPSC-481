@@ -1,0 +1,3257 @@
+{
+  "version": 1,
+  "meeting": "13",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Reasoning under uncertainty starts with a probability model",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 27.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_heroVisual_\"] > *, [class*=\"_cardGrid_\"] article",
+              "index": 0,
+              "sourcePhrase": "Lesson thirteen begins where certainty ends. An AI",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 30.192,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "popup",
+              "label": "Evidence becomes belief",
+              "text": "Evidence becomes belief",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The path on this slide has four jobs.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Represent",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 0,
+              "sourcePhrase": "Represent uncertain variables",
+              "atSeconds": 3.271,
+              "durationSeconds": 4.431
+            },
+            {
+              "type": "focus",
+              "label": "Compute",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 1,
+              "sourcePhrase": "Compute joint, marginal, and conditional",
+              "atSeconds": 7.752,
+              "durationSeconds": 4.512
+            },
+            {
+              "type": "focus",
+              "label": "Update",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 2,
+              "sourcePhrase": "Update beliefs with Bayes' rule",
+              "atSeconds": 12.314,
+              "durationSeconds": 2.809
+            },
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 3,
+              "sourcePhrase": "Then interpret the result",
+              "atSeconds": 15.173,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_heroVisual_\"] > *, [class*=\"_cardGrid_\"] article",
+              "index": 2,
+              "sourcePhrase": "A probability of point seven is not a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 35.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_heroVisual_\"] > *, [class*=\"_cardGrid_\"] article",
+              "index": 3,
+              "sourcePhrase": "Here is the practical transfer. A spam filter,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Evidence is observed; target variables are hidden; a model connects them",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 26.52,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Evidence",
+              "selector": "[class*=\"_compactGrid_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Evidence variables are observed",
+              "atSeconds": 2.393,
+              "durationSeconds": 6.333
+            },
+            {
+              "type": "focus",
+              "label": "Targets",
+              "selector": "[class*=\"_compactGrid_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Target variables are the hidden",
+              "atSeconds": 8.776,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Model",
+              "selector": "[class*=\"_compactGrid_\"] > *",
+              "index": 2,
+              "sourcePhrase": "The model describes",
+              "atSeconds": 16.994,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 25.584,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_inferenceDiagram_\"] > div, [class*=\"_compactGrid_\"] > *",
+              "index": 1,
+              "sourcePhrase": "For a self-driving car, a camera patch and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Observed, hidden, connected",
+              "text": "Observed, hidden, connected",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "For a self-driving car, a camera patch and",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_inferenceDiagram_\"] > div, [class*=\"_compactGrid_\"] > *",
+              "index": 2,
+              "sourcePhrase": "The arrow is inferential, not magical. If the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 29.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_inferenceDiagram_\"] > div, [class*=\"_compactGrid_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Try the three-role test on voice recognition. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Random variables name uncertain aspects; distributions assign probability to their values",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 26.448,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Discrete rain variable",
+              "selector": "[class*=\"_variableList_\"] p",
+              "index": 0,
+              "sourcePhrase": "R might ask",
+              "atSeconds": 7.274,
+              "durationSeconds": 3.873
+            },
+            {
+              "type": "focus",
+              "label": "Discrete temperature variable",
+              "selector": "[class*=\"_variableList_\"] p",
+              "index": 1,
+              "sourcePhrase": "T might take",
+              "atSeconds": 11.197,
+              "durationSeconds": 2.596
+            },
+            {
+              "type": "focus",
+              "label": "Continuous drive time",
+              "selector": "[class*=\"_variableList_\"] p",
+              "index": 2,
+              "sourcePhrase": "Drive time D is continuous",
+              "atSeconds": 13.843,
+              "durationSeconds": 3.939
+            },
+            {
+              "type": "focus",
+              "label": "Location domain",
+              "selector": "[class*=\"_variableList_\"] p",
+              "index": 3,
+              "sourcePhrase": "robot location L",
+              "atSeconds": 17.832,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 28.728,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_variablePanel_\"] > *, [class*=\"_distributionPanel_\"] > *",
+              "index": 1,
+              "sourcePhrase": "A domain lists legal values. A probability distribution",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Variable, domain, distribution",
+              "text": "Variable, domain, distribution",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "A domain lists legal values. A probability distribution",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_variablePanel_\"] > *, [class*=\"_distributionPanel_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Use a restaurant metaphor. The random variable is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 34.152,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_variablePanel_\"] > *, [class*=\"_distributionPanel_\"] > *",
+              "index": 3,
+              "sourcePhrase": "One more distinction matters for continuous variables. For",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A valid joint distribution covers every complete assignment",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 22.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": ".slide-content article, .slide-content [class*=\"_tableCard_\"]",
+              "index": 0,
+              "sourcePhrase": "A joint distribution is a complete ledger over",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 23.424,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "popup",
+              "label": "The complete probability ledger",
+              "text": "The complete probability ledger",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Two constraints make the table legal. Every probability",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Nonnegative",
+              "selector": ".slide-content article",
+              "index": 0,
+              "sourcePhrase": "Every probability must be nonnegative",
+              "atSeconds": 3.098,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Normalized",
+              "selector": ".slide-content article",
+              "index": 1,
+              "sourcePhrase": "all complete rows must sum to one",
+              "atSeconds": 12.074,
+              "durationSeconds": 6.014
+            },
+            {
+              "type": "focus",
+              "label": "Joint table check",
+              "selector": "[class*=\"_tableCard_\"]",
+              "index": 0,
+              "sourcePhrase": "point four plus point one",
+              "atSeconds": 18.138,
+              "durationSeconds": 5.236
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 26.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content article, .slide-content [class*=\"_tableCard_\"]",
+              "index": 2,
+              "sourcePhrase": "Table size grows as the product of domain",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 36.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": ".slide-content article, .slide-content [class*=\"_tableCard_\"]",
+              "index": 0,
+              "sourcePhrase": "Now scale the table. Ten binary variables require",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "A joint model makes the probability of any event computable",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 22.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_eventPanel_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "An event is a set of complete outcomes.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 23.136,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Union query",
+              "selector": "[class*=\"_queryStack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "For hot OR sun",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Events are sets of rows",
+              "text": "Events are sets of rows",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "For hot OR sun, include hot-sun, hot-rain, and",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Do not double-count",
+              "selector": "[class*=\"_queryStack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "The hot-sun row satisfies both",
+              "atSeconds": 10.026,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_eventPanel_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "A useful procedure is mechanical: translate the query",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 30.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_eventPanel_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Compare OR with the addition rule P of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Select the rows that satisfy the event, then add each row once",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 15.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Use the joint table as the source of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 12.144,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "The four masses sum to one, so every",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Event practice",
+              "text": "Event practice",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The four masses sum to one, so every",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 32.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Notice how each question changes only the set",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal Q1",
+          "durationSeconds": 13.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q1",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The answer is point two because plus x and plus y names exactly the first row",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose Q2",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal Q2",
+          "durationSeconds": 14.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The answer is point five",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose Q3",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal Q3",
+          "durationSeconds": 16.224,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.2
+            },
+            {
+              "type": "focus",
+              "label": "Q3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The union is point six",
+              "atSeconds": 2.3,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A marginal distribution collapses a joint table by addition",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 20.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_marginalVisual_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Marginalization removes a variable from a joint table",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 22.032,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_marginalVisual_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "The notation P of x equals the sum",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Sum out what you do not ask about",
+              "text": "Sum out what you do not ask about",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The notation P of x equals the sum",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.184,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Marginalize X",
+              "selector": "[class*=\"_queryStack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "The X marginal",
+              "atSeconds": 0.05,
+              "durationSeconds": 3.73
+            },
+            {
+              "type": "focus",
+              "label": "Marginalize Y",
+              "selector": "[class*=\"_queryStack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "The Y marginal",
+              "atSeconds": 3.83,
+              "durationSeconds": 5.362
+            },
+            {
+              "type": "focus",
+              "label": "Normalization check",
+              "selector": "[class*=\"_queryStack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Each marginal distribution must sum to one",
+              "atSeconds": 9.242,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 30.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_marginalVisual_\"] > *, [class*=\"_queryStack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Marginalization can also eliminate many variables: P of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Conditioning restricts the population; it does not imply time or causation",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 19.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_conditionVisual_\"] > *, [class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Conditional probability asks about A inside the restricted",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 22.848,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P(sick given cough)",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Among people who cough",
+              "atSeconds": 0.05,
+              "durationSeconds": 5.179
+            },
+            {
+              "type": "popup",
+              "label": "Change the reference population",
+              "text": "Change the reference population",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Among people who cough, what fraction are sick",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "P(cough given sick)",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Among people who are sick",
+              "atSeconds": 5.279,
+              "durationSeconds": 6.812
+            },
+            {
+              "type": "focus",
+              "label": "Reference population changes",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "different reference populations",
+              "atSeconds": 12.141,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_conditionVisual_\"] > *, [class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "The word given does not automatically mean earlier,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 30.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_conditionVisual_\"] > *, [class*=\"_stack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Conditional probability becomes undefined when P of B",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Fix the evidence value, then normalize every compatible row",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 21.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "A conditional distribution contains one normalized table for",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 25.032,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P(+x given +y)",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "For plus x given plus y",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A conditional table for each context",
+              "text": "A conditional table for each context",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "For plus x given plus y, select the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "P(-x given +y)",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Minus x given plus y",
+              "atSeconds": 11.702,
+              "durationSeconds": 6.027
+            },
+            {
+              "type": "focus",
+              "label": "P(-y given +x)",
+              "selector": "[class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "For minus y given plus x",
+              "atSeconds": 17.779,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 19.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Conditioning is like changing the guest list before",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 26.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_stack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Compare P of weather given hot with P",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "The selected mass is exactly the probability of the evidence",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 19.92,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Joint table",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Begin with the joint table",
+              "atSeconds": 3.949,
+              "durationSeconds": 2.45
+            },
+            {
+              "type": "focus",
+              "label": "Compatible rows",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Select rows compatible",
+              "atSeconds": 6.449,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Evidence normalizer",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Their selected mass is point five",
+              "atSeconds": 14.029,
+              "durationSeconds": 5.841
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 18.024,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Divide each compatible mass by point five. Sun",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Select, then normalize",
+              "text": "Select, then normalize",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Divide each compatible mass by point five. Sun",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Think of zooming into a photograph. Selection crops",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 33.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_normalizationFlow_\"] > *",
+              "index": 3,
+              "sourcePhrase": "The select-normalize routine generalizes to any finite conditional",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Selection preserves ratios; normalization makes them probabilities",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 18.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Condition on Y equals minus y by selecting",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 12.288,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "We will reveal both components, then verify that",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Normalize the selected rows",
+              "text": "Normalize the selected rows",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "We will reveal both components, then verify that",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 32.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content [class*=\"_tableCard_\"], .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Ratios provide a mental shortcut. Before normalization, point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal +x",
+          "durationSeconds": 15.264,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "+x reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal plus x",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.253
+            },
+            {
+              "type": "focus",
+              "label": "+x answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The selected evidence mass is point four",
+              "atSeconds": 2.353,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose -x",
+          "durationSeconds": 7.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "-x tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose minus x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal -x",
+          "durationSeconds": 15,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "-x reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal minus x",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "-x answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Minus x owns point one of the same point-four evidence mass, giving point two five",
+              "atSeconds": 1.646,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Connect outcomes, events, random variables, distributions, and conditioning",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 21.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_coinPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Three fair coin tosses create eight equally likely",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 21.096,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_coinPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "A random variable maps each sequence to a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Three coin tosses",
+              "text": "Three coin tosses",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "A random variable maps each sequence to a",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 30.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_coinPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "The distribution one-three-three-one comes from combinations. Exactly two",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal Q1",
+          "durationSeconds": 11.664,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q1",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "There are eight length-three sequences",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose Q2",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal Q2",
+          "durationSeconds": 16.488,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Event A contains HHH, HHT, HTH, and THH",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose Q3",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal Q3",
+          "durationSeconds": 14.472,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.2
+            },
+            {
+              "type": "focus",
+              "label": "Q3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "A and B are events, sets of outcomes",
+              "atSeconds": 2.3,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Choose Q4",
+          "durationSeconds": 8.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q4 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 3,
+              "sourcePhrase": "Choose Q4",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Reveal Q4",
+          "durationSeconds": 12.168,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q4 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q4",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.267
+            },
+            {
+              "type": "focus",
+              "label": "Q4 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The distribution of X is one, three, three, one over eight for zero through three heads",
+              "atSeconds": 2.367,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Choose Q5",
+          "durationSeconds": 8.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q5 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 4,
+              "sourcePhrase": "Choose Q5",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Reveal Q5",
+          "durationSeconds": 13.8,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q5 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q5",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.267
+            },
+            {
+              "type": "focus",
+              "label": "Q5 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Conditioning on B leaves HHH, HHT, HTH, and HTT",
+              "atSeconds": 2.367,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "One observation can support several hidden causes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 17.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": ".slide-content figure, .slide-content [class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Bad traffic is an observation. Construction and an",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 24.6,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": ".slide-content figure, .slide-content [class*=\"_stack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Additional evidence can discriminate. Orange barrels are more",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Competing explanations",
+              "text": "Competing explanations",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Additional evidence can discriminate. Orange barrels are more",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content figure, .slide-content [class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "This is explaining away territory: once one cause",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 30.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": ".slide-content figure, .slide-content [class*=\"_stack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Do not confuse a dependency sketch with a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Bad traffic raises the construction belief from 0.5 to 0.75",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 18.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_trafficPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "The displayed joint table contains construction C and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 11.064,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_trafficPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "We will marginalize over traffic to find the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Traffic update",
+              "text": "Traffic update",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "We will marginalize over traffic to find the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 29.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_trafficPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "The update from point five to point seven",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal Q1",
+          "durationSeconds": 12.216,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q1",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Marginalize over traffic",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose Q2",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal Q2",
+          "durationSeconds": 13.776,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q2",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.134
+            },
+            {
+              "type": "focus",
+              "label": "Q2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Under bad traffic, compatible masses are point three with construction and point one without it",
+              "atSeconds": 2.234,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose Q3",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal Q3",
+          "durationSeconds": 16.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Q3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal Q3",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.2
+            },
+            {
+              "type": "focus",
+              "label": "Q3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Barrels should increase construction belief only if they are more likely when construction is true",
+              "atSeconds": 2.3,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Multiply a prior by a conditional to recover joint probability",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 20.736,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Prior",
+              "selector": "[class*=\"_productPanel_\"] > *",
+              "index": 0,
+              "sourcePhrase": "P of x comma y",
+              "atSeconds": 4.225,
+              "durationSeconds": 5.193
+            },
+            {
+              "type": "focus",
+              "label": "Conditional table",
+              "selector": "[class*=\"_productPanel_\"] > *",
+              "index": 1,
+              "sourcePhrase": "For sun and wet",
+              "atSeconds": 9.468,
+              "durationSeconds": 3.527
+            },
+            {
+              "type": "focus",
+              "label": "Joint products",
+              "selector": "[class*=\"_productPanel_\"] > *",
+              "index": 2,
+              "sourcePhrase": "point zero eight",
+              "atSeconds": 13.045,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 21.528,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": ".slide-content figure, [class*=\"_productPanel_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Rain contributes point two times point seven equals",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The product rule",
+              "text": "The product rule",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Rain contributes point two times point seven equals",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": ".slide-content figure, [class*=\"_productPanel_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Multiplication handles sequential restriction; addition combines mutually exclusive",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 31.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": ".slide-content figure, [class*=\"_productPanel_\"] > *",
+              "index": 3,
+              "sourcePhrase": "The product rule can be rearranged into the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Repeated product rules factor any joint distribution",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 17.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_chainVisual_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "The chain rule repeatedly applies the product rule.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 18.792,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_chainVisual_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "The identity requires no independence assumption. Ordering may",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The chain rule",
+              "text": "The chain rule",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The identity requires no independence assumption. Ordering may",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 32.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_chainVisual_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "Ordering creates a modeling opportunity. The full chain",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal 2",
+          "durationSeconds": 15.336,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.841
+            },
+            {
+              "type": "focus",
+              "label": "2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "For two variables, P of x one comma x two equals P of x one times P of x two given x one",
+              "atSeconds": 1.941,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose 3",
+          "durationSeconds": 8.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal 3",
+          "durationSeconds": 12.168,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.868
+            },
+            {
+              "type": "focus",
+              "label": "3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "For three variables, append P of x three given x one and x two",
+              "atSeconds": 1.968,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose n",
+          "durationSeconds": 7.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "n tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose n",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal n",
+          "durationSeconds": 14.232,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "n reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal n",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.881
+            },
+            {
+              "type": "focus",
+              "label": "n answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "For n variables, multiply one conditional per variable, each conditioned on all predecessors in the chosen ordering",
+              "atSeconds": 1.981,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Two factorizations of the same joint yield Bayes' rule",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 20.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_bayesPortrait_\"] > *, [class*=\"_derivation_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Bayes' rule comes from writing the same joint",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 22.8,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "popup",
+              "label": "Reverse a conditional",
+              "text": "Reverse a conditional",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The result is posterior equals likelihood times prior",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Posterior",
+              "selector": "[class*=\"_bayesTerms_\"] span",
+              "index": 0,
+              "sourcePhrase": "Posterior P",
+              "atSeconds": 5.824,
+              "durationSeconds": 4.219
+            },
+            {
+              "type": "focus",
+              "label": "Likelihood",
+              "selector": "[class*=\"_bayesTerms_\"] span",
+              "index": 1,
+              "sourcePhrase": "Likelihood P",
+              "atSeconds": 10.093,
+              "durationSeconds": 4.777
+            },
+            {
+              "type": "focus",
+              "label": "Prior",
+              "selector": "[class*=\"_bayesTerms_\"] span",
+              "index": 2,
+              "sourcePhrase": "Prior P",
+              "atSeconds": 14.92,
+              "durationSeconds": 2.716
+            },
+            {
+              "type": "focus",
+              "label": "Evidence",
+              "selector": "[class*=\"_bayesTerms_\"] span",
+              "index": 3,
+              "sourcePhrase": "Evidence P",
+              "atSeconds": 17.686,
+              "durationSeconds": 5.064
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_bayesPortrait_\"] > *, [class*=\"_derivation_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Bayes is not a spell for swapping letters",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 33.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_bayesPortrait_\"] > *, [class*=\"_derivation_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Use odds for another view. Posterior odds equal",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Posterior disease probability is not the probability that disease causes a symptom",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 21.528,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Disease hypothesis",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Disease may causally influence",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.968
+            },
+            {
+              "type": "focus",
+              "label": "Causal direction",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *",
+              "index": 1,
+              "sourcePhrase": "arrow points from disease to symptom",
+              "atSeconds": 3.068,
+              "durationSeconds": 3.052
+            },
+            {
+              "type": "focus",
+              "label": "Inferential direction",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Diagnosis reasons backward",
+              "atSeconds": 6.17,
+              "durationSeconds": 5.083
+            },
+            {
+              "type": "focus",
+              "label": "Diagnostic posterior",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *",
+              "index": 4,
+              "sourcePhrase": "posterior P disease given symptom",
+              "atSeconds": 11.303,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 22.344,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *, [class*=\"_compactGrid_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Suppose most people with a rare disease develop",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Causal direction versus inference",
+              "text": "Causal direction versus inference",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Suppose most people with a rare disease develop",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 21.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *, [class*=\"_compactGrid_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Probability also does not prove causation. A model",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 31.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_diagnosisDiagram_\"] > *, [class*=\"_compactGrid_\"] > *",
+              "index": 3,
+              "sourcePhrase": "A diagnostic model should also be calibrated and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Partition the hypothesis space, then add disjoint joint masses",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 18.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_partition_\"] > *, .slide-content [class*=\"_stack_\"] > *",
+              "index": 0,
+              "sourcePhrase": "To compute the evidence normalizer, partition the hypothesis",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 20.28,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_partition_\"] > *, .slide-content [class*=\"_stack_\"] > *",
+              "index": 1,
+              "sourcePhrase": "The total-probability formula is P of E equals",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Total probability",
+              "text": "Total probability",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The total-probability formula is P of E equals",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 19.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_partition_\"] > *, .slide-content [class*=\"_stack_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Imagine sorting every evidence case into labeled bins.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 32.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_partition_\"] > *, .slide-content [class*=\"_stack_\"] > *",
+              "index": 3,
+              "sourcePhrase": "The hypotheses in a partition need not be",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A strong likelihood may still produce a small posterior when the prior is tiny",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 18.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_medicalPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "The disease prior is one in ten thousand.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 18.528,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_medicalPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "We will compute the evidence probability, the posterior,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Rare disease and base rates",
+              "text": "Rare disease and base rates",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "We will compute the evidence probability, the posterior,",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 30.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_medicalPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "Imagine one million people. About one hundred have",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal 1",
+          "durationSeconds": 16.056,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 1",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.828
+            },
+            {
+              "type": "focus",
+              "label": "1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The prior is point zero zero zero one",
+              "atSeconds": 1.928,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose 2",
+          "durationSeconds": 8.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal 2",
+          "durationSeconds": 15.336,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.841
+            },
+            {
+              "type": "focus",
+              "label": "2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Total probability gives P of symptom as point eight times point zero zero zero one plus point zero one times point nine nine nine nine, which equals point zero one zero zero seven nine",
+              "atSeconds": 1.941,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose 3",
+          "durationSeconds": 8.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal 3",
+          "durationSeconds": 16.848,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.868
+            },
+            {
+              "type": "focus",
+              "label": "3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The disease-and-symptom mass is point zero zero zero zero eight",
+              "atSeconds": 1.968,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Choose 4",
+          "durationSeconds": 8.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "4 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 3,
+              "sourcePhrase": "Choose 4",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Reveal 4",
+          "durationSeconds": 16.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "4 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 4",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.908
+            },
+            {
+              "type": "focus",
+              "label": "4 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "A low posterior can still justify evaluation when the cost of missing disease is severe and examination cost is modest",
+              "atSeconds": 2.008,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Dry conditions make sun much more probable than rain",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 17.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_weatherPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "The weather prior assigns point eight to sun",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 12.864,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_weatherPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "The two posterior values must sum to one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Weather posterior",
+              "text": "Weather posterior",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The two posterior values must sum to one",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 29.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_weatherPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "We can also compare likelihood ratios. Dry is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal 1",
+          "durationSeconds": 9.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 1",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.828
+            },
+            {
+              "type": "focus",
+              "label": "1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "P of dry is point nine times point eight plus point three times point two, totaling point seven eight",
+              "atSeconds": 1.928,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose 2",
+          "durationSeconds": 8.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal 2",
+          "durationSeconds": 11.856,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.841
+            },
+            {
+              "type": "focus",
+              "label": "2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The sun-and-dry mass is point seven two",
+              "atSeconds": 1.941,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose 3",
+          "durationSeconds": 8.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal 3",
+          "durationSeconds": 13.656,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.868
+            },
+            {
+              "type": "focus",
+              "label": "3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The rain-and-dry mass is point zero six",
+              "atSeconds": 1.968,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The posterior combines prior belief, likelihood, and evidence prevalence",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 17.712,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Prior",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 0,
+              "sourcePhrase": "The prior P",
+              "atSeconds": 4.415,
+              "durationSeconds": 4.71
+            },
+            {
+              "type": "focus",
+              "label": "Likelihood",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 1,
+              "sourcePhrase": "The likelihood P",
+              "atSeconds": 9.175,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 21.072,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Evidence prevalence",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 2,
+              "sourcePhrase": "The denominator sums",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Four parts of Bayes",
+              "text": "Four parts of Bayes",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "The denominator sums that support across every competing",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Posterior",
+              "selector": "[class*=\"_cardGrid_\"] article",
+              "index": 3,
+              "sourcePhrase": "produces the posterior",
+              "atSeconds": 9.468,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.8,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_bayesBoard_\"] > *, [class*=\"_cardGrid_\"] article",
+              "index": 2,
+              "sourcePhrase": "A useful metaphor is an audition. Priors are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 30.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_bayesBoard_\"] > *, [class*=\"_cardGrid_\"] article",
+              "index": 3,
+              "sourcePhrase": "When several evidence items are conditionally independent given",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Including the prior makes the rule MAP, not maximum likelihood",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 25.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Maximum likelihood",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 0,
+              "sourcePhrase": "Maximum likelihood chooses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "MAP",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 1,
+              "sourcePhrase": "Maximum a posteriori",
+              "atSeconds": 11.662,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 21.12,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "popup",
+              "label": "MAP versus ML",
+              "text": "MAP versus ML",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Keeping the prior is the defining difference. If",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            },
+            {
+              "type": "focus",
+              "label": "Uniform-prior equivalence",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 2,
+              "sourcePhrase": "If priors are uniform",
+              "atSeconds": 3.351,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Prior changes MAP",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 1,
+              "sourcePhrase": "With unequal priors",
+              "atSeconds": 11.888,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 2,
+              "sourcePhrase": "Picture two detectives. ML judges only how well",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 31.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_comparison_\"] > *",
+              "index": 3,
+              "sourcePhrase": "Consider handwriting recognition. A rare character may fit",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "The evidence normalizer combines all ways the observed purchase could occur",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 19.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Core concept",
+              "selector": "[class*=\"_dealerPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 0,
+              "sourcePhrase": "Three dealers have priors point two, point four,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 14.544,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked meaning",
+              "selector": "[class*=\"_dealerPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 1,
+              "sourcePhrase": "We will expose numerator, normalizer, and posterior separately.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Dealer inference",
+              "text": "Dealer inference",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "We will expose numerator, normalizer, and posterior separately.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 31.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_dealerPanel_\"] > *, .slide-content [class*=\"_practice_\"]",
+              "index": 2,
+              "sourcePhrase": "The three dealer terms illustrate a reusable denominator",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Reveal 1",
+          "durationSeconds": 9.504,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "1 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 1",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.828
+            },
+            {
+              "type": "focus",
+              "label": "1 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Dealer two's numerator is likelihood point four times prior point four, giving joint mass point one six",
+              "atSeconds": 1.928,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose 2",
+          "durationSeconds": 8.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 1,
+              "sourcePhrase": "Choose 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal 2",
+          "durationSeconds": 11.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 2",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.841
+            },
+            {
+              "type": "focus",
+              "label": "2 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "The evidence normalizer adds all dealer routes: point zero four plus point one six plus point one two equals point three two",
+              "atSeconds": 1.941,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose 3",
+          "durationSeconds": 8.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 tab",
+              "selector": "[class*=\"_practice_\"] nav button",
+              "index": 2,
+              "sourcePhrase": "Choose 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal 3",
+          "durationSeconds": 14.112,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "3 reveal control",
+              "selector": "[class*=\"_practice_\"] section > button",
+              "index": 0,
+              "sourcePhrase": "Reveal 3",
+              "atSeconds": 0.05,
+              "durationSeconds": 1.868
+            },
+            {
+              "type": "focus",
+              "label": "3 answer and explanation",
+              "selector": "[class*=\"_practice_\"] section > *",
+              "index": 4,
+              "sourcePhrase": "Normalize dealer two's point-one-six mass by point three two",
+              "atSeconds": 1.968,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Represent uncertainty, compute an update, and defend the interpretation",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Core concept",
+          "durationSeconds": 21.48,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Represent",
+              "selector": "[class*=\"_exit_\"] > article",
+              "index": 0,
+              "sourcePhrase": "Represent: define variables",
+              "atSeconds": 3.284,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Infer",
+              "selector": "[class*=\"_exit_\"] > article",
+              "index": 1,
+              "sourcePhrase": "Infer: select or marginalize",
+              "atSeconds": 11.343,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Worked meaning",
+          "durationSeconds": 20.232,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": "[class*=\"_exit_\"] > article",
+              "index": 2,
+              "sourcePhrase": "Interpret: state the reference population",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Probability audit",
+              "text": "Probability audit",
+              "route": "center-hold",
+              "durationSeconds": 5.8,
+              "sourcePhrase": "Interpret: state the reference population and distinguish event",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.712
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Boundary and transfer",
+          "durationSeconds": 26.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Boundary and transfer",
+              "selector": "[class*=\"_exit_\"] > *",
+              "index": 2,
+              "sourcePhrase": "When you meet a new uncertainty problem, resist",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Detailed transfer",
+          "durationSeconds": 31.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed transfer",
+              "selector": "[class*=\"_exit_\"] > *",
+              "index": 3,
+              "sourcePhrase": "For the next lesson, bring one real case",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
