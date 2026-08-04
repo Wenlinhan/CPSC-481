@@ -67,6 +67,11 @@ function shortenKeyPoint(value: string): string {
   return `${value.slice(0, 217).replace(/\s+\S*$/, "")}…`;
 }
 
+function isBoilerplateKeyPoint(value: string): boolean {
+  return /^(?:cpsc\s*481(?:\s*[·|-]\s*introduction to artificial intelligence)?|introduction to artificial intelligence|all modules)$/i.test(value)
+    || /(?:click|select)(?: the)? (?:image|figure|page)? ?to enlarge/i.test(value);
+}
+
 function collectKeyPoints(root: HTMLDivElement | null, slide: LessonSlide): string[] {
   if (!root) return slide.subtitle ? [slide.subtitle] : [slide.title];
   const candidates = [
@@ -78,7 +83,7 @@ function collectKeyPoints(root: HTMLDivElement | null, slide: LessonSlide): stri
 
   for (const raw of candidates) {
     const point = shortenKeyPoint(normalizeKeyPoint(raw));
-    if (point.length < 18 || point.toLowerCase() === slide.title.toLowerCase()) continue;
+    if (point.length < 18 || point.toLowerCase() === slide.title.toLowerCase() || isBoilerplateKeyPoint(point)) continue;
     if (/^(?:next|previous|reset|reveal|hide|check answer|try again)$/i.test(point)) continue;
     if (points.some(existing => existing.toLowerCase() === point.toLowerCase())) continue;
     points.push(point);
@@ -90,7 +95,7 @@ function collectKeyPoints(root: HTMLDivElement | null, slide: LessonSlide): stri
       .split(/(?<=[.!?])\s+/)
       .map(shortenKeyPoint);
     for (const point of fallback) {
-      if (point.length < 24) continue;
+      if (point.length < 24 || isBoilerplateKeyPoint(point)) continue;
       if (points.some(existing => existing.toLowerCase() === point.toLowerCase())) continue;
       points.push(point);
       if (points.length === 5) break;
