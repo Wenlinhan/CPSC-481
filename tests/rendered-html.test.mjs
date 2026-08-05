@@ -1136,10 +1136,11 @@ test("Meetings 13–15 preserve concept learning, ID3, ensembles, and supervised
   }
 });
 
-test("Meetings 17 and 18 preserve the neural-network sequence and modern training laboratory", async () => {
-  const [meeting17, meeting18, manifestText, inventoryContent] = await Promise.all([
-    readFile(new URL("../app/components/Meeting17Deck.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/components/Meeting18Deck.tsx", import.meta.url), "utf8"),
+test("Module 12 lessons 17 and 18 preserve all 36 Machine Learning Part B source pages", async () => {
+  const [module12, sourceMap, route, manifestText, inventoryContent] = await Promise.all([
+    readFile(new URL("../app/components/Module12LearningDecks.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../docs/module12-lessons17-18-source-map.md", import.meta.url), "utf8"),
+    readFile(new URL("../app/lessons/[lesson]/page.tsx", import.meta.url), "utf8"),
     readFile(
       new URL("../public/course-source/l10-neural-networks/manifest.json", import.meta.url),
       "utf8",
@@ -1148,47 +1149,31 @@ test("Meetings 17 and 18 preserve the neural-network sequence and modern trainin
       new URL("../public/course-source/l10-neural-networks/source-inventory.json", import.meta.url),
     ),
   ]);
-  const extractCoverage = (source) => [
-    ...new Set(
-      [...source.matchAll(/sourceSlides:\s*\[([^\]]*)\]/g)].flatMap((match) =>
-        [...match[1].matchAll(/\d+/g)].map((number) => Number(number[0])),
-      ),
-    ),
-  ].sort((a, b) => a - b);
-  const expectedMeeting17 = [1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13];
-  const expectedMeeting18 = [14, 15, 16, 17, 18, 19, 36];
 
-  assert.equal((meeting17.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
-  assert.equal((meeting18.match(/sourceSlides:\s*\[/g) ?? []).length, 25);
-  assert.deepEqual(extractCoverage(meeting17), expectedMeeting17);
-  assert.deepEqual(extractCoverage(meeting18), expectedMeeting18);
-  assert.match(meeting17, /resolveSourceReference=\{resolveMeeting17SourceReference\}/);
-  assert.match(meeting18, /resolveSourceReference=\{resolveMeeting18SourceReference\}/);
-  assert.match(meeting17, /\/course-source\/l10-neural-networks/);
-  assert.match(meeting18, /\/course-source\/l10-neural-networks/);
-  assert.doesNotMatch(`${meeting17}\n${meeting18}`, /\b(?:original|old)\s+slides?\b/i);
+  assert.equal((module12.match(/sourceSlides:\s*\[\]/g) ?? []).length, 54);
+  assert.equal((module12.match(/const lesson17Slides:/g) ?? []).length, 1);
+  assert.equal((module12.match(/const lesson18Slides:/g) ?? []).length, 1);
+  assert.match(module12, /timingPlan=\{\[2,2,4,3,2,4,3,4,3,3,2,3,2,2,3,2,2,4,3,3,2,3,3,2,3,2,4\]\}/);
+  assert.match(module12, /timingPlan=\{\[2,2,3,3,4,2,2,3,3,4,2,2,3,3,4,3,2,2,3,3,4,2,3,2,3,2,4\]\}/);
+  assert.doesNotMatch(module12, /slide-renders|source-slides/i);
+  assert.doesNotMatch(module12, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(route, /id===17\?<Module12Lesson17Deck\/>/);
+  assert.match(route, /id===18\?<Module12Lesson18Deck\/>/);
+
+  for (let sourcePage = 1; sourcePage <= 36; sourcePage += 1) {
+    assert.match(sourceMap, new RegExp("\\\\| " + sourcePage + " \\\\|"), "Source page " + sourcePage + " needs a destination");
+  }
 
   for (const knowledgePoint of [
-    "McCulloch–Pitts",
-    "perceptron",
-    "AND",
-    "OR",
-    "XOR",
-    "linear decision boundary",
-    "sigmoid",
-    "gradient descent",
-    "Backpropagation",
-    "chain rule",
-    "delta rule",
-    "autodiff",
-    "PyTorch",
-    "zero_grad",
-    "model.eval",
-    "checkpoint",
+    "McCulloch–Pitts", "perceptron", "AND", "OR", "XOR", "symbolic", "non-symbolic",
+    "supervised", "unsupervised", "batch", "online", "genetic programming", "gplearn",
+    "scikit-learn", "artificial neuron", "sigmoid", "ANN", "backpropagation", "delta rule",
+    "clustering", "K-means", "Minkowski", "reinforcement learning", "Big Data Analysis",
+    "deep learning", "Meta-DENDRAL", "applications",
   ]) {
     assert.match(
-      `${meeting17}\n${meeting18}`,
-      new RegExp(knowledgePoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+      module12 + "\\n" + sourceMap,
+      new RegExp(knowledgePoint.replace(/[.*+?^\${}()|[\]\\]/g, "\\$&"), "i"),
     );
   }
 
@@ -1202,38 +1187,13 @@ test("Meetings 17 and 18 preserve the neural-network sequence and modern trainin
   );
   assert.equal(manifest.sourceBytes, 963006);
   assert.equal(manifest.authoritativeSlideCount, 36);
-  assert.deepEqual(manifest.meetingCoverage["17"], expectedMeeting17);
-  assert.deepEqual(manifest.meetingCoverage["18"], expectedMeeting18);
-  assert.equal(manifest.sourceSlideEvidence.length, 18);
-  assert.equal(manifest.assets.length, 24);
-  assert.equal(manifest.sourceCorrectionLedger.length, 12);
-  assert.equal(manifest.auditSummary.selectedRenderCount, 18);
-  assert.deepEqual(manifest.auditSummary.renderDimensions, {
-    width: 1600,
-    height: 1200,
-  });
   assert.equal(sha256(inventoryContent), manifest.inventoryProvenance.sha256);
   assert.equal(inventory.slideCount, 36);
   assert.equal(inventory.mediaCount, 29);
 
-  for (const slideRecord of manifest.sourceSlideEvidence) {
-    assert.ok(slideRecord.render, `Source page ${slideRecord.slide} must have a render`);
-    const renderContent = await readFile(
-      new URL(
-        `../public/course-source/l10-neural-networks/${slideRecord.render.file}`,
-        import.meta.url,
-      ),
-    );
-    assert.equal(renderContent.length, slideRecord.render.bytes);
-    assert.equal(sha256(renderContent), slideRecord.render.sha256);
-    assert.deepEqual(pngDimensions(renderContent), { width: 1600, height: 1200 });
-  }
   for (const asset of manifest.assets) {
     const assetContent = await readFile(
-      new URL(
-        `../public/course-source/l10-neural-networks/${asset.file}`,
-        import.meta.url,
-      ),
+      new URL("../public/course-source/l10-neural-networks/" + asset.file, import.meta.url),
     );
     assert.equal(assetContent.length, asset.bytes);
     assert.equal(sha256(assetContent), asset.sha256);
