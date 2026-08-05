@@ -143,6 +143,8 @@ const tokenizerCases = [
     text: "Wenlin Han",
     a: ["Wen", "lin", " Han"],
     b: ["W", "en", "lin", " H", "an"],
+    idsA: [4182, 391, 9281],
+    idsB: [54, 268, 391, 367, 272],
     question: "Which segmentation better reuses units seen in the training corpus?",
   },
   {
@@ -150,6 +152,8 @@ const tokenizerCases = [
     text: "getUserProfile",
     a: ["get", "User", "Profile"],
     b: ["get", "U", "ser", "Pro", "file"],
+    idsA: [456, 2189, 8821],
+    idsB: [456, 52, 812, 1432, 1198],
     question: "A tokenizer does not execute camelCase or know the identifier's role.",
   },
   {
@@ -157,6 +161,8 @@ const tokenizerCases = [
     text: "人工智能",
     a: ["人工", "智能"],
     b: ["人", "工", "智", "能"],
+    idsA: [12541, 38192],
+    idsB: [2169, 3037, 19481, 7811],
     question: "Segmentation depends on the learned vocabulary, not a universal word list.",
   },
 ];
@@ -179,18 +185,23 @@ function TokenizerComparator() {
         ))}
       </nav>
       <section>
-        <span>Input string</span>
-        <h3>{item.text}</h3>
-        <div className="m19-tokenizer-row">
-          <strong>Tokenizer A</strong>
-          <div>{item.a.map((token, index) => <code key={`${token}-${index}`}>{token}</code>)}</div>
+        <header className="m19-tokenizer-input"><span>Input string</span><h3>{item.text}</h3></header>
+        <div className="m19-tokenizer-diagram">
+          {([
+            ["Tokenizer A", item.a, item.idsA],
+            ["Tokenizer B", item.b, item.idsB],
+          ] as const).map(([label, tokens, ids]) => (
+            <article key={label}>
+              <header><strong>{label}</strong><b>n = {tokens.length} positions</b></header>
+              <div className="m19-token-flow">
+                <div><small>text</small><code>{item.text}</code></div><i aria-hidden="true">→</i>
+                <div className="pieces"><small>subword pieces</small><p>{tokens.map((token, index) => <code key={`${token}-${index}`}>{token}</code>)}</p></div><i aria-hidden="true">→</i>
+                <div className="ids"><small>vocabulary IDs</small><p>{ids.map((id) => <code key={id}>{id}</code>)}</p></div>
+              </div>
+            </article>
+          ))}
         </div>
-        <div className="m19-tokenizer-row">
-          <strong>Tokenizer B</strong>
-          <div>{item.b.map((token, index) => <code key={`${token}-${index}`}>{token}</code>)}</div>
-        </div>
-        <p>{item.question}</p>
-        <small>Illustrative segmentations: an actual result is model- and vocabulary-specific.</small>
+        <footer><p>{item.question}</p><small>Illustrative only: boundaries and IDs depend on the trained vocabulary.</small></footer>
       </section>
     </div>
   );
@@ -669,6 +680,20 @@ function TransformerBlockDiagram() {
           </li>
         ))}
       </ol>
+      <div className="m19-block-architecture" role="img" aria-label="Decoder transformer block with masked self-attention, two residual paths, normalization, and feed-forward network">
+        <header><span>Decoder block</span><b>repeat × N layers</b></header>
+        <article className={active === 4 ? "active" : ""}><small>output state</small><strong>Y</strong></article>
+        <i aria-hidden="true">↑</i>
+        <article className={active === 4 ? "active" : ""}><small>residual 2</small><strong>Add + Norm</strong><em>Z bypasses FFN</em></article>
+        <i aria-hidden="true">↑</i>
+        <article className={active === 3 ? "active" : ""}><small>position-wise</small><strong>Feed-forward network</strong></article>
+        <i aria-hidden="true">↑</i>
+        <article className={active === 2 ? "active" : ""}><small>residual 1</small><strong>Add + Norm</strong><em>X bypasses attention</em></article>
+        <i aria-hidden="true">↑</i>
+        <article className={active === 1 ? "active" : ""}><small>Q · K · V + causal mask</small><strong>Masked multi-head self-attention</strong></article>
+        <i aria-hidden="true">↑</i>
+        <article className={active === 0 ? "active" : ""}><small>token + position state</small><strong>Input X</strong></article>
+      </div>
       <section>
         <span>Selected stage</span>
         <h3>{item.formula}</h3>

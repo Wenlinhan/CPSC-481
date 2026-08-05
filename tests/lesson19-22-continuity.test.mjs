@@ -35,3 +35,18 @@ test("Lessons 21 and 22 use schedule-independent RAG examples and interactive re
   assert.match(lesson22, /Failures grouped by cause/);
   assert.match(lesson22, /current syllabus names Canvas/);
 });
+
+test("Lessons 19 through 22 include inspectable architecture diagrams", async () => {
+  const [lesson19, lesson20, lesson21, lesson22] = await Promise.all([
+    read("Meeting19Deck.tsx"), read("Meeting20Deck.tsx"), read("Meeting21Deck.tsx"), read("Meeting22Deck.tsx"),
+  ]);
+
+  assert.match(lesson19, /subword pieces/);
+  assert.match(lesson19, /Masked multi-head self-attention/);
+  assert.match(lesson20, /function LLMArchitectureStudio/);
+  assert.match(lesson20, /Inside the learned LLM/);
+  assert.match(lesson21, /Online retrieval · outside the LLM/);
+  assert.match(lesson21, /model weights unchanged/);
+  assert.match(lesson22, /function RagEvaluationArchitecture/);
+  assert.match(lesson22, /earliest broken stage/);
+});

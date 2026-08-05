@@ -1510,8 +1510,8 @@
 
 .m19-block-diagram {
   display: grid;
-  gap: 20px;
-  grid-template-columns: 0.8fr 1.2fr;
+  gap: 14px;
+  grid-template-columns: 0.58fr 1.1fr 0.86fr;
 }
 
 .m19-block-diagram ol {
@@ -1560,8 +1560,47 @@
   border: 1px solid #d4dfeb;
   border-radius: 18px;
   display: grid;
-  padding: 25px;
+  padding: 20px;
 }
+
+.m19-block-architecture {
+  align-content: center;
+  background: linear-gradient(155deg, #f7fbff, #f1efff);
+  border: 2px solid #9eb9df;
+  border-radius: 18px;
+  display: grid;
+  gap: 2px;
+  padding: 12px 15px;
+}
+
+.m19-block-architecture header { align-items: center; display: flex; justify-content: space-between; }
+.m19-block-architecture header span { color: #4d31b7; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.m19-block-architecture header b { background: #e2dcff; border-radius: 999px; color: #4d31b7; font-size: 10px; padding: 5px 8px; }
+.m19-block-architecture article { align-items: center; background: white; border: 1px solid #ccd8e6; border-radius: 9px; display: grid; gap: 2px; grid-template-columns: 105px 1fr auto; padding: 6px 9px; }
+.m19-block-architecture article.active { background: #17385b; border-color: #17385b; color: white; box-shadow: 0 0 0 3px rgba(23,56,91,.13); }
+.m19-block-architecture article small { color: #4f6d91; font-size: 8px; font-weight: 900; text-transform: uppercase; }
+.m19-block-architecture article.active small { color: #8fe5ef; }
+.m19-block-architecture article strong { font-size: 12px; }
+.m19-block-architecture article em { color: #6b46d2; font-size: 8px; font-style: normal; font-weight: 800; }
+.m19-block-architecture article.active em { color: #f1d075; }
+.m19-block-architecture > i { color: #6540c9; font-size: 11px; font-style: normal; font-weight: 900; justify-self: center; line-height: 1; }
+
+.m19-tokenizer-input { align-items: center; display: flex; justify-content: space-between; }
+.m19-tokenizer-input h3 { margin: 0; }
+.m19-tokenizer-diagram { display: grid; gap: 8px; }
+.m19-tokenizer-diagram > article { background: #f8fbff; border: 1px solid #cad8e7; border-radius: 13px; display: grid; gap: 8px; padding: 10px 12px; }
+.m19-tokenizer-diagram article > header { align-items: center; display: flex; justify-content: space-between; }
+.m19-tokenizer-diagram article > header b { background: #e8f6f8; border-radius: 999px; color: #08798b; font-size: 10px; padding: 5px 8px; }
+.m19-token-flow { align-items: stretch; display: grid; gap: 7px; grid-template-columns: .75fr auto 1.35fr auto 1.15fr; }
+.m19-token-flow > div { align-content: center; background: white; border: 1px solid #d4deea; border-radius: 9px; display: grid; gap: 5px; min-width: 0; padding: 7px; }
+.m19-token-flow > i { align-self: center; color: #6b46d2; font-style: normal; font-weight: 900; }
+.m19-token-flow small { color: #66758b; font-size: 8px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.m19-token-flow > div > code { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.m19-token-flow p { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
+.m19-token-flow code { background: #f0ecff; border: 0; color: #3e267f; font-size: 10px; padding: 4px 5px; }
+.m19-tokenizer-compare section > footer { align-items: center; display: flex; gap: 12px; justify-content: space-between; }
+.m19-tokenizer-compare section > footer p { margin: 0; }
+.m19-tokenizer-compare section > footer small { max-width: 420px; text-align: right; }
 
 .m19-block-diagram h3 {
   color: #14263e;

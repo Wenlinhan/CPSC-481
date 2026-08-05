@@ -59,6 +59,28 @@ function QualityLoop() {
   );
 }
 
+const ragFailureCases = [
+  { short: "source missing", stage: 0, stageName: "Corpus", metric: "corpus coverage", change: "add and version the authoritative source", explanation: "The retriever cannot return evidence that was never indexed." },
+  { short: "ranked #8, k=5", stage: 1, stageName: "Retrieve + rank", metric: "recall@k · MRR", change: "change one retrieval or ranking setting", explanation: "The evidence exists, but it never enters the prompt's top-k context." },
+  { short: "claim unsupported", stage: 3, stageName: "Generate", metric: "groundedness · citation resolution", change: "constrain claims to supplied passages", explanation: "The right evidence arrived, but the answer asserts more than it supports." },
+  { short: "user cannot verify", stage: 4, stageName: "Product", metric: "task success · human review", change: "expose citations and an escalation path", explanation: "A correct answer still fails if the user cannot inspect or challenge it." },
+] as const;
+
+function RagEvaluationArchitecture() {
+  const [active, setActive] = useState(0);
+  const item = ragFailureCases[active];
+  const stages = ["Corpus", "Retrieve + rank", "Context packet", "LLM answer", "Product + review"];
+  return (
+    <div className="m22-evaluation-architecture">
+      <nav aria-label="Select a RAG failure case">{ragFailureCases.map((entry, index) => <button className={active === index ? "active" : ""} key={entry.short} onClick={() => setActive(index)} type="button">{entry.short}</button>)}</nav>
+      <div className="m22-eval-flow" aria-label="Instrumented RAG evaluation architecture">
+        {stages.map((stage, index) => <div className="m22-eval-node-wrap" key={stage}><article className={index === item.stage ? "broken" : index < item.stage ? "checked" : ""}><small>{index < item.stage ? "passed upstream check" : index === item.stage ? "earliest broken stage" : "downstream symptom"}</small><strong>{stage}</strong><span>{index === 0 ? "source IDs + versions" : index === 1 ? "ranked IDs + scores" : index === 2 ? "retrieved text" : index === 3 ? "claims + citations" : "decision + feedback"}</span></article>{index < stages.length - 1 && <i>→</i>}</div>)}
+      </div>
+      <section><div><span>Diagnosis</span><h3>{item.stageName}</h3><p>{item.explanation}</p></div><article><small>Measure</small><strong>{item.metric}</strong></article><article><small>Change one thing</small><strong>{item.change}</strong></article></section>
+    </div>
+  );
+}
+
 function ReliabilityOpeningDemo() {
   const [view, setView] = useState<"demo" | "set" | "slice">("demo");
   const states = {
@@ -375,20 +397,7 @@ export function RagQualityDeck() {
       {
         eyebrow: "Foundation recap",
         title: "Start at the earliest broken stage",
-        content: (
-          <div className="diagnostic-map">
-            {[
-              ["Corpus", "Is the needed source present, current, and permitted?"],
-              ["Parsing", "Did structure, tables, and identity survive extraction?"],
-              ["Retrieval", "Did the needed chunk enter the candidate set?"],
-              ["Ranking", "Did useful evidence rise above distractors?"],
-              ["Generation", "Did the model follow and cite the evidence?"],
-              ["Product", "Could the user verify, correct, or reject the answer?"],
-            ].map(([stage, question], index) => (
-              <article key={stage}><span>{index + 1}</span><div><strong>{stage}</strong><p>{question}</p></div></article>
-            ))}
-          </div>
-        ),
+        content: <RagEvaluationArchitecture />,
         note: "Timing: 3 minutes. Reinforce the Meeting 21 diagnostic rule: do not tune the generator when the source was never retrieved.",
         sourceSlides: [],
       },
