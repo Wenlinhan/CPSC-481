@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import "../styles/module12-learning.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
@@ -81,10 +81,43 @@ const toolSteps = [
   { label: "4 · test", code: "pred = est.predict(X_new)\nerror = mean_absolute_error(y_new, pred)", explanation: "Evaluate on unseen data; training fitness alone is not evidence of generalization." },
 ];
 
+const gplearnTrace = [0.32066597, 0.32020176, 0.23953666, 0.23567635, 0.10394641, 0.06080204, 0.000781474];
+const surfaceModes = ["Ground truth", "Evolved GP", "Decision tree", "Random forest"] as const;
+
+function GplearnProjectPreview() {
+  const [generation, setGeneration] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [mode, setMode] = useState<(typeof surfaceModes)[number]>("Evolved GP");
+  useEffect(() => {
+    if (!running) return;
+    if (generation >= gplearnTrace.length - 1) { setRunning(false); return; }
+    const timer = window.setTimeout(() => setGeneration(value => value + 1), 520);
+    return () => window.clearTimeout(timer);
+  }, [generation, running]);
+  const progress = generation / (gplearnTrace.length - 1);
+  const curves = useMemo(() => Array.from({ length: 7 }, (_, row) => Array.from({ length: 11 }, (_, column) => {
+    const x0 = -1 + column / 5;
+    const x1 = -1 + row / 3;
+    const truth = x0 * x0 - x1 * x1 + x1 - 1;
+    const early = 0.45 * x0 - 0.25 * x1 - 0.3;
+    let value = mode === "Ground truth" ? truth : early * (1 - progress) + truth * progress;
+    if (mode === "Decision tree") value = Math.round(truth * 2) / 2;
+    if (mode === "Random forest") value = Math.round(truth * 5) / 5;
+    return `${50 + column * 30 + row * 11},${205 - row * 17 - value * 30}`;
+  }).join(" ")), [mode, progress]);
+  const fitness = gplearnTrace[generation];
+  return <section className="m12-gplearn-preview">
+    <header><div><span>Dynamic project preview</span><strong>Symbolic regression evolves a surface</strong></div><button onClick={() => { setGeneration(0); setMode("Evolved GP"); setRunning(true); }} type="button">{running ? "Evolving…" : "Run evolution"}</button></header>
+    <nav aria-label="Compare regression surfaces">{surfaceModes.map(value => <button className={mode === value ? "active" : ""} key={value} onClick={() => setMode(value)} type="button">{value}</button>)}</nav>
+    <div className="m12-gplearn-surface"><svg aria-label={`${mode} response surface at generation ${generation}`} role="img" viewBox="0 0 430 245"><path className="base" d="M42 211 L343 211 L410 110 L109 110 Z" />{curves.map((points, index) => <polyline className="mesh-row" key={index} points={points} />)}<text x="340" y="232">X₀</text><text x="395" y="103">X₁</text><text x="25" y="55">y</text></svg><aside><span>Generation</span><strong>{generation}</strong><span>Best fitness (error)</span><strong>{fitness.toFixed(fitness < .01 ? 6 : 3)}</strong><div className="m12-fitness-meter"><i style={{ width: `${Math.max(4, (1 - fitness / gplearnTrace[0]) * 100)}%` }} /></div><small>{fitness < .01 ? "✓ stopping criterion reached" : "Searching for a lower-error expression"}</small></aside></div>
+    <footer><p><b>Target:</b> y = X₀² − X₁² + X₁ − 1</p><p><b>Evolved:</b> y ≈ X₀² − X₁² + X₁ − .999</p></footer>
+  </section>;
+}
+
 function SciKitWorkflow() {
   const [step, setStep] = useState(0);
   const item = toolSteps[step];
-  return <div className="m12-code-lab"><nav aria-label="Scikit-compatible genetic-programming workflow">{toolSteps.map((entry, index) => <button className={step === index ? "active" : ""} key={entry.label} onClick={() => setStep(index)} type="button">{entry.label}</button>)}</nav><section><span>Executable workflow</span><pre><code>{item.code}</code></pre><p>{item.explanation}</p><small><b>Precision:</b> `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators.</small></section></div>;
+  return <div className="m12-gplearn-page"><GplearnProjectPreview /><div className="m12-code-lab compact"><nav aria-label="Scikit-compatible genetic-programming workflow">{toolSteps.map((entry, index) => <button className={step === index ? "active" : ""} key={entry.label} onClick={() => setStep(index)} type="button">{entry.label}</button>)}</nav><section><span>Course-source workflow</span><pre><code>{item.code}</code></pre><p>{item.explanation}</p><p className="m12-gplearn-resource"><a href="https://gplearn.readthedocs.io/en/stable/examples.html#symbolic-regressor" rel="noreferrer" target="_blank">Open the gplearn Symbolic Regressor project ↗</a></p><small><b>Precision:</b> gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator.</small></section></div></div>;
 }
 
 function NeuronLab() {
@@ -113,6 +146,12 @@ const perceptronRows = [
   [1.0, 1.0, 1], [9.4, 6.4, -1], [2.5, 2.1, 1], [8.0, 7.7, -1], [0.5, 2.2, 1],
   [7.9, 8.4, -1], [7.0, 7.0, -1], [2.8, 0.8, 1], [1.2, 3.0, 1], [7.8, 6.1, -1],
 ] as const;
+
+function PerceptronDatasetTable() {
+  const [selected, setSelected] = useState(0);
+  const row = perceptronRows[selected];
+  return <div className="m12-perceptron-table"><table className="m12-data-table"><caption>Labeled binary training examples</caption><thead><tr><th>Case</th><th>x₁</th><th>x₂</th><th>Target t</th></tr></thead><tbody>{perceptronRows.map((item, index) => <tr className={selected === index ? "active" : ""} key={index} onClick={() => setSelected(index)} onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setSelected(index); } }} tabIndex={0}><td>{index + 1}</td><td>{item[0].toFixed(1)}</td><td>{item[1].toFixed(1)}</td><td className={item[2] === 1 ? "positive-text" : "negative-text"}>{item[2] > 0 ? "+1" : "−1"}</td></tr>)}</tbody></table><section className="m12-selected-record"><span>Selected case {selected + 1}</span><h3>Each input stays with its label</h3><Formula>x = [{row[0].toFixed(1)}, {row[1].toFixed(1)}, 1]</Formula><Formula>target t = {row[2] > 0 ? "+1" : "−1"}</Formula><p>The target is supplied during supervised training. At prediction time, the model receives x₁ and x₂ but must infer the class.</p></section></div>;
+}
 
 const perceptronSteps = [
   { row: 0, weights: [0.75, 0.5, -0.6], net: 0.65, output: 1, delta: [0, 0, 0], next: [0.75, 0.5, -0.6] },
@@ -182,7 +221,7 @@ const lesson17Slides: SourceLessonSlide[] = [
   { eyebrow: "McCulloch–Pitts · 1943", title: "Fixed weights and bias implement AND and OR", content: <div className="m12-media-explain"><SourceMedia alt="McCulloch-Pitts AND and OR weighted units" caption="AND uses bias −2; OR uses bias −1 when both input weights are 1." file="image3.png" /><section><Formula>f(net) = 1 when net ≥ 0; otherwise 0</Formula><p>The activation rule stays fixed. The bias changes which truth-table rows reach net ≥ 0.</p></section></div>, note: "Connect the constant input 1 to the bias term.", sourceSlides: [] },
   { eyebrow: "McCulloch–Pitts demo", title: "Run all four input pairs through one gate", content: <LogicGateLab />, note: "Toggle all four combinations for both gates and state the invariant weights.", sourceSlides: [] },
   { eyebrow: "From logic to learning", title: "A predictive learner must discover the weights from examples", content: <Cards columns={3}><Card label="Given" title="Feature vectors">Measurements such as size, price, or pixel values.</Card><Card label="Given" title="Desired class" tone="green">A target t for each training case.</Card><Card label="Learn" title="Weight vector" tone="purple">Parameters W that make predictions match labels.</Card></Cards>, note: "Contrast manually designed AND/OR weights with learned perceptron weights.", sourceSlides: [] },
-  { eyebrow: "Supervised evidence", title: "The target column turns points into labeled training examples", content: <div className="m12-table-layout"><table><thead><tr><th>x₁</th><th>x₂</th><th>target t</th></tr></thead><tbody>{perceptronRows.map((row, index) => <tr key={index}><td>{row[0]}</td><td>{row[1]}</td><td className={row[2] === 1 ? "positive-text" : "negative-text"}>{row[2]}</td></tr>)}</tbody></table><section><h3>Classifier, not clusterer</h3><p>The learner already knows the two desired classes: +1 and −1. It uses them to adjust a decision boundary.</p></section></div>, note: "Ask what disappears at prediction time: the target label.", sourceSlides: [] },
+  { eyebrow: "Supervised evidence", title: "The target column turns points into labeled training examples", content: <PerceptronDatasetTable />, note: "Select different rows, then ask what disappears at prediction time: the target label.", sourceSlides: [] },
   { eyebrow: "Knowledge point 4 · Perceptron", title: "Predict first; update only after a mistake", content: <div className="m12-procedure"><article><b>1</b><span>Score</span><Formula>net = Σwᵢxᵢ</Formula></article><article><b>2</b><span>Activate</span><Formula>a = 1 if net ≥ θ; else −1</Formula></article><article><b>3</b><span>Compare</span><Formula>error = t − a</Formula></article><article><b>4</b><span>Update</span><Formula>Δwᵢ = η(t−a)xᵢ</Formula></article></div>, note: "Define η, t, a, xᵢ, and θ. Correct predictions produce a zero update.", sourceSlides: [] },
   { eyebrow: "Training procedure", title: "One epoch processes every example; convergence can require reuse", content: <div className="m12-loop"><b>initialize W</b><i>→</i><b>predict one case</b><i>→</i><b>update on error</b><i>→</i><b>next case</b><i>↺</i><p>Continue across epochs until outputs remain correct for repeated passes—or stop at a declared training limit.</p></div>, note: "Distinguish one update, one epoch, and convergence.", sourceSlides: [] },
   { eyebrow: "Numeric setup", title: "The source example begins with W=[0.75, 0.50, −0.60] and η=0.2", content: <Cards columns={3}><Card label="Example 1" title="[1.0, 1.0, 1]">Target +1; the initial prediction is correct.</Card><Card label="Example 2" title="[9.4, 6.4, 1]" tone="amber">Target −1; the positive prediction requires a negative update.</Card><Card label="Example 3" title="[2.5, 2.1, 1]" tone="purple">Target +1; the new negative prediction requires a positive update.</Card></Cards>, note: "Students predict which examples will change the weights.", sourceSlides: [] },
