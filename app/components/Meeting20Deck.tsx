@@ -6,6 +6,43 @@ import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 type SamplingTemperature = "0.3" | "1.0" | "1.8";
 
+const llmArchitectureStages = [
+  { label: "Tokenize", owner: "runtime", detail: "Split the prompt into vocabulary IDs. The tokenizer is fixed for this model family.", artifact: "token IDs" },
+  { label: "Embed", owner: "model", detail: "Look up learned token vectors and add position information.", artifact: "input states" },
+  { label: "Transformer x N", owner: "model", detail: "Masked attention and feed-forward layers repeatedly update every position's state.", artifact: "contextual states" },
+  { label: "LM head", owner: "model", detail: "Project the final state to one score (logit) for every vocabulary token.", artifact: "vocabulary logits" },
+  { label: "Sample", owner: "runtime", detail: "Softmax, temperature, top-k, or top-p turn scores into a next-token choice.", artifact: "one next token" },
+  { label: "Append + repeat", owner: "runtime", detail: "Add that token to the sequence and run the same path again until stopping.", artifact: "generated sequence" },
+] as const;
+
+function LLMArchitectureStudio() {
+  const [active, setActive] = useState(0);
+  const item = llmArchitectureStages[active];
+  return (
+    <div className="m20-llm-studio">
+      <div className="m20-llm-boundaries">
+        <span className="runtime">Runtime input</span><span className="model">Inside the learned LLM</span><span className="runtime">Runtime decoding</span>
+      </div>
+      <div className="m20-llm-flow" aria-label="Complete autoregressive language model architecture">
+        {llmArchitectureStages.map((stage, index) => (
+          <div className="m20-llm-node-wrap" key={stage.label}>
+            <button className={`${stage.owner} ${active === index ? "active" : ""}`} onClick={() => setActive(index)} type="button">
+              <small>{index + 1}</small><strong>{stage.label}</strong><span>{stage.artifact}</span>
+            </button>
+            {index < llmArchitectureStages.length - 1 && <i aria-hidden="true">&#8594;</i>}
+          </div>
+        ))}
+        <b className="m20-repeat-arrow">next token loops back into the sequence &#8634;</b>
+      </div>
+      <section className={item.owner}>
+        <div><span>{item.owner === "model" ? "learned parameters" : "inference-time operation"}</span><h3>{item.label}</h3></div>
+        <p>{item.detail}</p>
+        <aside><strong>Training objective</strong><code>p(sequence) = product of p(next token | previous tokens)</code><small>Fluent prediction does not add a truth-checking step.</small></aside>
+      </section>
+    </div>
+  );
+}
+
 const samplingOptions: Record<
   SamplingTemperature,
   { label: string; bars: number[]; message: string; samples: string[] }
@@ -568,21 +605,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Knowledge point 1 · Pretraining objective",
     title: "A language model learns to assign probability to the next token",
-    content: (
-      <div className="m20-equation-layout">
-        <section>
-          <span>Autoregressive factorization</span>
-          <code>p(x₁, …, xₙ) = ∏ᵢ p(xᵢ | x₁, …, xᵢ₋₁)</code>
-          <p>The transformer produces logits for the vocabulary at every position. Softmax converts them to a distribution.</p>
-        </section>
-        <div>
-          <article><span>Input</span><strong>previous tokens</strong><p>the context window available at that position</p></article>
-          <article><span>Target</span><strong>observed next token</strong><p>one token from the training sequence</p></article>
-          <article><span>Update</span><strong>reduce cross-entropy loss</strong><p>increase probability assigned to observed continuations</p></article>
-          <article className="warning"><span>Not in the objective</span><strong>truth checking</strong><p>no automatic database lookup, citation audit, or proof step</p></article>
-        </div>
-      </div>
-    ),
+    content: <LLMArchitectureStudio />,
     note: "Timing: 3 minutes. Read the factorization left to right. Connect it to Meeting 19’s causal mask: each prediction can use only preceding tokens.",
     sourceSlides: [],
   },

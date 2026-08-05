@@ -66,31 +66,24 @@ function Callout({
 }
 
 function Pipeline() {
-  const stages = [
-    ["1", "Prepare", "Documents → chunks"],
-    ["2", "Represent", "Chunks → searchable index"],
-    ["3", "Retrieve", "Query → candidate evidence"],
-    ["4", "Assemble", "Instructions + evidence"],
-    ["5", "Generate", "Answer + citations"],
-    ["6", "Evaluate", "Retrieval + answer quality"],
-  ];
-
+  const [phase, setPhase] = useState<"ingest" | "retrieve" | "generate">("ingest");
+  const details = {
+    ingest: ["Build the searchable memory", "Documents are parsed, chunked, embedded, and stored. Updating the corpus does not retrain the LLM.", "Check: source identity, freshness, permissions"],
+    retrieve: ["Find evidence for this question", "A query embedding searches the external index; top-k passages become a text evidence packet.", "Check: did the needed chunk enter top-k?"],
+    generate: ["Give evidence to the LLM", "The prompt contains instructions, the user question, and retrieved text. The LLM generates an answer and citations.", "Check: does every claim follow from evidence?"],
+  } as const;
+  const detail = details[phase];
   return (
-    <div className="pipeline" aria-label="Six-stage RAG pipeline">
-      {stages.map(([number, title, detail], index) => (
-        <div className="pipeline-stage-wrap" key={number}>
-          <div className="pipeline-stage">
-            <span className="stage-number">{number}</span>
-            <strong>{title}</strong>
-            <small>{detail}</small>
-          </div>
-          {index < stages.length - 1 && (
-            <span className="pipeline-arrow" aria-hidden="true">
-              →
-            </span>
-          )}
-        </div>
-      ))}
+    <div className="m21-rag-architecture">
+      <nav aria-label="Inspect RAG architecture phase">
+        {(["ingest", "retrieve", "generate"] as const).map(value => <button className={phase === value ? "active" : ""} key={value} onClick={() => setPhase(value)} type="button">{value === "ingest" ? "1 · ingest" : value === "retrieve" ? "2 · retrieve" : "3 · generate"}</button>)}
+      </nav>
+      <div className="m21-rag-lanes" aria-label="RAG architecture with external retrieval and language model boundaries">
+        <section className={phase === "ingest" ? "active" : ""}><header><span>Offline knowledge lane</span><b>model weights unchanged</b></header><div><article>source documents</article><i>→</i><article>parse + chunk</article><i>→</i><article>embedding model</article><i>→</i><article>vector index</article></div></section>
+        <section className={phase === "retrieve" ? "active" : ""}><header><span>Online retrieval · outside the LLM</span><b>external evidence</b></header><div><article>user question</article><i>→</i><article>query embedding</article><i>→</i><article>top-k search</article><i>→</i><article>relevant passages</article></div></section>
+        <section className={phase === "generate" ? "active" : ""}><header><span>Generation boundary</span><b>LLM receives text context</b></header><div><article>instructions + question + passages</article><i>→</i><article className="llm">language model</article><i>→</i><article>answer + citations</article></div></section>
+      </div>
+      <footer><div><span>{detail[0]}</span><p>{detail[1]}</p></div><strong>{detail[2]}</strong></footer>
     </div>
   );
 }
@@ -602,28 +595,7 @@ export function RagDeck() {
         eyebrow: "System view",
         minutes: 3,
         title: "RAG is a pipeline, not a single model",
-        content: (
-          <div className="pipeline-slide">
-            <Pipeline />
-            <div className="system-boundary">
-              <div>
-                <span>Offline / ingestion</span>
-                <strong>Prepare · represent · index</strong>
-              </div>
-              <div>
-                <span>Online / inference</span>
-                <strong>Retrieve · assemble · generate</strong>
-              </div>
-              <div>
-                <span>Continuous</span>
-                <strong>Evaluate · observe · improve</strong>
-              </div>
-            </div>
-            <p className="takeaway">
-              Every boundary creates a measurable failure mode.
-            </p>
-          </div>
-        ),
+        content: <Pipeline />,
         note:
           "Walk left to right. Ask which stages require an LLM. Retrieval can use learned encoders, but the pipeline is not simply 'ask one LLM twice.'",
       },
