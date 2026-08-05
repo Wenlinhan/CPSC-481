@@ -206,10 +206,10 @@
 .m12-gplearn-surface .base { fill: #ece8fb; stroke: #b9a8ef; stroke-width: 2; }
 .m12-gplearn-surface .mesh-row { fill: none; stroke: #5634d1; stroke-linecap: round; stroke-width: 3; }
 .m12-gplearn-surface text { fill: #302070; font-size: 16px; font-weight: 900; }
-.m12-gplearn-surface aside { align-content: center; background: rgba(255,255,255,.78); display: grid; gap: 4px; padding: 12px; }
+.m12-gplearn-surface aside { align-content: center; background: rgba(255,255,255,.78); display: grid; gap: 2px; padding: 8px; }
 .m12-gplearn-surface aside span { color: #5a6378; font-size: .7em; font-weight: 800; text-transform: uppercase; }
 .m12-gplearn-surface aside strong { color: #302070; font-size: clamp(19px, 1.55vw, 26px); }
-.m12-gplearn-surface aside small { font-size: .72em; line-height: 1.25; }
+.m12-gplearn-surface aside small { font-size: .66em; line-height: 1.15; }
 .m12-fitness-meter { background: #ded9f3; border-radius: 999px; height: 9px; overflow: hidden; }
 .m12-fitness-meter i { background: #198b67; display: block; height: 100%; transition: width .4s ease; }
 .m12-gplearn-preview footer { display: grid; gap: 3px; }
@@ -251,9 +251,9 @@
 .m12-perceptron-trace > section > p { grid-column: 1 / -1; margin: 0; }
 
 .m12-perceptron-table { display: grid; gap: 22px; grid-template-columns: 1.08fr .92fr; height: 100%; min-height: 0; }
-.m12-data-table { background: #fff; border-collapse: separate; border-radius: 16px; border-spacing: 0; box-shadow: 0 8px 24px rgba(48,32,112,.08); font-size: clamp(15px, 1.15vw, 19px); overflow: hidden; width: 100%; }
-.m12-data-table caption { background: #302070; color: #fff; font-size: 1.05em; font-weight: 900; padding: 8px 12px; }
-.m12-data-table :is(th, td) { border-bottom: 1px solid #e0e3ec; min-width: 70px; padding: 4px 13px; text-align: center; }
+.m12-data-table { background: #fff; border-collapse: separate; border-radius: 16px; border-spacing: 0; box-shadow: 0 8px 24px rgba(48,32,112,.08); font-size: clamp(14px, 1.02vw, 17px); line-height: 1.15; overflow: hidden; width: 100%; }
+.m12-data-table caption { background: #302070; color: #fff; font-size: 1.05em; font-weight: 900; padding: 7px 12px; }
+.m12-data-table :is(th, td) { border-bottom: 1px solid #e0e3ec; min-width: 70px; padding: 3px 13px; text-align: center; }
 .m12-data-table th { background: #eeeafd; color: #302070; font-weight: 900; }
 .m12-data-table tbody tr { cursor: pointer; outline: none; }
 .m12-data-table tbody tr:hover, .m12-data-table tbody tr:focus { background: #f4f1fe; }
