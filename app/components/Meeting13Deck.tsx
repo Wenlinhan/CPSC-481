@@ -1307,11 +1307,142 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
+const lesson15KeyPoints = [
+  [
+    "Concept learning changes which instances a representation covers.",
+    "Positive examples motivate generalization; near misses motivate specialization.",
+    "Winston's arch learner demonstrates search through symbolic concept descriptions.",
+  ],
+  [
+    "Explain learning, concepts, meaning, knowledge, and Simon's performance-based definition.",
+    "Operate generalization and specialization rules on candidate concepts.",
+    "Model Winston's semantic network and audit coverage, example order, data quality, and leakage.",
+  ],
+  [
+    "Learning acquires knowledge, skills, values, or understanding through training, education, development, or experience.",
+    "A learning curve must specify the performance measure on the vertical axis and experience or time on the horizontal axis.",
+    "Improvement on repeated items may indicate memorization; transfer to varied items is stronger evidence of learning.",
+  ],
+  [
+    "Attention selects experience as input; working processes connect it with prior knowledge.",
+    "Long-term memory stores changes that can be retrieved later.",
+    "Observable output is evidence of learning only when the task and performance measure are clearly defined.",
+  ],
+  [
+    "A class label names a category, while a concept represents reusable conditions for membership.",
+    "Meaning connects symbols such as ball, ball game, and sport to structured knowledge.",
+    "A learned representation must support recognition, inference, or action rather than merely store a word.",
+  ],
+  [
+    "Children encounter animals with varying sizes, colors, and shapes yet form stable categories.",
+    "Concept acquisition combines recurring similarities, labels, examples, and corrective feedback.",
+    "The central question is which evidence supports a reusable rule rather than memory of one instance.",
+  ],
+  [
+    "Rote learning stores instances; induction derives a reusable general rule from examples.",
+    "Deduction applies existing rules, while analogy transfers structure between related cases.",
+    "Different learning methods transform information differently and support different kinds of claims.",
+  ],
+  [
+    "Simon defines learning as a system change that improves performance on the same task or another task from the same population.",
+    "A valid claim must specify the task, performance metric, experience, and comparison point.",
+    "Improved performance—not merely more computation or more stored data—is the observable criterion.",
+  ],
+  [
+    "Hand-coding all expert knowledge creates a knowledge-engineering bottleneck.",
+    "Learning offers a way to derive useful regularities from examples or experience.",
+    "Applications include recognition, forecasting, decision support, vehicles, data mining, and analytics.",
+  ],
+  [
+    "Generalization increases coverage by replacing a constant with a variable or dropping a conjunct.",
+    "Each operator removes a restriction, so every previously covered instance remains covered.",
+    "The newly covered set must be checked because a broader concept may also admit false positives.",
+  ],
+  [
+    "Adding a disjunct covers an additional alternative without discarding the existing alternative.",
+    "Replacing a property with its parent class uses an ontology to increase coverage systematically.",
+    "All four operators—variable replacement, condition removal, disjunction, and parent substitution—move toward more general concepts.",
+  ],
+  [
+    "Ball1=(small, red, round) and Ball2=(large, blue, round) differ in size and color.",
+    "Unification replaces the differing values with variables Y and Z while preserving the shared value round.",
+    "The candidate Ball=(Y,Z,round) remains provisional until counterexamples test whether round is too restrictive or too broad.",
+  ],
+  [
+    "A concept space contains the candidate descriptions reachable with the available representation and operators.",
+    "A more general concept covers every instance covered by a more specific concept and possibly additional instances.",
+    "Learning searches this ordered space for a boundary consistent with observed evidence.",
+  ],
+  [
+    "Moving upward in the concept lattice removes restrictions and increases coverage.",
+    "Moving downward adds restrictions and specializes the concept.",
+    "The representation determines which neighboring moves are legal and therefore which concepts can be learned.",
+  ],
+  [
+    "A learning system must define the target concept or performance task.",
+    "It also needs a representation, update method, and evidence for evaluating success.",
+    "Different targets—faces, voices, games, credit, or investments—require different features and evaluation criteria.",
+  ],
+  [
+    "Winston represents an arch as typed part nodes connected by spatial support relations.",
+    "The two supports and top piece remain distinct so the learner can reason about both type and relation.",
+    "The learner searches semantic-network descriptions rather than memorizing a pixel template.",
+  ],
+  [
+    "Positive arches expand the set that the candidate should cover.",
+    "Near misses differ in a small but important way and reveal missing constraints.",
+    "A useful update preserves all known positives while excluding the diagnosed near miss.",
+  ],
+  [
+    "Two valid arches share three parts, two support relations, and brick supports.",
+    "Their top pieces differ—brick versus pyramid—so only the top-part type should be generalized.",
+    "The supplied hierarchy gives polygon as the least common parent, yielding a minimally generalized candidate.",
+  ],
+  [
+    "The examples show brick and pyramid tops but do not themselves provide the parent relation polygon.",
+    "The type hierarchy is background knowledge supplied to the learner.",
+    "Changing the hierarchy can change the concept learned from exactly the same examples.",
+  ],
+  [
+    "Disconnected pieces show that part types alone are insufficient; support relations are required.",
+    "Touching supports motivate a must-not-touch constraint between the two uprights.",
+    "Minimal specialization adds only the constraints needed to reject a near miss while retaining known positives.",
+  ],
+  [
+    "Positive examples require covered regions but leave many unobserved cases ambiguous.",
+    "Near misses carve away specific overgeneralized regions and sharpen the decision boundary.",
+    "The learned boundary is justified only relative to the examples, hierarchy, and representation supplied so far.",
+  ],
+  [
+    "Initialize the semantic network from the first positive example.",
+    "Generalize the top type when a new positive differs only at that node.",
+    "Specialize with support and must-not-touch constraints when near misses expose missing relations.",
+  ],
+  [
+    "Winston's learner performs hill climbing through minimal generalizations and specializations without backtracking.",
+    "Example order can therefore change the path and final candidate.",
+    "Reliable learning requires relevant, correctly labeled, representative, noncontradictory, and boundary-informative data.",
+  ],
+  [
+    "Training data fit model parameters and any data-derived preprocessing.",
+    "Validation data compare representations and settings; the untouched test set estimates final performance once.",
+    "Leakage occurs when unavailable future information or validation/test evidence influences training.",
+  ],
+  [
+    "A concept-learning claim must state what was learned and how it is represented.",
+    "Evidence changes the candidate through explicit generalization or specialization operators.",
+    "The final claim must be audited for coverage errors, example-order effects, data quality, and leakage.",
+  ],
+] as const;
+
+slides.forEach((slide, index) => { slide.keyPoints = lesson15KeyPoints[index]; });
+
 export function Meeting13Deck() {
   return (
     <SourceDeckShell
       meetingLabel="Module 11 · Lesson 15"
       meetingTitle="Machine Learning Foundations and Concept Learning"
+      notesMode="key-points"
       resolveSourceReference={resolveMeeting13SourceReference}
       slides={slides}
       sourceCollectionLabel={SOURCE_DECK_LABEL}

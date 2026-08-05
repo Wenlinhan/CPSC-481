@@ -7,6 +7,7 @@ export type LessonSlide = {
   title: string;
   subtitle?: string;
   content: ReactNode;
+  keyPoints?: readonly string[];
   minutes?: number;
   note: string;
   sourceSlides: number[];
@@ -73,6 +74,9 @@ function isBoilerplateKeyPoint(value: string): boolean {
 }
 
 function collectKeyPoints(root: HTMLDivElement | null, slide: LessonSlide): string[] {
+  if (slide.keyPoints?.length) {
+    return slide.keyPoints.map(normalizeKeyPoint).filter(Boolean).slice(0, 5);
+  }
   if (!root) return slide.subtitle ? [slide.subtitle] : [slide.title];
   const candidates = [
     slide.subtitle ?? "",

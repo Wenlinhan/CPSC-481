@@ -49,7 +49,7 @@ test("all 22 sequential lesson routes render", async () => {
   }
 });
 
-test("Lessons 1 through 10 show concise page key points in Notes", async () => {
+test("Lessons 1 through 10, 14, and 15 show concise page key points in Notes", async () => {
   const componentFiles = [
     "Meeting01Deck.tsx",
     "Meeting02Deck.tsx",
@@ -61,11 +61,13 @@ test("Lessons 1 through 10 show concise page key points in Notes", async () => {
     "Meeting08Deck.tsx",
     "Lesson09GASlides.tsx",
     "Lesson10GPSlides.tsx",
+    "Meeting10Deck.tsx",
+    "Meeting13Deck.tsx",
   ];
 
-  for (const [index, filename] of componentFiles.entries()) {
+  for (const filename of componentFiles) {
     const component = await readFile(new URL(`../app/components/${filename}`, import.meta.url), "utf8");
-    assert.match(component, /notesMode="key-points"/, `Lesson ${index + 1} must opt into key-point Notes`);
+    assert.match(component, /notesMode="key-points"/, `${filename} must opt into key-point Notes`);
     assert.doesNotMatch(component, /narrationNotes|lessonNarrationNotes/);
   }
 

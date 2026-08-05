@@ -1021,11 +1021,142 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
+const lesson14KeyPoints = [
+  [
+    "Independence and conditional independence reduce large probability models to smaller reusable factors.",
+    "Bayesian networks encode local dependencies in a directed acyclic graph with conditional probability tables.",
+    "Naive Bayes uses class-conditional independence to classify efficiently from priors and feature likelihoods.",
+  ],
+  [
+    "X and Y are independent when observing either variable does not change the distribution of the other.",
+    "Equivalent tests are P(x|y)=P(x), P(y|x)=P(y), and P(x,y)=P(x)P(y), where denominators are positive.",
+    "Every joint-table cell must factorize; one mismatched cell is enough to disprove independence.",
+  ],
+  [
+    "Independence factorizes the joint distribution as P(X,Y)=P(X)P(Y).",
+    "For n independent binary variables, 2^n joint rows can be represented by n two-entry marginal tables.",
+    "The storage saving is valid only when the independence assumption holds well enough for the intended decision.",
+  ],
+  [
+    "The marginals give P(T=hot)=0.5 and P(W=sun)=0.6, so independence predicts P(hot,sun)=0.3.",
+    "All four P2 cells equal P(T)P(W), including P2(hot,sun)=0.3; therefore P2 factorizes.",
+    "P1(hot,sun)=0.4 rather than 0.3, so that single counterexample proves P1 does not factorize.",
+  ],
+  [
+    "Fairness fixes each coin-flip marginal at 0.5; independence is the separate assumption that permits multiplication.",
+    "For H,T,H, the joint probability is 0.5 x 0.5 x 0.5 = 0.125.",
+    "More generally, independent variables factorize as P(X1,...,Xn)=the product of their marginal probabilities.",
+  ],
+  [
+    "Smoke and an alarm may be associated because both can be effects of the shared cause Fire.",
+    "A model may assert Smoke is conditionally independent of Alarm once Fire is known.",
+    "Conditional independence is a claim about the model and evidence, not a fact guaranteed by variable names.",
+  ],
+  [
+    "X is conditionally independent of Y given Z when P(x,y|z)=P(x|z)P(y|z) for every valid assignment.",
+    "Equivalent forms are P(x|y,z)=P(x|z) and P(y|x,z)=P(y|z).",
+    "X and Y may remain associated overall even when fixing Z makes further information about either one irrelevant.",
+  ],
+  [
+    "Cavity is a common cause that can jointly explain Toothache and a probe Catch.",
+    "Given Cavity, the model asserts P(Catch|Toothache,Cavity)=P(Catch|Cavity).",
+    "The same conditional-independence claim can be written as a conditional factorization of Toothache and Catch.",
+  ],
+  [
+    "Rain is a common cause of both Traffic and Umbrella use in the proposed network.",
+    "Traffic and Umbrella can be dependent before Rain is observed.",
+    "Given Rain, the model can assert Traffic is conditionally independent of Umbrella.",
+  ],
+  [
+    "Fire can be modeled as a common cause of Smoke and Alarm.",
+    "The conditional-independence claim Smoke independent of Alarm given Fire holds only in the simplified network.",
+    "Direct smoke detection or a latent sensor fault would violate that simplified factorization.",
+  ],
+  [
+    "Conditional probability divides a compatible joint probability by the evidence probability.",
+    "The product rule reconstructs a joint: P(x,y)=P(x|y)P(y).",
+    "The chain rule factorizes any ordered joint; independence assumptions can then remove conditioning variables.",
+  ],
+  [
+    "A Bayesian network consists of random variables, a directed acyclic graph, and one local conditional distribution per node.",
+    "A node's parents specify the variables on which its local probability table conditions.",
+    "The burglary example separates Burglary, Earthquake, Alarm, JohnCalls, and MaryCalls into local mechanisms.",
+  ],
+  [
+    "Root nodes use priors P(B) and P(E); Alarm uses P(A|B,E); each call uses a probability conditioned on Alarm.",
+    "The complete joint is P(B)P(E)P(A|B,E)P(J|A)P(M|A).",
+    "Multiplying local factors reconstructs the probability of any complete assignment.",
+  ],
+  [
+    "D-separation determines whether every path between variables is blocked by the conditioning set.",
+    "Conditioning on a common cause blocks its path, while conditioning on a collider can open a path.",
+    "In the burglary network, observing Alarm makes Burglary and Earthquake compete to explain the same evidence.",
+  ],
+  [
+    "Enumeration identifies query variables, observed evidence, and all remaining hidden variables.",
+    "For each query value, it multiplies network factors and sums over every hidden-variable assignment.",
+    "The resulting unnormalized values are divided by their sum to produce a posterior distribution.",
+  ],
+  [
+    "For P(Burglary|JohnCalls,MaryCalls), Earthquake and Alarm are hidden and must be summed out.",
+    "Compute one unnormalized mass for Burglary=true and another for Burglary=false, then normalize.",
+    "With the displayed CPTs, two calls raise the burglary probability from 0.001 to about 0.284, not to certainty.",
+  ],
+  [
+    "Naive Bayes assumes features are conditionally independent given the class, not marginally independent.",
+    "Its likelihood factorization is P(F1,...,Fn|C)=the product of P(Fi|C).",
+    "Features such as color, size, and shape may still be associated in the overall population through class prevalence.",
+  ],
+  [
+    "MAP classification maximizes P(C) times the product of feature likelihoods P(ei|C).",
+    "Maximum likelihood omits the class prior; MAP includes it.",
+    "Log probabilities replace products with sums, preventing numerical underflow without changing the winning class.",
+  ],
+  [
+    "Training estimates class priors and class-conditional feature probabilities from labeled examples.",
+    "Testing computes a posterior score for each candidate class and selects the largest.",
+    "The model variant must match the data type, such as Gaussian, multinomial, Bernoulli, or categorical features.",
+  ],
+  [
+    "A probabilistic finite-state acceptor assigns probabilities to transitions along alternative phone sequences.",
+    "It represents sequence structure and pronunciation variants rather than a Naive Bayes feature factorization.",
+    "The distinction matters because sequence dependence cannot be justified by relabeling a graph as Naive Bayes.",
+  ],
+  [
+    "Speech decoding compares candidates using a score proportional to phone likelihood times word prior.",
+    "A frequent word can enter the candidate list because of its large prior even when its phone likelihood is poor.",
+    "A zero phone likelihood makes the final product zero regardless of the word prior.",
+  ],
+  [
+    "The displayed phone-only score selects new because P(ni|word)P(word) is largest for that candidate.",
+    "The phrase I new is implausible, showing that the preceding word contains useful evidence omitted by the local model.",
+    "Adding word context favors I need and illustrates how representation can matter more than refining the same score.",
+  ],
+  [
+    "Naive Bayes is fast, incremental, and often robust to irrelevant features.",
+    "Correlated features can double-count evidence and produce poorly calibrated probabilities.",
+    "When dependencies or sequence structure matter, a Bayesian network or richer sequence model may be more appropriate.",
+  ],
+  [
+    "Every model claim should identify the exact conditional-independence assumptions it makes.",
+    "A useful audit names evidence that could test those assumptions and the consequences of a violation.",
+    "Model choice should follow the dependency structure required by the task, not convenience alone.",
+  ],
+  [
+    "Independence and conditional independence justify probability factorization only when their quantified claims hold.",
+    "Bayesian-network inference multiplies local factors, sums hidden variables, and normalizes the query distribution.",
+    "Naive Bayes performs efficient MAP classification, but its feature-dependence assumptions must be defended.",
+  ],
+] as const;
+
+slides.forEach((slide, index) => { slide.keyPoints = lesson14KeyPoints[index]; });
+
 export function Meeting10Deck() {
   return (
     <SourceDeckShell
       meetingLabel="Module 10 · Lesson 14"
       meetingTitle="Conditional Independence, Bayesian Networks, and Naive Bayes"
+      notesMode="key-points"
       resolveSourceReference={resolveMeeting10SourceReference}
       slides={slides}
       sourceCollectionLabel={`${L11_SOURCE_DECK_LABEL} + ${L12_SOURCE_DECK_LABEL}`}
