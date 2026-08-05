@@ -62,7 +62,8 @@ Authoritative source: `L10_MachineLearning Part B.pptx`, 36 slides, SHA-256 `AFB
 
 - Use native HTML for definitions, equations, datasets, truth tables, algorithms, and comparison matrices.
 - Lesson 17 page 8 supplements source page 5 with the official gplearn Symbolic Regressor example: link directly to the documentation, animate the published generation/error trace, and let students compare native surface previews for ground truth, evolved GP, decision tree, and random forest. Preserve the published target equation and learned symbolic expression; do not screenshot the documentation page.
-- Use source-cropped media only for the artificial-neuron schematic, error surface, fruit basket, and batch/online concept image; never use a complete source slide.
+- Lesson 18 pages 2, 7, 11, 14, 15, 18, 20, 22, and 24-26 use native instructional diagrams: an outcome path, explicit layer notation, forward/backward dataflow, clustering-family structures, a visibly changing K-means trace, labeled-versus-unlabeled geometry, a cluster-to-classify pipeline, a batch/online stream comparison, expanded neural-network architecture cards, a domain-knowledge hybrid flow, and application-specific evidence/risk scenes. Page 22 replaces the source-page image with a reconstructed interactive comparison; no complete slide image is delivered.
+- Use source-cropped media only for the artificial-neuron schematic, error surface, and fruit basket; never use a complete source slide.
 - Use interactive native diagrams for method categorization, GP evolution, McCulloch–Pitts gates, perceptron updates, XOR, activations, backpropagation, k-means, reinforcement learning, and streaming updates.
 - All controls must work with keyboard and touch; answers include revealable explanations and misconception feedback.
 - Presentation text targets at least 16px in core instructional regions at the 1536×723 Canvas viewport, with responsive validation at 1024×723.

@@ -1161,6 +1161,11 @@ test("Module 12 lessons 17 and 18 preserve all 36 Machine Learning Part B source
   assert.match(module12, /function GplearnProjectPreview\(\)/);
   assert.match(module12, /function PerceptronDatasetTable\(\)/);
   assert.match(module12, /className="m12-data-table"/);
+  assert.match(module12, /Convolutional Neural Network/);
+  assert.match(module12, /Recurrent Neural Network/);
+  assert.match(module12, /function ClusteringFamiliesVisual\(\)/);
+  assert.match(module12, /function NetworkArchitectureCards\(\)/);
+  assert.doesNotMatch(module12, /file="image25\.png"/);
   assert.match(route, /id===17\?<Module12Lesson17Deck\/>/);
   assert.match(route, /id===18\?<Module12Lesson18Deck\/>/);
 
