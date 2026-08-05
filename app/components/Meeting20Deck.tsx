@@ -468,6 +468,33 @@ function RiskRouter() {
   );
 }
 
+function TrustTheAnswerDemo() {
+  const [selected, setSelected] = useState<"fluent" | "grounded" | null>(null);
+  return (
+    <div className="m20-trust-demo">
+      <span>Which answer can you actually use?</span>
+      <p className="m20-trust-prompt">Question: What must the research brief include?</p>
+      <div className="m20-trust-cards">
+        <button aria-pressed={selected === "fluent"} onClick={() => setSelected("fluent")} type="button">
+          <i aria-hidden="true">✨</i><strong>Answer A</strong>
+          <p>It should be polished, persuasive, and about five pages long.</p>
+          <small>Fluent - no evidence shown</small>
+        </button>
+        <button aria-pressed={selected === "grounded"} onClick={() => setSelected("grounded")} type="button">
+          <i aria-hidden="true">🔗</i><strong>Answer B</strong>
+          <p>Include source trace, methods, findings, limitations, and supported-versus-unsupported claims.</p>
+          <small>Linked to assignment instructions [D3]</small>
+        </button>
+      </div>
+      <div className={`m20-trust-verdict ${selected ? "shown" : ""}`} aria-live="polite">
+        {!selected && <><strong>Choose before revealing.</strong><small>Style is visible immediately; support requires a source check.</small></>}
+        {selected === "fluent" && <><strong>Not usable yet.</strong><small>Answer A sounds confident, but its length claim is unsupported.</small></>}
+        {selected === "grounded" && <><strong>Better - and still verify the link.</strong><small>Answer B exposes the evidence needed to check each requirement.</small></>}
+      </div>
+    </div>
+  );
+}
+
 function LossVisual() {
   const [choice, setChoice] = useState(0);
   const options = [
@@ -509,22 +536,14 @@ const slides: SourceLessonSlide[] = [
     content: (
       <div className="m20-cover">
         <section>
-          <span>Central question</span>
-          <h3>What evidence turns a plausible model output into a usable answer?</h3>
-          <p>We will connect the training objective to the output’s strengths—and to the checks the objective does not perform.</p>
+          <span>Start with a decision</span>
+          <h3>A polished answer appears in one second. What would make you trust it?</h3>
+          <p>Compare fluency with evidence first. Then connect that difference to training, generation, validation, and verification.</p>
         </section>
-        <div className="m20-cover-flow" aria-label="Training to verification flow">
-          <article><span>01</span><strong>Train</strong><small>predict continuations</small></article>
-          <i>→</i>
-          <article><span>02</span><strong>Generate</strong><small>sample an output</small></article>
-          <i>→</i>
-          <article><span>03</span><strong>Validate</strong><small>structure + meaning</small></article>
-          <i>→</i>
-          <article><span>04</span><strong>Verify</strong><small>claims + evidence</small></article>
-        </div>
+        <TrustTheAnswerDemo />
       </div>
     ),
-    note: "Timing: 2 minutes. Open with the central question and preview the four-stage flow. Ask students which arrow they think is most often skipped.",
+    note: "Timing: 2 minutes. Students choose an answer before the verdict appears. Ask which visual cue influenced them, then separate polish, structural validity, and evidence support. The lesson will explain why each needs a different mechanism.",
     sourceSlides: [],
   },
   {

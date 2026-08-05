@@ -872,6 +872,36 @@ function RepresentationPipeline() {
   );
 }
 
+function ContextClueDemo() {
+  const [choice, setChoice] = useState<"animal" | "street" | null>(null);
+  const correct = choice === "animal";
+
+  return (
+    <div className="m19-context-clue">
+      <span className="m19-context-kicker">Start with a sentence, not an equation</span>
+      <blockquote>
+        The <mark>animal</mark> did not cross the <mark>street</mark> because <b>it</b> was too tired.
+      </blockquote>
+      <p>What does <b>it</b> refer to?</p>
+      <div className="m19-context-choices" role="group" aria-label="Choose what the pronoun refers to">
+        <button aria-pressed={choice === "animal"} onClick={() => setChoice("animal")} type="button">
+          <span aria-hidden="true">🐕</span><strong>the animal</strong>
+        </button>
+        <button aria-pressed={choice === "street"} onClick={() => setChoice("street")} type="button">
+          <span aria-hidden="true">🛣️</span><strong>the street</strong>
+        </button>
+      </div>
+      <div className={`m19-context-result ${choice ? "shown" : ""}`} aria-live="polite">
+        {choice ? (
+          <><strong>{correct ? "Yes - context links it to the animal." : "Try the other referent."}</strong><small>"too tired" describes the animal. Attention lets a later position combine clues from earlier positions.</small></>
+        ) : (
+          <><strong>Make a prediction.</strong><small>Then we will turn this everyday clue into tokens, vectors, and attention weights.</small></>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Modern language models · Representation and computation",
@@ -881,13 +911,13 @@ const slides: SourceLessonSlide[] = [
       <div className="m19-cover">
         <section>
           <span>Module 13 · Lesson 19 · 75 minutes</span>
-          <h3>How does a sequence of symbols become a context-sensitive computation?</h3>
-          <p>We will follow every major tensor from input text to next-token scores.</p>
+          <h3>How can an AI use earlier words to understand what a later word refers to?</h3>
+          <p>Begin with a familiar sentence. Then trace how text becomes tokens, vectors, attention, and a context-sensitive output.</p>
         </section>
-        <RepresentationPipeline />
+        <ContextClueDemo />
       </div>
     ),
-    note: "Timing: 1 minute. Open with the central question. Tell students that every box in the pipeline will become an explicit representation, equation, or constraint by the end of class.",
+    note: "Timing: 1 minute. Ask students to choose the referent before using transformer vocabulary. Connect the contextual clue to the lesson promise: we will make the mechanism visible as tokens, vectors, compatibility scores, and weighted information flow.",
     sourceSlides: [],
   },
   {

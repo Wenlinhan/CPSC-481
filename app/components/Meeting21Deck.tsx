@@ -32,7 +32,7 @@ const retrievalDocs = [
     id: "D2",
     score: 0.88,
     label: "Syllabus",
-    text: "The Research Evidence Brief is due during Week 13 and is worth 6% of the course grade.",
+    text: "The Research Evidence Brief is submitted through Canvas and is worth 6% of the course grade.",
     relevant: true,
   },
   {
@@ -211,7 +211,7 @@ function ParsingVisual() {
           <span className="doc-kicker">CPSC 481 · Course policy</span>
           <h4>Research Evidence Brief</h4>
           <div className="doc-columns">
-            <p><b>Deadline</b><br />Submit in Week 13 through Canvas.</p>
+            <p><b>Submission</b><br />Upload the completed brief through Canvas.</p>
             <p><b>Required evidence</b><br />Source trace, methods, findings, and limitations.</p>
           </div>
           <div className="doc-footer">CPSC 481 · page 7</div>
@@ -220,13 +220,13 @@ function ParsingVisual() {
           {mode === "raw" ? (
             <>
               <span className="parse-bad">481 7 Deadline Required evidence CPSC</span>
-              <span className="parse-bad">Submit in Week source trace 13 methods through findings Canvas limitations</span>
+              <span className="parse-bad">Upload completed source trace brief methods through findings Canvas limitations</span>
               <small>Columns interleave; headers and footers become noise.</small>
             </>
           ) : (
             <>
               <span><b>section:</b> Research Evidence Brief</span>
-              <span><b>deadline:</b> Submit in Week 13 through Canvas.</span>
+              <span><b>submission:</b> Upload the completed brief through Canvas.</span>
               <span><b>requirements:</b> Source trace, methods, findings, limitations.</span>
               <small>Reading order and section identity survive extraction.</small>
             </>
@@ -272,17 +272,17 @@ function ChunkingLab() {
           </button>
         </div>
       </div>
-      <p className="query"><span>Question</span>When is the evidence brief due, and what must it include?</p>
+      <p className="query"><span>Question</span>Where is the evidence brief submitted, and what must it include?</p>
       <div className={`chunk-output ${strategy} ${overlap ? "with-overlap" : ""}`}>
         {strategy === "fixed" ? (
           <>
-            <article><b>Chunk A</b><p>…Evidence Brief. Submit in Week 13 through Canvas. The next assignment…</p></article>
+            <article><b>Chunk A</b><p>…Evidence Brief. Upload the completed brief through Canvas. The next assignment…</p></article>
             <article><b>Chunk B</b><p>…requires source trace, methods, findings, limitations, and supported claims…</p></article>
             <article className="distractor"><b>Chunk C</b><p>Late work and course catalog information…</p></article>
           </>
         ) : (
           <>
-            <article className="complete"><b>Research Evidence Brief</b><p>Submit in Week 13. Include source trace, methods, findings, limitations, and supported-versus-unsupported claims.</p></article>
+            <article className="complete"><b>Research Evidence Brief</b><p>Submit through Canvas. Include source trace, methods, findings, limitations, and supported-versus-unsupported claims.</p></article>
             <article className="distractor"><b>Late work</b><p>Policies for extensions and documented emergencies…</p></article>
           </>
         )}
@@ -347,8 +347,8 @@ function MismatchVisual() {
   return (
     <div className="mismatch-layout">
       <div className="mismatch-pair">
-        <div><span>Student language</span><strong>“When do I turn in the brief, and what goes with it?”</strong></div>
-        <div><span>Document language</span><strong>“Submission deadline: Week 13. Required evidence: …”</strong></div>
+        <div><span>Student language</span><strong>“Where do I upload the brief, and what goes with it?”</strong></div>
+        <div><span>Document language</span><strong>“Submission channel: Canvas. Required evidence: …”</strong></div>
         <div className="vocabulary-gap" aria-hidden="true">≠</div>
       </div>
       <div className="mismatch-demo">
@@ -722,7 +722,7 @@ export function RagDeck() {
             <div className="section-document">
               <div className="section-title">Research Evidence Brief</div>
               <div className="section-block identity"><span>metadata</span><b>course · term · page · section · access</b></div>
-              <div className="section-block"><span>deadline</span><b>Week 13 · Canvas</b></div>
+              <div className="section-block"><span>submission</span><b>Canvas upload · completed brief</b></div>
               <div className="section-block complete"><span>requirements</span><b>source trace · methods · findings · limitations</b></div>
               <div className="section-block"><span>rubric</span><b>evidence quality · claim discipline</b></div>
             </div>
@@ -888,18 +888,18 @@ export function RagDeck() {
               </div>
               <div className="prompt-block context">
                 <span>Retrieved context</span>
-                <p>[D2] Due in Week 13…<br />[D3] Include source trace, methods…</p>
+                <p>[D2] Submit through Canvas…<br />[D3] Include source trace, methods…</p>
               </div>
               <div className="prompt-block question">
                 <span>User question</span>
-                <p>When is the brief due, and what must it include?</p>
+                <p>Where is the brief submitted, and what must it include?</p>
               </div>
             </div>
             <span className="prompt-arrow" aria-hidden="true">→</span>
             <div className="answer-card">
               <span>Grounded response</span>
               <p>
-                The brief is due in Week 13. It must include source trace,
+                Submit the brief through Canvas. It must include source trace,
                 methods, findings, limitations, and a supported-versus-unsupported
                 claim analysis. <strong>[D2][D3]</strong>
               </p>
@@ -923,11 +923,11 @@ export function RagDeck() {
             <div className="claim-card">
               <span className="micro-label">Generated answer</span>
               <p>
-                The research evidence brief is due in <mark>Week 13</mark> and must include
+                The research evidence brief is submitted through <mark>Canvas</mark> and must include
                 a <mark>source trace</mark> and <mark>limitations</mark>.
               </p>
               <div className="claim-links">
-                <span><b>Claim 1</b> → D2 · syllabus · §4</span>
+                <span><b>Claim 1</b> → D2 · syllabus · submission section</span>
                 <span><b>Claim 2</b> → D3 · assignment · ¶2</span>
               </div>
             </div>
