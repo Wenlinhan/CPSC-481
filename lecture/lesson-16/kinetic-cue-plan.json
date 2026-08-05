@@ -1,0 +1,2677 @@
+{
+  "version": 1,
+  "meeting": "14",
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultDurationSeconds": 6.2,
+    "minimumCenterHoldSeconds": 2,
+    "maximumStillSeconds": 12
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Decision trees: from examples to explainable rules",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 18.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 17.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Represent, induce, calculate, interpret, and evaluate",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 14.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 16.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 14.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 15,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 15.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 11.352,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 12.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.766,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "durationSeconds": 11.016,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 12,
+          "durationSeconds": 12.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.094,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 13,
+          "durationSeconds": 10.296,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The target is risk; the evidence is past loan applications",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 17.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 19.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 30.72,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A training table is a set of labeled input-output examples",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 18.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 19.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 17.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 30.816,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 10.56,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 11.064,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 10.656,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "ID3 learns a tree that describes class patterns",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 19.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Internal nodes test attributes; leaves decide classes",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.462,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 16.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.886,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 26.088,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 11.928,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 9.432,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A risk tree turns attribute values into a class",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 11.424,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 13.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.918,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 28.032,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Change an applicant and watch the decision path change",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 16.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 25.632,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 10.08,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 8.448,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 8.832,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 9,
+          "durationSeconds": 10.92,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 8.088,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 11,
+          "durationSeconds": 8.616,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "ID3 recursively turns impure partitions into subtrees",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.982,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.054,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 12.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.142,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 28.92,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Select, partition, test purity, then recurse",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 12.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.454,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.222,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.07,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.55,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 11.112,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 28.752,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 13.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.726,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 14.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.062,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 14.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.086,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "durationSeconds": 2.16,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "If several trees fit the data, which one should we prefer?",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 14.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.11,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A useful pattern compresses the data it explains",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 14.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 13.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.174,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 16.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 32.712,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 30.05,
+              "durationSeconds": 2.662,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Entropy measures uncertainty in a class distribution",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.942,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.654,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 18.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 11.928,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 30.84,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Purity lowers entropy; a 50/50 split maximizes it",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 14.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.158,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 14.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 27.696,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 7.68,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 9.504,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 9,
+          "durationSeconds": 8.328,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 8.832,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Choose the test that removes the most expected uncertainty",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.198,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.414,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 12.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.454,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 10.824,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 5,
+          "durationSeconds": 14.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 16.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 28.464,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Income reduces uncertainty by 0.967 bits",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 10.608,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 4,
+          "durationSeconds": 18.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.99,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 16.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 28.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Rank every candidate test before selecting the root",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 12.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.262,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 12.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.214,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 13.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.246,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 27.696,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 11.448,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 7.872,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 9,
+          "durationSeconds": 8.976,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 10.656,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "One greedy choice creates new, smaller learning problems",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.438,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 23.328,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 3.278,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The completed tree encodes three risk concepts",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.606,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 12.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.91,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 26.28,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Each root-to-leaf path becomes one conjunction",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 12.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.838,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.078,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.462,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 27.432,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Write the moderate-risk concept as rules",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 11.832,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.886,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 10.032,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.886,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 28.896,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 10.824,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 12,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "ID3 greedily searches a concept space of possible trees",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 11.496,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 11.688,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.006,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.55,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 14.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Classification predicts categories; regression predicts quantities",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 18.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 12.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.79,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A confusion matrix turns errors into precision, recall, and F1",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 17.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.51,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 13.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.246,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 19.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "durationSeconds": 15.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 32.04,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "durationSeconds": 11.688,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 9,
+          "durationSeconds": 12.024,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 10,
+          "durationSeconds": 12.216,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.166,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "One score is not enough evidence for deployment",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 14.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.182,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 16.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 17.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

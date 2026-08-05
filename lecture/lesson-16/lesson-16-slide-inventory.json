@@ -1,0 +1,354 @@
+{
+  "route": "/lessons/16",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Decision trees: from examples to explainable rules",
+      "visibleText": "Loan applications and historical risk labels\n⛶ Enlarge\nClear\nLoan applications and historical risk labels. Select a column heading or application row for explanation.\nNo.\tRisk\tCredit history\tDebt\tCollateral\tIncome\n1\thigh\tbad\thigh\tnone\t$0–$15k\n2\thigh\tunknown\thigh\tnone\t$15–$35k\n3\tmoderate\tunknown\tlow\tnone\t$15–$35k\n4\thigh\tunknown\tlow\tnone\t$0–$15k\n5\tlow\tunknown\tlow\tnone\tover $35k\n6\tlow\tunknown\tlow\tadequate\tover $35k\n7\thigh\tbad\tlow\tnone\t$0–$15k\n8\tmoderate\tbad\tlow\tadequate\tover $35k\n9\tlow\tgood\tlow\tnone\tover $35k\n10\tlow\tgood\thigh\tadequate\tover $35k\n11\thigh\tgood\thigh\tnone\t$0–$15k\n12\tmoderate\tgood\thigh\tnone\t$15–$35k\n13\tlow\tgood\thigh\tnone\tover $35k\n14\thigh\tbad\thigh\tnone\t$15–$35k\n\nSelect any row or column to inspect the evidence.\n\nMEETING 14 · 75 MINUTES\nWhich question should the tree ask first?\n\nWe will turn 14 labeled loan records into a decision tree, translate paths into rules, and evaluate what the resulting classifier can and cannot claim.",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Represent, induce, calculate, interpret, and evaluate",
+      "visibleText": "The shared evidence for today's four objectives\n⛶ Enlarge\nClear\nThe shared evidence for today's four objectives. Select a column heading or application row for explanation.\nNo.\tRisk\tCredit history\tDebt\tCollateral\tIncome\n1\thigh\tbad\thigh\tnone\t$0–$15k\n2\thigh\tunknown\thigh\tnone\t$15–$35k\n3\tmoderate\tunknown\tlow\tnone\t$15–$35k\n4\thigh\tunknown\tlow\tnone\t$0–$15k\n5\tlow\tunknown\tlow\tnone\tover $35k\n6\tlow\tunknown\tlow\tadequate\tover $35k\n7\thigh\tbad\tlow\tnone\t$0–$15k\n8\tmoderate\tbad\tlow\tadequate\tover $35k\n9\tlow\tgood\tlow\tnone\tover $35k\n10\tlow\tgood\thigh\tadequate\tover $35k\n11\thigh\tgood\thigh\tnone\t$0–$15k\n12\tmoderate\tgood\thigh\tnone\t$15–$35k\n13\tlow\tgood\thigh\tnone\tover $35k\n14\thigh\tbad\thigh\tnone\t$15–$35k\n\nSelect any row or column to inspect the evidence.\n\n01\nRepresent\n02\nInduce\n03\nCalculate\n04\nEvaluate\nOBJECTIVE 1\nRepresent\n\nRead internal tests, branches, leaves, and the rules encoded by a tree.\n\nStart by separating predictor columns from the risk label.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Choose Represent",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Select any row or column to inspect the evidence. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 1 Represent Read internal tests, branches, leaves, and the rules encoded by a tree. Start by separating predictor columns from the risk label."
+        },
+        {
+          "segment": 6,
+          "label": "Choose Induce",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Select any row or column to inspect the evidence. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 2 Induce Trace ID3's top-down recursive, greedy construction procedure. Each split partitions these 14 records into smaller learning problems."
+        },
+        {
+          "segment": 7,
+          "label": "Choose Calculate",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Select any row or column to inspect the evidence. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 3 Calculate Compute entropy, expected entropy, and information gain. Class counts in the selected rows supply every probability."
+        },
+        {
+          "segment": 8,
+          "label": "Choose Evaluate",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Select any row or column to inspect the evidence. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        },
+        {
+          "segment": 9,
+          "label": "Inspect the risk column",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Risk column selected · compare this attribute across all 14 applications. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        },
+        {
+          "segment": 10,
+          "label": "Inspect the income column",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Income column selected · compare this attribute across all 14 applications. 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        },
+        {
+          "segment": 11,
+          "label": "Inspect one row",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Row 2: high risk · unknown credit · high debt · none collateral · $15–$35k income 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        },
+        {
+          "segment": 12,
+          "label": "Enlarge the dataset",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Row 2: high risk · unknown credit · high debt · none collateral · $15–$35k income 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        },
+        {
+          "segment": 13,
+          "label": "Close the enlarged dataset",
+          "stateText": "The shared evidence for today's four objectives ⛶ Enlarge Clear The shared evidence for today's four objectives. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Row 2: high risk · unknown credit · high debt · none collateral · $15–$35k income 01 Represent 02 Induce 03 Calculate 04 Evaluate OBJECTIVE 4 Evaluate Audit generalization, error types, calibration, and subgroup behavior. A fitted table is not deployment evidence; unseen cases are required."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The target is risk; the evidence is past loan applications",
+      "visibleText": "LOAN-RISK DATASET · 14 LABELED APPLICATIONS\nLearning the risk level\nLoan applications and historical risk labels\n⛶ Enlarge\nClear\nLoan applications and historical risk labels. Select a column heading or application row for explanation.\nNo.\tRisk\tCredit history\tDebt\tCollateral\tIncome\n1\thigh\tbad\thigh\tnone\t$0–$15k\n2\thigh\tunknown\thigh\tnone\t$15–$35k\n3\tmoderate\tunknown\tlow\tnone\t$15–$35k\n4\thigh\tunknown\tlow\tnone\t$0–$15k\n5\tlow\tunknown\tlow\tnone\tover $35k\n6\tlow\tunknown\tlow\tadequate\tover $35k\n7\thigh\tbad\tlow\tnone\t$0–$15k\n8\tmoderate\tbad\tlow\tadequate\tover $35k\n9\tlow\tgood\tlow\tnone\tover $35k\n10\tlow\tgood\thigh\tadequate\tover $35k\n11\thigh\tgood\thigh\tnone\t$0–$15k\n12\tmoderate\tgood\thigh\tnone\t$15–$35k\n13\tlow\tgood\thigh\tnone\tover $35k\n14\thigh\tbad\thigh\tnone\t$15–$35k\n\nSelect any row or column to inspect the evidence.\n\nTarget: financial risk · Predictors: credit history, debt, collateral, and income\nWhat learning method can learn the concept of risk level—and how should that concept be represented?\nTARGET\nrisk level\n\nhigh, moderate, or low\n\nPREDICTORS\napplicant attributes\n\ncredit history, debt, collateral, income\n\nBEFORE MODELING\nWho produced the historical risk labels, and what errors or inequities might they encode?",
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "A training table is a set of labeled input-output examples",
+      "visibleText": "Four predictors and one class label\n⛶ Enlarge\nClear\nFour predictors and one class label. Select a column heading or application row for explanation.\nNo.\tRisk\tCredit history\tDebt\tCollateral\tIncome\n1\thigh\tbad\thigh\tnone\t$0–$15k\n2\thigh\tunknown\thigh\tnone\t$15–$35k\n3\tmoderate\tunknown\tlow\tnone\t$15–$35k\n4\thigh\tunknown\tlow\tnone\t$0–$15k\n5\tlow\tunknown\tlow\tnone\tover $35k\n6\tlow\tunknown\tlow\tadequate\tover $35k\n7\thigh\tbad\tlow\tnone\t$0–$15k\n8\tmoderate\tbad\tlow\tadequate\tover $35k\n9\tlow\tgood\tlow\tnone\tover $35k\n10\tlow\tgood\thigh\tadequate\tover $35k\n11\thigh\tgood\thigh\tnone\t$0–$15k\n12\tmoderate\tgood\thigh\tnone\t$15–$35k\n13\tlow\tgood\thigh\tnone\tover $35k\n14\thigh\tbad\thigh\tnone\t$15–$35k\n\nSelect any row or column to inspect the evidence.\n\nx\nInput vector\n\n(credit history, debt, collateral, income)\n\ny\nClass label\n\nfinancial risk ∈ {high, moderate, low}\n\nD\nTraining set\n\n14 observed pairs (xᵢ, yᵢ)\n\nTHINK · PAIR · SHARE\nSelect a column, compare its values against risk, and justify which attribute looks most predictive.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Inspect credit history",
+          "stateText": "Four predictors and one class label ⛶ Enlarge Clear Four predictors and one class label. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Credit history column selected · compare this attribute across all 14 applications. x Input vector (credit history, debt, collateral, income) y Class label financial risk ∈ {high, moderate, low} D Training set 14 observed pairs (xᵢ, yᵢ) THINK · PAIR · SHARE Select a column, compare its values against risk, and justify which attribute look"
+        },
+        {
+          "segment": 7,
+          "label": "Inspect income",
+          "stateText": "Four predictors and one class label ⛶ Enlarge Clear Four predictors and one class label. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Income column selected · compare this attribute across all 14 applications. x Input vector (credit history, debt, collateral, income) y Class label financial risk ∈ {high, moderate, low} D Training set 14 observed pairs (xᵢ, yᵢ) THINK · PAIR · SHARE Select a column, compare its values against risk, and justify which attribute looks most p"
+        },
+        {
+          "segment": 8,
+          "label": "Inspect record fourteen",
+          "stateText": "Four predictors and one class label ⛶ Enlarge Clear Four predictors and one class label. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Row 14: high risk · bad credit · high debt · none collateral · $15–$35k income x Input vector (credit history, debt, collateral, income) y Class label financial risk ∈ {high, moderate, low} D Training set 14 observed pairs (xᵢ, yᵢ) THINK · PAIR · SHARE Select a column, compare its values against risk, and justify which attribute looks mos"
+        },
+        {
+          "segment": 9,
+          "label": "Clear the table",
+          "stateText": "Four predictors and one class label ⛶ Enlarge Clear Four predictors and one class label. Select a column heading or application row for explanation. No. Risk Credit history Debt Collateral Income 1 high bad high none $0–$15k 2 high unknown high none $15–$35k 3 moderate unknown low none $15–$35k 4 high unknown low none $0–$15k 5 low unknown low none over $35k 6 low unknown low adequate over $35k 7 high bad low none $0–$15k 8 moderate bad low adequate over $35k 9 low good low none over $35k 10 low good high adequate over $35k 11 high good high none $0–$15k 12 moderate good high none $15–$35k 13 low good high none over $35k 14 high bad high none $15–$35k Select any row or column to inspect the evidence. x Input vector (credit history, debt, collateral, income) y Class label financial risk ∈ {high, moderate, low} D Training set 14 observed pairs (xᵢ, yᵢ) THINK · PAIR · SHARE Select a column, compare its values against risk, and justify which attribute looks most predictive."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "ID3 learns a tree that describes class patterns",
+      "visibleText": "DECISION-TREE CONCEPT\nDecision tree induction\nQuinlan developed ID3 in 1986\na tree represents concepts through property tests\nlabeled training data induce classification rules\nPROVENANCE\n\nJ. Ross Quinlan developed ID3 in 1986 as an early decision-tree learning algorithm.\n\nREPRESENTATION\n\nA decision tree represents conditional patterns or concepts as a graph of tests and outcomes.\n\nLEARNING\n\nID3 uses labeled input data to induce a tree—and therefore a set of classification rules.",
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "Internal nodes test attributes; leaves decide classes",
+      "visibleText": "DECISION-TREE VISUAL\nDecision-tree representation\nforecast?\nsunny → humidity?\novercast → yes\nrain → wind?\nInternal nodes test attributes; branches are values; leaves are decisions.\ninternal nodes are attribute tests · branches are attribute values · leaves are class decisions\nROOT\nthe first test\n\nall examples begin here\n\nINTERNAL NODE\nattribute test\n\nasks one question\n\nBRANCH\nattribute value\n\nselects the next path\n\nLEAF\nclass decision\n\nreturns the prediction\n\nCHECK FOR UNDERSTANDING\nIn the picnic tree, what does a branch represent?\n\nCommit to an answer, then defend the representation or search rule.\n\nA\nAn attribute test\nB\nA training record\nC\nAn attribute value\nD\nA probability",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Try an incorrect branch definition",
+          "stateText": "DECISION-TREE VISUAL Decision-tree representation forecast? sunny → humidity? overcast → yes rain → wind? Internal nodes test attributes; branches are values; leaves are decisions. internal nodes are attribute tests · branches are attribute values · leaves are class decisions ROOT the first test all examples begin here INTERNAL NODE attribute test asks one question BRANCH attribute value selects the next path LEAF class decision returns the prediction CHECK FOR UNDERSTANDING In the picnic tree, what does a branch represent? Commit to an answer, then defend the representation or search rule. A An attribute test B A training record C An attribute value D A probability Reconsider. A branch is labeled by an attribute value; a leaf stores the resulting class decision."
+        },
+        {
+          "segment": 8,
+          "label": "Choose the branch definition",
+          "stateText": "DECISION-TREE VISUAL Decision-tree representation forecast? sunny → humidity? overcast → yes rain → wind? Internal nodes test attributes; branches are values; leaves are decisions. internal nodes are attribute tests · branches are attribute values · leaves are class decisions ROOT the first test all examples begin here INTERNAL NODE attribute test asks one question BRANCH attribute value selects the next path LEAF class decision returns the prediction CHECK FOR UNDERSTANDING In the picnic tree, what does a branch represent? Commit to an answer, then defend the representation or search rule. A An attribute test B A training record C An attribute value D A probability Correct. A branch is labeled by an attribute value; a leaf stores the resulting class decision."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A risk tree turns attribute values into a class",
+      "visibleText": "DECISION-TREE VISUAL\nRisk decision tree\nincome?\n$0–$15k → high\n$15–$35k → credit / debt\n>$35k → credit\nCollateral is never selected in the learned tree.\nbegin at income · follow only the matching branch · stop at a risk-class leaf\nClassification is a path, not a vote over every attribute.\n1\nBegin at the root.\n2\nEvaluate the current attribute.\n3\nFollow the matching value branch.\n4\nStop at a leaf and return its class.\nINSTRUCTOR DEMO\nTrace record 2, then ask which test is skipped for records that reach a leaf early.",
+      "actions": []
+    },
+    {
+      "number": 8,
+      "title": "Change an applicant and watch the decision path change",
+      "visibleText": "APPLICANT ATTRIBUTES\nINCOME\n$0–$15k\n$15–$35k\nover $35k\nCREDIT HISTORY\nunknown\nbad\ngood\nDEBT\nhigh\nlow\nTRACE ONE ROOT-TO-LEAF PATH\n1\nincome = $15–$35k\n2\ncredit = unknown\n3\ndebt = high\n4\nhigh risk\nHigh Risk\n\nOnly attributes encountered on this path affect this prediction.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Set low income",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income = $0–$15k 2 high risk High Risk Only attributes encountered on this path affect this prediction."
+        },
+        {
+          "segment": 7,
+          "label": "Set high income",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income > $35k 2 credit = unknown 3 low risk Low Risk Only attributes encountered on this path affect this prediction."
+        },
+        {
+          "segment": 8,
+          "label": "Set good credit",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income > $35k 2 credit = good 3 low risk Low Risk Only attributes encountered on this path affect this prediction."
+        },
+        {
+          "segment": 9,
+          "label": "Return to middle income",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income = $15–$35k 2 credit = good 3 moderate risk Moderate Risk Only attributes encountered on this path affect this prediction."
+        },
+        {
+          "segment": 10,
+          "label": "Set unknown credit",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income = $15–$35k 2 credit = unknown 3 debt = high 4 high risk High Risk Only attributes encountered on this path affect this prediction."
+        },
+        {
+          "segment": 11,
+          "label": "Set low debt",
+          "stateText": "APPLICANT ATTRIBUTES INCOME $0–$15k $15–$35k over $35k CREDIT HISTORY unknown bad good DEBT high low TRACE ONE ROOT-TO-LEAF PATH 1 income = $15–$35k 2 credit = unknown 3 debt = low 4 moderate risk Moderate Risk Only attributes encountered on this path affect this prediction."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "ID3 recursively turns impure partitions into subtrees",
+      "visibleText": "DECISION-TREE CONCEPT\nID3 recursive algorithm\nif all examples share a class, return a leaf\nif no attributes remain, return a default class\notherwise select a test, partition, and recurse\nBASE CASE A\n\nAll examples have one class → return that class.\n\nBASE CASE B\n\nNo attributes remain → return a default or majority class.\n\nRECURSIVE CASE\n\nSelect a test, partition the examples, and induce one subtree per non-pure branch.\n\nREAD THE SOURCE AS CODE\nCircle the stopping conditions. Underline the line that makes the algorithm greedy.",
+      "actions": []
+    },
+    {
+      "number": 10,
+      "title": "Select, partition, test purity, then recurse",
+      "visibleText": "DECISION-TREE CONCEPT\nTop-down induction\nselect a best attribute\ncreate one branch per value\npartition examples\nmake pure branches leaves\nrecurse on impure branches\nstop at base cases\n01\nChoose a test\n02\nPartition examples\n03\nClose pure branches\n04\nRecurse\nSTAGE 1 OF 4\nChoose a test\n\nCompare the candidate attributes and select the test that most reduces uncertainty.\n\nincome?\nhigh\ncredit?\ncredit?",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Show stage 1",
+          "stateText": "DECISION-TREE CONCEPT Top-down induction select a best attribute create one branch per value partition examples make pure branches leaves recurse on impure branches stop at base cases 01 Choose a test 02 Partition examples 03 Close pure branches 04 Recurse STAGE 1 OF 4 Choose a test Compare the candidate attributes and select the test that most reduces uncertainty. income? high credit? credit?"
+        },
+        {
+          "segment": 8,
+          "label": "Show stage 2",
+          "stateText": "DECISION-TREE CONCEPT Top-down induction select a best attribute create one branch per value partition examples make pure branches leaves recurse on impure branches stop at base cases 01 Choose a test 02 Partition examples 03 Close pure branches 04 Recurse STAGE 2 OF 4 Partition examples Create one branch for each observed value and send every training record to its matching branch. income? high credit? credit?"
+        },
+        {
+          "segment": 9,
+          "label": "Show stage 3",
+          "stateText": "DECISION-TREE CONCEPT Top-down induction select a best attribute create one branch per value partition examples make pure branches leaves recurse on impure branches stop at base cases 01 Choose a test 02 Partition examples 03 Close pure branches 04 Recurse STAGE 3 OF 4 Close pure branches If every example in a partition has the same risk class, replace that partition with a leaf. income? high credit? credit?"
+        },
+        {
+          "segment": 10,
+          "label": "Show stage 4",
+          "stateText": "DECISION-TREE CONCEPT Top-down induction select a best attribute create one branch per value partition examples make pure branches leaves recurse on impure branches stop at base cases 01 Choose a test 02 Partition examples 03 Close pure branches 04 Recurse STAGE 4 OF 4 Recurse For every impure partition, choose another unused test and repeat until the stopping condition is met. income? high credit? credit?"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "If several trees fit the data, which one should we prefer?",
+      "visibleText": "DECISION-TREE VISUAL\nChoosing among consistent trees\nincome?\n$0–$15k → high\n$15–$35k → credit / debt\n>$35k → credit\nCollateral is never selected in the learned tree.\nmany trees may fit the training data · prefer a compact pattern, then verify generalization\nPrefer a tree that captures the pattern without merely memorizing the records.\nSMALLER TREE\nlower description cost\n\noften easier to inspect and less likely to encode accidental detail\n\nBUT VERIFY\nvalidation performance\n\nthe shortest tree is not automatically the most accurate or fair\n\nIN-CLASS QUESTION\nGive one reason a larger tree might fit training data better yet predict new applications worse.",
+      "actions": []
+    },
+    {
+      "number": 12,
+      "title": "A useful pattern compresses the data it explains",
+      "visibleText": "DECISION-TREE CONCEPT\nMinimum message length\nminimize description of the hypothesis plus data given the hypothesis\nthe integers 2–100 contain 50 even values\nChoose Hᵢ minimizing Mlength(Hᵢ) + Mlength(D | Hᵢ)\nMODEL COST\n\nbits needed to specify the hypothesis\n\nRESIDUAL COST\n\nbits needed to describe the data given the hypothesis\n\nSOURCE CORRECTION\nThe even integers from 2 through 100 inclusive number 50, not 49. The compression argument still holds: “all even integers from 2 to 100” is shorter than listing all 50 integers.",
+      "actions": []
+    },
+    {
+      "number": 13,
+      "title": "Entropy measures uncertainty in a class distribution",
+      "visibleText": "DECISION-TREE CONCEPT\nEntropy and information\nI(c)=−log₂p(c)\nH(S)=−Σp(c)log₂p(c)\npure sets have entropy 0\nI(c) = −log₂ p(c)\nH(S) = −Σ p(c) log₂ p(c)\nH = 0\n\none class only; no uncertainty\n\nH is high\n\nclasses are balanced; the label is uncertain\n\nINTERPRETATION\nEntropy is about the distribution of labels in a set—not the visual complexity of a tree.",
+      "actions": []
+    },
+    {
+      "number": 14,
+      "title": "Purity lowers entropy; a 50/50 split maximizes it",
+      "visibleText": "BINARY CLASS DISTRIBUTION · 10 EXAMPLES\nPositive examples: 5\nENTROPY IN BITS\n1.000\nH(S) = −Σ p(c) log₂ p(c)\n\nMaximum binary uncertainty.\n\nConvention: 0 log₂ 0 = 0 by continuity.",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Set ten positives",
+          "stateText": "BINARY CLASS DISTRIBUTION · 10 EXAMPLES Positive examples: 10 ENTROPY IN BITS 0.000 H(S) = −Σ p(c) log₂ p(c) Pure: the class is certain. Convention: 0 log₂ 0 = 0 by continuity."
+        },
+        {
+          "segment": 8,
+          "label": "Set eight positives",
+          "stateText": "BINARY CLASS DISTRIBUTION · 10 EXAMPLES Positive examples: 8 ENTROPY IN BITS 0.722 H(S) = −Σ p(c) log₂ p(c) Mixed: a useful split could reduce uncertainty. Convention: 0 log₂ 0 = 0 by continuity."
+        },
+        {
+          "segment": 9,
+          "label": "Set a balanced split",
+          "stateText": "BINARY CLASS DISTRIBUTION · 10 EXAMPLES Positive examples: 5 ENTROPY IN BITS 1.000 H(S) = −Σ p(c) log₂ p(c) Maximum binary uncertainty. Convention: 0 log₂ 0 = 0 by continuity."
+        },
+        {
+          "segment": 10,
+          "label": "Set zero positives",
+          "stateText": "BINARY CLASS DISTRIBUTION · 10 EXAMPLES Positive examples: 0 ENTROPY IN BITS 0.000 H(S) = −Σ p(c) log₂ p(c) Pure: the class is certain. Convention: 0 log₂ 0 = 0 by continuity."
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Choose the test that removes the most expected uncertainty",
+      "visibleText": "DECISION-TREE CONCEPT\nInformation gain\nE(X)=Σᵥ |Tᵥ|/|T| · H(Tᵥ)\nGain(X)=H(T)−E(X)\nchoose the largest gain\nE(X) = Σᵥ |Tᵥ| / |T| · H(Tᵥ)\nGain(X) = H(T) − E(X)\n1\nMeasure uncertainty before the split.\n2\nCompute each branch's entropy.\n3\nWeight branches by their sizes.\n4\nSubtract expected uncertainty from the parent entropy.\nDECISION RULE\nID3 chooses the candidate attribute with the largest information gain.",
+      "actions": []
+    },
+    {
+      "number": 16,
+      "title": "Income reduces uncertainty by 0.967 bits",
+      "visibleText": "DECISION-TREE CONCEPT\nLoan-data calculation\nH(LoanData)=1.531 bits\nE(income)=0.564 bits\nGain(income)=0.967 bits\nincome has the largest gain\nH(LoanData) = −6/14 log₂(6/14) − 3/14 log₂(3/14) − 5/14 log₂(5/14) = 1.531\nE(income) = 4/14(0) + 4/14(1) + 6/14(0.65) = 0.564\nGain(income) = 1.531 − 0.564 = 0.967 bits\n\nOther gains: credit history 0.266 · collateral 0.206 · debt 0.063. Therefore income becomes the root.",
+      "actions": []
+    },
+    {
+      "number": 17,
+      "title": "Rank every candidate test before selecting the root",
+      "visibleText": "PARENT ENTROPY\nH(LoanData) = 1.531 bits\n\nPredict the winning root attribute before revealing all four candidates.\n\nReveal next attribute\nATTRIBUTE\nE(ATTRIBUTE)\nGAIN\n?\n—\ncommit first\n?\n—\ncommit first\n?\n—\ncommit first\n?\n—\ncommit first",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Reveal candidate 1",
+          "stateText": "PARENT ENTROPY H(LoanData) = 1.531 bits Predict the winning root attribute before revealing all four candidates. Reveal next attribute ATTRIBUTE E(ATTRIBUTE) GAIN income 0.564 0.967 · largest reduction ? — commit first ? — commit first ? — commit first"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal candidate 2",
+          "stateText": "PARENT ENTROPY H(LoanData) = 1.531 bits Predict the winning root attribute before revealing all four candidates. Reveal next attribute ATTRIBUTE E(ATTRIBUTE) GAIN income 0.564 0.967 · largest reduction credit history 1.265 0.266 · smaller reduction ? — commit first ? — commit first"
+        },
+        {
+          "segment": 9,
+          "label": "Reveal candidate 3",
+          "stateText": "PARENT ENTROPY H(LoanData) = 1.531 bits Predict the winning root attribute before revealing all four candidates. Reveal next attribute ATTRIBUTE E(ATTRIBUTE) GAIN income 0.564 0.967 · largest reduction credit history 1.265 0.266 · smaller reduction collateral 1.325 0.206 · smaller reduction ? — commit first"
+        },
+        {
+          "segment": 10,
+          "label": "Reveal candidate 4",
+          "stateText": "PARENT ENTROPY H(LoanData) = 1.531 bits Predict the winning root attribute before revealing all four candidates. Reset ATTRIBUTE E(ATTRIBUTE) GAIN income 0.564 0.967 · largest reduction credit history 1.265 0.266 · smaller reduction collateral 1.325 0.206 · smaller reduction debt 1.468 0.063 · smallest reduction"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "One greedy choice creates new, smaller learning problems",
+      "visibleText": "DECISION-TREE VISUAL\nPartial decision trees\nincome?\n$0–$15k → high\n$15–$35k → credit / debt\n>$35k → credit\nCollateral is never selected in the learned tree.\nStage A splits all records on income · Stage B recomputes gain within each impure subset\nSTAGE A\nsplit all 14 records on income\n\nthe $0–$15k branch is already pure high risk\n\nSTAGE B\nsplit impure branches again\n\nrecompute information gain using only the records in each branch\n\nKEY RECURSION IDEA\nAfter a split, each child receives a local subset. Its best next attribute can differ from another child's.",
+      "actions": []
+    },
+    {
+      "number": 19,
+      "title": "The completed tree encodes three risk concepts",
+      "visibleText": "DECISION-TREE VISUAL\nCompleted risk tree\nincome?\n$0–$15k → high\n$15–$35k → credit / debt\n>$35k → credit\nCollateral is never selected in the learned tree.\nincome is the root · credit history and debt refine selected branches · leaves encode high, moderate, and low risk\nHIGH RISK\n\nall low-income records plus selected middle-income paths\n\nMODERATE RISK\n\nthree distinct root-to-leaf paths\n\nLOW RISK\n\nhigh income with unknown or good credit history\n\nINSPECT THE REPRESENTATION\nDebt is tested only for middle income with unknown credit history. Collateral is never selected.",
+      "actions": []
+    },
+    {
+      "number": 20,
+      "title": "Each root-to-leaf path becomes one conjunction",
+      "visibleText": "DECISION-TREE CONCEPT\nTree paths become rules\njoin tests on one path with AND\njoin alternative paths to one class with OR\nthe leaf class becomes the rule conclusion\nIF test₁ AND test₂ AND … THEN class\n\nTests on one path are joined by AND. Multiple paths to the same class are joined by OR.\n\nLHS\nconditions leading to a leaf\nRHS\nthe class outcome",
+      "actions": []
+    },
+    {
+      "number": 21,
+      "title": "Write the moderate-risk concept as rules",
+      "visibleText": "IN-CLASS PRACTICE · 3 MINUTES\nDerive the missing moderate-risk rule.\n\nTrace every path that ends in a moderate-risk leaf. Join tests along a path with AND; join alternative paths with OR.\n\nReveal model answer\n\nWrite three root-to-leaf conjunctions, then combine them.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Reveal the moderate-risk rules",
+          "stateText": "IN-CLASS PRACTICE · 3 MINUTES Derive the missing moderate-risk rule. Trace every path that ends in a moderate-risk leaf. Join tests along a path with AND; join alternative paths with OR. Hide model answer IF income = $15–$35k AND credit = good OR income = $15–$35k AND credit = unknown AND debt = low OR income > $35k AND credit = bad THEN risk = moderate"
+        },
+        {
+          "segment": 7,
+          "label": "Hide the model answer",
+          "stateText": "IN-CLASS PRACTICE · 3 MINUTES Derive the missing moderate-risk rule. Trace every path that ends in a moderate-risk leaf. Join tests along a path with AND; join alternative paths with OR. Reveal model answer Write three root-to-leaf conjunctions, then combine them."
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "ID3 greedily searches a concept space of possible trees",
+      "visibleText": "DECISION-TREE CONCEPT\nDecision-tree induction as search\nstate: partially built tree\noperator: add an attribute test\nheuristic: information gain\ngreedy search uses no backtracking\nSTATE\na partially built tree\nSPACE\nall trees constructible from the examples\nOPERATOR\nadd an attribute test\nHEURISTIC\nchoose maximum information gain\nCONSEQUENCE\nGreedy and no backtracking makes ID3 efficient, but the locally best split need not produce the globally smallest or best-generalizing tree.",
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Classification predicts categories; regression predicts quantities",
+      "visibleText": "CLASSIFICATION\ncategorical target\n\nrisk ∈ high, moderate, low; evaluate class errors and probabilities\n\nREGRESSION\nnumeric target\n\npredict expected loss or dollar amount; evaluate residual magnitude\n\nOVERFITTING\ntraining detail becomes brittle rules\n\ndeep branches can fit noise, rare cases, or mislabeled records\n\nPRUNING\nremove unsupported complexity\n\npre-prune with stopping rules or post-prune using validation evidence\n\nMODEL-SELECTION DISCIPLINE\nFit the tree on training data, choose depth or pruning on validation data, and report the untouched test set once.",
+      "actions": []
+    },
+    {
+      "number": 24,
+      "title": "A confusion matrix turns errors into precision, recall, and F1",
+      "visibleText": "Balanced\nHigh recall\nHigh precision\nPredicted +\nPredicted −\nActual +\nTP 42\nFN 8\nActual −\nFP 8\nTN 42\nPRECISION\n0.84\nTP / (TP + FP)\nRECALL\n0.84\nTP / (TP + FN)\nF1\n0.84\nharmonic mean",
+      "actions": [
+        {
+          "segment": 8,
+          "label": "Choose high recall",
+          "stateText": "Balanced High recall High precision Predicted + Predicted − Actual + TP 48 FN 2 Actual − FP 25 TN 25 PRECISION 0.66 TP / (TP + FP) RECALL 0.96 TP / (TP + FN) F1 0.78 harmonic mean"
+        },
+        {
+          "segment": 9,
+          "label": "Choose high precision",
+          "stateText": "Balanced High recall High precision Predicted + Predicted − Actual + TP 32 FN 18 Actual − FP 2 TN 48 PRECISION 0.94 TP / (TP + FP) RECALL 0.64 TP / (TP + FN) F1 0.76 harmonic mean"
+        },
+        {
+          "segment": 10,
+          "label": "Return to balanced",
+          "stateText": "Balanced High recall High precision Predicted + Predicted − Actual + TP 42 FN 8 Actual − FP 8 TN 42 PRECISION 0.84 TP / (TP + FP) RECALL 0.84 TP / (TP + FN) F1 0.84 harmonic mean"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "One score is not enough evidence for deployment",
+      "visibleText": "EVALUATION LENS\nROC vs PR\n\nROC compares TPR and FPR; PR is often more revealing when the positive class is rare.\n\nCalibration\n\nAmong predictions near 0.7, roughly 70% should occur if probabilities are calibrated.\n\nSubgroups\n\nReport error, recall, calibration, and sample size for relevant groups—not only the aggregate.\n\nEXIT TICKET · 2 MINUTES\nWhy did ID3 choose income first?\nWrite one root-to-leaf rule.\nName one evaluation result needed beyond accuracy.\nContinue the learning\nCourse source: L09 Machine Learning Part A, pages 20–35.\nLuger, Artificial Intelligence, 6th ed., Chapters 10 and 12.\nRussell & Norvig, AIMA, 3rd ed., Chapter 18.\nQuinlan, “Induction of Decision Trees,” 1986.",
+      "actions": []
+    }
+  ]
+}

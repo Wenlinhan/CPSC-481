@@ -1,0 +1,3296 @@
+{
+  "version": 1,
+  "meeting": "14",
+  "scriptVersion": 3,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Decision trees: from examples to explainable rules",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 18.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-cover section",
+              "index": 0,
+              "sourcePhrase": "Lesson sixteen turns fourteen historical loan applications",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Ask the question that removes the most uncertainty",
+              "emoji": "🌳",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Lesson sixteen turns fourteen historical loan applications",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "Our anchor question is deceptively simple: which",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 17.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-cover section",
+              "index": 0,
+              "sourcePhrase": "We will move from data anatomy to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Represent, induce, calculate, interpret, and evaluate",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.504,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-roadmap-explorer nav button",
+              "index": 0,
+              "sourcePhrase": "The roadmap begins with representation: identify predictor",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A trustworthy tree needs the whole pipeline",
+              "emoji": "🧭",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The roadmap begins with representation: identify predictor",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-roadmap-explorer nav button",
+              "index": 1,
+              "sourcePhrase": "Induction is the mechanism. ID3 repeatedly chooses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-roadmap-explorer nav button",
+              "index": 2,
+              "sourcePhrase": "Calculation supplies entropy, expected entropy, and information",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 16.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-roadmap-explorer nav button",
+              "index": 3,
+              "sourcePhrase": "Evaluation asks whether the learned pattern generalizes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Choose Represent",
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Represent",
+              "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+              "index": 0,
+              "sourcePhrase": "Choose Represent. The objective card now explains",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Choose Induce",
+          "durationSeconds": 14.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Induce",
+              "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose Induce. The objective card now explains",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose Calculate",
+          "durationSeconds": 15,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Calculate",
+              "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose Calculate. The objective card now explains",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Choose Evaluate",
+          "durationSeconds": 15.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Evaluate",
+              "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+              "index": 3,
+              "sourcePhrase": "Choose Evaluate. The objective card now explains",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Inspect the risk column",
+          "durationSeconds": 11.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect the risk column",
+              "selector": ".m14-loan-table thead button",
+              "index": 1,
+              "sourcePhrase": "Select the Risk column. This is the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Inspect the income column",
+          "durationSeconds": 12.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect the income column",
+              "selector": ".m14-loan-table thead button",
+              "index": 5,
+              "sourcePhrase": "Select the Income column. Scan its three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Inspect one row",
+          "durationSeconds": 11.016,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect one row",
+              "selector": ".m14-loan-table tbody tr",
+              "index": 1,
+              "sourcePhrase": "Select application two. Read it as one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Enlarge the dataset",
+          "durationSeconds": 12.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Enlarge the dataset",
+              "selector": ".m14-table-toolbar button",
+              "index": 0,
+              "sourcePhrase": "Enlarge the dataset so the complete evidence",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 13,
+          "label": "Close the enlarged dataset",
+          "durationSeconds": 10.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Close the enlarged dataset",
+              "selector": ".m14-data-explorer",
+              "index": 0,
+              "sourcePhrase": "Close the enlarged dataset and return to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The target is risk; the evidence is past loan applications",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 17.16,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-role-grid article",
+              "index": 0,
+              "sourcePhrase": "The target variable is financial risk with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Predictors describe the case; the label names the target",
+              "emoji": "🎯",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The target variable is financial risk with",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-role-grid article",
+              "index": 1,
+              "sourcePhrase": "Do not mix target and predictor roles.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 19.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "A row is historical evidence, not a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "Before modeling, ask who produced the labels,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 30.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "Here is the mechanism-level distinction to keep:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A training table is a set of labeled input-output examples",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 18.84,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-data-anatomy article",
+              "index": 0,
+              "sourcePhrase": "Represent one application as an input vector",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "One row is a pair: input x and label y",
+              "emoji": "🧾",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Represent one application as an input vector",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 19.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-data-anatomy article",
+              "index": 1,
+              "sourcePhrase": "Columns define the vocabulary available to the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 17.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-data-anatomy article",
+              "index": 2,
+              "sourcePhrase": "The set contains six high-risk, three moderate-risk,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-data-explorer",
+              "index": 0,
+              "sourcePhrase": "Visual inspection may suggest income is predictive,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 30.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-data-explorer",
+              "index": 0,
+              "sourcePhrase": "The notation also clarifies dataset quality. Duplicate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Inspect credit history",
+          "durationSeconds": 10.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect credit history",
+              "selector": ".m14-loan-table thead button",
+              "index": 2,
+              "sourcePhrase": "Select the Credit history column and compare",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Inspect income",
+          "durationSeconds": 11.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect income",
+              "selector": ".m14-loan-table thead button",
+              "index": 5,
+              "sourcePhrase": "Select the Income column. Low-income rows are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Inspect record fourteen",
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect record fourteen",
+              "selector": ".m14-loan-table tbody tr",
+              "index": 13,
+              "sourcePhrase": "Select record fourteen. It combines high risk,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Clear the table",
+          "durationSeconds": 10.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Clear the table",
+              "selector": ".m14-table-toolbar button",
+              "index": 1,
+              "sourcePhrase": "Clear the current table selection. Clearing is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "ID3 learns a tree that describes class patterns",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.008,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-definition-stack article",
+              "index": 0,
+              "sourcePhrase": "J. Ross Quinlan introduced ID3 in nineteen",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A tree is the representation; ID3 is the learner",
+              "emoji": "🛠️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "J. Ross Quinlan introduced ID3 in nineteen",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 19.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-definition-stack article",
+              "index": 1,
+              "sourcePhrase": "A decision tree represents a conditional concept",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 18.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-definition-stack article",
+              "index": 2,
+              "sourcePhrase": "ID3 is the learning mechanism. It uses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Internal nodes test attributes; leaves decide classes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.512,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-tree-anatomy article",
+              "index": 0,
+              "sourcePhrase": "The root is the first internal node",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Node asks; branch answers; leaf decides",
+              "emoji": "🌿",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The root is the first internal node",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-tree-anatomy article",
+              "index": 1,
+              "sourcePhrase": "An internal node contains an attribute test",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-tree-anatomy article",
+              "index": 2,
+              "sourcePhrase": "A branch represents one answer value, such",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 16.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-tree-anatomy article",
+              "index": 3,
+              "sourcePhrase": "A leaf terminates traversal and stores a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".search-quick-check",
+              "index": 0,
+              "sourcePhrase": "Apply the distinction to the picnic example.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 26.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".search-quick-check",
+              "index": 0,
+              "sourcePhrase": "A complete path can be read as",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Try an incorrect branch definition",
+          "durationSeconds": 11.928,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Try an incorrect branch definition",
+              "selector": ".search-quick-check button",
+              "index": 0,
+              "sourcePhrase": "Choose option A, an attribute test. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Choose the branch definition",
+          "durationSeconds": 9.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose the branch definition",
+              "selector": ".search-quick-check button",
+              "index": 2,
+              "sourcePhrase": "Choose option C, an attribute value. Correct:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A risk tree turns attribute values into a class",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 11.424,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-path-steps li",
+              "index": 0,
+              "sourcePhrase": "To classify an application, begin at the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Classification follows one path, not every column",
+              "emoji": "🛤️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "To classify an application, begin at the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-path-steps li",
+              "index": 1,
+              "sourcePhrase": "Evaluate only the current node's attribute. If",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-path-steps li",
+              "index": 2,
+              "sourcePhrase": "Otherwise follow the branch matching the observed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-path-steps li",
+              "index": 3,
+              "sourcePhrase": "Stop at the first leaf and return",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 13.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "Trace record two: income is fifteen to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 28.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "Consider an implementation detail. At a categorical",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Change an applicant and watch the decision path change",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.264,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-tree-trace label",
+              "index": 0,
+              "sourcePhrase": "This interactive trace exposes the mechanism directly.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Changing one value can reroute the whole explanation",
+              "emoji": "🔀",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "This interactive trace exposes the mechanism directly.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-tree-trace label",
+              "index": 1,
+              "sourcePhrase": "Change income to the low band. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-tree-trace label",
+              "index": 2,
+              "sourcePhrase": "Change income to the high band and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 16.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-tree-trace > div",
+              "index": 0,
+              "sourcePhrase": "Return to middle income, unknown credit, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-tree-trace > div",
+              "index": 0,
+              "sourcePhrase": "This counterfactual exploration must be interpreted carefully.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Set low income",
+          "durationSeconds": 10.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set low income",
+              "selector": ".m14-tree-trace select",
+              "index": 0,
+              "sourcePhrase": "Set income to the low band. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Set high income",
+          "durationSeconds": 8.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set high income",
+              "selector": ".m14-tree-trace select",
+              "index": 0,
+              "sourcePhrase": "Set income to over thirty-five thousand. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Set good credit",
+          "durationSeconds": 8.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set good credit",
+              "selector": ".m14-tree-trace select",
+              "index": 1,
+              "sourcePhrase": "Set credit history to good. The displayed",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Return to middle income",
+          "durationSeconds": 10.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Return to middle income",
+              "selector": ".m14-tree-trace select",
+              "index": 0,
+              "sourcePhrase": "Return income to fifteen through thirty-five thousand.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Set unknown credit",
+          "durationSeconds": 8.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set unknown credit",
+              "selector": ".m14-tree-trace select",
+              "index": 1,
+              "sourcePhrase": "Set credit history to unknown. The path",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Set low debt",
+          "durationSeconds": 8.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set low debt",
+              "selector": ".m14-tree-trace select",
+              "index": 2,
+              "sourcePhrase": "Set debt to low. The final leaf",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "ID3 recursively turns impure partitions into subtrees",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.032,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-pseudocode-map article",
+              "index": 0,
+              "sourcePhrase": "Read ID3 as executable pseudocode. The procedure",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Base cases stop; the recursive case grows",
+              "emoji": "♻️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Read ID3 as executable pseudocode. The procedure",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-pseudocode-map article",
+              "index": 1,
+              "sourcePhrase": "Base case A handles purity. If every",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-pseudocode-map article",
+              "index": 2,
+              "sourcePhrase": "Base case B handles exhausted attributes or",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "The recursive case selects the best attribute,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 12.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "The greedy line is the local attribute",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 28.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "Track the recursive arguments precisely. Each call",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Select, partition, test purity, then recurse",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 12.504,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-build-reveal nav button",
+              "index": 0,
+              "sourcePhrase": "Stage one compares candidate attributes using the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Every child becomes a smaller learning problem",
+              "emoji": "🪆",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Stage one compares candidate attributes using the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-build-reveal nav button",
+              "index": 1,
+              "sourcePhrase": "Stage two creates one branch for each",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-build-reveal nav button",
+              "index": 2,
+              "sourcePhrase": "Stage three checks each child for purity.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-build-reveal nav button",
+              "index": 3,
+              "sourcePhrase": "Stage four recurses on every impure child",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 11.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-build-reveal nav button",
+              "index": 3,
+              "sourcePhrase": "This is divide and conquer with a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 28.752,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-build-reveal nav button",
+              "index": 3,
+              "sourcePhrase": "The invariant across stages is that each",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Show stage 1",
+          "durationSeconds": 13.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show stage 1",
+              "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+              "index": 0,
+              "sourcePhrase": "Choose Choose a test. The staged diagram",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Show stage 2",
+          "durationSeconds": 14.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show stage 2",
+              "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose Partition examples. The staged diagram now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Show stage 3",
+          "durationSeconds": 14.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show stage 3",
+              "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose Close pure branches. The staged diagram",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Show stage 4",
+          "durationSeconds": 2.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show stage 4",
+              "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+              "index": 3,
+              "sourcePhrase": "Choose Recurse. The staged diagram now exposes",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.06
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "If several trees fit the data, which one should we prefer?",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.096,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-simplicity-compare article",
+              "index": 0,
+              "sourcePhrase": "Many different trees can classify all training",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Perfect training fit does not guarantee generalization",
+              "emoji": "⚖️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Many different trees can classify all training",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-simplicity-compare article",
+              "index": 1,
+              "sourcePhrase": "A smaller tree has lower description cost",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": "blockquote",
+              "index": 0,
+              "sourcePhrase": "But shortest is not automatically best, accurate,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A useful pattern compresses the data it explains",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.496,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-mml code",
+              "index": 0,
+              "sourcePhrase": "Minimum message length formalizes a compression intuition.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Good compression balances model and exceptions",
+              "emoji": "🗜️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Minimum message length formalizes a compression intuition.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-mml article",
+              "index": 0,
+              "sourcePhrase": "The first term is model cost. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-mml article",
+              "index": 1,
+              "sourcePhrase": "The second term is residual cost. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 13.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "The winner balances both terms. Think of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 16.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "The source's even-number example contains fifty integers",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 32.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "MML also reveals why memorization can look",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Entropy measures uncertainty in a class distribution",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.88,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-formulas code",
+              "index": 0,
+              "sourcePhrase": "Information content for a class c is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Entropy asks how surprising the next label is",
+              "emoji": "🎲",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Information content for a class c is",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-formulas code",
+              "index": 1,
+              "sourcePhrase": "Entropy H of S is the probability-weighted",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-entropy-cases article",
+              "index": 0,
+              "sourcePhrase": "Use the convention zero log zero equals",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 18.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-entropy-cases article",
+              "index": 1,
+              "sourcePhrase": "A pure set has entropy zero because",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 11.928,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-entropy-cases article",
+              "index": 1,
+              "sourcePhrase": "Entropy describes the label distribution inside a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 30.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-entropy-cases article",
+              "index": 1,
+              "sourcePhrase": "Derive the binary maximum explicitly. Let p",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Purity lowers entropy; a 50/50 split maximizes it",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.296,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-entropy-lab input",
+              "index": 0,
+              "sourcePhrase": "The slider controls a binary set of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Balanced classes are maximally uncertain",
+              "emoji": "🌗",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The slider controls a binary set of",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-entropy-lab > div strong",
+              "index": 0,
+              "sourcePhrase": "Move to ten positives and zero negatives.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-dots",
+              "index": 0,
+              "sourcePhrase": "Move to eight positives and two negatives.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-entropy-lab code",
+              "index": 0,
+              "sourcePhrase": "The curve is symmetric: two positives and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 14.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-entropy-lab code",
+              "index": 0,
+              "sourcePhrase": "Predict before moving the slider. If purity",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 27.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-entropy-lab code",
+              "index": 0,
+              "sourcePhrase": "Now connect the lab to splitting. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Set ten positives",
+          "durationSeconds": 7.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set ten positives",
+              "selector": ".m14-entropy-lab input",
+              "index": 0,
+              "sourcePhrase": "Set ten positives and zero negatives. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Set eight positives",
+          "durationSeconds": 9.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set eight positives",
+              "selector": ".m14-entropy-lab input",
+              "index": 0,
+              "sourcePhrase": "Set eight positives and two negatives. Entropy",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Set a balanced split",
+          "durationSeconds": 8.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set a balanced split",
+              "selector": ".m14-entropy-lab input",
+              "index": 0,
+              "sourcePhrase": "Set five positives and five negatives. Entropy",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Set zero positives",
+          "durationSeconds": 8.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set zero positives",
+              "selector": ".m14-entropy-lab input",
+              "index": 0,
+              "sourcePhrase": "Set zero positives and ten negatives. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Choose the test that removes the most expected uncertainty",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-formulas code",
+              "index": 0,
+              "sourcePhrase": "For a candidate attribute X, first compute",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Information gain equals uncertainty before minus after",
+              "emoji": "📉",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "For a candidate attribute X, first compute",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-path-steps li",
+              "index": 0,
+              "sourcePhrase": "Next partition T by X. Compute the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 12.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-path-steps li",
+              "index": 1,
+              "sourcePhrase": "Weight each child entropy by its fraction",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 10.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-path-steps li",
+              "index": 2,
+              "sourcePhrase": "Sum the weighted child entropies to obtain",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 14.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-formulas code",
+              "index": 1,
+              "sourcePhrase": "Information gain is H of T minus",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Audit",
+          "durationSeconds": 16.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit",
+              "selector": ".m14-path-steps li",
+              "index": 3,
+              "sourcePhrase": "Raw information gain can favor attributes with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Deepen",
+          "durationSeconds": 28.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-path-steps li",
+              "index": 3,
+              "sourcePhrase": "Suppose a split creates branches of sizes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Income reduces uncertainty by 0.967 bits",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.344,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-calculation code",
+              "index": 0,
+              "sourcePhrase": "Start with label counts: six high, three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Work the counts, weights, and subtraction",
+              "emoji": "🧮",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Start with label counts: six high, three",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-calculation code",
+              "index": 0,
+              "sourcePhrase": "Now split on income. The zero-to-fifteen-thousand branch",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 10.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-calculation code",
+              "index": 1,
+              "sourcePhrase": "The fifteen-to-thirty-five-thousand branch has mixed labels and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 18.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-calculation code",
+              "index": 1,
+              "sourcePhrase": "The over-thirty-five-thousand branch contains six cases and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-calculation code",
+              "index": 2,
+              "sourcePhrase": "Subtract: one point five three one minus",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Audit",
+          "durationSeconds": 16.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit",
+              "selector": ".m14-gain-note",
+              "index": 0,
+              "sourcePhrase": "Compare the alternatives: credit history gains zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Deepen",
+          "durationSeconds": 28.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-gain-note",
+              "index": 0,
+              "sourcePhrase": "Check the income arithmetic against the table",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Rank every candidate test before selecting the root",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.408,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-gain-reveal section",
+              "index": 0,
+              "sourcePhrase": "Every candidate starts from the same parent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Commit to a ranking before revealing it",
+              "emoji": "🏁",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Every candidate starts from the same parent",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 12.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-gain-reveal [role='row']",
+              "index": 1,
+              "sourcePhrase": "Income is revealed first with expected entropy",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 12.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-gain-reveal [role='row']",
+              "index": 2,
+              "sourcePhrase": "Credit history follows with expected entropy one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-gain-reveal [role='row']",
+              "index": 3,
+              "sourcePhrase": "Collateral produces gain zero point two zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 13.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-gain-reveal [role='row']",
+              "index": 4,
+              "sourcePhrase": "The comparison must be recomputed inside each",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 27.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-gain-reveal [role='row']",
+              "index": 4,
+              "sourcePhrase": "A useful sanity check is that every",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Reveal candidate 1",
+          "durationSeconds": 11.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal candidate 1",
+              "selector": ".m14-gain-reveal button",
+              "index": 0,
+              "sourcePhrase": "Reveal income. Its expected entropy is zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal candidate 2",
+          "durationSeconds": 7.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal candidate 2",
+              "selector": ".m14-gain-reveal button",
+              "index": 0,
+              "sourcePhrase": "Reveal credit history. Its gain is zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Reveal candidate 3",
+          "durationSeconds": 8.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal candidate 3",
+              "selector": ".m14-gain-reveal button",
+              "index": 0,
+              "sourcePhrase": "Reveal collateral. Its gain is zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Reveal candidate 4",
+          "durationSeconds": 10.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal candidate 4",
+              "selector": ".m14-gain-reveal button",
+              "index": 0,
+              "sourcePhrase": "Reveal debt. Its gain is zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "One greedy choice creates new, smaller learning problems",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.024,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-stage-map article",
+              "index": 0,
+              "sourcePhrase": "Stage A splits all fourteen records on",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Recompute locally after every split",
+              "emoji": "🧩",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Stage A splits all fourteen records on",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-stage-map article",
+              "index": 1,
+              "sourcePhrase": "Stage B treats each impure child as",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-source-frame",
+              "index": 0,
+              "sourcePhrase": "This locality is essential. A globally mediocre",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "Greedy construction therefore creates a sequence of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 23.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "The recursion can choose credit for one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The completed tree encodes three risk concepts",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.08,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-final-tree-notes article",
+              "index": 0,
+              "sourcePhrase": "The completed tree places income at the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A class can be reached by several different paths",
+              "emoji": "🌲",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The completed tree places income at the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-final-tree-notes article",
+              "index": 1,
+              "sourcePhrase": "Moderate risk appears at three separate leaves:",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 12.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-final-tree-notes article",
+              "index": 2,
+              "sourcePhrase": "Low risk occurs for high income with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "Debt is tested only for middle income",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 26.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "Count the leaves and inspect redundancy. Multiple",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Each root-to-leaf path becomes one conjunction",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 12.888,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-rule-grammar code",
+              "index": 0,
+              "sourcePhrase": "To convert a tree path into a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "AND within a path; OR across paths",
+              "emoji": "🔗",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "To convert a tree path into a",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-rule-grammar article",
+              "index": 0,
+              "sourcePhrase": "The left-hand side contains the conditions; the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-rule-grammar article",
+              "index": 1,
+              "sourcePhrase": "If several paths terminate at the same",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-rule-grammar",
+              "index": 0,
+              "sourcePhrase": "Parentheses are useful insurance: OR separates full",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 27.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-rule-grammar",
+              "index": 0,
+              "sourcePhrase": "Rule conversion preserves predictions only when every",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Write the moderate-risk concept as rules",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 11.832,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-rule-practice section",
+              "index": 0,
+              "sourcePhrase": "Before revealing the answer, trace every moderate-risk",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Three paths, three conjunctions, one class",
+              "emoji": "✍️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Before revealing the answer, trace every moderate-risk",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-rule-practice > div",
+              "index": 0,
+              "sourcePhrase": "The first rule is middle income AND",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 10.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-rule-practice section",
+              "index": 0,
+              "sourcePhrase": "The third is high income AND bad",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-rule-practice > div",
+              "index": 0,
+              "sourcePhrase": "Test the rule against a neighboring case.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 28.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-rule-practice > div",
+              "index": 0,
+              "sourcePhrase": "After deriving the three moderate rules, verify",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal the moderate-risk rules",
+          "durationSeconds": 10.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal the moderate-risk rules",
+              "selector": ".m14-rule-practice button",
+              "index": 0,
+              "sourcePhrase": "Reveal the model answer. Compare all three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Hide the model answer",
+          "durationSeconds": 12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Hide the model answer",
+              "selector": ".m14-rule-practice button",
+              "index": 0,
+              "sourcePhrase": "Hide the model answer so the practice",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "ID3 greedily searches a concept space of possible trees",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 11.496,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-search-map article",
+              "index": 0,
+              "sourcePhrase": "Frame induction as search. A state is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "ID3 is heuristic search without backtracking",
+              "emoji": "🔎",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Frame induction as search. A state is",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-search-map article",
+              "index": 1,
+              "sourcePhrase": "An operator expands a leaf by adding",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-search-map article",
+              "index": 2,
+              "sourcePhrase": "Information gain is the heuristic guiding which",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-search-map article",
+              "index": 3,
+              "sourcePhrase": "There is no ordinary backtracking. Efficiency improves",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 14.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".search-callout",
+              "index": 0,
+              "sourcePhrase": "This connects machine learning to earlier AI",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Classification predicts categories; regression predicts quantities",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 18.6,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-modern-grid article",
+              "index": 0,
+              "sourcePhrase": "Classification predicts a categorical target such as",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Task type determines output and evaluation",
+              "emoji": "🧰",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Classification predicts a categorical target such as",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 12.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-modern-grid article",
+              "index": 1,
+              "sourcePhrase": "Overfitting occurs when a tree encodes training",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-modern-grid article",
+              "index": 2,
+              "sourcePhrase": "Pre-pruning stops growth early using limits such",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-modern-grid article",
+              "index": 3,
+              "sourcePhrase": "Use training data to fit, validation data",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A confusion matrix turns errors into precision, recall, and F1",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 17.328,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-confusion",
+              "index": 0,
+              "sourcePhrase": "Treat high risk as the positive class.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Different thresholds trade false positives for false negatives",
+              "emoji": "🚦",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Treat high risk as the positive class.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-metrics-lab article",
+              "index": 0,
+              "sourcePhrase": "Precision equals true positives divided by all",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-metrics-lab article",
+              "index": 1,
+              "sourcePhrase": "Recall equals true positives divided by all",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 13.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-metrics-lab article",
+              "index": 2,
+              "sourcePhrase": "F1 is the harmonic mean of precision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 19.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-metrics-lab nav",
+              "index": 0,
+              "sourcePhrase": "Switch operating points. The high-recall preset catches",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Audit",
+          "durationSeconds": 15.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit",
+              "selector": ".m14-metrics-lab nav",
+              "index": 0,
+              "sourcePhrase": "In lending, even the phrase positive class",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Deepen",
+          "durationSeconds": 32.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m14-metrics-lab nav",
+              "index": 0,
+              "sourcePhrase": "Metrics also depend on prevalence and threshold.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Choose high recall",
+          "durationSeconds": 11.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose high recall",
+              "selector": "nav[aria-label=\"Classifier operating points\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose High recall. Forty-eight true positives and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Choose high precision",
+          "durationSeconds": 12.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose high precision",
+              "selector": "nav[aria-label=\"Classifier operating points\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose High precision. Only two false positives",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Return to balanced",
+          "durationSeconds": 12.216,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Return to balanced",
+              "selector": "nav[aria-label=\"Classifier operating points\"] button",
+              "index": 0,
+              "sourcePhrase": "Return to Balanced. Precision and recall are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "One score is not enough evidence for deployment",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.888,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m14-exit article",
+              "index": 0,
+              "sourcePhrase": "ROC analysis compares true-positive rate with false-positive",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Accuracy is a headline, not an audit",
+              "emoji": "🕵️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "ROC analysis compares true-positive rate with false-positive",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m14-exit article",
+              "index": 1,
+              "sourcePhrase": "Calibration asks whether predicted probabilities mean what",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m14-exit article",
+              "index": 2,
+              "sourcePhrase": "Subgroup evaluation reports error, recall, calibration, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m14-exit ol",
+              "index": 0,
+              "sourcePhrase": "For the exit ticket, explain why income",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 17.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m14-exit ol",
+              "index": 0,
+              "sourcePhrase": "The central mechanism is now complete: labeled",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

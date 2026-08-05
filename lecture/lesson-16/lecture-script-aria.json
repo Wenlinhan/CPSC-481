@@ -1,0 +1,3336 @@
+{
+  "version": 3,
+  "lesson": "16",
+  "meeting": "14",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Lesson 16: Decision Trees, ID3, and Evaluation",
+  "route": "/lessons/16",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Decision trees: from examples to explainable rules",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Lesson sixteen turns fourteen historical loan applications into an explainable classifier. Each row supplies applicant attributes and a risk label; ID3 converts those labeled examples into a tree whose internal questions lead to high, moderate, or low risk leaves.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Lesson sixteen turns fourteen historical loan applications",
+                "selector": ".m14-cover section",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Lesson sixteen turns fourteen historical loan applications",
+                "label": "Ask the question that removes the most uncertainty",
+                "emoji": "🌳",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Our anchor question is deceptively simple: which attribute should the tree ask about first? Guessing from appearance is not enough. We need a numerical rule that compares candidate questions by how much uncertainty each one removes.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Our anchor question is deceptively simple: which",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "We will move from data anatomy to tree traversal, recursive induction, entropy, information gain, rule extraction, and responsible evaluation. Think of the tree as a very disciplined twenty-questions player: every question must earn its place.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "We will move from data anatomy to",
+                "selector": ".m14-cover section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Represent, induce, calculate, interpret, and evaluate",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "The roadmap begins with representation: identify predictor columns, the target label, internal tests, branches, and leaves. A calculation without a clear representation is merely arithmetic wearing a lab coat.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The roadmap begins with representation: identify predictor",
+                "selector": ".m14-roadmap-explorer nav button",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "The roadmap begins with representation: identify predictor",
+                "label": "A trustworthy tree needs the whole pipeline",
+                "emoji": "🧭",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Induction is the mechanism. ID3 repeatedly chooses a test, partitions the current examples, closes pure partitions as leaves, and recursively treats each impure partition as a smaller learning problem.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Induction is the mechanism. ID3 repeatedly chooses",
+                "selector": ".m14-roadmap-explorer nav button",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Calculation supplies entropy, expected entropy, and information gain. Interpretation turns a root-to-leaf path into a rule and explains why a particular attribute was selected rather than merely reporting a decimal.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Calculation supplies entropy, expected entropy, and information",
+                "selector": ".m14-roadmap-explorer nav button",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Evaluation asks whether the learned pattern generalizes beyond these fourteen rows. We will examine unseen cases, error types, calibration, subgroup behavior, and the danger of treating training fit as deployment evidence.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Evaluation asks whether the learned pattern generalizes",
+                "selector": ".m14-roadmap-explorer nav button",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Represent",
+          "text": "Choose Represent. The objective card now explains this stage of the pipeline and ties it back to the shared loan records. Notice how the focus moves with the narration instead of camping permanently on the first card.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+            "index": 0,
+            "label": "Choose Represent"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Represent. The objective card now explains",
+                "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+                "index": 0,
+                "label": "Choose Represent"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Induce",
+          "text": "Choose Induce. The objective card now explains this stage of the pipeline and ties it back to the shared loan records. Notice how the focus moves with the narration instead of camping permanently on the first card.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+            "index": 1,
+            "label": "Choose Induce"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Induce. The objective card now explains",
+                "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+                "index": 1,
+                "label": "Choose Induce"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Calculate",
+          "text": "Choose Calculate. The objective card now explains this stage of the pipeline and ties it back to the shared loan records. Notice how the focus moves with the narration instead of camping permanently on the first card.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+            "index": 2,
+            "label": "Choose Calculate"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Calculate. The objective card now explains",
+                "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+                "index": 2,
+                "label": "Choose Calculate"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose Evaluate",
+          "text": "Choose Evaluate. The objective card now explains this stage of the pipeline and ties it back to the shared loan records. Notice how the focus moves with the narration instead of camping permanently on the first card.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+            "index": 3,
+            "label": "Choose Evaluate"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Evaluate. The objective card now explains",
+                "selector": "nav[aria-label=\"Lesson 16 objectives\"] button",
+                "index": 3,
+                "label": "Choose Evaluate"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect the risk column",
+          "text": "Select the Risk column. This is the class label we are trying to predict, so compare it against the predictor values without accidentally treating it as an input.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table thead button",
+            "index": 1,
+            "label": "Inspect the risk column"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select the Risk column. This is the",
+                "selector": ".m14-loan-table thead button",
+                "index": 1,
+                "label": "Inspect the risk column"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect the income column",
+          "text": "Select the Income column. Scan its three bands against the risk labels; the visible pattern motivates income as a candidate root, while information gain will quantify the claim.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table thead button",
+            "index": 5,
+            "label": "Inspect the income column"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select the Income column. Scan its three",
+                "selector": ".m14-loan-table thead button",
+                "index": 5,
+                "label": "Inspect the income column"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect one row",
+          "text": "Select application two. Read it as one complete labeled example: high risk, unknown credit, high debt, no collateral, and middle income.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table tbody tr",
+            "index": 1,
+            "label": "Inspect one row"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select application two. Read it as one",
+                "selector": ".m14-loan-table tbody tr",
+                "index": 1,
+                "label": "Inspect one row"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Enlarge the dataset",
+          "text": "Enlarge the dataset so the complete evidence remains readable. The modal preserves all rows and selectors; enlarging changes presentation, not the data or the algorithm.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-table-toolbar button",
+            "index": 0,
+            "label": "Enlarge the dataset"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Enlarge the dataset so the complete evidence",
+                "selector": ".m14-table-toolbar button",
+                "index": 0,
+                "label": "Enlarge the dataset"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Close the enlarged dataset",
+          "text": "Close the enlarged dataset and return to the roadmap. A production video should demonstrate the control rather than merely mentioning that it exists.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-table-modal header button",
+            "index": 0,
+            "label": "Close the enlarged dataset"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Close the enlarged dataset and return to",
+                "selector": ".m14-data-explorer",
+                "index": 0,
+                "label": "Close the enlarged dataset"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The target is risk; the evidence is past loan applications",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "The target variable is financial risk with three possible labels: high, moderate, and low. That is what the learner must predict. Credit history, debt, collateral, and income are predictors: evidence available before the decision.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The target variable is financial risk with",
+                "selector": ".m14-role-grid article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "The target variable is financial risk with",
+                "label": "Predictors describe the case; the label names the target",
+                "emoji": "🎯",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Do not mix target and predictor roles. If the answer column leaks into the inputs, the model can appear brilliant by peeking at the answer key. It is the machine-learning version of grading your own exam while holding the rubric.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Do not mix target and predictor roles.",
+                "selector": ".m14-role-grid article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A row is historical evidence, not a law of nature. The recorded label may reflect expert judgment, policy, measurement error, or past institutional behavior. ID3 learns patterns in those labels; it does not certify that the labels are fair or correct.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A row is historical evidence, not a",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Before modeling, ask who produced the labels, under which policy, for which population, and with what consequences. A technically accurate replica of a biased historical process can be an extremely efficient way to repeat history.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Before modeling, ask who produced the labels,",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Here is the mechanism-level distinction to keep: supervised learning estimates a mapping from predictors to a target using labeled examples. The tree does not discover risk as a physical substance hidden in the row. It discovers conditional regularities between the provided columns and the historical label. Change the labeling policy, feature definitions, or sampled population, and the learned concept can change even when the algorithm stays identical.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Here is the mechanism-level distinction to keep:",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "A training table is a set of labeled input-output examples",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Represent one application as an input vector x containing credit history, debt, collateral, and income. Pair it with a label y containing the observed risk class. The dataset D is the collection of fourteen ordered pairs, x sub i comma y sub i.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Represent one application as an input vector",
+                "selector": ".m14-data-anatomy article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Represent one application as an input vector",
+                "label": "One row is a pair: input x and label y",
+                "emoji": "🧾",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Columns define the vocabulary available to the tree. Rows provide combinations of values and labels. ID3 can only ask questions expressible by these columns, so representation limits the hypotheses before the algorithm performs a single calculation.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Columns define the vocabulary available to the",
+                "selector": ".m14-data-anatomy article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The set contains six high-risk, three moderate-risk, and five low-risk labels. Those counts create the parent class distribution. Every entropy and information-gain calculation later on comes from counting labels inside the relevant subset.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The set contains six high-risk, three moderate-risk,",
+                "selector": ".m14-data-anatomy article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Visual inspection may suggest income is predictive, but eyesight is vulnerable to selective attention. We therefore inspect rows and columns, then replace intuition with a reproducible comparison of every candidate attribute.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Visual inspection may suggest income is predictive,",
+                "selector": ".m14-data-explorer",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "The notation also clarifies dataset quality. Duplicate x values with conflicting y labels create irreducible ambiguity for a deterministic tree unless another predictor separates them. Missing combinations create blind spots. A train-validation-test split changes the role of rows, not their format: training rows construct the tree, validation rows guide pruning or settings, and test rows estimate final generalization.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The notation also clarifies dataset quality. Duplicate",
+                "selector": ".m14-data-explorer",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect credit history",
+          "text": "Select the Credit history column and compare its values with risk. Credit helps, but several label classes remain mixed within its categories.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table thead button",
+            "index": 2,
+            "label": "Inspect credit history"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select the Credit history column and compare",
+                "selector": ".m14-loan-table thead button",
+                "index": 2,
+                "label": "Inspect credit history"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect income",
+          "text": "Select the Income column. Low-income rows are consistently high risk here, while the higher bands create much cleaner partitions than the other attributes.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table thead button",
+            "index": 5,
+            "label": "Inspect income"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select the Income column. Low-income rows are",
+                "selector": ".m14-loan-table thead button",
+                "index": 5,
+                "label": "Inspect income"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Inspect record fourteen",
+          "text": "Select record fourteen. It combines high risk, bad credit, high debt, no collateral, and middle income. Later we can trace exactly which of those attributes the learned tree uses.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-loan-table tbody tr",
+            "index": 13,
+            "label": "Inspect record fourteen"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select record fourteen. It combines high risk,",
+                "selector": ".m14-loan-table tbody tr",
+                "index": 13,
+                "label": "Inspect record fourteen"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Clear the table",
+          "text": "Clear the current table selection. Clearing is useful before a new comparison because it removes the previous visual emphasis without altering any record.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-table-toolbar button",
+            "index": 1,
+            "label": "Clear the table"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Clear the current table selection. Clearing is",
+                "selector": ".m14-table-toolbar button",
+                "index": 1,
+                "label": "Clear the table"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "ID3 learns a tree that describes class patterns",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "J. Ross Quinlan introduced ID3 in nineteen eighty-six. The historical detail matters because it separates a general model family, decision trees, from one specific induction procedure used to construct such a model.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "J. Ross Quinlan introduced ID3 in nineteen",
+                "selector": ".m14-definition-stack article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "J. Ross Quinlan introduced ID3 in nineteen",
+                "label": "A tree is the representation; ID3 is the learner",
+                "emoji": "🛠️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "A decision tree represents a conditional concept as tests and outcomes. Internal nodes ask about attributes, branches correspond to observed values, and leaves store predicted classes. The finished tree can be executed and translated into human-readable rules.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A decision tree represents a conditional concept",
+                "selector": ".m14-definition-stack article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "ID3 is the learning mechanism. It uses labeled examples to choose tests greedily, partitions the data, and repeats. Saying the tree learned is shorthand; more precisely, ID3 induced a tree from evidence under a particular selection heuristic.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "ID3 is the learning mechanism. It uses",
+                "selector": ".m14-definition-stack article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Internal nodes test attributes; leaves decide classes",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "The root is the first internal node and every example begins there. Its location gives it strategic importance: a useful root should organize the dataset into substantially cleaner subsets.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The root is the first internal node",
+                "selector": ".m14-tree-anatomy article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "The root is the first internal node",
+                "label": "Node asks; branch answers; leaf decides",
+                "emoji": "🌿",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "An internal node contains an attribute test such as forecast or income. It does not contain the final answer. Its job is to ask a question whose possible values determine which outgoing branch is followed.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "An internal node contains an attribute test",
+                "selector": ".m14-tree-anatomy article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A branch represents one answer value, such as sunny, overcast, or rain. A branch is neither a complete training record nor another probability formula; it is the labeled route created by the current test result.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A branch represents one answer value, such",
+                "selector": ".m14-tree-anatomy article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "A leaf terminates traversal and stores a class decision. The compact memory trick is: node asks, branch answers, leaf decides. If you confuse them, the tree becomes botanical modern art instead of an algorithm.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A leaf terminates traversal and stores a",
+                "selector": ".m14-tree-anatomy article",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Apply the distinction to the picnic example. Forecast is a node test, sunny is a branch value, humidity may be the next internal test, and yes or no is the leaf decision.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Apply the distinction to the picnic example.",
+                "selector": ".search-quick-check",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "A complete path can be read as nested conditionals. If forecast is sunny, then test humidity; if humidity is high, return no. That operational reading matters because tree depth approximates the number of questions asked for a particular case. Different leaves may have different depths, so prediction cost and explanation length can vary from one applicant to another.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A complete path can be read as",
+                "selector": ".search-quick-check",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Try an incorrect branch definition",
+          "text": "Choose option A, an attribute test. The feedback says reconsider because a node contains the test; the outgoing branch is labeled by the observed attribute value.",
+          "action": {
+            "type": "click",
+            "selector": ".search-quick-check button",
+            "index": 0,
+            "label": "Try an incorrect branch definition"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose option A, an attribute test. The",
+                "selector": ".search-quick-check button",
+                "index": 0,
+                "label": "Try an incorrect branch definition"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose the branch definition",
+          "text": "Choose option C, an attribute value. Correct: a branch is the route selected by one answer to the current node's test.",
+          "action": {
+            "type": "click",
+            "selector": ".search-quick-check button",
+            "index": 2,
+            "label": "Choose the branch definition"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose option C, an attribute value. Correct:",
+                "selector": ".search-quick-check button",
+                "index": 2,
+                "label": "Choose the branch definition"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A risk tree turns attribute values into a class",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "To classify an application, begin at the root. In the learned loan tree the first question is income because income produced the largest information gain during training.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "To classify an application, begin at the",
+                "selector": ".m14-path-steps li",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "To classify an application, begin at the",
+                "label": "Classification follows one path, not every column",
+                "emoji": "🛤️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Evaluate only the current node's attribute. If income is between zero and fifteen thousand dollars, the path immediately reaches high risk. Credit, debt, and collateral are not consulted for that case.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Evaluate only the current node's attribute. If",
+                "selector": ".m14-path-steps li",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Otherwise follow the branch matching the observed value and evaluate the next node. Middle income may require credit history and, for unknown credit, debt. High income may require credit history but not debt.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Otherwise follow the branch matching the observed",
+                "selector": ".m14-path-steps li",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Stop at the first leaf and return its class. Classification is therefore a conditional path, not a vote over every predictor. Unvisited attributes have no influence on that particular prediction.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stop at the first leaf and return",
+                "selector": ".m14-path-steps li",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Trace record two: income is fifteen to thirty-five thousand, credit is unknown, and debt is high, so the path terminates at high risk. Collateral appears in the table but nowhere in the learned tree.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Trace record two: income is fifteen to",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Consider an implementation detail. At a categorical node, the system must map the observed value to exactly one outgoing edge. An unseen value needs an explicit policy: use a default branch, the local majority class, probabilistic routing, or declare uncertainty. A classroom diagram often omits this engineering seam, but deployed software cannot solve it with a thoughtful shrug.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Consider an implementation detail. At a categorical",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Change an applicant and watch the decision path change",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "This interactive trace exposes the mechanism directly. The initial applicant has middle income, unknown credit, and high debt. The tree asks all three relevant questions before returning high risk.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "This interactive trace exposes the mechanism directly.",
+                "selector": ".m14-tree-trace label",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "This interactive trace exposes the mechanism directly.",
+                "label": "Changing one value can reroute the whole explanation",
+                "emoji": "🔀",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Change income to the low band. The tree now stops immediately at high risk. Credit and debt remain visible input values, yet they are causally irrelevant to this traversal because the path never reaches those tests.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Change income to the low band. The",
+                "selector": ".m14-tree-trace label",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Change income to the high band and credit to good. The route becomes income greater than thirty-five thousand, then good credit, then low risk. Debt is skipped, demonstrating instance-specific explanations.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Change income to the high band and",
+                "selector": ".m14-tree-trace label",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Return to middle income, unknown credit, and switch debt from high to low. The leaf changes from high to moderate. A useful explanation reports the exact path taken and the plausible neighboring change that would alter the result.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Return to middle income, unknown credit, and",
+                "selector": ".m14-tree-trace > div",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "This counterfactual exploration must be interpreted carefully. Changing income in the interface shows how the model output changes while holding other represented values fixed. It does not prove that changing a person's real income would causally change financial risk. The tree is an associational predictor learned from records, not a randomized economic experiment.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "This counterfactual exploration must be interpreted carefully.",
+                "selector": ".m14-tree-trace > div",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set low income",
+          "text": "Set income to the low band. The path should collapse immediately to high risk, showing that later attributes are skipped for this applicant.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 0,
+            "label": "Set low income",
+            "value": "low"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set income to the low band. The",
+                "selector": ".m14-tree-trace select",
+                "index": 0,
+                "label": "Set low income"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set high income",
+          "text": "Set income to over thirty-five thousand. The tree now needs credit history and ignores debt for this branch.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 0,
+            "label": "Set high income",
+            "value": "high"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set income to over thirty-five thousand. The",
+                "selector": ".m14-tree-trace select",
+                "index": 0,
+                "label": "Set high income"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set good credit",
+          "text": "Set credit history to good. The displayed path ends at low risk, and the debt value is absent from the explanation.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 1,
+            "label": "Set good credit",
+            "value": "good"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set credit history to good. The displayed",
+                "selector": ".m14-tree-trace select",
+                "index": 1,
+                "label": "Set good credit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Return to middle income",
+          "text": "Return income to fifteen through thirty-five thousand. Good credit now ends at moderate risk, showing that the meaning of a value depends on earlier tests.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 0,
+            "label": "Return to middle income",
+            "value": "middle"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Return income to fifteen through thirty-five thousand.",
+                "selector": ".m14-tree-trace select",
+                "index": 0,
+                "label": "Return to middle income"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set unknown credit",
+          "text": "Set credit history to unknown. The path opens a debt test because the current subset is still impure.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 1,
+            "label": "Set unknown credit",
+            "value": "unknown"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set credit history to unknown. The path",
+                "selector": ".m14-tree-trace select",
+                "index": 1,
+                "label": "Set unknown credit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set low debt",
+          "text": "Set debt to low. The final leaf changes to moderate risk; switching debt back to high would return high risk.",
+          "action": {
+            "type": "select",
+            "selector": ".m14-tree-trace select",
+            "index": 2,
+            "label": "Set low debt",
+            "value": "low"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set debt to low. The final leaf",
+                "selector": ".m14-tree-trace select",
+                "index": 2,
+                "label": "Set low debt"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "ID3 recursively turns impure partitions into subtrees",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Read ID3 as executable pseudocode. The procedure receives a set of labeled examples and a set of unused attributes, then returns either a class leaf or a decision subtree.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Read ID3 as executable pseudocode. The procedure",
+                "selector": ".m14-pseudocode-map article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Read ID3 as executable pseudocode. The procedure",
+                "label": "Base cases stop; the recursive case grows",
+                "emoji": "♻️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Base case A handles purity. If every current example has the same class, return that class as a leaf. Continuing to split would add structure without reducing uncertainty.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Base case A handles purity. If every",
+                "selector": ".m14-pseudocode-map article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Base case B handles exhausted attributes or an unusable partition. Return a default, commonly the local majority class. This is a policy choice needed when the representation cannot perfectly separate the labels.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Base case B handles exhausted attributes or",
+                "selector": ".m14-pseudocode-map article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "The recursive case selects the best attribute, creates one branch per value, partitions examples, and calls ID3 on each impure child with a reduced attribute set. The algorithm grows from the top downward.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The recursive case selects the best attribute,",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "The greedy line is the local attribute selection. ID3 commits to the highest-gain test now and does not backtrack later if a different root would have produced a better global tree.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The greedy line is the local attribute",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Track the recursive arguments precisely. Each call receives a subset of examples and usually removes the selected attribute from future consideration along that branch. If a branch receives no examples, the algorithm needs a fallback from its parent context. If labels remain mixed after attributes are exhausted, a majority or probabilistic leaf records unresolved uncertainty rather than inventing a new predictor.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Track the recursive arguments precisely. Each call",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Select, partition, test purity, then recurse",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Stage one compares candidate attributes using the current subset and chooses the test with maximum information gain. At the root, that comparison uses all fourteen records.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage one compares candidate attributes using the",
+                "selector": ".m14-build-reveal nav button",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Stage one compares candidate attributes using the",
+                "label": "Every child becomes a smaller learning problem",
+                "emoji": "🪆",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Stage two creates one branch for each observed value and sends every example down exactly one branch. Partitioning conserves the records while changing which examples are considered together.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage two creates one branch for each",
+                "selector": ".m14-build-reveal nav button",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Stage three checks each child for purity. A child containing only high-risk labels becomes a high-risk leaf because its entropy is zero and no further question is required.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage three checks each child for purity.",
+                "selector": ".m14-build-reveal nav button",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Stage four recurses on every impure child using its local rows and remaining attributes. Different branches can choose different next tests because their class distributions differ.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage four recurses on every impure child",
+                "selector": ".m14-build-reveal nav button",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "This is divide and conquer with a statistical compass: split the big problem, close the easy pieces, and repeat on the messy pieces until a stopping condition fires.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "This is divide and conquer with a",
+                "selector": ".m14-build-reveal nav button",
+                "index": 3,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "The invariant across stages is that each training example reaches exactly one current frontier node. Partitioning reorganizes the same evidence; it does not duplicate favorable rows or discard inconvenient ones. At every frontier, ask two questions in order: is the subset already pure, and if not, which remaining test most reduces its entropy? That pair drives the entire recursive construction.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The invariant across stages is that each",
+                "selector": ".m14-build-reveal nav button",
+                "index": 3,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Show stage 1",
+          "text": "Choose Choose a test. The staged diagram now exposes this part of top-down induction while preserving the earlier structure, so students can see the algorithm grow instead of hearing a detached list.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+            "index": 0,
+            "label": "Show stage 1"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Choose a test. The staged diagram",
+                "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+                "index": 0,
+                "label": "Show stage 1"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Show stage 2",
+          "text": "Choose Partition examples. The staged diagram now exposes this part of top-down induction while preserving the earlier structure, so students can see the algorithm grow instead of hearing a detached list.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+            "index": 1,
+            "label": "Show stage 2"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Partition examples. The staged diagram now",
+                "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+                "index": 1,
+                "label": "Show stage 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Show stage 3",
+          "text": "Choose Close pure branches. The staged diagram now exposes this part of top-down induction while preserving the earlier structure, so students can see the algorithm grow instead of hearing a detached list.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+            "index": 2,
+            "label": "Show stage 3"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Close pure branches. The staged diagram",
+                "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+                "index": 2,
+                "label": "Show stage 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Show stage 4",
+          "text": "Choose Recurse. The staged diagram now exposes this part of top-down induction while preserving the earlier structure, so students can see the algorithm grow instead of hearing a detached list.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+            "index": 3,
+            "label": "Show stage 4"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Recurse. The staged diagram now exposes",
+                "selector": "nav[aria-label=\"Top-down decision-tree induction stages\"] button",
+                "index": 3,
+                "label": "Show stage 4"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "If several trees fit the data, which one should we prefer?",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Many different trees can classify all training rows correctly. A large tree may memorize rare combinations, label noise, or accidental details rather than capturing a pattern that survives beyond the sample.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Many different trees can classify all training",
+                "selector": ".m14-simplicity-compare article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Many different trees can classify all training",
+                "label": "Perfect training fit does not guarantee generalization",
+                "emoji": "⚖️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "A smaller tree has lower description cost and is easier to inspect. Simplicity acts as an inductive preference: among similarly supported hypotheses, prefer one that explains more with fewer tests.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A smaller tree has lower description cost",
+                "selector": ".m14-simplicity-compare article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "But shortest is not automatically best, accurate, or fair. Validate on unseen data. Simplicity is a useful seat belt, not a magical force field against every modeling mistake.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "But shortest is not automatically best, accurate,",
+                "selector": "blockquote",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A useful pattern compresses the data it explains",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Minimum message length formalizes a compression intuition. Choose the hypothesis H sub i minimizing the length needed to describe the hypothesis plus the length needed to describe the data given that hypothesis.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Minimum message length formalizes a compression intuition.",
+                "selector": ".m14-mml code",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Minimum message length formalizes a compression intuition.",
+                "label": "Good compression balances model and exceptions",
+                "emoji": "🗜️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "The first term is model cost. A deep tree with many tests, branches, and exceptional leaves requires more bits to specify than a compact tree. Complexity spends part of our explanatory budget.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The first term is model cost. A",
+                "selector": ".m14-mml article",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The second term is residual cost. A tiny model that explains almost nothing leaves a long list of errors or exceptions. Saying everything is complicated is short, but it does not compress the observations.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The second term is residual cost. A",
+                "selector": ".m14-mml article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "The winner balances both terms. Think of packing for a trip: a suitcase the size of a building is wasteful, but one sock and heroic optimism will create expensive residual problems.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The winner balances both terms. Think of",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "The source's even-number example contains fifty integers from two through one hundred inclusive, not forty-nine. The correction strengthens the lesson: the phrase all even integers from two to one hundred is far shorter than listing all fifty.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The source's even-number example contains fifty integers",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "MML also reveals why memorization can look deceptively compact on tiny data. A rule listing fourteen row identifiers may classify the training set perfectly, but its hypothesis description grows with the dataset and says little about new rows. A genuinely reusable pattern pays a modest fixed model cost, then describes many observations cheaply. Compression becomes evidence of structure only when the coding scheme and evaluation protocol are honestly specified.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "MML also reveals why memorization can look",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Entropy measures uncertainty in a class distribution",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Information content for a class c is negative log base two of its probability. A rare event has high information because observing it is surprising; a certain event has zero information because it tells us nothing new.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Information content for a class c is",
+                "selector": ".m14-formulas code",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Information content for a class c is",
+                "label": "Entropy asks how surprising the next label is",
+                "emoji": "🎲",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Entropy H of S is the probability-weighted average information across classes: negative sum over p of c times log base two p of c. The unit is bits because the logarithm uses base two.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Entropy H of S is the probability-weighted",
+                "selector": ".m14-formulas code",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Use the convention zero log zero equals zero by continuity. A class absent from the subset contributes nothing, rather than causing the calculation to explode into mathematical confetti.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Use the convention zero log zero equals",
+                "selector": ".m14-entropy-cases article",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "A pure set has entropy zero because the next label is certain. For two classes, a fifty-fifty set has entropy one bit, the maximum binary uncertainty. With three balanced classes the maximum is log base two of three, about one point five eight five bits.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A pure set has entropy zero because",
+                "selector": ".m14-entropy-cases article",
+                "index": 1,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Entropy describes the label distribution inside a set, not the visual complexity of a drawn tree. It is the messiness of the answer pile before we ask another question.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Entropy describes the label distribution inside a",
+                "selector": ".m14-entropy-cases article",
+                "index": 1,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Derive the binary maximum explicitly. Let p be the positive fraction, so H of p equals negative p log two p minus one minus p log two of one minus p. The function is symmetric around one half and its derivative is zero there. The second derivative is negative, confirming a maximum. You do not need calculus to run ID3, but the shape explains the slider rather than asking students to worship it.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Derive the binary maximum explicitly. Let p",
+                "selector": ".m14-entropy-cases article",
+                "index": 1,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Purity lowers entropy; a 50/50 split maximizes it",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "The slider controls a binary set of ten examples. With five positives and five negatives, each probability is one half, so entropy equals negative two times one half log base two one half, which is exactly one bit.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The slider controls a binary set of",
+                "selector": ".m14-entropy-lab input",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "The slider controls a binary set of",
+                "label": "Balanced classes are maximally uncertain",
+                "emoji": "🌗",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Move to ten positives and zero negatives. The positive term becomes one times log two of one, which is zero, and the absent class contributes zero. The set is pure and entropy falls to zero.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Move to ten positives and zero negatives.",
+                "selector": ".m14-entropy-lab > div strong",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Move to eight positives and two negatives. Entropy is about zero point seven two two bits. The labels are mixed, but less uncertain than the fifty-fifty case because one class is substantially more likely.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Move to eight positives and two negatives.",
+                "selector": ".m14-dots",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "The curve is symmetric: two positives and eight negatives has the same entropy as eight positives and two negatives. Entropy cares about the proportions, not which class name is attached to each proportion.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The curve is symmetric: two positives and",
+                "selector": ".m14-entropy-lab code",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Predict before moving the slider. If purity increases, entropy decreases. This relationship explains why ID3 prefers splits whose child branches contain concentrated class labels.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Predict before moving the slider. If purity",
+                "selector": ".m14-entropy-lab code",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Now connect the lab to splitting. A candidate test is valuable when its children move away from the balanced, high-entropy region toward purer ends of the scale. One child need not be pure, and unequal branch sizes matter. A tiny pure branch plus a huge messy branch may remove less expected uncertainty than two moderately cleaner branches. That is why we calculate a weighted average.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Now connect the lab to splitting. A",
+                "selector": ".m14-entropy-lab code",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set ten positives",
+          "text": "Set ten positives and zero negatives. The class is certain, so entropy is zero bits.",
+          "action": {
+            "type": "range",
+            "selector": ".m14-entropy-lab input",
+            "index": 0,
+            "label": "Set ten positives",
+            "value": 10
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set ten positives and zero negatives. The",
+                "selector": ".m14-entropy-lab input",
+                "index": 0,
+                "label": "Set ten positives"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set eight positives",
+          "text": "Set eight positives and two negatives. Entropy rises to about zero point seven two two bits because the subset is mixed.",
+          "action": {
+            "type": "range",
+            "selector": ".m14-entropy-lab input",
+            "index": 0,
+            "label": "Set eight positives",
+            "value": 8
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set eight positives and two negatives. Entropy",
+                "selector": ".m14-entropy-lab input",
+                "index": 0,
+                "label": "Set eight positives"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set a balanced split",
+          "text": "Set five positives and five negatives. Entropy reaches one bit, the maximum for two classes.",
+          "action": {
+            "type": "range",
+            "selector": ".m14-entropy-lab input",
+            "index": 0,
+            "label": "Set a balanced split",
+            "value": 5
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set five positives and five negatives. Entropy",
+                "selector": ".m14-entropy-lab input",
+                "index": 0,
+                "label": "Set a balanced split"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Set zero positives",
+          "text": "Set zero positives and ten negatives. The labels are pure again, so entropy returns symmetrically to zero.",
+          "action": {
+            "type": "range",
+            "selector": ".m14-entropy-lab input",
+            "index": 0,
+            "label": "Set zero positives",
+            "value": 0
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Set zero positives and ten negatives. The",
+                "selector": ".m14-entropy-lab input",
+                "index": 0,
+                "label": "Set zero positives"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Choose the test that removes the most expected uncertainty",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "For a candidate attribute X, first compute the parent entropy H of T. This is uncertainty before asking the question, and it is identical for every candidate compared at the same node.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "For a candidate attribute X, first compute",
+                "selector": ".m14-formulas code",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "For a candidate attribute X, first compute",
+                "label": "Information gain equals uncertainty before minus after",
+                "emoji": "📉",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Next partition T by X. Compute the entropy of each child T sub v. A pure child contributes zero; a mixed child contributes an amount determined by its local class proportions.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Next partition T by X. Compute the",
+                "selector": ".m14-path-steps li",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Weight each child entropy by its fraction of the parent, size of T sub v divided by size of T. Large branches matter more because a random training example is more likely to land there.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Weight each child entropy by its fraction",
+                "selector": ".m14-path-steps li",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Sum the weighted child entropies to obtain expected entropy E of X. This is the uncertainty we expect to remain after learning the value of X.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Sum the weighted child entropies to obtain",
+                "selector": ".m14-path-steps li",
+                "index": 2,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Information gain is H of T minus E of X. The largest gain removes the most expected uncertainty, so ID3 chooses that attribute. It is like paying each question in bits saved.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Information gain is H of T minus",
+                "selector": ".m14-formulas code",
+                "index": 1,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit",
+          "text": "Raw information gain can favor attributes with many unique values, including an identifier that memorizes every row. Gain ratio, pruning, and validation are later remedies; high gain alone is not a moral endorsement.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Raw information gain can favor attributes with",
+                "selector": ".m14-path-steps li",
+                "index": 3,
+                "label": "Audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Suppose a split creates branches of sizes nine and one. Averaging their entropies as fifty-fifty would pretend a random example is equally likely to enter either branch. The size weights correct that mistake. Expected entropy is an expectation over the branch reached by a random parent example. Information gain then measures the expected reduction in the number of bits needed to identify its class.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Suppose a split creates branches of sizes",
+                "selector": ".m14-path-steps li",
+                "index": 3,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Income reduces uncertainty by 0.967 bits",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Start with label counts: six high, three moderate, and five low among fourteen applications. Substitute those probabilities into the three-class entropy formula to obtain H of LoanData equals one point five three one bits.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Start with label counts: six high, three",
+                "selector": ".m14-calculation code",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Start with label counts: six high, three",
+                "label": "Work the counts, weights, and subtraction",
+                "emoji": "🧮",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Now split on income. The zero-to-fifteen-thousand branch contains four examples of one class, so its entropy is zero. A pure branch contributes four fourteenths times zero, which remains zero.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Now split on income. The zero-to-fifteen-thousand branch",
+                "selector": ".m14-calculation code",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The fifteen-to-thirty-five-thousand branch has mixed labels and entropy one bit. Weighted by four fourteenths, its contribution is four fourteenths.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The fifteen-to-thirty-five-thousand branch has mixed labels and",
+                "selector": ".m14-calculation code",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "The over-thirty-five-thousand branch contains six cases and has entropy about zero point six five. Weighting gives six fourteenths times zero point six five. Add all three contributions to obtain expected entropy zero point five six four bits.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The over-thirty-five-thousand branch contains six cases and",
+                "selector": ".m14-calculation code",
+                "index": 1,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Subtract: one point five three one minus zero point five six four equals zero point nine six seven bits of information gain. Income removes almost a full bit of uncertainty on average.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Subtract: one point five three one minus",
+                "selector": ".m14-calculation code",
+                "index": 2,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit",
+          "text": "Compare the alternatives: credit history gains zero point two six six, collateral zero point two zero six, and debt only zero point zero six three. Because zero point nine six seven is largest, income becomes the root.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Compare the alternatives: credit history gains zero",
+                "selector": ".m14-gain-note",
+                "index": 0,
+                "label": "Audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Check the income arithmetic against the table instead of trusting the displayed answer. Group row identifiers by income, count high, moderate, and low labels inside each group, compute each local entropy, multiply by group size over fourteen, and sum. This reconstruction is important because a decimal without traceable counts cannot reveal a transcription error, a changed record, or a different convention.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Check the income arithmetic against the table",
+                "selector": ".m14-gain-note",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Rank every candidate test before selecting the root",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Every candidate starts from the same parent entropy, one point five three one bits. Therefore ranking information gain is equivalent to ranking expected entropy in reverse: smaller expected entropy means larger gain.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Every candidate starts from the same parent",
+                "selector": ".m14-gain-reveal section",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Every candidate starts from the same parent",
+                "label": "Commit to a ranking before revealing it",
+                "emoji": "🏁",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Income is revealed first with expected entropy zero point five six four and gain zero point nine six seven. Its branches are much cleaner than the parent distribution.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Income is revealed first with expected entropy",
+                "selector": ".m14-gain-reveal [role='row']",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Credit history follows with expected entropy one point two six five and gain zero point two six six. It helps, but most uncertainty remains after the split.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Credit history follows with expected entropy one",
+                "selector": ".m14-gain-reveal [role='row']",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Collateral produces gain zero point two zero six, and debt produces only zero point zero six three. A visible predictor can still be nearly useless for this dataset if its values do not separate the labels.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Collateral produces gain zero point two zero",
+                "selector": ".m14-gain-reveal [role='row']",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "The comparison must be recomputed inside each impure child. Income wins at the root, but a different attribute may win locally because the subset has new counts and a new parent entropy.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The comparison must be recomputed inside each",
+                "selector": ".m14-gain-reveal [role='row']",
+                "index": 4,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "A useful sanity check is that every gain must lie between zero and the parent entropy. Negative gain would signal an arithmetic or weighting error because conditioning on the observed attribute cannot increase expected entropy when computed consistently. A gain equal to the parent entropy would mean every child is pure. Income falls between those bounds and is impressively, but not perfectly, informative.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A useful sanity check is that every",
+                "selector": ".m14-gain-reveal [role='row']",
+                "index": 4,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal candidate 1",
+          "text": "Reveal income. Its expected entropy is zero point five six four and its information gain is zero point nine six seven, the strongest candidate.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-gain-reveal button",
+            "index": 0,
+            "label": "Reveal candidate 1"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal income. Its expected entropy is zero",
+                "selector": ".m14-gain-reveal button",
+                "index": 0,
+                "label": "Reveal candidate 1"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal candidate 2",
+          "text": "Reveal credit history. Its gain is zero point two six six, useful but far below income.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-gain-reveal button",
+            "index": 0,
+            "label": "Reveal candidate 2"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal credit history. Its gain is zero",
+                "selector": ".m14-gain-reveal button",
+                "index": 0,
+                "label": "Reveal candidate 2"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal candidate 3",
+          "text": "Reveal collateral. Its gain is zero point two zero six, showing only a modest reduction in uncertainty.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-gain-reveal button",
+            "index": 0,
+            "label": "Reveal candidate 3"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal collateral. Its gain is zero point",
+                "selector": ".m14-gain-reveal button",
+                "index": 0,
+                "label": "Reveal candidate 3"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal candidate 4",
+          "text": "Reveal debt. Its gain is zero point zero six three, the smallest. The complete ranking now justifies income as the root.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-gain-reveal button",
+            "index": 0,
+            "label": "Reveal candidate 4"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal debt. Its gain is zero point",
+                "selector": ".m14-gain-reveal button",
+                "index": 0,
+                "label": "Reveal candidate 4"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "One greedy choice creates new, smaller learning problems",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Stage A splits all fourteen records on income. The low-income child is pure high risk, so recursion stops there immediately. The other children retain mixed labels and require additional questions.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage A splits all fourteen records on",
+                "selector": ".m14-stage-map article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Stage A splits all fourteen records on",
+                "label": "Recompute locally after every split",
+                "emoji": "🧩",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Stage B treats each impure child as its own dataset. Recalculate class counts, entropy, expected entropy, and gain using only that child's rows and the remaining attributes.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Stage B treats each impure child as",
+                "selector": ".m14-stage-map article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "This locality is essential. A globally mediocre attribute can become locally excellent after the first split. The best question for the middle-income group need not be the best question for the high-income group.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "This locality is essential. A globally mediocre",
+                "selector": ".m14-source-frame",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Greedy construction therefore creates a sequence of conditional optimization problems. Each decision changes the evidence available to its descendants, like dividing a suspiciously large pizza into smaller arguments about toppings.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Greedy construction therefore creates a sequence of",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "The recursion can choose credit for one income branch and debt for a narrower descendant because information gain is conditional on the path. This is similar to medical diagnosis: the best next test after one symptom need not be the best test before any symptom is known. Context changes both the remaining uncertainty and the value of another question.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The recursion can choose credit for one",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The completed tree encodes three risk concepts",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "The completed tree places income at the root. High risk includes every low-income application and selected middle-income paths. The class is therefore a union of different sufficient conditions, not one simple stereotype.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The completed tree places income at the",
+                "selector": ".m14-final-tree-notes article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "The completed tree places income at the",
+                "label": "A class can be reached by several different paths",
+                "emoji": "🌲",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Moderate risk appears at three separate leaves: middle income with good credit, middle income with unknown credit and low debt, or high income with bad credit. Each leaf is one conjunction.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Moderate risk appears at three separate leaves:",
+                "selector": ".m14-final-tree-notes article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Low risk occurs for high income with unknown or good credit. Notice how the same credit value can lead to a different result under a different income branch; tree decisions are contextual.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Low risk occurs for high income with",
+                "selector": ".m14-final-tree-notes article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Debt is tested only for middle income with unknown credit. Collateral is never selected. Absence from the tree means the attribute did not earn a split under this sample and heuristic, not that it is universally irrelevant.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Debt is tested only for middle income",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Count the leaves and inspect redundancy. Multiple leaves with the same class do not make the tree inconsistent; they express different sufficient routes to that outcome. Pruning may merge or replace a subtree when its distinctions do not improve validation performance. Any simplification must preserve enough evidence to avoid turning a readable model into an confidently oversimplified one.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Count the leaves and inspect redundancy. Multiple",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Each root-to-leaf path becomes one conjunction",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "To convert a tree path into a rule, begin at the root and record every branch condition encountered before the leaf. Join conditions on that single path with AND because all of them must hold.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "To convert a tree path into a",
+                "selector": ".m14-rule-grammar code",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "To convert a tree path into a",
+                "label": "AND within a path; OR across paths",
+                "emoji": "🔗",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "The left-hand side contains the conditions; the right-hand side contains the leaf class. For example, if income is middle AND credit is unknown AND debt is high, then risk is high.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The left-hand side contains the conditions; the",
+                "selector": ".m14-rule-grammar article",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "If several paths terminate at the same class, join their complete conjunctions with OR. Never replace an internal AND with OR, or the rule will accept cases that never follow a valid tree path.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "If several paths terminate at the same",
+                "selector": ".m14-rule-grammar article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Parentheses are useful insurance: OR separates full paths, while AND binds tests within each path. Trees make control flow visible; rules make the same concept easy to audit, store, or combine.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Parentheses are useful insurance: OR separates full",
+                "selector": ".m14-rule-grammar",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Rule conversion preserves predictions only when every path is represented faithfully. A tree with k leaves yields up to k rules, one per leaf. The rules may overlap after later simplification, so an implementation then needs a conflict policy. In the original unsimplified tree, mutually exclusive branch tests ensure one case follows one path and reaches one conclusion.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Rule conversion preserves predictions only when every",
+                "selector": ".m14-rule-grammar",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Write the moderate-risk concept as rules",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Before revealing the answer, trace every moderate-risk leaf and write one complete conjunction per path. Check that each path begins at income and ends at a moderate leaf.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Before revealing the answer, trace every moderate-risk",
+                "selector": ".m14-rule-practice section",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Before revealing the answer, trace every moderate-risk",
+                "label": "Three paths, three conjunctions, one class",
+                "emoji": "✍️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "The first rule is middle income AND good credit. The second is middle income AND unknown credit AND low debt. Those paths share an income condition but diverge afterward.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The first rule is middle income AND",
+                "selector": ".m14-rule-practice > div",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The third is high income AND bad credit. Join the three conjunctions with OR, then place risk equals moderate on the right-hand side.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The third is high income AND bad",
+                "selector": ".m14-rule-practice section",
+                "index": 0,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Test the rule against a neighboring case. High income with good credit must not match the moderate rule because it reaches low risk. Counterexamples are excellent grammar checkers.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Test the rule against a neighboring case.",
+                "selector": ".m14-rule-practice > div",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "After deriving the three moderate rules, verify completeness and exclusivity against the tree. Completeness means every moderate leaf produced a rule. Fidelity means no condition was dropped or swapped. Test at least one case that should match each rule and one near neighbor that should not. This tiny rule test suite catches logical mistakes faster than rereading the expression with increasingly determined eyebrows.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "After deriving the three moderate rules, verify",
+                "selector": ".m14-rule-practice > div",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal the moderate-risk rules",
+          "text": "Reveal the model answer. Compare all three conjunctions with the final tree, checking every AND within a path and every OR between alternative paths.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-rule-practice button",
+            "index": 0,
+            "label": "Reveal the moderate-risk rules"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal the model answer. Compare all three",
+                "selector": ".m14-rule-practice button",
+                "index": 0,
+                "label": "Reveal the moderate-risk rules"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Hide the model answer",
+          "text": "Hide the model answer so the practice can be replayed. A useful interactive slide should support prediction before reveal rather than turning immediately into answer wallpaper.",
+          "action": {
+            "type": "click",
+            "selector": ".m14-rule-practice button",
+            "index": 0,
+            "label": "Hide the model answer"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Hide the model answer so the practice",
+                "selector": ".m14-rule-practice button",
+                "index": 0,
+                "label": "Hide the model answer"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "ID3 greedily searches a concept space of possible trees",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Frame induction as search. A state is a partially built tree, and the search space contains all trees constructible from the available attributes and their values.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Frame induction as search. A state is",
+                "selector": ".m14-search-map article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Frame induction as search. A state is",
+                "label": "ID3 is heuristic search without backtracking",
+                "emoji": "🔎",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "An operator expands a leaf by adding an attribute test and its branches. The branching factor depends on how many unused attributes and possible values remain.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "An operator expands a leaf by adding",
+                "selector": ".m14-search-map article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Information gain is the heuristic guiding which operator to apply. ID3 selects the locally best split and continues downward rather than exploring and comparing every complete tree.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Information gain is the heuristic guiding which",
+                "selector": ".m14-search-map article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "There is no ordinary backtracking. Efficiency improves dramatically, but the locally best question may lead to a larger or worse-generalizing global tree than another first choice.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "There is no ordinary backtracking. Efficiency improves",
+                "selector": ".m14-search-map article",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "This connects machine learning to earlier AI search: representation defines states, operators define moves, a heuristic ranks alternatives, and the stopping rule decides when the current construction is sufficient.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "This connects machine learning to earlier AI",
+                "selector": ".search-callout",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Classification predicts categories; regression predicts quantities",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Classification predicts a categorical target such as high, moderate, or low risk. Regression predicts a numeric quantity such as expected dollar loss. The input rows may be identical, but the target representation and evaluation metrics change.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Classification predicts a categorical target such as",
+                "selector": ".m14-modern-grid article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Classification predicts a categorical target such as",
+                "label": "Task type determines output and evaluation",
+                "emoji": "🧰",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Overfitting occurs when a tree encodes training noise or rare details as brittle branches. Training accuracy improves while performance on unseen cases stagnates or declines.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Overfitting occurs when a tree encodes training",
+                "selector": ".m14-modern-grid article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Pre-pruning stops growth early using limits such as maximum depth, minimum child size, or minimum gain. Post-pruning first grows a larger tree, then removes branches unsupported by validation evidence.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Pre-pruning stops growth early using limits such",
+                "selector": ".m14-modern-grid article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "Use training data to fit, validation data to select depth or pruning, and the untouched test set once for final reporting. The test set is a sealed envelope, not a motivational poster you peek at every afternoon.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Use training data to fit, validation data",
+                "selector": ".m14-modern-grid article",
+                "index": 3,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A confusion matrix turns errors into precision, recall, and F1",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "Treat high risk as the positive class. True positives are correctly flagged high-risk cases; false negatives are truly high risk but missed. False positives are flagged but not truly high risk; true negatives are correctly unflagged.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Treat high risk as the positive class.",
+                "selector": ".m14-confusion",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "Treat high risk as the positive class.",
+                "label": "Different thresholds trade false positives for false negatives",
+                "emoji": "🚦",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Precision equals true positives divided by all predicted positives. It asks: among the applications we flagged, what fraction were actually positive? High precision limits false alarms.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Precision equals true positives divided by all",
+                "selector": ".m14-metrics-lab article",
+                "index": 0,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Recall equals true positives divided by all actual positives. It asks: among all truly high-risk cases, what fraction did we find? High recall limits misses.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Recall equals true positives divided by all",
+                "selector": ".m14-metrics-lab article",
+                "index": 1,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "F1 is the harmonic mean of precision and recall. It becomes high only when both are reasonably high, but it still hides true negatives and does not encode the real-world cost of each error.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "F1 is the harmonic mean of precision",
+                "selector": ".m14-metrics-lab article",
+                "index": 2,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "Switch operating points. The high-recall preset catches forty-eight of fifty positives but creates twenty-five false positives. The high-precision preset has only two false positives but misses eighteen positives. Neither tradeoff is automatically correct.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Switch operating points. The high-recall preset catches",
+                "selector": ".m14-metrics-lab nav",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit",
+          "text": "In lending, even the phrase positive class can mislead: flagging high risk may deny opportunity. Evaluate costs, rights, calibration, and subgroup effects rather than optimizing a convenient metric in isolation.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "In lending, even the phrase positive class",
+                "selector": ".m14-metrics-lab nav",
+                "index": 0,
+                "label": "Audit"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Deepen",
+          "text": "Metrics also depend on prevalence and threshold. Precision can change when the base rate changes even if sensitivity and specificity remain stable. F1 ignores true negatives, while accuracy can be dominated by them. For rare high-risk cases, report the confusion counts, class prevalence, threshold, precision-recall curve, calibration, and decision costs. A single rounded score cannot carry that entire policy conversation.",
+          "pauseAfterSeconds": 1,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Metrics also depend on prevalence and threshold.",
+                "selector": ".m14-metrics-lab nav",
+                "index": 0,
+                "label": "Detailed explanation"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose high recall",
+          "text": "Choose High recall. Forty-eight true positives and two false negatives produce recall zero point nine six, but twenty-five false positives reduce precision.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Classifier operating points\"] button",
+            "index": 1,
+            "label": "Choose high recall"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose High recall. Forty-eight true positives and",
+                "selector": "nav[aria-label=\"Classifier operating points\"] button",
+                "index": 1,
+                "label": "Choose high recall"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Choose high precision",
+          "text": "Choose High precision. Only two false positives yield precision about zero point nine four, but eighteen false negatives reduce recall to zero point six four.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Classifier operating points\"] button",
+            "index": 2,
+            "label": "Choose high precision"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose High precision. Only two false positives",
+                "selector": "nav[aria-label=\"Classifier operating points\"] button",
+                "index": 2,
+                "label": "Choose high precision"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Return to balanced",
+          "text": "Return to Balanced. Precision and recall are both zero point eight four, making F1 zero point eight four, but a policy decision still must interpret the costs.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label=\"Classifier operating points\"] button",
+            "index": 0,
+            "label": "Return to balanced"
+          },
+          "pauseAfterSeconds": 0.6,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Return to Balanced. Precision and recall are",
+                "selector": "nav[aria-label=\"Classifier operating points\"] button",
+                "index": 0,
+                "label": "Return to balanced"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "One score is not enough evidence for deployment",
+      "segments": [
+        {
+          "label": "Frame",
+          "text": "ROC analysis compares true-positive rate with false-positive rate across thresholds. Precision-recall analysis is often more revealing when the positive class is rare because it exposes how many flagged cases are actually positive.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "ROC analysis compares true-positive rate with false-positive",
+                "selector": ".m14-exit article",
+                "index": 0,
+                "label": "Frame"
+              }
+            ],
+            "kinetics": [
+              {
+                "type": "popup",
+                "phrase": "ROC analysis compares true-positive rate with false-positive",
+                "label": "Accuracy is a headline, not an audit",
+                "emoji": "🕵️",
+                "route": "center-hold",
+                "durationSeconds": 6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Define",
+          "text": "Calibration asks whether predicted probabilities mean what they claim. Among cases assigned probability zero point seven, roughly seventy percent should realize the event over repeated comparable groups.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Calibration asks whether predicted probabilities mean what",
+                "selector": ".m14-exit article",
+                "index": 1,
+                "label": "Define"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Subgroup evaluation reports error, recall, calibration, and sample size for relevant populations. An acceptable aggregate can conceal serious harm in a smaller group, especially when the group contributes few cases to the average.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Subgroup evaluation reports error, recall, calibration, and",
+                "selector": ".m14-exit article",
+                "index": 2,
+                "label": "Mechanism"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Interpret",
+          "text": "For the exit ticket, explain why income became the root, write one valid root-to-leaf rule, and name one result needed beyond accuracy. A complete answer connects calculation, representation, and responsible evidence.",
+          "pauseAfterSeconds": 0,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "For the exit ticket, explain why income",
+                "selector": ".m14-exit ol",
+                "index": 0,
+                "label": "Interpret"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example",
+          "text": "The central mechanism is now complete: labeled examples define distributions; entropy measures uncertainty; information gain selects a split; recursion grows the tree; paths become rules; and evaluation determines whether the learned pattern deserves trust.",
+          "pauseAfterSeconds": 1.2,
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "The central mechanism is now complete: labeled",
+                "selector": ".m14-exit ol",
+                "index": 0,
+                "label": "Example"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    }
+  ]
+}
