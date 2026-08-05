@@ -40,6 +40,7 @@ async function context() {
 }
 
 const mode = process.argv[2] ?? "--dry-run";
+const siteVersion = process.argv[3];
 const file = await stat(video);
 if (mode === "--dry-run") {
   const { page, module, item, pageSlug } = await context();
@@ -94,11 +95,15 @@ if (mode === "--upload") {
 }
 
 if (mode === "--apply-page") {
+  if (!/^\d+$/.test(siteVersion ?? "")) throw new Error("Pass the deployed Sites version number after --apply-page.");
   const publication = JSON.parse(await readFile(publicationFile, "utf8"));
   const { page, module, item, pageSlug } = await context();
+  const exactSiteUrl = `https://cpsc481-introduction-to-ai.winniechef.chatgpt.site/lessons/16?v=${siteVersion}`;
+  const siteUrlPattern = /https:\/\/cpsc481-introduction-to-ai\.winniechef\.chatgpt\.site\/lessons\/16(?:\?v=\d+)?/g;
   const marker = /(?:<!-- lesson-16-video:start -->\s*)?<div\b[^>]*id=["']lesson-16-video["'][^>]*>[\s\S]*?<\/div>\s*(?:<!-- lesson-16-video:end -->)?/i;
   const videoBlock = `<div id="lesson-16-video" style="margin:16px 0;padding:16px;border:1px solid #d7dde8;border-radius:10px;background:#f7f9fc;">\n  <h3 style="margin:0 0 8px;">Lesson 16 lecture video</h3>\n  <p style="margin:0 0 10px;">Decision Trees, ID3, and Evaluation &middot; captions included</p>\n  <p style="margin:0;"><a href="${publication.previewUrl}" target="_blank">Watch the lecture video in Canvas</a></p>\n</div>`;
   let body = page.body ?? "";
+  body = body.replace(siteUrlPattern, exactSiteUrl);
   body = marker.test(body) ? body.replace(marker, videoBlock) : body.replace(/(<iframe\b)/i, `${videoBlock}\n$1`);
   await request(`courses/${courseId}/pages/${pageSlug}`, {
     method: "PUT",
@@ -122,7 +127,7 @@ if (mode === "--apply-page") {
     applied: true,
     pageSlug,
     moduleName: verified.module.name,
-    lessonEmbedPreserved: /https:\/\/cpsc481-introduction-to-ai\.winniechef\.chatgpt\.site\/lessons\/16(?:\?v=\d+)?/.test(storedBody),
+    siteEmbedExact: storedBody.includes(exactSiteUrl),
     videoLinkExact: storedBody.includes(storedPreviewPath),
     videoBlockCount: (storedBody.match(/Lesson 16 lecture video/g) ?? []).length,
     pagePublished: verified.page.published,
