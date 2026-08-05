@@ -15,11 +15,10 @@
       #lecture-caption-progress { position:absolute; left:18px; right:18px; bottom:5px; height:3px; border-radius:3px; overflow:hidden; background:rgba(255,255,255,.18); }
       #lecture-caption-progress i { display:block; height:100%; width:0; background:#55d6be; transition:width 120ms linear; }
       .lecture-enlarged { transform:scale(1.035)!important; transform-origin:center!important; transition:transform 380ms cubic-bezier(.22,.72,.2,1)!important; position:relative!important; z-index:2147483639!important; }
-      #lecture-popup-tray { position:fixed; left:50%; top:42%; transform:translate(-50%,-50%); z-index:2147483641; display:grid; place-items:center; pointer-events:none; }
-      .lecture-popup-card { width:410px; padding:16px; border-radius:28px; color:white; background:rgba(5,15,32,.96); border:4px solid rgba(85,214,190,.9); box-shadow:0 20px 56px rgba(0,0,0,.5); animation:popupIn 300ms cubic-bezier(.22,.72,.2,1); }
-      .lecture-popup-card img { display:block; width:100%; height:280px; object-fit:cover; border-radius:20px; background:#0b1b34; }
-      .lecture-popup-card .lecture-popup-symbol { display:grid; min-width:0; max-width:100%; min-height:220px; place-items:center; box-sizing:border-box; padding:24px; border-radius:20px; color:#f8fbff; background:linear-gradient(145deg,#17294a,#0b1b34); font:850 44px/1.08 "Segoe UI Emoji",system-ui,sans-serif; overflow-wrap:anywhere; word-break:normal; text-align:center; }
-      .lecture-popup-card strong { display:block; margin-top:12px; font:800 30px/1.2 system-ui,sans-serif; text-align:center; }
+      #lecture-popup-tray { position:fixed; left:50%; top:42%; transform:translate(-50%,-50%); z-index:2147483641; display:grid; place-items:center; width:250px; height:250px; pointer-events:none; transition:left 180ms ease-out,top 180ms ease-out; }
+      .lecture-popup-card { width:250px; height:250px; display:grid; place-items:center; color:white; background:transparent; border:0; box-shadow:none; animation:popupIn 300ms cubic-bezier(.22,.72,.2,1); }
+      .lecture-popup-card img { display:block; width:238px; height:238px; object-fit:contain; border:0; border-radius:28px; background:transparent; filter:drop-shadow(0 14px 22px rgba(0,0,0,.38)); }
+      .lecture-popup-card .lecture-popup-symbol { display:grid; width:238px; height:238px; place-items:center; padding:0; color:#f8fbff; background:transparent; border:0; font:750 184px/1 "Segoe UI Emoji","Apple Color Emoji",sans-serif; text-align:center; text-shadow:0 12px 26px rgba(0,0,0,.42); filter:drop-shadow(0 8px 14px rgba(255,255,255,.22)); }
       #lecture-snow { position:fixed; inset:0; z-index:2147483637; pointer-events:none; overflow:hidden; background:linear-gradient(180deg,rgba(180,220,255,.12),rgba(9,30,56,.22)); }
       #lecture-snow::after { content:'AI WINTER'; position:absolute; left:50%; top:86px; transform:translateX(-50%); padding:10px 20px; border-radius:999px; color:#eaf7ff; background:rgba(8,28,53,.78); border:1px solid rgba(220,245,255,.75); font:800 24px/1 system-ui,sans-serif; letter-spacing:.12em; }
       .lecture-snowflake { position:absolute; top:-10vh; color:white; opacity:.82; text-shadow:0 0 7px #c8eeff; animation:snowFall var(--speed) linear infinite; animation-delay:var(--delay); }
@@ -84,13 +83,30 @@
       if (!tray) return;
       const card = document.createElement("div");
       card.className = "lecture-popup-card";
+      card.setAttribute("role", "img");
+      card.setAttribute("aria-label", cue.label ?? "Instructional visual");
       const visual = cue.asset ? document.createElement("img") : document.createElement("div");
       if (cue.asset) { visual.src = cue.asset; visual.alt = ""; }
-      else { visual.className = "lecture-popup-symbol"; visual.textContent = cue.emoji ?? cue.text ?? ""; }
-      const label = document.createElement("strong");
-      label.textContent = cue.label;
-      card.append(visual, label);
+      else { visual.className = "lecture-popup-symbol"; visual.textContent = cue.emoji ?? "✨"; }
+      card.append(visual);
       tray.replaceChildren(card);
+      const focusRect = document.getElementById("lecture-focus-ring")?.getBoundingClientRect();
+      const half = 125;
+      const candidates = [
+        { x: innerWidth - 170, y: 190 },
+        { x: 170, y: 190 },
+        { x: innerWidth - 170, y: innerHeight - 300 },
+        { x: 170, y: innerHeight - 300 },
+      ];
+      const overlapArea = point => {
+        if (!focusRect) return 0;
+        const left = point.x - half, right = point.x + half, top = point.y - half, bottom = point.y + half;
+        return Math.max(0, Math.min(right, focusRect.right + 24) - Math.max(left, focusRect.left - 24))
+          * Math.max(0, Math.min(bottom, focusRect.bottom + 24) - Math.max(top, focusRect.top - 24));
+      };
+      const placement = candidates.sort((a,b) => overlapArea(a) - overlapArea(b))[0];
+      tray.style.left = `${placement.x}px`;
+      tray.style.top = `${placement.y}px`;
       state.timers.push(setTimeout(() => card.remove(), cue.durationSeconds * 1000));
     };
     const snow = cue => {

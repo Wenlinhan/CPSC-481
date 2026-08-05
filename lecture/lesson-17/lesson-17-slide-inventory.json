@@ -1,0 +1,418 @@
+{
+  "route": "/lessons/17",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Machine learning has multiple category axes",
+      "visibleText": "LESSON 17 · 75 MINUTES\nHow does a learner change from examples?\n\nWe will compare symbolic and adaptive methods, evolve a function, build a neuron, and train a perceptron.\n\nLEARN\nsymbolic\nadaptive\nlabels\nstream\nfitness\nweights",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "From categories to one trainable neuron",
+      "visibleText": "01\nCategorize\nSymbolic/non-symbolic, supervised/unsupervised, batch/online.\n02\nEvolve\nUse genetic programming to search expression trees.\n03\nCompute\nTrace weighted sums and McCulloch–Pitts gates.\n04\nLearn\nUpdate perceptron weights and test capacity.",
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "A method occupies several categories at once",
+      "visibleText": "Decision tree\nGenetic programming\nPerceptron\nK-means\nReinforcement learning\nREPRESENTATION\nSymbolic\nWhat form changes during learning?\nFEEDBACK\nSupervised\nWhat teaching signal is available?\nTIMING\nBatch\nWhen are updates made?\n\nLoan-risk rules learned from labeled applications.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Choose Decision tree",
+          "stateText": "Decision tree Genetic programming Perceptron K-means Reinforcement learning REPRESENTATION Symbolic What form changes during learning? FEEDBACK Supervised What teaching signal is available? TIMING Batch When are updates made? Loan-risk rules learned from labeled applications."
+        },
+        {
+          "segment": 7,
+          "label": "Choose Genetic programming",
+          "stateText": "Decision tree Genetic programming Perceptron K-means Reinforcement learning REPRESENTATION Non-symbolic search What form changes during learning? FEEDBACK Supervised What teaching signal is available? TIMING Batch When are updates made? Evolve an expression that predicts a numeric target."
+        },
+        {
+          "segment": 8,
+          "label": "Choose Perceptron",
+          "stateText": "Decision tree Genetic programming Perceptron K-means Reinforcement learning REPRESENTATION Non-symbolic weights What form changes during learning? FEEDBACK Supervised What teaching signal is available? TIMING Online-capable When are updates made? Update a linear classifier after each labeled mistake."
+        },
+        {
+          "segment": 9,
+          "label": "Choose K-means",
+          "stateText": "Decision tree Genetic programming Perceptron K-means Reinforcement learning REPRESENTATION Non-symbolic geometry What form changes during learning? FEEDBACK Unsupervised What teaching signal is available? TIMING Usually batch When are updates made? Group customers around centroids without class labels."
+        },
+        {
+          "segment": 10,
+          "label": "Choose Reinforcement learning",
+          "stateText": "Decision tree Genetic programming Perceptron K-means Reinforcement learning REPRESENTATION Values / policy What form changes during learning? FEEDBACK Reward What teaching signal is available? TIMING Sequential online When are updates made? Learn an elevator policy from delayed service rewards."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Symbolic structures and numeric representations change differently",
+      "visibleText": "SYMBOLIC\nGeneralize structures\nDecision-tree tests and branches\nWinston-style concept descriptions\nHuman-readable rules and cutoffs\nNON-SYMBOLIC\nOptimize adaptive representations\nEvolutionary fitness search\nWeights adjusted from error\nGeometry or gradients rather than explicit rule editing",
+      "actions": []
+    },
+    {
+      "number": 5,
+      "title": "The same loan task can use rules or a weighted boundary",
+      "visibleText": "DECISION TREE\nif income = low → risk = high\n\nA named test produces a branch and an explicit rule.\n\nsame labels\nPERCEPTRON\nsign(wᵀx + b)\n\nNumeric parameters place a boundary in feature space.",
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "Genetic programming evolves functions that fit labeled values",
+      "visibleText": "1Represent\n2Evaluate\n3Select\n4Vary\n5Stop\nSTAGE 1 OF 5\nBuild expression trees\n\nTerminal set: x and constants −5…+5. Function set: +, −, ×, ÷.\n\n÷\n×\n2\nx\nx",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Represent",
+          "stateText": "1Represent 2Evaluate 3Select 4Vary 5Stop STAGE 1 OF 5 Build expression trees Terminal set: x and constants −5…+5. Function set: +, −, ×, ÷. ÷ × 2 x x"
+        },
+        {
+          "segment": 8,
+          "label": "Evaluate",
+          "stateText": "1Represent 2Evaluate 3Select 4Vary 5Stop STAGE 2 OF 5 Score prediction error Run every candidate on the ten labeled input–output pairs; smaller error means greater fitness. fitness Σ |ŷ−y| 10 cases"
+        },
+        {
+          "segment": 9,
+          "label": "Select",
+          "stateText": "1Represent 2Evaluate 3Select 4Vary 5Stop STAGE 3 OF 5 Tournament selection Sample four candidates and favor the fitter expression as a parent. 4 enter 1 parent fitness"
+        },
+        {
+          "segment": 10,
+          "label": "Vary",
+          "stateText": "1Represent 2Evaluate 3Select 4Vary 5Stop STAGE 4 OF 5 Crossover and mutation Swap subtrees with 90% probability; mutate with 5% probability while enforcing depth limits. parent A parent B swap offspring"
+        },
+        {
+          "segment": 11,
+          "label": "Stop",
+          "stateText": "1Represent 2Evaluate 3Select 4Vary 5Stop STAGE 5 OF 5 Check the criterion Stop by 100 generations or when tolerated error reaches 0.001. error ≤ .001 or generation 100"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Ten labeled pairs define the fitness problem",
+      "visibleText": "Training pairs for the nonlinear regression example\nrecord\tinput x\ttarget y\n1\t0.000\t0.000\n2\t0.100\t0.005\n3\t0.200\t0.020\n4\t0.300\t0.045\n5\t0.400\t0.080\n6\t0.500\t0.125\n7\t0.600\t0.180\n8\t0.700\t0.245\n9\t0.800\t0.320\n10\t0.900\t0.405\nSELECTED CASE\nx = 0.600 → y = 0.180\n\nThe target pattern is y = x²/2. GP is not given that expression; it must evolve a tree whose predictions fit these labels.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Select row 1",
+          "stateText": "Training pairs for the nonlinear regression example record input x target y 1 0.000 0.000 2 0.100 0.005 3 0.200 0.020 4 0.300 0.045 5 0.400 0.080 6 0.500 0.125 7 0.600 0.180 8 0.700 0.245 9 0.800 0.320 10 0.900 0.405 SELECTED CASE x = 0.000 → y = 0.000 The target pattern is y = x²/2. GP is not given that expression; it must evolve a tree whose predictions fit these labels."
+        },
+        {
+          "segment": 7,
+          "label": "Select row 4",
+          "stateText": "Training pairs for the nonlinear regression example record input x target y 1 0.000 0.000 2 0.100 0.005 3 0.200 0.020 4 0.300 0.045 5 0.400 0.080 6 0.500 0.125 7 0.600 0.180 8 0.700 0.245 9 0.800 0.320 10 0.900 0.405 SELECTED CASE x = 0.300 → y = 0.045 The target pattern is y = x²/2. GP is not given that expression; it must evolve a tree whose predictions fit these labels."
+        },
+        {
+          "segment": 8,
+          "label": "Select row 7",
+          "stateText": "Training pairs for the nonlinear regression example record input x target y 1 0.000 0.000 2 0.100 0.005 3 0.200 0.020 4 0.300 0.045 5 0.400 0.080 6 0.500 0.125 7 0.600 0.180 8 0.700 0.245 9 0.800 0.320 10 0.900 0.405 SELECTED CASE x = 0.600 → y = 0.180 The target pattern is y = x²/2. GP is not given that expression; it must evolve a tree whose predictions fit these labels."
+        },
+        {
+          "segment": 9,
+          "label": "Select row 10",
+          "stateText": "Training pairs for the nonlinear regression example record input x target y 1 0.000 0.000 2 0.100 0.005 3 0.200 0.020 4 0.300 0.045 5 0.400 0.080 6 0.500 0.125 7 0.600 0.180 8 0.700 0.245 9 0.800 0.320 10 0.900 0.405 SELECTED CASE x = 0.900 → y = 0.405 The target pattern is y = x²/2. GP is not given that expression; it must evolve a tree whose predictions fit these labels."
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "A symbolic regressor follows a fit and predict workflow",
+      "visibleText": "1 · data\n2 · model\n3 · fit\n4 · test\nEXECUTABLE WORKFLOW\nX = np.arange(0, 1, .1).reshape(-1, 1)\ny = (X[:, 0] ** 2) / 2\n\nCreate the exact ten training inputs and numeric targets.\n\nPrecision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Show data step",
+          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW X = np.arange(0, 1, .1).reshape(-1, 1) y = (X[:, 0] ** 2) / 2 Create the exact ten training inputs and numeric targets. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+        },
+        {
+          "segment": 7,
+          "label": "Show model step",
+          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW SymbolicRegressor( population_size=600, generations=100, tournament_size=4 ) Configure the source population, generation limit, and tournament size. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+        },
+        {
+          "segment": 8,
+          "label": "Show fit step",
+          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW est.fit(X, y) print(est._program) The estimator follows the scikit-learn fit/predict interface while evolving expressions internally. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+        },
+        {
+          "segment": 9,
+          "label": "Show test step",
+          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW pred = est.predict(X_new) error = mean_absolute_error(y_new, pred) Evaluate on unseen data; training fitness alone is not evidence of generalization. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "An artificial neuron combines weighted inputs, bias, and activation",
+      "visibleText": "EACH CONNECTION CONTRIBUTES XᵢWᵢ BEFORE ACTIVATION.\nnet = Σᵢ wᵢxᵢ + b\nInputs encode measured evidence.\nWeights encode influence and direction.\nBias moves the decision point.\nActivation converts the score to an output.",
+      "actions": []
+    },
+    {
+      "number": 10,
+      "title": "Change one factor and watch the score cross threshold",
+      "visibleText": "x₁\n0.8\nx₂\n0.4\nw₁\n0.7\nw₂\n-0.3\nbias\n-0.2\n0.8\n0.4\n1\nΣ\nNET\n0.24\n0.8(0.7) + 0.4(-0.3) + -0.2\nf(net)\n1",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Reduce the first weight",
+          "stateText": "x₁ 0.8 x₂ 0.4 w₁ 0.1 w₂ -0.3 bias -0.2 0.8 0.4 1 Σ NET -0.24 0.8(0.1) + 0.4(-0.3) + -0.2 f(net) 0"
+        },
+        {
+          "segment": 8,
+          "label": "Raise the bias",
+          "stateText": "x₁ 0.8 x₂ 0.4 w₁ 0.1 w₂ -0.3 bias 0.2 0.8 0.4 1 Σ NET 0.16 0.8(0.1) + 0.4(-0.3) + 0.2 f(net) 1"
+        },
+        {
+          "segment": 9,
+          "label": "Make the second weight positive",
+          "stateText": "x₁ 0.8 x₂ 0.4 w₁ 0.1 w₂ 0.6 bias 0.2 0.8 0.4 1 Σ NET 0.52 0.8(0.1) + 0.4(0.6) + 0.2 f(net) 1"
+        },
+        {
+          "segment": 10,
+          "label": "Lower the first input",
+          "stateText": "x₁ -0.5 x₂ 0.4 w₁ 0.1 w₂ 0.6 bias 0.2 -0.5 0.4 1 Σ NET 0.39 -0.5(0.1) + 0.4(0.6) + 0.2 f(net) 1"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Fixed weights and bias implement AND and OR",
+      "visibleText": "AND USES BIAS −2; OR USES BIAS −1 WHEN BOTH INPUT WEIGHTS ARE 1.\nf(net) = 1 when net ≥ 0; otherwise 0\n\nThe activation rule stays fixed. The bias changes which truth-table rows reach net ≥ 0.",
+      "actions": []
+    },
+    {
+      "number": 12,
+      "title": "Run all four input pairs through one gate",
+      "visibleText": "AND\nOR\nx = 1\ny = 0\nnet = 1x + 1y − 2 = -1\nAND → 0\n\nWeights stay at 1. Changing the bias changes which input combinations cross the fixed threshold.",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Set x to zero",
+          "stateText": "AND OR x = 0 y = 0 net = 1x + 1y − 2 = -2 AND → 0 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 8,
+          "label": "Set y to one",
+          "stateText": "AND OR x = 0 y = 1 net = 1x + 1y − 2 = -1 AND → 0 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 9,
+          "label": "Set x to one",
+          "stateText": "AND OR x = 1 y = 1 net = 1x + 1y − 2 = 0 AND → 1 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 10,
+          "label": "Choose OR",
+          "stateText": "AND OR x = 1 y = 1 net = 1x + 1y − 1 = 1 OR → 1 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 11,
+          "label": "Set x to zero",
+          "stateText": "AND OR x = 0 y = 1 net = 1x + 1y − 1 = 0 OR → 1 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 12,
+          "label": "Set y to zero",
+          "stateText": "AND OR x = 0 y = 0 net = 1x + 1y − 1 = -1 OR → 0 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 13,
+          "label": "Set x to one",
+          "stateText": "AND OR x = 1 y = 0 net = 1x + 1y − 1 = 0 OR → 1 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        },
+        {
+          "segment": 14,
+          "label": "Return x to zero",
+          "stateText": "AND OR x = 0 y = 0 net = 1x + 1y − 1 = -1 OR → 0 Weights stay at 1. Changing the bias changes which input combinations cross the fixed threshold."
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "A predictive learner must discover weights from examples",
+      "visibleText": "GIVEN\nFeature vectors\nMeasurements such as size, price, or pixel values.\nGIVEN\nDesired class\nA target t for each training case.\nLEARN\nWeight vector\nParameters W that make predictions match labels.",
+      "actions": []
+    },
+    {
+      "number": 14,
+      "title": "The target column creates labeled training examples",
+      "visibleText": "x₁\tx₂\ttarget t\n1\t1\t1\n9.4\t6.4\t-1\n2.5\t2.1\t1\n8\t7.7\t-1\n0.5\t2.2\t1\n7.9\t8.4\t-1\n7\t7\t-1\n2.8\t0.8\t1\n1.2\t3\t1\n7.8\t6.1\t-1\nClassifier, not clusterer\n\nThe learner already knows the two desired classes: +1 and −1. It uses them to adjust a decision boundary.",
+      "actions": []
+    },
+    {
+      "number": 15,
+      "title": "Predict first and update only after a mistake",
+      "visibleText": "1\nSCORE\nnet = Σwᵢxᵢ\n2\nACTIVATE\na = 1 if net ≥ θ; else −1\n3\nCOMPARE\nerror = t − a\n4\nUPDATE\nΔwᵢ = η(t−a)xᵢ",
+      "actions": []
+    },
+    {
+      "number": 16,
+      "title": "One epoch processes every example; convergence may reuse data",
+      "visibleText": "initialize W\n→\npredict one case\n→\nupdate on error\n→\nnext case\n↺\n\nContinue across epochs until outputs remain correct for repeated passes—or stop at a declared training limit.",
+      "actions": []
+    },
+    {
+      "number": 17,
+      "title": "The source example starts with W and learning rate",
+      "visibleText": "EXAMPLE 1\n[1.0, 1.0, 1]\nTarget +1; the initial prediction is correct.\nEXAMPLE 2\n[9.4, 6.4, 1]\nTarget −1; the positive prediction requires a negative update.\nEXAMPLE 3\n[2.5, 2.1, 1]\nTarget +1; the new negative prediction requires a positive update.",
+      "actions": []
+    },
+    {
+      "number": 18,
+      "title": "Compute score, prediction, correction, and next weights",
+      "visibleText": "Example 1\nExample 2\nExample 3\nInput and target\nx = [1, 1, 1], t = 1\nCurrent weights\nW = [0.75, 0.5, -0.6]\n1\nScore net = 0.65\n2\nPredict a = 1\n3\nΔW = [0, 0, 0]\n4\nW′ = [0.75, 0.5, -0.6]\n\nCorrect: no update.",
+      "actions": [
+        {
+          "segment": 8,
+          "label": "Trace example 1",
+          "stateText": "Example 1 Example 2 Example 3 Input and target x = [1, 1, 1], t = 1 Current weights W = [0.75, 0.5, -0.6] 1 Score net = 0.65 2 Predict a = 1 3 ΔW = [0, 0, 0] 4 W′ = [0.75, 0.5, -0.6] Correct: no update."
+        },
+        {
+          "segment": 9,
+          "label": "Trace example 2",
+          "stateText": "Example 1 Example 2 Example 3 Input and target x = [9.4, 6.4, 1], t = -1 Current weights W = [0.75, 0.5, -0.6] 1 Score net = 9.65 2 Predict a = 1 3 ΔW = [-3.76, -2.56, -0.4] 4 W′ = [-3.01, -2.06, -1] Mistake: move the boundary toward the desired classification."
+        },
+        {
+          "segment": 10,
+          "label": "Trace example 3",
+          "stateText": "Example 1 Example 2 Example 3 Input and target x = [2.5, 2.1, 1], t = 1 Current weights W = [-3.01, -2.06, -1] 1 Score net = -12.85 2 Predict a = -1 3 ΔW = [1, 0.84, 0.4] 4 W′ = [-2.01, -1.22, -0.6] Mistake: move the boundary toward the desired classification."
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The converged vector defines a separating line",
+      "visibleText": "THE LEARNED LINE SEPARATES +1 FROM −1 TRAINING EXAMPLES.\n−1.3x₁ − 1.1x₂ + 10.9 = 0\n\nAfter repeated passes, the source example reports W≈[−1.3, −1.1, 10.9]. New points are classified by the sign of the score.",
+      "actions": []
+    },
+    {
+      "number": 20,
+      "title": "Move the line and inspect weight geometry",
+      "visibleText": "Before learning\nConverged\nToo high\nSelected boundary\n−x₁ − x₂ + 4 = 0\n\nThe sign of wᵀx + b chooses the class. Learning changes the geometry by changing W.",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Show before-learning boundary",
+          "stateText": "Before learning Converged Too high Selected boundary −x₁ − x₂ + 4 = 0 The sign of wᵀx + b chooses the class. Learning changes the geometry by changing W."
+        },
+        {
+          "segment": 8,
+          "label": "Show converged boundary",
+          "stateText": "Before learning Converged Too high Selected boundary −1.3x₁ − 1.1x₂ + 10.9 = 0 The sign of wᵀx + b chooses the class. Learning changes the geometry by changing W."
+        },
+        {
+          "segment": 9,
+          "label": "Show overly high boundary",
+          "stateText": "Before learning Converged Too high Selected boundary −x₁ − x₂ + 15 = 0 The sign of wᵀx + b chooses the class. Learning changes the geometry by changing W."
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "One perceptron represents only a linear boundary",
+      "visibleText": "CAN REPRESENT\nLinearly separable\nAND, OR, and the ten-point binary example.\nCANNOT REPRESENT\nXOR with one unit\nPositive corners are opposite; no single line separates them.",
+      "actions": []
+    },
+    {
+      "number": 22,
+      "title": "The XOR threshold inequalities contradict one another",
+      "visibleText": "XOR ASSIGNS THE SAME CLASS TO OPPOSITE CORNERS.\nw₁+w₂ < θ\nw₁ > θ\nw₂ > θ\n0 < θ\n\nThe requirements contradict one another.",
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Try a line, then explain why it fails",
+      "visibleText": "vertical line\ndiagonal line\nNo single line\n0\n1\n1\n0\nBOUNDARY CLAIM\n\nEach side still contains one 0 and one 1.",
+      "actions": [
+        {
+          "segment": 6,
+          "label": "Try a vertical line",
+          "stateText": "vertical line diagonal line No single line 0 1 1 0 BOUNDARY CLAIM Each side still contains one 0 and one 1."
+        },
+        {
+          "segment": 7,
+          "label": "Try a diagonal line",
+          "stateText": "vertical line diagonal line No single line 0 1 1 0 BOUNDARY CLAIM One diagonal cannot place both opposite positive corners together."
+        },
+        {
+          "segment": 8,
+          "label": "Choose no single line",
+          "stateText": "vertical line diagonal line No single line 0 1 1 0 BOUNDARY CLAIM Correct: XOR is not linearly separable, so one perceptron cannot represent it."
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Sigmoid replaces the hard jump with a smooth curve",
+      "visibleText": "INCREASING Λ MAKES THE SIGMOID APPROACH A HARD THRESHOLD.\nσ(net)=1/(1+e^(−λnet))\ncontinuous output in (0,1)\ndifferentiable at every point\nlargest slope in its transition region",
+      "actions": []
+    },
+    {
+      "number": 25,
+      "title": "Activation choice changes range, smoothness, and gradient flow",
+      "visibleText": "Step\nSigmoid\nReLU\nACTIVATION\nSigmoid\nσ(z)=1/(1+e⁻ᶻ)\n\nSmooth, differentiable, and bounded between 0 and 1.",
+      "actions": [
+        {
+          "segment": 7,
+          "label": "Show step",
+          "stateText": "Step Sigmoid ReLU ACTIVATION Step f(z)=1 if z≥0, else 0 Discrete and useful for threshold logic, but it has no usable derivative at the jump."
+        },
+        {
+          "segment": 8,
+          "label": "Show sigmoid",
+          "stateText": "Step Sigmoid ReLU ACTIVATION Sigmoid σ(z)=1/(1+e⁻ᶻ) Smooth, differentiable, and bounded between 0 and 1."
+        },
+        {
+          "segment": 9,
+          "label": "Show ReLU",
+          "stateText": "Step Sigmoid ReLU ACTIVATION ReLU ReLU(z)=max(0,z) A modern hidden-layer choice with a simple positive-side derivative."
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Classify the learner before choosing an algorithm",
+      "visibleText": "Case 1\nCase 2\nCase 3\nCLASSIFY ON THREE AXES\nLabels + expression-tree evolution + all data available\nReveal reasoning",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Open case one",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES Labels + expression-tree evolution + all data available Reveal reasoning"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal case 1",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES Labels + expression-tree evolution + all data available Hide reasoning Genetic programming · non-symbolic, supervised, batch"
+        },
+        {
+          "segment": 7,
+          "label": "Open case two",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES No labels + discover customer groups Reveal reasoning"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal case 2",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES No labels + discover customer groups Hide reasoning K-means · non-symbolic, unsupervised, usually batch"
+        },
+        {
+          "segment": 9,
+          "label": "Open case three",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES Labeled stream + update after each mistake Reveal reasoning"
+        },
+        {
+          "segment": 10,
+          "label": "Reveal case 3",
+          "stateText": "Case 1 Case 2 Case 3 CLASSIFY ON THREE AXES Labeled stream + update after each mistake Hide reasoning Perceptron · non-symbolic, supervised, online-capable"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Explain what changed and what the representation can express",
+      "visibleText": "SUBMIT THREE SENTENCES\nClassify perceptron learning on all three axes.\nExplain one numeric weight update.\nExplain why XOR needs a richer representation.\nBRIDGE TO LESSON 18\nFrom one boundary to many layers\nHidden units compose multiple learned boundaries; backpropagation assigns credit through the composition.",
+      "actions": []
+    }
+  ]
+}

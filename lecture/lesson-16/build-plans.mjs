@@ -104,10 +104,10 @@ const cues = kinetic.slides.flatMap(slide => slide.segments.flatMap(segment => s
 const lines = [
   "# Meeting 14 visual engagement plan", "",
   "- Phrase-synchronized focus and popup cues: " + visual.slides.flatMap(slide => slide.segments.flatMap(segment => segment.cues)).length,
-  "- Centered concept popups: " + visual.slides.flatMap(slide => slide.segments.flatMap(segment => segment.cues)).filter(cue => cue.type === "popup").length,
+  "- Focus-avoiding concept popups: " + visual.slides.flatMap(slide => slide.segments.flatMap(segment => segment.cues)).filter(cue => cue.type === "popup").length,
   "- Kinetic concept cues: " + cues.filter(cue => !cue.automatic).length,
   "- Automatic camera reframes: " + cues.filter(cue => cue.automatic).length,
-  "- Large popups hold in the central viewing area for at least two seconds.",
+  "- Large standalone image/icon popups hold for at least two seconds and are dynamically placed away from the active focus.",
   "- Interactive traces, reveals, tabs, figure enlargements, and replayable animations align to narration boundaries.",
   "- Bottom caption safe area remains clear.", "",
 ];

@@ -42,6 +42,21 @@ async function context() {
 const mode = process.argv[2] ?? "--dry-run";
 const siteVersion = process.argv[3];
 const file = await stat(video);
+if (mode === "--inspect-current-upload" || mode === "--delete-current-upload") {
+  const published = JSON.parse(await readFile(publicationFile, "utf8"));
+  const current = await request(`files/${published.fileId}`);
+  if (mode === "--inspect-current-upload") {
+    console.log(JSON.stringify({ id: current.id, course_id: current.course_id, context_id: current.context_id, folder_id: current.folder_id, display_name: current.display_name, filename: current.filename, size: current.size }, null, 2));
+    process.exit(0);
+  }
+  if (String(current.id) !== String(published.fileId)) throw new Error("Canvas file ID does not match the recorded Lesson 16 upload.");
+  const folder = await request(`folders/${current.folder_id}`);
+  if (String(folder.context_id) !== courseId || folder.context_type !== "Course") throw new Error("Refusing to delete a file outside the configured Canvas course.");
+  if (!/^CPSC 481 Lesson 16 - Decision Trees, ID3, and Evaluation\.mp4$/i.test(current.display_name ?? current.filename ?? "")) throw new Error("Refusing to delete a Canvas file whose name is not the exact Lesson 16 lecture video.");
+  await request(`files/${published.fileId}`, { method: "DELETE" });
+  console.log(JSON.stringify({ deleted: true, fileId: published.fileId, displayName: current.display_name ?? current.filename, replacement: video }, null, 2));
+  process.exit(0);
+}
 if (mode === "--dry-run") {
   const { page, module, item, pageSlug } = await context();
   console.log(JSON.stringify({
@@ -130,6 +145,8 @@ if (mode === "--apply-page") {
     siteEmbedExact: storedBody.includes(exactSiteUrl),
     videoLinkExact: storedBody.includes(storedPreviewPath),
     videoBlockCount: (storedBody.match(/Lesson 16 lecture video/g) ?? []).length,
+    iframePreserved: /<iframe\b/i.test(storedBody),
+    iframeCount: (storedBody.match(/<iframe\b/gi) ?? []).length,
     pagePublished: verified.page.published,
     modulePublished: verified.module.published,
     itemPublished: verified.item.published,

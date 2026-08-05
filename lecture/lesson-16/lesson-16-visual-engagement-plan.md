@@ -1,10 +1,10 @@
 # Meeting 14 visual engagement plan
 
 - Phrase-synchronized focus and popup cues: 194
-- Centered concept popups: 25
+- Focus-avoiding concept popups: 25
 - Kinetic concept cues: 0
 - Automatic camera reframes: 152
-- Large popups hold in the central viewing area for at least two seconds.
+- Large standalone image/icon popups hold for at least two seconds and are dynamically placed away from the active focus.
 - Interactive traces, reveals, tabs, figure enlargements, and replayable animations align to narration boundaries.
 - Bottom caption safe area remains clear.
 

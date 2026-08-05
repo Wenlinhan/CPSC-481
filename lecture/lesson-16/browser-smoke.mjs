@@ -45,8 +45,10 @@ for(const [slideNumber,segmentNumber] of [[1,1],[3,1],[6,1],[8,1],[9,1],[12,1],[
   const visual=cuePlan.slides.find(x=>x.number===slideNumber).segments.find(x=>x.number===segmentNumber);
   const kinetic=kineticPlan.slides.find(x=>x.number===slideNumber).segments.find(x=>x.number===segmentNumber);
   const candidate=[...visual.cues,...kinetic.cues].find(cue=>cue.type==="popup") ?? [...visual.cues,...kinetic.cues].find(cue=>!cue.automatic);
-  const cues=candidate?[{...candidate,atSeconds:.1,durationSeconds:6,centerHoldSeconds:Math.max(2,candidate.centerHoldSeconds??2)}]:[];
+  const focusCandidate=visual.cues.find(cue=>cue.type==="focus");
+  const cues=[focusCandidate&&{...focusCandidate,atSeconds:.1,durationSeconds:6},candidate&&{...candidate,atSeconds:.1,durationSeconds:6,centerHoldSeconds:Math.max(2,candidate.centerHoldSeconds??2)}].filter(Boolean);
   await startVisualTimeline(page,cues);await startCaption(page,target.segments[segmentNumber-1].text,8);await page.waitForTimeout(2500);
+  if(candidate?.type==="popup"){const collision=await page.evaluate(()=>{const popup=document.querySelector("#lecture-popup-tray .lecture-popup-card")?.getBoundingClientRect();const focus=document.querySelector("#lecture-focus-ring")?.getBoundingClientRect();const label=document.querySelector("#lecture-focus-label")?.getBoundingClientRect();if(!popup||!focus)return {missing:true,area:0};const area=rect=>Math.max(0,Math.min(popup.right,rect.right)-Math.max(popup.left,rect.left))*Math.max(0,Math.min(popup.bottom,rect.bottom)-Math.max(popup.top,rect.top));return {missing:false,area:Math.max(area(focus),label?area(label):0)};});if(collision.missing)failures.push(`Slide ${slideNumber} segment ${segmentNumber}: popup/focus collision preview is incomplete`);else if(collision.area>1)failures.push(`Slide ${slideNumber} segment ${segmentNumber}: popup overlaps focused region by ${Math.round(collision.area)}px²`);}
   await page.screenshot({path:path.join(screenshots,`cue-slide-${String(slideNumber).padStart(2,"0")}-segment-${segmentNumber}.png`),fullPage:true});
 }
 await browser.close();

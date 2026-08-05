@@ -1,0 +1,3566 @@
+{
+  "version": 1,
+  "meeting": "15",
+  "scriptVersion": 3,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Machine learning has multiple category axes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 18.096,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cover section",
+              "index": 0,
+              "sourcePhrase": "Lesson seventeen asks a more useful question",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Machine learning has multiple category axes",
+              "emoji": "🧭",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Lesson seventeen asks a more useful question",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 17.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cover-orbit",
+              "index": 0,
+              "sourcePhrase": "We will compare symbolic structures with numeric",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cover section",
+              "index": 0,
+              "sourcePhrase": "By the end, explain what changes, what",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "From categories to one trainable neuron",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.224,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "First, categorize the learner on three independent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "From categories to one trainable neuron",
+              "emoji": "🗺️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "First, categorize the learner on three independent",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "Second, watch genetic programming search expression trees",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 18.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "Third, open one artificial neuron. Inputs are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-cards article",
+              "index": 3,
+              "sourcePhrase": "Fourth, let a perceptron discover weights from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "A method occupies several categories at once",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 19.368,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-category-explorer nav",
+              "index": 0,
+              "sourcePhrase": "The representation axis asks what object is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A method occupies several categories at once",
+              "emoji": "🧩",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The representation axis asks what object is",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 20.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-category-explorer section",
+              "index": 0,
+              "sourcePhrase": "The feedback axis asks where guidance comes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 17.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-axis",
+              "index": 0,
+              "sourcePhrase": "The timing axis asks when evidence changes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 19.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-axis",
+              "index": 1,
+              "sourcePhrase": "These axes are coordinates, not competing boxes.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 27.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-axis",
+              "index": 2,
+              "sourcePhrase": "A useful test is to hold two",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Choose Decision tree",
+          "durationSeconds": 13.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Decision tree",
+              "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
+              "index": 0,
+              "sourcePhrase": "Choose Decision tree. Read representation, feedback, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Choose Genetic programming",
+          "durationSeconds": 14.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Genetic programming",
+              "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose Genetic programming. Read representation, feedback, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Choose Perceptron",
+          "durationSeconds": 13.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Perceptron",
+              "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose Perceptron. Read representation, feedback, and timing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Choose K-means",
+          "durationSeconds": 13.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose K-means",
+              "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
+              "index": 3,
+              "sourcePhrase": "Choose K-means. Read representation, feedback, and timing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Choose Reinforcement learning",
+          "durationSeconds": 14.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose Reinforcement learning",
+              "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
+              "index": 4,
+              "sourcePhrase": "Choose Reinforcement learning. Read representation, feedback, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Symbolic structures and numeric representations change differently",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.64,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "Symbolic learning changes explicit structures: a decision-tree",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Symbolic structures and numeric representations change differently",
+              "emoji": "🧱",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Symbolic learning changes explicit structures: a decision-tree",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "Non-symbolic learning adapts numeric representations such as",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "Do not mistake symbolic for rigid and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The same loan task can use rules or a weighted boundary",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.096,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-contrast article",
+              "index": 0,
+              "sourcePhrase": "A decision tree might learn, if income",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The same loan task can use rules or a weighted boundary",
+              "emoji": "⚖️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "A decision tree might learn, if income",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-contrast i",
+              "index": 0,
+              "sourcePhrase": "A perceptron computes the sign of w",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-contrast article",
+              "index": 1,
+              "sourcePhrase": "Both models can use the same labels",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Genetic programming evolves functions that fit labeled values",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 17.76,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-gp-lab nav",
+              "index": 0,
+              "sourcePhrase": "Genetic programming represents candidate solutions as expression",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Genetic programming evolves functions that fit labeled values",
+              "emoji": "🧬",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Genetic programming represents candidate solutions as expression",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 16.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-gp-lab section",
+              "index": 0,
+              "sourcePhrase": "Evaluation runs each candidate on all labeled",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-expression-tree",
+              "index": 0,
+              "sourcePhrase": "Tournament selection samples four candidates and favors",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 13.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-gp-lab",
+              "index": 0,
+              "sourcePhrase": "The loop stops at error zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 29.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-gp-lab",
+              "index": 0,
+              "sourcePhrase": "Fitness design defines evolutionary success. Mean absolute",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 27.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-gp-lab",
+              "index": 0,
+              "sourcePhrase": "Imagine two parents: one tree encodes x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Represent",
+          "durationSeconds": 12.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Represent",
+              "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
+              "index": 0,
+              "sourcePhrase": "Choose Represent. Candidate programs are expression trees",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Evaluate",
+          "durationSeconds": 13.752,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Evaluate",
+              "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose Evaluate. Every candidate predicts all ten",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Select",
+          "durationSeconds": 9.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Select",
+              "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose Select. Tournament selection compares four sampled",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Vary",
+          "durationSeconds": 12.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Vary",
+              "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
+              "index": 3,
+              "sourcePhrase": "Choose Vary. Crossover swaps subtrees with ninety",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Stop",
+          "durationSeconds": 10.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Stop",
+              "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
+              "index": 4,
+              "sourcePhrase": "Choose Stop. Search ends at tolerated error",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Ten labeled pairs define the fitness problem",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.072,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-dataset-demo table",
+              "index": 0,
+              "sourcePhrase": "Training inputs run from zero through zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Ten labeled pairs define the fitness problem",
+              "emoji": "🔢",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Training inputs run from zero through zero",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-dataset-demo tbody tr",
+              "index": 0,
+              "sourcePhrase": "For x zero point six, square to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.016,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-dataset-demo section",
+              "index": 0,
+              "sourcePhrase": "A candidate predicts all ten outputs and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 11.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-dataset-demo",
+              "index": 0,
+              "sourcePhrase": "The pattern seems simple because we know",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 24.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-dataset-demo",
+              "index": 0,
+              "sourcePhrase": "Trace units as a consistency check. Input",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Select row 1",
+          "durationSeconds": 7.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Select row 1",
+              "selector": ".m12-dataset-demo tbody tr",
+              "index": 0,
+              "sourcePhrase": "Select record one. With x zero, target",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Select row 4",
+          "durationSeconds": 9.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Select row 4",
+              "selector": ".m12-dataset-demo tbody tr",
+              "index": 3,
+              "sourcePhrase": "Select record four. With x zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Select row 7",
+          "durationSeconds": 9.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Select row 7",
+              "selector": ".m12-dataset-demo tbody tr",
+              "index": 6,
+              "sourcePhrase": "Select record seven. With x zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Select row 10",
+          "durationSeconds": 10.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Select row 10",
+              "selector": ".m12-dataset-demo tbody tr",
+              "index": 9,
+              "sourcePhrase": "Select record ten. With x zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "A symbolic regressor follows a fit and predict workflow",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.008,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-code-lab nav",
+              "index": 0,
+              "sourcePhrase": "Step one constructs X as ten rows",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A symbolic regressor follows a fit and predict workflow",
+              "emoji": "💻",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Step one constructs X as ten rows",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.728,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-code-lab pre",
+              "index": 0,
+              "sourcePhrase": "Step two configures population six hundred, one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-code-lab section p",
+              "index": 0,
+              "sourcePhrase": "Step three calls fit. Behind the familiar",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-code-lab section small",
+              "index": 0,
+              "sourcePhrase": "Step four predicts unseen values and measures",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 27.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-code-lab section small",
+              "index": 0,
+              "sourcePhrase": "The fit-predict interface separates training from inference.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Show data step",
+          "durationSeconds": 8.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show data step",
+              "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
+              "index": 0,
+              "sourcePhrase": "Choose data. X contains ten rows and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Show model step",
+          "durationSeconds": 8.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show model step",
+              "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
+              "index": 1,
+              "sourcePhrase": "Choose model. Population, generations, and tournament size",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Show fit step",
+          "durationSeconds": 7.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show fit step",
+              "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
+              "index": 2,
+              "sourcePhrase": "Choose fit. The interface is familiar while",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Show test step",
+          "durationSeconds": 8.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show test step",
+              "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
+              "index": 3,
+              "sourcePhrase": "Choose test. Predict unseen values and measure",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "An artificial neuron combines weighted inputs, bias, and activation",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.832,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-source-media",
+              "index": 0,
+              "sourcePhrase": "An artificial neuron receives inputs x sub",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "An artificial neuron combines weighted inputs, bias, and activation",
+              "emoji": "🧠",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "An artificial neuron receives inputs x sub",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-media-explain section code",
+              "index": 0,
+              "sourcePhrase": "A positive weight makes larger input push",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 10.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-media-explain ol li",
+              "index": 0,
+              "sourcePhrase": "Bias is a constant input of one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-media-explain ol li",
+              "index": 1,
+              "sourcePhrase": "Activation converts net to output. A hard",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 24.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-media-explain ol li",
+              "index": 3,
+              "sourcePhrase": "Expand the equation with two features: net",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Change one factor and watch the score cross threshold",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 21.12,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-neuron-lab label",
+              "index": 0,
+              "sourcePhrase": "Begin with inputs zero point eight and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Change one factor and watch the score cross threshold",
+              "emoji": "🎚️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Begin with inputs zero point eight and",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 10.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-neuron-lab label",
+              "index": 2,
+              "sourcePhrase": "The hard activation returns one when net",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-neuron-lab label",
+              "index": 4,
+              "sourcePhrase": "Changing one value isolates its role. Reducing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.408,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-neuron-diagram article",
+              "index": 0,
+              "sourcePhrase": "Crossing zero creates a discrete jump even",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 24.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-neuron-diagram output",
+              "index": 0,
+              "sourcePhrase": "Calculate initial contributions separately: the first gives",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 23.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-neuron-diagram output",
+              "index": 0,
+              "sourcePhrase": "Now separate boundary movement from evidence movement.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Reduce the first weight",
+          "durationSeconds": 11.184,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reduce the first weight",
+              "selector": ".m12-neuron-lab input",
+              "index": 2,
+              "sourcePhrase": "Move w one down to zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Raise the bias",
+          "durationSeconds": 9.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Raise the bias",
+              "selector": ".m12-neuron-lab input",
+              "index": 4,
+              "sourcePhrase": "Move bias up to zero point two.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Make the second weight positive",
+          "durationSeconds": 9.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Make the second weight positive",
+              "selector": ".m12-neuron-lab input",
+              "index": 3,
+              "sourcePhrase": "Move w two to zero point six.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Lower the first input",
+          "durationSeconds": 10.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Lower the first input",
+              "selector": ".m12-neuron-lab input",
+              "index": 0,
+              "sourcePhrase": "Move x one to negative zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Fixed weights and bias implement AND and OR",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.64,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-source-media",
+              "index": 0,
+              "sourcePhrase": "For both gates, set input weights to",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Fixed weights and bias implement AND and OR",
+              "emoji": "🚪",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "For both gates, set input weights to",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-media-explain section code",
+              "index": 0,
+              "sourcePhrase": "OR uses bias negative one, so either",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "These McCulloch-Pitts units are engineered, not learned.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Deepen",
+          "durationSeconds": 25.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "Write the AND inequalities. Zero-zero, one-zero, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Run all four input pairs through one gate",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-logic-lab nav",
+              "index": 0,
+              "sourcePhrase": "For AND at zero-zero, net is negative",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Run all four input pairs through one gate",
+              "emoji": "🔘",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "For AND at zero-zero, net is negative",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "For OR, bias changes to negative one.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-logic-lab section button",
+              "index": 1,
+              "sourcePhrase": "The invariant is weights one and one.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 9.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-logic-lab code",
+              "index": 0,
+              "sourcePhrase": "We will demonstrate all combinations. Watching the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 23.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-logic-lab output",
+              "index": 0,
+              "sourcePhrase": "Notice the equality convention. Activation returns one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 24.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-logic-lab output",
+              "index": 0,
+              "sourcePhrase": "List AND in order: zero-zero gives negative",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Set x to zero",
+          "durationSeconds": 7.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set x to zero",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "Toggle x to zero. With AND and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Set y to one",
+          "durationSeconds": 7.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set y to one",
+              "selector": ".m12-logic-lab section button",
+              "index": 1,
+              "sourcePhrase": "Toggle y to one. AND remains zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Set x to one",
+          "durationSeconds": 7.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set x to one",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "Toggle x back to one. Both inputs",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Choose OR",
+          "durationSeconds": 8.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose OR",
+              "selector": ".m12-logic-lab nav button",
+              "index": 1,
+              "sourcePhrase": "Choose OR. Weights remain one and one,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Set x to zero",
+          "durationSeconds": 6.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set x to zero",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "Toggle x to zero. OR remains one",
+              "atSeconds": 0.05,
+              "durationSeconds": 6.548
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Set y to zero",
+          "durationSeconds": 7.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set y to zero",
+              "selector": ".m12-logic-lab section button",
+              "index": 1,
+              "sourcePhrase": "Toggle y to zero. With neither input",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 13,
+          "label": "Set x to one",
+          "durationSeconds": 7.752,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Set x to one",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "Toggle x to one. A single active",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 14,
+          "label": "Return x to zero",
+          "durationSeconds": 8.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Return x to zero",
+              "selector": ".m12-logic-lab section button",
+              "index": 0,
+              "sourcePhrase": "Toggle x back to zero. This restores",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "A predictive learner must discover weights from examples",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 11.712,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "A supervised classifier receives feature vectors such",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "A predictive learner must discover weights from examples",
+              "emoji": "🔍",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "A supervised classifier receives feature vectors such",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 10.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "What it is not given is the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "This separates design from learning. AND and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "The target column creates labeled training examples",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.264,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-table-layout table",
+              "index": 0,
+              "sourcePhrase": "Each row contains x one, x two,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The target column creates labeled training examples",
+              "emoji": "🏷️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Each row contains x one, x two,",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-table-layout tbody tr",
+              "index": 0,
+              "sourcePhrase": "At prediction time the target disappears. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-table-layout tbody tr",
+              "index": 1,
+              "sourcePhrase": "These ten points are visually separable into",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 13.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-table-layout section",
+              "index": 0,
+              "sourcePhrase": "Training rows are evidence, not the objective",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-table-layout section",
+              "index": 0,
+              "sourcePhrase": "Targets plus one and negative one match",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Predict first and update only after a mistake",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.376,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-procedure article",
+              "index": 0,
+              "sourcePhrase": "Step one scores the example with the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Predict first and update only after a mistake",
+              "emoji": "🛠️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Step one scores the example with the",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-procedure article",
+              "index": 1,
+              "sourcePhrase": "Step three computes t minus a. It",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-procedure article",
+              "index": 2,
+              "sourcePhrase": "Step four changes every weight by eta",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 11.736,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-procedure article",
+              "index": 3,
+              "sourcePhrase": "Correct predictions produce zero update. The perceptron",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 26.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-procedure article",
+              "index": 3,
+              "sourcePhrase": "Derive update direction. If target is plus",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 22.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-procedure article",
+              "index": 3,
+              "sourcePhrase": "Bias update follows the same rule by",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "One epoch processes every example; convergence may reuse data",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.464,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-loop b",
+              "index": 0,
+              "sourcePhrase": "Initialize weights, then process examples in a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "One epoch processes every example; convergence may reuse data",
+              "emoji": "🔁",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Initialize weights, then process examples in a",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-loop b",
+              "index": 1,
+              "sourcePhrase": "One epoch is one complete pass through",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-loop b",
+              "index": 2,
+              "sourcePhrase": "For linearly separable data and positive learning",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-loop b",
+              "index": 3,
+              "sourcePhrase": "For nonseparable data, updates may cycle. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 26.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-loop p",
+              "index": 0,
+              "sourcePhrase": "Order matters because every update changes the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 26.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-loop p",
+              "index": 0,
+              "sourcePhrase": "Stopping after one error-free pass is common",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "The source example starts with W and learning rate",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 15.24,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "Start with W equal to zero point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The source example starts with W and learning rate",
+              "emoji": "🧮",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Start with W equal to zero point",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 16.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "Example one is one, one, one with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 15.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "Example two is nine point four, six",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 13.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "Example three uses the newly changed weights.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 26.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "Estimate magnitude before calculating. Example two has",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 23.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-cards article",
+              "index": 2,
+              "sourcePhrase": "Feature scale controls update scale because x",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Compute score, prediction, correction, and next weights",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 16.8,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-perceptron-trace nav",
+              "index": 0,
+              "sourcePhrase": "Example one scores zero point six five",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Compute score, prediction, correction, and next weights",
+              "emoji": "🧾",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Example one scores zero point six five",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-perceptron-trace section > div",
+              "index": 0,
+              "sourcePhrase": "Example two scores nine point six five",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 16.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-perceptron-trace ol li",
+              "index": 0,
+              "sourcePhrase": "Multiply by x: changes are negative three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-perceptron-trace ol li",
+              "index": 1,
+              "sourcePhrase": "Example three now scores negative twelve point",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Example",
+          "durationSeconds": 15.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Example",
+              "selector": ".m12-perceptron-trace ol li",
+              "index": 2,
+              "sourcePhrase": "Adding yields negative two point zero one,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Deepen",
+          "durationSeconds": 25.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-perceptron-trace ol li",
+              "index": 3,
+              "sourcePhrase": "Verify example three with updated weights. Negative",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Worked detail",
+          "durationSeconds": 24.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-perceptron-trace ol li",
+              "index": 3,
+              "sourcePhrase": "The update is vector addition, not replacement.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Trace example 1",
+          "durationSeconds": 9.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Trace example 1",
+              "selector": ".m12-perceptron-trace nav button",
+              "index": 0,
+              "sourcePhrase": "Choose Example one. Score zero point six",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Trace example 2",
+          "durationSeconds": 14.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Trace example 2",
+              "selector": ".m12-perceptron-trace nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Example two. A positive prediction conflicts",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Trace example 3",
+          "durationSeconds": 10.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Trace example 3",
+              "selector": ".m12-perceptron-trace nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Example three. New weights predict negative",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "The converged vector defines a separating line",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 18.888,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-source-media",
+              "index": 0,
+              "sourcePhrase": "After repeated passes, the source reports weights",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The converged vector defines a separating line",
+              "emoji": "📐",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "After repeated passes, the source reports weights",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-media-explain section code",
+              "index": 0,
+              "sourcePhrase": "The first coefficients form a vector perpendicular",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 12.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "Classification depends on sign. Score magnitude relates",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 12.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "The line separates training groups. Evaluation still",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "Solve the boundary for x two by",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 25.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "The learned vector is not unique. If",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Move the line and inspect weight geometry",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 9.408,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-boundary nav",
+              "index": 0,
+              "sourcePhrase": "The before-learning boundary comes from initial weights",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Move the line and inspect weight geometry",
+              "emoji": "📏",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The before-learning boundary comes from initial weights",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-boundary svg",
+              "index": 0,
+              "sourcePhrase": "The converged line sits between small positive",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 9.24,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-boundary section div",
+              "index": 0,
+              "sourcePhrase": "The too-high line has plausible orientation but",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 11.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-boundary section div",
+              "index": 0,
+              "sourcePhrase": "Each selected equation redraws the same points",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-boundary section div",
+              "index": 0,
+              "sourcePhrase": "Check a point by substitution. One, one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 23.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-boundary section div",
+              "index": 0,
+              "sourcePhrase": "Bias has a geometric interpretation as location,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Show before-learning boundary",
+          "durationSeconds": 8.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show before-learning boundary",
+              "selector": ".m12-boundary nav button",
+              "index": 0,
+              "sourcePhrase": "Choose Before learning. The initial line cuts",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Show converged boundary",
+          "durationSeconds": 7.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show converged boundary",
+              "selector": ".m12-boundary nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Converged. Learned coefficients rotate and shift",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Show overly high boundary",
+          "durationSeconds": 8.64,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show overly high boundary",
+              "selector": ".m12-boundary nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Too high. Similar orientation with incorrect",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "One perceptron represents only a linear boundary",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-cards article",
+              "index": 0,
+              "sourcePhrase": "AND and OR are linearly separable: one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "One perceptron represents only a linear boundary",
+              "emoji": "📎",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "AND and OR are linearly separable: one",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "XOR labels opposite corners alike. Any single",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "More data and more epochs cannot make",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Deepen",
+          "durationSeconds": 22.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-cards article",
+              "index": 1,
+              "sourcePhrase": "Linear separability belongs to labeled geometry in",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The XOR threshold inequalities contradict one another",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 12.792,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-source-media",
+              "index": 0,
+              "sourcePhrase": "Let XOR output zero for zero-zero and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "The XOR threshold inequalities contradict one another",
+              "emoji": "🚫",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Let XOR output zero for zero-zero and",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 13.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-media-explain section code",
+              "index": 0,
+              "sourcePhrase": "For one-zero positive, w one exceeds theta.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-media-explain section code",
+              "index": 1,
+              "sourcePhrase": "Because theta is positive, that sum is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-media-explain section code",
+              "index": 2,
+              "sourcePhrase": "This is an impossibility proof, not a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "The contradiction survives bias notation. Write score",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 25.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-media-explain section p",
+              "index": 0,
+              "sourcePhrase": "Another proof uses convexity. Each class separated",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Try a line, then explain why it fails",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 11.16,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-xor nav",
+              "index": 0,
+              "sourcePhrase": "A vertical line separates left from right,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Try a line, then explain why it fails",
+              "emoji": "✂️",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "A vertical line separates left from right,",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 10.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".xor-plot",
+              "index": 0,
+              "sourcePhrase": "A diagonal line can isolate one corner,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 14.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-xor article",
+              "index": 0,
+              "sourcePhrase": "The correct answer is no single line.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 9.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-xor article",
+              "index": 0,
+              "sourcePhrase": "A richer model combines multiple boundaries. Hidden",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 20.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-xor article",
+              "index": 0,
+              "sourcePhrase": "When testing a boundary, name the two",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Try a vertical line",
+          "durationSeconds": 8.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Try a vertical line",
+              "selector": ".m12-xor nav button",
+              "index": 0,
+              "sourcePhrase": "Try vertical. Each side contains one zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Try a diagonal line",
+          "durationSeconds": 8.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Try a diagonal line",
+              "selector": ".m12-xor nav button",
+              "index": 1,
+              "sourcePhrase": "Try diagonal. Opposite positive corners cannot occupy",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Choose no single line",
+          "durationSeconds": 8.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose no single line",
+              "selector": ".m12-xor nav button",
+              "index": 2,
+              "sourcePhrase": "Choose No single line. Correct: XOR is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Sigmoid replaces the hard jump with a smooth curve",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 14.64,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-source-media",
+              "index": 0,
+              "sourcePhrase": "The hard step changes abruptly at zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Sigmoid replaces the hard jump with a smooth curve",
+              "emoji": "🌊",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The hard step changes abruptly at zero",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-media-explain section code",
+              "index": 0,
+              "sourcePhrase": "At net zero sigmoid equals one half.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-media-explain section li",
+              "index": 0,
+              "sourcePhrase": "The curve is continuous and differentiable. Its",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-media-explain section li",
+              "index": 1,
+              "sourcePhrase": "Smooth output is not automatically calibrated probability,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 26.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-media-explain section li",
+              "index": 2,
+              "sourcePhrase": "Sigmoid derivative equals lambda times sigma times",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 25.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-media-explain section li",
+              "index": 2,
+              "sourcePhrase": "Lambda illustrates a tradeoff. Very large lambda",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Activation choice changes range, smoothness, and gradient flow",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 12.672,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-activation nav",
+              "index": 0,
+              "sourcePhrase": "Step outputs zero or one with an",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Activation choice changes range, smoothness, and gradient flow",
+              "emoji": "📈",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Step outputs zero or one with an",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-activation svg",
+              "index": 0,
+              "sourcePhrase": "Sigmoid is smooth and bounded. Its S-shape",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.8,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-activation article",
+              "index": 0,
+              "sourcePhrase": "ReLU returns zero for negative input and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 10.392,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-activation article",
+              "index": 0,
+              "sourcePhrase": "Activation changes range, smoothness, and learning behavior.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Deepen",
+          "durationSeconds": 25.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Detailed explanation",
+              "selector": ".m12-activation article",
+              "index": 0,
+              "sourcePhrase": "Range matters. Sigmoid stays between zero and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Worked detail",
+          "durationSeconds": 26.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Worked detail",
+              "selector": ".m12-activation article",
+              "index": 0,
+              "sourcePhrase": "For classification outputs, activation must be paired",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Show step",
+          "durationSeconds": 7.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show step",
+              "selector": ".m12-activation nav button",
+              "index": 0,
+              "sourcePhrase": "Choose Step. Output jumps at threshold, giving",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Show sigmoid",
+          "durationSeconds": 7.968,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show sigmoid",
+              "selector": ".m12-activation nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Sigmoid. The smooth S-curve stays between",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Show ReLU",
+          "durationSeconds": 7.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Show ReLU",
+              "selector": ".m12-activation nav button",
+              "index": 2,
+              "sourcePhrase": "Choose ReLU. Negative inputs map to zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Classify the learner before choosing an algorithm",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-method-check nav",
+              "index": 0,
+              "sourcePhrase": "Case one has labels, expression-tree evolution, and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Classify the learner before choosing an algorithm",
+              "emoji": "🧪",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "Case one has labels, expression-tree evolution, and",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-method-check section",
+              "index": 0,
+              "sourcePhrase": "Case two has no labels and asks",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 11.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-method-check section button",
+              "index": 0,
+              "sourcePhrase": "Case three is a labeled stream updated",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 15.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-method-check section button",
+              "index": 0,
+              "sourcePhrase": "The axes narrow the design space but",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Open case one",
+          "durationSeconds": 9.792,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Open case one",
+              "selector": ".m12-method-check nav button",
+              "index": 0,
+              "sourcePhrase": "Choose Case one. Labels plus expression-tree evolution",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Reveal case 1",
+          "durationSeconds": 9.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal case 1",
+              "selector": ".m12-method-check section button",
+              "index": 0,
+              "sourcePhrase": "Reveal the classification for case 1. Compare",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Open case two",
+          "durationSeconds": 8.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Open case two",
+              "selector": ".m12-method-check nav button",
+              "index": 1,
+              "sourcePhrase": "Choose Case two. No labels and grouping",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Reveal case 2",
+          "durationSeconds": 9.48,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal case 2",
+              "selector": ".m12-method-check section button",
+              "index": 0,
+              "sourcePhrase": "Reveal the classification for case 2. Compare",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Open case three",
+          "durationSeconds": 8.496,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Open case three",
+              "selector": ".m12-method-check nav button",
+              "index": 2,
+              "sourcePhrase": "Choose Case three. A labeled stream with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Reveal case 3",
+          "durationSeconds": 9.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal case 3",
+              "selector": ".m12-method-check section button",
+              "index": 0,
+              "sourcePhrase": "Reveal the classification for case 3. Compare",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Explain what changed and what the representation can express",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Frame",
+          "durationSeconds": 13.488,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Frame",
+              "selector": ".m12-exit section",
+              "index": 0,
+              "sourcePhrase": "The exit ticket needs three precise sentences.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Explain what changed and what the representation can express",
+              "emoji": "🎓",
+              "route": "center-hold",
+              "durationSeconds": 6,
+              "sourcePhrase": "The exit ticket needs three precise sentences.",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.84
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Define",
+          "durationSeconds": 11.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Define",
+              "selector": ".m12-exit ol li",
+              "index": 0,
+              "sourcePhrase": "Second, explain one update: score, compare prediction",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Mechanism",
+          "durationSeconds": 13.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mechanism",
+              "selector": ".m12-exit ol li",
+              "index": 1,
+              "sourcePhrase": "Third, explain XOR's need for richer representation.",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interpret",
+          "durationSeconds": 16.656,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interpret",
+              "selector": ".m12-exit ol li",
+              "index": 2,
+              "sourcePhrase": "Lesson eighteen combines units into layers. Multiple",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

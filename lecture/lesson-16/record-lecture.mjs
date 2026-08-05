@@ -414,8 +414,8 @@ try {
     maximumStillSeconds: kineticCuePlan.timing.maximumStillSeconds,
     minimumCenterHoldSeconds: kineticCuePlan.timing.minimumCenterHoldSeconds,
     minimumPopupHoldSeconds: cuePlan.timing.minimumPopupHoldSeconds,
-    popupPolicy: "Important terms and objects absent from the current slide only",
-    effects: ["instructor cursor", "click rings", "phrase-timed focus", "gentle zoom", "large center-held concept visuals", "two-second minimum stationary holds", "answer-anchored correctness marks", "camera breathing"],
+    popupPolicy: "Standalone image/icon visuals dynamically placed away from the active focus",
+    effects: ["instructor cursor", "click rings", "phrase-timed focus", "gentle zoom", "focus-avoiding standalone concept visuals", "two-second minimum stationary holds", "answer-anchored correctness marks", "camera breathing"],
   };
   await writeFile(path.join(outputRoot, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
   console.log(`\nFinal lecture: ${finalVideo}`);
