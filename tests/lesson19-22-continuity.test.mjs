@@ -10,7 +10,7 @@ test("Lessons 19 and 20 open with concrete interactive decisions", async () => {
     read("Meeting20Deck.tsx"),
   ]);
 
-  assert.match(lesson19, /How can an AI use earlier words to understand what a later word refers to/);
+  assert.match(lesson19, /How does AI connect a later word to the right earlier clue/);
   assert.match(lesson19, /function ContextClueDemo/);
   assert.match(lesson19, /What does <b>it<\/b> refer to/);
   assert.doesNotMatch(lesson19, /How does a sequence of symbols become a context-sensitive computation/);

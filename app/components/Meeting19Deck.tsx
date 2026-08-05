@@ -911,7 +911,7 @@ const slides: SourceLessonSlide[] = [
       <div className="m19-cover">
         <section>
           <span>Module 13 · Lesson 19 · 75 minutes</span>
-          <h3>How can an AI use earlier words to understand what a later word refers to?</h3>
+          <h3>How does AI connect a later word to the right earlier clue?</h3>
           <p>Begin with a familiar sentence. Then trace how text becomes tokens, vectors, attention, and a context-sensitive output.</p>
         </section>
         <ContextClueDemo />

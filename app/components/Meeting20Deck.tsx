@@ -537,7 +537,7 @@ const slides: SourceLessonSlide[] = [
       <div className="m20-cover">
         <section>
           <span>Start with a decision</span>
-          <h3>A polished answer appears in one second. What would make you trust it?</h3>
+          <h3>A polished answer appears in one second. What makes it trustworthy?</h3>
           <p>Compare fluency with evidence first. Then connect that difference to training, generation, validation, and verification.</p>
         </section>
         <TrustTheAnswerDemo />
