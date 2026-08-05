@@ -67,7 +67,7 @@
 }
 
 .m19-context-clue blockquote b { color: #6639c6; }
-.m19-context-clue > p { color: #102a43; font-size: clamp(16px, 1.2vw, 19px); font-weight: 800; margin: 0; }
+.m19-context-clue > p { color: #102a43 !important; font-size: clamp(16px, 1.2vw, 19px); font-weight: 800; margin: 0; }
 
 .m19-context-choices { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
 .m19-context-choices button {
