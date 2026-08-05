@@ -82,7 +82,7 @@ S("A predictive learner must discover weights from examples","🔍",[[".m12-card
 "What it is not given is the correct weight vector. Learning adjusts parameters until predictions agree with labels under a declared criterion.",
 "This separates design from learning. AND and OR used hand-selected weights; the perceptron infers a boundary from errors. Features, labels, and purpose still come from people and data collection, not the cosmic ether."
 ]),
-S("The target column creates labeled training examples","🏷️",[[".m12-table-layout table",0],[".m12-table-layout tbody tr",0],[".m12-table-layout tbody tr",1],[".m12-table-layout section",0]],[
+S("The target column creates labeled training examples","🏷️",[[".m12-perceptron-table table",0],[".m12-perceptron-table tbody tr",0],[".m12-perceptron-table tbody tr",1],[".m12-perceptron-table section",0]],[
 "Each row contains x one, x two, and target t. Small coordinate pairs have label plus one; large pairs have label negative one. The target makes this supervised classification rather than clustering.",
 "At prediction time the target disappears. A new point supplies only features, and the sign of the learned score chooses a class. Keeping the target would be answer leakage wearing a fake mustache.",
 "These ten points are visually separable into two groups. That matters because one perceptron learns only one linear boundary. If labels alternated around the plane, more epochs would not fix a representation mismatch.",
@@ -231,77 +231,82 @@ for(const [number,text] of Object.entries(worked)){
   slide.segments.push({label:"Worked detail",text,pauseAfterSeconds:.8,visualDesign:{focuses:[focus(text,target[0],target[1],"Worked detail")],kinetics:[]}});
 }
 
-for(const [i,name] of ["Decision tree","Genetic programming","Perceptron","K-means","Reinforcement learning"].entries())
-  action(3,"Choose "+name,"Choose "+name+". Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",'nav[aria-label="Machine-learning method examples"] button',i);
+for(const [i,name,text] of [
+  [0,"Decision tree","A decision tree represents a prediction as a sequence of feature tests: each branch asks a question, and each leaf returns an answer. Labeled examples provide the feedback for choosing useful splits, and the full training set is usually revisited in batches while the tree is constructed."],
+  [1,"Genetic programming","Genetic programming represents candidate solutions as executable expression trees. It scores those programs with a fitness function, then repeatedly selects, crosses, and mutates them. Feedback arrives after evaluating candidates on a batch of examples, so learning behaves more like evolutionary search than a direct formula update."],
+  [2,"Perceptron","A perceptron represents a classifier with weights and a bias. It computes a linear score, compares the sign with a labeled target, and changes its parameters only when the prediction is wrong. Because one example can trigger one immediate update, the perceptron naturally supports online learning."],
+  [3,"K-means","K-means represents each cluster by a centroid. It receives no class labels; instead, distance supplies the signal by assigning each point to its nearest centroid and then moving that centroid to the group mean. Those alternating batch steps continue until the assignments or centroids stabilize."],
+  [4,"Reinforcement learning","Reinforcement learning represents behavior with a policy or value function. An agent acts, observes consequences, and receives delayed rewards rather than a correct label for every move. The timing is sequential: today’s action can change tomorrow’s state, so credit assignment must connect outcomes back to earlier decisions."]
+]) action(3,"Choose "+name,text,'nav[aria-label="Machine-learning method examples"] button',i);
 
 for(const [i,name,text] of [
-  [0,"Represent","Choose Represent. Candidate programs are expression trees assembled from variables, constants, and allowed functions; this structure defines what search can express."],
-  [1,"Evaluate","Choose Evaluate. Every candidate predicts all ten labels, and aggregate error becomes fitness. Lower training error earns preference, not a diploma in universal truth."],
-  [2,"Select","Choose Select. Tournament selection compares four sampled candidates and favors a fitter parent without globally ranking the population."],
-  [3,"Vary","Choose Vary. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits restrain bloat."],
-  [4,"Stop","Choose Stop. Search ends at tolerated error zero point zero zero one or generation one hundred, making termination explicit."]
+  [0,"Represent","Genetic programming begins by representing candidate programs as expression trees assembled from variables, constants, and allowed functions. This is the search language: if an operation is absent from the building set, evolution cannot magically invent it."],
+  [1,"Evaluate","Evaluation runs every candidate on all ten labeled pairs and converts aggregate prediction error into fitness. A lower training error earns reproductive preference, but it is not a diploma in universal truth; generalization still needs separate evidence."],
+  [2,"Select","Selection now samples four candidates for a tournament and favors the fittest member as a parent. This creates useful pressure without globally sorting the entire population, like holding many small auditions instead of one enormous talent show."],
+  [3,"Vary","Variation creates new programs. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits keep the trees from becoming botanical monsters that are impressive but useless."],
+  [4,"Stop","Termination makes the computational budget explicit. Search ends when error reaches zero point zero zero one or after one hundred generations, whichever comes first; otherwise evolution could keep tinkering like a chef who refuses to serve dinner."]
 ]) action(6,name,text,'nav[aria-label="Genetic-programming cycle"] button',i);
 
 for(const [i,text] of [
-  [0,"Select record one. With x zero, target zero anchors the curve at the origin."],
-  [3,"Select record four. With x zero point three, target is zero point zero four five after squaring and dividing by two."],
-  [6,"Select record seven. With x zero point six, target zero point one eight can be verified from the hidden pattern."],
-  [9,"Select record ten. With x zero point nine, target zero point four zero five is a useful endpoint for checking an evolved expression."]
+  [0,"Record one anchors the curve at the origin: when x is zero, the target is also zero. Any candidate expression that misses this point begins with avoidable error."],
+  [3,"Record four shows x equal to zero point three and target equal to zero point zero four five. Squaring zero point three and dividing by two reproduces that target, giving us a clue about the hidden pattern."],
+  [6,"Record seven moves farther along the curve. With x equal to zero point six, the target is zero point one eight, which again matches x squared over two and gives evolution a stronger test than the origin alone."],
+  [9,"Record ten provides the far endpoint: x equals zero point nine and the target is zero point four zero five. A candidate that fits the early rows but misses this endpoint has learned a local coincidence, not the underlying relationship."]
 ]) action(7,"Select row "+(i+1),text,".m12-dataset-demo tbody tr",i);
 
 for(const [i,name,text] of [
-  [0,"Show data step","Choose data. X contains ten rows and one feature; y contains matching regression targets."],
-  [1,"Show model step","Choose model. Population, generations, and tournament size configure evolutionary search effort."],
-  [2,"Show fit step","Choose fit. The interface is familiar while the internal optimizer evolves expression trees."],
-  [3,"Show test step","Choose test. Predict unseen values and measure error; training fitness cannot establish generalization."]
+  [0,"Show data step","The data stage separates inputs from targets. X contains ten rows with one feature each, while y contains the ten matching regression values that supply supervised feedback."],
+  [1,"Show model step","The model stage configures the evolutionary search: population size controls how many candidate programs compete, generations limit how long evolution runs, and tournament size controls selection pressure."],
+  [2,"Show fit step","During fitting, the estimator keeps a familiar scikit-style interface, but its internal optimizer is evolving expression trees rather than solving directly for numeric coefficients. Familiar packaging can hide a very different learning mechanism."],
+  [3,"Show test step","Testing asks the evolved program to predict values it did not optimize directly. That distinction matters because excellent training fitness can belong to an overgrown expression that generalizes about as well as a horoscope."]
 ]) action(8,name,text,'nav[aria-label="Scikit-compatible genetic-programming workflow"] button',i);
 
-action(10,"Reduce the first weight","Move w one down to zero point one. Its positive contribution shrinks, so the total score crosses below zero and the hard output switches off.",".m12-neuron-lab input",2,"range",0.1);
-action(10,"Raise the bias","Move bias up to zero point two. The constant offset lifts every score and this example crosses back above threshold.",".m12-neuron-lab input",4,"range",0.2);
-action(10,"Make the second weight positive","Move w two to zero point six. The second feature now adds evidence instead of subtracting it, increasing net.",".m12-neuron-lab input",3,"range",0.6);
-action(10,"Lower the first input","Move x one to negative zero point five. With positive w one, this contribution reduces the score and may reverse output.",".m12-neuron-lab input",0,"range",-0.5);
+action(10,"Reduce the first weight","Weight one is now only zero point one, so the first feature contributes much less positive evidence. The total score crosses below zero, and the hard-threshold output switches off. A weight controls influence, not the feature value itself.",".m12-neuron-lab input",2,"range",0.1);
+action(10,"Raise the bias","The bias now rises to zero point two. Because bias is a constant offset, it lifts the score for every input combination, bringing this example back across the threshold and switching the output on.",".m12-neuron-lab input",4,"range",0.2);
+action(10,"Make the second weight positive","Weight two is now positive zero point six. The second feature changes from subtracting evidence to adding it, so the net score increases. The sign of a weight tells us the direction of influence.",".m12-neuron-lab input",3,"range",0.6);
+action(10,"Lower the first input","The first input is now negative zero point five. With a positive first weight, that feature contributes a negative product and pulls the score downward. Here the evidence changed while the model stayed fixed.",".m12-neuron-lab input",0,"range",-0.5);
 
 const gate=(label,text,index)=>action(12,label,text,".m12-logic-lab section button",index);
-gate("Set x to zero","Toggle x to zero. With AND and y zero, net is negative two and output remains zero.",0);
-gate("Set y to one","Toggle y to one. AND remains zero because only one input is active and net is negative one.",1);
-gate("Set x to one","Toggle x back to one. Both inputs are active, net reaches zero, and AND outputs one.",0);
-action(12,"Choose OR","Choose OR. Weights remain one and one, bias becomes negative one, and current one-one produces net one.",".m12-logic-lab nav button",1);
-gate("Set x to zero","Toggle x to zero. OR remains one because y alone brings net to zero.",0);
-gate("Set y to zero","Toggle y to zero. With neither input active, net negative one makes OR output zero.",1);
-gate("Set x to one","Toggle x to one. A single active input is sufficient for OR, so net reaches zero.",0);
-gate("Return x to zero","Toggle x back to zero. This restores zero-zero and completes all input states across both gates.",0);
+gate("Set x to zero","For the AND gate, x is now zero while y is also zero. The weighted sum plus bias is negative two, safely below threshold, so the output remains zero.",0);
+gate("Set y to one","Only y is active now. Its contribution raises the AND score from negative two to negative one, but that is still below threshold, so one active input is not enough.",1);
+gate("Set x to one","Both inputs are active now. Their two positive contributions exactly cancel the bias of negative two, net reaches zero, and the threshold produces one. That is the defining AND behavior.",0);
+action(12,"Choose OR","For OR, the weights stay at one and one while the bias becomes negative one. With both inputs active, net equals one; more importantly, either single positive input will now be enough to reach the threshold.",".m12-logic-lab nav button",1);
+gate("Set x to zero","With x zero and y one, the OR score is exactly zero. Reaching the threshold is sufficient, so y by itself produces output one.",0);
+gate("Set y to zero","Now neither input is active. Only the bias remains, net is negative one, and OR correctly returns zero.",1);
+gate("Set x to one","With x active by itself, its weight raises net from negative one to zero. The output becomes one, confirming the second single-input case for OR.",0);
+gate("Return x to zero","The inputs return to zero-zero, restoring net negative one and output zero. Across the four cases, OR required at least one active input while AND required both.",0);
 
 for(const [i,text] of [
-  [0,"Choose Example one. Score zero point six five has the correct positive sign, so delta is all zeros."],
-  [1,"Choose Example two. A positive prediction conflicts with target negative one; the negative correction produces weights negative three point zero one, negative two point zero six, negative one."],
-  [2,"Choose Example three. New weights predict negative for a positive target; the positive correction moves every weight along the input vector."]
+  [0,"In example one, the score is positive zero point six five and the target is positive one. The sign is already correct, so the error term is zero and every component of delta remains zero."],
+  [1,"Example two exposes a mistake: the positive score predicts one, but the target is negative one. The resulting negative correction moves the weights to negative three point zero one, negative two point zero six, and negative one."],
+  [2,"Example three begins with those newly corrected weights, which now predict negative for a positive target. The positive correction moves every weight along the input vector, illustrating why training order changes the path through weight space."]
 ]) action(18,"Trace example "+(i+1),text,".m12-perceptron-trace nav button",i);
 
 for(const [i,name,text] of [
-  [0,"Show before-learning boundary","Choose Before learning. The initial line cuts through labeled geometry; starting weights are only a hypothesis."],
-  [1,"Show converged boundary","Choose Converged. Learned coefficients rotate and shift the line between training clusters."],
-  [2,"Show overly high boundary","Choose Too high. Similar orientation with incorrect position shows why both normal vector and bias matter."]
+  [0,"Show before-learning boundary","Before learning, the initial boundary cuts through the labeled geometry. Those starting weights are merely a hypothesis, so several points fall on the wrong side."],
+  [1,"Show converged boundary","After convergence, the learned coefficients rotate and shift the boundary until the two training clusters occupy opposite sides. The perceptron has found a separator, though not necessarily the widest possible one."],
+  [2,"Show overly high boundary","This boundary has a similar orientation but sits too high. The comparison isolates the bias: weights control the line's normal direction, while bias helps determine where the line is positioned."]
 ]) action(20,name,text,".m12-boundary nav button",i);
 
 for(const [i,name,text] of [
-  [0,"Try a vertical line","Try vertical. Each side contains one zero and one one, so separation by x coordinate fails."],
-  [1,"Try a diagonal line","Try diagonal. Opposite positive corners cannot occupy one half-plane without a negative corner."],
-  [2,"Choose no single line","Choose No single line. Correct: XOR is not linearly separable, so one perceptron cannot express it."]
+  [0,"Try a vertical line","A vertical boundary groups points only by their x coordinate. Each side still contains one zero and one one, so that division cannot represent XOR."],
+  [1,"Try a diagonal line","A diagonal boundary fails for the same geometric reason. The positive examples occupy opposite corners, so placing both in one half-plane inevitably brings along a negative corner."],
+  [2,"Choose no single line","The correct conclusion is that no single line works. XOR is not linearly separable, which means one perceptron cannot express it regardless of how patiently we adjust its weights."]
 ]) action(23,name,text,".m12-xor nav button",i);
 
 for(const [i,name,text] of [
-  [0,"Show step","Choose Step. Output jumps at threshold, giving a crisp decision but no useful gradient."],
-  [1,"Show sigmoid","Choose Sigmoid. The smooth S-curve stays between zero and one and slopes most near transition."],
-  [2,"Show ReLU","Choose ReLU. Negative inputs map to zero while positive inputs grow linearly."]
+  [0,"Show step","The step activation jumps abruptly at the threshold. It produces a crisp binary decision, but the flat regions and sudden jump provide no useful gradient for multilayer error correction."],
+  [1,"Show sigmoid","The sigmoid replaces that jump with a smooth S-curve bounded between zero and one. Its slope is greatest near the transition and becomes tiny in the saturated tails."],
+  [2,"Show ReLU","ReLU maps every negative input to zero and lets positive inputs grow linearly. Its simple positive-side derivative helps deep networks train, although units can become inactive when they remain on the zero side."]
 ]) action(25,name,text,".m12-activation nav button",i);
 
 for(const [i,name,text] of [
-  [0,"Open case one","Choose Case one. Labels plus expression-tree evolution over fixed data identify supervised, batch genetic programming."],
-  [1,"Open case two","Choose Case two. No labels and grouping identify unsupervised K-means with centroid geometry."],
-  [2,"Open case three","Choose Case three. A labeled stream with mistake-triggered updates identifies an online-capable perceptron."]
+  [0,"Open case one","Case one combines labeled targets with expression-tree evolution over a fixed dataset. Those clues identify supervised, batch genetic programming: labels define fitness, and a population is evaluated together."],
+  [1,"Open case two","Case two provides no labels and asks the system to form groups around representative centers. That is unsupervised K-means, whose geometry comes from distances to centroids."],
+  [2,"Open case three","Case three presents a labeled stream and changes parameters whenever a prediction is wrong. That is an online-capable perceptron, using immediate mistake-driven feedback."]
 ]) {
   action(26,name,text,".m12-method-check nav button",i);
-  action(26,"Reveal case "+(i+1),"Reveal the classification for case "+(i+1)+". Compare representation, feedback, and timing with your prediction before moving on.",".m12-method-check section button",0);
+  action(26,"Reveal case "+(i+1),"The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.",".m12-method-check section button",0);
 }
 
 const script={version:3,lesson:"17",meeting:"15",course:"CPSC 481: Introduction to Artificial Intelligence",title:"Lesson 17: Machine Learning Categories, Genetic Learning, and Perceptrons",route:"/lessons/17",voice:{name:"Microsoft Aria Neural",engineVoice:"en-US-AriaNeural",provider:"Microsoft neural text to speech",gender:"female",culture:"en-US",speakingRate:.94,edgeTtsRate:"-6%"},slides};

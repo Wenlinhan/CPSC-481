@@ -4,7 +4,7 @@
 - Voice: Microsoft Aria Neural (en-US-AriaNeural)
 - Speaking rate: 0.94x (-6%)
 - Slides: 27
-- Narration words: 5,564
+- Narration words: 6,272
 - Timing policy: weighted around two minutes per page on average; concise overview pages; expanded equations, algorithms, mechanisms, worked examples, and every interactive demonstration
 - Captions: burned in at the bottom of the final video
 - Pop-ups: large standalone images/icons, dynamically positioned to avoid the active focus
@@ -67,31 +67,31 @@ A useful test is to hold two axes fixed and change the third. A perceptron train
 
 **Instructor action before narration:** Choose Decision tree.
 
-Choose Decision tree. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.
+A decision tree represents a prediction as a sequence of feature tests: each branch asks a question, and each leaf returns an answer. Labeled examples provide the feedback for choosing useful splits, and the full training set is usually revisited in batches while the tree is constructed.
 
 ### 7. Choose Genetic programming
 
 **Instructor action before narration:** Choose Genetic programming.
 
-Choose Genetic programming. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.
+Genetic programming represents candidate solutions as executable expression trees. It scores those programs with a fitness function, then repeatedly selects, crosses, and mutates them. Feedback arrives after evaluating candidates on a batch of examples, so learning behaves more like evolutionary search than a direct formula update.
 
 ### 8. Choose Perceptron
 
 **Instructor action before narration:** Choose Perceptron.
 
-Choose Perceptron. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.
+A perceptron represents a classifier with weights and a bias. It computes a linear score, compares the sign with a labeled target, and changes its parameters only when the prediction is wrong. Because one example can trigger one immediate update, the perceptron naturally supports online learning.
 
 ### 9. Choose K-means
 
 **Instructor action before narration:** Choose K-means.
 
-Choose K-means. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.
+K-means represents each cluster by a centroid. It receives no class labels; instead, distance supplies the signal by assigning each point to its nearest centroid and then moving that centroid to the group mean. Those alternating batch steps continue until the assignments or centroids stabilize.
 
 ### 10. Choose Reinforcement learning
 
 **Instructor action before narration:** Choose Reinforcement learning.
 
-Choose Reinforcement learning. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.
+Reinforcement learning represents behavior with a policy or value function. An agent acts, observes consequences, and receives delayed rewards rather than a correct label for every move. The timing is sequential: today’s action can change tomorrow’s state, so credit assignment must connect outcomes back to earlier decisions.
 
 ## Slide 04 - Symbolic structures and numeric representations change differently
 
@@ -151,31 +151,31 @@ Imagine two parents: one tree encodes x times x and another encodes x divided by
 
 **Instructor action before narration:** Represent.
 
-Choose Represent. Candidate programs are expression trees assembled from variables, constants, and allowed functions; this structure defines what search can express.
+Genetic programming begins by representing candidate programs as expression trees assembled from variables, constants, and allowed functions. This is the search language: if an operation is absent from the building set, evolution cannot magically invent it.
 
 ### 8. Evaluate
 
 **Instructor action before narration:** Evaluate.
 
-Choose Evaluate. Every candidate predicts all ten labels, and aggregate error becomes fitness. Lower training error earns preference, not a diploma in universal truth.
+Evaluation runs every candidate on all ten labeled pairs and converts aggregate prediction error into fitness. A lower training error earns reproductive preference, but it is not a diploma in universal truth; generalization still needs separate evidence.
 
 ### 9. Select
 
 **Instructor action before narration:** Select.
 
-Choose Select. Tournament selection compares four sampled candidates and favors a fitter parent without globally ranking the population.
+Selection now samples four candidates for a tournament and favors the fittest member as a parent. This creates useful pressure without globally sorting the entire population, like holding many small auditions instead of one enormous talent show.
 
 ### 10. Vary
 
 **Instructor action before narration:** Vary.
 
-Choose Vary. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits restrain bloat.
+Variation creates new programs. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits keep the trees from becoming botanical monsters that are impressive but useless.
 
 ### 11. Stop
 
 **Instructor action before narration:** Stop.
 
-Choose Stop. Search ends at tolerated error zero point zero zero one or generation one hundred, making termination explicit.
+Termination makes the computational budget explicit. Search ends when error reaches zero point zero zero one or after one hundred generations, whichever comes first; otherwise evolution could keep tinkering like a chef who refuses to serve dinner.
 
 ## Slide 07 - Ten labeled pairs define the fitness problem
 
@@ -203,25 +203,25 @@ Trace units as a consistency check. Input x has its original scale; squaring cre
 
 **Instructor action before narration:** Select row 1.
 
-Select record one. With x zero, target zero anchors the curve at the origin.
+Record one anchors the curve at the origin: when x is zero, the target is also zero. Any candidate expression that misses this point begins with avoidable error.
 
 ### 7. Select row 4
 
 **Instructor action before narration:** Select row 4.
 
-Select record four. With x zero point three, target is zero point zero four five after squaring and dividing by two.
+Record four shows x equal to zero point three and target equal to zero point zero four five. Squaring zero point three and dividing by two reproduces that target, giving us a clue about the hidden pattern.
 
 ### 8. Select row 7
 
 **Instructor action before narration:** Select row 7.
 
-Select record seven. With x zero point six, target zero point one eight can be verified from the hidden pattern.
+Record seven moves farther along the curve. With x equal to zero point six, the target is zero point one eight, which again matches x squared over two and gives evolution a stronger test than the origin alone.
 
 ### 9. Select row 10
 
 **Instructor action before narration:** Select row 10.
 
-Select record ten. With x zero point nine, target zero point four zero five is a useful endpoint for checking an evolved expression.
+Record ten provides the far endpoint: x equals zero point nine and the target is zero point four zero five. A candidate that fits the early rows but misses this endpoint has learned a local coincidence, not the underlying relationship.
 
 ## Slide 08 - A symbolic regressor follows a fit and predict workflow
 
@@ -249,25 +249,25 @@ The fit-predict interface separates training from inference. Fit inspects X and 
 
 **Instructor action before narration:** Show data step.
 
-Choose data. X contains ten rows and one feature; y contains matching regression targets.
+The data stage separates inputs from targets. X contains ten rows with one feature each, while y contains the ten matching regression values that supply supervised feedback.
 
 ### 7. Show model step
 
 **Instructor action before narration:** Show model step.
 
-Choose model. Population, generations, and tournament size configure evolutionary search effort.
+The model stage configures the evolutionary search: population size controls how many candidate programs compete, generations limit how long evolution runs, and tournament size controls selection pressure.
 
 ### 8. Show fit step
 
 **Instructor action before narration:** Show fit step.
 
-Choose fit. The interface is familiar while the internal optimizer evolves expression trees.
+During fitting, the estimator keeps a familiar scikit-style interface, but its internal optimizer is evolving expression trees rather than solving directly for numeric coefficients. Familiar packaging can hide a very different learning mechanism.
 
 ### 9. Show test step
 
 **Instructor action before narration:** Show test step.
 
-Choose test. Predict unseen values and measure error; training fitness cannot establish generalization.
+Testing asks the evolved program to predict values it did not optimize directly. That distinction matters because excellent training fitness can belong to an overgrown expression that generalizes about as well as a horoscope.
 
 ## Slide 09 - An artificial neuron combines weighted inputs, bias, and activation
 
@@ -321,25 +321,25 @@ Now separate boundary movement from evidence movement. Adjusting x changes the c
 
 **Instructor action before narration:** Reduce the first weight.
 
-Move w one down to zero point one. Its positive contribution shrinks, so the total score crosses below zero and the hard output switches off.
+Weight one is now only zero point one, so the first feature contributes much less positive evidence. The total score crosses below zero, and the hard-threshold output switches off. A weight controls influence, not the feature value itself.
 
 ### 8. Raise the bias
 
 **Instructor action before narration:** Raise the bias.
 
-Move bias up to zero point two. The constant offset lifts every score and this example crosses back above threshold.
+The bias now rises to zero point two. Because bias is a constant offset, it lifts the score for every input combination, bringing this example back across the threshold and switching the output on.
 
 ### 9. Make the second weight positive
 
 **Instructor action before narration:** Make the second weight positive.
 
-Move w two to zero point six. The second feature now adds evidence instead of subtracting it, increasing net.
+Weight two is now positive zero point six. The second feature changes from subtracting evidence to adding it, so the net score increases. The sign of a weight tells us the direction of influence.
 
 ### 10. Lower the first input
 
 **Instructor action before narration:** Lower the first input.
 
-Move x one to negative zero point five. With positive w one, this contribution reduces the score and may reverse output.
+The first input is now negative zero point five. With a positive first weight, that feature contributes a negative product and pulls the score downward. Here the evidence changed while the model stayed fixed.
 
 ## Slide 11 - Fixed weights and bias implement AND and OR
 
@@ -389,49 +389,49 @@ List AND in order: zero-zero gives negative two, zero-one negative one, one-zero
 
 **Instructor action before narration:** Set x to zero.
 
-Toggle x to zero. With AND and y zero, net is negative two and output remains zero.
+For the AND gate, x is now zero while y is also zero. The weighted sum plus bias is negative two, safely below threshold, so the output remains zero.
 
 ### 8. Set y to one
 
 **Instructor action before narration:** Set y to one.
 
-Toggle y to one. AND remains zero because only one input is active and net is negative one.
+Only y is active now. Its contribution raises the AND score from negative two to negative one, but that is still below threshold, so one active input is not enough.
 
 ### 9. Set x to one
 
 **Instructor action before narration:** Set x to one.
 
-Toggle x back to one. Both inputs are active, net reaches zero, and AND outputs one.
+Both inputs are active now. Their two positive contributions exactly cancel the bias of negative two, net reaches zero, and the threshold produces one. That is the defining AND behavior.
 
 ### 10. Choose OR
 
 **Instructor action before narration:** Choose OR.
 
-Choose OR. Weights remain one and one, bias becomes negative one, and current one-one produces net one.
+For OR, the weights stay at one and one while the bias becomes negative one. With both inputs active, net equals one; more importantly, either single positive input will now be enough to reach the threshold.
 
 ### 11. Set x to zero
 
 **Instructor action before narration:** Set x to zero.
 
-Toggle x to zero. OR remains one because y alone brings net to zero.
+With x zero and y one, the OR score is exactly zero. Reaching the threshold is sufficient, so y by itself produces output one.
 
 ### 12. Set y to zero
 
 **Instructor action before narration:** Set y to zero.
 
-Toggle y to zero. With neither input active, net negative one makes OR output zero.
+Now neither input is active. Only the bias remains, net is negative one, and OR correctly returns zero.
 
 ### 13. Set x to one
 
 **Instructor action before narration:** Set x to one.
 
-Toggle x to one. A single active input is sufficient for OR, so net reaches zero.
+With x active by itself, its weight raises net from negative one to zero. The output becomes one, confirming the second single-input case for OR.
 
 ### 14. Return x to zero
 
 **Instructor action before narration:** Return x to zero.
 
-Toggle x back to zero. This restores zero-zero and completes all input states across both gates.
+The inputs return to zero-zero, restoring net negative one and output zero. Across the four cases, OR required at least one active input while AND required both.
 
 ## Slide 13 - A predictive learner must discover weights from examples
 
@@ -581,19 +581,19 @@ The update is vector addition, not replacement. For example two, start with old 
 
 **Instructor action before narration:** Trace example 1.
 
-Choose Example one. Score zero point six five has the correct positive sign, so delta is all zeros.
+In example one, the score is positive zero point six five and the target is positive one. The sign is already correct, so the error term is zero and every component of delta remains zero.
 
 ### 9. Trace example 2
 
 **Instructor action before narration:** Trace example 2.
 
-Choose Example two. A positive prediction conflicts with target negative one; the negative correction produces weights negative three point zero one, negative two point zero six, negative one.
+Example two exposes a mistake: the positive score predicts one, but the target is negative one. The resulting negative correction moves the weights to negative three point zero one, negative two point zero six, and negative one.
 
 ### 10. Trace example 3
 
 **Instructor action before narration:** Trace example 3.
 
-Choose Example three. New weights predict negative for a positive target; the positive correction moves every weight along the input vector.
+Example three begins with those newly corrected weights, which now predict negative for a positive target. The positive correction moves every weight along the input vector, illustrating why training order changes the path through weight space.
 
 ## Slide 19 - The converged vector defines a separating line
 
@@ -651,19 +651,19 @@ Bias has a geometric interpretation as location, but only relative to coefficien
 
 **Instructor action before narration:** Show before-learning boundary.
 
-Choose Before learning. The initial line cuts through labeled geometry; starting weights are only a hypothesis.
+Before learning, the initial boundary cuts through the labeled geometry. Those starting weights are merely a hypothesis, so several points fall on the wrong side.
 
 ### 8. Show converged boundary
 
 **Instructor action before narration:** Show converged boundary.
 
-Choose Converged. Learned coefficients rotate and shift the line between training clusters.
+After convergence, the learned coefficients rotate and shift the boundary until the two training clusters occupy opposite sides. The perceptron has found a separator, though not necessarily the widest possible one.
 
 ### 9. Show overly high boundary
 
 **Instructor action before narration:** Show overly high boundary.
 
-Choose Too high. Similar orientation with incorrect position shows why both normal vector and bias matter.
+This boundary has a similar orientation but sits too high. The comparison isolates the bias: weights control the line's normal direction, while bias helps determine where the line is positioned.
 
 ## Slide 21 - One perceptron represents only a linear boundary
 
@@ -735,19 +735,19 @@ When testing a boundary, name the two sets it creates and list the labels on eac
 
 **Instructor action before narration:** Try a vertical line.
 
-Try vertical. Each side contains one zero and one one, so separation by x coordinate fails.
+A vertical boundary groups points only by their x coordinate. Each side still contains one zero and one one, so that division cannot represent XOR.
 
 ### 7. Try a diagonal line
 
 **Instructor action before narration:** Try a diagonal line.
 
-Try diagonal. Opposite positive corners cannot occupy one half-plane without a negative corner.
+A diagonal boundary fails for the same geometric reason. The positive examples occupy opposite corners, so placing both in one half-plane inevitably brings along a negative corner.
 
 ### 8. Choose no single line
 
 **Instructor action before narration:** Choose no single line.
 
-Choose No single line. Correct: XOR is not linearly separable, so one perceptron cannot express it.
+The correct conclusion is that no single line works. XOR is not linearly separable, which means one perceptron cannot express it regardless of how patiently we adjust its weights.
 
 ## Slide 24 - Sigmoid replaces the hard jump with a smooth curve
 
@@ -805,19 +805,19 @@ For classification outputs, activation must be paired with an appropriate loss a
 
 **Instructor action before narration:** Show step.
 
-Choose Step. Output jumps at threshold, giving a crisp decision but no useful gradient.
+The step activation jumps abruptly at the threshold. It produces a crisp binary decision, but the flat regions and sudden jump provide no useful gradient for multilayer error correction.
 
 ### 8. Show sigmoid
 
 **Instructor action before narration:** Show sigmoid.
 
-Choose Sigmoid. The smooth S-curve stays between zero and one and slopes most near transition.
+The sigmoid replaces that jump with a smooth S-curve bounded between zero and one. Its slope is greatest near the transition and becomes tiny in the saturated tails.
 
 ### 9. Show ReLU
 
 **Instructor action before narration:** Show ReLU.
 
-Choose ReLU. Negative inputs map to zero while positive inputs grow linearly.
+ReLU maps every negative input to zero and lets positive inputs grow linearly. Its simple positive-side derivative helps deep networks train, although units can become inactive when they remain on the zero side.
 
 ## Slide 26 - Classify the learner before choosing an algorithm
 
@@ -841,37 +841,37 @@ The axes narrow the design space but do not choose automatically. Geometry, erro
 
 **Instructor action before narration:** Open case one.
 
-Choose Case one. Labels plus expression-tree evolution over fixed data identify supervised, batch genetic programming.
+Case one combines labeled targets with expression-tree evolution over a fixed dataset. Those clues identify supervised, batch genetic programming: labels define fitness, and a population is evaluated together.
 
 ### 6. Reveal case 1
 
 **Instructor action before narration:** Reveal case 1.
 
-Reveal the classification for case 1. Compare representation, feedback, and timing with your prediction before moving on.
+The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.
 
 ### 7. Open case two
 
 **Instructor action before narration:** Open case two.
 
-Choose Case two. No labels and grouping identify unsupervised K-means with centroid geometry.
+Case two provides no labels and asks the system to form groups around representative centers. That is unsupervised K-means, whose geometry comes from distances to centroids.
 
 ### 8. Reveal case 2
 
 **Instructor action before narration:** Reveal case 2.
 
-Reveal the classification for case 2. Compare representation, feedback, and timing with your prediction before moving on.
+The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.
 
 ### 9. Open case three
 
 **Instructor action before narration:** Open case three.
 
-Choose Case three. A labeled stream with mistake-triggered updates identifies an online-capable perceptron.
+Case three presents a labeled stream and changes parameters whenever a prediction is wrong. That is an online-capable perceptron, using immediate mistake-driven feedback.
 
 ### 10. Reveal case 3
 
 **Instructor action before narration:** Reveal case 3.
 
-Reveal the classification for case 3. Compare representation, feedback, and timing with your prediction before moving on.
+The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.
 
 ## Slide 27 - Explain what changed and what the representation can express
 

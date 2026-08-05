@@ -59,6 +59,32 @@ if (mode === "--dry-run") {
   process.exit(0);
 }
 
+if (mode === "--delete-current-for-replacement") {
+  const publication = JSON.parse(await readFile(publicationFile, "utf8"));
+  const expectedName = "CPSC 481 Lesson 17 - Machine Learning Categories, Genetic Learning, and Perceptrons.mp4";
+  const stored = await request(`files/${publication.fileId}`);
+  const { page, module, item, pageSlug } = await context();
+  const expectedPreviewPath = `/courses/${courseId}/files/${publication.fileId}/file_preview`;
+  const checks = {
+    courseIdExact: String(publication.courseId) === courseId,
+    fileIdExact: Number(stored.id) === Number(publication.fileId),
+    fileNameExact: stored.display_name === expectedName,
+    fileSizeExact: Number(stored.size) === Number(publication.size),
+    pageSlugExact: pageSlug === "lesson-17-machine-learning-categories-genetic-learning-and-perceptrons",
+    pageReferencesFile: (page.body ?? "").includes(expectedPreviewPath),
+    moduleExact: module.name === "Module 12: Machine Learning Methods and Neural Networks",
+    pagePublished: page.published === true,
+    modulePublished: module.published === true,
+    itemPublished: item.published === true,
+  };
+  if (Object.values(checks).some(value => value !== true)) {
+    throw new Error(`Refusing to delete the current Canvas file: ${JSON.stringify(checks)}`);
+  }
+  const deleted = await request(`files/${publication.fileId}`, { method: "DELETE" });
+  console.log(JSON.stringify({ deletedForReplacement: true, fileId: deleted.id, displayName: deleted.display_name, checks }, null, 2));
+  process.exit(0);
+}
+
 if (mode === "--upload") {
   const init = await request(`courses/${courseId}/files`, {
     method: "POST",

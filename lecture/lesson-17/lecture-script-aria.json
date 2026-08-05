@@ -252,7 +252,7 @@
         },
         {
           "label": "Choose Decision tree",
-          "text": "Choose Decision tree. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",
+          "text": "A decision tree represents a prediction as a sequence of feature tests: each branch asks a question, and each leaf returns an answer. Labeled examples provide the feedback for choosing useful splits, and the full training set is usually revisited in batches while the tree is constructed.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
@@ -263,7 +263,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Decision tree. Read representation, feedback, and",
+                "phrase": "A decision tree represents a prediction as",
                 "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
                 "index": 0,
                 "label": "Choose Decision tree"
@@ -274,7 +274,7 @@
         },
         {
           "label": "Choose Genetic programming",
-          "text": "Choose Genetic programming. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",
+          "text": "Genetic programming represents candidate solutions as executable expression trees. It scores those programs with a fitness function, then repeatedly selects, crosses, and mutates them. Feedback arrives after evaluating candidates on a batch of examples, so learning behaves more like evolutionary search than a direct formula update.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
@@ -285,7 +285,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Genetic programming. Read representation, feedback, and",
+                "phrase": "Genetic programming represents candidate solutions as executable",
                 "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
                 "index": 1,
                 "label": "Choose Genetic programming"
@@ -296,7 +296,7 @@
         },
         {
           "label": "Choose Perceptron",
-          "text": "Choose Perceptron. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",
+          "text": "A perceptron represents a classifier with weights and a bias. It computes a linear score, compares the sign with a labeled target, and changes its parameters only when the prediction is wrong. Because one example can trigger one immediate update, the perceptron naturally supports online learning.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
@@ -307,7 +307,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Perceptron. Read representation, feedback, and timing",
+                "phrase": "A perceptron represents a classifier with weights",
                 "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
                 "index": 2,
                 "label": "Choose Perceptron"
@@ -318,7 +318,7 @@
         },
         {
           "label": "Choose K-means",
-          "text": "Choose K-means. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",
+          "text": "K-means represents each cluster by a centroid. It receives no class labels; instead, distance supplies the signal by assigning each point to its nearest centroid and then moving that centroid to the group mean. Those alternating batch steps continue until the assignments or centroids stabilize.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
@@ -329,7 +329,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose K-means. Read representation, feedback, and timing",
+                "phrase": "K-means represents each cluster by a centroid.",
                 "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
                 "index": 3,
                 "label": "Choose K-means"
@@ -340,7 +340,7 @@
         },
         {
           "label": "Choose Reinforcement learning",
-          "text": "Choose Reinforcement learning. Read representation, feedback, and timing as three simultaneous coordinates, then connect the example to its mechanism rather than treating the name as a complete classification.",
+          "text": "Reinforcement learning represents behavior with a policy or value function. An agent acts, observes consequences, and receives delayed rewards rather than a correct label for every move. The timing is sequential: today’s action can change tomorrow’s state, so credit assignment must connect outcomes back to earlier decisions.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
@@ -351,7 +351,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Reinforcement learning. Read representation, feedback, and",
+                "phrase": "Reinforcement learning represents behavior with a policy",
                 "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
                 "index": 4,
                 "label": "Choose Reinforcement learning"
@@ -599,7 +599,7 @@
         },
         {
           "label": "Represent",
-          "text": "Choose Represent. Candidate programs are expression trees assembled from variables, constants, and allowed functions; this structure defines what search can express.",
+          "text": "Genetic programming begins by representing candidate programs as expression trees assembled from variables, constants, and allowed functions. This is the search language: if an operation is absent from the building set, evolution cannot magically invent it.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
@@ -610,7 +610,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Represent. Candidate programs are expression trees",
+                "phrase": "Genetic programming begins by representing candidate programs",
                 "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
                 "index": 0,
                 "label": "Represent"
@@ -621,7 +621,7 @@
         },
         {
           "label": "Evaluate",
-          "text": "Choose Evaluate. Every candidate predicts all ten labels, and aggregate error becomes fitness. Lower training error earns preference, not a diploma in universal truth.",
+          "text": "Evaluation runs every candidate on all ten labeled pairs and converts aggregate prediction error into fitness. A lower training error earns reproductive preference, but it is not a diploma in universal truth; generalization still needs separate evidence.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
@@ -632,7 +632,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Evaluate. Every candidate predicts all ten",
+                "phrase": "Evaluation runs every candidate on all ten",
                 "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
                 "index": 1,
                 "label": "Evaluate"
@@ -643,7 +643,7 @@
         },
         {
           "label": "Select",
-          "text": "Choose Select. Tournament selection compares four sampled candidates and favors a fitter parent without globally ranking the population.",
+          "text": "Selection now samples four candidates for a tournament and favors the fittest member as a parent. This creates useful pressure without globally sorting the entire population, like holding many small auditions instead of one enormous talent show.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
@@ -654,7 +654,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Select. Tournament selection compares four sampled",
+                "phrase": "Selection now samples four candidates for a",
                 "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
                 "index": 2,
                 "label": "Select"
@@ -665,7 +665,7 @@
         },
         {
           "label": "Vary",
-          "text": "Choose Vary. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits restrain bloat.",
+          "text": "Variation creates new programs. Crossover swaps subtrees with ninety percent probability, mutation makes smaller changes with five percent probability, and depth limits keep the trees from becoming botanical monsters that are impressive but useless.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
@@ -676,7 +676,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Vary. Crossover swaps subtrees with ninety",
+                "phrase": "Variation creates new programs. Crossover swaps subtrees",
                 "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
                 "index": 3,
                 "label": "Vary"
@@ -687,7 +687,7 @@
         },
         {
           "label": "Stop",
-          "text": "Choose Stop. Search ends at tolerated error zero point zero zero one or generation one hundred, making termination explicit.",
+          "text": "Termination makes the computational budget explicit. Search ends when error reaches zero point zero zero one or after one hundred generations, whichever comes first; otherwise evolution could keep tinkering like a chef who refuses to serve dinner.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
@@ -698,7 +698,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Stop. Search ends at tolerated error",
+                "phrase": "Termination makes the computational budget explicit. Search",
                 "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
                 "index": 4,
                 "label": "Stop"
@@ -804,7 +804,7 @@
         },
         {
           "label": "Select row 1",
-          "text": "Select record one. With x zero, target zero anchors the curve at the origin.",
+          "text": "Record one anchors the curve at the origin: when x is zero, the target is also zero. Any candidate expression that misses this point begins with avoidable error.",
           "action": {
             "type": "click",
             "selector": ".m12-dataset-demo tbody tr",
@@ -815,7 +815,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Select record one. With x zero, target",
+                "phrase": "Record one anchors the curve at the",
                 "selector": ".m12-dataset-demo tbody tr",
                 "index": 0,
                 "label": "Select row 1"
@@ -826,7 +826,7 @@
         },
         {
           "label": "Select row 4",
-          "text": "Select record four. With x zero point three, target is zero point zero four five after squaring and dividing by two.",
+          "text": "Record four shows x equal to zero point three and target equal to zero point zero four five. Squaring zero point three and dividing by two reproduces that target, giving us a clue about the hidden pattern.",
           "action": {
             "type": "click",
             "selector": ".m12-dataset-demo tbody tr",
@@ -837,7 +837,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Select record four. With x zero point",
+                "phrase": "Record four shows x equal to zero",
                 "selector": ".m12-dataset-demo tbody tr",
                 "index": 3,
                 "label": "Select row 4"
@@ -848,7 +848,7 @@
         },
         {
           "label": "Select row 7",
-          "text": "Select record seven. With x zero point six, target zero point one eight can be verified from the hidden pattern.",
+          "text": "Record seven moves farther along the curve. With x equal to zero point six, the target is zero point one eight, which again matches x squared over two and gives evolution a stronger test than the origin alone.",
           "action": {
             "type": "click",
             "selector": ".m12-dataset-demo tbody tr",
@@ -859,7 +859,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Select record seven. With x zero point",
+                "phrase": "Record seven moves farther along the curve.",
                 "selector": ".m12-dataset-demo tbody tr",
                 "index": 6,
                 "label": "Select row 7"
@@ -870,7 +870,7 @@
         },
         {
           "label": "Select row 10",
-          "text": "Select record ten. With x zero point nine, target zero point four zero five is a useful endpoint for checking an evolved expression.",
+          "text": "Record ten provides the far endpoint: x equals zero point nine and the target is zero point four zero five. A candidate that fits the early rows but misses this endpoint has learned a local coincidence, not the underlying relationship.",
           "action": {
             "type": "click",
             "selector": ".m12-dataset-demo tbody tr",
@@ -881,7 +881,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Select record ten. With x zero point",
+                "phrase": "Record ten provides the far endpoint: x",
                 "selector": ".m12-dataset-demo tbody tr",
                 "index": 9,
                 "label": "Select row 10"
@@ -987,7 +987,7 @@
         },
         {
           "label": "Show data step",
-          "text": "Choose data. X contains ten rows and one feature; y contains matching regression targets.",
+          "text": "The data stage separates inputs from targets. X contains ten rows with one feature each, while y contains the ten matching regression values that supply supervised feedback.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
@@ -998,7 +998,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose data. X contains ten rows and",
+                "phrase": "The data stage separates inputs from targets.",
                 "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
                 "index": 0,
                 "label": "Show data step"
@@ -1009,7 +1009,7 @@
         },
         {
           "label": "Show model step",
-          "text": "Choose model. Population, generations, and tournament size configure evolutionary search effort.",
+          "text": "The model stage configures the evolutionary search: population size controls how many candidate programs compete, generations limit how long evolution runs, and tournament size controls selection pressure.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
@@ -1020,7 +1020,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose model. Population, generations, and tournament size",
+                "phrase": "The model stage configures the evolutionary search:",
                 "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
                 "index": 1,
                 "label": "Show model step"
@@ -1031,7 +1031,7 @@
         },
         {
           "label": "Show fit step",
-          "text": "Choose fit. The interface is familiar while the internal optimizer evolves expression trees.",
+          "text": "During fitting, the estimator keeps a familiar scikit-style interface, but its internal optimizer is evolving expression trees rather than solving directly for numeric coefficients. Familiar packaging can hide a very different learning mechanism.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
@@ -1042,7 +1042,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose fit. The interface is familiar while",
+                "phrase": "During fitting, the estimator keeps a familiar",
                 "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
                 "index": 2,
                 "label": "Show fit step"
@@ -1053,7 +1053,7 @@
         },
         {
           "label": "Show test step",
-          "text": "Choose test. Predict unseen values and measure error; training fitness cannot establish generalization.",
+          "text": "Testing asks the evolved program to predict values it did not optimize directly. That distinction matters because excellent training fitness can belong to an overgrown expression that generalizes about as well as a horoscope.",
           "action": {
             "type": "click",
             "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
@@ -1064,7 +1064,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose test. Predict unseen values and measure",
+                "phrase": "Testing asks the evolved program to predict",
                 "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
                 "index": 3,
                 "label": "Show test step"
@@ -1281,7 +1281,7 @@
         },
         {
           "label": "Reduce the first weight",
-          "text": "Move w one down to zero point one. Its positive contribution shrinks, so the total score crosses below zero and the hard output switches off.",
+          "text": "Weight one is now only zero point one, so the first feature contributes much less positive evidence. The total score crosses below zero, and the hard-threshold output switches off. A weight controls influence, not the feature value itself.",
           "action": {
             "type": "range",
             "selector": ".m12-neuron-lab input",
@@ -1293,7 +1293,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Move w one down to zero point",
+                "phrase": "Weight one is now only zero point",
                 "selector": ".m12-neuron-lab input",
                 "index": 2,
                 "label": "Reduce the first weight"
@@ -1304,7 +1304,7 @@
         },
         {
           "label": "Raise the bias",
-          "text": "Move bias up to zero point two. The constant offset lifts every score and this example crosses back above threshold.",
+          "text": "The bias now rises to zero point two. Because bias is a constant offset, it lifts the score for every input combination, bringing this example back across the threshold and switching the output on.",
           "action": {
             "type": "range",
             "selector": ".m12-neuron-lab input",
@@ -1316,7 +1316,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Move bias up to zero point two.",
+                "phrase": "The bias now rises to zero point",
                 "selector": ".m12-neuron-lab input",
                 "index": 4,
                 "label": "Raise the bias"
@@ -1327,7 +1327,7 @@
         },
         {
           "label": "Make the second weight positive",
-          "text": "Move w two to zero point six. The second feature now adds evidence instead of subtracting it, increasing net.",
+          "text": "Weight two is now positive zero point six. The second feature changes from subtracting evidence to adding it, so the net score increases. The sign of a weight tells us the direction of influence.",
           "action": {
             "type": "range",
             "selector": ".m12-neuron-lab input",
@@ -1339,7 +1339,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Move w two to zero point six.",
+                "phrase": "Weight two is now positive zero point",
                 "selector": ".m12-neuron-lab input",
                 "index": 3,
                 "label": "Make the second weight positive"
@@ -1350,7 +1350,7 @@
         },
         {
           "label": "Lower the first input",
-          "text": "Move x one to negative zero point five. With positive w one, this contribution reduces the score and may reverse output.",
+          "text": "The first input is now negative zero point five. With a positive first weight, that feature contributes a negative product and pulls the score downward. Here the evidence changed while the model stayed fixed.",
           "action": {
             "type": "range",
             "selector": ".m12-neuron-lab input",
@@ -1362,7 +1362,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Move x one to negative zero point",
+                "phrase": "The first input is now negative zero",
                 "selector": ".m12-neuron-lab input",
                 "index": 0,
                 "label": "Lower the first input"
@@ -1563,7 +1563,7 @@
         },
         {
           "label": "Set x to zero",
-          "text": "Toggle x to zero. With AND and y zero, net is negative two and output remains zero.",
+          "text": "For the AND gate, x is now zero while y is also zero. The weighted sum plus bias is negative two, safely below threshold, so the output remains zero.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1574,7 +1574,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle x to zero. With AND and",
+                "phrase": "For the AND gate, x is now",
                 "selector": ".m12-logic-lab section button",
                 "index": 0,
                 "label": "Set x to zero"
@@ -1585,7 +1585,7 @@
         },
         {
           "label": "Set y to one",
-          "text": "Toggle y to one. AND remains zero because only one input is active and net is negative one.",
+          "text": "Only y is active now. Its contribution raises the AND score from negative two to negative one, but that is still below threshold, so one active input is not enough.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1596,7 +1596,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle y to one. AND remains zero",
+                "phrase": "Only y is active now. Its contribution",
                 "selector": ".m12-logic-lab section button",
                 "index": 1,
                 "label": "Set y to one"
@@ -1607,7 +1607,7 @@
         },
         {
           "label": "Set x to one",
-          "text": "Toggle x back to one. Both inputs are active, net reaches zero, and AND outputs one.",
+          "text": "Both inputs are active now. Their two positive contributions exactly cancel the bias of negative two, net reaches zero, and the threshold produces one. That is the defining AND behavior.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1618,7 +1618,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle x back to one. Both inputs",
+                "phrase": "Both inputs are active now. Their two",
                 "selector": ".m12-logic-lab section button",
                 "index": 0,
                 "label": "Set x to one"
@@ -1629,7 +1629,7 @@
         },
         {
           "label": "Choose OR",
-          "text": "Choose OR. Weights remain one and one, bias becomes negative one, and current one-one produces net one.",
+          "text": "For OR, the weights stay at one and one while the bias becomes negative one. With both inputs active, net equals one; more importantly, either single positive input will now be enough to reach the threshold.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab nav button",
@@ -1640,7 +1640,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose OR. Weights remain one and one,",
+                "phrase": "For OR, the weights stay at one",
                 "selector": ".m12-logic-lab nav button",
                 "index": 1,
                 "label": "Choose OR"
@@ -1651,7 +1651,7 @@
         },
         {
           "label": "Set x to zero",
-          "text": "Toggle x to zero. OR remains one because y alone brings net to zero.",
+          "text": "With x zero and y one, the OR score is exactly zero. Reaching the threshold is sufficient, so y by itself produces output one.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1662,7 +1662,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle x to zero. OR remains one",
+                "phrase": "With x zero and y one, the",
                 "selector": ".m12-logic-lab section button",
                 "index": 0,
                 "label": "Set x to zero"
@@ -1673,7 +1673,7 @@
         },
         {
           "label": "Set y to zero",
-          "text": "Toggle y to zero. With neither input active, net negative one makes OR output zero.",
+          "text": "Now neither input is active. Only the bias remains, net is negative one, and OR correctly returns zero.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1684,7 +1684,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle y to zero. With neither input",
+                "phrase": "Now neither input is active. Only the",
                 "selector": ".m12-logic-lab section button",
                 "index": 1,
                 "label": "Set y to zero"
@@ -1695,7 +1695,7 @@
         },
         {
           "label": "Set x to one",
-          "text": "Toggle x to one. A single active input is sufficient for OR, so net reaches zero.",
+          "text": "With x active by itself, its weight raises net from negative one to zero. The output becomes one, confirming the second single-input case for OR.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1706,7 +1706,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle x to one. A single active",
+                "phrase": "With x active by itself, its weight",
                 "selector": ".m12-logic-lab section button",
                 "index": 0,
                 "label": "Set x to one"
@@ -1717,7 +1717,7 @@
         },
         {
           "label": "Return x to zero",
-          "text": "Toggle x back to zero. This restores zero-zero and completes all input states across both gates.",
+          "text": "The inputs return to zero-zero, restoring net negative one and output zero. Across the four cases, OR required at least one active input while AND required both.",
           "action": {
             "type": "click",
             "selector": ".m12-logic-lab section button",
@@ -1728,7 +1728,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Toggle x back to zero. This restores",
+                "phrase": "The inputs return to zero-zero, restoring net",
                 "selector": ".m12-logic-lab section button",
                 "index": 0,
                 "label": "Return x to zero"
@@ -1814,7 +1814,7 @@
             "focuses": [
               {
                 "phrase": "Each row contains x one, x two,",
-                "selector": ".m12-table-layout table",
+                "selector": ".m12-perceptron-table table",
                 "index": 0,
                 "label": "Frame"
               }
@@ -1839,7 +1839,7 @@
             "focuses": [
               {
                 "phrase": "At prediction time the target disappears. A",
-                "selector": ".m12-table-layout tbody tr",
+                "selector": ".m12-perceptron-table tbody tr",
                 "index": 0,
                 "label": "Define"
               }
@@ -1855,7 +1855,7 @@
             "focuses": [
               {
                 "phrase": "These ten points are visually separable into",
-                "selector": ".m12-table-layout tbody tr",
+                "selector": ".m12-perceptron-table tbody tr",
                 "index": 1,
                 "label": "Mechanism"
               }
@@ -1871,7 +1871,7 @@
             "focuses": [
               {
                 "phrase": "Training rows are evidence, not the objective",
-                "selector": ".m12-table-layout section",
+                "selector": ".m12-perceptron-table section",
                 "index": 0,
                 "label": "Interpret"
               }
@@ -1887,7 +1887,7 @@
             "focuses": [
               {
                 "phrase": "Targets plus one and negative one match",
-                "selector": ".m12-table-layout section",
+                "selector": ".m12-perceptron-table section",
                 "index": 0,
                 "label": "Detailed explanation"
               }
@@ -2357,7 +2357,7 @@
         },
         {
           "label": "Trace example 1",
-          "text": "Choose Example one. Score zero point six five has the correct positive sign, so delta is all zeros.",
+          "text": "In example one, the score is positive zero point six five and the target is positive one. The sign is already correct, so the error term is zero and every component of delta remains zero.",
           "action": {
             "type": "click",
             "selector": ".m12-perceptron-trace nav button",
@@ -2368,7 +2368,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Example one. Score zero point six",
+                "phrase": "In example one, the score is positive",
                 "selector": ".m12-perceptron-trace nav button",
                 "index": 0,
                 "label": "Trace example 1"
@@ -2379,7 +2379,7 @@
         },
         {
           "label": "Trace example 2",
-          "text": "Choose Example two. A positive prediction conflicts with target negative one; the negative correction produces weights negative three point zero one, negative two point zero six, negative one.",
+          "text": "Example two exposes a mistake: the positive score predicts one, but the target is negative one. The resulting negative correction moves the weights to negative three point zero one, negative two point zero six, and negative one.",
           "action": {
             "type": "click",
             "selector": ".m12-perceptron-trace nav button",
@@ -2390,7 +2390,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Example two. A positive prediction conflicts",
+                "phrase": "Example two exposes a mistake: the positive",
                 "selector": ".m12-perceptron-trace nav button",
                 "index": 1,
                 "label": "Trace example 2"
@@ -2401,7 +2401,7 @@
         },
         {
           "label": "Trace example 3",
-          "text": "Choose Example three. New weights predict negative for a positive target; the positive correction moves every weight along the input vector.",
+          "text": "Example three begins with those newly corrected weights, which now predict negative for a positive target. The positive correction moves every weight along the input vector, illustrating why training order changes the path through weight space.",
           "action": {
             "type": "click",
             "selector": ".m12-perceptron-trace nav button",
@@ -2412,7 +2412,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Example three. New weights predict negative",
+                "phrase": "Example three begins with those newly corrected",
                 "selector": ".m12-perceptron-trace nav button",
                 "index": 2,
                 "label": "Trace example 3"
@@ -2645,7 +2645,7 @@
         },
         {
           "label": "Show before-learning boundary",
-          "text": "Choose Before learning. The initial line cuts through labeled geometry; starting weights are only a hypothesis.",
+          "text": "Before learning, the initial boundary cuts through the labeled geometry. Those starting weights are merely a hypothesis, so several points fall on the wrong side.",
           "action": {
             "type": "click",
             "selector": ".m12-boundary nav button",
@@ -2656,7 +2656,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Before learning. The initial line cuts",
+                "phrase": "Before learning, the initial boundary cuts through",
                 "selector": ".m12-boundary nav button",
                 "index": 0,
                 "label": "Show before-learning boundary"
@@ -2667,7 +2667,7 @@
         },
         {
           "label": "Show converged boundary",
-          "text": "Choose Converged. Learned coefficients rotate and shift the line between training clusters.",
+          "text": "After convergence, the learned coefficients rotate and shift the boundary until the two training clusters occupy opposite sides. The perceptron has found a separator, though not necessarily the widest possible one.",
           "action": {
             "type": "click",
             "selector": ".m12-boundary nav button",
@@ -2678,7 +2678,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Converged. Learned coefficients rotate and shift",
+                "phrase": "After convergence, the learned coefficients rotate and",
                 "selector": ".m12-boundary nav button",
                 "index": 1,
                 "label": "Show converged boundary"
@@ -2689,7 +2689,7 @@
         },
         {
           "label": "Show overly high boundary",
-          "text": "Choose Too high. Similar orientation with incorrect position shows why both normal vector and bias matter.",
+          "text": "This boundary has a similar orientation but sits too high. The comparison isolates the bias: weights control the line's normal direction, while bias helps determine where the line is positioned.",
           "action": {
             "type": "click",
             "selector": ".m12-boundary nav button",
@@ -2700,7 +2700,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Too high. Similar orientation with incorrect",
+                "phrase": "This boundary has a similar orientation but",
                 "selector": ".m12-boundary nav button",
                 "index": 2,
                 "label": "Show overly high boundary"
@@ -2996,7 +2996,7 @@
         },
         {
           "label": "Try a vertical line",
-          "text": "Try vertical. Each side contains one zero and one one, so separation by x coordinate fails.",
+          "text": "A vertical boundary groups points only by their x coordinate. Each side still contains one zero and one one, so that division cannot represent XOR.",
           "action": {
             "type": "click",
             "selector": ".m12-xor nav button",
@@ -3007,7 +3007,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Try vertical. Each side contains one zero",
+                "phrase": "A vertical boundary groups points only by",
                 "selector": ".m12-xor nav button",
                 "index": 0,
                 "label": "Try a vertical line"
@@ -3018,7 +3018,7 @@
         },
         {
           "label": "Try a diagonal line",
-          "text": "Try diagonal. Opposite positive corners cannot occupy one half-plane without a negative corner.",
+          "text": "A diagonal boundary fails for the same geometric reason. The positive examples occupy opposite corners, so placing both in one half-plane inevitably brings along a negative corner.",
           "action": {
             "type": "click",
             "selector": ".m12-xor nav button",
@@ -3029,7 +3029,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Try diagonal. Opposite positive corners cannot occupy",
+                "phrase": "A diagonal boundary fails for the same",
                 "selector": ".m12-xor nav button",
                 "index": 1,
                 "label": "Try a diagonal line"
@@ -3040,7 +3040,7 @@
         },
         {
           "label": "Choose no single line",
-          "text": "Choose No single line. Correct: XOR is not linearly separable, so one perceptron cannot express it.",
+          "text": "The correct conclusion is that no single line works. XOR is not linearly separable, which means one perceptron cannot express it regardless of how patiently we adjust its weights.",
           "action": {
             "type": "click",
             "selector": ".m12-xor nav button",
@@ -3051,7 +3051,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose No single line. Correct: XOR is",
+                "phrase": "The correct conclusion is that no single",
                 "selector": ".m12-xor nav button",
                 "index": 2,
                 "label": "Choose no single line"
@@ -3284,7 +3284,7 @@
         },
         {
           "label": "Show step",
-          "text": "Choose Step. Output jumps at threshold, giving a crisp decision but no useful gradient.",
+          "text": "The step activation jumps abruptly at the threshold. It produces a crisp binary decision, but the flat regions and sudden jump provide no useful gradient for multilayer error correction.",
           "action": {
             "type": "click",
             "selector": ".m12-activation nav button",
@@ -3295,7 +3295,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Step. Output jumps at threshold, giving",
+                "phrase": "The step activation jumps abruptly at the",
                 "selector": ".m12-activation nav button",
                 "index": 0,
                 "label": "Show step"
@@ -3306,7 +3306,7 @@
         },
         {
           "label": "Show sigmoid",
-          "text": "Choose Sigmoid. The smooth S-curve stays between zero and one and slopes most near transition.",
+          "text": "The sigmoid replaces that jump with a smooth S-curve bounded between zero and one. Its slope is greatest near the transition and becomes tiny in the saturated tails.",
           "action": {
             "type": "click",
             "selector": ".m12-activation nav button",
@@ -3317,7 +3317,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Sigmoid. The smooth S-curve stays between",
+                "phrase": "The sigmoid replaces that jump with a",
                 "selector": ".m12-activation nav button",
                 "index": 1,
                 "label": "Show sigmoid"
@@ -3328,7 +3328,7 @@
         },
         {
           "label": "Show ReLU",
-          "text": "Choose ReLU. Negative inputs map to zero while positive inputs grow linearly.",
+          "text": "ReLU maps every negative input to zero and lets positive inputs grow linearly. Its simple positive-side derivative helps deep networks train, although units can become inactive when they remain on the zero side.",
           "action": {
             "type": "click",
             "selector": ".m12-activation nav button",
@@ -3339,7 +3339,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose ReLU. Negative inputs map to zero",
+                "phrase": "ReLU maps every negative input to zero",
                 "selector": ".m12-activation nav button",
                 "index": 2,
                 "label": "Show ReLU"
@@ -3429,7 +3429,7 @@
         },
         {
           "label": "Open case one",
-          "text": "Choose Case one. Labels plus expression-tree evolution over fixed data identify supervised, batch genetic programming.",
+          "text": "Case one combines labeled targets with expression-tree evolution over a fixed dataset. Those clues identify supervised, batch genetic programming: labels define fitness, and a population is evaluated together.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check nav button",
@@ -3440,7 +3440,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Case one. Labels plus expression-tree evolution",
+                "phrase": "Case one combines labeled targets with expression-tree",
                 "selector": ".m12-method-check nav button",
                 "index": 0,
                 "label": "Open case one"
@@ -3451,7 +3451,7 @@
         },
         {
           "label": "Reveal case 1",
-          "text": "Reveal the classification for case 1. Compare representation, feedback, and timing with your prediction before moving on.",
+          "text": "The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check section button",
@@ -3462,7 +3462,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Reveal the classification for case 1. Compare",
+                "phrase": "The revealed classification confirms the mechanism. Notice",
                 "selector": ".m12-method-check section button",
                 "index": 0,
                 "label": "Reveal case 1"
@@ -3473,7 +3473,7 @@
         },
         {
           "label": "Open case two",
-          "text": "Choose Case two. No labels and grouping identify unsupervised K-means with centroid geometry.",
+          "text": "Case two provides no labels and asks the system to form groups around representative centers. That is unsupervised K-means, whose geometry comes from distances to centroids.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check nav button",
@@ -3484,7 +3484,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Case two. No labels and grouping",
+                "phrase": "Case two provides no labels and asks",
                 "selector": ".m12-method-check nav button",
                 "index": 1,
                 "label": "Open case two"
@@ -3495,7 +3495,7 @@
         },
         {
           "label": "Reveal case 2",
-          "text": "Reveal the classification for case 2. Compare representation, feedback, and timing with your prediction before moving on.",
+          "text": "The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check section button",
@@ -3506,7 +3506,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Reveal the classification for case 2. Compare",
+                "phrase": "The revealed classification confirms the mechanism. Notice",
                 "selector": ".m12-method-check section button",
                 "index": 0,
                 "label": "Reveal case 2"
@@ -3517,7 +3517,7 @@
         },
         {
           "label": "Open case three",
-          "text": "Choose Case three. A labeled stream with mistake-triggered updates identifies an online-capable perceptron.",
+          "text": "Case three presents a labeled stream and changes parameters whenever a prediction is wrong. That is an online-capable perceptron, using immediate mistake-driven feedback.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check nav button",
@@ -3528,7 +3528,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Choose Case three. A labeled stream with",
+                "phrase": "Case three presents a labeled stream and",
                 "selector": ".m12-method-check nav button",
                 "index": 2,
                 "label": "Open case three"
@@ -3539,7 +3539,7 @@
         },
         {
           "label": "Reveal case 3",
-          "text": "Reveal the classification for case 3. Compare representation, feedback, and timing with your prediction before moving on.",
+          "text": "The revealed classification confirms the mechanism. Notice how representation tells us what the model stores, feedback tells us what counts as improvement, and timing tells us whether learning happens from a batch or a stream.",
           "action": {
             "type": "click",
             "selector": ".m12-method-check section button",
@@ -3550,7 +3550,7 @@
           "visualDesign": {
             "focuses": [
               {
-                "phrase": "Reveal the classification for case 3. Compare",
+                "phrase": "The revealed classification confirms the mechanism. Notice",
                 "selector": ".m12-method-check section button",
                 "index": 0,
                 "label": "Reveal case 3"

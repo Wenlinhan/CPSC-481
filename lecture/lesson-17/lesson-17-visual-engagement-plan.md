@@ -3,7 +3,7 @@
 - Phrase-synchronized focus and popup cues: 210
 - Focus-avoiding concept popups: 27
 - Kinetic concept cues: 0
-- Automatic camera reframes: 152
+- Automatic camera reframes: 187
 - Large standalone image/icon popups hold for at least two seconds and are dynamically placed away from the active focus.
 - Interactive traces, reveals, tabs, figure enlargements, and replayable animations align to narration boundaries.
 - Bottom caption safe area remains clear.
@@ -29,10 +29,10 @@
 - Segment 4: Subtle camera reframe at 10.1s.
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s.
-- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 7: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 8: Subtle camera reframe at 10.1s.
 - Segment 9: Subtle camera reframe at 10.1s.
-- Segment 10: Subtle camera reframe at 10.1s.
+- Segment 10: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 
 ## Slide 4 - Symbolic structures and numeric representations change differently
 
@@ -54,11 +54,11 @@
 - Segment 4: Subtle camera reframe at 10.1s.
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 7: .
+- Segment 7: Subtle camera reframe at 10.1s.
 - Segment 8: Subtle camera reframe at 10.1s.
-- Segment 9: .
+- Segment 9: Subtle camera reframe at 10.1s.
 - Segment 10: Subtle camera reframe at 10.1s.
-- Segment 11: .
+- Segment 11: Subtle camera reframe at 10.1s.
 
 ## Slide 7 - Ten labeled pairs define the fitness problem
 
@@ -68,9 +68,9 @@
 - Segment 4: .
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: .
-- Segment 7: .
-- Segment 8: .
-- Segment 9: .
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
 
 ## Slide 8 - A symbolic regressor follows a fit and predict workflow
 
@@ -79,10 +79,10 @@
 - Segment 3: Subtle camera reframe at 10.1s.
 - Segment 4: Subtle camera reframe at 10.1s.
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 6: .
-- Segment 7: .
-- Segment 8: .
-- Segment 9: .
+- Segment 6: Subtle camera reframe at 10.1s.
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
 
 ## Slide 9 - An artificial neuron combines weighted inputs, bias, and activation
 
@@ -100,10 +100,10 @@
 - Segment 4: Subtle camera reframe at 10.1s.
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 7: .
-- Segment 8: .
-- Segment 9: .
-- Segment 10: .
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
+- Segment 10: Subtle camera reframe at 10.1s.
 
 ## Slide 11 - Fixed weights and bias implement AND and OR
 
@@ -120,14 +120,14 @@
 - Segment 4: .
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 7: .
-- Segment 8: .
-- Segment 9: .
-- Segment 10: .
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
+- Segment 10: Subtle camera reframe at 10.1s.
 - Segment 11: .
 - Segment 12: .
 - Segment 13: .
-- Segment 14: .
+- Segment 14: Subtle camera reframe at 10.1s.
 
 ## Slide 13 - A predictive learner must discover weights from examples
 
@@ -179,9 +179,9 @@
 - Segment 5: Subtle camera reframe at 10.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 7: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 8: .
+- Segment 8: Subtle camera reframe at 10.1s.
 - Segment 9: Subtle camera reframe at 10.1s.
-- Segment 10: .
+- Segment 10: Subtle camera reframe at 10.1s.
 
 ## Slide 19 - The converged vector defines a separating line
 
@@ -201,8 +201,8 @@
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 7: .
-- Segment 8: .
-- Segment 9: .
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
 
 ## Slide 21 - One perceptron represents only a linear boundary
 
@@ -228,8 +228,8 @@
 - Segment 4: .
 - Segment 5: Subtle camera reframe at 10.1s.
 - Segment 6: .
-- Segment 7: .
-- Segment 8: .
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
 
 ## Slide 24 - Sigmoid replaces the hard jump with a smooth curve
 
@@ -248,9 +248,9 @@
 - Segment 4: .
 - Segment 5: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
 - Segment 6: Subtle camera reframe at 10.1s; Subtle camera reframe at 20.1s.
-- Segment 7: .
+- Segment 7: Subtle camera reframe at 10.1s.
 - Segment 8: .
-- Segment 9: .
+- Segment 9: Subtle camera reframe at 10.1s.
 
 ## Slide 26 - Classify the learner before choosing an algorithm
 
@@ -258,12 +258,12 @@
 - Segment 2: .
 - Segment 3: .
 - Segment 4: Subtle camera reframe at 10.1s.
-- Segment 5: .
-- Segment 6: .
-- Segment 7: .
-- Segment 8: .
-- Segment 9: .
-- Segment 10: .
+- Segment 5: Subtle camera reframe at 10.1s.
+- Segment 6: Subtle camera reframe at 10.1s.
+- Segment 7: Subtle camera reframe at 10.1s.
+- Segment 8: Subtle camera reframe at 10.1s.
+- Segment 9: Subtle camera reframe at 10.1s.
+- Segment 10: Subtle camera reframe at 10.1s.
 
 ## Slide 27 - Explain what changed and what the representation can express
 

@@ -272,7 +272,7 @@
         {
           "number": 6,
           "label": "Choose Decision tree",
-          "durationSeconds": 13.992,
+          "durationSeconds": 19.08,
           "cueCount": 1,
           "cues": [
             {
@@ -280,7 +280,7 @@
               "label": "Choose Decision tree",
               "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
               "index": 0,
-              "sourcePhrase": "Choose Decision tree. Read representation, feedback, and",
+              "sourcePhrase": "A decision tree represents a prediction as",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -289,7 +289,7 @@
         {
           "number": 7,
           "label": "Choose Genetic programming",
-          "durationSeconds": 14.352,
+          "durationSeconds": 23.712,
           "cueCount": 1,
           "cues": [
             {
@@ -297,7 +297,7 @@
               "label": "Choose Genetic programming",
               "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
               "index": 1,
-              "sourcePhrase": "Choose Genetic programming. Read representation, feedback, and",
+              "sourcePhrase": "Genetic programming represents candidate solutions as executable",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -306,7 +306,7 @@
         {
           "number": 8,
           "label": "Choose Perceptron",
-          "durationSeconds": 13.968,
+          "durationSeconds": 20.856,
           "cueCount": 1,
           "cues": [
             {
@@ -314,7 +314,7 @@
               "label": "Choose Perceptron",
               "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
               "index": 2,
-              "sourcePhrase": "Choose Perceptron. Read representation, feedback, and timing",
+              "sourcePhrase": "A perceptron represents a classifier with weights",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -323,7 +323,7 @@
         {
           "number": 9,
           "label": "Choose K-means",
-          "durationSeconds": 13.896,
+          "durationSeconds": 20.592,
           "cueCount": 1,
           "cues": [
             {
@@ -331,7 +331,7 @@
               "label": "Choose K-means",
               "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
               "index": 3,
-              "sourcePhrase": "Choose K-means. Read representation, feedback, and timing",
+              "sourcePhrase": "K-means represents each cluster by a centroid.",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -340,7 +340,7 @@
         {
           "number": 10,
           "label": "Choose Reinforcement learning",
-          "durationSeconds": 14.352,
+          "durationSeconds": 23.112,
           "cueCount": 1,
           "cues": [
             {
@@ -348,7 +348,7 @@
               "label": "Choose Reinforcement learning",
               "selector": "nav[aria-label=\"Machine-learning method examples\"] button",
               "index": 4,
-              "sourcePhrase": "Choose Reinforcement learning. Read representation, feedback, and",
+              "sourcePhrase": "Reinforcement learning represents behavior with a policy",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -609,7 +609,7 @@
         {
           "number": 7,
           "label": "Represent",
-          "durationSeconds": 12.024,
+          "durationSeconds": 17.784,
           "cueCount": 1,
           "cues": [
             {
@@ -617,7 +617,7 @@
               "label": "Represent",
               "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
               "index": 0,
-              "sourcePhrase": "Choose Represent. Candidate programs are expression trees",
+              "sourcePhrase": "Genetic programming begins by representing candidate programs",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -626,7 +626,7 @@
         {
           "number": 8,
           "label": "Evaluate",
-          "durationSeconds": 13.752,
+          "durationSeconds": 17.856,
           "cueCount": 1,
           "cues": [
             {
@@ -634,7 +634,7 @@
               "label": "Evaluate",
               "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
               "index": 1,
-              "sourcePhrase": "Choose Evaluate. Every candidate predicts all ten",
+              "sourcePhrase": "Evaluation runs every candidate on all ten",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -643,7 +643,7 @@
         {
           "number": 9,
           "label": "Select",
-          "durationSeconds": 9.936,
+          "durationSeconds": 16.2,
           "cueCount": 1,
           "cues": [
             {
@@ -651,7 +651,7 @@
               "label": "Select",
               "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
               "index": 2,
-              "sourcePhrase": "Choose Select. Tournament selection compares four sampled",
+              "sourcePhrase": "Selection now samples four candidates for a",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -660,7 +660,7 @@
         {
           "number": 10,
           "label": "Vary",
-          "durationSeconds": 12.648,
+          "durationSeconds": 17.448,
           "cueCount": 1,
           "cues": [
             {
@@ -668,7 +668,7 @@
               "label": "Vary",
               "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
               "index": 3,
-              "sourcePhrase": "Choose Vary. Crossover swaps subtrees with ninety",
+              "sourcePhrase": "Variation creates new programs. Crossover swaps subtrees",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -677,7 +677,7 @@
         {
           "number": 11,
           "label": "Stop",
-          "durationSeconds": 10.56,
+          "durationSeconds": 17.208,
           "cueCount": 1,
           "cues": [
             {
@@ -685,7 +685,7 @@
               "label": "Stop",
               "selector": "nav[aria-label=\"Genetic-programming cycle\"] button",
               "index": 4,
-              "sourcePhrase": "Choose Stop. Search ends at tolerated error",
+              "sourcePhrase": "Termination makes the computational budget explicit. Search",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -795,7 +795,7 @@
         {
           "number": 6,
           "label": "Select row 1",
-          "durationSeconds": 7.104,
+          "durationSeconds": 11.712,
           "cueCount": 1,
           "cues": [
             {
@@ -803,7 +803,7 @@
               "label": "Select row 1",
               "selector": ".m12-dataset-demo tbody tr",
               "index": 0,
-              "sourcePhrase": "Select record one. With x zero, target",
+              "sourcePhrase": "Record one anchors the curve at the",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -812,7 +812,7 @@
         {
           "number": 7,
           "label": "Select row 4",
-          "durationSeconds": 9.936,
+          "durationSeconds": 15.024,
           "cueCount": 1,
           "cues": [
             {
@@ -820,7 +820,7 @@
               "label": "Select row 4",
               "selector": ".m12-dataset-demo tbody tr",
               "index": 3,
-              "sourcePhrase": "Select record four. With x zero point",
+              "sourcePhrase": "Record four shows x equal to zero",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -829,7 +829,7 @@
         {
           "number": 8,
           "label": "Select row 7",
-          "durationSeconds": 9.288,
+          "durationSeconds": 15.24,
           "cueCount": 1,
           "cues": [
             {
@@ -837,7 +837,7 @@
               "label": "Select row 7",
               "selector": ".m12-dataset-demo tbody tr",
               "index": 6,
-              "sourcePhrase": "Select record seven. With x zero point",
+              "sourcePhrase": "Record seven moves farther along the curve.",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -846,7 +846,7 @@
         {
           "number": 9,
           "label": "Select row 10",
-          "durationSeconds": 10.728,
+          "durationSeconds": 16.44,
           "cueCount": 1,
           "cues": [
             {
@@ -854,7 +854,7 @@
               "label": "Select row 10",
               "selector": ".m12-dataset-demo tbody tr",
               "index": 9,
-              "sourcePhrase": "Select record ten. With x zero point",
+              "sourcePhrase": "Record ten provides the far endpoint: x",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -964,7 +964,7 @@
         {
           "number": 6,
           "label": "Show data step",
-          "durationSeconds": 8.112,
+          "durationSeconds": 12.816,
           "cueCount": 1,
           "cues": [
             {
@@ -972,7 +972,7 @@
               "label": "Show data step",
               "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
               "index": 0,
-              "sourcePhrase": "Choose data. X contains ten rows and",
+              "sourcePhrase": "The data stage separates inputs from targets.",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -981,7 +981,7 @@
         {
           "number": 7,
           "label": "Show model step",
-          "durationSeconds": 8.352,
+          "durationSeconds": 14.184,
           "cueCount": 1,
           "cues": [
             {
@@ -989,7 +989,7 @@
               "label": "Show model step",
               "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
               "index": 1,
-              "sourcePhrase": "Choose model. Population, generations, and tournament size",
+              "sourcePhrase": "The model stage configures the evolutionary search:",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -998,7 +998,7 @@
         {
           "number": 8,
           "label": "Show fit step",
-          "durationSeconds": 7.632,
+          "durationSeconds": 16.608,
           "cueCount": 1,
           "cues": [
             {
@@ -1006,7 +1006,7 @@
               "label": "Show fit step",
               "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
               "index": 2,
-              "sourcePhrase": "Choose fit. The interface is familiar while",
+              "sourcePhrase": "During fitting, the estimator keeps a familiar",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1015,7 +1015,7 @@
         {
           "number": 9,
           "label": "Show test step",
-          "durationSeconds": 8.616,
+          "durationSeconds": 15.168,
           "cueCount": 1,
           "cues": [
             {
@@ -1023,7 +1023,7 @@
               "label": "Show test step",
               "selector": "nav[aria-label=\"Scikit-compatible genetic-programming workflow\"] button",
               "index": 3,
-              "sourcePhrase": "Choose test. Predict unseen values and measure",
+              "sourcePhrase": "Testing asks the evolved program to predict",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1251,7 +1251,7 @@
         {
           "number": 7,
           "label": "Reduce the first weight",
-          "durationSeconds": 11.184,
+          "durationSeconds": 17.568,
           "cueCount": 1,
           "cues": [
             {
@@ -1259,7 +1259,7 @@
               "label": "Reduce the first weight",
               "selector": ".m12-neuron-lab input",
               "index": 2,
-              "sourcePhrase": "Move w one down to zero point",
+              "sourcePhrase": "Weight one is now only zero point",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1268,7 +1268,7 @@
         {
           "number": 8,
           "label": "Raise the bias",
-          "durationSeconds": 9.288,
+          "durationSeconds": 14.448,
           "cueCount": 1,
           "cues": [
             {
@@ -1276,7 +1276,7 @@
               "label": "Raise the bias",
               "selector": ".m12-neuron-lab input",
               "index": 4,
-              "sourcePhrase": "Move bias up to zero point two.",
+              "sourcePhrase": "The bias now rises to zero point",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1285,7 +1285,7 @@
         {
           "number": 9,
           "label": "Make the second weight positive",
-          "durationSeconds": 9.264,
+          "durationSeconds": 14.4,
           "cueCount": 1,
           "cues": [
             {
@@ -1293,7 +1293,7 @@
               "label": "Make the second weight positive",
               "selector": ".m12-neuron-lab input",
               "index": 3,
-              "sourcePhrase": "Move w two to zero point six.",
+              "sourcePhrase": "Weight two is now positive zero point",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1302,7 +1302,7 @@
         {
           "number": 10,
           "label": "Lower the first input",
-          "durationSeconds": 10.296,
+          "durationSeconds": 14.952,
           "cueCount": 1,
           "cues": [
             {
@@ -1310,7 +1310,7 @@
               "label": "Lower the first input",
               "selector": ".m12-neuron-lab input",
               "index": 0,
-              "sourcePhrase": "Move x one to negative zero point",
+              "sourcePhrase": "The first input is now negative zero",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1521,7 +1521,7 @@
         {
           "number": 7,
           "label": "Set x to zero",
-          "durationSeconds": 7.896,
+          "durationSeconds": 12.096,
           "cueCount": 1,
           "cues": [
             {
@@ -1529,7 +1529,7 @@
               "label": "Set x to zero",
               "selector": ".m12-logic-lab section button",
               "index": 0,
-              "sourcePhrase": "Toggle x to zero. With AND and",
+              "sourcePhrase": "For the AND gate, x is now",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1538,7 +1538,7 @@
         {
           "number": 8,
           "label": "Set y to one",
-          "durationSeconds": 7.944,
+          "durationSeconds": 12.192,
           "cueCount": 1,
           "cues": [
             {
@@ -1546,7 +1546,7 @@
               "label": "Set y to one",
               "selector": ".m12-logic-lab section button",
               "index": 1,
-              "sourcePhrase": "Toggle y to one. AND remains zero",
+              "sourcePhrase": "Only y is active now. Its contribution",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1555,7 +1555,7 @@
         {
           "number": 9,
           "label": "Set x to one",
-          "durationSeconds": 7.968,
+          "durationSeconds": 14.664,
           "cueCount": 1,
           "cues": [
             {
@@ -1563,7 +1563,7 @@
               "label": "Set x to one",
               "selector": ".m12-logic-lab section button",
               "index": 0,
-              "sourcePhrase": "Toggle x back to one. Both inputs",
+              "sourcePhrase": "Both inputs are active now. Their two",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1572,7 +1572,7 @@
         {
           "number": 10,
           "label": "Choose OR",
-          "durationSeconds": 8.856,
+          "durationSeconds": 14.616,
           "cueCount": 1,
           "cues": [
             {
@@ -1580,7 +1580,7 @@
               "label": "Choose OR",
               "selector": ".m12-logic-lab nav button",
               "index": 1,
-              "sourcePhrase": "Choose OR. Weights remain one and one,",
+              "sourcePhrase": "For OR, the weights stay at one",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1589,7 +1589,7 @@
         {
           "number": 11,
           "label": "Set x to zero",
-          "durationSeconds": 6.648,
+          "durationSeconds": 10.584,
           "cueCount": 1,
           "cues": [
             {
@@ -1597,16 +1597,16 @@
               "label": "Set x to zero",
               "selector": ".m12-logic-lab section button",
               "index": 0,
-              "sourcePhrase": "Toggle x to zero. OR remains one",
+              "sourcePhrase": "With x zero and y one, the",
               "atSeconds": 0.05,
-              "durationSeconds": 6.548
+              "durationSeconds": 7
             }
           ]
         },
         {
           "number": 12,
           "label": "Set y to zero",
-          "durationSeconds": 7.632,
+          "durationSeconds": 8.832,
           "cueCount": 1,
           "cues": [
             {
@@ -1614,7 +1614,7 @@
               "label": "Set y to zero",
               "selector": ".m12-logic-lab section button",
               "index": 1,
-              "sourcePhrase": "Toggle y to zero. With neither input",
+              "sourcePhrase": "Now neither input is active. Only the",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1623,7 +1623,7 @@
         {
           "number": 13,
           "label": "Set x to one",
-          "durationSeconds": 7.752,
+          "durationSeconds": 11.328,
           "cueCount": 1,
           "cues": [
             {
@@ -1631,7 +1631,7 @@
               "label": "Set x to one",
               "selector": ".m12-logic-lab section button",
               "index": 0,
-              "sourcePhrase": "Toggle x to one. A single active",
+              "sourcePhrase": "With x active by itself, its weight",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1640,7 +1640,7 @@
         {
           "number": 14,
           "label": "Return x to zero",
-          "durationSeconds": 8.472,
+          "durationSeconds": 12.888,
           "cueCount": 1,
           "cues": [
             {
@@ -1648,7 +1648,7 @@
               "label": "Return x to zero",
               "selector": ".m12-logic-lab section button",
               "index": 0,
-              "sourcePhrase": "Toggle x back to zero. This restores",
+              "sourcePhrase": "The inputs return to zero-zero, restoring net",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -1736,7 +1736,7 @@
             {
               "type": "focus",
               "label": "Frame",
-              "selector": ".m12-table-layout table",
+              "selector": ".m12-perceptron-table table",
               "index": 0,
               "sourcePhrase": "Each row contains x one, x two,",
               "atSeconds": 0.05,
@@ -1763,7 +1763,7 @@
             {
               "type": "focus",
               "label": "Define",
-              "selector": ".m12-table-layout tbody tr",
+              "selector": ".m12-perceptron-table tbody tr",
               "index": 0,
               "sourcePhrase": "At prediction time the target disappears. A",
               "atSeconds": 0.05,
@@ -1780,7 +1780,7 @@
             {
               "type": "focus",
               "label": "Mechanism",
-              "selector": ".m12-table-layout tbody tr",
+              "selector": ".m12-perceptron-table tbody tr",
               "index": 1,
               "sourcePhrase": "These ten points are visually separable into",
               "atSeconds": 0.05,
@@ -1797,7 +1797,7 @@
             {
               "type": "focus",
               "label": "Interpret",
-              "selector": ".m12-table-layout section",
+              "selector": ".m12-perceptron-table section",
               "index": 0,
               "sourcePhrase": "Training rows are evidence, not the objective",
               "atSeconds": 0.05,
@@ -1814,7 +1814,7 @@
             {
               "type": "focus",
               "label": "Detailed explanation",
-              "selector": ".m12-table-layout section",
+              "selector": ".m12-perceptron-table section",
               "index": 0,
               "sourcePhrase": "Targets plus one and negative one match",
               "atSeconds": 0.05,
@@ -2314,7 +2314,7 @@
         {
           "number": 8,
           "label": "Trace example 1",
-          "durationSeconds": 9.192,
+          "durationSeconds": 14.016,
           "cueCount": 1,
           "cues": [
             {
@@ -2322,7 +2322,7 @@
               "label": "Trace example 1",
               "selector": ".m12-perceptron-trace nav button",
               "index": 0,
-              "sourcePhrase": "Choose Example one. Score zero point six",
+              "sourcePhrase": "In example one, the score is positive",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2331,7 +2331,7 @@
         {
           "number": 9,
           "label": "Trace example 2",
-          "durationSeconds": 14.232,
+          "durationSeconds": 16.296,
           "cueCount": 1,
           "cues": [
             {
@@ -2339,7 +2339,7 @@
               "label": "Trace example 2",
               "selector": ".m12-perceptron-trace nav button",
               "index": 1,
-              "sourcePhrase": "Choose Example two. A positive prediction conflicts",
+              "sourcePhrase": "Example two exposes a mistake: the positive",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2348,7 +2348,7 @@
         {
           "number": 10,
           "label": "Trace example 3",
-          "durationSeconds": 10.272,
+          "durationSeconds": 16.008,
           "cueCount": 1,
           "cues": [
             {
@@ -2356,7 +2356,7 @@
               "label": "Trace example 3",
               "selector": ".m12-perceptron-trace nav button",
               "index": 2,
-              "sourcePhrase": "Choose Example three. New weights predict negative",
+              "sourcePhrase": "Example three begins with those newly corrected",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2601,7 +2601,7 @@
         {
           "number": 7,
           "label": "Show before-learning boundary",
-          "durationSeconds": 8.52,
+          "durationSeconds": 11.352,
           "cueCount": 1,
           "cues": [
             {
@@ -2609,7 +2609,7 @@
               "label": "Show before-learning boundary",
               "selector": ".m12-boundary nav button",
               "index": 0,
-              "sourcePhrase": "Choose Before learning. The initial line cuts",
+              "sourcePhrase": "Before learning, the initial boundary cuts through",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2618,7 +2618,7 @@
         {
           "number": 8,
           "label": "Show converged boundary",
-          "durationSeconds": 7.248,
+          "durationSeconds": 14.88,
           "cueCount": 1,
           "cues": [
             {
@@ -2626,7 +2626,7 @@
               "label": "Show converged boundary",
               "selector": ".m12-boundary nav button",
               "index": 1,
-              "sourcePhrase": "Choose Converged. Learned coefficients rotate and shift",
+              "sourcePhrase": "After convergence, the learned coefficients rotate and",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2635,7 +2635,7 @@
         {
           "number": 9,
           "label": "Show overly high boundary",
-          "durationSeconds": 8.64,
+          "durationSeconds": 13.848,
           "cueCount": 1,
           "cues": [
             {
@@ -2643,7 +2643,7 @@
               "label": "Show overly high boundary",
               "selector": ".m12-boundary nav button",
               "index": 2,
-              "sourcePhrase": "Choose Too high. Similar orientation with incorrect",
+              "sourcePhrase": "This boundary has a similar orientation but",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2955,7 +2955,7 @@
         {
           "number": 6,
           "label": "Try a vertical line",
-          "durationSeconds": 8.904,
+          "durationSeconds": 11.568,
           "cueCount": 1,
           "cues": [
             {
@@ -2963,7 +2963,7 @@
               "label": "Try a vertical line",
               "selector": ".m12-xor nav button",
               "index": 0,
-              "sourcePhrase": "Try vertical. Each side contains one zero",
+              "sourcePhrase": "A vertical boundary groups points only by",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2972,7 +2972,7 @@
         {
           "number": 7,
           "label": "Try a diagonal line",
-          "durationSeconds": 8.112,
+          "durationSeconds": 13.296,
           "cueCount": 1,
           "cues": [
             {
@@ -2980,7 +2980,7 @@
               "label": "Try a diagonal line",
               "selector": ".m12-xor nav button",
               "index": 1,
-              "sourcePhrase": "Try diagonal. Opposite positive corners cannot occupy",
+              "sourcePhrase": "A diagonal boundary fails for the same",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -2989,7 +2989,7 @@
         {
           "number": 8,
           "label": "Choose no single line",
-          "durationSeconds": 8.976,
+          "durationSeconds": 12.936,
           "cueCount": 1,
           "cues": [
             {
@@ -2997,7 +2997,7 @@
               "label": "Choose no single line",
               "selector": ".m12-xor nav button",
               "index": 2,
-              "sourcePhrase": "Choose No single line. Correct: XOR is",
+              "sourcePhrase": "The correct conclusion is that no single",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3242,7 +3242,7 @@
         {
           "number": 7,
           "label": "Show step",
-          "durationSeconds": 7.56,
+          "durationSeconds": 13.368,
           "cueCount": 1,
           "cues": [
             {
@@ -3250,7 +3250,7 @@
               "label": "Show step",
               "selector": ".m12-activation nav button",
               "index": 0,
-              "sourcePhrase": "Choose Step. Output jumps at threshold, giving",
+              "sourcePhrase": "The step activation jumps abruptly at the",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3259,7 +3259,7 @@
         {
           "number": 8,
           "label": "Show sigmoid",
-          "durationSeconds": 7.968,
+          "durationSeconds": 12,
           "cueCount": 1,
           "cues": [
             {
@@ -3267,7 +3267,7 @@
               "label": "Show sigmoid",
               "selector": ".m12-activation nav button",
               "index": 1,
-              "sourcePhrase": "Choose Sigmoid. The smooth S-curve stays between",
+              "sourcePhrase": "The sigmoid replaces that jump with a",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3276,7 +3276,7 @@
         {
           "number": 9,
           "label": "Show ReLU",
-          "durationSeconds": 7.368,
+          "durationSeconds": 14.976,
           "cueCount": 1,
           "cues": [
             {
@@ -3284,7 +3284,7 @@
               "label": "Show ReLU",
               "selector": ".m12-activation nav button",
               "index": 2,
-              "sourcePhrase": "Choose ReLU. Negative inputs map to zero",
+              "sourcePhrase": "ReLU maps every negative input to zero",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3377,7 +3377,7 @@
         {
           "number": 5,
           "label": "Open case one",
-          "durationSeconds": 9.792,
+          "durationSeconds": 15.864,
           "cueCount": 1,
           "cues": [
             {
@@ -3385,7 +3385,7 @@
               "label": "Open case one",
               "selector": ".m12-method-check nav button",
               "index": 0,
-              "sourcePhrase": "Choose Case one. Labels plus expression-tree evolution",
+              "sourcePhrase": "Case one combines labeled targets with expression-tree",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3394,7 +3394,7 @@
         {
           "number": 6,
           "label": "Reveal case 1",
-          "durationSeconds": 9.432,
+          "durationSeconds": 15.048,
           "cueCount": 1,
           "cues": [
             {
@@ -3402,7 +3402,7 @@
               "label": "Reveal case 1",
               "selector": ".m12-method-check section button",
               "index": 0,
-              "sourcePhrase": "Reveal the classification for case 1. Compare",
+              "sourcePhrase": "The revealed classification confirms the mechanism. Notice",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3411,7 +3411,7 @@
         {
           "number": 7,
           "label": "Open case two",
-          "durationSeconds": 8.304,
+          "durationSeconds": 13.176,
           "cueCount": 1,
           "cues": [
             {
@@ -3419,7 +3419,7 @@
               "label": "Open case two",
               "selector": ".m12-method-check nav button",
               "index": 1,
-              "sourcePhrase": "Choose Case two. No labels and grouping",
+              "sourcePhrase": "Case two provides no labels and asks",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3428,7 +3428,7 @@
         {
           "number": 8,
           "label": "Reveal case 2",
-          "durationSeconds": 9.48,
+          "durationSeconds": 15.048,
           "cueCount": 1,
           "cues": [
             {
@@ -3436,7 +3436,7 @@
               "label": "Reveal case 2",
               "selector": ".m12-method-check section button",
               "index": 0,
-              "sourcePhrase": "Reveal the classification for case 2. Compare",
+              "sourcePhrase": "The revealed classification confirms the mechanism. Notice",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3445,7 +3445,7 @@
         {
           "number": 9,
           "label": "Open case three",
-          "durationSeconds": 8.496,
+          "durationSeconds": 12.096,
           "cueCount": 1,
           "cues": [
             {
@@ -3453,7 +3453,7 @@
               "label": "Open case three",
               "selector": ".m12-method-check nav button",
               "index": 2,
-              "sourcePhrase": "Choose Case three. A labeled stream with",
+              "sourcePhrase": "Case three presents a labeled stream and",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }
@@ -3462,7 +3462,7 @@
         {
           "number": 10,
           "label": "Reveal case 3",
-          "durationSeconds": 9.504,
+          "durationSeconds": 15.048,
           "cueCount": 1,
           "cues": [
             {
@@ -3470,7 +3470,7 @@
               "label": "Reveal case 3",
               "selector": ".m12-method-check section button",
               "index": 0,
-              "sourcePhrase": "Reveal the classification for case 3. Compare",
+              "sourcePhrase": "The revealed classification confirms the mechanism. Notice",
               "atSeconds": 0.05,
               "durationSeconds": 7
             }

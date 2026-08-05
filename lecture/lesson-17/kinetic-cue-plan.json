@@ -217,7 +217,7 @@
         },
         {
           "number": 6,
-          "durationSeconds": 13.992,
+          "durationSeconds": 19.08,
           "cueCount": 1,
           "cues": [
             {
@@ -226,15 +226,15 @@
               "route": "breathe-right",
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
-              "durationSeconds": 3.942,
+              "durationSeconds": 4.2,
               "automatic": true
             }
           ]
         },
         {
           "number": 7,
-          "durationSeconds": 14.352,
-          "cueCount": 1,
+          "durationSeconds": 23.712,
+          "cueCount": 2,
           "cues": [
             {
               "type": "camera",
@@ -243,45 +243,22 @@
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
               "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 3.662,
               "automatic": true
             }
           ]
         },
         {
           "number": 8,
-          "durationSeconds": 13.968,
-          "cueCount": 1,
-          "cues": [
-            {
-              "type": "camera",
-              "label": "Subtle camera reframe",
-              "route": "breathe-right",
-              "sourcePhrase": "cadence filler",
-              "atSeconds": 10.05,
-              "durationSeconds": 3.918,
-              "automatic": true
-            }
-          ]
-        },
-        {
-          "number": 9,
-          "durationSeconds": 13.896,
-          "cueCount": 1,
-          "cues": [
-            {
-              "type": "camera",
-              "label": "Subtle camera reframe",
-              "route": "breathe-left",
-              "sourcePhrase": "cadence filler",
-              "atSeconds": 10.05,
-              "durationSeconds": 3.846,
-              "automatic": true
-            }
-          ]
-        },
-        {
-          "number": 10,
-          "durationSeconds": 14.352,
+          "durationSeconds": 20.856,
           "cueCount": 1,
           "cues": [
             {
@@ -291,6 +268,47 @@
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
               "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "durationSeconds": 20.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "durationSeconds": 23.112,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 3.062,
               "automatic": true
             }
           ]
@@ -525,13 +543,23 @@
         },
         {
           "number": 7,
-          "durationSeconds": 12.024,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 17.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 13.752,
+          "durationSeconds": 17.856,
           "cueCount": 1,
           "cues": [
             {
@@ -540,20 +568,30 @@
               "route": "breathe-left",
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
-              "durationSeconds": 3.702,
+              "durationSeconds": 4.2,
               "automatic": true
             }
           ]
         },
         {
           "number": 9,
-          "durationSeconds": 9.936,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 16.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 10,
-          "durationSeconds": 12.648,
+          "durationSeconds": 17.448,
           "cueCount": 1,
           "cues": [
             {
@@ -562,16 +600,26 @@
               "route": "breathe-left",
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
-              "durationSeconds": 2.598,
+              "durationSeconds": 4.2,
               "automatic": true
             }
           ]
         },
         {
           "number": 11,
-          "durationSeconds": 10.56,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 17.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -660,27 +708,57 @@
         },
         {
           "number": 6,
-          "durationSeconds": 7.104,
+          "durationSeconds": 11.712,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 7,
-          "durationSeconds": 9.936,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 9.288,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.24,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 10.728,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 16.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -779,27 +857,67 @@
         },
         {
           "number": 6,
-          "durationSeconds": 8.112,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.766,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 7,
-          "durationSeconds": 8.352,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.184,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.134,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 7.632,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 16.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 8.616,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -998,27 +1116,67 @@
         },
         {
           "number": 7,
-          "durationSeconds": 11.184,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 17.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 9.288,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 9.264,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 10,
-          "durationSeconds": 10.296,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -1201,51 +1359,101 @@
         },
         {
           "number": 7,
-          "durationSeconds": 7.896,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.046,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 7.944,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.142,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 7.968,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 10,
-          "durationSeconds": 8.856,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 11,
-          "durationSeconds": 6.648,
+          "durationSeconds": 10.584,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 12,
-          "durationSeconds": 7.632,
+          "durationSeconds": 8.832,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 13,
-          "durationSeconds": 7.752,
+          "durationSeconds": 11.328,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 14,
-          "durationSeconds": 8.472,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.838,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -1854,13 +2062,23 @@
         },
         {
           "number": 8,
-          "durationSeconds": 9.192,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.016,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.966,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 14.232,
+          "durationSeconds": 16.296,
           "cueCount": 1,
           "cues": [
             {
@@ -1869,16 +2087,26 @@
               "route": "breathe-right",
               "sourcePhrase": "cadence filler",
               "atSeconds": 10.05,
-              "durationSeconds": 4.182,
+              "durationSeconds": 4.2,
               "automatic": true
             }
           ]
         },
         {
           "number": 10,
-          "durationSeconds": 10.272,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 16.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -2092,21 +2320,41 @@
         },
         {
           "number": 7,
-          "durationSeconds": 8.52,
+          "durationSeconds": 11.352,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 8,
-          "durationSeconds": 7.248,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 8.64,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 13.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.798,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -2355,21 +2603,41 @@
         },
         {
           "number": 6,
-          "durationSeconds": 8.904,
+          "durationSeconds": 11.568,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 7,
-          "durationSeconds": 8.112,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 13.296,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.246,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 8.976,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.886,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -2593,21 +2861,41 @@
         },
         {
           "number": 7,
-          "durationSeconds": 7.56,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 13.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.318,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 7.968,
+          "durationSeconds": 12,
           "cueCount": 0,
           "cues": []
         },
         {
           "number": 9,
-          "durationSeconds": 7.368,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 14.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },
@@ -2661,39 +2949,99 @@
         },
         {
           "number": 5,
-          "durationSeconds": 9.792,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 6,
-          "durationSeconds": 9.432,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 7,
-          "durationSeconds": 8.304,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 13.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.126,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 8,
-          "durationSeconds": 9.48,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 9,
-          "durationSeconds": 8.496,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 12.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.046,
+              "automatic": true
+            }
+          ]
         },
         {
           "number": 10,
-          "durationSeconds": 9.504,
-          "cueCount": 0,
-          "cues": []
+          "durationSeconds": 15.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
         }
       ]
     },

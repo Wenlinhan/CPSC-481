@@ -119,27 +119,27 @@
     {
       "number": 8,
       "title": "A symbolic regressor follows a fit and predict workflow",
-      "visibleText": "1 · data\n2 · model\n3 · fit\n4 · test\nEXECUTABLE WORKFLOW\nX = np.arange(0, 1, .1).reshape(-1, 1)\ny = (X[:, 0] ** 2) / 2\n\nCreate the exact ten training inputs and numeric targets.\n\nPrecision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators.",
+      "visibleText": "DYNAMIC PROJECT PREVIEW\nSymbolic regression evolves a surface\nRun evolution\nGround truth\nEvolved GP\nDecision tree\nRandom forest\nX₀\nX₁\ny\nGENERATION\n0\nBEST FITNESS (ERROR)\n0.321\nSearching for a lower-error expression\n\nTarget: y = X₀² − X₁² + X₁ − 1\n\nEvolved: y ≈ X₀² − X₁² + X₁ − .999\n\n1 · data\n2 · model\n3 · fit\n4 · test\nCOURSE-SOURCE WORKFLOW\nX = np.arange(0, 1, .1).reshape(-1, 1)\ny = (X[:, 0] ** 2) / 2\n\nCreate the exact ten training inputs and numeric targets.\n\nOpen the gplearn Symbolic Regressor project ↗\n\nPrecision: gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator.",
       "actions": [
         {
           "segment": 6,
           "label": "Show data step",
-          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW X = np.arange(0, 1, .1).reshape(-1, 1) y = (X[:, 0] ** 2) / 2 Create the exact ten training inputs and numeric targets. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+          "stateText": "DYNAMIC PROJECT PREVIEW Symbolic regression evolves a surface Run evolution Ground truth Evolved GP Decision tree Random forest X₀ X₁ y GENERATION 0 BEST FITNESS (ERROR) 0.321 Searching for a lower-error expression Target: y = X₀² − X₁² + X₁ − 1 Evolved: y ≈ X₀² − X₁² + X₁ − .999 1 · data 2 · model 3 · fit 4 · test COURSE-SOURCE WORKFLOW X = np.arange(0, 1, .1).reshape(-1, 1) y = (X[:, 0] ** 2) / 2 Create the exact ten training inputs and numeric targets. Open the gplearn Symbolic Regressor project ↗ Precision: gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator."
         },
         {
           "segment": 7,
           "label": "Show model step",
-          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW SymbolicRegressor( population_size=600, generations=100, tournament_size=4 ) Configure the source population, generation limit, and tournament size. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+          "stateText": "DYNAMIC PROJECT PREVIEW Symbolic regression evolves a surface Run evolution Ground truth Evolved GP Decision tree Random forest X₀ X₁ y GENERATION 0 BEST FITNESS (ERROR) 0.321 Searching for a lower-error expression Target: y = X₀² − X₁² + X₁ − 1 Evolved: y ≈ X₀² − X₁² + X₁ − .999 1 · data 2 · model 3 · fit 4 · test COURSE-SOURCE WORKFLOW SymbolicRegressor( population_size=600, generations=100, tournament_size=4 ) Configure the source population, generation limit, and tournament size. Open the gplearn Symbolic Regressor project ↗ Precision: gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator."
         },
         {
           "segment": 8,
           "label": "Show fit step",
-          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW est.fit(X, y) print(est._program) The estimator follows the scikit-learn fit/predict interface while evolving expressions internally. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+          "stateText": "DYNAMIC PROJECT PREVIEW Symbolic regression evolves a surface Run evolution Ground truth Evolved GP Decision tree Random forest X₀ X₁ y GENERATION 0 BEST FITNESS (ERROR) 0.321 Searching for a lower-error expression Target: y = X₀² − X₁² + X₁ − 1 Evolved: y ≈ X₀² − X₁² + X₁ − .999 1 · data 2 · model 3 · fit 4 · test COURSE-SOURCE WORKFLOW est.fit(X, y) print(est._program) The estimator follows the scikit-learn fit/predict interface while evolving expressions internally. Open the gplearn Symbolic Regressor project ↗ Precision: gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator."
         },
         {
           "segment": 9,
           "label": "Show test step",
-          "stateText": "1 · data 2 · model 3 · fit 4 · test EXECUTABLE WORKFLOW pred = est.predict(X_new) error = mean_absolute_error(y_new, pred) Evaluate on unseen data; training fitness alone is not evidence of generalization. Precision: `gplearn` is a scikit-learn-compatible library; genetic programming is not part of scikit-learn’s core estimators."
+          "stateText": "DYNAMIC PROJECT PREVIEW Symbolic regression evolves a surface Run evolution Ground truth Evolved GP Decision tree Random forest X₀ X₁ y GENERATION 0 BEST FITNESS (ERROR) 0.321 Searching for a lower-error expression Target: y = X₀² − X₁² + X₁ − 1 Evolved: y ≈ X₀² − X₁² + X₁ − .999 1 · data 2 · model 3 · fit 4 · test COURSE-SOURCE WORKFLOW pred = est.predict(X_new) error = mean_absolute_error(y_new, pred) Evaluate on unseen data; training fitness alone is not evidence of generalization. Open the gplearn Symbolic Regressor project ↗ Precision: gplearn follows the scikit-learn fit/predict interface; genetic programming is not a core scikit-learn estimator."
         }
       ]
     },
@@ -238,7 +238,7 @@
     {
       "number": 14,
       "title": "The target column creates labeled training examples",
-      "visibleText": "x₁\tx₂\ttarget t\n1\t1\t1\n9.4\t6.4\t-1\n2.5\t2.1\t1\n8\t7.7\t-1\n0.5\t2.2\t1\n7.9\t8.4\t-1\n7\t7\t-1\n2.8\t0.8\t1\n1.2\t3\t1\n7.8\t6.1\t-1\nClassifier, not clusterer\n\nThe learner already knows the two desired classes: +1 and −1. It uses them to adjust a decision boundary.",
+      "visibleText": "Labeled binary training examples\nCase\tx₁\tx₂\tTarget t\n1\t1.0\t1.0\t+1\n2\t9.4\t6.4\t−1\n3\t2.5\t2.1\t+1\n4\t8.0\t7.7\t−1\n5\t0.5\t2.2\t+1\n6\t7.9\t8.4\t−1\n7\t7.0\t7.0\t−1\n8\t2.8\t0.8\t+1\n9\t1.2\t3.0\t+1\n10\t7.8\t6.1\t−1\nSELECTED CASE 1\nEach input stays with its label\nx = [1.0, 1.0, 1]\ntarget t = +1\n\nThe target is supplied during supervised training. At prediction time, the model receives x₁ and x₂ but must infer the class.",
       "actions": []
     },
     {
