@@ -58,7 +58,6 @@ function SourceFrame({
     : page.points.slice(0, 5).map((_, index) => String(index + 1));
   return (
     <article className={`m13-source-frame m13-source-rebuilt ${className}`.trim()} aria-label={alt}>
-      <span>Course-source reconstruction · page {slide}</span>
       <h3>{page.title}</h3>
       {page.visual && <div className={`m13-mini-visual ${page.visual}`} aria-hidden="true">
         {visualLabels.map((label, index) => <i key={`${label}-${index}`}><b>{index + 1}</b><em>{label}</em></i>)}
