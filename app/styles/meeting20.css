@@ -32,6 +32,39 @@
   min-height: 0;
 }
 
+.m20-trust-demo {
+  align-content: center;
+  background: linear-gradient(145deg, #f8f7ff, #edf9fb);
+  border: 1px solid #c9c6ec;
+  border-radius: 22px;
+  display: grid;
+  gap: 8px;
+  padding: clamp(15px, 1.6vw, 24px);
+}
+.m20-trust-demo > span { color: #4931a5; font-size: 11px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+.m20-trust-prompt { color: #17243a !important; font-size: clamp(15px, 1.1vw, 18px) !important; font-weight: 800; margin: 0; }
+.m20-trust-cards { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+.m20-trust-cards button {
+  background: white;
+  border: 2px solid #d7d7e8;
+  border-radius: 15px;
+  color: #18233b;
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  min-height: 145px;
+  padding: 11px 13px;
+  text-align: left;
+}
+.m20-trust-cards button[aria-pressed="true"] { border-color: #5c43cf; box-shadow: 0 0 0 3px rgba(92, 67, 207, .12); }
+.m20-trust-cards i { font-size: 25px; font-style: normal; }
+.m20-trust-cards strong { font-size: 18px; }
+.m20-trust-cards p { color: #34445d !important; font-size: 13px !important; line-height: 1.32; margin: 0; }
+.m20-trust-cards small { align-self: end; color: #637087; font-size: 11px; font-weight: 800; }
+.m20-trust-verdict { background: #202346; border-radius: 13px; color: white; display: grid; gap: 3px; min-height: 54px; padding: 9px 13px; }
+.m20-trust-verdict.shown { background: linear-gradient(135deg, #4e35ad, #167580); }
+.m20-trust-verdict small { color: #ececff; font-size: 12px; line-height: 1.3; }
+
 .m20-cover {
   display: grid;
   gap: 24px;
@@ -81,7 +114,7 @@
 
 .m20-cover h3 {
   color: white;
-  font-size: clamp(29px, 3vw, 47px);
+  font-size: clamp(27px, 2.45vw, 39px);
   line-height: 1.07;
   margin: 12px 0 18px;
 }

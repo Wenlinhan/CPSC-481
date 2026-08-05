@@ -1157,6 +1157,15 @@ test("Module 12 lessons 17 and 18 preserve all 36 Machine Learning Part B source
   assert.match(module12, /timingPlan=\{\[2,2,3,3,4,2,2,3,3,4,2,2,3,3,4,3,2,2,3,3,4,2,3,2,3,2,4\]\}/);
   assert.doesNotMatch(module12, /slide-renders|source-slides/i);
   assert.doesNotMatch(module12, /\b(?:original|old)\s+slides?\b/i);
+  assert.match(module12, /https:\/\/gplearn\.readthedocs\.io\/en\/stable\/examples\.html#symbolic-regressor/);
+  assert.match(module12, /function GplearnProjectPreview\(\)/);
+  assert.match(module12, /function PerceptronDatasetTable\(\)/);
+  assert.match(module12, /className="m12-data-table"/);
+  assert.match(module12, /Convolutional Neural Network/);
+  assert.match(module12, /Recurrent Neural Network/);
+  assert.match(module12, /function ClusteringFamiliesVisual\(\)/);
+  assert.match(module12, /function NetworkArchitectureCards\(\)/);
+  assert.doesNotMatch(module12, /file="image25\.png"/);
   assert.match(route, /id===17\?<Module12Lesson17Deck\/>/);
   assert.match(route, /id===18\?<Module12Lesson18Deck\/>/);
 

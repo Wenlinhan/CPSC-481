@@ -2098,6 +2098,29 @@ kbd {
   justify-items: center;
 }
 
+.m22-reliability-demo {
+  align-content: center;
+  background: linear-gradient(145deg, #f7fbff, #edf7f4);
+  border: 1px solid #bfd7df;
+  border-radius: 20px;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: clamp(20px, 2.5vw, 34px);
+}
+.m22-reliability-demo .segmented { justify-self: start; }
+.m22-reliability-demo header { align-items: end; display: flex; justify-content: space-between; }
+.m22-reliability-demo header span { color: #405269; font-size: 12px; font-weight: 850; text-transform: uppercase; }
+.m22-reliability-demo header strong { color: #0d6f72; font-size: clamp(28px, 2.8vw, 44px); }
+.m22-evidence-cells { display: grid; gap: 7px; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: 118px; }
+.m22-evidence-cells i { align-content: center; background: #daf3ea; border: 2px solid #75c6ad; border-radius: 11px; color: #075f46; display: grid; font-style: normal; justify-items: center; min-height: 50px; }
+.m22-evidence-cells i.fail { background: #fff0e2; border-color: #e6a055; color: #8b4b05; }
+.m22-evidence-cells i.retrieve { background: #e6efff; border-color: #799bd9; color: #234f9a; }
+.m22-evidence-cells i.cite { background: #f0e8ff; border-color: #9a75d6; color: #5b3496; }
+.m22-evidence-cells i b { font-size: 15px; }
+.m22-evidence-cells i small { font-size: 9px; font-weight: 850; text-transform: uppercase; }
+.m22-reliability-demo p { color: #42536a; font-size: 13px; line-height: 1.4; margin: 0; }
+
 .quality-hero > div {
   align-items: center;
   animation: funnel-drop 650ms ease both;

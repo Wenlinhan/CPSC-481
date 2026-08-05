@@ -59,11 +59,51 @@ function QualityLoop() {
   );
 }
 
+function ReliabilityOpeningDemo() {
+  const [view, setView] = useState<"demo" | "set" | "slice">("demo");
+  const states = {
+    demo: {
+      label: "One impressive demo",
+      score: "1 / 1",
+      detail: "The answer was correct once. We still do not know the failure rate or boundary conditions.",
+      cells: ["pass"],
+    },
+    set: {
+      label: "A repeatable test set",
+      score: "7 / 10",
+      detail: "Repeated cases reveal three failures that the successful demo hid.",
+      cells: ["pass", "pass", "fail", "pass", "pass", "fail", "pass", "pass", "pass", "fail"],
+    },
+    slice: {
+      label: "Failures grouped by cause",
+      score: "3 clues",
+      detail: "Two misses are retrieval failures; one is a citation failure. Now the team knows where to intervene.",
+      cells: ["retrieve", "retrieve", "cite"],
+    },
+  } as const;
+  const state = states[view];
+
+  return (
+    <div className="m22-reliability-demo">
+      <div className="segmented" aria-label="Choose reliability evidence">
+        <button aria-pressed={view === "demo"} className={view === "demo" ? "active" : ""} onClick={() => setView("demo")} type="button">1 demo</button>
+        <button aria-pressed={view === "set"} className={view === "set" ? "active" : ""} onClick={() => setView("set")} type="button">10 tests</button>
+        <button aria-pressed={view === "slice"} className={view === "slice" ? "active" : ""} onClick={() => setView("slice")} type="button">failure slices</button>
+      </div>
+      <header><span>{state.label}</span><strong>{state.score}</strong></header>
+      <div className={`m22-evidence-cells view-${view}`} aria-label={`${state.label}: ${state.score}`}>
+        {state.cells.map((cell, index) => <i className={cell} key={`${cell}-${index}`}><b>{index + 1}</b><small>{cell}</small></i>)}
+      </div>
+      <p>{state.detail}</p>
+    </div>
+  );
+}
+
 const fusionDocs = [
   { id: "D1", label: "CPSC 481 course catalog", lexical: 1, dense: 4, useful: false },
-  { id: "D2", label: "Current syllabus · Week 13", lexical: 2, dense: 1, useful: true },
+  { id: "D2", label: "Current syllabus · Canvas submission", lexical: 2, dense: 1, useful: true },
   { id: "D3", label: "Evidence brief assignment", lexical: 4, dense: 2, useful: true },
-  { id: "D4", label: "Archived syllabus · Week 12", lexical: 3, dense: 3, useful: false },
+  { id: "D4", label: "Archived syllabus · retired instructions", lexical: 3, dense: 3, useful: false },
 ];
 
 function FusionLab() {
@@ -94,7 +134,7 @@ function FusionLab() {
           ))}
         </div>
       </div>
-      <p className="query"><span>Query</span>When is the evidence brief due?</p>
+      <p className="query"><span>Query</span>Where is the evidence brief submitted?</p>
       <div className="fusion-results">
         {ranked.map((doc, index) => (
           <article className={doc.useful ? "fusion-result useful" : "fusion-result"} key={doc.id}>
@@ -114,8 +154,8 @@ function FusionLab() {
 const auditClaims = [
   {
     label: "Claim A",
-    claim: "The evidence brief is due in Week 13.",
-    evidence: "D2: “Submit the Research Evidence Brief during Week 13.”",
+    claim: "The evidence brief is submitted through Canvas.",
+    evidence: "D2: “Upload the completed Research Evidence Brief through Canvas.”",
     verdict: "supported",
   },
   {
@@ -308,16 +348,10 @@ export function RagQualityDeck() {
               <div className="hero-rule" />
               <p className="quiet">Reliability is a repeatable evaluation and control process—not a more impressive demo.</p>
             </div>
-            <div className="quality-hero" aria-label="Quality funnel from candidate evidence to verified answer">
-              <div><span>50</span><strong>retrieve</strong><small>broad candidates</small></div>
-              <i>↓</i>
-              <div><span>5</span><strong>rerank</strong><small>focused evidence</small></div>
-              <i>↓</i>
-              <div><span>1</span><strong>verify</strong><small>grounded answer</small></div>
-            </div>
+            <ReliabilityOpeningDemo />
           </div>
         ),
-        note: "Timing: 2 minutes. Ask students what evidence they would accept before calling a RAG system reliable. Contrast a successful demo with repeatable performance on a defined task.",
+        note: "Timing: 2 minutes. Click from one demo to ten tests, then group the failures. Ask what becomes knowable at each view. Use the result to define reliability as repeatable evaluation plus diagnosis and control.",
         sourceSlides: [],
       },
       {
@@ -543,8 +577,8 @@ export function RagQualityDeck() {
               </ol>
             </div>
             <div className="answer-states">
-              <div className="answerable"><span>Evidence sufficient</span><strong>Answer + citations</strong><small>“The brief is due in Week 13. [D2]”</small></div>
-              <div className="conflict"><span>Evidence conflicts</span><strong>Expose the conflict</strong><small>“The archive says Week 12; current syllabus says Week 13.”</small></div>
+              <div className="answerable"><span>Evidence sufficient</span><strong>Answer + citations</strong><small>“Submit the brief through Canvas. [D2]”</small></div>
+              <div className="conflict"><span>Evidence conflicts</span><strong>Expose the conflict</strong><small>“The archive names email; the current syllabus names Canvas.”</small></div>
               <div className="insufficient"><span>Evidence insufficient</span><strong>Abstain + next step</strong><small>“The provided course sources do not state a penalty.”</small></div>
             </div>
           </div>
@@ -578,7 +612,7 @@ export function RagQualityDeck() {
               <span className="micro-label">One reviewed test record</span>
               <div><b>Question</b><p>When is the brief due?</p></div>
               <div><b>Needed evidence</b><p>D2 §4 and D3 ¶2</p></div>
-              <div><b>Expected behavior</b><p>Week 13 + required elements + citations</p></div>
+              <div><b>Expected behavior</b><p>Canvas submission + required elements + citations</p></div>
               <div><b>Failure tags</b><p>freshness · multi-source · attribution</p></div>
             </div>
           </div>
