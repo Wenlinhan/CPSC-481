@@ -2889,22 +2889,22 @@ kbd {
 
 .m21-rag-architecture { display: grid; gap: 9px; }
 .m21-rag-architecture > nav { display: flex; gap: 8px; }
-.m21-rag-architecture > nav button { background: #eef3f8; border: 1px solid #bbcbdc; border-radius: 999px; color: #274969; cursor: pointer; font-size: 10px; font-weight: 900; padding: 7px 15px; text-transform: uppercase; }
+.m21-rag-architecture > nav button { background: #eef3f8; border: 1px solid #bbcbdc; border-radius: 999px; color: #274969; cursor: pointer; font-size: 12px; font-weight: 900; padding: 7px 15px; text-transform: uppercase; }
 .m21-rag-architecture > nav button.active { background: #17385b; border-color: #17385b; color: white; }
 .m21-rag-lanes { display: grid; gap: 7px; }
 .m21-rag-lanes > section { background: #f7faff; border: 1px solid #c9d6e4; border-left: 5px solid #9cb0c6; border-radius: 12px; display: grid; gap: 7px; opacity: .72; padding: 9px 12px; }
 .m21-rag-lanes > section.active { background: linear-gradient(90deg, #eefbfc, #f4f0ff); border-color: #18a6b7; box-shadow: 0 0 0 3px rgba(24,166,183,.1); opacity: 1; }
 .m21-rag-lanes header { align-items: center; display: flex; justify-content: space-between; }
-.m21-rag-lanes header span { color: #17385b; font-size: 10px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
-.m21-rag-lanes header b { background: #ece6ff; border-radius: 999px; color: #5d3aba; font-size: 9px; padding: 4px 8px; }
+.m21-rag-lanes header span { color: #17385b; font-size: 12px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.m21-rag-lanes header b { background: #ece6ff; border-radius: 999px; color: #5d3aba; font-size: 11px; padding: 4px 8px; }
 .m21-rag-lanes section > div { align-items: center; display: flex; gap: 7px; }
-.m21-rag-lanes article { background: white; border: 1px solid #cbd8e5; border-radius: 9px; flex: 1; font-size: 10px; font-weight: 800; padding: 8px; text-align: center; }
+.m21-rag-lanes article { background: white; border: 1px solid #cbd8e5; border-radius: 9px; flex: 1; font-size: 13px; font-weight: 800; padding: 8px; text-align: center; }
 .m21-rag-lanes article.llm { background: #4d31b7; border-color: #4d31b7; color: white; }
 .m21-rag-lanes i { color: #6b46d2; font-style: normal; font-weight: 900; }
 .m21-rag-architecture > footer { align-items: center; background: #17385b; border-radius: 12px; color: white; display: grid; gap: 14px; grid-template-columns: 1.5fr 1fr; padding: 10px 14px; }
-.m21-rag-architecture > footer span { color: #8fe5ef; font-size: 10px; font-weight: 900; text-transform: uppercase; }
-.m21-rag-architecture > footer p { font-size: 10px; margin: 2px 0 0; }
-.m21-rag-architecture > footer strong { border-left: 2px solid #efc457; color: #ffe099; font-size: 10px; padding-left: 12px; }
+.m21-rag-architecture > footer span { color: #8fe5ef; font-size: 12px; font-weight: 900; text-transform: uppercase; }
+.m21-rag-architecture > footer p { font-size: 12px; margin: 2px 0 0; }
+.m21-rag-architecture > footer strong { border-left: 2px solid #efc457; color: #ffe099; font-size: 12px; padding-left: 12px; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
