@@ -1,0 +1,383 @@
+{
+  "route": "/lessons/11",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Reasoning under uncertainty starts with a probability model",
+      "visibleText": "evidence\n→\nprobability\nmodel\n→\nbelief\n01\nRepresent\n\nName uncertain variables and their possible values.\n\n02\nCompute\n\nUse joint, marginal, and conditional probabilities.\n\n03\nUpdate\n\nReverse conditionals with Bayes’ rule.\n\n04\nInterpret\n\nSeparate posterior belief from causation and decision.",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Evidence is observed; target variables are hidden; a model connects them",
+      "visibleText": "OBSERVED\nsensor reading\nfacts available now\n→\nMODEL\nrelationship\nlinks known to unknown\n→\nHIDDEN\nworld state\nquantity to infer\nOBSERVED VARIABLES\nEvidence\n\nSensor readings, symptoms, or current weather.\n\nUNOBSERVED VARIABLES\nTargets\n\nAn object’s location, a disease, or tomorrow’s weather.\n\nSTRUCTURED RELATIONSHIP\nModel\n\nRepresents how evidence and hidden quantities relate.\n\nBELIEF, NOT CERTAINTY\nProbability represents degrees of belief and changes when evidence changes.",
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "Random variables name uncertain aspects; distributions assign probability to their values",
+      "visibleText": "A random variable maps uncertain outcomes to values.\n\nR = Is it raining?\n{true, false}\n\nT = Is it hot or cold?\n{hot, cold}\n\nD = Drive time\n[0, ∞)\n\nL = Robot location\npossible coordinates\n\nWeather outcomes: sun, rain, fog, and meteor.\nP(T)\nT\tP\nhot\t0.5\ncold\t0.5\nP(W)\nW\tP\nsun\t0.6\nrain\t0.1\nfog\t0.3\nmeteor\t0.0",
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "A valid joint distribution covers every complete assignment",
+      "visibleText": "CONSTRAINT 1\nNonnegative\nP(x) ≥ 0\n\nNo outcome may receive negative probability.\n\nCONSTRAINT 2\nNormalized\nΣₓ P(x) = 1\n\nThe complete outcome space carries total mass one.\n\nP(T, W)\nT\tW\tP\nhot\tsun\t0.4\nhot\train\t0.1\ncold\tsun\t0.2\ncold\train\t0.3\nSIZE\n|P(X₁,…,Xₙ)| = ∏ᵢ |Dom(Xᵢ)|",
+      "actions": []
+    },
+    {
+      "number": 5,
+      "title": "A joint model makes the probability of any event computable",
+      "visibleText": "Event = a set of complete outcomes\nhot ∧ sun\n0.4\nhot ∧ rain\n0.1\ncold ∧ sun\n0.2\ncold ∧ rain\n0.3\nGENERAL QUERY\nP(E) = Σω ∈ E P(ω)\nONE ROW\nhot AND sun\n\nP(hot, sun) = 0.4\n\nTWO ROWS\nhot\n\nP(hot) = 0.4 + 0.1 = 0.5\n\nUNION\nhot OR sun\n\n0.4 + 0.1 + 0.2 = 0.7\n\nDO NOT DOUBLE-COUNT\nThe hot-and-sun row belongs to both conditions but is added only once in the union.",
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "Select the rows that satisfy the event, then add each row once",
+      "visibleText": "Joint distribution P(X,Y)\nX\tY\tP\n+x\t+y\t0.2\n+x\t−y\t0.3\n−x\t+y\t0.4\n−x\t−y\t0.1\n\nBefore calculating, point to the included rows.\n\nQ1\nQ2\nQ3\nCOMMIT BEFORE REVEAL\nWhat is P(+x, +y)?\n\nA complete assignment identifies one row of the joint table.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal Q1",
+          "stateText": "Joint distribution P(X,Y) X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 Before calculating, point to the included rows. Q1 Q2 Q3 COMMIT BEFORE REVEAL What is P(+x, +y)? A complete assignment identifies one row of the joint table. Hide answer P(+X, +Y) = 0.2 The event contains exactly the first row, so no summation is needed."
+        },
+        {
+          "segment": 5,
+          "label": "Choose Q2",
+          "stateText": "Joint distribution P(X,Y) X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 Before calculating, point to the included rows. Q1 Q2 Q3 COMMIT BEFORE REVEAL What is P(+x)? The value of Y is unspecified. Sum every row in which X is true. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal Q2",
+          "stateText": "Joint distribution P(X,Y) X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 Before calculating, point to the included rows. Q1 Q2 Q3 COMMIT BEFORE REVEAL What is P(+x)? The value of Y is unspecified. Sum every row in which X is true. Hide answer P(+X) = 0.2 + 0.3 = 0.5 This is a marginal probability: Y has been summed out."
+        },
+        {
+          "segment": 7,
+          "label": "Choose Q3",
+          "stateText": "Joint distribution P(X,Y) X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 Before calculating, point to the included rows. Q1 Q2 Q3 COMMIT BEFORE REVEAL What is P(−y OR +x)? Take the union once. Do not count the (+x, −y) row twice. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal Q3",
+          "stateText": "Joint distribution P(X,Y) X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 Before calculating, point to the included rows. Q1 Q2 Q3 COMMIT BEFORE REVEAL What is P(−y OR +x)? Take the union once. Do not count the (+x, −y) row twice. Hide answer P(−Y ∪ +X) = 0.6 Rows (+x,+y), (+x,−y), and (−x,−y) have mass 0.2 + 0.3 + 0.1."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "A marginal distribution collapses a joint table by addition",
+      "visibleText": "P(T,W)\nT\tW\tP\nhot\tsun\t0.4\nhot\train\t0.1\ncold\tsun\t0.2\ncold\train\t0.3\nΣW →\nP(T)\nT\tP\nhot\t0.4 + 0.1 = 0.5\ncold\t0.2 + 0.3 = 0.5\nP(x) = Σy P(x,y)\nPAIR PRACTICE\nMarginalize X\n\nP(+x)=0.5; P(−x)=0.5\n\nPAIR PRACTICE\nMarginalize Y\n\nP(+y)=0.6; P(−y)=0.4\n\nCHECK\nEvery marginal distribution must sum to one.",
+      "actions": []
+    },
+    {
+      "number": 8,
+      "title": "Conditioning restricts the population; it does not imply time or causation",
+      "visibleText": "All outcomes\nEvidence B\nA ∩ B\nP(A | B) = P(A ∩ B) / P(B)\nQUESTION\nP(sick | cough)\n\nAmong people who cough, what fraction are sick?\n\nREVERSE\nP(cough | sick)\n\nAmong people who are sick, what fraction cough?\n\nINTERPRETATION\n“Given B” need not mean B happened earlier or caused A. Reversing the conditional changes the reference population.",
+      "actions": []
+    },
+    {
+      "number": 9,
+      "title": "Fix the evidence value, then normalize every compatible row",
+      "visibleText": "P(W | hot)\nW\tP\nsun\t0.8\nrain\t0.2\nP(W | cold)\nW\tP\nsun\t0.4\nrain\t0.6\nQUESTION 1\nP(+x | +y)\n\n0.2 / 0.6 = 1/3\n\nQUESTION 2\nP(−x | +y)\n\n0.4 / 0.6 = 2/3\n\nQUESTION 3\nP(−y | +x)\n\n0.3 / 0.5 = 0.6",
+      "actions": []
+    },
+    {
+      "number": 10,
+      "title": "The selected mass is exactly the probability of the evidence",
+      "visibleText": "1 · Joint table\nT\tW\tP\nhot\tsun\t0.4\nhot\train\t0.1\ncold\tsun\t0.2\ncold\train\t0.3\nselect\nT = cold →\n2 · Compatible rows\nW\tMASS\nsun\t0.2\nrain\t0.3\ndivide by\n0.5 →\n3 · P(W | cold)\nW\tP\nsun\t0.4\nrain\t0.6",
+      "actions": []
+    },
+    {
+      "number": 11,
+      "title": "Selection preserves ratios; normalization makes them probabilities",
+      "visibleText": "Select Y = −y\nX\tY\tP\n+x\t+y\t0.2\n+x\t−y\t0.3\n−x\t+y\t0.4\n−x\t−y\t0.1\nNORMALIZER\nP(−y) = 0.3 + 0.1 = 0.4\n+x\n−x\nCONDITIONAL VECTOR\nGiven Y = −y, how much mass belongs to +x?\n\nSelect the two rows with Y = −y. Their unnormalized masses are 0.3 and 0.1.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal +x",
+          "stateText": "Select Y = −y X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 NORMALIZER P(−y) = 0.3 + 0.1 = 0.4 +x −x CONDITIONAL VECTOR Given Y = −y, how much mass belongs to +x? Select the two rows with Y = −y. Their unnormalized masses are 0.3 and 0.1. Hide answer P(+X | −Y) = 0.3 / 0.4 = 0.75 The normalizer is the selected mass P(−y) = 0.3 + 0.1 = 0.4."
+        },
+        {
+          "segment": 5,
+          "label": "Choose -x",
+          "stateText": "Select Y = −y X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 NORMALIZER P(−y) = 0.3 + 0.1 = 0.4 +x −x CONDITIONAL VECTOR Given Y = −y, how much mass belongs to −x? Use the same evidence normalizer, 0.4. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal -x",
+          "stateText": "Select Y = −y X Y P +x +y 0.2 +x −y 0.3 −x +y 0.4 −x −y 0.1 NORMALIZER P(−y) = 0.3 + 0.1 = 0.4 +x −x CONDITIONAL VECTOR Given Y = −y, how much mass belongs to −x? Use the same evidence normalizer, 0.4. Hide answer P(−X | −Y) = 0.1 / 0.4 = 0.25 The two conditional values sum to one, which checks the calculation."
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Connect outcomes, events, random variables, distributions, and conditioning",
+      "visibleText": "HHH\nHHT\nHTH\nHTT\nTHH\nTHT\nTTH\nTTT\n\nEvent A: more heads than tails · Event B: first toss is H\n\nQ1\nQ2\nQ3\nQ4\nQ5\nFIVE-PART PROBABILITY LAB\nWhat is the sample space?\n\nList every length-three sequence of H or T.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal Q1",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB What is the sample space? List every length-three sequence of H or T. Hide answer S HAS EIGHT OUTCOMES S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}."
+        },
+        {
+          "segment": 5,
+          "label": "Choose Q2",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB Which events matter? Let A mean more heads than tails and B mean the first toss is H. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal Q2",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB Which events matter? Let A mean more heads than tails and B mean the first toss is H. Hide answer P(A) = 4/8 AND P(B) = 4/8 A = {HHH,HHT,HTH,THH}; B = {HHH,HHT,HTH,HTT}."
+        },
+        {
+          "segment": 7,
+          "label": "Choose Q3",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB Which random variables should we define? An event is a set of outcomes; a random variable maps each outcome to a value. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal Q3",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB Which random variables should we define? An event is a set of outcomes; a random variable maps each outcome to a value. Hide answer USE X = NUMBER OF HEADS AND I = 1[FIRST TOSS IS H] A and B are events, not random variables. X has values 0–3; I is binary."
+        },
+        {
+          "segment": 9,
+          "label": "Choose Q4",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB What is the distribution of X? Count sequences with zero, one, two, and three heads. Reveal answer"
+        },
+        {
+          "segment": 10,
+          "label": "Reveal Q4",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB What is the distribution of X? Count sequences with zero, one, two, and three heads. Hide answer P(X=0,1,2,3) = (1,3,3,1)/8 The binomial counts 1, 3, 3, 1 sum to eight equally likely sequences."
+        },
+        {
+          "segment": 11,
+          "label": "Choose Q5",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB What is P(A | B)? Under B, only HHH, HHT, HTH, and HTT remain possible. Reveal answer"
+        },
+        {
+          "segment": 12,
+          "label": "Reveal Q5",
+          "stateText": "HHH HHT HTH HTT THH THT TTH TTT Event A: more heads than tails · Event B: first toss is H Q1 Q2 Q3 Q4 Q5 FIVE-PART PROBABILITY LAB What is P(A | B)? Under B, only HHH, HHT, HTH, and HTT remain possible. Hide answer P(A | B) = (3/8)/(4/8) = 3/4 Three of the four outcomes beginning with H have more heads than tails."
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "One observation can support several hidden causes",
+      "visibleText": "Observed evidence can discriminate between competing causes.\nOBSERVED NOW\nBad traffic\n\nThe vehicle slows because traffic is congested.\n\nCOMPETING HYPOTHESES\nConstruction or accident\n\nEither hidden cause could explain the same observation.\n\nDISCRIMINATING EVIDENCE\nBarrels or flashing lights\n\nAdditional observations can shift belief between explanations.\n\nINFERENCE TASK\nCompare posterior beliefs after evidence—not merely which story sounds plausible.",
+      "actions": []
+    },
+    {
+      "number": 14,
+      "title": "Bad traffic raises the construction belief from 0.5 to 0.75",
+      "visibleText": "P(C,T)\nC\tT\tP\ntrue\ttrue\t0.3\ntrue\tfalse\t0.2\nfalse\ttrue\t0.1\nfalse\tfalse\t0.4\nQ1\nQ2\nQ3\nEVIDENCE UPDATE\nWhat is P(C = true)?\n\nMarginalize over traffic: add the two rows in which construction is true.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal Q1",
+          "stateText": "P(C,T) C T P true true 0.3 true false 0.2 false true 0.1 false false 0.4 Q1 Q2 Q3 EVIDENCE UPDATE What is P(C = true)? Marginalize over traffic: add the two rows in which construction is true. Hide answer P(C) = 0.3 + 0.2 = 0.5 This prior is the probability of construction before conditioning on bad traffic."
+        },
+        {
+          "segment": 5,
+          "label": "Choose Q2",
+          "stateText": "P(C,T) C T P true true 0.3 true false 0.2 false true 0.1 false false 0.4 Q1 Q2 Q3 EVIDENCE UPDATE What is P(C = true | T = true)? Select the two rows with bad traffic and normalize their masses. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal Q2",
+          "stateText": "P(C,T) C T P true true 0.3 true false 0.2 false true 0.1 false false 0.4 Q1 Q2 Q3 EVIDENCE UPDATE What is P(C = true | T = true)? Select the two rows with bad traffic and normalize their masses. Hide answer P(C | T) = 0.3 / (0.3 + 0.1) = 0.75 Bad traffic raises the construction belief from 0.5 to 0.75 in this joint model."
+        },
+        {
+          "segment": 7,
+          "label": "Choose Q3",
+          "stateText": "P(C,T) C T P true true 0.3 true false 0.2 false true 0.1 false false 0.4 Q1 Q2 Q3 EVIDENCE UPDATE What should orange barrels do to the belief? Barrels are evidence associated with construction, but the displayed joint table contains only C and T. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal Q3",
+          "stateText": "P(C,T) C T P true true 0.3 true false 0.2 false true 0.1 false false 0.4 Q1 Q2 Q3 EVIDENCE UPDATE What should orange barrels do to the belief? Barrels are evidence associated with construction, but the displayed joint table contains only C and T. Hide answer INCREASE IT—IF BARRELS ARE MORE LIKELY WHEN C IS TRUE A numeric update requires probabilities involving B. The arrows are a dependency sketch, not a fully specified Bayesian network."
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Multiply a prior by a conditional to recover joint probability",
+      "visibleText": "Two probability factors combine into a joint probability.\nP(W)\nW\tP\nsun\t0.8\nrain\t0.2\nP(D | W)\nW\tWET\tDRY\nsun\t0.1\t0.9\nrain\t0.7\t0.3\nFOUR JOINT CELLS\n0.08 · 0.72 · 0.14 · 0.06\nCHECK\nThe four products sum to one.",
+      "actions": []
+    },
+    {
+      "number": 16,
+      "title": "Repeated product rules factor any joint distribution",
+      "visibleText": "TWO VARIABLES\nP(x₁,x₂) = P(x₁)P(x₂ | x₁)\nTHREE VARIABLES\nP(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂)\nN VARIABLES\nP(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁)\nNO INDEPENDENCE ASSUMPTION\nThe chain rule is an identity. Independence assumptions may simplify its factors later.\n2\n3\nn\nBUILD THE FACTORIZATION\nFactor two variables\n\nStart from the product rule and choose an ordering.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal 2",
+          "stateText": "TWO VARIABLES P(x₁,x₂) = P(x₁)P(x₂ | x₁) THREE VARIABLES P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂) N VARIABLES P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁) NO INDEPENDENCE ASSUMPTION The chain rule is an identity. Independence assumptions may simplify its factors later. 2 3 n BUILD THE FACTORIZATION Factor two variables Start from the product rule and choose an ordering. Hide answer P(X₁,X₂) = P(X₁)P(X₂ | X₁) Reversing the ordering is also valid: P(x₂)P(x₁ | x₂)."
+        },
+        {
+          "segment": 5,
+          "label": "Choose 3",
+          "stateText": "TWO VARIABLES P(x₁,x₂) = P(x₁)P(x₂ | x₁) THREE VARIABLES P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂) N VARIABLES P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁) NO INDEPENDENCE ASSUMPTION The chain rule is an identity. Independence assumptions may simplify its factors later. 2 3 n BUILD THE FACTORIZATION Add a third variable Treat the first two variables as the accumulated context. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal 3",
+          "stateText": "TWO VARIABLES P(x₁,x₂) = P(x₁)P(x₂ | x₁) THREE VARIABLES P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂) N VARIABLES P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁) NO INDEPENDENCE ASSUMPTION The chain rule is an identity. Independence assumptions may simplify its factors later. 2 3 n BUILD THE FACTORIZATION Add a third variable Treat the first two variables as the accumulated context. Hide answer P(X₁,X₂,X₃) = P(X₁)P(X₂ | X₁)P(X₃ | X₁,X₂) Equivalently, P(x₁,x₂)P(x₃ | x₁,x₂)."
+        },
+        {
+          "segment": 7,
+          "label": "Choose n",
+          "stateText": "TWO VARIABLES P(x₁,x₂) = P(x₁)P(x₂ | x₁) THREE VARIABLES P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂) N VARIABLES P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁) NO INDEPENDENCE ASSUMPTION The chain rule is an identity. Independence assumptions may simplify its factors later. 2 3 n BUILD THE FACTORIZATION State the general chain rule Each factor conditions on every variable that precedes it in the chosen ordering. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal n",
+          "stateText": "TWO VARIABLES P(x₁,x₂) = P(x₁)P(x₂ | x₁) THREE VARIABLES P(x₁,x₂,x₃) = P(x₁)P(x₂ | x₁)P(x₃ | x₁,x₂) N VARIABLES P(x₁,…,xₙ) = ∏ᵢ P(xᵢ | x₁,…,xᵢ₋₁) NO INDEPENDENCE ASSUMPTION The chain rule is an identity. Independence assumptions may simplify its factors later. 2 3 n BUILD THE FACTORIZATION State the general chain rule Each factor conditions on every variable that precedes it in the chosen ordering. Hide answer P(X₁,…,Xₙ) = ∏ᵢ P(Xᵢ | X₁,…,Xᵢ₋₁) The identity follows by repeatedly applying the product rule; it does not assume independence."
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Two factorizations of the same joint yield Bayes' rule",
+      "visibleText": "Thomas Bayes (1701–1761)\nP(x,y) = P(x | y)P(y)\nP(x,y) = P(y | x)P(x)\n\nSet the two factorizations equal:\n\nP(x | y)P(y) = P(y | x)P(x)\n\nDivide by P(y), provided P(y) > 0:\n\nBAYES' RULE\nP(x | y) = P(y | x)P(x) / P(y)\nposterior\nlikelihood\nprior\nevidence",
+      "actions": []
+    },
+    {
+      "number": 18,
+      "title": "Posterior disease probability is not the probability that disease causes a symptom",
+      "visibleText": "Disease\n\nhypothesis d\ncausal direction →\nSymptom\n\nevidence s\n← inferential direction\nP(d | s) = P(s | d)P(d) / P(s)\nPOSTERIOR\nP(disease | symptom)\n\nBelief in disease after observing the symptom.\n\nLIKELIHOOD\nP(symptom | disease)\n\nHow probable the symptom is if the disease is present.\n\nPRIOR\nP(disease)\n\nBelief before the current symptom is observed.\n\nMEANING CORRECTION\nBayes' rule reverses a conditional; it does not prove causation.",
+      "actions": []
+    },
+    {
+      "number": 19,
+      "title": "Partition the hypothesis space, then add disjoint joint masses",
+      "visibleText": "E\nH₁\nH₂\nH₃\nE = (E∩H₁) ∪ (E∩H₂) ∪ ··· ∪ (E∩Hₙ)\nP(E) = Σᵢ P(E∩Hᵢ)\nTOTAL PROBABILITY\nP(E) = Σᵢ P(E | Hᵢ)P(Hᵢ)\nWHY ADDITION WORKS\nThe hypotheses are mutually exclusive and collectively exhaustive, so the pieces are disjoint. No overlap subtraction is needed.",
+      "actions": []
+    },
+    {
+      "number": 20,
+      "title": "A strong likelihood may still produce a small posterior when the prior is tiny",
+      "visibleText": "Clinical illustration of inflamed meninges and stiff-neck symptoms.\nP(+m)=0.0001\nP(+s | +m)=0.8\nP(+s | −m)=0.01\n1\n2\n3\n4\nWORK THE POSTERIOR\nRecord the prior and likelihoods\n\nP(+m)=0.0001, P(+s|+m)=0.8, and P(+s|−m)=0.01.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal 1",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Record the prior and likelihoods P(+m)=0.0001, P(+s|+m)=0.8, and P(+s|−m)=0.01. Hide answer RARE DISEASE, INFORMATIVE SYMPTOM The likelihood ratio is 80, but the prior odds are extremely small."
+        },
+        {
+          "segment": 5,
+          "label": "Choose 2",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Compute the evidence probability Use the two-hypothesis partition {+m, −m}. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal 2",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Compute the evidence probability Use the two-hypothesis partition {+m, −m}. Hide answer P(+S) = 0.8(0.0001) + 0.01(0.9999) = 0.010079 Computation check: P(−m)=1−0.0001=0.9999."
+        },
+        {
+          "segment": 7,
+          "label": "Choose 3",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Compute the posterior Divide the disease-and-symptom mass by the total symptom mass. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal 3",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Compute the posterior Divide the disease-and-symptom mass by the total symptom mass. Hide answer P(+M | +S) ≈ 0.00794 = 0.794% The symptom changes the belief sharply, yet the posterior remains below one percent because the prior is tiny."
+        },
+        {
+          "segment": 9,
+          "label": "Choose 4",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Why still seek medical evaluation? A probability is not a decision by itself; actions also depend on consequences. Reveal answer"
+        },
+        {
+          "segment": 10,
+          "label": "Reveal 4",
+          "stateText": "Clinical illustration of inflamed meninges and stiff-neck symptoms. P(+m)=0.0001 P(+s | +m)=0.8 P(+s | −m)=0.01 1 2 3 4 WORK THE POSTERIOR Why still seek medical evaluation? A probability is not a decision by itself; actions also depend on consequences. Hide answer LOW PROBABILITY CAN STILL JUSTIFY ACTION A serious missed diagnosis can carry much higher cost than an examination. Decision thresholds depend on utilities and tests."
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Dry conditions make sun much more probable than rain",
+      "visibleText": "Prior P(W)\nW\tP\nsun\t0.8\nrain\t0.2\nLikelihood P(dry | W)\nW\tP\nsun\t0.9\nrain\t0.3\n1\n2\n3\nPOSTERIOR DISTRIBUTION\nCompute the normalizer P(dry)\n\nUse total probability over weather.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal 1",
+          "stateText": "Prior P(W) W P sun 0.8 rain 0.2 Likelihood P(dry | W) W P sun 0.9 rain 0.3 1 2 3 POSTERIOR DISTRIBUTION Compute the normalizer P(dry) Use total probability over weather. Hide answer P(DRY) = 0.9(0.8) + 0.3(0.2) = 0.78 The two terms are dry-and-sun and dry-and-rain."
+        },
+        {
+          "segment": 5,
+          "label": "Choose 2",
+          "stateText": "Prior P(W) W P sun 0.8 rain 0.2 Likelihood P(dry | W) W P sun 0.9 rain 0.3 1 2 3 POSTERIOR DISTRIBUTION Compute P(sun | dry) Apply Bayes’ rule with likelihood 0.9 and prior 0.8. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal 2",
+          "stateText": "Prior P(W) W P sun 0.8 rain 0.2 Likelihood P(dry | W) W P sun 0.9 rain 0.3 1 2 3 POSTERIOR DISTRIBUTION Compute P(sun | dry) Apply Bayes’ rule with likelihood 0.9 and prior 0.8. Hide answer P(SUN | DRY) = 0.72 / 0.78 ≈ 0.923 Dry evidence shifts probability toward sun."
+        },
+        {
+          "segment": 7,
+          "label": "Choose 3",
+          "stateText": "Prior P(W) W P sun 0.8 rain 0.2 Likelihood P(dry | W) W P sun 0.9 rain 0.3 1 2 3 POSTERIOR DISTRIBUTION Compute P(rain | dry) Use likelihood 0.3, prior 0.2, and the same normalizer. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal 3",
+          "stateText": "Prior P(W) W P sun 0.8 rain 0.2 Likelihood P(dry | W) W P sun 0.9 rain 0.3 1 2 3 POSTERIOR DISTRIBUTION Compute P(rain | dry) Use likelihood 0.3, prior 0.2, and the same normalizer. Hide answer P(RAIN | DRY) = 0.06 / 0.78 ≈ 0.077 The posterior values sum to one."
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "The posterior combines prior belief, likelihood, and evidence prevalence",
+      "visibleText": "P(H | e) = P(e | H) P(H) / Σᵢ P(e | Hᵢ)P(Hᵢ)\nPRIOR · P(H)\nBefore\n\nHow plausible was H before this evidence?\n\nLIKELIHOOD · P(E|H)\nCompatibility\n\nHow well does H predict the evidence?\n\nEVIDENCE · P(E)\nPrevalence\n\nHow probable is e across all hypotheses?\n\nPOSTERIOR · P(H|E)\nAfter\n\nHow plausible is H after observing e?",
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Including the prior makes the rule MAP, not maximum likelihood",
+      "visibleText": "MAXIMUM LIKELIHOOD\narg maxₕ P(E | h)\n\nChooses the hypothesis that makes the evidence most likely. The prior is omitted.\n\nMAXIMUM A POSTERIORI\narg maxₕ P(E | h)P(h)\n\nChooses the most probable hypothesis after evidence. P(E) is common and can be dropped.\n\nUniform prior\n⇒\n\nMAP and ML choose the same hypothesis.\n\nTERMINOLOGY CHECK\nDropping P(E) is valid for the argmax. Keeping P(h) means the estimator is MAP.",
+      "actions": []
+    },
+    {
+      "number": 24,
+      "title": "The evidence normalizer combines all ways the observed purchase could occur",
+      "visibleText": "Prior dealer probability\nDEALER\tP(Dᵢ)\nd₁\t0.2\nd₂\t0.4\nd₃\t0.4\nPurchase likelihood\nDEALER\tP(A₁ | Dᵢ)\nd₁\t0.2\nd₂\t0.4\nd₃\t0.3\nP(d₂ | a₁) = 0.16 / 0.32 = 0.5\n1\n2\n3\nTHREE-STEP SOLUTION\nForm the d₂ numerator\n\nMultiply the likelihood of buying a₁ at d₂ by the prior probability of visiting d₂.\n\nReveal answer",
+      "actions": [
+        {
+          "segment": 4,
+          "label": "Reveal 1",
+          "stateText": "Prior dealer probability DEALER P(Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.4 Purchase likelihood DEALER P(A₁ | Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.3 P(d₂ | a₁) = 0.16 / 0.32 = 0.5 1 2 3 THREE-STEP SOLUTION Form the d₂ numerator Multiply the likelihood of buying a₁ at d₂ by the prior probability of visiting d₂. Hide answer P(A₁ | D₂)P(D₂) = 0.4 × 0.4 = 0.16 This is the joint mass P(a₁,d₂)."
+        },
+        {
+          "segment": 5,
+          "label": "Choose 2",
+          "stateText": "Prior dealer probability DEALER P(Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.4 Purchase likelihood DEALER P(A₁ | Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.3 P(d₂ | a₁) = 0.16 / 0.32 = 0.5 1 2 3 THREE-STEP SOLUTION Compute the evidence normalizer Sum over the three mutually exclusive dealers. Reveal answer"
+        },
+        {
+          "segment": 6,
+          "label": "Reveal 2",
+          "stateText": "Prior dealer probability DEALER P(Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.4 Purchase likelihood DEALER P(A₁ | Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.3 P(d₂ | a₁) = 0.16 / 0.32 = 0.5 1 2 3 THREE-STEP SOLUTION Compute the evidence normalizer Sum over the three mutually exclusive dealers. Hide answer P(A₁) = 0.2(0.2) + 0.4(0.4) + 0.3(0.4) = 0.32 This uses P(a₁)=ΣᵢP(a₁,dᵢ)."
+        },
+        {
+          "segment": 7,
+          "label": "Choose 3",
+          "stateText": "Prior dealer probability DEALER P(Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.4 Purchase likelihood DEALER P(A₁ | Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.3 P(d₂ | a₁) = 0.16 / 0.32 = 0.5 1 2 3 THREE-STEP SOLUTION Normalize the d₂ mass Divide the d₂ joint mass by the total probability of buying a₁. Reveal answer"
+        },
+        {
+          "segment": 8,
+          "label": "Reveal 3",
+          "stateText": "Prior dealer probability DEALER P(Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.4 Purchase likelihood DEALER P(A₁ | Dᵢ) d₁ 0.2 d₂ 0.4 d₃ 0.3 P(d₂ | a₁) = 0.16 / 0.32 = 0.5 1 2 3 THREE-STEP SOLUTION Normalize the d₂ mass Divide the d₂ joint mass by the total probability of buying a₁. Hide answer P(D₂ | A₁) = 0.16 / 0.32 = 0.5 Half of the compatible probability mass belongs to d₂."
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Represent uncertainty, compute an update, and defend the interpretation",
+      "visibleText": "1 · REPRESENT\nBuild the model\n\nDefine variables and domains. Verify a joint distribution is nonnegative and normalized.\n\n2 · INFER\nShow the calculation\n\nSelect or marginalize rows, compute the normalizer, and apply the correct probability rule.\n\n3 · INTERPRET\nState what it means\n\nDistinguish event from variable, posterior from likelihood, association from cause, and MAP from ML.\n\nPrepare for Meeting 10\n\nRead George F. Luger, Artificial Intelligence, 6th ed., and Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach, 3rd ed., Chapter 13. Bring one example in which a prior changes the selected hypothesis.",
+      "actions": []
+    }
+  ]
+}

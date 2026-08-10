@@ -25,8 +25,6 @@ import { RagDeck as Meeting21Deck } from "../../components/Meeting21Deck";
 import { RagQualityDeck as Meeting22Deck } from "../../components/Meeting22Deck";
 import { Meeting23Deck } from "../../components/Meeting23Deck";
 import { Meeting24Deck } from "../../components/Meeting24Deck";
-import { Meeting25Deck } from "../../components/Meeting25Deck";
-import { Meeting26Deck } from "../../components/Meeting26Deck";
 import { Meeting27Deck } from "../../components/Meeting27Deck";
 import { Meeting28Deck } from "../../components/Meeting28Deck";
 import { Meeting29Deck } from "../../components/Meeting29Deck";
@@ -78,8 +76,6 @@ export default async function MeetingPage({ params }: { params: Promise<{ meetin
     : meeting.id === 22 ? <Meeting22Deck />
     : meeting.id === 23 ? <Meeting23Deck />
     : meeting.id === 24 ? <Meeting24Deck />
-    : meeting.id === 25 ? <Meeting25Deck />
-    : meeting.id === 26 ? <Meeting26Deck />
     : meeting.id === 27 ? <Meeting27Deck />
     : meeting.id === 28 ? <Meeting28Deck />
     : meeting.id === 29 ? <Meeting29Deck />

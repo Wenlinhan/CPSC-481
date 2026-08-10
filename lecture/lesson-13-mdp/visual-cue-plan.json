@@ -1,0 +1,1907 @@
+{
+  "version": 1,
+  "meeting": "13",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Markov Decision Processes, Policies, and Value Iteration",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 23.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "This lesson changes the question from what will",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 48.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Sequence models connect observations across time or space",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A sequence model links observations that arrive in",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 55.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "A Markov model starts with state, an initial distribution, and transitions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A Markov model needs three ingredients before any",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 53.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "The Markov assumption shortens the chain-rule history",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The Markov assumption is a conditional-independence claim, not",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 57.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Given the present, earlier history adds no information about the next state",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Read this independence statement carefully. Once the present",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 49.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "An unrolled first-order chain is a Bayesian network",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 23.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "An unrolled first-order Markov chain is also a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 46.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "One transition model has three equivalent representations",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The weather example shows one transition model in",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 47.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "From all sun, one step produces 0.9 sun and 0.1 rain",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Start with certainty about sun. One transition step",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 52.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Forward prediction repeatedly applies the same transition operator",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Forward prediction repeats the same transition operator. Multiply",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 83.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "A stationary distribution is a fixed point—not a universal convergence promise",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A stationary distribution is a fixed point of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 60.432,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "A Markov chain predicts; an MDP adds choices and consequences",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A Markov chain predicts what state comes next",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 39.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "An MDP is the tuple ⟨S, A, P, R, γ⟩",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The MDP tuple contains states, actions, transition probabilities",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 61.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Actions change transition distributions; they do not guarantee outcomes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "An action does not normally determine the next",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 62.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Reward is the formal objective—not a label for what humans value",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Reward is the formal objective supplied to the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 50.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Return adds immediate and discounted future rewards",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Return combines immediate reward with discounted future rewards",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 60.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: gamma = 0.0",
+          "durationSeconds": 15.192,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: gamma = 0.0",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting gamma = 0.0, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: gamma = 0.5",
+          "durationSeconds": 18.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: gamma = 0.5",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting gamma = 0.5, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: gamma = 0.9",
+          "durationSeconds": 16.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: gamma = 0.9",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting gamma = 0.9, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: gamma = 1.0",
+          "durationSeconds": 15.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: gamma = 1.0",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting gamma = 1.0, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "A policy chooses; a value function predicts long-run return",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A policy maps states to action distributions. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 56.976,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Bellman expectation decomposes value into one step plus the remainder",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The Bellman expectation equation decomposes value into immediate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 57.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Reveal next line",
+          "durationSeconds": 18.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reveal next line",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reveal next line, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Reveal all",
+          "durationSeconds": 21.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reveal all",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reveal all, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Policy evaluation averages; optimal control maximizes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Policy evaluation averages over the actions chosen by",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 59.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: A: Replace the successor-state expectation with a maximum",
+          "durationSeconds": 21.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: A: Replace the successor-state expectation with a maximum",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting A: Replace the successor-state expectation with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: B: Replace the policy-weighted action average with a maximum",
+          "durationSeconds": 21.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: B: Replace the policy-weighted action average with a maximum",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting B: Replace the policy-weighted action average",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: C: Remove the immediate reward",
+          "durationSeconds": 16.944,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: C: Remove the immediate reward",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting C: Remove the immediate reward, predict",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "A Bellman optimality backup compares every action at one state",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A Bellman optimality backup evaluates every available action",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 50.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: direction Up",
+          "durationSeconds": 13.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: direction Up",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting direction Up, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: leads to Right",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: leads to Right",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting leads to Right, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: direction Down",
+          "durationSeconds": 14.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: direction Down",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting direction Down, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: comes from Left",
+          "durationSeconds": 12.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: comes from Left",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting comes from Left, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Value iteration applies Bellman optimality synchronously until change is small",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Value iteration applies Bellman optimality backups repeatedly and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 59.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Watch value information move through a 3×3 gridworld",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The gridworld makes value propagation visible. A goal",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 76.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Previous",
+          "durationSeconds": 17.304,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Previous",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Previous, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Run one sweep",
+          "durationSeconds": 17.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Run one sweep",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Run one sweep, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: Run to 30",
+          "durationSeconds": 16.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Run to 30",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Run to 30, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: Show greedy policy",
+          "durationSeconds": 18.264,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Show greedy policy",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Show greedy policy, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "A small Bellman residual is solver evidence, not real-world validation",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A small Bellman residual is evidence about the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 62.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Once values stabilize, one-step lookahead yields a greedy policy",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Once values stabilize, extract a policy by taking",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 63.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: 0.73 leads to",
+          "durationSeconds": 16.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.73 leads to",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.73 leads to, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: 0.86 leads to",
+          "durationSeconds": 17.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.86 leads to",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.86 leads to, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: 0.62 direction",
+          "durationSeconds": 17.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.62 direction",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.62 direction, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: 0.52 direction",
+          "durationSeconds": 17.136,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.52 direction",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.52 direction, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Interaction: 0.43 comes from",
+          "durationSeconds": 17.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.43 comes from",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.43 comes from, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Interaction: 0.34 comes from",
+          "durationSeconds": 17.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.34 comes from",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.34 comes from, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "An elegant solution can still optimize the wrong model",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A mathematically elegant policy can optimize the wrong",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 42.6,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: State",
+          "durationSeconds": 18.888,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: State",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting State, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Reward",
+          "durationSeconds": 15.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reward",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reward, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: Dynamics",
+          "durationSeconds": 18.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Dynamics",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Dynamics, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: Planning",
+          "durationSeconds": 17.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Planning",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Planning, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Model the future, choose a policy, and defend the assumptions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Close the lesson by connecting representation, calculation, explanation",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 79.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new sequential decision",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -750,7 +750,7 @@ function StationaryDistributionLesson() {
 
 const baseSlides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 6 · Meeting 11 · Sequential decisions",
+    eyebrow: "Module 10 · Lesson 13 · Sequential decisions",
     title: "Markov Decision Processes, Policies, and Value Iteration",
     subtitle: "How does an agent choose now when actions change uncertain future opportunities?",
     content: (
@@ -1274,10 +1274,11 @@ const slides = baseSlides.map((slide, index) =>
     : slide,
 );
 
-export function Meeting11Deck() {
+export function Meeting11Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
-      meetingLabel="Week 6 · Meeting 11"
+      forcePrintAll={forcePrintAll}
+      meetingLabel="Module 10 · Lesson 13"
       meetingTitle="Markov Decision Processes, Policies, and Value Iteration"
       resolveSourceReference={sourceSlide => ({
         deckLabel: "L12_StochasticMethods · Part B",

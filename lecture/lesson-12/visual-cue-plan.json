@@ -1,0 +1,3096 @@
+{
+  "version": 1,
+  "lesson": "12",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Conditional Independence, Bayesian Networks, and Naive Bayes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 18.816,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Driving question",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "which variables still matter",
+              "atSeconds": 6.675,
+              "durationSeconds": 4.246
+            },
+            {
+              "type": "focus",
+              "label": "Independence",
+              "selector": ".slide-content article",
+              "index": 0,
+              "sourcePhrase": "Independence removes factors",
+              "atSeconds": 10.971,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 21.24,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Bayesian network",
+              "selector": ".slide-content article",
+              "index": 1,
+              "sourcePhrase": "Bayesian networks turn local",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Inference",
+              "selector": ".slide-content article",
+              "index": 2,
+              "sourcePhrase": "Inference then multiplies",
+              "atSeconds": 8.564,
+              "durationSeconds": 6.412
+            },
+            {
+              "type": "focus",
+              "label": "Naive Bayes",
+              "selector": ".slide-content article",
+              "index": 3,
+              "sourcePhrase": "Naive Bayes uses",
+              "atSeconds": 15.026,
+              "durationSeconds": 6.164
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 16.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Conditioning context",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "crowded group chat",
+              "atSeconds": 0.502,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 16.704,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Test",
+              "selector": ".slide-content article",
+              "index": 0,
+              "sourcePhrase": "test independence",
+              "atSeconds": 1.712,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Represent",
+              "selector": ".slide-content article",
+              "index": 1,
+              "sourcePhrase": "read a network factorization",
+              "atSeconds": 3.042,
+              "durationSeconds": 1.905
+            },
+            {
+              "type": "focus",
+              "label": "Query",
+              "selector": ".slide-content article",
+              "index": 2,
+              "sourcePhrase": "trace exact enumeration",
+              "atSeconds": 4.997,
+              "durationSeconds": 1.918
+            },
+            {
+              "type": "focus",
+              "label": "Classify",
+              "selector": ".slide-content article",
+              "index": 3,
+              "sourcePhrase": "compute a Naive Bayes score",
+              "atSeconds": 6.965,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Independence means learning Y does not change belief about X",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 33.144,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "X independent of Y",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "X independent of Y",
+              "atSeconds": 8.404,
+              "durationSeconds": 6.426
+            },
+            {
+              "type": "popup",
+              "label": "Independence",
+              "text": "X ⟂ Y",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "X independent of Y",
+              "atSeconds": 8.404,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "P(x|y)=P(x)",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 0,
+              "sourcePhrase": "P of x given y equals P of x",
+              "atSeconds": 14.88,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 35.808,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P(y|x)=P(y)",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 1,
+              "sourcePhrase": "second form reverses",
+              "atSeconds": 0.223,
+              "durationSeconds": 5.405
+            },
+            {
+              "type": "focus",
+              "label": "P(x,y)=P(x)P(y)",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 2,
+              "sourcePhrase": "third form removes",
+              "atSeconds": 5.678,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Joint factorization",
+              "text": "P(x,y)=P(x)P(y)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "third form removes",
+              "atSeconds": 5.678,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 31.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Test every cell",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "all-cells claim",
+              "atSeconds": 2.523,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 27.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Modeling caution",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "A professional report states",
+              "atSeconds": 16.556,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Factorization replaces one joint table with smaller distributions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 24.192,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2ⁿ joint rows",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 0,
+              "sourcePhrase": "two to the n complete assignments",
+              "atSeconds": 9.149,
+              "durationSeconds": 5.655
+            },
+            {
+              "type": "focus",
+              "label": "Factorized joint",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "product over i",
+              "atSeconds": 14.854,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Mutual independence",
+              "text": "P(X₁,…,Xₙ)=∏ᵢP(Xᵢ)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "product over i",
+              "atSeconds": 14.854,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 31.344,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "2ⁿ rows",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 0,
+              "sourcePhrase": "two to the n joint rows",
+              "atSeconds": 2.231,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "2n entries",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 1,
+              "sourcePhrase": "two n marginal entries",
+              "atSeconds": 4.026,
+              "durationSeconds": 4.966
+            },
+            {
+              "type": "focus",
+              "label": "Storage savings",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "one million forty-eight thousand",
+              "atSeconds": 9.042,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 28.536,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Combination metaphor",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "restaurant menu",
+              "atSeconds": 0.489,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "For every assignment",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 2,
+              "sourcePhrase": "universal quantifier",
+              "atSeconds": 0.183,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Ask before factoring",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "test the assumption",
+              "atSeconds": 9.694,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "One mismatched cell disproves independence",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 28.608,
+          "cueCount": 6,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P(T)P(W)",
+              "selector": ".slide-content table",
+              "index": 2,
+              "sourcePhrase": "rightmost table",
+              "atSeconds": 4.135,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "First predicted cell",
+              "text": "0.5 × 0.6 = 0.3",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "Multiplication predicts four cells",
+              "atSeconds": 19.295,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Predicted hot, sun",
+              "selector": ".slide-content table tbody tr",
+              "index": 8,
+              "sourcePhrase": "hot-sun point three",
+              "atSeconds": 21.848,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Predicted hot, rain",
+              "selector": ".slide-content table tbody tr",
+              "index": 9,
+              "sourcePhrase": "hot-rain point two",
+              "atSeconds": 23.284,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Predicted cold, sun",
+              "selector": ".slide-content table tbody tr",
+              "index": 10,
+              "sourcePhrase": "cold-sun point three",
+              "atSeconds": 24.667,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Predicted cold, rain",
+              "selector": ".slide-content table tbody tr",
+              "index": 11,
+              "sourcePhrase": "cold-rain point two",
+              "atSeconds": 26.316,
+              "durationSeconds": 2.242
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 28.584,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P₁(T,W)",
+              "selector": ".slide-content table",
+              "index": 0,
+              "sourcePhrase": "Compare P one",
+              "atSeconds": 0.05,
+              "durationSeconds": 3.344
+            },
+            {
+              "type": "focus",
+              "label": "P₁(hot,sun)=0.4",
+              "selector": ".slide-content table tbody tr",
+              "index": 0,
+              "sourcePhrase": "hot-sun cell is point four",
+              "atSeconds": 3.444,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Counterexample",
+              "text": "0.4 ≠ 0.3",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "point four, but independence predicts point three",
+              "atSeconds": 4.441,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 30.456,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "P₂(T,W)",
+              "selector": ".slide-content table",
+              "index": 1,
+              "sourcePhrase": "compare P two",
+              "atSeconds": 0.369,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Product table",
+              "selector": ".slide-content table",
+              "index": 2,
+              "sourcePhrase": "All four entries match",
+              "atSeconds": 10.159,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Conclusion",
+              "text": "P₂ = P(T)P(W)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "P two factorizes",
+              "atSeconds": 19.481,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 21.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal after predicting",
+              "selector": ".best-first-step-controls",
+              "index": 0,
+              "sourcePhrase": "one mismatch disproves",
+              "atSeconds": 4.132,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Reveal table analysis",
+          "durationSeconds": 22.056,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal table analysis",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Reveal the analysis. P two factorizes because",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Independent coin flips turn an exponential joint into repeated local factors",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 15.48,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "H, T, H",
+              "selector": ".slide-content [class*='coinRow']",
+              "index": 0,
+              "sourcePhrase": "heads, tails, heads",
+              "atSeconds": 2.869,
+              "durationSeconds": 2.596
+            },
+            {
+              "type": "focus",
+              "label": "Sequence probability",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "one half cubed",
+              "atSeconds": 5.515,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 16.56,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "General factorization",
+              "selector": ".slide-content [class*='formula']",
+              "index": 1,
+              "sourcePhrase": "product of n local terms",
+              "atSeconds": 3.826,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "n local distributions",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 1,
+              "sourcePhrase": "n local",
+              "atSeconds": 4.465,
+              "durationSeconds": 3.091
+            },
+            {
+              "type": "focus",
+              "label": "2ⁿ outcomes",
+              "selector": ".slide-content [class*='stats'] > div",
+              "index": 0,
+              "sourcePhrase": "two to the n",
+              "atSeconds": 7.606,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 18.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Fair but dependent",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "copies it",
+              "atSeconds": 7.181,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 12.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "License to multiply",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "what independence statement",
+              "atSeconds": 2.856,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "A shared cause can explain why two observations move together",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 13.44,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Associated effects",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Smoke and an alarm",
+              "atSeconds": 0.05,
+              "durationSeconds": 2.569
+            },
+            {
+              "type": "focus",
+              "label": "Common cause",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "both respond to fire",
+              "atSeconds": 2.669,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 15.744,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Screening off",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "fire state is known",
+              "atSeconds": 0.529,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Conditional, not absolute",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "conditional independence",
+              "atSeconds": 10.917,
+              "durationSeconds": 4.777
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 16.104,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Shared-cause metaphor",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "same bus broke down",
+              "atSeconds": 2.523,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 14.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Model boundary",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Real alarms",
+              "atSeconds": 2.447,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Condition on Z, then test factorization inside every Z stratum",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 24.048,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "X ⟂ Y | Z",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "X independent of Y given Z",
+              "atSeconds": 3.59,
+              "durationSeconds": 4.937
+            },
+            {
+              "type": "focus",
+              "label": "Conditional factorization",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 0,
+              "sourcePhrase": "conditional joint factorizes",
+              "atSeconds": 8.577,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Within each z stratum",
+              "text": "P(x,y|z)=P(x|z)P(y|z)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "conditional joint factorizes",
+              "atSeconds": 8.577,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 26.352,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Y adds no information",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 1,
+              "sourcePhrase": "P of x given y comma z",
+              "atSeconds": 2.284,
+              "durationSeconds": 5.016
+            },
+            {
+              "type": "focus",
+              "label": "Symmetric form",
+              "selector": ".slide-content [class*='equiv'] > div",
+              "index": 2,
+              "sourcePhrase": "P of y given x comma z",
+              "atSeconds": 7.35,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 25.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Test within strata",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "partition or model the data by Z",
+              "atSeconds": 1.26,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.208,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the quantifier",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "for all relevant",
+              "atSeconds": 3.321,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Why it matters",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "representational engine",
+              "atSeconds": 16.13,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Cavity can screen Toothache from Catch",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 16.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Cavity explains both observations",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "Cavity be the conditioning",
+              "atSeconds": 0.369,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.776,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Catch conditional",
+              "selector": ".slide-content li",
+              "index": 0,
+              "sourcePhrase": "first equation",
+              "atSeconds": 0.223,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Toothache conditional",
+              "selector": ".slide-content li",
+              "index": 1,
+              "sourcePhrase": "second equation",
+              "atSeconds": 12.619,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 22.848,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Conditional joint factorization",
+              "selector": ".slide-content li",
+              "index": 2,
+              "sourcePhrase": "third equation",
+              "atSeconds": 0.236,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Cavity screens the effects",
+              "text": "P(T,Catch|Cavity)=P(T|Cavity)P(Catch|Cavity)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "third equation",
+              "atSeconds": 0.236,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Empirical model claim",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "Real dental data",
+              "atSeconds": 5.04,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Rain can screen Traffic from Umbrella",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 12.024,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Rain fork",
+              "selector": ".slide-content [class*='_fork_']",
+              "index": 0,
+              "sourcePhrase": "Traffic and umbrella",
+              "atSeconds": 0.05,
+              "durationSeconds": 5.073
+            },
+            {
+              "type": "focus",
+              "label": "Conditional claim",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "before rain is known",
+              "atSeconds": 5.173,
+              "durationSeconds": 6.801
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 11.952,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Common parent",
+              "selector": ".slide-content [class*='_fork_']",
+              "index": 0,
+              "sourcePhrase": "Raining points",
+              "atSeconds": 1.712,
+              "durationSeconds": 3.092
+            },
+            {
+              "type": "focus",
+              "label": "Path blocked",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "Conditioning on the common cause",
+              "atSeconds": 4.854,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 14.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Graph semantics",
+              "selector": ".slide-content [class*='_fork_']",
+              "index": 0,
+              "sourcePhrase": "compressed set of probability claims",
+              "atSeconds": 1.247,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Predict, then reveal",
+              "selector": ".best-first-step-controls",
+              "index": 0,
+              "sourcePhrase": "Reveal the defensible claim",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Reveal rain claim",
+          "durationSeconds": 21.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal rain claim",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Reveal the defensible rain claim. Traffic and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Fire can screen Smoke from Alarm—but only under a simplified model",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 11.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Fire fork",
+              "selector": ".slide-content [class*='_fork_']",
+              "index": 0,
+              "sourcePhrase": "Fire as a common cause",
+              "atSeconds": 1.712,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 13.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Smoke ⟂ Alarm | Fire",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "Smoke independent of Alarm",
+              "atSeconds": 2.284,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 13.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Missing direct mechanism",
+              "selector": ".slide-content [class*='_fork_']",
+              "index": 0,
+              "sourcePhrase": "direct smoke-to-alarm",
+              "atSeconds": 2.071,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 12.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal and critique",
+              "selector": ".best-first-step-controls",
+              "index": 0,
+              "sourcePhrase": "reveal",
+              "atSeconds": 0.489,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Reveal fire claim",
+          "durationSeconds": 17.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Reveal fire claim",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Reveal the simplified fire claim. Smoke is",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Product and chain rules turn independence claims into factorization",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 21.336,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Conditional probability",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 0,
+              "sourcePhrase": "Conditional probability is a definition",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Product rule",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 1,
+              "sourcePhrase": "product rule",
+              "atSeconds": 8.015,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Product rule",
+              "text": "P(x,y)=P(x|y)P(y)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "product rule",
+              "atSeconds": 8.015,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 18.936,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Chain rule",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 2,
+              "sourcePhrase": "chain rule",
+              "atSeconds": 0.209,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Chain rule",
+              "text": "P(x₁,…,xₙ)=∏ᵢP(xᵢ|x₁,…,xᵢ₋₁)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "chain rule",
+              "atSeconds": 0.209,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 26.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Independence simplification",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 3,
+              "sourcePhrase": "Independence is the simplifying",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 21.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit each derivation",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "identity, arithmetic, or assumption",
+              "atSeconds": 2.643,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A Bayesian network is a DAG plus one local conditional distribution per node",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 27.432,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "DAG",
+              "selector": ".slide-content [role='img']",
+              "index": 0,
+              "sourcePhrase": "directed acyclic graph",
+              "atSeconds": 1.513,
+              "durationSeconds": 6.974
+            },
+            {
+              "type": "popup",
+              "label": "Bayesian network",
+              "text": "DAG + local CPTs",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "directed acyclic graph",
+              "atSeconds": 1.513,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Nodes",
+              "selector": ".slide-content article",
+              "index": 0,
+              "sourcePhrase": "Each node",
+              "atSeconds": 8.537,
+              "durationSeconds": 4.019
+            },
+            {
+              "type": "focus",
+              "label": "Directed edges",
+              "selector": ".slide-content article",
+              "index": 1,
+              "sourcePhrase": "Each directed edge",
+              "atSeconds": 12.606,
+              "durationSeconds": 6.799
+            },
+            {
+              "type": "focus",
+              "label": "Acyclic",
+              "selector": ".slide-content article",
+              "index": 2,
+              "sourcePhrase": "Acyclic means",
+              "atSeconds": 19.455,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.32,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Burglary",
+              "selector": ".slide-content [class*='networkNode']",
+              "index": 0,
+              "sourcePhrase": "Burglary is a root",
+              "atSeconds": 0.05,
+              "durationSeconds": 3.7
+            },
+            {
+              "type": "focus",
+              "label": "Earthquake",
+              "selector": ".slide-content [class*='networkNode']",
+              "index": 1,
+              "sourcePhrase": "Earthquake is another root",
+              "atSeconds": 3.8,
+              "durationSeconds": 3.504
+            },
+            {
+              "type": "focus",
+              "label": "Alarm",
+              "selector": ".slide-content [class*='networkNode']",
+              "index": 2,
+              "sourcePhrase": "Both point to Alarm",
+              "atSeconds": 7.354,
+              "durationSeconds": 5.88
+            },
+            {
+              "type": "focus",
+              "label": "JohnCalls",
+              "selector": ".slide-content [class*='networkNode']",
+              "index": 3,
+              "sourcePhrase": "JohnCalls",
+              "atSeconds": 13.284,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "MaryCalls",
+              "selector": ".slide-content [class*='networkNode']",
+              "index": 4,
+              "sourcePhrase": "MaryCalls",
+              "atSeconds": 14.162,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 26.184,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Five-node network",
+              "selector": ".slide-content [role='img']",
+              "index": 0,
+              "sourcePhrase": "five-node story",
+              "atSeconds": 17.5,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 25.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Probabilistic, not automatically causal",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "arrow does not automatically prove causation",
+              "atSeconds": 0.276,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Local CPTs multiply into the complete joint distribution",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 20.424,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "B factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+              "index": 0,
+              "sourcePhrase": "Burglary contributes",
+              "atSeconds": 4.189,
+              "durationSeconds": 1.958
+            },
+            {
+              "type": "focus",
+              "label": "E factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+              "index": 1,
+              "sourcePhrase": "Earthquake contributes",
+              "atSeconds": 6.197,
+              "durationSeconds": 4.458
+            },
+            {
+              "type": "focus",
+              "label": "A factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+              "index": 2,
+              "sourcePhrase": "Alarm contributes",
+              "atSeconds": 10.705,
+              "durationSeconds": 2.955
+            },
+            {
+              "type": "focus",
+              "label": "J factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+              "index": 3,
+              "sourcePhrase": "JohnCalls contributes",
+              "atSeconds": 13.71,
+              "durationSeconds": 3.102
+            },
+            {
+              "type": "focus",
+              "label": "M factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+              "index": 4,
+              "sourcePhrase": "MaryCalls contributes",
+              "atSeconds": 16.862,
+              "durationSeconds": 3.512
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 20.568,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Complete joint",
+              "selector": ".slide-content [class*='jointFactor']",
+              "index": 0,
+              "sourcePhrase": "P of B comma E comma A comma J comma M",
+              "atSeconds": 2.111,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Network factorization",
+              "text": "P(B,E,A,J,M)=P(B)P(E)P(A|B,E)P(J|A)P(M|A)",
+              "route": "center-hold",
+              "durationSeconds": 8.2,
+              "sourcePhrase": "P of B comma E",
+              "atSeconds": 2.111,
+              "centerHoldSeconds": 5.248
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 24.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Parameter savings",
+              "selector": ".slide-content [class*='jointFactor']",
+              "index": 0,
+              "sourcePhrase": "thirty-two rows",
+              "atSeconds": 5.917,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 23.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Inspect each local factor",
+              "selector": "nav[aria-label='Choose a Bayesian-network variable']",
+              "index": 0,
+              "sourcePhrase": "Walk through every control",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Earthquake factor",
+          "durationSeconds": 5.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Earthquake factor",
+              "selector": ".slide-content h3",
+              "index": 0,
+              "sourcePhrase": "Select E. Earthquake is a root, so",
+              "atSeconds": 0.05,
+              "durationSeconds": 5.804
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Alarm factor",
+          "durationSeconds": 7.416,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Alarm factor",
+              "selector": ".slide-content h3",
+              "index": 0,
+              "sourcePhrase": "Select A. Alarm has Burglary and Earthquake",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "John factor",
+          "durationSeconds": 6.384,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "John factor",
+              "selector": ".slide-content h3",
+              "index": 0,
+              "sourcePhrase": "Select J. JohnCalls has only Alarm as",
+              "atSeconds": 0.05,
+              "durationSeconds": 6.284
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Mary factor",
+          "durationSeconds": 9.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Mary factor",
+              "selector": ".slide-content h3",
+              "index": 0,
+              "sourcePhrase": "Select M. MaryCalls likewise contributes P of",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Blocked and opened paths determine which evidence remains relevant",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 16.344,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Conditioning set",
+              "selector": ".search-review-studio li",
+              "index": 4,
+              "sourcePhrase": "conditioning set",
+              "atSeconds": 3.201,
+              "durationSeconds": 2.095
+            },
+            {
+              "type": "focus",
+              "label": "Common cause",
+              "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+              "index": 0,
+              "sourcePhrase": "common cause",
+              "atSeconds": 5.346,
+              "durationSeconds": 3.926
+            },
+            {
+              "type": "focus",
+              "label": "Collider",
+              "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+              "index": 1,
+              "sourcePhrase": "collider",
+              "atSeconds": 9.322,
+              "durationSeconds": 6.972
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 17.04,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Question",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "JohnCalls and MaryCalls",
+              "atSeconds": 1.659,
+              "durationSeconds": 4.355
+            },
+            {
+              "type": "focus",
+              "label": "Claim",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Burglary and Earthquake",
+              "atSeconds": 6.064,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Collider pattern",
+              "text": "B → A ← E",
+              "route": "center-hold",
+              "durationSeconds": 6.349,
+              "sourcePhrase": "collider",
+              "atSeconds": 10.691,
+              "centerHoldSeconds": 4.063
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Explaining away",
+              "selector": ".search-review-studio li",
+              "index": 3,
+              "sourcePhrase": "alarm sounds",
+              "atSeconds": 0.356,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 10.776,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Three d-separation cases",
+              "selector": "nav[aria-label='Choose a graphical-independence case']",
+              "index": 0,
+              "sourcePhrase": "Cycle through all three",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Collider closed",
+          "durationSeconds": 10.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Collider closed",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "Choose Collider closed. Burglary and Earthquake are",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Explaining away",
+          "durationSeconds": 13.8,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Explaining away",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "Choose Explaining away. Observing Alarm opens the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Return to common cause",
+          "durationSeconds": 11.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Return to common cause",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "Return to Common cause. Conditioning on Alarm",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Enumeration sums hidden assignments and normalizes the query distribution",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 22.512,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Choose query and evidence",
+              "selector": ".slide-content ol li",
+              "index": 0,
+              "sourcePhrase": "query is what",
+              "atSeconds": 4.774,
+              "durationSeconds": 4.272
+            },
+            {
+              "type": "focus",
+              "label": "List hidden variables",
+              "selector": ".slide-content ol li",
+              "index": 1,
+              "sourcePhrase": "hidden variables",
+              "atSeconds": 9.096,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 23.064,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Multiply each assignment",
+              "selector": ".slide-content ol li",
+              "index": 2,
+              "sourcePhrase": "enumerate every assignment",
+              "atSeconds": 1.765,
+              "durationSeconds": 6.695
+            },
+            {
+              "type": "focus",
+              "label": "Sum hidden assignments",
+              "selector": ".slide-content ol li",
+              "index": 3,
+              "sourcePhrase": "four products",
+              "atSeconds": 8.51,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 22.032,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Enumeration equation",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "formula P of X given e",
+              "atSeconds": 0.223,
+              "durationSeconds": 2.157
+            },
+            {
+              "type": "popup",
+              "label": "Exact enumeration",
+              "text": "P(X|e)=α Σᵧ ∏ᵢP(xᵢ|paᵢ)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "formula P of X given e",
+              "atSeconds": 0.223,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Normalize",
+              "selector": ".slide-content ol li",
+              "index": 4,
+              "sourcePhrase": "Alpha",
+              "atSeconds": 2.43,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 24.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Identify roles first",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "query, evidence, hidden variables",
+              "atSeconds": 18.83,
+              "durationSeconds": 5.432
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Two calls raise burglary belief, but the low prior still matters",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 27,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Query and evidence",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "P of B equal",
+              "atSeconds": 2.177,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Hidden variables",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Earthquake",
+              "atSeconds": 10.532,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 20.16,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "B=true mass",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "For B true",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Unnormalized B=true",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "zero point zero zero zero five",
+              "atSeconds": 15.119,
+              "durationSeconds": 4.991
+            },
+            {
+              "type": "popup",
+              "label": "Burglary mass",
+              "text": "0.000592243",
+              "route": "center-hold",
+              "durationSeconds": 5.041,
+              "sourcePhrase": "zero point zero zero zero five",
+              "atSeconds": 15.119,
+              "centerHoldSeconds": 3.226
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 18.696,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "B=false mass",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "B false",
+              "atSeconds": 0.715,
+              "durationSeconds": 3.969
+            },
+            {
+              "type": "focus",
+              "label": "Unnormalized B=false",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "zero point zero zero one four",
+              "atSeconds": 4.734,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "No-burglary mass",
+              "text": "0.001491858",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "zero point zero zero one four",
+              "atSeconds": 4.734,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 26.88,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Normalized posterior",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "posterior P of burglary",
+              "atSeconds": 7.779,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Posterior",
+              "text": "P(b|j,m) ≈ 0.284",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "about zero point two eight four",
+              "atSeconds": 10.518,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Expand factors",
+          "durationSeconds": 5.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Expand factors",
+              "selector": ".frontier-queues article",
+              "index": 0,
+              "sourcePhrase": "Click Next to expand the five local",
+              "atSeconds": 0.05,
+              "durationSeconds": 5.564
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Enumerate burglary true",
+          "durationSeconds": 5.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Enumerate burglary true",
+              "selector": ".frontier-queues article",
+              "index": 1,
+              "sourcePhrase": "Click Next to sum the four hidden",
+              "atSeconds": 0.05,
+              "durationSeconds": 5.852
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Enumerate burglary false",
+          "durationSeconds": 9.576,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Enumerate burglary false",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Click Next to compute the larger no-burglary",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Normalize posterior",
+          "durationSeconds": 10.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Normalize posterior",
+              "selector": ".frontier-queues article",
+              "index": 2,
+              "sourcePhrase": "Click Next to normalize both masses. The",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Given the class, treat feature likelihoods as independent factors",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 21.384,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Class",
+              "selector": ".slide-content [class*='classBox']",
+              "index": 0,
+              "sourcePhrase": "class C",
+              "atSeconds": 1.579,
+              "durationSeconds": 1.8
+            },
+            {
+              "type": "focus",
+              "label": "Features",
+              "selector": ".slide-content [class*='featureStack']",
+              "index": 0,
+              "sourcePhrase": "features F one",
+              "atSeconds": 2.364,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Class-conditional factorization",
+              "text": "P(F₁,…,Fₙ|C)≈∏ᵢP(Fᵢ|C)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "naive approximation",
+              "atSeconds": 10.971,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Naive factorization",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "product over i",
+              "atSeconds": 13.298,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 20.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Conditional, not marginal",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "not marginal independence",
+              "atSeconds": 0.462,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 18.984,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Class score",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "classification score",
+              "atSeconds": 0.196,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Naive Bayes score",
+              "text": "score(C)=P(C)∏ᵢP(Fᵢ|C)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "classification score",
+              "atSeconds": 0.196,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Double-counting risk",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "correlated features",
+              "atSeconds": 3.294,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The class prior and feature likelihoods produce a MAP decision",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 21.336,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "MAP rule",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "decision rule",
+              "atSeconds": 0.209,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "MAP",
+              "selector": ".slide-content [class*='scoreCards'] article",
+              "index": 1,
+              "sourcePhrase": "maximum a posteriori",
+              "atSeconds": 11.742,
+              "durationSeconds": 4.418
+            },
+            {
+              "type": "popup",
+              "label": "MAP classifier",
+              "text": "ĉ=argmax_C P(C)∏ᵢP(eᵢ|C)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "maximum a posteriori",
+              "atSeconds": 11.742,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "ML",
+              "selector": ".slide-content [class*='scoreCards'] article",
+              "index": 0,
+              "sourcePhrase": "Maximum likelihood",
+              "atSeconds": 16.21,
+              "durationSeconds": 5.076
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 22.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Class prior",
+              "selector": ".slide-content [class*='scoreCards'] article",
+              "index": 1,
+              "sourcePhrase": "prior acts",
+              "atSeconds": 0.209,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 18.6,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Compute in log space",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "log scores",
+              "atSeconds": 7.726,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Stable computation",
+              "text": "log P(C)+Σᵢ log P(eᵢ|C)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "log scores",
+              "atSeconds": 7.726,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 20.472,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Avoid underflow",
+              "selector": ".slide-content section li",
+              "index": 2,
+              "sourcePhrase": "smoothing",
+              "atSeconds": 4.558,
+              "durationSeconds": 4.089
+            },
+            {
+              "type": "focus",
+              "label": "Reproducible specification",
+              "selector": ".slide-content section li",
+              "index": 0,
+              "sourcePhrase": "Report the likelihood model",
+              "atSeconds": 8.697,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Training estimates local probabilities; testing compares class scores",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 15.576,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Training data",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 0,
+              "sourcePhrase": "Training counts classes",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Score",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 2,
+              "sourcePhrase": "Testing plugs",
+              "atSeconds": 8.564,
+              "durationSeconds": 4.138
+            },
+            {
+              "type": "focus",
+              "label": "Decide",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 3,
+              "sourcePhrase": "compares posterior",
+              "atSeconds": 12.752,
+              "durationSeconds": 2.774
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 16.704,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Likelihood variants",
+              "selector": ".slide-content section li",
+              "index": 0,
+              "sourcePhrase": "Gaussian",
+              "atSeconds": 3.165,
+              "durationSeconds": 3.58
+            },
+            {
+              "type": "focus",
+              "label": "Feature model",
+              "selector": ".slide-content section li",
+              "index": 1,
+              "sourcePhrase": "multinomial",
+              "atSeconds": 6.795,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 14.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Specify the variant",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "family name",
+              "atSeconds": 1.965,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 13.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Evaluate calibration and errors",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "held-out data",
+              "atSeconds": 0.396,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A probabilistic finite-state acceptor models alternative phone paths",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 13.248,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Phone-state paths",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "phone graph",
+              "atSeconds": 0.236,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Not Naive Bayes",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "not itself evidence",
+              "atSeconds": 8.657,
+              "durationSeconds": 4.541
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 13.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Sequence structure",
+              "selector": ".slide-content figure img",
+              "index": 0,
+              "sourcePhrase": "Each state summarizes position",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 13.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Order matters",
+              "selector": ".slide-content figure",
+              "index": 0,
+              "sourcePhrase": "route planning",
+              "atSeconds": 1.1,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 14.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Representation determines the model",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "Name the model",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "A common word can outrank a perfect phone match",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 21.36,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Bayes score",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "Bayes",
+              "atSeconds": 1.845,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Word posterior",
+              "text": "P(word|[ni])∝P([ni]|word)P(word)",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "P of word given",
+              "atSeconds": 2.177,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Corpus prior table",
+              "selector": ".slide-content table",
+              "index": 0,
+              "sourcePhrase": "first factor",
+              "atSeconds": 9.175,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 25.584,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "knee prior",
+              "selector": ".slide-content table tbody tr",
+              "index": 0,
+              "sourcePhrase": "Knee appears",
+              "atSeconds": 2.3,
+              "durationSeconds": 6.347
+            },
+            {
+              "type": "focus",
+              "label": "need prior",
+              "selector": ".slide-content table tbody tr",
+              "index": 3,
+              "sourcePhrase": "Need appears",
+              "atSeconds": 8.697,
+              "durationSeconds": 3.726
+            },
+            {
+              "type": "focus",
+              "label": "new prior",
+              "selector": ".slide-content table tbody tr",
+              "index": 4,
+              "sourcePhrase": "new",
+              "atSeconds": 12.473,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "the prior",
+              "selector": ".slide-content table tbody tr",
+              "index": 1,
+              "sourcePhrase": "high prior cannot rescue",
+              "atSeconds": 20.04,
+              "durationSeconds": 5.494
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 22.2,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Prior versus likelihood",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "perfect local phone match",
+              "atSeconds": 0.183,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 20.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Predict the winner",
+              "selector": ".slide-content section li",
+              "index": 2,
+              "sourcePhrase": "Predict",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Phone-only decoding selects “new”; word context favors “need”",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 27.936,
+          "cueCount": 5,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "new product",
+              "selector": ".slide-content table tbody tr",
+              "index": 0,
+              "sourcePhrase": "New scores",
+              "atSeconds": 4.109,
+              "durationSeconds": 6.679
+            },
+            {
+              "type": "focus",
+              "label": "the product",
+              "selector": ".slide-content table tbody tr",
+              "index": 4,
+              "sourcePhrase": "the",
+              "atSeconds": 10.838,
+              "durationSeconds": 2.676
+            },
+            {
+              "type": "focus",
+              "label": "neat product",
+              "selector": ".slide-content table tbody tr",
+              "index": 1,
+              "sourcePhrase": "Neat yields",
+              "atSeconds": 13.564,
+              "durationSeconds": 3.766
+            },
+            {
+              "type": "focus",
+              "label": "need product",
+              "selector": ".slide-content table tbody tr",
+              "index": 2,
+              "sourcePhrase": "need",
+              "atSeconds": 17.38,
+              "durationSeconds": 3.288
+            },
+            {
+              "type": "focus",
+              "label": "knee product",
+              "selector": ".slide-content table tbody tr",
+              "index": 3,
+              "sourcePhrase": "knee",
+              "atSeconds": 20.718,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 15.768,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Local winner: new",
+              "selector": ".slide-content section h3",
+              "index": 0,
+              "sourcePhrase": "local winner",
+              "atSeconds": 0.223,
+              "durationSeconds": 3.716
+            },
+            {
+              "type": "popup",
+              "label": "Phone-only result",
+              "text": "new: 0.00036",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "local winner",
+              "atSeconds": 0.223,
+              "centerHoldSeconds": 4.224
+            },
+            {
+              "type": "focus",
+              "label": "Perfect but rare",
+              "selector": ".slide-content table tbody tr",
+              "index": 3,
+              "sourcePhrase": "perfect phone likelihood",
+              "atSeconds": 3.989,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 23.616,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Context favors need",
+              "selector": ".slide-content section",
+              "index": 0,
+              "sourcePhrase": "I need",
+              "atSeconds": 2.044,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Context repair",
+              "text": "I need ✓   I new ✗",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "I need",
+              "atSeconds": 2.044,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 22.632,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Add a language model",
+              "selector": ".slide-content [class*='callout'], .slide-content aside",
+              "index": 0,
+              "sourcePhrase": "repair is representational",
+              "atSeconds": 0.223,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Naive Bayes is efficient, but the variant and dependencies matter",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 14.136,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Efficient",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 0,
+              "sourcePhrase": "trains quickly",
+              "atSeconds": 0.941,
+              "durationSeconds": 4.923
+            },
+            {
+              "type": "focus",
+              "label": "Incremental",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 1,
+              "sourcePhrase": "streaming",
+              "atSeconds": 5.914,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Naive Bayes variants",
+              "text": "Gaussian · Multinomial · Bernoulli · Categorical",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "different likelihood variants",
+              "atSeconds": 6.991,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 15.648,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Dependence risk",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 2,
+              "sourcePhrase": "dependence",
+              "atSeconds": 1.14,
+              "durationSeconds": 7
+            },
+            {
+              "type": "focus",
+              "label": "Calibration risk",
+              "selector": ".slide-content [class*='rules'] article",
+              "index": 3,
+              "sourcePhrase": "overconfident scores",
+              "atSeconds": 10.997,
+              "durationSeconds": 4.601
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 15.912,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Weak features are not harmless",
+              "selector": ".slide-content [class*='formula']",
+              "index": 0,
+              "sourcePhrase": "Irrelevant features",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Qualify the claim",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "Compare variants",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A useful shortcut must state exactly what it assumes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 13.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit four claims",
+              "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim']",
+              "index": 0,
+              "sourcePhrase": "four tempting claims",
+              "atSeconds": 1.074,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 16.56,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Correct the claim",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "conditional, not marginal",
+              "atSeconds": 0.901,
+              "durationSeconds": 7
+            },
+            {
+              "type": "popup",
+              "label": "Correct assumption",
+              "text": "Fᵢ ⟂ Fⱼ | C",
+              "route": "center-hold",
+              "durationSeconds": 6.6,
+              "sourcePhrase": "conditional, not marginal",
+              "atSeconds": 0.901,
+              "centerHoldSeconds": 4.224
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 14.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Claim under review",
+              "selector": ".search-review-studio li",
+              "index": 1,
+              "sourcePhrase": "code review for equations",
+              "atSeconds": 1.074,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 12.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Run every case",
+              "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim']",
+              "index": 0,
+              "sourcePhrase": "Cycle through all four",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Audit decision",
+          "durationSeconds": 8.928,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit decision",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Choose Decision. With a class prior included,",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Audit parameters",
+          "durationSeconds": 10.704,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit parameters",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Choose Parameters. Only Gaussian Naive Bayes estimates",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Audit robustness",
+          "durationSeconds": 10.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Audit robustness",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Choose Robustness. Correlated or duplicated features can",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Return to assumption",
+          "durationSeconds": 9.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Return to assumption",
+              "selector": ".search-review-studio li",
+              "index": 2,
+              "sourcePhrase": "Return to Assumption. Features are conditionally independent",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Factor, query, classify—and defend every independence claim",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept",
+          "durationSeconds": 18.192,
+          "cueCount": 4,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Factor",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 0,
+              "sourcePhrase": "Independence and conditional independence",
+              "atSeconds": 3.816,
+              "durationSeconds": 4.777
+            },
+            {
+              "type": "focus",
+              "label": "Represent",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 1,
+              "sourcePhrase": "Bayesian networks",
+              "atSeconds": 8.643,
+              "durationSeconds": 2.849
+            },
+            {
+              "type": "focus",
+              "label": "Query",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 2,
+              "sourcePhrase": "inference",
+              "atSeconds": 11.542,
+              "durationSeconds": 2.144
+            },
+            {
+              "type": "focus",
+              "label": "Classify",
+              "selector": ".slide-content [class*='timeline'] article",
+              "index": 3,
+              "sourcePhrase": "Naive Bayes",
+              "atSeconds": 13.736,
+              "durationSeconds": 4.406
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Mechanism",
+          "durationSeconds": 16.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Exit ticket",
+              "selector": ".slide-content section",
+              "index": 1,
+              "sourcePhrase": "complete explanation",
+              "atSeconds": 0.183,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Example and metaphor",
+          "durationSeconds": 18.72,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Four-part response",
+              "selector": ".slide-content section ol",
+              "index": 0,
+              "sourcePhrase": "assumption accounting",
+              "atSeconds": 1.3,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Boundary and transfer",
+          "durationSeconds": 16.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer checklist",
+              "selector": ".slide-content section ol",
+              "index": 0,
+              "sourcePhrase": "four abilities",
+              "atSeconds": 0.648,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

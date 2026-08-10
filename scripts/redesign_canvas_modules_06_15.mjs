@@ -6,20 +6,21 @@ const BASE="https://csufullerton.instructure.com";
 const SITE="https://cpsc481-introduction-to-ai.winniechef.chatgpt.site";
 const TOKEN_FILE=path.resolve("..","Canvas API.txt");
 const apply=process.argv.includes("--apply");
+if(apply)throw new Error("This page-only redesign script is retired because it removes PDFs, videos, quizzes, and discussions. Use scripts/apply_canvas_module9_10_restructure.mjs --apply.");
 const version=(process.argv.find(x=>x.startsWith("--version="))?.split("=")[1]||"2026-08-01").replace(/[^a-zA-Z0-9._-]/g,"-");
 const token=fs.readFileSync(TOKEN_FILE,"utf8").split(/\r?\n/).map(x=>x.trim()).filter(Boolean).at(-1);
 if(!token) throw new Error("Canvas token not found");
 
 const modules=[
  [1,"Module 1: course overview and prerequisites"],[2,"Module 2: L01-Introduction"],[3,"Module 3: L02-State Space Search"],[4,"Module 4: L03-Heuristic, HillClimbing&SA"],[5,"Module 5: L04-BFS&AStar"],
- [6,"Module 6: Evolutionary Computation, Genetic Programming, and Artificial Life"],[7,"Module 7: Midterm Review"],[8,"Module 8: Midterm Exam"],[9,"Module 9: AI Literacy and AAB Evidence"],[10,"Module 10: Reasoning Under Uncertainty"],[11,"Module 11: Machine Learning Foundations"],[12,"Module 12: Applied Machine Learning and Neural Networks"],[13,"Module 13: Transformers and Large Language Models"],[14,"Module 14: Retrieval-Augmented Generation"],[15,"Module 15: Final Review"],[16,"Final Exam"],
+ [6,"Module 6: Evolutionary Computation, Genetic Programming, and Artificial Life"],[7,"Module 7: Midterm Review"],[8,"Module 8: Midterm Exam"],[9,"Module 9: Reasoning Under Uncertainty"],[10,"Module 10: Sequential Decision-Making and Reinforcement Learning"],[11,"Module 11: Machine Learning Foundations"],[12,"Module 12: Applied Machine Learning and Neural Networks"],[13,"Module 13: Transformers and Large Language Models"],[14,"Module 14: Retrieval-Augmented Generation"],[15,"Module 15: Final Review"],[16,"Final Exam"],
 ];
 
 const lessons=[
  [1,2,"AI Applications, History, Intelligence, and Definitions","Lesson 1:"],[2,2,"Agents, Task Environments, Agent Types, and the Turing Test","Lesson 2:"],[3,3,"Problem Formulation and Breadth-First Search","Lesson 3:"],[4,3,"Depth-First, Uniform-Cost, and Search Evaluation","Lesson 4:"],[5,4,"Heuristic Functions, Hill Climbing, and Simulated Annealing","Lesson 5:"],[6,4,"Best-First Search, A*, and Heuristic Quality","Lesson 6:"],[7,5,"Game Trees, Minimax, and Evaluation Functions","Lesson 7:"],[8,5,"Alpha-Beta Pruning and Modern Game Search","Lesson 8:"],
  [9,6,"Evolutionary Computation and Genetic Algorithms",null],[10,6,"Genetic Programming, Artificial Life, and Swarm Intelligence",null],
- [11,9,"AAB Evidence Practicum: Finding and Reviewing Research","Meeting 25:"],[12,9,"AI Literacy: Explaining AI to Nontechnical Audiences Age Five and Older","Meeting 26:"],
- [13,10,"Probability Foundations, Conditional Probability, and Bayes Rule","Meeting 09:"],[14,10,"Independence, Naive Bayes, and Bayesian Networks","Meeting 10:"],
+ [11,9,"Probability Foundations and Bayesian Inference","Meeting 09:"],[12,9,"Conditional Independence, Bayesian Networks, and Naive Bayes","Meeting 10:"],
+ [13,10,"Markov Decision Processes, Policies, and Value Iteration","Meeting 11:"],[14,10,"Reinforcement Learning, Q-Learning, and Exploration","Meeting 12:"],
  [15,11,"Machine Learning Foundations and Concept Learning","Meeting 13:"],[16,11,"Decision Trees, ID3, and Evaluation","Meeting 14:"],
  [17,12,"Applied Machine Learning: Pipelines, Validation, and Error Analysis","Meeting 15:"],[18,12,"Neural Networks: Foundations, Training, and Evaluation","Meeting 17:"],
  [19,13,"Tokens, Embeddings, Attention, and Transformer Architecture","Meeting 19:"],[20,13,"LLM Training, Structured Outputs, Hallucination, and Verification","Meeting 20:"],

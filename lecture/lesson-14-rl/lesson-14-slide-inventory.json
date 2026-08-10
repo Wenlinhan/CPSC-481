@@ -1,0 +1,405 @@
+{
+  "route": "/lessons/14",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Learn by acting, observing consequences, and revising a policy",
+      "text": "75-MINUTE MEETING Interaction → return → value → control Trial and error motivates the mathematical machinery we will make visible through one small environment. 01 Agent select an action → 02 World changes state → 03 Reward scores consequence ↻",
+      "buttons": []
+    },
+    {
+      "number": 2,
+      "title": "The source establishes trial-and-error, feedback, reward, policy, and exploration",
+      "text": "COURSE-SOURCE RECONSTRUCTION · PAGE 30 Reinforcement learning trial and error feedback as reward policy connects situations to actions maximize cumulative reward exploration discovers useful actions Trial and error, cumulative reward, exploration, and disciplinary connections. READ THE SOURCE AS EVIDENCE Five durable knowledge points The agent learns through trial and error. Feedback arrives as reward, not a labeled correct action. A policy connects situations to actions. Performance concerns cumulative reward. Exploration produces the experience used to learn.",
+      "buttons": []
+    },
+    {
+      "number": 3,
+      "title": "Reinforcement learning seeks high expected return; optimality is not automatic",
+      "text": "SOURCE WORDING “learns an optimal policy” The phrase names the objective but can sound like a guarantee. → COURSE FORMULATION learn a policy that maximizes expected return Reaching an optimum depends on representation, exploration, data, algorithm assumptions, and whether function approximation is used. SECOND QUALIFICATION A large or unknown environment can motivate model-free RL, but size alone does not make RL successful or sample-efficient.",
+      "buttons": []
+    },
+    {
+      "number": 4,
+      "title": "Games and elevator control show why action-dependent experience matters",
+      "text": "♟ ♙ ♜ ♔ GAME PLAYING Too many states for a hand-written rule per position Agents can learn through play against humans or other agents. 4 3 2 1 CONTROL Scheduling balances waiting time and changing demand Simulation supports retraining when operating conditions change.",
+      "buttons": []
+    },
+    {
+      "number": 5,
+      "title": "The source contrasts batch learning with incremental online learning",
+      "text": "COURSE-SOURCE RECONSTRUCTION · PAGE 32 Batch learning compared with online learning Batch: observe a fixed training set, learn once, then predict Online: observe a sequence, update incrementally, then predict again The true response can trigger the next update data → model → prediction → response ↺ update Batch and online learning compared through a complete prediction-and-update pipeline.",
+      "buttons": []
+    },
+    {
+      "number": 6,
+      "title": "Online updating and reinforcement learning can overlap—but answer different questions",
+      "text": "Exact image25.png · copied byte-for-byte from the authoritative PowerPoint. CLICK IMAGE TO ENLARGE ONLINE LEARNING ASKS When is the model updated? Incrementally as examples arrive, rather than from one fixed batch. REINFORCEMENT LEARNING ASKS How should an agent act under reward and delayed consequences? Actions change future states and therefore change the data observed. NOT SYNONYMS RL may be online or offline. Online learning may use labeled responses without choosing actions in an environment.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "",
+          "ariaLabel": "Enlarge: Exact embedded source figure comparing batch and online learning",
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "The source places reinforcement learning inside a broader learning taxonomy",
+      "text": "COURSE-SOURCE RECONSTRUCTION · PAGE 33 Categories of machine learning symbolic and non-symbolic supervised and unsupervised batch and online analogical, deep, reinforcement, and hybrid learning Exact PowerPoint export · including the online/RL comparison and the note that RL is important to robots.",
+      "buttons": []
+    },
+    {
+      "number": 8,
+      "title": "Incremental updating is a schedule; reinforcement learning is a decision problem",
+      "text": "DIMENSION 1 Feedback labels · structure · reward DIMENSION 2 Update schedule batch · online · offline replay DIMENSION 3 Representation symbolic · statistical · neural · hybrid DIMENSION 4 Decision setting prediction · sequential control · planning One system can occupy one position on every dimension. An RL robot may update online, use a neural Q-function, and learn from delayed reward.",
+      "buttons": []
+    },
+    {
+      "number": 9,
+      "title": "An MDP names the pieces hidden inside the source’s words “agent,” “environment,” and “policy”",
+      "text": "MARKOV DECISION PROCESS ⟨S, A, P, R, γ⟩ The current state must contain the information needed to predict the next transition under an action. S States situations the agent can distinguish A Actions choices available to the agent P Dynamics P(s′|s,a), possibly unknown R Reward immediate scalar feedback γ Discount weight on later rewards",
+      "buttons": []
+    },
+    {
+      "number": 10,
+      "title": "A reward labels a consequence—not the action the agent should have taken",
+      "text": "Agent policy + learner aₜ → ← rₜ₊₁ ← sₜ₊₁ Environment dynamics + reward 1 2 3 4 5 OBSERVE sₜ The agent receives a representation of the current situation.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "Agentpolicy + learner",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 1,
+          "text": "aₜ →",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "← rₜ₊₁",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 3,
+          "text": "← sₜ₊₁",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 4,
+          "text": "Environmentdynamics + reward",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 5,
+          "text": "1",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 6,
+          "text": "2",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 7,
+          "text": "3",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 8,
+          "text": "4",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 9,
+          "text": "5",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Learning data are ordered transitions, not shuffled input–label pairs",
+      "text": "s₀ lobby → a₀ go up → r₁ −1 → s₁ floor 2 → a₁ serve call → r₂ +5 → s₂ terminal TRAJECTORY s₀,a₀,r₁,s₁,… One ordered sequence of interaction. EPISODE start → terminal A finite trajectory with a natural ending. CONTINUING TASK Elevator control may have no terminal state; discounting or an average-reward objective can keep the return well-defined.",
+      "buttons": []
+    },
+    {
+      "number": 12,
+      "title": "Return converts a stream of future rewards into one learning target",
+      "text": "DISCOUNTED RETURN FROM TIME T Gₜ = rₜ₊₁ + γrₜ₊₂ + γ²rₜ₊₃ + ··· γ ∈ [0,1] controls how strongly delayed rewards influence the present. γ = 0 Only the immediate reward matters. 0 < γ < 1 Later rewards count, but with diminishing weight. γ = 1 All rewards count equally; use safely for finite episodes. OBJECTIVE A policy is evaluated by expected return, because trajectories and rewards may be stochastic.",
+      "buttons": []
+    },
+    {
+      "number": 13,
+      "title": "The same reward sequence supports different preferences as γ changes",
+      "text": "TRAJECTORY REWARDS t −1 step cost → t+1 0 move → t+2 +10 goal CHOOSE Γ 0.0 0.5 0.9 1.0 Gₜ = −1 + 0.9(0) + 0.9²(10) Gₜ = 7.10 Smaller γ values place less weight on the delayed goal reward.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "0.0",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 1,
+          "text": "0.5",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "0.9",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 3,
+          "text": "1.0",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "A policy chooses; value functions predict long-run consequences",
+      "text": "POLICY π(a|s) A distribution over actions in state s. What will the agent do? STATE VALUE Vπ(s)=Eπ[Gₜ|sₜ=s] Expected return from a state under policy π. How good is this situation? ACTION VALUE Qπ(s,a)=Eπ[Gₜ|sₜ=s,aₜ=a] Expected return after taking action a, then following π. How good is this choice here? Control idea If Q is accurate, choose an action with the largest Q(s,a)—while retaining enough exploration to improve the estimates.",
+      "buttons": []
+    },
+    {
+      "number": 15,
+      "title": "A bandit reveals the exploration–exploitation conflict without state transitions",
+      "text": "THREE UNKNOWN REWARD SOURCES Which arm should receive the next trial? Pulling an arm both earns a reward and produces evidence about that action. Reset evidence Arm A Q̂ = ? 0 reward / 0 pulls Arm B Q̂ = ? 0 reward / 0 pulls Arm C Q̂ = ? 0 reward / 0 pulls Start with uncertainty. A greedy policy has no evidence yet.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "Reset evidence",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 1,
+          "text": "Arm AQ̂ = ?0 reward / 0 pulls",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "Arm BQ̂ = ?0 reward / 0 pulls",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 3,
+          "text": "Arm CQ̂ = ?0 reward / 0 pulls",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Exploit the current estimate most of the time; explore with probability ε",
+      "text": "ε = 0 ε = 0.1 ε = 0.5 MOSTLY EXPLOIT 20 illustrative decisions About 10% of decisions explore; all actions retain some chance of being sampled. Ε-GREEDY RULE With probability 1−ε choose an action with maximal Q(s,a); with probability ε choose an action at random.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "ε = 0",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 1,
+          "text": "ε = 0.1",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 2,
+          "text": "ε = 0.5",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Q-learning moves one stored value toward a bootstrapped one-step target",
+      "text": "OFF-POLICY TEMPORAL-DIFFERENCE CONTROL Q(s,a) ← Q(s,a) + α[r + γ maxₐ′Q(s′,a′) − Q(s,a)] α learning rate how far to move toward this sample target r reward immediate feedback from the transition γ discount weight on the successor estimate max Q′ bootstrap estimated value of the greedy next action SOURCE BOUNDARY The historical speaker note contains only the term “Q-Learning.” This equation, its terms, and the derivation are textbook supplements.",
+      "buttons": []
+    },
+    {
+      "number": 18,
+      "title": "Compute target, error, and update as three separate quantities",
+      "text": "TRANSITION SAMPLE (s, a, r, s′) Q(s,a) 2.00 r −1 γ 0.9 max Q(s′,·) 5.00 α 0.2 STEP 1 OF 4 · CURRENT ESTIMATE Q(s,a) = 2.00 This is the value stored before the transition. Previous Next Reset",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "Previous",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 1,
+          "text": "Next",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "Reset",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Repeated transitions propagate goal reward backward through a Q-table",
+      "text": "3 × 3 CLASSROOM ENVIRONMENT Start −10 +10 1 2 3 4 BEFORE EXPERIENCE Q(Start, ·) ↑ 0.0 → 0.0 ↓ 0.0 ← 0.0 All four action values at the start are tied.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "1",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 1,
+          "text": "2",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "3",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 3,
+          "text": "4",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Q-learning alternates behavior, observation, and one local table update",
+      "text": "Initialize Q(s,a), usually to zero or optimistic values. Observe the current state s. Select a using a behavior policy such as ε-greedy. Execute a; observe reward r and successor s′. Update Q(s,a) toward r + γ maxₐ′Q(s′,a′). Set s ← s′; repeat until terminal, then start another episode. SEPARATE TWO POLICIES Behavior explores; target is greedy Q-learning is off-policy because the update evaluates the greedy target even when the sampled behavior action was exploratory. TABULAR BOUNDARY One table entry per state-action pair is feasible only when the discrete space is small enough to enumerate.",
+      "buttons": []
+    },
+    {
+      "number": 21,
+      "title": "The next-action term determines whether learning is off-policy or on-policy",
+      "text": "Q-learning SARSA OFF-POLICY r + γ maxₐ′ Q(s′,a′) Target asks: What would the greedy policy do next? LEARNING CONSEQUENCE Backs up the best estimated next action even if exploration selects another action. Both are one-step temporal-difference control methods. The only symbol that changes in the target is enough to change which policy is evaluated.",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "Q-learning",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 1,
+          "text": "SARSA",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "A high training reward can coexist with poor, unsafe, or brittle behavior",
+      "text": "01 Sample cost Interaction can be slow, expensive, or dangerous. 02 Reward hacking The agent exploits the measured proxy rather than the intended goal. 03 Instability Bootstrapping, off-policy data, and function approximation can interact badly. 04 Distribution shift A policy learned in simulation may fail under changed dynamics. 05 Exploration risk Trying unknown actions may be unacceptable in real systems. 06 Evaluation Use held-out scenarios, baselines, variance, and safety constraints—not one best run. Design question For elevator control, what measurable reward could reduce waiting without producing unsafe or unfair service?",
+      "buttons": []
+    },
+    {
+      "number": 23,
+      "title": "Use the formal objects—not intuition alone—to justify each answer",
+      "text": "Return Update Policy Diagnosis PAIR PRACTICE · CASE 1 Rewards are 2, 0, 8 and γ=0.5. Compute G₀. Show the exponent attached to each delayed reward. Reveal solution",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "Return",
+          "ariaLabel": null,
+          "className": "active"
+        },
+        {
+          "index": 1,
+          "text": "Update",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "Policy",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 3,
+          "text": "Diagnosis",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 4,
+          "text": "Reveal solution",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Which statement correctly distinguishes reinforcement learning from online supervised learning?",
+      "text": "CHECK FOR UNDERSTANDING Choose the strongest distinction. Commit to an answer, then defend the representation or search rule. A RL always updates online; supervised learning always trains in batches. B RL actions affect future data and rewards may be delayed; online supervised learning can update from arriving labeled examples without controlling the data source. C RL has no model, while supervised learning always has an explicit model. D The two methods differ only in vocabulary. SUBMIT BEFORE LEAVING Write the Q-learning target for one transition. Compute the update when Q=0, r=2, γ=0.5, max Q′=4, α=0.25. Name one risk that reward alone may fail to represent. Check value: new Q = 1.00",
+      "buttons": [
+        {
+          "index": 0,
+          "text": "ARL always updates online; supervised learning always trains in batches.",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 1,
+          "text": "BRL actions affect future data and rewards may be delayed; online supervised learning can update from arriving labeled examples without controlling the data source.",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 2,
+          "text": "CRL has no model, while supervised learning always has an explicit model.",
+          "ariaLabel": null,
+          "className": ""
+        },
+        {
+          "index": 3,
+          "text": "DThe two methods differ only in vocabulary.",
+          "ariaLabel": null,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Connect the course references to reinforcement-learning control",
+      "text": "COURSE-SOURCE RECONSTRUCTION · PAGE 36 Course references Luger, Artificial Intelligence, 6th ed. Russell and Norvig, Artificial Intelligence: A Modern Approach, 3rd ed. Course slides and speaker-note applications Exact PowerPoint export · source misspellings remain visible as historical evidence. CORRECTED COURSE READING LIST George F. Luger, Artificial Intelligence: Structures and Strategies for Complex Problem Solving, 6th ed., Chapters 10 and 12. Tom M. Mitchell, Machine Learning, Chapter 13. Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach, 3rd ed., Chapter 21. EXIT SYNTHESIS In one paragraph, connect interaction → return → Q update → policy improvement, and identify where exploration enters.",
+      "buttons": []
+    }
+  ]
+}

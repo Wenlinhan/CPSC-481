@@ -1,0 +1,2943 @@
+{
+  "version": 1,
+  "lesson": "12",
+  "meeting": "12",
+  "course": "CPSC 481: Introduction to Artificial Intelligence",
+  "title": "Lesson 12: Conditional Independence, Bayesian Networks, and Naive Bayes",
+  "route": "/lessons/12",
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Conditional Independence, Bayesian Networks, and Naive Bayes",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "We are moving from raw probability tables to structured probability models. The central question is which variables still matter after the right evidence is known. Independence removes factors globally; conditional independence removes them only inside a stated context.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "which variables still matter",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Driving question"
+              },
+              {
+                "phrase": "Independence removes factors",
+                "selector": ".slide-content article",
+                "index": 0,
+                "label": "Independence"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Bayesian networks turn local conditional-independence claims into a directed acyclic graph plus compact local tables. Inference then multiplies those local factors, sums hidden variables, and normalizes. Naive Bayes uses an especially strong version of this idea for fast classification.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Bayesian networks turn local",
+                "selector": ".slide-content article",
+                "index": 1,
+                "label": "Bayesian network"
+              },
+              {
+                "phrase": "Inference then multiplies",
+                "selector": ".slide-content article",
+                "index": 2,
+                "label": "Inference"
+              },
+              {
+                "phrase": "Naive Bayes uses",
+                "selector": ".slide-content article",
+                "index": 3,
+                "label": "Naive Bayes"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Think of a crowded group chat. A rumor may connect everyone until the original announcement is revealed; after that, some messages add no new information. The conditioning variable is the announcement, not a magical delete button.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "crowded group chat",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Conditioning context"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "crowded group chat",
+                "type": "emoji",
+                "label": "Conditioning changes relevance",
+                "emoji": "💬",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "By the end, you should be able to test independence, read a network factorization, trace exact enumeration, compute a Naive Bayes score, and defend every simplifying assumption. A graph is a model claim, not decorative arrow confetti.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "test independence",
+                "selector": ".slide-content article",
+                "index": 0,
+                "label": "Test"
+              },
+              {
+                "phrase": "read a network factorization",
+                "selector": ".slide-content article",
+                "index": 1,
+                "label": "Represent"
+              },
+              {
+                "phrase": "trace exact enumeration",
+                "selector": ".slide-content article",
+                "index": 2,
+                "label": "Query"
+              },
+              {
+                "phrase": "compute a Naive Bayes score",
+                "selector": ".slide-content article",
+                "index": 3,
+                "label": "Classify"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Independence means learning Y does not change belief about X",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Independence is a statement about a probability distribution, not a statement that two English words sound unrelated. Start with X independent of Y, written X perpendicular to Y. The first conditional form says P of x given y equals P of x whenever P of y is positive. In plain language, learning y does not move our belief about x. The positive-denominator condition matters because conditioning on an impossible event is undefined, not mysterious.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "X independent of Y",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "X independent of Y"
+              },
+              {
+                "phrase": "P of x given y equals P of x",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 0,
+                "label": "P(x|y)=P(x)"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "X independent of Y",
+                "type": "popup",
+                "label": "Independence",
+                "text": "X ⟂ Y",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The second form reverses the roles: P of y given x equals P of y. The third form removes conditioning entirely: P of x and y equals P of x times P of y for every pair x comma y. To see the equivalence, substitute the product rule P of x and y equals P of x given y times P of y. If the conditional is unchanged, replace P of x given y with P of x, and the factorized joint appears. Divide the factorized joint by P of y and the conditional form returns.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "second form reverses",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 1,
+                "label": "P(y|x)=P(y)"
+              },
+              {
+                "phrase": "third form removes",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 2,
+                "label": "P(x,y)=P(x)P(y)"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "third form removes",
+                "type": "popup",
+                "label": "Joint factorization",
+                "text": "P(x,y)=P(x)P(y)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "For a finite table, independence is an all-cells claim. Imagine a quality inspector checking a carton of eggs: one cracked egg disproves 'all intact,' while one intact egg proves almost nothing. Likewise, a single cell where P of x comma y differs from P of x times P of y disproves independence. Establishing independence requires the equality for every assignment, subject to ordinary rounding tolerance when probabilities are estimated.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "all-cells claim",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Test every cell"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "carton of eggs",
+                "type": "emoji",
+                "label": "One crack disproves all-intact",
+                "emoji": "🥚",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Exact independence is often rare in empirical data, so distinguish three positions: mathematically independent in the specified distribution, approximately independent for a decision tolerance, or simply assumed independent for tractability. A professional report states which position it takes and what evidence could overturn it. The symbol is compact; the burden of justification is not.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "A professional report states",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Modeling caution"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Factorization replaces one joint table with smaller distributions",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Factorization is a compression rule. Without assumptions, a joint distribution over n binary variables assigns probability mass to two to the n complete assignments. With mutual independence, the joint becomes the product over i of P of X sub i, so a complete row can be reconstructed by multiplying one local probability from each variable.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "two to the n complete assignments",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 0,
+                "label": "2ⁿ joint rows"
+              },
+              {
+                "phrase": "product over i",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Factorized joint"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "product over i",
+                "type": "popup",
+                "label": "Mutual independence",
+                "text": "P(X₁,…,Xₙ)=∏ᵢP(Xᵢ)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The storage comparison on screen is two to the n joint rows versus two n marginal entries. For twenty binary variables, that is one million forty-eight thousand five hundred seventy-six joint rows versus forty marginal entries. That dramatic reduction is why independence is computationally tempting. It is also why an unjustified independence assumption can be dramatically wrong: one small sentence controls an enormous number of reconstructed cells.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "two to the n joint rows",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 0,
+                "label": "2ⁿ rows"
+              },
+              {
+                "phrase": "two n marginal entries",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 1,
+                "label": "2n entries"
+              },
+              {
+                "phrase": "one million forty-eight thousand",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Storage savings"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Think of a restaurant menu. Listing every possible meal combination grows explosively. If drink, side, and dessert choices are independent, we store three short menus and combine them. But if the soup always comes with bread, multiplying separate menus invents orders the kitchen never serves. Factorization saves representation by asserting regularity; it does not manufacture truth.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "restaurant menu",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Combination metaphor"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "restaurant menu",
+                "type": "emoji",
+                "label": "Factorization is a compact menu",
+                "emoji": "🍽️",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The universal quantifier is the guardrail: every assignment must satisfy the product equality. Before accepting the compressed representation, test the assumption, measure approximation error, and ask whether mistakes affect the downstream decision. Saving memory is useful; saving memory by forgetting dependence is less charming.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "universal quantifier",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 2,
+                "label": "For every assignment"
+              },
+              {
+                "phrase": "test the assumption",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Ask before factoring"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "One mismatched cell disproves independence",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "We now test three tables, not three vibes. The rightmost table is the product model P of T times P of W. From the displayed marginals, P of hot is point five, P of cold is point five, P of sun is point six, and P of rain is point four. Multiplication predicts four cells: hot-sun point three, hot-rain point two, cold-sun point three, and cold-rain point two.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "rightmost table",
+                "selector": ".slide-content table",
+                "index": 2,
+                "label": "P(T)P(W)"
+              },
+              {
+                "phrase": "hot-sun point three",
+                "selector": ".slide-content table tbody tr",
+                "index": 8,
+                "label": "Predicted hot, sun"
+              },
+              {
+                "phrase": "hot-rain point two",
+                "selector": ".slide-content table tbody tr",
+                "index": 9,
+                "label": "Predicted hot, rain"
+              },
+              {
+                "phrase": "cold-sun point three",
+                "selector": ".slide-content table tbody tr",
+                "index": 10,
+                "label": "Predicted cold, sun"
+              },
+              {
+                "phrase": "cold-rain point two",
+                "selector": ".slide-content table tbody tr",
+                "index": 11,
+                "label": "Predicted cold, rain"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Multiplication predicts four cells",
+                "type": "popup",
+                "label": "First predicted cell",
+                "text": "0.5 × 0.6 = 0.3",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Compare P one with that product table. Its hot-sun cell is point four, but independence predicts point three because point five times point six equals point three. That one mismatch is enough: P one does not factorize. We could stop the disproof there, though the remaining cells also differ. One counterexample breaks a universal claim with the efficiency of a single banana peel in a dignified hallway.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Compare P one",
+                "selector": ".slide-content table",
+                "index": 0,
+                "label": "P₁(T,W)"
+              },
+              {
+                "phrase": "hot-sun cell is point four",
+                "selector": ".slide-content table tbody tr",
+                "index": 0,
+                "label": "P₁(hot,sun)=0.4"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "point four, but independence predicts point three",
+                "type": "popup",
+                "label": "Counterexample",
+                "text": "0.4 ≠ 0.3",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Now compare P two cell by cell. Hot-sun is point three, hot-rain point two, cold-sun point three, and cold-rain point two. All four entries match P of T times P of W. The rows and columns also reproduce the stated marginals. Therefore P two factorizes, while P one does not. This conclusion comes from equality of distributions, not from P two merely looking more symmetric.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "compare P two",
+                "selector": ".slide-content table",
+                "index": 1,
+                "label": "P₂(T,W)"
+              },
+              {
+                "phrase": "All four entries match",
+                "selector": ".slide-content table",
+                "index": 2,
+                "label": "Product table"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "P two factorizes",
+                "type": "popup",
+                "label": "Conclusion",
+                "text": "P₂ = P(T)P(W)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Make the logical asymmetry explicit before revealing the answer: one mismatch disproves independence; every cell match is needed to establish it. Then reveal the analysis and connect the arithmetic to the formal definition from the previous slides. The example is the definition running on actual numbers.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "one mismatch disproves",
+                "selector": ".best-first-step-controls",
+                "index": 0,
+                "label": "Reveal after predicting"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal table analysis",
+          "text": "Reveal the analysis. P two factorizes because all four cells match the marginal products. P one fails immediately at hot and sun: point four is not point three. Keep the asymmetric rule visible—one counterexample disproves, while every cell is needed to establish independence.",
+          "action": {
+            "type": "click",
+            "selector": ".best-first-step-controls button",
+            "index": 0,
+            "label": "Reveal independence-table analysis"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal the analysis. P two factorizes because",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Reveal table analysis"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Independent coin flips turn an exponential joint into repeated local factors",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "For three fair independent flips, the sequence heads, tails, heads has probability one half cubed, or point one two five. Fairness supplies the marginals; independence is the additional permission to multiply them.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "heads, tails, heads",
+                "selector": ".slide-content [class*='coinRow']",
+                "index": 0,
+                "label": "H, T, H"
+              },
+              {
+                "phrase": "one half cubed",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Sequence probability"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "heads, tails, heads",
+                "type": "emoji",
+                "label": "Independent flips",
+                "emoji": "🪙🪙🪙",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "For n flips, the sequence probability factorizes into a product of n local terms. We avoid listing two to the n complete sequences, even though all those outcomes still exist. The model stores the repeatable mechanism.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "product of n local terms",
+                "selector": ".slide-content [class*='formula']",
+                "index": 1,
+                "label": "General factorization"
+              },
+              {
+                "phrase": "two to the n",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 0,
+                "label": "2ⁿ outcomes"
+              },
+              {
+                "phrase": "n local",
+                "selector": ".slide-content [class*='stats'] > div",
+                "index": 1,
+                "label": "n local distributions"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "A fair coin can still be dependent over time. Imagine a device that chooses the first flip fairly and then copies it. Every individual flip may look balanced, but sequences are highly constrained. Fair marginals do not guarantee independent trials.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "copies it",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Fair but dependent"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "copies it",
+                "type": "emoji",
+                "label": "Copying creates dependence",
+                "emoji": "📋",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "When someone multiplies probabilities, ask what independence statement licenses the multiplication. The multiplication sign often hides the most important modeling decision on the page.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "what independence statement",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "License to multiply"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "A shared cause can explain why two observations move together",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Smoke and an alarm may be associated because both respond to fire. Before we observe fire, smoke changes our belief about the alarm because it provides indirect evidence about their shared cause.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Smoke and an alarm",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Associated effects"
+              },
+              {
+                "phrase": "both respond to fire",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Common cause"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "both respond to fire",
+                "type": "emoji",
+                "label": "Shared cause",
+                "emoji": "🔥",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "After the fire state is known, a simplified model may say smoke adds no further information about the alarm. Fire screens the two effects off. That is conditional independence, not unconditional independence.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "fire state is known",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Screening off"
+              },
+              {
+                "phrase": "conditional independence",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Conditional, not absolute"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Picture two students arriving late because the same bus broke down. Their arrival times move together until the bus status is known. Once the shared cause is fixed, one student's delay may tell us nothing additional about the other.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "same bus broke down",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Shared-cause metaphor"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "same bus broke down",
+                "type": "emoji",
+                "label": "One bus, two delays",
+                "emoji": "🚌",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The word may is essential. Real alarms can respond directly to smoke, and hidden sensor faults can create extra dependence. Conditional independence follows from a proposed model and must be tested.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Real alarms",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Model boundary"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Condition on Z, then test factorization inside every Z stratum",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Conditional independence adds a context. X independent of Y given Z means that inside each fixed Z stratum, the conditional joint factorizes: P of x comma y given z equals P of x given z times P of y given z. The vertical bar means 'given,' so Z is not decoration; it changes the distribution being tested.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "X independent of Y given Z",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "X ⟂ Y | Z"
+              },
+              {
+                "phrase": "conditional joint factorizes",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 0,
+                "label": "Conditional factorization"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "conditional joint factorizes",
+                "type": "popup",
+                "label": "Within each z stratum",
+                "text": "P(x,y|z)=P(x|z)P(y|z)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The two equivalent conditional forms say P of x given y comma z equals P of x given z, and symmetrically P of y given x comma z equals P of y given z. Once z is known, learning the other variable adds no further information. Derive the first form by dividing the conditional joint factorization by P of y given z whenever that denominator is positive.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "P of x given y comma z",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 1,
+                "label": "Y adds no information"
+              },
+              {
+                "phrase": "P of y given x comma z",
+                "selector": ".slide-content [class*='equiv'] > div",
+                "index": 2,
+                "label": "Symmetric form"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Operationally, partition or model the data by Z, then test the relationship inside every valid stratum. A pooled association can disappear after conditioning because Z explains it. This is the statistical version of discovering that two coworkers always arrive together because they ride the same bus; after bus status is known, one arrival may add nothing about the other.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "partition or model the data by Z",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Test within strata"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "same bus",
+                "type": "emoji",
+                "label": "Condition on the bus status",
+                "emoji": "🚌",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Read the quantifier carefully: the equality must hold for all relevant x, y, and z values. Conditional independence is neither 'sometimes unrelated' nor a license to choose only the convenient stratum. These local claims are the representational engine behind Bayesian networks and the class-conditional shortcut in Naive Bayes.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "for all relevant",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Read the quantifier"
+              },
+              {
+                "phrase": "representational engine",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Why it matters"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Cavity can screen Toothache from Catch",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Let Cavity be the conditioning variable, Toothache one effect, and Catch the event that a dental probe catches in the tooth. Toothache and Catch may be associated before cavity status is known because both provide evidence about the same underlying condition.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Cavity be the conditioning",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Cavity explains both observations"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "dental probe",
+                "type": "emoji",
+                "label": "Probe catch",
+                "emoji": "🦷",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The first equation says P of Catch given Toothache and Cavity equals P of Catch given Cavity. Once cavity status is fixed, Toothache adds no information about Catch. The second equation is the symmetric statement with Toothache and Catch exchanged. These are not two different assumptions; with valid denominators they describe the same conditional independence relation.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "first equation",
+                "selector": ".slide-content li",
+                "index": 0,
+                "label": "Catch conditional"
+              },
+              {
+                "phrase": "second equation",
+                "selector": ".slide-content li",
+                "index": 1,
+                "label": "Toothache conditional"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The third equation is the factorized conditional joint: P of Toothache comma Catch given Cavity equals P of Toothache given Cavity times P of Catch given Cavity. Apply the conditional product rule, then replace P of Catch given Toothache comma Cavity with P of Catch given Cavity. The algebra makes the screening-off claim explicit.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "third equation",
+                "selector": ".slide-content li",
+                "index": 2,
+                "label": "Conditional joint factorization"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "third equation",
+                "type": "popup",
+                "label": "Cavity screens the effects",
+                "text": "P(T,Catch|Cavity)=P(T|Cavity)P(Catch|Cavity)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The equality must be considered for cavity present and cavity absent. Real dental data can violate it through inflammation, probe technique, or an unmodeled condition affecting both observations. The mathematics tells us what the model asserts; clinical evidence tells us whether the assertion survives contact with teeth, which are famously uncooperative data structures.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Real dental data",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Empirical model claim"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Rain can screen Traffic from Umbrella",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Traffic and umbrella use can move together because rain influences both. Before rain is known, an umbrella is evidence about weather and therefore indirectly about traffic.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Traffic and umbrella",
+                "selector": ".slide-content [class*='_fork_']",
+                "index": 0,
+                "label": "Rain fork"
+              },
+              {
+                "phrase": "before rain is known",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Conditional claim"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "umbrella",
+                "type": "emoji",
+                "label": "Umbrella evidence",
+                "emoji": "☔",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "In the simple fork graph, Raining points to Traffic and Umbrella. Conditioning on the common cause blocks that path, yielding Traffic independent of Umbrella given Raining.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Raining points",
+                "selector": ".slide-content [class*='_fork_']",
+                "index": 0,
+                "label": "Common parent"
+              },
+              {
+                "phrase": "Conditioning on the common cause",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Path blocked"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The arrow picture is a compressed set of probability claims. It does not mean every umbrella causes traffic or every traffic jam causes umbrellas. The common parent explains the observed association.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "compressed set of probability claims",
+                "selector": ".slide-content [class*='_fork_']",
+                "index": 0,
+                "label": "Graph semantics"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Reveal the defensible claim only after predicting it. Then identify possible violations such as a stadium event that simultaneously changes traffic and umbrella use even within the same rain condition.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal the defensible claim",
+                "selector": ".best-first-step-controls",
+                "index": 0,
+                "label": "Predict, then reveal"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal rain claim",
+          "text": "Reveal the defensible rain claim. Traffic and Umbrella may be associated before conditioning because both carry evidence about Rain. In the proposed fork model, fixing Rain blocks the path. This remains a claim to test against events, geography, and behavior outside the simple graph.",
+          "action": {
+            "type": "click",
+            "selector": ".best-first-step-controls button",
+            "index": 0,
+            "label": "Reveal Rain common-cause claim"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal the defensible rain claim. Traffic and",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Reveal rain claim"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Fire can screen Smoke from Alarm—but only under a simplified model",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The same fork pattern uses Fire as a common cause of Smoke and Alarm. In the simplified graph, observing fire blocks the only path connecting the two effects.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Fire as a common cause",
+                "selector": ".slide-content [class*='_fork_']",
+                "index": 0,
+                "label": "Fire fork"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Fire as a common cause",
+                "type": "emoji",
+                "label": "Fire",
+                "emoji": "🔥",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Conditional independence therefore reads Smoke independent of Alarm given Fire. Notice that this is a property of the represented distribution, not a conclusion extracted from the English nouns.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Smoke independent of Alarm",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Smoke ⟂ Alarm | Fire"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "A real smoke detector often has a direct smoke-to-alarm mechanism. Add that edge and the screening-off claim changes. A latent sensor fault could also couple smoke readings and alarm behavior.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "direct smoke-to-alarm",
+                "selector": ".slide-content [class*='_fork_']",
+                "index": 0,
+                "label": "Missing direct mechanism"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "smoke detector",
+                "type": "emoji",
+                "label": "Direct detector mechanism",
+                "emoji": "🚨",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Use the reveal to state the simplified claim, then critique it. Good probabilistic modeling alternates between exploiting a structure and asking which real mechanisms the structure omitted.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "reveal",
+                "selector": ".best-first-step-controls",
+                "index": 0,
+                "label": "Reveal and critique"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Reveal fire claim",
+          "text": "Reveal the simplified fire claim. Smoke is independent of Alarm given Fire only in a model with no direct smoke-to-alarm mechanism and no hidden common fault. The reveal demonstrates the formal graph; our critique demonstrates responsible use of it.",
+          "action": {
+            "type": "click",
+            "selector": ".best-first-step-controls button",
+            "index": 0,
+            "label": "Reveal Fire common-cause claim"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Reveal the simplified fire claim. Smoke is",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Reveal fire claim"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Product and chain rules turn independence claims into factorization",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Conditional probability is a definition: P of x given y equals P of x comma y divided by P of y. Rearranging gives the product rule, P of x comma y equals P of x given y times P of y. These are identities whenever the denominator exists; no independence assumption has entered yet.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Conditional probability is a definition",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 0,
+                "label": "Conditional probability"
+              },
+              {
+                "phrase": "product rule",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 1,
+                "label": "Product rule"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "product rule",
+                "type": "popup",
+                "label": "Product rule",
+                "text": "P(x,y)=P(x|y)P(y)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The chain rule repeatedly applies the product rule. For an ordered list x one through x n, multiply P of x i conditioned on all earlier variables. Any joint distribution can be written this way in any order, although different orders produce different-looking factors.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "chain rule",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 2,
+                "label": "Chain rule"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "chain rule",
+                "type": "popup",
+                "label": "Chain rule",
+                "text": "P(x₁,…,xₙ)=∏ᵢP(xᵢ|x₁,…,xᵢ₋₁)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Independence is the simplifying assumption. If X is independent of Y, P of x given y becomes P of x, so the product rule shortens to P of x times P of y. Conditional independence similarly removes selected variables from a conditioning set. Think of the chain rule as a guaranteed full packing list; independence is permission to cross out items proven irrelevant.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Independence is the simplifying",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 3,
+                "label": "Independence simplification"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "When reading a derivation, label each step identity, arithmetic, or assumption. The most dangerous line is often the innocent-looking one where a conditioning variable disappears. If no independence claim justifies that disappearance, the algebra has performed a magic trick and hidden the rabbit in the model assumptions.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "identity, arithmetic, or assumption",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Audit each derivation"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A Bayesian network is a DAG plus one local conditional distribution per node",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "A Bayesian network is a directed acyclic graph, or DAG, plus one local probability distribution per node. Each node is a random variable with a defined domain. Each directed edge says that the child distribution is represented as depending locally on that parent. Acyclic means no directed path can loop back to where it started, so the factorization has a consistent ordering.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "directed acyclic graph",
+                "selector": ".slide-content [role='img']",
+                "index": 0,
+                "label": "DAG"
+              },
+              {
+                "phrase": "Each node",
+                "selector": ".slide-content article",
+                "index": 0,
+                "label": "Nodes"
+              },
+              {
+                "phrase": "Each directed edge",
+                "selector": ".slide-content article",
+                "index": 1,
+                "label": "Directed edges"
+              },
+              {
+                "phrase": "Acyclic means",
+                "selector": ".slide-content article",
+                "index": 2,
+                "label": "Acyclic"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "directed acyclic graph",
+                "type": "popup",
+                "label": "Bayesian network",
+                "text": "DAG + local CPTs",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Burglary is a root variable, so it has a prior P of B. Earthquake is another root with prior P of E. Both point to Alarm, giving the conditional table P of A given B comma E. Alarm points to JohnCalls and MaryCalls, producing P of J given A and P of M given A. The graph is a compact index of which conditioning variables each local table needs.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Burglary is a root",
+                "selector": ".slide-content [class*='networkNode']",
+                "index": 0,
+                "label": "Burglary"
+              },
+              {
+                "phrase": "Earthquake is another root",
+                "selector": ".slide-content [class*='networkNode']",
+                "index": 1,
+                "label": "Earthquake"
+              },
+              {
+                "phrase": "Both point to Alarm",
+                "selector": ".slide-content [class*='networkNode']",
+                "index": 2,
+                "label": "Alarm"
+              },
+              {
+                "phrase": "JohnCalls",
+                "selector": ".slide-content [class*='networkNode']",
+                "index": 3,
+                "label": "JohnCalls"
+              },
+              {
+                "phrase": "MaryCalls",
+                "selector": ".slide-content [class*='networkNode']",
+                "index": 4,
+                "label": "MaryCalls"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Burglary is a root",
+                "type": "emoji",
+                "label": "Burglary",
+                "emoji": "🥷",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              },
+              {
+                "phrase": "Earthquake is another root",
+                "type": "effect",
+                "label": "Earthquake",
+                "effect": "shake",
+                "route": "center-hold",
+                "durationSeconds": 5.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The thief who appears for Burglary is a memory cue, not a claim that cartoon criminals follow probability theory. The screen shake at Earthquake marks the second root cause. Alarm is their shared effect, while the two calls are downstream observations. This five-node story will let us compute a posterior without storing all thirty-two binary assignments as an undifferentiated table.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "five-node story",
+                "selector": ".slide-content [role='img']",
+                "index": 0,
+                "label": "Five-node network"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "thief who appears",
+                "type": "emoji",
+                "label": "Burglary memory cue",
+                "emoji": "🥷",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "An arrow does not automatically prove causation. A Bayesian network always defines probabilistic factorization; causal interpretation requires stronger assumptions about mechanisms and interventions. Read each node operationally: name its domain, parents, and local table. If those are missing, the arrows are decorative spaghetti with excellent posture.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "arrow does not automatically prove causation",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Probabilistic, not automatically causal"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Local CPTs multiply into the complete joint distribution",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The complete joint has one local factor for each node. Burglary contributes P of B and Earthquake contributes P of E because roots have no parents. Alarm contributes P of A given B comma E. JohnCalls contributes P of J given A, and MaryCalls contributes P of M given A.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Burglary contributes",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+                "index": 0,
+                "label": "B factor"
+              },
+              {
+                "phrase": "Earthquake contributes",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+                "index": 1,
+                "label": "E factor"
+              },
+              {
+                "phrase": "Alarm contributes",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+                "index": 2,
+                "label": "A factor"
+              },
+              {
+                "phrase": "JohnCalls contributes",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+                "index": 3,
+                "label": "J factor"
+              },
+              {
+                "phrase": "MaryCalls contributes",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+                "index": 4,
+                "label": "M factor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Multiplying those five terms gives P of B comma E comma A comma J comma M. Every variable appears once as the left-hand variable of a local factor, and every factor conditions only on the node's parents. This is not an arbitrary recipe; it is the Bayesian-network semantics.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "P of B comma E comma A comma J comma M",
+                "selector": ".slide-content [class*='jointFactor']",
+                "index": 0,
+                "label": "Complete joint"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "P of B comma E",
+                "type": "popup",
+                "label": "Network factorization",
+                "text": "P(B,E,A,J,M)=P(B)P(E)P(A|B,E)P(J|A)P(M|A)",
+                "route": "center-hold",
+                "durationSeconds": 8.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The representation saves parameters. A full five-variable binary joint has thirty-two rows and thirty-one free parameters after normalization. The local tables need one parameter for each root, four for Alarm's parent configurations, and two each for JohnCalls and MaryCalls: nine free parameters total in this binary example.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "thirty-two rows",
+                "selector": ".slide-content [class*='jointFactor']",
+                "index": 0,
+                "label": "Parameter savings"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Walk through every control. For each selected node, identify its parents and say why its factor has that conditioning set. Then rebuild the product from memory. A missing factor loses probability mass; a duplicated factor counts evidence twice; an extra parent throws away the very compactness the graph was designed to provide.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Walk through every control",
+                "selector": "nav[aria-label='Choose a Bayesian-network variable']",
+                "index": 0,
+                "label": "Inspect each local factor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Earthquake factor",
+          "text": "Select E. Earthquake is a root, so its local factor is the prior P of E.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+            "index": 1,
+            "label": "Earthquake factor"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select E. Earthquake is a root, so",
+                "selector": ".slide-content h3",
+                "index": 0,
+                "label": "Earthquake factor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Alarm factor",
+          "text": "Select A. Alarm has Burglary and Earthquake as parents, so its table is P of A given B and E.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+            "index": 2,
+            "label": "Alarm factor"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select A. Alarm has Burglary and Earthquake",
+                "selector": ".slide-content h3",
+                "index": 0,
+                "label": "Alarm factor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "John factor",
+          "text": "Select J. JohnCalls has only Alarm as a parent, giving P of J given A.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+            "index": 3,
+            "label": "John factor"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select J. JohnCalls has only Alarm as",
+                "selector": ".slide-content h3",
+                "index": 0,
+                "label": "John factor"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mary factor",
+          "text": "Select M. MaryCalls likewise contributes P of M given A. We have now visited every local factor in the joint.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Bayesian-network variable'] button",
+            "index": 4,
+            "label": "Mary factor"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Select M. MaryCalls likewise contributes P of",
+                "selector": ".slide-content h3",
+                "index": 0,
+                "label": "Mary factor"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Blocked and opened paths determine which evidence remains relevant",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Graphical independence depends on path structure and the conditioning set. A common cause is blocked when the cause is observed. A collider behaves oppositely: it blocks a path until the collider or one of its descendants is observed.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "common cause",
+                "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+                "index": 0,
+                "label": "Common cause"
+              },
+              {
+                "phrase": "collider",
+                "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+                "index": 1,
+                "label": "Collider"
+              },
+              {
+                "phrase": "conditioning set",
+                "selector": ".search-review-studio li",
+                "index": 4,
+                "label": "Conditioning set"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "In the burglary network, JohnCalls and MaryCalls become independent given Alarm. Burglary and Earthquake are independent before Alarm is observed because Alarm is a collider. Observing Alarm opens the path and creates explaining away.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "JohnCalls and MaryCalls",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Question"
+              },
+              {
+                "phrase": "Burglary and Earthquake",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Claim"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "collider",
+                "type": "popup",
+                "label": "Collider pattern",
+                "text": "B → A ← E",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "If the alarm sounds and we learn there was an earthquake, burglary becomes less necessary as an explanation. Competing causes become dependent once their shared effect is known.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "alarm sounds",
+                "selector": ".search-review-studio li",
+                "index": 3,
+                "label": "Explaining away"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "alarm sounds",
+                "type": "emoji",
+                "label": "Observed alarm",
+                "emoji": "🚨",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Cycle through all three cases and say the conditioning set every time. The phrase independent in the graph is incomplete unless we know which nodes are observed.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Cycle through all three",
+                "selector": "nav[aria-label='Choose a graphical-independence case']",
+                "index": 0,
+                "label": "Three d-separation cases"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Collider closed",
+          "text": "Choose Collider closed. Burglary and Earthquake are independent before Alarm or its descendants are observed because the unobserved collider blocks their path.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+            "index": 1,
+            "label": "Collider closed"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Collider closed. Burglary and Earthquake are",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Collider closed"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Explaining away",
+          "text": "Choose Explaining away. Observing Alarm opens the collider path, so evidence for Earthquake changes belief in Burglary. Competing causes become dependent through their observed effect.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+            "index": 2,
+            "label": "Explaining away"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Explaining away. Observing Alarm opens the",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Explaining away"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Return to common cause",
+          "text": "Return to Common cause. Conditioning on Alarm blocks the fork from Alarm to the two callers, making JohnCalls independent of MaryCalls given Alarm in this network.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a graphical-independence case'] button",
+            "index": 0,
+            "label": "Return to common cause"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Return to Common cause. Conditioning on Alarm",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Return to common cause"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Enumeration sums hidden assignments and normalizes the query distribution",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Exact enumeration separates variables into three roles. The query is what we want to know, evidence is fixed by observation, and hidden variables are neither queried nor observed. For P of Burglary given JohnCalls and MaryCalls, B is the query, j and m are evidence, and Earthquake plus Alarm are hidden.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "query is what",
+                "selector": ".slide-content ol li",
+                "index": 0,
+                "label": "Choose query and evidence"
+              },
+              {
+                "phrase": "hidden variables",
+                "selector": ".slide-content ol li",
+                "index": 1,
+                "label": "List hidden variables"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "For each query value, enumerate every assignment of the hidden variables. With two hidden binary variables, that means four products for B true and four more for B false. Each product uses the network factorization P of B, P of E, P of A given B comma E, P of j given A, and P of m given A.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "enumerate every assignment",
+                "selector": ".slide-content ol li",
+                "index": 2,
+                "label": "Multiply each assignment"
+              },
+              {
+                "phrase": "four products",
+                "selector": ".slide-content ol li",
+                "index": 3,
+                "label": "Sum hidden assignments"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The formula P of X given e equals alpha times the sum over hidden y of the product of local factors compresses that procedure. Sigma means add compatible hidden worlds. Pi means multiply one local probability per node. Alpha is the normalization constant that makes the query values sum to one.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "formula P of X given e",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Enumeration equation"
+              },
+              {
+                "phrase": "Alpha",
+                "selector": ".slide-content ol li",
+                "index": 4,
+                "label": "Normalize"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "formula P of X given e",
+                "type": "popup",
+                "label": "Exact enumeration",
+                "text": "P(X|e)=α Σᵧ ∏ᵢP(xᵢ|paᵢ)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Enumeration is conceptually transparent but repeats work exponentially. Variable elimination improves the mechanics by multiplying and summing factors in a useful order, caching intermediate results instead of recomputing every storyline. Before arithmetic, always name query, evidence, hidden variables, and the number of hidden assignments.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "query, evidence, hidden variables",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Identify roles first"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Two calls raise burglary belief, but the low prior still matters",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The canonical burglary network uses P of B equal point zero zero one and P of E equal point zero zero two. Alarm is very likely when burglary or earthquake occurs, but false alarms remain possible. John and Mary are likely to call when Alarm is true, yet each can also call without an alarm. Two calls are strong evidence, not a notarized confession from the universe.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "P of B equal",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Query and evidence"
+              },
+              {
+                "phrase": "Earthquake",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Hidden variables"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Two calls",
+                "type": "emoji",
+                "label": "Two phone calls",
+                "emoji": "📞📞",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "For B true, sum four terms over e and a. Each term multiplies P of b, P of e, P of a given b comma e, P of j given a, and P of m given a. The resulting unnormalized mass is zero point zero zero zero five nine two two four three.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "For B true",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "B=true mass"
+              },
+              {
+                "phrase": "zero point zero zero zero five",
+                "selector": ".frontier-queues article",
+                "index": 2,
+                "label": "Unnormalized B=true"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "zero point zero zero zero five",
+                "type": "popup",
+                "label": "Burglary mass",
+                "text": "0.000592243",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Repeat for B false. The unnormalized no-burglary mass is zero point zero zero one four nine one eight five eight, which is larger because the no-burglary prior is enormous even though the calls favor an alarm. Evidence updates a prior; it does not erase it.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "B false",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "B=false mass"
+              },
+              {
+                "phrase": "zero point zero zero one four",
+                "selector": ".frontier-queues article",
+                "index": 2,
+                "label": "Unnormalized B=false"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "zero point zero zero one four",
+                "type": "popup",
+                "label": "No-burglary mass",
+                "text": "0.001491858",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Normalize the two masses by their sum, zero point zero zero two zero eight four one zero zero. The posterior P of burglary given both calls is about zero point two eight four. Belief jumps from point one percent to twenty-eight point four percent—a huge update, but still far from certainty. Walk every Next step and connect the displayed number to the operation that produced it.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "posterior P of burglary",
+                "selector": ".frontier-queues article",
+                "index": 2,
+                "label": "Normalized posterior"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "about zero point two eight four",
+                "type": "popup",
+                "label": "Posterior",
+                "text": "P(b|j,m) ≈ 0.284",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Expand factors",
+          "text": "Click Next to expand the five local network factors and the two hidden sums.",
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace section button",
+            "index": 1,
+            "label": "Expand factors"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Click Next to expand the five local",
+                "selector": ".frontier-queues article",
+                "index": 0,
+                "label": "Expand factors"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Enumerate burglary true",
+          "text": "Click Next to sum the four hidden assignments compatible with burglary and both calls.",
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace section button",
+            "index": 1,
+            "label": "Enumerate burglary true"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Click Next to sum the four hidden",
+                "selector": ".frontier-queues article",
+                "index": 1,
+                "label": "Enumerate burglary true"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Enumerate burglary false",
+          "text": "Click Next to compute the larger no-burglary mass. Evidence raises burglary belief without erasing alternative explanations.",
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace section button",
+            "index": 1,
+            "label": "Enumerate burglary false"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Click Next to compute the larger no-burglary",
+                "selector": ".frontier-queues article",
+                "index": 2,
+                "label": "Enumerate burglary false"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Normalize posterior",
+          "text": "Click Next to normalize both masses. The burglary posterior is about point two eight four, a large update from the prior but far from certainty.",
+          "action": {
+            "type": "click",
+            "selector": ".frontier-trace section button",
+            "index": 1,
+            "label": "Normalize posterior"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Click Next to normalize both masses. The",
+                "selector": ".frontier-queues article",
+                "index": 2,
+                "label": "Normalize posterior"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Given the class, treat feature likelihoods as independent factors",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Naive Bayes starts with the class C and features F one through F n. The exact conditional joint could use a chain rule with growing conditioning sets. The naive approximation replaces it with the product over i of P of F i given C, asserting that features are conditionally independent once the class is fixed.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "class C",
+                "selector": ".slide-content [class*='classBox']",
+                "index": 0,
+                "label": "Class"
+              },
+              {
+                "phrase": "features F one",
+                "selector": ".slide-content [class*='featureStack']",
+                "index": 0,
+                "label": "Features"
+              },
+              {
+                "phrase": "product over i",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Naive factorization"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "naive approximation",
+                "type": "popup",
+                "label": "Class-conditional factorization",
+                "text": "P(F₁,…,Fₙ|C)≈∏ᵢP(Fᵢ|C)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "This is not marginal independence. Size, color, and shape can be strongly associated across all fruit because apples, grapes, and bananas occur in different proportions. The model says that within a fixed class, the remaining dependencies are small enough to ignore for the intended prediction.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "not marginal independence",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Conditional, not marginal"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The classification score is P of C times the product of feature likelihoods. The evidence denominator P of the observed features is identical for every class, so it can be omitted when computing an argmax. That is why unnormalized scores are sufficient to choose a label.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "classification score",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Class score"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "classification score",
+                "type": "popup",
+                "label": "Naive Bayes score",
+                "text": "score(C)=P(C)∏ᵢP(Fᵢ|C)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The approximation can work surprisingly well, but correlated features may double-count evidence. If 'contains the word free' and 'contains the phrase free money' are nearly duplicates, multiplying both likelihoods can make spam confidence shout through a megaphone. Inspect dependence and calibration, not only accuracy.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "correlated features",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Double-counting risk"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "megaphone",
+                "type": "emoji",
+                "label": "Repeated evidence gets amplified",
+                "emoji": "📣",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The class prior and feature likelihoods produce a MAP decision",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The decision rule chooses the class c hat that maximizes P of C times the product of P of evidence item i given C. Because the class prior P of C is included, this is maximum a posteriori, or MAP, classification. Maximum likelihood would compare only the feature likelihood product.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "decision rule",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "MAP rule"
+              },
+              {
+                "phrase": "maximum a posteriori",
+                "selector": ".slide-content [class*='scoreCards'] article",
+                "index": 1,
+                "label": "MAP"
+              },
+              {
+                "phrase": "Maximum likelihood",
+                "selector": ".slide-content [class*='scoreCards'] article",
+                "index": 0,
+                "label": "ML"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "maximum a posteriori",
+                "type": "popup",
+                "label": "MAP classifier",
+                "text": "ĉ=argmax_C P(C)∏ᵢP(eᵢ|C)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The prior acts like a starting-line advantage. A common class begins with more probability mass; a rare class can still win if its features are much more diagnostic. Priors can come from class frequencies or justified domain knowledge, but they should match the deployment population rather than yesterday's convenient spreadsheet.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "prior acts",
+                "selector": ".slide-content [class*='scoreCards'] article",
+                "index": 1,
+                "label": "Class prior"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "starting-line advantage",
+                "type": "emoji",
+                "label": "Prior",
+                "emoji": "🏁",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Multiplying many probabilities can underflow to zero in floating-point arithmetic. Software therefore computes log scores: log P of C plus the sum over i of log P of e i given C. Logarithms turn products into sums while preserving the maximizing class.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "log scores",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Compute in log space"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "log scores",
+                "type": "popup",
+                "label": "Stable computation",
+                "text": "log P(C)+Σᵢ log P(eᵢ|C)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Unseen feature values can also create zeros, so use an appropriate smoothing method such as Laplace or additive smoothing. Report the likelihood model, prior, smoothing, and evaluation data. 'We used Naive Bayes' is a family name, not a reproducible model specification.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "smoothing",
+                "selector": ".slide-content section li",
+                "index": 2,
+                "label": "Avoid underflow"
+              },
+              {
+                "phrase": "Report the likelihood model",
+                "selector": ".slide-content section li",
+                "index": 0,
+                "label": "Reproducible specification"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Training estimates local probabilities; testing compares class scores",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Training counts classes and feature values within each class, or estimates distribution parameters for a chosen variant. Testing plugs a new example into those learned local probabilities and compares posterior scores.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Training counts classes",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 0,
+                "label": "Training data"
+              },
+              {
+                "phrase": "Testing plugs",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 2,
+                "label": "Score"
+              },
+              {
+                "phrase": "compares posterior",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 3,
+                "label": "Decide"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The statistics depend on the variant. Gaussian Naive Bayes estimates means and variances; multinomial models estimate token counts; Bernoulli models estimate binary presence; categorical models estimate value frequencies.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Gaussian",
+                "selector": ".slide-content section li",
+                "index": 0,
+                "label": "Likelihood variants"
+              },
+              {
+                "phrase": "multinomial",
+                "selector": ".slide-content section li",
+                "index": 1,
+                "label": "Feature model"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "A model labeled Naive Bayes is a family name, not a complete specification. Asking which likelihood model was used is like asking what kind of vehicle arrived after hearing only that it was transportation.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "family name",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Specify the variant"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "vehicle arrived",
+                "type": "emoji",
+                "label": "Family name is not a specification",
+                "emoji": "🚗",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Use held-out data to compare accuracy, calibration, and error types. Training likelihood is evidence about fit to observed data, not a guarantee of reliable future decisions.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "held-out data",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Evaluate calibration and errors"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A probabilistic finite-state acceptor models alternative phone paths",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The phone graph represents sequential alternatives and transition probabilities. It is useful probabilistic structure, but it is not itself evidence of a Naive Bayes feature factorization.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "phone graph",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Phone-state paths"
+              },
+              {
+                "phrase": "not itself evidence",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Not Naive Bayes"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Each state summarizes position in a phone sequence; arcs carry possible observations or transitions. Decoding searches paths whose local probabilities combine into a sequence score.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Each state summarizes position",
+                "selector": ".slide-content figure img",
+                "index": 0,
+                "label": "Sequence structure"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "This is closer to route planning through a pronunciation network than to placing independent feature cards under a class. The graph remembers order, which ordinary bag-of-features Naive Bayes discards.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "route planning",
+                "selector": ".slide-content figure",
+                "index": 0,
+                "label": "Order matters"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "route planning",
+                "type": "emoji",
+                "label": "Sequence path",
+                "emoji": "🗺️",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Name the model you actually have. Probabilistic does not mean Naive Bayes, and a graph does not automatically mean Bayesian network. Representation and factorization determine the category.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Name the model",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Representation determines the model"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "A common word can outrank a perfect phone match",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "We score candidate words using Bayes: P of word given the phone evidence ni is proportional to P of ni given word times P of word. The first factor is a phone or acoustic likelihood; the second is a corpus prior. The omitted evidence denominator is shared across candidates and therefore does not affect the ranking.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Bayes",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Bayes score"
+              },
+              {
+                "phrase": "first factor",
+                "selector": ".slide-content table",
+                "index": 0,
+                "label": "Corpus prior table"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "P of word given",
+                "type": "popup",
+                "label": "Word posterior",
+                "text": "P(word|[ni])∝P([ni]|word)P(word)",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "Read the prior table. Knee appears sixty-one times, giving about point zero zero zero zero two four. Need appears one thousand four hundred seventeen times, and new two thousand six hundred twenty-five times. The word the is extremely common at point zero four six, but a high prior cannot rescue a zero likelihood for the observed phone sequence.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Knee appears",
+                "selector": ".slide-content table tbody tr",
+                "index": 0,
+                "label": "knee prior"
+              },
+              {
+                "phrase": "Need appears",
+                "selector": ".slide-content table tbody tr",
+                "index": 3,
+                "label": "need prior"
+              },
+              {
+                "phrase": "new",
+                "selector": ".slide-content table tbody tr",
+                "index": 4,
+                "label": "new prior"
+              },
+              {
+                "phrase": "high prior cannot rescue",
+                "selector": ".slide-content table tbody tr",
+                "index": 1,
+                "label": "the prior"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "A perfect local phone match can lose to a more frequent candidate with a slightly weaker match. This is the same prior-versus-likelihood negotiation used in medical diagnosis and spam filtering. The prior whispers 'usually'; the likelihood replies 'this evidence.' The posterior score decides which voice is louder.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "perfect local phone match",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Prior versus likelihood"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "prior whispers",
+                "type": "emoji",
+                "label": "Prior and likelihood negotiate",
+                "emoji": "👂",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Predict before seeing the product table. Then state which column is prior, which will be likelihood, and why their product is only an unnormalized posterior. Also ask whether the corpus matches the speaker and domain; a courtroom, a kitchen, and a gaming stream do not share identical word priors.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Predict",
+                "selector": ".slide-content section li",
+                "index": 2,
+                "label": "Predict the winner"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Phone-only decoding selects “new”; word context favors “need”",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Multiply each phone likelihood by its word prior. New scores point three six times point zero zero one, giving point zero zero zero three six, the largest displayed product. Neat yields about point zero zero zero zero six eight, need about point zero zero zero zero six two, knee point zero zero zero zero two four, and the receives zero because its phone likelihood is zero.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "New scores",
+                "selector": ".slide-content table tbody tr",
+                "index": 0,
+                "label": "new product"
+              },
+              {
+                "phrase": "Neat yields",
+                "selector": ".slide-content table tbody tr",
+                "index": 1,
+                "label": "neat product"
+              },
+              {
+                "phrase": "need",
+                "selector": ".slide-content table tbody tr",
+                "index": 2,
+                "label": "need product"
+              },
+              {
+                "phrase": "knee",
+                "selector": ".slide-content table tbody tr",
+                "index": 3,
+                "label": "knee product"
+              },
+              {
+                "phrase": "the",
+                "selector": ".slide-content table tbody tr",
+                "index": 4,
+                "label": "the product"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The local winner is therefore new. Notice that knee has a perfect phone likelihood of one, but its tiny prior makes its product smaller. A perfect match to a rare candidate need not beat a good match to a more common candidate.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "local winner",
+                "selector": ".slide-content section h3",
+                "index": 0,
+                "label": "Local winner: new"
+              },
+              {
+                "phrase": "perfect phone likelihood",
+                "selector": ".slide-content table tbody tr",
+                "index": 3,
+                "label": "Perfect but rare"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "local winner",
+                "type": "popup",
+                "label": "Phone-only result",
+                "text": "new: 0.00036",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Now add the preceding word I. 'I need' is plausible; 'I new' is not standard English. The displayed calculation omits that contextual factor, so a sequence or language model can rerank the candidates. Local evidence proposes; context disposes. Even Sherlock Holmes would ask what came before the suspicious syllable.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "I need",
+                "selector": ".slide-content section",
+                "index": 0,
+                "label": "Context favors need"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "I need",
+                "type": "popup",
+                "label": "Context repair",
+                "text": "I need ✓   I new ✗",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "The repair is representational: include contextual variables or use a sequence model. Do not merely tune the same phone-only table harder. Track every factor and every omitted dependency, then test on held-out speech from the intended domain. The best isolated word score need not produce the best sentence.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "repair is representational",
+                "selector": ".slide-content [class*='callout'], .slide-content aside",
+                "index": 0,
+                "label": "Add a language model"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Naive Bayes is efficient, but the variant and dependencies matter",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "Naive Bayes trains quickly, predicts quickly, and works with discrete, continuous, or streaming data through different likelihood variants. Its small local statistics are often strong baselines.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "trains quickly",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 0,
+                "label": "Efficient"
+              },
+              {
+                "phrase": "streaming",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 1,
+                "label": "Incremental"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "different likelihood variants",
+                "type": "popup",
+                "label": "Naive Bayes variants",
+                "text": "Gaussian · Multinomial · Bernoulli · Categorical",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The main weakness is dependence among features after conditioning on class. Correlated or duplicated features can multiply similar evidence several times, producing overconfident scores even when accuracy remains reasonable.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "dependence",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 2,
+                "label": "Dependence risk"
+              },
+              {
+                "phrase": "overconfident scores",
+                "selector": ".slide-content [class*='rules'] article",
+                "index": 3,
+                "label": "Calibration risk"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "Correlated or duplicated features",
+                "type": "emoji",
+                "label": "Repeated evidence",
+                "emoji": "🔁",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Irrelevant features are not magically harmless. Weak features may wash out, but noisy estimation, duplication, and distribution shift can still hurt. Simplicity is a benefit, not an immunity certificate.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Irrelevant features",
+                "selector": ".slide-content [class*='formula']",
+                "index": 0,
+                "label": "Weak features are not harmless"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Compare variants, use smoothing, inspect calibration, and consider richer networks or sequence models when relationships matter. The right question is not whether Naive Bayes is naive; it is whether its assumptions are useful enough here.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Compare variants",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Qualify the claim"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A useful shortcut must state exactly what it assumes",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The audit presents four tempting claims about Naive Bayes. Each is close enough to sound plausible and wrong enough to damage a report. Good model literacy means repairing the exact statement.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "four tempting claims",
+                "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim']",
+                "index": 0,
+                "label": "Audit four claims"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "The assumption is conditional, not marginal, independence. Including a prior yields MAP. Parameter estimates depend on the variant. Irrelevant or duplicated features can hurt through noise and repeated evidence.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "conditional, not marginal",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Correct the claim"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "conditional, not marginal",
+                "type": "popup",
+                "label": "Correct assumption",
+                "text": "Fᵢ ⟂ Fⱼ | C",
+                "route": "center-hold",
+                "durationSeconds": 6.6
+              }
+            ]
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "Treat the audit like code review for equations. A claim can run without throwing a syntax error and still produce the wrong scientific result. Precise terminology is part of model correctness.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "code review for equations",
+                "selector": ".search-review-studio li",
+                "index": 1,
+                "label": "Claim under review"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "code review",
+                "type": "emoji",
+                "label": "Equation code review",
+                "emoji": "🔍",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Cycle through all four claims. For each, state the correction, identify evidence needed to test it, and name when a Bayesian network or richer sequence model would be preferable.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Cycle through all four",
+                "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim']",
+                "index": 0,
+                "label": "Run every case"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit decision",
+          "text": "Choose Decision. With a class prior included, the classifier is MAP; maximum likelihood omits the prior.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim'] button",
+            "index": 1,
+            "label": "Audit decision"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Decision. With a class prior included,",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Audit decision"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit parameters",
+          "text": "Choose Parameters. Only Gaussian Naive Bayes estimates means and variances; other variants learn counts or categorical probabilities.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim'] button",
+            "index": 2,
+            "label": "Audit parameters"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Parameters. Only Gaussian Naive Bayes estimates",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Audit parameters"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Audit robustness",
+          "text": "Choose Robustness. Correlated or duplicated features can repeat evidence and distort confidence, so irrelevant does not mean harmless.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim'] button",
+            "index": 3,
+            "label": "Audit robustness"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Choose Robustness. Correlated or duplicated features can",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Audit robustness"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Return to assumption",
+          "text": "Return to Assumption. Features are conditionally independent given the class, not marginally independent across the full population.",
+          "action": {
+            "type": "click",
+            "selector": "nav[aria-label='Choose a Naive Bayes evaluation claim'] button",
+            "index": 0,
+            "label": "Return to assumption"
+          },
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Return to Assumption. Features are conditionally independent",
+                "selector": ".search-review-studio li",
+                "index": 2,
+                "label": "Return to assumption"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Factor, query, classify—and defend every independence claim",
+      "segments": [
+        {
+          "label": "Concept",
+          "text": "The lesson's through-line is structured simplification. Independence and conditional independence remove unnecessary dependencies; Bayesian networks encode local structure; inference recombines factors; Naive Bayes trades realism for efficient classification.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "Independence and conditional independence",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 0,
+                "label": "Factor"
+              },
+              {
+                "phrase": "Bayesian networks",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 1,
+                "label": "Represent"
+              },
+              {
+                "phrase": "inference",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 2,
+                "label": "Query"
+              },
+              {
+                "phrase": "Naive Bayes",
+                "selector": ".slide-content [class*='timeline'] article",
+                "index": 3,
+                "label": "Classify"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Mechanism",
+          "text": "A complete explanation names variables and domains, the factorization, observed evidence, hidden variables, the query, and the assumption that licenses each simplification. Leaving out the conditioning set is leaving out the model.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "complete explanation",
+                "selector": ".slide-content section",
+                "index": 1,
+                "label": "Exit ticket"
+              }
+            ],
+            "kinetics": []
+          }
+        },
+        {
+          "label": "Example and metaphor",
+          "text": "The practical habit is assumption accounting. Every time a product becomes shorter, write down why. Every time a graph omits an edge, ask what independence that omission asserts. Every time a classifier is confident, inspect repeated evidence.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "assumption accounting",
+                "selector": ".slide-content section ol",
+                "index": 0,
+                "label": "Four-part response"
+              }
+            ],
+            "kinetics": [
+              {
+                "phrase": "assumption accounting",
+                "type": "emoji",
+                "label": "Audit the assumptions",
+                "emoji": "🧾",
+                "route": "arc-center",
+                "durationSeconds": 6.2
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boundary and transfer",
+          "text": "Exit with four abilities: test a table, read a DAG, trace enumeration, and audit a classifier. If you can defend the structure instead of merely reciting a formula, you can transfer this lesson to much larger probabilistic systems.",
+          "visualDesign": {
+            "focuses": [
+              {
+                "phrase": "four abilities",
+                "selector": ".slide-content section ol",
+                "index": 0,
+                "label": "Transfer checklist"
+              }
+            ],
+            "kinetics": []
+          }
+        }
+      ]
+    }
+  ]
+}

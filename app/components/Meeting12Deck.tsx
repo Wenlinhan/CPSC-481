@@ -102,7 +102,7 @@ function InteractionLoopExplorer() {
       <div className="m12-loop-map" aria-label="Reinforcement-learning interaction loop">
         <button
           className={active === 0 || active === 1 || active === 4 ? "active" : ""}
-          onClick={() => setActive(1)}
+          onClick={() => setActive(0)}
           type="button"
         >
           <span>Agent</span>
@@ -552,7 +552,7 @@ function GuidedPracticeStudio() {
 
 const slides: SourceLessonSlide[] = [
   {
-    eyebrow: "Week 6 · Meeting 12 · Reinforcement learning",
+    eyebrow: "Module 10 · Lesson 14 · Reinforcement learning",
     title: "Learn by acting, observing consequences, and revising a policy",
     subtitle: "Course foundations first; formal MDP and Q-learning theory are explicitly labeled textbook/modern supplements.",
     content: (
@@ -966,7 +966,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Trace one loop with the Meeting 12 gridworld. Keep behavior policy, target policy, terminal handling, and table-size limitation explicit.",
+    note: "Timing: 3 minutes. Textbook/modern supplement. Trace one loop with the Lesson 14 gridworld. Keep behavior policy, target policy, terminal handling, and table-size limitation explicit.",
     sourceSlides: [],
   },
   {
@@ -1069,14 +1069,15 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function Meeting12Deck() {
+export function Meeting12Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   const deck = useMemo(() => slides, []);
 
   return (
     <div className="meeting12-deck">
       <SourceDeckShell
-        meetingLabel="Week 6 · Meeting 12"
-        meetingTitle="Reinforcement Learning Foundations and Q-Learning"
+        forcePrintAll={forcePrintAll}
+        meetingLabel="Module 10 · Lesson 14"
+        meetingTitle="Reinforcement Learning, Q-Learning, and Exploration"
         resolveSourceReference={resolveMeeting12SourceReference}
         slides={deck}
         sourceCollectionLabel={SOURCE_DECK_LABEL}

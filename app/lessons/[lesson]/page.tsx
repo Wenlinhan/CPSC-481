@@ -11,14 +11,14 @@ import { Meeting07Deck } from "../../components/Meeting07Deck";
 import { Meeting08Deck } from "../../components/Meeting08Deck";
 import { Meeting09Deck } from "../../components/Meeting09Deck";
 import { Meeting10Deck } from "../../components/Meeting10Deck";
+import { Meeting11Deck } from "../../components/Meeting11Deck";
+import { Meeting12Deck } from "../../components/Meeting12Deck";
 import { Meeting13Deck } from "../../components/Meeting13Deck";
 import { Meeting14Deck } from "../../components/Meeting14Deck";
 import { Meeting19Deck } from "../../components/Meeting19Deck";
 import { Meeting20Deck } from "../../components/Meeting20Deck";
 import { RagDeck as Meeting21Deck } from "../../components/Meeting21Deck";
 import { RagQualityDeck as Meeting22Deck } from "../../components/Meeting22Deck";
-import { Meeting25Deck } from "../../components/Meeting25Deck";
-import { Meeting26Deck } from "../../components/Meeting26Deck";
 import { Lesson10Deck } from "../../components/Lesson10GPSlides";
 import { Lesson09Deck } from "../../components/Lesson09GASlides";
 import { Module12Lesson17Deck, Module12Lesson18Deck } from "../../components/Module12LearningDecks";
@@ -29,10 +29,10 @@ const lessonTitles: Record<number, string> = {
   5:"Heuristic Functions, Hill Climbing, and Simulated Annealing", 6:"Best-First Search, A*, and Heuristic Quality",
   7:"Game Trees, Minimax, and Evaluation Functions", 8:"Alpha-Beta Pruning and Modern Game Search",
   9:"Evolutionary Computation and Genetic Algorithms", 10:"Genetic Programming, Artificial Life, and Swarm Intelligence",
-  11:"AAB Evidence Practicum: Finding and Reviewing Research", 12:"AI Literacy: Explaining AI to Nontechnical Audiences Age Five and Older",
-  13:"Probability Foundations and Bayesian Inference", 14:"Conditional Independence, Bayesian Networks, and Naive Bayes",
+  11:"Probability Foundations and Bayesian Inference", 12:"Conditional Independence, Bayesian Networks, and Naive Bayes",
+  13:"Markov Decision Processes, Policies, and Value Iteration", 14:"Reinforcement Learning, Q-Learning, and Exploration",
   15:"Machine Learning Foundations and Concept Learning", 16:"Decision Trees, ID3, and Evaluation",
-  17:"Machine Learning Categories, Genetic Learning, and Perceptrons", 18:"Neural Networks, Clustering, Reinforcement, and Online Learning",
+  17:"Machine Learning Categories, Genetic Learning, and Perceptrons", 18:"Neural Networks, Clustering, and Online Learning",
   19:"Transformers and Attention", 20:"Large Language Models",
   21:"RAG Foundations", 22:"RAG Quality, Evaluation, and Responsible Use",
 };
@@ -44,6 +44,6 @@ export async function generateMetadata({params}:{params:Promise<{lesson:string}>
 export default async function LessonPage({params,searchParams}:{params:Promise<{lesson:string}>;searchParams:Promise<{print?:string}>}){
   const id=Number((await params).lesson); if(!lessonTitles[id]) notFound();
   const forcePrintAll=(await searchParams).print==="all";
-  const deck=id===1?<Meeting01Deck forcePrintAll={forcePrintAll}/>:id===2?<Meeting02Deck forcePrintAll={forcePrintAll}/>:id===3?<Meeting03Deck forcePrintAll={forcePrintAll}/>:id===4?<Meeting04Deck forcePrintAll={forcePrintAll}/>:id===5?<Meeting05Deck forcePrintAll={forcePrintAll}/>:id===6?<Meeting06Deck forcePrintAll={forcePrintAll}/>:id===7?<Meeting07Deck forcePrintAll={forcePrintAll}/>:id===8?<Meeting08Deck forcePrintAll={forcePrintAll}/>:id===9?<Lesson09Deck forcePrintAll={forcePrintAll}/>:id===10?<Lesson10Deck forcePrintAll={forcePrintAll}/>:id===11?<Meeting25Deck/>:id===12?<Meeting26Deck/>:id===13?<Meeting09Deck/>:id===14?<Meeting10Deck/>:id===15?<Meeting13Deck/>:id===16?<Meeting14Deck/>:id===17?<Module12Lesson17Deck/>:id===18?<Module12Lesson18Deck/>:id===19?<Meeting19Deck/>:id===20?<Meeting20Deck/>:id===21?<Meeting21Deck/>:<Meeting22Deck/>;
+  const deck=id===1?<Meeting01Deck forcePrintAll={forcePrintAll}/>:id===2?<Meeting02Deck forcePrintAll={forcePrintAll}/>:id===3?<Meeting03Deck forcePrintAll={forcePrintAll}/>:id===4?<Meeting04Deck forcePrintAll={forcePrintAll}/>:id===5?<Meeting05Deck forcePrintAll={forcePrintAll}/>:id===6?<Meeting06Deck forcePrintAll={forcePrintAll}/>:id===7?<Meeting07Deck forcePrintAll={forcePrintAll}/>:id===8?<Meeting08Deck forcePrintAll={forcePrintAll}/>:id===9?<Lesson09Deck forcePrintAll={forcePrintAll}/>:id===10?<Lesson10Deck forcePrintAll={forcePrintAll}/>:id===11?<Meeting09Deck forcePrintAll={forcePrintAll}/>:id===12?<Meeting10Deck forcePrintAll={forcePrintAll}/>:id===13?<Meeting11Deck forcePrintAll={forcePrintAll}/>:id===14?<Meeting12Deck forcePrintAll={forcePrintAll}/>:id===15?<Meeting13Deck/>:id===16?<Meeting14Deck/>:id===17?<Module12Lesson17Deck/>:id===18?<Module12Lesson18Deck/>:id===19?<Meeting19Deck/>:id===20?<Meeting20Deck/>:id===21?<Meeting21Deck/>:<Meeting22Deck/>;
   return <div className="custom-lesson-route"><Link className="course-home-link" href="/">All modules</Link>{deck}</div>;
 }

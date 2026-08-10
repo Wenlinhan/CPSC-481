@@ -1,0 +1,1890 @@
+{
+  "version": 1,
+  "lesson": "12",
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultDurationSeconds": 6.2,
+    "minimumCenterHoldSeconds": 2,
+    "maximumStillSeconds": 12
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Conditional Independence, Bayesian Networks, and Naive Bayes",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 18.816,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 21.24,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 16.416,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Conditioning changes relevance",
+              "emoji": "💬",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "crowded group chat",
+              "atSeconds": 0.502,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.502,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 16.704,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Independence means learning Y does not change belief about X",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 33.144,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 24.88,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 35.808,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 15.678,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 25.678,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 31.824,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "One crack disproves all-intact",
+              "emoji": "🥚",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "carton of eggs",
+              "atSeconds": 6.675,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 16.675,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 26.675,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 27.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Factorization replaces one joint table with smaller distributions",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 24.192,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 31.344,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 19.042,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 29.042,
+              "durationSeconds": 2.302,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 28.536,
+          "cueCount": 3,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Factorization is a compact menu",
+              "emoji": "🍽️",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "restaurant menu",
+              "atSeconds": 0.489,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.489,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.489,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 23.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 19.694,
+              "durationSeconds": 3.658,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "One mismatched cell disproves independence",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 28.608,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 14.135,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 28.584,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 14.441,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 24.441,
+              "durationSeconds": 4.143,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 30.456,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 4,
+          "durationSeconds": 21.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 14.132,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 22.056,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 2.006,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Independent coin flips turn an exponential joint into repeated local factors",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.48,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Independent flips",
+              "emoji": "🪙🪙🪙",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "heads, tails, heads",
+              "atSeconds": 2.869,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 16.56,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Copying creates dependence",
+              "emoji": "📋",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "copies it",
+              "atSeconds": 7.181,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.96,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "A shared cause can explain why two observations move together",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.44,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Shared cause",
+              "emoji": "🔥",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "both respond to fire",
+              "atSeconds": 2.669,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.744,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 16.104,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "One bus, two delays",
+              "emoji": "🚌",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "same bus broke down",
+              "atSeconds": 2.523,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.523,
+              "durationSeconds": 3.581,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.784,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.447,
+              "durationSeconds": 2.337,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Condition on Z, then test factorization inside every Z stratum",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 24.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 18.577,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 26.352,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 17.35,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 25.488,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.26,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "label": "Condition on the bus status",
+              "emoji": "🚌",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "same bus",
+              "atSeconds": 19.255,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 23.208,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 13.321,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Cavity can screen Toothache from Catch",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.824,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Probe catch",
+              "emoji": "🦷",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "dental probe",
+              "atSeconds": 5.289,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.776,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.223,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 22.619,
+              "durationSeconds": 3.157,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 22.848,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.236,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.236,
+              "durationSeconds": 2.612,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 24.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 15.04,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Rain can screen Traffic from Umbrella",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 12.024,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Umbrella evidence",
+              "emoji": "☔",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "umbrella",
+              "atSeconds": 0.701,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 11.952,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.247,
+              "durationSeconds": 3.417,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.04,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.99,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 21.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Fire can screen Smoke from Alarm—but only under a simplified model",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 11.808,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Fire",
+              "emoji": "🔥",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "Fire as a common cause",
+              "atSeconds": 1.712,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.128,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.896,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Direct detector mechanism",
+              "emoji": "🚨",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "smoke detector",
+              "atSeconds": 0.475,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.489,
+              "durationSeconds": 2.255,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 17.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Product and chain rules turn independence claims into factorization",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 21.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 18.015,
+              "durationSeconds": 3.321,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 18.936,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.209,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 26.112,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 21.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.643,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "A Bayesian network is a DAG plus one local conditional distribution per node",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 27.432,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.32,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Burglary",
+              "emoji": "🥷",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "Burglary is a root",
+              "atSeconds": 0.05,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "effect",
+              "label": "Earthquake",
+              "effect": "shake",
+              "route": "center-hold",
+              "durationSeconds": 5.2,
+              "sourcePhrase": "Earthquake is another root",
+              "atSeconds": 3.8,
+              "centerHoldSeconds": 3.328
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 26.184,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Burglary memory cue",
+              "emoji": "🥷",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "thief who appears",
+              "atSeconds": 0.236,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.236,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 25.776,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.276,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.276,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Local CPTs multiply into the complete joint distribution",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 20.424,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 20.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.111,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 24.168,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 15.917,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 23.76,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.05,
+              "durationSeconds": 3.71,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 5.904,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 7.416,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 6.384,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 9.096,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Blocked and opened paths determine which evidence remains relevant",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 16.344,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 17.04,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 12.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Observed alarm",
+              "emoji": "🚨",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "alarm sounds",
+              "atSeconds": 0.356,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 10.776,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 5,
+          "durationSeconds": 10.848,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 13.8,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.75,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "durationSeconds": 11.904,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Enumeration sums hidden assignments and normalizes the query distribution",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 22.512,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 19.096,
+              "durationSeconds": 3.416,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 23.064,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 18.51,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 22.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.43,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 24.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Two calls raise burglary belief, but the low prior still matters",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 27,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Two phone calls",
+              "emoji": "📞📞",
+              "route": "arc-center",
+              "durationSeconds": 5.604,
+              "sourcePhrase": "Two calls",
+              "atSeconds": 21.396,
+              "centerHoldSeconds": 3.587
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 20.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 14.734,
+              "durationSeconds": 3.962,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 26.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.518,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 5.664,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 5.952,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 9.576,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 10.584,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Given the class, treat feature likelihoods as independent factors",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 21.384,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 20.712,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.462,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.984,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.196,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 22.344,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 13.294,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "label": "Repeated evidence gets amplified",
+              "emoji": "📣",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "megaphone",
+              "atSeconds": 15.971,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "The class prior and feature likelihoods produce a MAP decision",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 21.336,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 22.224,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Prior",
+              "emoji": "🏁",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "starting-line advantage",
+              "atSeconds": 1.247,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.247,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.6,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 4,
+          "durationSeconds": 20.472,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Training estimates local probabilities; testing compares class scores",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 15.576,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 16.704,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.088,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Family name is not a specification",
+              "emoji": "🚗",
+              "route": "arc-center",
+              "durationSeconds": 4.514,
+              "sourcePhrase": "vehicle arrived",
+              "atSeconds": 9.574,
+              "centerHoldSeconds": 2.889
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 13.176,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.396,
+              "durationSeconds": 2.78,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "A probabilistic finite-state acceptor models alternative phone paths",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.248,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 13.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 3.294,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 13.704,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Sequence path",
+              "emoji": "🗺️",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "route planning",
+              "atSeconds": 1.1,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.1,
+              "durationSeconds": 2.604,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 14.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "A common word can outrank a perfect phone match",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 21.36,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 19.175,
+              "durationSeconds": 2.185,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 25.584,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 22.2,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.183,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "emoji",
+              "label": "Prior and likelihood negotiate",
+              "emoji": "👂",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "prior whispers",
+              "atSeconds": 13.324,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 20.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Phone-only decoding selects “new”; word context favors “need”",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 27.936,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.768,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 3,
+          "durationSeconds": 23.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 12.044,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 22.632,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.223,
+              "durationSeconds": 4.2,
+              "automatic": true
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 20.223,
+              "durationSeconds": 2.409,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Naive Bayes is efficient, but the variant and dependencies matter",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 14.136,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 15.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Repeated evidence",
+              "emoji": "🔁",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "Correlated or duplicated features",
+              "atSeconds": 5.213,
+              "centerHoldSeconds": 3.968
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 15.912,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 15.864,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "A useful shortcut must state exactly what it assumes",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 13.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.074,
+              "durationSeconds": 2.798,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "durationSeconds": 16.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.901,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 14.208,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Equation code review",
+              "emoji": "🔍",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "code review",
+              "atSeconds": 1.074,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.074,
+              "durationSeconds": 3.134,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 12.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-left",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.05,
+              "durationSeconds": 2.478,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "durationSeconds": 8.928,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 6,
+          "durationSeconds": 10.704,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 7,
+          "durationSeconds": 10.272,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 8,
+          "durationSeconds": 9.96,
+          "cueCount": 0,
+          "cues": []
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Factor, query, classify—and defend every independence claim",
+      "segments": [
+        {
+          "number": 1,
+          "durationSeconds": 18.192,
+          "cueCount": 0,
+          "cues": []
+        },
+        {
+          "number": 2,
+          "durationSeconds": 16.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.183,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "durationSeconds": 18.72,
+          "cueCount": 2,
+          "cues": [
+            {
+              "type": "emoji",
+              "label": "Audit the assumptions",
+              "emoji": "🧾",
+              "route": "arc-center",
+              "durationSeconds": 6.2,
+              "sourcePhrase": "assumption accounting",
+              "atSeconds": 1.3,
+              "centerHoldSeconds": 3.968
+            },
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 11.3,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "durationSeconds": 16.872,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "camera",
+              "label": "Subtle camera reframe",
+              "route": "breathe-right",
+              "sourcePhrase": "cadence filler",
+              "atSeconds": 10.648,
+              "durationSeconds": 4.2,
+              "automatic": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

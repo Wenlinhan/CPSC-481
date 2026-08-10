@@ -1,0 +1,2128 @@
+{
+  "version": 1,
+  "meeting": "14",
+  "scriptVersion": 1,
+  "voice": {
+    "name": "Microsoft Aria Neural",
+    "engineVoice": "en-US-AriaNeural",
+    "provider": "Microsoft neural text to speech",
+    "gender": "female",
+    "culture": "en-US",
+    "speakingRate": 0.94,
+    "edgeTtsRate": "-6%"
+  },
+  "timing": {
+    "leadSeconds": 0.22,
+    "defaultFocusSeconds": 6,
+    "defaultPopupSeconds": 6.2,
+    "minimumGapSeconds": 0.6,
+    "minimumPopupHoldSeconds": 2
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Learn by acting, observing consequences, and revising a policy",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Reinforcement learning replaces a known transition model with",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 35.448,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "The source establishes trial-and-error, feedback, reward, policy, and exploration",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 23.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The historical source gives five foundational ideas: trial",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 57.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Reinforcement learning seeks high expected return; optimality is not automatic",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Reinforcement learning seeks high expected return, but successful",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 47.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Games and elevator control show why action-dependent experience matters",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 17.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Games and elevator control demonstrate action-dependent experience. A",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 33.912,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "The source contrasts batch learning with incremental online learning",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Batch and online learning describe update schedules. Batch",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 41.328,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Online updating and reinforcement learning can overlap—but answer different questions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The source figure compares batch and online updating",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 54.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Enlarge: Exact embedded source figure comparing batch and online learning",
+          "durationSeconds": 22.368,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Enlarge: Exact embedded source figure comparing batch and online learning",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Enlarge: Exact embedded source figure comparing",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "The source places reinforcement learning inside a broader learning taxonomy",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.76,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The historical taxonomy places reinforcement learning among broader",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 36.96,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Incremental updating is a schedule; reinforcement learning is a decision problem",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 17.832,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Distinguish four dimensions that are often conflated: the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 41.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "An MDP names the pieces hidden inside the source’s words “agent,” “environment,” and “policy”",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 22.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The MDP gives formal meaning to the source",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 40.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "A reward labels a consequence—not the action the agent should have taken",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 16.488,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Reward labels the consequence observed after an action",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 28.344,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Agent: policy + learner",
+          "durationSeconds": 18.624,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Agent: policy + learner",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Agent: policy + learner, predict the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: aₜ leads to",
+          "durationSeconds": 17.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: aₜ leads to",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting aₜ leads to, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: comes from rₜ₊₁",
+          "durationSeconds": 16.272,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: comes from rₜ₊₁",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting comes from rₜ₊₁, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: comes from sₜ₊₁",
+          "durationSeconds": 15.744,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: comes from sₜ₊₁",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting comes from sₜ₊₁, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Interaction: Environment: dynamics + reward",
+          "durationSeconds": 17.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Environment: dynamics + reward",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Environment: dynamics + reward, predict the",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Interaction: 1",
+          "durationSeconds": 14.952,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 1",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 1, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Interaction: 2",
+          "durationSeconds": 13.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 2",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 2, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "label": "Interaction: 3",
+          "durationSeconds": 10.8,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 3",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 3, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Interaction: 4",
+          "durationSeconds": 12.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 4",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 4, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Interaction: 5",
+          "durationSeconds": 14.112,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 5",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 5, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 13,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Learning data are ordered transitions, not shuffled input–label pairs",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Reinforcement-learning data are ordered transitions. Shuffling them into",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 46.248,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Return converts a stream of future rewards into one learning target",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.288,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Return converts a stream of rewards into a",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 53.16,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "The same reward sequence supports different preferences as γ changes",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 18.528,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Use the same reward sequence with several gamma",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 42.48,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: 0.0",
+          "durationSeconds": 14.4,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.0",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.0, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: 0.5",
+          "durationSeconds": 14.472,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.5",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.5, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: 0.9",
+          "durationSeconds": 14.88,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 0.9",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 0.9, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: 1.0",
+          "durationSeconds": 16.92,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 1.0",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 1.0, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "A policy chooses; value functions predict long-run consequences",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.816,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A policy chooses actions; state and action values",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 59.928,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "A bandit reveals the exploration–exploitation conflict without state transitions",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.256,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "A multi-armed bandit isolates exploration from state transitions",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 47.568,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Reset evidence",
+          "durationSeconds": 16.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reset evidence",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reset evidence, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Arm A: Q estimate unknown; zero reward; zero pulls",
+          "durationSeconds": 18.768,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Arm A: Q estimate unknown; zero reward; zero pulls",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Arm A: Q estimate unknown; zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: Arm B: Q estimate unknown; zero reward; zero pulls",
+          "durationSeconds": 18.648,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Arm B: Q estimate unknown; zero reward; zero pulls",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Arm B: Q estimate unknown; zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: Arm C: Q estimate unknown; zero reward; zero pulls",
+          "durationSeconds": 19.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Arm C: Q estimate unknown; zero reward; zero pulls",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Arm C: Q estimate unknown; zero",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Exploit the current estimate most of the time; explore with probability ε",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 21.12,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Epsilon-greedy behavior exploits the current best estimate most",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 41.544,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: epsilon = 0",
+          "durationSeconds": 18.048,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: epsilon = 0",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting epsilon = 0, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: epsilon = 0.1",
+          "durationSeconds": 16.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: epsilon = 0.1",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting epsilon = 0.1, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: epsilon = 0.5",
+          "durationSeconds": 18.504,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: epsilon = 0.5",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting epsilon = 0.5, predict the result",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Q-learning moves one stored value toward a bootstrapped one-step target",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.128,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Q learning moves one stored action value toward",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 51.552,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Compute target, error, and update as three separate quantities",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 17.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Keep target, temporal-difference error, and update separate. First",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 39.456,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Previous",
+          "durationSeconds": 14.904,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Previous",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Previous, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Next",
+          "durationSeconds": 15.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Next",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Next, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: Reset",
+          "durationSeconds": 15.696,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reset",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reset, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Repeated transitions propagate goal reward backward through a Q-table",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.584,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "In the tabular gridworld, reward information propagates backward",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 34.008,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: 1",
+          "durationSeconds": 15.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 1",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 1, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: 2",
+          "durationSeconds": 15.792,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 2",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 2, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: 3",
+          "durationSeconds": 15.336,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 3",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 3, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: 4",
+          "durationSeconds": 16.848,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: 4",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting 4, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Q-learning alternates behavior, observation, and one local table update",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.232,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The tabular algorithm alternates behavior, observation, and one",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 64.32,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "title": "The next-action term determines whether learning is off-policy or on-policy",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 19.68,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Q learning is off-policy because its target uses",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 42.312,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Q-learning",
+          "durationSeconds": 18,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Q-learning",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Q-learning, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: SARSA",
+          "durationSeconds": 17.376,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: SARSA",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting SARSA, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "title": "A high training reward can coexist with poor, unsafe, or brittle behavior",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.664,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "High training reward can coexist with sample inefficiency",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 67.464,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Use the formal objects—not intuition alone—to justify each answer",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 17.856,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Practice by identifying the formal object required by",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 31.992,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: Return",
+          "durationSeconds": 12.096,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Return",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Return, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: Update",
+          "durationSeconds": 14.592,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Update",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Update, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: Policy",
+          "durationSeconds": 14.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Policy",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Policy, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: Diagnosis",
+          "durationSeconds": 15.072,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Diagnosis",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Diagnosis, predict the result. Now activate",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Interaction: Reveal solution",
+          "durationSeconds": 16.224,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: Reveal solution",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting Reveal solution, predict the result. Now",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Which statement correctly distinguishes reinforcement learning from online supervised learning?",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 20.424,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "The assessment asks what distinguishes reinforcement learning from",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 76.56,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Interaction: A: RL always updates online; supervised learning always trains in batches.",
+          "durationSeconds": 22.08,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: A: RL always updates online; supervised learning always trains in batches.",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting A: RL always updates online; supervised",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "label": "Interaction: B: RL actions affect future data and rewards may be delayed; online supervised learning can update from arriving labeled examples without controlling the data source.",
+          "durationSeconds": 29.28,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: B: RL actions affect future data and rewards may be delayed; online supervised learning can update from arriving labeled examples without controlling the data source.",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting B: RL actions affect future data",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Interaction: C: RL has no model, while supervised learning always has an explicit model.",
+          "durationSeconds": 22.032,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: C: RL has no model, while supervised learning always has an explicit model.",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting C: RL has no model, while",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Interaction: D: The two methods differ only in vocabulary.",
+          "durationSeconds": 20.52,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Interaction: D: The two methods differ only in vocabulary.",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Before selecting D: The two methods differ only",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Connect the course references to reinforcement-learning control",
+      "segments": [
+        {
+          "number": 1,
+          "label": "Concept and boundary",
+          "durationSeconds": 17.616,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Concept and boundary",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Connect the lesson to the course sources and",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "label": "Read the visible model",
+          "durationSeconds": 71.688,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Read the visible model",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Now connect that idea to the exact visible",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Transfer and audit",
+          "durationSeconds": 21.84,
+          "cueCount": 1,
+          "cues": [
+            {
+              "type": "focus",
+              "label": "Transfer and audit",
+              "selector": ".slide-content > *",
+              "index": 0,
+              "sourcePhrase": "Transfer this page to a new learning system",
+              "atSeconds": 0.05,
+              "durationSeconds": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

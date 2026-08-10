@@ -5348,6 +5348,24 @@ kbd {
   .slide:last-child {
     break-after: auto;
   }
+
+  .print-all-deck .slide {
+    box-sizing: border-box;
+    break-after: page;
+    break-inside: avoid-page;
+    page-break-after: always;
+    page-break-inside: avoid;
+    height: 7.5in;
+    min-height: 7.5in;
+    max-height: 7.5in;
+    overflow: hidden;
+    width: 10in;
+  }
+
+  .print-all-deck .slide:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
 }
 
 /* Source-faithful Week 1 lecture decks */

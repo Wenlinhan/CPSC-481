@@ -35,6 +35,15 @@ test("server-renders the unified course home", async () => {
   assert.match(html, /15 modules/);
   assert.match(html, /22 sequential lessons/);
   assert.match(html, /Learn AI by explaining, tracing, building, and evaluating it/);
+  assert.match(html, /Module\s*(?:<!-- -->)?\s*9/);
+  assert.match(html, /Reasoning Under Uncertainty/);
+  assert.match(html, /Module\s*(?:<!-- -->)?\s*10/);
+  assert.match(html, /Sequential Decision-Making and Reinforcement Learning/);
+  assert.match(html, /Lesson\s*(?:<!-- -->)?\s*11/);
+  assert.match(html, /Probability Foundations and Bayesian Inference/);
+  assert.match(html, /Lesson\s*(?:<!-- -->)?\s*13/);
+  assert.match(html, /Markov Decision Processes, Policies, and Value Iteration/);
+  assert.doesNotMatch(html, /AI Literacy and AAB Evidence/);
   for (let lesson = 1; lesson <= 22; lesson += 1) {
     assert.match(html, new RegExp(`href="/lessons/${String(lesson).padStart(2, "0")}"`));
   }
@@ -49,7 +58,26 @@ test("all 22 sequential lesson routes render", async () => {
   }
 });
 
-test("Lessons 1 through 10, 14, and 15 show concise page key points in Notes", async () => {
+test("Lessons 11 through 14 use the restructured module numbering and canonical titles", async () => {
+  const expected = new Map([
+    [11, "Probability Foundations and Bayesian Inference"],
+    [12, "Conditional Independence, Bayesian Networks, and Naive Bayes"],
+    [13, "Markov Decision Processes, Policies, and Value Iteration"],
+    [14, "Reinforcement Learning, Q-Learning, and Exploration"],
+  ]);
+  for (const [lesson, title] of expected) {
+    const response = await render(`/lessons/${lesson}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(`Lesson ${lesson}`));
+    assert.ok(html.includes(title), `Lesson ${lesson} must render its canonical title`);
+  }
+  const probabilityDeck = await readFile(new URL("../app/components/Meeting09Deck.tsx", import.meta.url), "utf8");
+  assert.match(probabilityDeck, /Prepare for Lesson 12/);
+  assert.doesNotMatch(probabilityDeck, /Prepare for Meeting 10/);
+});
+
+test("Lessons 1 through 10, 12, and 15 show concise page key points in Notes", async () => {
   const componentFiles = [
     "Meeting01Deck.tsx",
     "Meeting02Deck.tsx",
@@ -158,6 +186,33 @@ test("all 30 meeting routes render and retain their titles", async () => {
     assert.equal(response.status, 200, `Meeting ${id} should render`);
     const html = await response.text();
     assert.match(html, new RegExp(`Meeting ${id}\\b|Meeting ${String(id).padStart(2, "0")}`));
+  }
+});
+
+test("the legacy AAB meetings are replaced by general responsible-AI evaluation meetings", async () => {
+  const expected = new Map([
+    [25, "Auditing AI Claims, Evidence, and Deployment Boundaries"],
+    [26, "Accessible AI Explanations, Participatory Evaluation, and Public Communication"],
+  ]);
+  for (const [meeting, title] of expected) {
+    const response = await render(`/meetings/${meeting}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.ok(html.includes(title));
+    assert.doesNotMatch(html, /AAB Evidence Practicum|AAB Explain AI|AI Literacy and AAB Evidence/);
+  }
+});
+
+test("Lessons 13 and 14 narrate every visible interaction with a specific result", async () => {
+  for (const [directory, lesson, expectedActions] of [["lesson-13-mdp", 13, 27], ["lesson-14-rl", 14, 40]]) {
+    const script = JSON.parse(await readFile(new URL(`../lecture/${directory}/lecture-script-aria.json`, import.meta.url), "utf8"));
+    const actions = script.slides.flatMap((slide) => slide.segments).filter((segment) => segment.action);
+    assert.equal(actions.length, expectedActions, `Lesson ${lesson} must narrate every visible control`);
+    for (const segment of actions) {
+      assert.ok(segment.text.length >= 120, `${segment.label} needs a substantive before-and-after explanation`);
+      assert.doesNotMatch(segment.text, /Use this control to change the visible state/);
+      assert.doesNotMatch(segment.action.label, / can $|^[A-D][A-Z]|Agentpolicy|Environmentdynamics/);
+    }
   }
 });
 
@@ -1513,7 +1568,7 @@ test("Meeting 21 provides a complete 75-minute RAG foundations lesson", async ()
   }
 });
 
-test("AAB participation is concentrated in Week 13 Meetings 25 and 26", async () => {
+test("the two former AAB lecture decks remain available only as archival meeting sources", async () => {
   const meetingsWithAab = [];
   for (let meeting = 1; meeting <= 30; meeting += 1) {
     const source = await readFile(
@@ -1525,7 +1580,7 @@ test("AAB participation is concentrated in Week 13 Meetings 25 and 26", async ()
   assert.deepEqual(meetingsWithAab, [25, 26]);
 });
 
-test("Meeting 25 provides a complete AAB research-evidence practicum and publication guardrails", async () => {
+test("the archived Meeting 25 source preserves its former AAB practicum and publication guardrails", async () => {
   const meeting25 = await readFile(
     new URL("../app/components/Meeting25Deck.tsx", import.meta.url),
     "utf8",
@@ -1583,7 +1638,7 @@ test("Meeting 25 provides a complete AAB research-evidence practicum and publica
   }
 });
 
-test("Meeting 26 provides a complete AI-literacy explanation and audience-testing practicum", async () => {
+test("the archived Meeting 26 source preserves its former AI-literacy audience-testing practicum", async () => {
   const meeting26 = await readFile(
     new URL("../app/components/Meeting26Deck.tsx", import.meta.url),
     "utf8",

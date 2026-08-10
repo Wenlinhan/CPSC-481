@@ -1,0 +1,252 @@
+{
+  "route": "/lessons/12",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Conditional Independence, Bayesian Networks, and Naive Bayes",
+      "visibleText": "DRIVING QUESTION\nWhich variables still matter once the right evidence is known?\n\nIndependence removes factors. Conditional independence removes factors only after a conditioning context is fixed. Graphs make those local claims visible and reusable.\n\nINDEPENDENCE\n\nTest factorization, not intuition alone.\n\nBAYESIAN NETWORK\n\nEncode local conditional distributions in a directed acyclic graph.\n\nINFERENCE\n\nSum hidden variables and normalize evidence-compatible mass.\n\nNAIVE BAYES\n\nUse a strong class-conditional independence assumption for efficient classification.",
+      "actions": []
+    },
+    {
+      "number": 2,
+      "title": "Independence means learning Y does not change belief about X",
+      "visibleText": "THREE EQUIVALENT VIEWS\nX ⟂ Y\n1\nP(x|y)=P(x), when P(y)>0\n2\nP(y|x)=P(y), when P(x)>0\n3\nP(x,y)=P(x)P(y), for every x,y pair\nINTERPRETATION AND TEST\nObserving Y adds no information about X\n\nFor a finite joint table, test every cell. One mismatch disproves independence; every match is needed to establish it.\n\nMODELING CAUTION\nExact independence is rare in empirical data. Treat it as a claim to justify or test, not a property inferred from variable names.",
+      "actions": []
+    },
+    {
+      "number": 3,
+      "title": "Factorization replaces one joint table with smaller distributions",
+      "visibleText": "DEFINITION\nP(X,Y)=P(X)P(Y)\n2ⁿ\njoint rows for n binary variables\n2n\nmarginal entries if independent\n∀\nevery assignment must satisfy the equality\nREPRESENTATION CONSEQUENCE\nStore P(X) and P(Y), not every pair\n\nIf X and Y are independent, every joint cell is reconstructed from two marginal entries. For n independent binary variables, a 2ⁿ-row joint becomes n two-entry tables.\n\nASK BEFORE FACTORING\nDoes the assumption hold for every assignment, and is the resulting approximation accurate enough for the intended decision?",
+      "actions": []
+    },
+    {
+      "number": 4,
+      "title": "One mismatched cell disproves independence",
+      "visibleText": "P₁(T,W)\nT\tW\tP\nhot\tsun\t0.4\nhot\train\t0.1\ncold\tsun\t0.2\ncold\train\t0.3\nP₂(T,W)\nT\tW\tP\nhot\tsun\t0.3\nhot\train\t0.2\ncold\tsun\t0.3\ncold\train\t0.2\nP(T)P(W)\nT\tW\tP\nhot\tsun\t0.3\nhot\train\t0.2\ncold\tsun\t0.3\ncold\train\t0.2\n\nFirst cell: .5 × .6 = .3\n\nWorked check · use one cell\nWhich joint table factorizes?\n\nFrom the displayed marginals, P(T=hot)=0.5 and P(W=sun)=0.6. Independence therefore predicts P(hot,sun)=0.5×0.6=0.3.\n\nReveal analysis",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Reveal independence-table analysis",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print WORKED INDEPENDENCE · COUNTEREXAMPLE AND PROOF One mismatched cell disproves independence P₁(T,W) T W P hot sun 0.4 hot rain 0.1 cold sun 0.2 cold rain 0.3 P₂(T,W) T W P hot sun 0.3 hot rain 0.2 cold sun 0.3 cold rain 0.2 P(T)P(W) T W P hot sun 0.3 hot rain 0.2 cold sun 0.3 cold rain 0.2 First cell: .5 × .6 = .3 Worked check · use one cell Which joint table factorizes? From the displayed marginals, P(T=hot)=0.5 and P(W=sun)=0.6. Independence therefore predicts P(hot,sun)=0.5×0.6=0.3. Hide analysis P₂ FACTORIZES; P₁ DOES NOT P₂(hot,sun)=0.3 and all four P₂ cells match P(T)P(W). P₁(hot,sun)=0.4, so a single counterexample disproves independence for P₁. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 4 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Independent coin flips turn an exponential joint into repeated local factors",
+      "visibleText": "WORKED EVENT · H, T, H\nH\nT\nH\nP(H,T,H)=0.5×0.5×0.5=0.125\n\nFairness fixes each marginal at 0.5. Independence is the additional assumption that permits multiplication.\n\nGENERAL FACTORIZATION\nP(X₁,…,Xₙ)=∏ᵢP(Xᵢ)\n2ⁿ\noutcomes\nn\nlocal distributions\n0.5ⁿ\nper sequence\nQUICK CHECK\nA fair coin does not logically guarantee independent flips; fair marginals alone do not rule out dependence over time.",
+      "actions": []
+    },
+    {
+      "number": 6,
+      "title": "A shared cause can explain why two observations move together",
+      "visibleText": "FROM ASSOCIATION TO SCREENING OFF\nSmoke and an alarm can be associated because both depend on fire\n\nOnce the relevant state of the fire is known, a model may assert that smoke contributes no additional information about the alarm. That assertion is conditional—not absolute—independence.\n\nFire is the common cause; Smoke and Alarm are its effects.",
+      "actions": []
+    },
+    {
+      "number": 7,
+      "title": "Condition on Z, then test factorization inside every Z stratum",
+      "visibleText": "EQUIVALENT EQUATIONS\nX ⟂ Y | Z\n1\nP(x,y|z)=P(x|z)P(y|z)\n2\nP(x|y,z)=P(x|z)\n3\nP(y|x,z)=P(y|z)\nREAD THE QUANTIFIER\nFor all x, y, z with valid denominators\n\nConditional independence does not say X and Y are unrelated. It says that after Z is fixed, knowing Y does not further change the distribution of X.\n\nWHY IT MATTERS\nThese local claims are the main representational savings behind Bayesian networks and Naive Bayes.",
+      "actions": []
+    },
+    {
+      "number": 8,
+      "title": "Cavity can screen Toothache from Catch",
+      "visibleText": "Cavity can jointly explain Toothache and a probe Catch.\nTRANSLATE THE NOTATION\nOnce Cavity is known, Toothache does not change Catch\nP(Catch|Toothache,Cavity)=P(Catch|Cavity)\nP(Toothache|Catch,Cavity)=P(Toothache|Cavity)\nP(Toothache,Catch|Cavity)=P(Toothache|Cavity)P(Catch|Cavity)\nMODEL CLAIM\nThe equations are equivalent under valid probabilities; whether the claim fits real dental data is empirical.",
+      "actions": []
+    },
+    {
+      "number": 9,
+      "title": "Rain can screen Traffic from Umbrella",
+      "visibleText": "Raining\n↙\n↘\nTraffic\nUmbrella\nTraffic ⟂ Umbrella | Raining\nCommon-cause reasoning\nTraffic and Umbrella\n\nDecide whether they should be independent before observing Raining, and whether the model supports independence after conditioning on Raining.\n\nReveal one defensible claim",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Reveal Rain common-cause claim",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print CONDITIONAL INDEPENDENCE · WEATHER DOMAIN Rain can screen Traffic from Umbrella Raining ↙ ↘ Traffic Umbrella Traffic ⟂ Umbrella | Raining Common-cause reasoning Traffic and Umbrella Decide whether they should be independent before observing Raining, and whether the model supports independence after conditioning on Raining. Hide claim TRAFFIC ⟂ UMBRELLA | RAINING They can be associated before conditioning because the shared cause changes both probabilities. In the proposed common-cause model, knowing Raining screens them off. This is a modeling claim that data and domain knowledge must test. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 9 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Fire can screen Smoke from Alarm—but only under a simplified model",
+      "visibleText": "Fire\n↙\n↘\nSmoke\nAlarm\nSmoke ⟂ Alarm | Fire\nCommon-cause reasoning\nSmoke and Alarm\n\nDecide whether they should be independent before observing Fire, and whether the model supports independence after conditioning on Fire.\n\nReveal one defensible claim",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Reveal Fire common-cause claim",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print CONDITIONAL INDEPENDENCE · SAFETY DOMAIN Fire can screen Smoke from Alarm—but only under a simplified model Fire ↙ ↘ Smoke Alarm Smoke ⟂ Alarm | Fire Common-cause reasoning Smoke and Alarm Decide whether they should be independent before observing Fire, and whether the model supports independence after conditioning on Fire. Hide claim SMOKE ⟂ ALARM | FIRE They can be associated before conditioning because the shared cause changes both probabilities. In the proposed common-cause model, knowing Fire screens them off. This is a modeling claim that data and domain knowledge must test. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 10 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Product and chain rules turn independence claims into factorization",
+      "visibleText": "Conditional probability\nP(x|y)=P(x,y)/P(y)\nProduct rule\nP(x,y)=P(x|y)P(y)\nChain rule\nP(x₁,…,xₙ)=∏ᵢP(xᵢ|x₁,…,xᵢ₋₁)\nIndependence\nP(x,y)=P(x)P(y)\nRETRIEVAL CHECK\nUse the right rule for the right job\nConditional probability: divide a compatible joint by evidence mass.\nProduct rule: reconstruct a joint from a conditional and marginal.\nChain rule: factor any joint in an ordered sequence.\nIndependence: simplify selected chain-rule terms.",
+      "actions": []
+    },
+    {
+      "number": 12,
+      "title": "A Bayesian network is a DAG plus one local conditional distribution per node",
+      "visibleText": "REPRESENTATION\nParents identify the variables a node conditions on locally\nBurglary\nEarthquake\n↘    ↙\nAlarm\n↙      ↘\nJohnCalls\nMaryCalls\n\nA directed acyclic graph orders dependencies. Each node Xᵢ has a conditional probability table P(Xᵢ|Parents(Xᵢ)).\n\nNODES\n\nRandom variables with explicit domains.\n\nDIRECTED EDGES\n\nDirect probabilistic dependencies in the chosen representation.\n\nACYCLIC\n\nNo directed path can return to its starting node.\n\nINTERPRET CAREFULLY\nAn arrow does not prove causation. A causally designed network needs stronger assumptions than the probabilistic semantics alone.",
+      "actions": []
+    },
+    {
+      "number": 13,
+      "title": "Local CPTs multiply into the complete joint distribution",
+      "visibleText": "B\nE\nA\nJ\nM\nBurglary\nEarthquake\n↘    ↙\nAlarm\n↙      ↘\nJohnCalls\nMaryCalls\n\nDAG: Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls.\n\nLOCAL FACTOR · B\nP(B)\n\nBurglary is a root variable, so its local table is a prior.\n\nCOMPLETE JOINT\nP(B,E,A,J,M)\n= P(B)P(E)P(A|B,E)P(J|A)P(M|A)",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Earthquake factor",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · DAG AND CPT FACTORIZATION Local CPTs multiply into the complete joint distribution B E A J M Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls DAG: Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls. LOCAL FACTOR · E P(E) Earthquake is another root variable with its own prior. COMPLETE JOINT P(B,E,A,J,M) = P(B)P(E)P(A|B,E)P(J|A)P(M|A) ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 13 / 25 →"
+        },
+        {
+          "segment": 6,
+          "label": "Alarm factor",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · DAG AND CPT FACTORIZATION Local CPTs multiply into the complete joint distribution B E A J M Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls DAG: Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls. LOCAL FACTOR · A P(A | B,E) Alarm has two parents; its CPT has one row for each B,E assignment. COMPLETE JOINT P(B,E,A,J,M) = P(B)P(E)P(A|B,E)P(J|A)P(M|A) ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 13 / 25 →"
+        },
+        {
+          "segment": 7,
+          "label": "John factor",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · DAG AND CPT FACTORIZATION Local CPTs multiply into the complete joint distribution B E A J M Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls DAG: Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls. LOCAL FACTOR · J P(J | A) JohnCalls needs only Alarm in its local conditional table. COMPLETE JOINT P(B,E,A,J,M) = P(B)P(E)P(A|B,E)P(J|A)P(M|A) ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 13 / 25 →"
+        },
+        {
+          "segment": 8,
+          "label": "Mary factor",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · DAG AND CPT FACTORIZATION Local CPTs multiply into the complete joint distribution B E A J M Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls DAG: Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls. LOCAL FACTOR · M P(M | A) MaryCalls also needs only Alarm in its local conditional table. COMPLETE JOINT P(B,E,A,J,M) = P(B)P(E)P(A|B,E)P(J|A)P(M|A) ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 13 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Blocked and opened paths determine which evidence remains relevant",
+      "visibleText": "Common cause\nCollider closed\nExplaining away\nBurglary\nEarthquake\n↘    ↙\nAlarm\n↙      ↘\nJohnCalls\nMaryCalls\nASK\n\nAre JohnCalls and MaryCalls independent after Alarm is known?\n\nCLAIM\n\nYes in this network: J ⟂ M | A.\n\nPATH\n\nConditioning on their common parent blocks the only path between them.\n\nCHECK\n\nState the conditioning set; a graphical claim without it is incomplete.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Collider closed",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · GRAPHICAL INDEPENDENCE Blocked and opened paths determine which evidence remains relevant Common cause Collider closed Explaining away Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls ASK Are Burglary and Earthquake independent before observing Alarm or its descendants? CLAIM Yes in the represented distribution: B ⟂ E. PATH The path B→A←E is blocked by the unobserved collider A. CHECK State the conditioning set; a graphical claim without it is incomplete. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 14 / 25 →"
+        },
+        {
+          "segment": 6,
+          "label": "Explaining away",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · GRAPHICAL INDEPENDENCE Blocked and opened paths determine which evidence remains relevant Common cause Collider closed Explaining away Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls ASK Are Burglary and Earthquake independent after Alarm is observed? CLAIM No. Conditioning on collider A opens the path. PATH Evidence for one cause can explain away the other once their common effect is known. CHECK State the conditioning set; a graphical claim without it is incomplete. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 14 / 25 →"
+        },
+        {
+          "segment": 7,
+          "label": "Return to common cause",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · GRAPHICAL INDEPENDENCE Blocked and opened paths determine which evidence remains relevant Common cause Collider closed Explaining away Burglary Earthquake ↘ ↙ Alarm ↙ ↘ JohnCalls MaryCalls ASK Are JohnCalls and MaryCalls independent after Alarm is known? CLAIM Yes in this network: J ⟂ M | A. PATH Conditioning on their common parent blocks the only path between them. CHECK State the conditioning set; a graphical claim without it is incomplete. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 14 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Enumeration sums hidden assignments and normalizes the query distribution",
+      "visibleText": "Choose query variables and fix the observed evidence.\nList every hidden variable not in the query or evidence.\nUse the network factorization for each complete assignment.\nSum over all hidden-variable assignments.\nRepeat for each query value and normalize the resulting vector.\nP(X|e)=α Σᵧ ∏ᵢP(xᵢ|paᵢ)\n\nEnumeration is conceptually direct, but the number of hidden assignments can grow exponentially. Variable elimination reuses intermediate factors instead of repeating products.\n\nPAIR TASK\nFor P(Burglary|JohnCalls,MaryCalls), identify the hidden variables before doing arithmetic.",
+      "actions": []
+    },
+    {
+      "number": 16,
+      "title": "Two calls raise burglary belief, but the low prior still matters",
+      "visibleText": "EXACT INFERENCE · 1 OF 5\nParse the query\n\nCompute one unnormalized number for B=true and another for B=false.\n\nPrevious\nNext\nReset\nCurrent expression\nQuery B; evidence j,m\nHidden variables or normalization\nE, A\nResult\nTwo unobserved binary variables\nNumbers use the canonical burglary–alarm CPTs from the course textbook example.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Expand factors",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · WORKED NETWORK Two calls raise burglary belief, but the low prior still matters EXACT INFERENCE · 2 OF 5 Expand the factors Each complete assignment contributes a product of five local factors. Previous Next Reset Current expression P(B)P(E)P(A|B,E)P(j|A)P(m|A) Hidden variables or normalization Σe Σa Result Four rows per B value Numbers use the canonical burglary–alarm CPTs from the course textbook example. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 16 / 25 →"
+        },
+        {
+          "segment": 6,
+          "label": "Enumerate burglary true",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · WORKED NETWORK Two calls raise burglary belief, but the low prior still matters EXACT INFERENCE · 3 OF 5 Enumerate B=true Sum all four rows compatible with burglary and both calls. Previous Next Reset Current expression Σe Σa P(b,e,a,j,m) Hidden variables or normalization E, A Result 0.000592243 Numbers use the canonical burglary–alarm CPTs from the course textbook example. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 16 / 25 →"
+        },
+        {
+          "segment": 7,
+          "label": "Enumerate burglary false",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · WORKED NETWORK Two calls raise burglary belief, but the low prior still matters EXACT INFERENCE · 4 OF 5 Enumerate B=false The no-burglary mass is larger even after both calls are observed. Previous Next Reset Current expression Σe Σa P(¬b,e,a,j,m) Hidden variables or normalization E, A Result 0.001491858 Numbers use the canonical burglary–alarm CPTs from the course textbook example. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 16 / 25 →"
+        },
+        {
+          "segment": 8,
+          "label": "Normalize posterior",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print TEXTBOOK-GROUNDED SUPPLEMENT · WORKED NETWORK Two calls raise burglary belief, but the low prior still matters EXACT INFERENCE · 5 OF 5 Normalize Normalize the two unnormalized entries so they sum to one. Previous Next Reset Current expression α〈0.000592243, 0.001491858〉 Hidden variables or normalization Evidence total = 0.002084100 Result P(b|j,m) ≈ 0.284 Numbers use the canonical burglary–alarm CPTs from the course textbook example. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 16 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Given the class, treat feature likelihoods as independent factors",
+      "visibleText": "FROM CHAIN RULE TO THE SHORTCUT\nP(F₁,…,Fₙ|C) ≈ ∏ᵢP(Fᵢ|C)\nClass C\napple / not apple\n→\nsize\ncolor\nshape\n\nEvery feature is conditioned on the same class. The approximation drops dependencies among features within each class.\n\nCORRECT ASSUMPTION\nFᵢ ⟂ Fⱼ | C, not Fᵢ ⟂ Fⱼ\n\nFeatures such as fruit shape, color, and size may be associated overall because classes occur in different proportions. Naive Bayes asserts independence only after the class is fixed.\n\nCLASSIFICATION SCORE\nscore(C)=P(C)∏ᵢP(Fᵢ|C). The shared evidence denominator can be omitted when comparing classes.",
+      "actions": []
+    },
+    {
+      "number": 18,
+      "title": "The class prior and feature likelihoods produce a MAP decision",
+      "visibleText": "DECISION RULE\nĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)\nMaximum likelihood\n∏P(eᵢ|C)\n\nuses feature likelihood only\n\nMAP\nP(C)∏P(eᵢ|C)\n\nalso uses the class prior\n\nCOMPUTE IN LOG SPACE\nĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)\nEstimate P(C) from class frequency or a justified prior.\nEstimate P(eᵢ|C) within each class.\nUse log probabilities in software to avoid numerical underflow.\nText classification and spam filtering are common fits.",
+      "actions": []
+    },
+    {
+      "number": 19,
+      "title": "Training estimates local probabilities; testing compares class scores",
+      "visibleText": "TRAINING → TESTING\n1 · Data\napples, grapes, other fruit\n2 · Estimate\npriors and feature likelihoods\n3 · Score\napple vs not-apple\n4 · Decide\n0.8 vs 0.2 → apple\nscore(C)=P(C)P(size|C)P(color|C)P(shape|C)\nEXAMPLE STRUCTURE\nApple versus not-apple\nTraining data: apples, grapes, and other fruits.\nFeatures: size, color, and shape.\nClasses: apple and not-apple.\nTesting: compare posterior class scores; 0.8 versus 0.2 selects apple.\nDO NOT OVERREAD 0.8\nA normalized model score is not automatically calibrated as an 80% real-world chance. Check held-out calibration and data shift.",
+      "actions": []
+    },
+    {
+      "number": 20,
+      "title": "A probabilistic finite-state acceptor models alternative phone paths",
+      "visibleText": "Transition probabilities encode alternative phone paths; 0.60 goes directly from /t/ to /m/.\nPRESERVE THE MODEL; CORRECT THE LABEL\nThis is a probabilistic sequence model, not Naive Bayes by itself\n\nA finite-state acceptor assigns probabilities to transitions among phone states. It characterizes pronunciation variants and can help interpret ambiguous phone sequences.\n\nSOURCE NOTE\nIn the displayed data, 60% of speakers go from the initial /t/ directly to /m/ without an intervening vowel phone.",
+      "actions": []
+    },
+    {
+      "number": 21,
+      "title": "A common word can outrank a perfect phone match",
+      "visibleText": "CORPUS PRIOR\nP(word | [ni]) ∝ P([ni] | word)P(word)\nword\tfrequency\tP(word)\nknee\t61\t.000024\nthe\t114,834\t.046\nneat\t338\t.00013\nneed\t1,417\t.00056\nnew\t2,625\t.001\nCANDIDATE WORDS\nknee · the · neat · need · new\n\nCompare candidates with an unnormalized Bayes score: P(word|ni) ∝ P(ni|word)P(word).\n\nThe combined corpora contain about 2.5 million words.\n“the” appears because its prior is high, even though its phone likelihood will be zero.\nPredict the winner before revealing the calculated table.",
+      "actions": []
+    },
+    {
+      "number": 22,
+      "title": "Phone-only decoding selects “new”; word context favors “need”",
+      "visibleText": "PHONE-ONLY SCORE\nword\tP([ni]|word)\tP(word)\tproduct\nnew\t.36\t.001\t.00036\nneat\t.52\t.00013\t.000068\nneed\t.11\t.00056\t.000062\nknee\t1.0\t.000024\t.000024\nthe\t0\t.046\t0\nREAD THE EVIDENCE\nLocal winner: new\n\nThe displayed model uses only the phone evidence and word prior, so it favors “new.” But the preceding word is “I”: corpus evidence makes “I need” more plausible than “I new.”\n\nMODEL REPAIR\nAdd contextual variables or a sequence/language model. Better representation can matter more than refining the same local score.",
+      "actions": []
+    },
+    {
+      "number": 23,
+      "title": "Naive Bayes is efficient, but the variant and dependencies matter",
+      "visibleText": "EVALUATION MATRIX\nStrength · efficient\nSimple counts or distribution estimates; fast prediction.\nStrength · incremental\nSufficient statistics can often update from streaming data.\nRisk · dependence\nCorrelated features may count the same evidence repeatedly.\nRisk · calibration\nGood class accuracy does not guarantee reliable probabilities.\nChoose the variant: Gaussian · Multinomial · Bernoulli · Categorical\nKEEP, QUALIFY, CORRECT\nEfficient: training and prediction are usually simple counts or distribution estimates.\nReal or discrete: choose Gaussian, multinomial, Bernoulli, or categorical assumptions appropriately.\nStreaming: sufficient statistics can often update incrementally.\nDependency risk: correlated features can double-count evidence and harm calibration.\nSPECIFIC CORRECTION\nMean and variance are sufficient only for Gaussian Naive Bayes—not for every Naive Bayes variant.",
+      "actions": []
+    },
+    {
+      "number": 24,
+      "title": "A useful shortcut must state exactly what it assumes",
+      "visibleText": "Assumption\nDecision\nParameters\nRobustness\nCLAIM\n\nNaive Bayes assumes features are marginally independent.\n\nVERDICT\n\nRevise before using this statement as evidence.\n\nCORRECT\n\nNo. It assumes features are conditionally independent given the class: P(F₁,…,Fₙ|C)=∏ᵢP(Fᵢ|C).\n\nTEST\n\nCompare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift.",
+      "actions": [
+        {
+          "segment": 5,
+          "label": "Audit decision",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print IN-CLASS ASSESSMENT · AUDIT THE MODEL CLAIM A useful shortcut must state exactly what it assumes Assumption Decision Parameters Robustness CLAIM The classifier formula with a class prior is maximum likelihood. VERDICT Revise before using this statement as evidence. CORRECT With P(C) included, the argmax is maximum a posteriori (MAP). Maximum likelihood omits the class prior. TEST Compare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 24 / 25 →"
+        },
+        {
+          "segment": 6,
+          "label": "Audit parameters",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print IN-CLASS ASSESSMENT · AUDIT THE MODEL CLAIM A useful shortcut must state exactly what it assumes Assumption Decision Parameters Robustness CLAIM Training Naive Bayes always means estimating means and variances. VERDICT Revise before using this statement as evidence. CORRECT Only Gaussian Naive Bayes uses class-conditional means and variances. Bernoulli, multinomial, and categorical variants estimate different statistics. TEST Compare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 24 / 25 →"
+        },
+        {
+          "segment": 7,
+          "label": "Audit robustness",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print IN-CLASS ASSESSMENT · AUDIT THE MODEL CLAIM A useful shortcut must state exactly what it assumes Assumption Decision Parameters Robustness CLAIM Irrelevant features can never hurt Naive Bayes. VERDICT Revise before using this statement as evidence. CORRECT Weakly informative features may have little effect, but correlated or duplicated features can count the same evidence repeatedly and distort confidence. TEST Compare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 24 / 25 →"
+        },
+        {
+          "segment": 8,
+          "label": "Return to assumption",
+          "stateText": "ALL MODULES 481 CPSC 481 Introduction to Artificial Intelligence Motion on Notes Overview Print IN-CLASS ASSESSMENT · AUDIT THE MODEL CLAIM A useful shortcut must state exactly what it assumes Assumption Decision Parameters Robustness CLAIM Naive Bayes assumes features are marginally independent. VERDICT Revise before using this statement as evidence. CORRECT No. It assumes features are conditionally independent given the class: P(F₁,…,Fₙ|C)=∏ᵢP(Fᵢ|C). TEST Compare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift. ← CONDITIONAL INDEPENDENCE, BAYESIAN NETWORKS, AND NAIVE BAYES 24 / 25 →"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Factor, query, classify—and defend every independence claim",
+      "visibleText": "KNOWLEDGE MAP\nFactor\nindependence and chain rule\nRepresent\nDAG + local CPTs\nQuery\nsum hidden assignments\nClassify\nMAP with Naive Bayes\nREADINGS\nGeorge F. Luger, Artificial Intelligence, 6th ed., Chapters 5, 9, and 13; Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach, 3rd ed., Chapters 13–14.\nEXIT TICKET\nSubmit one response with four parts\nState one unconditional and one conditional independence claim.\nFactor the burglary-network joint distribution.\nIdentify query, evidence, and hidden variables for one posterior.\nCorrect one Naive Bayes claim and name evidence that would test it.\n\nSelected probability examples also adapt CS188 material by Dan Klein and Pieter Abbeel.",
+      "actions": []
+    }
+  ]
+}

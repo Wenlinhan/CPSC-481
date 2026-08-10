@@ -553,7 +553,7 @@ const slides: SourceLessonSlide[] = [
           <ConceptCard label="Posterior" title="P(disease | symptom)"><p>Belief in disease after observing the symptom.</p></ConceptCard>
           <ConceptCard label="Likelihood" title="P(symptom | disease)"><p>How probable the symptom is if the disease is present.</p></ConceptCard>
           <ConceptCard label="Prior" title="P(disease)"><p>Belief before the current symptom is observed.</p></ConceptCard>
-          <SearchCallout label="Meaning correction" tone="amber">Bayes' rule reverses a conditional; it does not prove causation.</SearchCallout>
+          <SearchCallout label="Meaning correction" tone="amber">Bayes&apos; rule reverses a conditional; it does not prove causation.</SearchCallout>
         </div>
       </div>
     ),
@@ -669,7 +669,7 @@ const slides: SourceLessonSlide[] = [
         <ConceptCard label="2 · Infer" title="Show the calculation"><p>Select or marginalize rows, compute the normalizer, and apply the correct probability rule.</p></ConceptCard>
         <ConceptCard label="3 · Interpret" title="State what it means"><p>Distinguish event from variable, posterior from likelihood, association from cause, and MAP from ML.</p></ConceptCard>
         <aside>
-          <strong>Prepare for Meeting 10</strong>
+          <strong>Prepare for Lesson 12</strong>
           <p>Read George F. Luger, <em>Artificial Intelligence</em>, 6th ed., and Stuart Russell and Peter Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Chapter 13. Bring one example in which a prior changes the selected hypothesis.</p>
         </aside>
       </div>
@@ -679,10 +679,11 @@ const slides: SourceLessonSlide[] = [
   },
 ];
 
-export function Meeting09Deck() {
+export function Meeting09Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return (
     <SourceDeckShell
-      meetingLabel="Module 10 · Lesson 13"
+      forcePrintAll={forcePrintAll}
+      meetingLabel="Module 9 · Lesson 11"
       meetingTitle="Probability Foundations and Bayesian Inference"
       resolveSourceReference={resolveMeeting09SourceReference}
       slides={slides}
