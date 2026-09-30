@@ -44,6 +44,39 @@ function ProgramTree({ nodes, label }: { nodes: TreeNode[]; label: string }) {
   </svg>;
 }
 
+
+function ExpressionTree({ expression }: { expression: string }) {
+  const tokens = expression.replaceAll("−", "-").match(/\(|\)|[^\s()]+/g) ?? [];
+  type Branch = { label: string; children: Branch[]; x: number; y: number };
+  let cursor = 0;
+  function parse(): Branch {
+    const token = tokens[cursor++];
+    if (token !== "(") return { label: token, children: [], x: 0, y: 0 };
+    const label = tokens[cursor++], children: Branch[] = [];
+    while (tokens[cursor] !== ")" && cursor < tokens.length) children.push(parse());
+    cursor++;
+    return { label, children, x: 0, y: 0 };
+  }
+  const tree = parse(), nodes: Branch[] = [], edges: Array<[Branch, Branch]> = [];
+  let leaves = 0, depth = 0;
+  function layout(node: Branch, level: number) {
+    depth = Math.max(depth, level); node.y = 36 + level * 82;
+    if (!node.children.length) node.x = 90 + leaves++ * 180;
+    else { node.children.forEach(child => { layout(child, level + 1); edges.push([node, child]); }); node.x = node.children.reduce((sum, child) => sum + child.x, 0) / node.children.length; }
+    nodes.push(node);
+  }
+  layout(tree, 0);
+  const width = Math.max(leaves * 180, ...nodes.map(node => node.label.length * 17 + 30));
+  nodes.forEach(node => { node.x += (width - leaves * 180) / 2; });
+  return <svg className="l10-expression-tree" viewBox={`0 0 ${width} ${depth * 82 + 72}`} role="img" aria-label={`Parse tree for ${expression}`}>
+    {edges.map(([a,b],i)=><line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y}/>)}
+    {nodes.map((node,i)=><g key={i} className={node.children.length ? "function" : "terminal"}><rect x={node.x - Math.max(28,node.label.length*8.5)} y={node.y-22} width={Math.max(56,node.label.length*17)} height="44" rx="12"/><text x={node.x} y={node.y+6}>{node.label}</text></g>)}
+  </svg>;
+}
+function ProgramCard({ label, expression }: { label: string; expression: string }) {
+  return <article className="l10-program-card"><Tag>{label}</Tag><code>{expression}</code><ExpressionTree expression={expression}/></article>;
+}
+
 const lispNodes: TreeNode[] = [
   { label: "+", x: 320, y: 48, kind: "function" },
   { label: "2", x: 90, y: 145, parent: 0, kind: "terminal" },
@@ -115,7 +148,10 @@ function MutationVisual() {
 }
 
 function CrossoverVisual() {
-  return <div className="l10-crossover"><div className="parents"><article><Tag>Parent A</Tag><code>(+ X (* 3 Y))</code><ProgramTree label="Parent A tree" nodes={[{label:"+",x:320,y:60},{label:"X",x:190,y:180,parent:0,kind:"terminal"},{label:"×",x:450,y:180,parent:0,hot:true},{label:"3",x:400,y:290,parent:2,kind:"terminal",hot:true},{label:"Y",x:500,y:290,parent:2,kind:"terminal",hot:true}]}/></article><article><Tag tone="coral">Parent B</Tag><code>(− (/ 25 X) 7)</code><ProgramTree label="Parent B tree" nodes={[{label:"−",x:320,y:60},{label:"÷",x:190,y:180,parent:0,hot:true},{label:"7",x:450,y:180,parent:0,kind:"terminal"},{label:"25",x:140,y:290,parent:1,kind:"terminal",hot:true},{label:"X",x:240,y:290,parent:1,kind:"terminal",hot:true}]}/></article></div><div className="offspring"><i>swap the selected subtrees</i><code>(+ X (* (/ 25 X) Y))</code><code>(− 3 7)</code></div><p>Tree-aware crossover preserves syntactic structure, but it can still create overly deep or semantically poor programs.</p></div>;
+  return <div className="l10-crossover-trees"><div>{[
+    ["Parent 1", "(+ X (* 3 Y))"], ["Parent 2", "(- (/ 25 X) 7)"],
+    ["Child 1", "(+ X (* (/ 25 X) Y))"], ["Child 2", "(- 3 7)"]
+  ].map(([label,expression])=><ProgramCard key={label} label={label} expression={expression}/>)}</div><p>Exchange terminal <b>3</b> in Parent 1 with subtree <b>(/ 25 X)</b> in Parent 2. Each child’s tree matches its prefix program; crossover can change program size.</p></div>;
 }
 
 function GuidedSearch() {
@@ -180,10 +216,7 @@ function Maze({ improved=false }: { improved?: boolean }) {
 }
 
 function MouseSetup() {
-  return <div className="l10-mouse"><InteractiveMouseMaze/><section><Tag tone="amber">Try the task</Tag><h3>Reach the cheese without crossing a wall.</h3><p className="maze-instruction"><b>FORWARD</b> moves one cell in the current heading. <b>LEFT</b> and <b>RIGHT</b> rotate 90° in place. Keyboard: ↑/W, ←/A, →/D.</p><div><b>Function set</b><code>{`{ IF-BLOCKED, WHILE-NOT-AT-CHEESE }`}</code></div><div><b>Terminal set</b><code>{`{ FORWARD, LEFT, RIGHT }`}</code></div><pre>WHILE-NOT-AT-CHEESE
-  IF-BLOCKED
-    LEFT
-    FORWARD</pre><p>A GP controller receives the same blocked/not-blocked evidence and chooses actions until the cheese is reached.</p></section></div>;
+  return <div className="l10-mouse"><InteractiveMouseMaze/><section><Tag tone="amber">Try the task</Tag><h3>Reach the cheese without crossing a wall.</h3><p className="maze-instruction"><b>FORWARD</b> moves one cell in the current heading. <b>LEFT</b> and <b>RIGHT</b> rotate 90° in place. Keyboard: ↑/W, ←/A, →/D.</p><div><b>Function set</b><code>{`{ IF-BLOCKED, WHILE-NOT-AT-CHEESE }`}</code></div><div><b>Terminal set</b><code>{`{ FORWARD, LEFT, RIGHT }`}</code></div><div className="l10-mouse-program"><code>(WHILE-NOT-AT-CHEESE (IF-BLOCKED LEFT FORWARD))</code><ExpressionTree expression="(WHILE-NOT-AT-CHEESE (IF-BLOCKED LEFT FORWARD))"/><small>Repeat until cheese. IF-BLOCKED takes the left child when blocked, the right child otherwise.</small></div></section></div>;
 }
 
 function MouseFitness() {
@@ -191,17 +224,15 @@ function MouseFitness() {
 }
 
 function MouseVariation() {
-  return <div className="l10-mouse-variation"><article><Tag>Candidate A · 12,996</Tag><pre>IF-BLOCKED
-  LEFT
-  FORWARD</pre></article><article><Tag tone="coral">Mutation</Tag><pre>IF-BLOCKED
-  LEFT
-  LEFT</pre><span>one behavior subtree changes</span></article><article><Tag tone="teal">Crossover offspring · 11,664</Tag><pre>IF-BLOCKED
-  FORWARD
-  LEFT</pre><span>material from two parents combines</span></article><aside>Do not judge a tree only by appearance. Execute it in the maze, count cost, measure final distance, then compare fitness.</aside></div>;
+  return <div className="l10-mouse-variation-trees"><div><ProgramCard label="Candidate A · 12,996" expression="(IF-BLOCKED LEFT FORWARD)"/><ProgramCard label="Mutation" expression="(IF-BLOCKED LEFT LEFT)"/><ProgramCard label="Crossover offspring · 11,664" expression="(IF-BLOCKED FORWARD LEFT)"/></div><p>Left child = blocked action; right child = otherwise action. These are body subtrees inside WHILE-NOT-AT-CHEESE. Compare fitness by executing the complete controller, counting cost, and measuring final distance.</p></div>;
 }
 
 function MouseResult() {
-  return <div className="l10-mouse-result"><div><Tag tone="coral">Earlier program · 12,996</Tag><Maze/></div><i>4,202 generations<br/>1,000 programs per generation</i><div><Tag tone="teal">Evolved program · 2,809</Tag><Maze improved/></div><p>The later controller is substantially better under the specified fitness, yet “better” still means better for this maze, primitive set, cost model, and evaluation budget.</p></div>;
+  return <div className="l10-result-code"><div><Tag tone="coral">Earlier · 12,996</Tag><Maze/></div><section><Tag>LISP-style controller · 2,809</Tag><pre>{`(WHILE-NOT-AT-CHEESE
+  (IF-BLOCKED
+    (PROGN RIGHT FORWARD FORWARD FORWARD)
+    (PROGN FORWARD RIGHT FORWARD FORWARD
+      LEFT (IF-BLOCKED LEFT FORWARD))))`}</pre><p>PROGN executes actions in order. IF-BLOCKED selects the first branch when blocked, otherwise the second.</p><small>4,202 generations × 1,000 programs. This encodes the evolved controller’s action sequence.</small></section><div><Tag tone="teal">Evolved · 2,809</Tag><Maze improved/></div></div>;
 }
 
 function DesignProperties() {
@@ -240,7 +271,7 @@ function SwarmConcept() {
   return <div className="l10-swarm-concept"><div className="l10-flock-stage"><svg viewBox="0 0 720 370" role="img" aria-label={`Illustrated bird flock: ${labels[step]}`}><defs><linearGradient id="l10-sky" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#dff5ff"/><stop offset="1" stopColor="#f7fcff"/></linearGradient><marker id="l10-flock-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z"/></marker></defs><rect width="720" height="370" rx="22" fill="url(#l10-sky)"/><path className="cloud" d="M0 70Q55 22 112 65Q165 27 215 74V0H0Z"/><path className="horizon" d="M0 330Q130 280 255 325T520 315T720 325V370H0Z"/>{layouts[step].map(([x,y,a],i)=><Bird key={i} x={x} y={y} angle={a} phase={i+step}/>)}{step===0&&<><circle className="rule-ring danger" cx="95" cy="82" r="46"/><path className="rule-arrow" d="M120 90L170 112"/></>}{step===1&&<path className="rule-arrow" d="M135 55H270"/>}{step===2&&<><circle className="rule-ring" cx="355" cy="210" r="145"/><path className="rule-arrow" d="M535 280Q460 245 410 215"/></>}{step===3&&<path className="flock-flow" d="M65 305Q330 185 650 58"/>}<text className="scene-label" x="28" y="338">{labels[step]}</text></svg><div className="l10-stage-buttons" aria-label="Flocking stages">{labels.map((label,i)=><button className={step===i?'active':''} key={label} onClick={()=>setStep(i)}><b>{i+1}</b><span>{label.split(' ')[0]}</span></button>)}</div></div><section><Tag>Swarm intelligence · {step+1}/4</Tag><h3>Local interaction can yield organized global behavior without a central controller.</h3><p>{['Each bird steers away when a neighbor is too close; no bird receives a centrally planned route.','A bird adjusts toward the average heading of the nearby birds it can sense.','A bird also steers toward the local center of its neighbors, keeping the flock together.','Repeated local updates create a coherent, adaptive flock-level path.'][step]}</p><ul><li>Recognizable autonomous agents</li><li>Local sensing and action</li><li>Partly stochastic rules</li><li>Emergent collective pattern</li></ul><aside><b>Robot-demo check</b><span>A group is a swarm only when coordination emerges from local agent rules—not centralized choreography.</span></aside></section></div>;
 }
 
-function PsoDemo() {
+function PsoMotion() {
   const [step,setStep]=useState(0);
   const data=[{p:[210,270],pb:[150,180],gb:[590,80],next:[210,270]},{p:[210,270],pb:[150,180],gb:[590,80],next:[300,205]},{p:[300,205],pb:[300,205],gb:[590,80],next:[405,145]},{p:[405,145],pb:[405,145],gb:[590,80],next:[500,105]}][step];
   const arrow=(from:number[],to:number[],cls:string,label:string)=><g className={cls}><line x1={from[0]} y1={from[1]} x2={to[0]} y2={to[1]}/><text x={(from[0]+to[0])/2} y={(from[1]+to[1])/2-8}>{label}</text></g>;
@@ -250,6 +281,23 @@ function PsoDemo() {
 function Bee({x,y,angle=0}:{x:number;y:number;angle?:number}) { return <g className="l10-bee" transform={`translate(${x} ${y}) rotate(${angle})`}><ellipse className="bee-wing" cx="-5" cy="-8" rx="9" ry="6" transform="rotate(-25)"/><ellipse className="bee-wing" cx="6" cy="-8" rx="9" ry="6" transform="rotate(25)"/><ellipse className="bee-body" rx="15" ry="9"/><path d="M-7-8V8M1-9V9M8-7V7"/><circle className="bee-head" cx="16" cy="0" r="6"/><path className="antenna" d="M18-4Q24-12 28-8M19 3Q25 8 29 4"/></g> }
 function FlowerPatch({x,y,color,label}:{x:number;y:number;color:string;label:string}) { const pts=[[-31,8],[-8,-12],[18,3],[35,-15],[12,24],[-20,29]]; return <g className="l10-flower-patch" transform={`translate(${x} ${y})`}>{pts.map(([fx,fy],i)=><g key={i} transform={`translate(${fx} ${fy})`}><path d="M0 8V30"/><circle fill={color} cx="0" cy="0" r="11"/><circle fill="#fff6b0" cx="0" cy="0" r="4"/></g>)}<text y="58">{label}</text></g> }
 function Hive({x,y}:{x:number;y:number}) { return <g className="l10-hive" transform={`translate(${x} ${y})`}><path className="roof" d="M-67-61H67L54-42H-54Z"/><rect x="-58" y="-42" width="116" height="108" rx="8"/><path d="M-58-13H58M-58 16H58M-58 45H58"/><ellipse className="entrance" cx="0" cy="48" rx="15" ry="9"/><path className="stand" d="M-72 66H72V78H-72Z"/></g> }
+
+
+function PsoDemo() {
+  return <div className="l10-pso-algorithm"><PsoMotion/><section><Tag>PSO pseudocode · minimize f</Tag><pre>{`initialize positions pᵢ and velocities vᵢ
+evaluate f(pᵢ); pBestᵢ ← pᵢ
+gBest ← best pBestᵢ in the swarm
+while stopping criterion is not met:
+  g ← gBest  // shared snapshot
+  for each particle i:
+    draw independent r₁, r₂ ∈ [0,1] per dimension
+    vᵢ ← vᵢ + c₁r₁(pBestᵢ−pᵢ) + c₂r₂(g−pᵢ)
+    pᵢ ← pᵢ + vᵢ; enforce search-space bounds
+    evaluate f(pᵢ)
+    if f(pᵢ) < f(pBestᵢ): pBestᵢ ← pᵢ
+  gBest ← best pBestᵢ in the swarm
+return gBest`}</pre><p>c₁ and c₂ weight personal/social attraction; r₁ and r₂ add randomness. For maximization, use &gt; in the best-value comparison. This form uses inertia weight 1.</p></section></div>;
+}
 
 function BeesDemo() {
   const [step,setStep]=useState(0); const titles=['Scout','Evaluate','Waggle dance','Recruit + exploit','Abandon or revisit']; const scouts=[[350,80,-10],[520,88,8],[575,260,14]]; const recruitCount=[3,3,1,9,7][step];
@@ -300,7 +348,7 @@ export const lesson10Slides: SourceLessonSlide[] = [
   slide("Variation · Mutation", "Mutation replaces one selected subtree with a random program", <MutationVisual/>, [14,15,16], 2),
   slide("Variation · Crossover", "Crossover swaps subtrees between two parent programs", <CrossoverVisual/>, [17,18,19], 2),
   slide("Why not random programs?", "Fitness-guided inheritance accumulates useful structure", <GuidedSearch/>, [20], 2),
-  slide("Worked case · Building a better mouse", "Sensors, actions, and control flow become GP primitives", <MouseSetup/>, [21,22], 3),
+  slide("Worked case · Building a better mouse", "A mouse controller is a program tree", <MouseSetup/>, [21,22], 3),
   slide("Worked case · Fitness", "Execute the controller, then score cost and remaining distance", <MouseFitness/>, [23], 3),
   slide("Worked case · Variation", "Mutation and crossover change behavior—not only tree shape", <MouseVariation/>, [24,25,26], 3),
   slide("Worked case · Result", "The evolved controller improves the stated fitness from 12,996 to 2,809", <MouseResult/>, [27], 2),
@@ -322,3 +370,4 @@ export const lesson10Slides: SourceLessonSlide[] = [
 export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" notesMode="key-points" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }
+

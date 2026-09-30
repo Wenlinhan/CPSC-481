@@ -599,33 +599,15 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Worked example · Setup",
     title: "Start left-to-right with no bounds at the root",
     content: (
-      <div className="algorithm-definition">
-        <section>
-          <span>Initial call</span>
-          <h3>MAX(root, −∞, +∞)</h3>
-          <p>
-            Search two plies to the shown leaf evaluations. Visit children
-            left-to-right and return each completed MIN value to the root.
-          </p>
-        </section>
-        <div>
-          <article>
-            <strong>Left MIN</strong>
-            <p>Leaves 3, 12, and 8 establish the first root alternative.</p>
-          </article>
-          <article>
-            <strong>Middle MIN</strong>
-            <p>Its first leaf is 2; decide whether its remaining siblings matter.</p>
-          </article>
-          <article>
-            <strong>Right MIN</strong>
-            <p>Its observed leaves arrive in the order 14, 5, and 2.</p>
-          </article>
-          <SearchCallout label="Trace discipline" tone="cyan">
-            At every return, record node type, temporary v, α, β, and any
-            siblings that remain unvisited.
-          </SearchCallout>
-        </div>
+      <div className="tree-challenge">
+        <section><h3>MAX(root, −∞, +∞)</h3><p>Search the example tree left-to-right. The numbers are illustrative <b>leaf evaluations E(s)</b> measured for MAX; they are inputs to this example, not values calculated by alpha-beta.</p><p>Left MIN: min(3,12,8)=3. Middle MIN first sees 2. Right MIN visits 14,5,2.</p><SearchCallout label="Unvisited leaves" tone="cyan">? marks the middle branch’s unspecified evaluations. After seeing 2 with root α=3, they will be pruned; their values are unnecessary.</SearchCallout></section>
+        <svg viewBox="0 0 780 390" role="img" aria-label="Example game tree: MAX root with three MIN children. Left leaves 3,12,8; middle leaves 2,unknown,unknown; right leaves 14,5,2.">
+          <g stroke="#7b8ba1" strokeWidth="3">{[130,390,650].map(x=><line key={x} x1="390" y1="65" x2={x} y2="170"/>)}{[130,390,650].flatMap((x,i)=>[-70,0,70].map((offset,j)=><line key={i*3+j} x1={x} y1="170" x2={x+offset} y2="290"/>))}</g>
+          <rect x="325" y="40" width="130" height="50" rx="12" fill="#1d2b45"/><text x="390" y="72" textAnchor="middle" fill="white" fontSize="24">MAX</text>
+          {[130,390,650].map(x=><g key={x}><rect x={x-45} y="145" width="90" height="48" rx="10" fill="#ebe7ff" stroke="#5938dd"/><text x={x} y="176" textAnchor="middle" fill="#17243d" fontSize="24">MIN</text></g>)}
+          {['3','12','8','2','?','?','14','5','2'].map((value,i)=>{const x=[60,130,200,320,390,460,580,650,720][i];return <g key={i}><circle cx={x} cy="290" r="26" fill="#ddf6f4" stroke="#0a9098"/><text x={x} y="298" textAnchor="middle" fill="#17243d" fontSize="24">{value}</text></g>})}
+          <text x="390" y="365" textAnchor="middle" fill="#17243d" fontSize="21">Leaf values E(s) · visit left → right</text>
+        </svg>
       </div>
     ),
     note: "Timing: 2 minutes. Students copy a four-column trace: node, v, alpha, beta. Preview the exact image sequence without revealing the later cutoffs.",
