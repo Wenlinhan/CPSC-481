@@ -88,6 +88,36 @@ function DepthFirstVisitDemo() {
   );
 }
 
+
+function CutoffExampleTree({ kind, step }: { kind: "max" | "min"; step: number }) {
+  const max = kind === "max";
+  const leaves = max ? [3, 7, 9] : [8, 2, 0];
+  return <figure className="minimax-trace-tree lesson08-cutoff-tree">
+    <svg viewBox="0 0 600 340" role="img" aria-label={max ? "MAX trace: a MAX ancestor has alternative 3, then a MIN ancestor has alternative 6. The current MAX node searches children 3, 7, 9. Reaching 7 causes a beta cutoff and skips 9." : "MIN trace: a MIN ancestor has alternative 9, then a MAX ancestor has alternative 4. The current MIN node searches children 8, 2, 0. Reaching 2 causes an alpha cutoff and skips 0."}>
+      <g stroke="#8190a7" strokeWidth="2" fill="none"><path d="M220 44 L85 106 M220 44 L385 106 M385 132 L225 198 M385 132 L450 198" /></g>
+      <g fontFamily="Arial" fontSize="21" textAnchor="middle" fill="#111827">
+        <rect x="145" y="8" width="150" height="42" rx="9" fill="#1d2b45" /><text x="220" y="36" fill="white">{max ? "MAX ancestor" : "MIN ancestor"}</text>
+        <rect x="20" y="90" width="130" height="58" rx="9" fill="#e7edf5" /><text x="85" y="113" fontSize="17">Done subtree</text><text x="85" y="139" fontWeight="700">{max ? "3 → α = 3" : "9 → β = 9"}</text>
+        <rect x="310" y="96" width="150" height="42" rx="9" fill="#1d2b45" /><text x="385" y="124" fill="white">{max ? "MIN ancestor" : "MAX ancestor"}</text>
+        <rect x="155" y="181" width="140" height="58" rx="9" fill="#e7edf5" /><text x="225" y="204" fontSize="17">Done subtree</text><text x="225" y="230" fontWeight="700">{max ? "6 → β = 6" : "4 → α = 4"}</text>
+        <rect x="356" y="185" width="188" height="42" rx="9" fill="#eee8ff" stroke="#6740d9" strokeWidth="3" /><text x="450" y="213" fontWeight="700">{max ? "MAX" : "MIN"}{step === 0 ? " (current)" : step === 2 ? (max ? " ≥ " : " ≤ ") + leaves[1] : " v = " + leaves[0]}</text>
+        {leaves.map((v, i) => {
+          const x = 350 + i * 100;
+          const skipped = step === 2 && i === 2;
+          const evaluated = i < step;
+          return <g key={i}>
+            <path d={"M450 228 L" + x + " 281"} stroke={skipped ? "#b91c1c" : evaluated ? "#6740d9" : "#8190a7"} strokeWidth="3" strokeDasharray={skipped ? "7 5" : undefined} />
+            <circle cx={x} cy="291" r="23" fill={evaluated ? "#eee8ff" : "white"} stroke={skipped ? "#b91c1c" : "#8190a7"} strokeWidth="2" />
+            <text x={x} y="299" fontSize="25" fontWeight="700">{v}</text>
+            {skipped && <><path d={"M" + (x-18) + " 273 L" + (x+18) + " 309"} stroke="#b91c1c" strokeWidth="3"/><text x={x} y="329" fontSize="15" fill="#b91c1c">SKIPPED</text></>}
+          </g>;
+        })}
+      </g>
+    </svg>
+    <figcaption>{max ? "Known alternatives supply α = 3 and β = 6. At 7 ≥ 6, MIN can choose its alternative 6; skip 9." : "Known alternatives supply α = 4 and β = 9. At 2 ≤ 4, MAX can choose its alternative 4; skip 0."} Leaf scores are example inputs; a cutoff returns a bound.</figcaption>
+  </figure>;
+}
+
 const maxTrace = [
   {
     label: "Initialize MAX",
@@ -120,7 +150,7 @@ function MaxCutoffTrace() {
   const state = maxTrace[step];
 
   return (
-    <div className="frontier-trace">
+    <div className="frontier-trace minimax-example-trace">
       <section>
         <span>MAX-VALUE trace · {step + 1} of {maxTrace.length}</span>
         <h3>{state.label}</h3>
@@ -140,9 +170,9 @@ function MaxCutoffTrace() {
         </div>
       </section>
       <div className="frontier-queues">
-        <article><span>Evaluated children</span><strong>{state.evaluated}</strong></article>
+        <CutoffExampleTree kind="max" step={step} />
+        <article><span>Child progress</span><strong>{state.evaluated}</strong><small>Remaining: {state.remaining}</small></article>
         <article><span>Temporary value and bounds</span><strong>{state.value}<br />{state.bounds}</strong></article>
-        <article><span>Children still on the board</span><strong>{state.remaining}</strong></article>
       </div>
     </div>
   );
@@ -180,7 +210,7 @@ function MinCutoffTrace() {
   const state = minTrace[step];
 
   return (
-    <div className="frontier-trace">
+    <div className="frontier-trace minimax-example-trace">
       <section>
         <span>MIN-VALUE trace · {step + 1} of {minTrace.length}</span>
         <h3>{state.label}</h3>
@@ -200,9 +230,9 @@ function MinCutoffTrace() {
         </div>
       </section>
       <div className="frontier-queues">
-        <article><span>Evaluated children</span><strong>{state.evaluated}</strong></article>
+        <CutoffExampleTree kind="min" step={step} />
+        <article><span>Child progress</span><strong>{state.evaluated}</strong><small>Remaining: {state.remaining}</small></article>
         <article><span>Temporary value and bounds</span><strong>{state.value}<br />{state.bounds}</strong></article>
-        <article><span>Children still on the board</span><strong>{state.remaining}</strong></article>
       </div>
     </div>
   );
@@ -463,7 +493,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Algorithm trace · MAX node",
-    title: "At MAX, v ≥ β proves that remaining siblings cannot help",
+    title: "MAX trace: prune when v ≥ β",
     content: <MaxCutoffTrace />,
     note: "Timing: 3 minutes. Ask students to predict the bound after each child. At the final step, require the full explanation: the MIN ancestor already has an alternative of 6, so it will not permit a branch giving MAX at least 7.",
     sourceSlides: [19],
@@ -501,7 +531,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Algorithm trace · MIN node",
-    title: "At MIN, v ≤ α proves that remaining siblings cannot hurt MAX",
+    title: "MIN trace: prune when v ≤ α",
     content: <MinCutoffTrace />,
     note: "Timing: 3 minutes. Require the ancestor argument: MAX already guarantees 4 elsewhere, so it will never select a branch whose MIN opponent can hold it to 2 or less.",
     sourceSlides: [20],
