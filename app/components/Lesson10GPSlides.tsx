@@ -248,7 +248,7 @@ function TournamentGp() {
 function Regression() {
   const pts=Array.from({length:10},(_,i)=>{const x=i/10;return [65+x*620,320-(x*x/2)*520]});
   const curve=Array.from({length:101},(_,i)=>{const x=i/100;return `${i?'L':'M'}${65+x*620} ${320-(x*x/2)*520}`}).join(' ');
-  return <div className="l10-regression"><svg viewBox="0 0 740 370" role="img" aria-label="Training points and learned function x squared divided by two"><path className="axis" d="M65 30V320H705"/><path className="curve" d={curve}/>{pts.map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="7"/><text x={x} y={342}>{(i/10).toFixed(1)}</text></g>)}<text x="450" y="90">learned f(x) = x²/2</text></svg><section><Tag tone="amber">Symbolic regression</Tag><h3>Evolve the function, not only its coefficients.</h3><div className="l10-regression-data"><b>Terminal set</b><span>x; integers −5…+5</span><b>Function set</b><span>+ · − · × · protected ÷</span><b>Fitness</b><span>error over 10 training records</span><b>Population</b><span>600</span><b>Operators</b><span>90% crossover · 5% mutation</span><b>Stop</b><span>error ≤ .001 or 100 generations</span></div></section></div>;
+  return <div className="l10-regression"><svg viewBox="0 0 740 370" role="img" aria-label="Training points and learned function x squared divided by two"><path className="axis" d="M65 30V320H705"/><path className="curve" d={curve}/>{pts.map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="7"/><text x={x} y={342}>{(i/10).toFixed(1)}</text></g>)}<text x="450" y="90">learned f(x) = x²/2</text></svg><section><Tag tone="amber">Symbolic regression</Tag><h3>Evolve the function, not only its coefficients.</h3><div className="l10-regression-data"><b>Terminal set</b><span>x; integers −5…+5</span><b>Function set</b><span>+ · − · × · protected ÷</span><b>Fitness</b><span>error over 10 training records</span><b>Population</b><span>600</span><b>Operators</b><span>90% crossover · 5% mutation</span><b>Stop</b><span>error ≤ .001 or 100 generations</span></div><aside className="l10-external-reading"><strong>External reading · worked Python example</strong><a href="https://gplearn.readthedocs.io/en/stable/examples.html#symbolic-regressor" target="_blank" rel="noopener noreferrer">gplearn: Symbolic Regressor example ↗</a><p>Follow data generation, program evolution, test-set evaluation, and visualization of the learned program tree.</p></aside></section></div>;
 }
 
 function ParallelSearch() {
@@ -384,5 +384,6 @@ export const lesson10Slides: SourceLessonSlide[] = [
 export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" notesMode="key-points" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }
+
 
 
