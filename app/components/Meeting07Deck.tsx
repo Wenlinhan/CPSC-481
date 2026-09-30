@@ -605,7 +605,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Exact algorithm · Recursive minimax",
-    title: "The recursion alternates value functions until a leaf returns",
+    title: "Minimax: actions, states, and recursive values",
     content: (
       <div className="source-definition-layout meeting07-minimax-layout">
         <NativeMinimaxAlgorithm />
