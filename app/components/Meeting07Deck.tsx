@@ -582,25 +582,36 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [8],
   },
   {
-    eyebrow: "Minimax · Backup rules",
-    title: "MAX takes the largest child value; MIN takes the smallest",
+    eyebrow: "Minimax · From search to decision",
+    title: "How minimax chooses a move",
     content: (
-      <div className="algorithm-map">
+      <div className="algorithm-map meeting07-minimax-steps">
         <section>
-          <article><span>1</span><h3>Build</h3><p>Generate legal actions to terminal states or a chosen cutoff depth.</p></article>
-          <article><span>2</span><h3>Evaluate leaves</h3><p>Return exact utility at terminal leaves and an evaluation estimate at nonterminal cutoff leaves.</p></article>
-          <article><span>3</span><h3>Back up</h3><p>At MAX take max(children); at MIN take min(children).</p></article>
-          <article><span>4</span><h3>Choose</h3><p>At the root, select the action whose child returns the best backed-up value.</p></article>
+          <article><span>1</span><div><h3>Explore legal moves</h3><p>Start at the current state. MAX is our turn; MIN is the opponent’s turn. Follow one branch recursively, alternating turns, until a terminal state or depth limit.</p></div></article>
+          <article><span>2</span><div><h3>Score the leaf for MAX</h3><p>If the game is over, return its exact utility. At a nonterminal depth limit, return an evaluation estimate. Larger scores always favor MAX.</p></div></article>
+          <article><span>3</span><div><h3>Return values upward</h3><p>After evaluating its children, each MIN node returns their smallest value; each MAX node returns their largest. Repeat this rule up to the root.</p></div></article>
+          <article><span>4</span><div><h3>Choose the root action</h3><p>Compare the values returned by the root’s legal moves. Choose the action with the largest value: the best outcome MAX can secure against optimal MIN replies.</p></div></article>
         </section>
         <aside>
-          <span>Keep the perspective fixed</span>
-          <p>The player to move determines MAX or MIN.</p>
-          <p>The utility sign convention does not change between levels.</p>
-          <p>Alternation models who controls the next action.</p>
+          <span>Same example as page 13 · MAX to move</span>
+          <svg viewBox="0 0 480 220" role="img" aria-label="MAX root chooses A with value 3. MIN branches A, B, C return 3, 2, 1 from leaf pairs 3 and 5, 2 and 9, 4 and 1.">
+            {[80, 240, 400].map((x, i) => <g key={x}>
+              <path d={`M240 46 L${x} 95 M${x} 124 L${x - 30} 177 M${x} 124 L${x + 30} 177`} stroke={i === 0 ? "#8be0e7" : "#b5c2d9"} strokeWidth="3" fill="none" />
+              <rect x={x - 63} y="88" width="126" height="40" rx="9" fill={i === 0 ? "#cffafe" : "white"} />
+              <text x={x} y="114" textAnchor="middle" fill="#111827" fontSize="20" fontWeight="700">{["A", "B", "C"][i]} · MIN = {[3, 2, 1][i]}</text>
+              {[[3,5], [2,9], [4,1]][i].map((v, j) => <g key={j}><circle cx={x + (j === 0 ? -30 : 30)} cy="190" r="22" fill="white" /><text x={x + (j === 0 ? -30 : 30)} y="198" textAnchor="middle" fill="#111827" fontSize="25" fontWeight="700">{v}</text></g>)}
+            </g>)}
+            <rect x="157" y="6" width="166" height="40" rx="9" fill="#cffafe" />
+            <text x="240" y="33" textAnchor="middle" fill="#111827" fontSize="23" fontWeight="700">MAX = 3</text>
+          </svg>
+          <p><strong>Given leaf scores:</strong> A → (3, 5), B → (2, 9), C → (4, 1).</p>
+          <p><strong>MIN replies:</strong> A → 3, B → 2, C → 1.</p>
+          <p><strong>MAX decision:</strong> max(3, 2, 1) = 3 → choose action A.</p>
+          <p>The values measure MAX’s outcome throughout; MIN chooses the reply least favorable to MAX.</p>
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Trace the four source rules. Explicitly correct the claim that root type is selected by whether the heuristic looks like a reward or cost.",
+    note: "Timing: 3 minutes. Trace the numbered steps against the same two-ply example used on page 13. Explain that depth-first recursion generates and scores branches as it goes; it does not require building the entire tree before evaluation. Distinguish exact terminal utility from heuristic cutoff evaluation. Ask why B’s leaf 9 does not make B the best move: MIN can force 2. At the root return action A, with backed-up value 3. The player to move determines node type; keep utility measured for MAX throughout.",
     sourceSlides: [8],
   },
   {
