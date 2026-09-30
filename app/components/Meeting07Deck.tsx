@@ -583,14 +583,16 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Minimax · From search to decision",
-    title: "How minimax chooses a move",
+    title: "The six steps of minimax",
     content: (
       <div className="algorithm-map meeting07-minimax-steps">
         <section>
-          <article><span>1</span><div><h3>Explore legal moves</h3><p>Start at the current state. MAX is our turn; MIN is the opponent’s turn. Follow one branch recursively, alternating turns, until a terminal state or depth limit.</p></div></article>
-          <article><span>2</span><div><h3>Score the leaf for MAX</h3><p>If the game is over, return its exact utility. At a nonterminal depth limit, return an evaluation estimate. Larger scores always favor MAX.</p></div></article>
-          <article><span>3</span><div><h3>Return values upward</h3><p>After evaluating its children, each MIN node returns their smallest value; each MAX node returns their largest. Repeat this rule up to the root.</p></div></article>
-          <article><span>4</span><div><h3>Choose the root action</h3><p>Compare the values returned by the root’s legal moves. Choose the action with the largest value: the best outcome MAX can secure against optimal MIN replies.</p></div></article>
+          <article><span>1</span><div><h3>Generate a game tree</h3><p>Start from the current state; expand legal moves to terminal states or a chosen depth limit.</p></div></article>
+          <article><span>2</span><div><h3>Decide whether the root is MAX or MIN</h3><p>Fix whose outcome the scores measure. That player’s turn is MAX; the opponent’s turn is MIN.</p></div></article>
+          <article><span>3</span><div><h3>Label alternating levels MAX and MIN</h3><p>Alternate the labels at each level because the two players take turns.</p></div></article>
+          <article><span>4</span><div><h3>Evaluate every leaf node</h3><p>Use a heuristic at nonterminal cutoff leaves; use exact utility at terminal leaves. Keep one scoring perspective.</p></div></article>
+          <article><span>5</span><div><h3>Back up values until the root</h3><p>MAX takes the maximum of its children’s values; MIN takes the minimum. Repeat upward from leaves to parents until the root has a value.</p></div></article>
+          <article><span>6</span><div><h3>Choose the next move at the root</h3><p>Choose the action leading to a child whose value equals the root’s backed-up value. If children tie, any tied optimal move qualifies.</p></div></article>
         </section>
         <aside>
           <span>Same example as page 13 · MAX to move</span>
@@ -611,7 +613,7 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Trace the numbered steps against the same two-ply example used on page 13. Explain that depth-first recursion generates and scores branches as it goes; it does not require building the entire tree before evaluation. Distinguish exact terminal utility from heuristic cutoff evaluation. Ask why B’s leaf 9 does not make B the best move: MIN can force 2. At the root return action A, with backed-up value 3. The player to move determines node type; keep utility measured for MAX throughout.",
+    note: "Timing: 3 minutes. Present the six conceptual steps in order: generate the tree; determine the root type from player-to-move and the fixed utility perspective; alternate labels by level; score leaves; back up MIN/MAX values; choose a root action leading to a matching-valued child. Heuristic estimates apply to nonterminal cutoff leaves; terminal leaves use exact utility. Internal child values may already be backed-up values. For the example, the root is MAX, its children are MIN, and A backs up 3 to the root. With a MIN root, choose the child attaining the minimum instead. Any tied optimal child is acceptable. Explain that a recursive implementation can generate and evaluate the tree incrementally.",
     sourceSlides: [8],
   },
   {
