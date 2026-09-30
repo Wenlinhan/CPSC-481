@@ -53,7 +53,7 @@ function RecursiveMinimaxTrace() {
   const state = recursiveTrace[step];
 
   return (
-    <div className="frontier-trace">
+    <div className="frontier-trace minimax-example-trace">
       <section>
         <span>Live recursive-call trace · {step + 1} of {recursiveTrace.length}</span>
         <h3>{state.label}</h3>
@@ -77,6 +77,29 @@ function RecursiveMinimaxTrace() {
         </div>
       </section>
       <div className="frontier-queues">
+        <figure className="minimax-trace-tree">
+          <svg viewBox="0 0 600 235" role="img" aria-labelledby="minimax-trace-title minimax-trace-description">
+            <title id="minimax-trace-title">Example tree used by this recursive trace</title>
+            <desc id="minimax-trace-description">MAX root s0 chooses among MIN nodes A, B, and C. A has terminal utilities 3 and 5; B has 2 and 9; C has 4 and 1. MIN returns 3, 2, and 1, so MAX chooses A with value 3.</desc>
+            {[100, 300, 500].map((x, index) => {
+              const active = step === index + 1 || (step === 4 && index === 0);
+              const returned = step >= index + 1;
+              const leaves = [[3, 5], [2, 9], [4, 1]][index];
+              return <g key={x} stroke={active ? "#6740d9" : "#52627a"} strokeWidth={active ? 4 : 2}>
+                <path d={`M300 48 L${x} 100 M${x} 132 L${x - 45} 186 M${x} 132 L${x + 45} 186`} fill="none" />
+                <rect x={x - 68} y="94" width="136" height="42" rx="10" fill={active ? "#eee8ff" : "#f0f4f9"} />
+                <text x={x} y="121" textAnchor="middle" stroke="none" fill="#111827" fontSize="21" fontWeight="700">{["A", "B", "C"][index]} · MIN{returned ? ` = ${[3, 2, 1][index]}` : ""}</text>
+                {leaves.map((value, leaf) => <g key={leaf}>
+                  <circle cx={x + (leaf === 0 ? -45 : 45)} cy="199" r="21" fill="white" />
+                  <text x={x + (leaf === 0 ? -45 : 45)} y="207" textAnchor="middle" stroke="none" fill="#111827" fontSize="24" fontWeight="700">{value}</text>
+                </g>)}
+              </g>;
+            })}
+            <rect x="205" y="8" width="190" height="42" rx="10" fill="#1d2b45" />
+            <text x="300" y="36" textAnchor="middle" fill="white" fontSize="22" fontWeight="700">s0 · MAX{step === 4 ? " = 3" : ""}</text>
+          </svg>
+          <figcaption><strong>Given terminal utilities, measured for MAX.</strong> These six leaf scores are inputs to this example. MIN returns the smaller score in each pair; MAX takes max(3, 2, 1) = 3.</figcaption>
+        </figure>
         <article>
           <span>Current call</span>
           <strong>{state.call}</strong>
@@ -86,11 +109,6 @@ function RecursiveMinimaxTrace() {
           <span>Returned value</span>
           <strong>{state.returned}</strong>
           <small>Values return upward; actions do not return from leaves to the physical game.</small>
-        </article>
-        <article>
-          <span>Execution discipline</span>
-          <strong>Depth-first recursion</strong>
-          <small>Minimax is not breadth-first search with a bound. A depth limit controls how far a call descends.</small>
         </article>
       </div>
     </div>
@@ -607,9 +625,9 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Recursive call stack",
-    title: "One action is resolved before the next sibling is searched",
+    title: "Trace minimax on this example tree",
     content: <RecursiveMinimaxTrace />,
-    note: "Timing: 4 minutes. Students predict each return before advancing. Emphasize depth-first recursive control, alternate MAX/MIN calls, and the difference between computational return and physically undoing a move.",
+    note: "Timing: 4 minutes. First identify the six given terminal utilities in the example tree: A has 3 and 5, B has 2 and 9, C has 4 and 1. These are illustrative inputs, not values derived by minimax or the next page's three-ply tree. Students predict each return before advancing; branches highlight and backed-up values appear with the trace. Emphasize depth-first recursive control, alternate MAX/MIN calls, and the difference between computational return and physically undoing a move.",
     sourceSlides: [9],
   },
   {
