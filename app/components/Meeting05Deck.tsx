@@ -418,12 +418,6 @@ const slides: SourceLessonSlide[] = [
           <article><span>03</span><h3>Climb</h3><p>Use a local evaluation while diagnosing maxima, plateaus, and shoulders.</p></article>
           <article><span>04</span><h3>Escape</h3><p>Accept some worse moves early, then reduce that probability as temperature falls.</p></article>
         </section>
-        <aside>
-          <span>Revised course horizon</span>
-          <p><strong>Today:</strong> heuristic design, hill climbing, and simulated annealing.</p>
-          <p><strong>Core continuation:</strong> best-first search and A*, minimax, advanced game playing, and heuristic evaluation.</p>
-          <p><strong>Optional roadmap topics—not scheduled:</strong> constraint satisfaction, performance criteria, complexity and efficiency, AI-complete, and AI-hard problems.</p>
-        </aside>
       </div>
     ),
     note: "2–4 minutes. Preview the 75-minute arc: motivation and examples to minute 23; heuristic functions to minute 39; hill climbing to minute 58; simulated annealing to minute 73; assessment and reading to minute 75.",
