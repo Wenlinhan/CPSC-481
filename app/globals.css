@@ -10673,3 +10673,5 @@ kbd {
 .meeting07-minimax-steps svg { display: block; width: 100%; max-height: 180px; }
 
 .meeting07-minimax-steps > section { gap: 6px; }
+
+@media (min-width: 1200px) { .meeting07-minimax-steps > section { grid-template-columns: 1fr 1fr; } .meeting07-minimax-steps article { align-content: start; } .meeting07-minimax-steps article h3 { font-size: 18px; } .meeting07-minimax-steps article p { font-size: 14px; } }
