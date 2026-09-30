@@ -574,17 +574,25 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Efficiency · Move ordering",
-    title: "Move ordering changes work, not the minimax answer",
+    title: "Ordering: which child do we search first?",
     content: (
-      <div className="evaluation-matrix">
-        <div><span>Question</span><span>Best-first ordering</span><span>Worst-first ordering</span><span>Invariant</span></div>
-        <div><span>MAX tries</span><p>High-value moves early</p><p>Low-value moves early</p><p>Same legal actions</p></div>
-        <div><span>MIN tries</span><p>Low-value moves early</p><p>High-value moves early</p><p>Same cutoff depth</p></div>
-        <div><span>Effect</span><p>Tight bounds and earlier cutoffs</p><p>Few cutoffs; near-full minimax</p><p>Same evaluation function</p></div>
-        <div><span>Result</span><p>Fewer leaves evaluated</p><p>More leaves evaluated</p><p>Same minimax result</p></div>
+      <div className="lesson08-ordering">
+        <section>
+          <article><h3>Ordering</h3><p>The sequence in which we examine a node’s child states (legal moves). Reorder siblings before searching them; alpha-beta still explores each chosen branch depth-first.</p></article>
+          <article><h3>Best-first ordering</h3><p>Try the moves likely to be best <strong>for the player at this node</strong> first: high values at MAX, low values at MIN. Useful bounds appear sooner, allowing earlier pruning.</p></article>
+          <article><h3>Worst-first ordering</h3><p>Try the least promising moves for that player first: low values at MAX, high values at MIN. Useful bounds arrive later, so more children may need evaluation.</p></article>
+        </section>
+        <div className="evaluation-matrix">
+          <div><span>Node</span><span>Best-first</span><span>Worst-first</span></div>
+          <div><span>MAX</span><p>Highest first<br /><strong>9 → 7 → 3</strong></p><p>Lowest first<br /><strong>3 → 7 → 9</strong></p></div>
+          <div><span>MIN</span><p>Lowest first<br /><strong>0 → 2 → 8</strong></p><p>Highest first<br /><strong>8 → 2 → 0</strong></p></div>
+          <div><span>Pruning</span><p>Strong bounds early; often fewer evaluated leaves</p><p>Weak bounds early; may approach full minimax work</p></div>
+          <div><span>In practice</span><p>Use a move-ordering heuristic to predict promising moves.</p><p>The examples show known values; real values are not yet known before search.</p></div>
+          <SearchCallout label="Same result, different work" tone="cyan">With the same tree, cutoff depth, and evaluation, ordering preserves the minimax value. Tied optimal moves may be selected differently.</SearchCallout>
+        </div>
       </div>
     ),
-    note: "Timing: 2 minutes. Explain that a move-ordering heuristic predicts promising actions only to improve pruning. It does not replace the cutoff evaluation function or alter correctness.",
+    note: "Timing: 3 minutes. Define ordering as sibling visitation order within depth-first alpha-beta, not changing to the best-first search algorithm. Best is relative to the current player under utility measured for MAX: descending values at MAX, ascending values at MIN; worst-first reverses this. Walk through MAX [3,7,9] and MIN [8,2,0]. The displayed values are known for illustration; practical ordering predicts them using heuristics, prior searches, or domain knowledge. Strong early alternatives tighten bounds, improving pruning. Same minimax value is preserved at matched depth and evaluation; a different tied optimal move can be returned.",
     sourceSlides: [17, 18, 21],
   },
   {
