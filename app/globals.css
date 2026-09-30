@@ -10661,4 +10661,5 @@ kbd {
 .minimax-trace-tree figcaption { font-size: clamp(13px, 1.1vw, 17px); line-height: 1.35; }
 @media (max-width: 900px) { .minimax-example-trace .frontier-queues { grid-template-columns: 1fr; } }
 
-.meeting07-minimax-layout > section { grid-auto-rows: min-content; }
+.meeting07-minimax-layout > section { grid-auto-rows: min-content; gap: 6px; }
+.meeting07-minimax-layout section article { padding: 8px 12px; }
