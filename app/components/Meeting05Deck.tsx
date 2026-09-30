@@ -700,21 +700,21 @@ const next = children.reduce((best, child) =>
     content: (
       <div className="heuristic-layout heuristic-layout-split">
         <SearchSourceImage
-          alt="Search landscape with local maxima plateau shoulder and a global maximum"
-          caption="A value landscape for maximization; ascent means larger evaluation values."
-          file="hill-climbing-search-landscape.jpeg"
-          sourceRoot={SOURCE_ROOT}
+          alt="Simple hill climbing rejects A=3, accepts B=5 because 5 exceeds current=4, and stops before inspecting C=7."
+          caption="Simple hill climbing accepts the first improvement: next = 5 > current = 4. It need not choose the best neighbor, 7."
+          file="simple-hill-climbing-first-better.svg"
+          sourceRoot="/diagrams"
         />
         <section>
           <div className="heuristic-big-number"><strong>next &gt; current</strong><span>the basic acceptance rule for ascent</span></div>
-          <p>The next state must have a higher value—or be judged closer to the goal—than the current state.</p>
+          <p>Inspect neighbors in order. Move to the first state with a higher evaluation value, then repeat from that new current state.</p>
           <SearchCallout label="Local information" tone="amber">
             The algorithm sees neighboring states, not the entire landscape. A better neighbor need not lead to the global best solution.
           </SearchCallout>
         </section>
       </div>
     ),
-    note: "39–42 minutes. Ask students to trace a path from the left side of the landscape without pointing out the global maximum first. Clarify ascent for reward and descent for cost.",
+    note: "39–42 minutes. Trace current=4: reject A=3, accept B=5, and stop before inspecting C=7. B becomes current for the next iteration. The first better successor need not be the best successor. Clarify ascent for reward and descent for cost.",
     sourceSlides: [15],
   },
   {
@@ -744,6 +744,9 @@ const next = children.reduce((best, child) =>
       <div className="heuristic-layout heuristic-layout-split">
         <HillClimbStepper />
         <section className="local-search-properties">
+          <h3>Steepest-ascent chooses the best child</h3>
+          <p>Evaluate <strong>all child states</strong> and choose the one with the highest value. Move only if this best child is better than the current state; otherwise stop.</p>
+          <p>Here, current = 4 and children are A = 5, B = 7, C = 6. Steepest-ascent selects <strong>B = 7</strong>; first-choice stops at A = 5.</p>
           <h3>Why this is local search</h3>
           <ul>
             <li>Keep one current state.</li>
@@ -756,7 +759,7 @@ const next = children.reduce((best, child) =>
         </section>
       </div>
     ),
-    note: "45–48 minutes. Run both modes. Stress that local search normally cares about the final state rather than its path and uses very little memory. Ask when returning only a reasonable state is acceptable.",
+    note: "45–48 minutes. Explain that steepest-ascent evaluates every child and always selects the best child; move only if that best value exceeds current, otherwise stop. In this example choose B=7 rather than the first improvement A=5. Best means best immediate child, not a guaranteed global optimum. Run both modes. Stress that local search normally cares about the final state rather than its path and uses very little memory. Ask when returning only a reasonable state is acceptable.",
     sourceSlides: [17],
   },
   {
