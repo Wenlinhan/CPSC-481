@@ -610,9 +610,9 @@ const slides: SourceLessonSlide[] = [
       <div className="source-definition-layout meeting07-minimax-layout">
         <NativeMinimaxAlgorithm />
         <section>
+          <article><span>Read the pair (a, s)</span><p><strong>a = action</strong> (a legal move); <strong>s = successor state</strong> after that move. SUCCESSORS(state) supplies these action–state pairs.</p><p>Example: a = “place X in the center”; s = the board with X in the center.</p></article>
           <article><span>Terminal test</span><p>Return exact Utility(state) when the game is over.</p></article>
-          <article><span>MAX-VALUE</span><p>Return the largest value produced by MIN-VALUE over legal actions.</p></article>
-          <article><span>MIN-VALUE</span><p>Return the smallest value produced by MAX-VALUE over legal actions.</p></article>
+          <article><span>MAX-VALUE / MIN-VALUE</span><p>MAX returns the largest MIN-VALUE(s); MIN returns the smallest MAX-VALUE(s) over legal actions.</p></article>
           <article><span>Decision</span><p>Return arg max over root actions—the action, not merely the value.</p></article>
           <SearchCallout label="Execution correction" tone="amber">
             Standard minimax computes recursively depth-first to terminal or cutoff states. It is not breadth-first search with a bound.
@@ -620,7 +620,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Enlarge the exact pseudocode. Follow one line through Minimax-Decision, Max-Value, and Min-Value. Separate the returned root action from the backed-up numeric value.",
+    note: "Timing: 4 minutes. Enlarge the exact pseudocode. Follow one line through Minimax-Decision, Max-Value, and Min-Value. Define a as the legal action and s as its resulting successor state in each SUCCESSORS(state) pair; use placing X in the center as an example. Separate the returned root action from the backed-up numeric value.",
     sourceSlides: [9],
   },
   {
