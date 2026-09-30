@@ -304,11 +304,11 @@ function SwarmReading({ kind }: { kind: "bees" | "ants" }) {
   const bees = kind === "bees";
   return <aside className="l10-external-reading" aria-label={bees ? "Bees Algorithm external reading" : "Ant Colony Optimization external reading"}>
     <strong>External reading · algorithm details</strong>
-    <a href={bees ? "https://pure-oai.bham.ac.uk/ws/portalfiles/portal/100752622/An_Analysis_of_the_Search_Mechanisms_of_the_Bees_Algorithm.pdf" : "https://www.cs.unm.edu/~forrest/classes/cs523-2015/readings/DorigoIEEEAnts2006.pdf"} target="_blank" rel="noopener noreferrer">
-      {bees ? "An Analysis of the Search Mechanisms of the Bees Algorithm ↗" : "Ant Colony Optimization: Artificial Ants as a Computational Intelligence Technique ↗"}
+    <a href={bees ? "http://beesalgorithmsite.altervista.org/BeesAlgorithm.htm" : "https://www.cs.unm.edu/~forrest/classes/cs523-2015/readings/DorigoIEEEAnts2006.pdf"} target="_blank" rel="noopener noreferrer">
+      {bees ? "The Bees Algorithm ↗" : "Ant Colony Optimization: Artificial Ants as a Computational Intelligence Technique ↗"}
     </a>
-    <small>{bees ? "Baronti, Castellani & Pham (2020) · free university-hosted preprint PDF" : "Dorigo, Birattari & Stützle (2006) · free university-hosted article PDF"}</small>
-    <p>{bees ? "Start with Algorithm 1: ranking sites, recruiting to elite/best sites, local search, neighbourhood shrinking, abandonment, and global scouting." : "Read Section II and Algorithm 1: construct solutions, optional local search, and pheromone updates; compare Ant System, MAX–MIN Ant System, and Ant Colony System."}</p>
+    <small>{bees ? "Bees Algorithm website · external reading" : "Dorigo, Birattari & Stützle (2006) · free university-hosted article PDF"}</small>
+    <p>{bees ? "Read about the Bees Algorithm: site selection, recruitment, neighbourhood search, and global scouting." : "Read Section II and Algorithm 1: construct solutions, optional local search, and pheromone updates; compare Ant System, MAX–MIN Ant System, and Ant Colony System."}</p>
     <b>{bees ? "Reading question: How do recruitment counts and neighbourhood size balance exploration and exploitation?" : "Reading question: How do α, β, and evaporation ρ change edge-choice probabilities and reinforcement?"}</b>
   </aside>;
 }
@@ -384,4 +384,5 @@ export const lesson10Slides: SourceLessonSlide[] = [
 export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
   return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" notesMode="key-points" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }
+
 
