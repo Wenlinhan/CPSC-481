@@ -178,10 +178,11 @@ function AdmissibilityStudio() {
           <p><strong>{item.answer}</strong> {item.explanation}</p>
         </li>
         <li>
-          <span>PROVE</span>
+          <span>JUSTIFY</span>
           <p>
-            State the relevant inequality or cost assumption. A familiar name
-            is not a proof of admissibility.
+            Explain why your answer holds using the relevant rule or cost assumption.
+            For admissibility, show why h(n) ≤ h*(n) for every state: the estimate
+            never exceeds the minimum remaining cost. Checking a few examples is not enough.
           </p>
         </li>
       </ol>
