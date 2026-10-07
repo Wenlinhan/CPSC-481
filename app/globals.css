@@ -9776,6 +9776,12 @@ kbd {
   gap: 8px;
 }
 
+.m6-reopen-graph { display: block; width: 100%; height: clamp(130px, 19vh, 165px); }
+.m6-reopen-trace .frontier-queues { gap: 8px; }
+.m6-reopen-trace .frontier-queues article { padding: 8px 18px; }
+.m6-reopen-trace .frontier-queues article strong { font-size: clamp(16px, 1.4vw, 22px); margin: 4px 0; }
+.m6-reopen-trace .frontier-queues article small { font-size: 12px; line-height: 1.3; }
+
 .frontier-queues {
   align-content: center;
   display: grid;

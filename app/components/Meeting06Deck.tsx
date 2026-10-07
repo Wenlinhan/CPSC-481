@@ -240,7 +240,7 @@ function AStarReopenDemo() {
   const state = reopenTrace[step];
 
   return (
-    <div className="frontier-trace">
+    <div className="frontier-trace m6-reopen-trace">
       <section>
         <span>Admissible but inconsistent heuristic · {step + 1} of {reopenTrace.length}</span>
         <h3>{state.label}</h3>
@@ -266,8 +266,26 @@ function AStarReopenDemo() {
       <div className="frontier-queues">
         <article>
           <span>Graph and heuristic</span>
-          <strong>S—3→A · S—1→B · B—1→A · A—2→G</strong>
-          <small>h(S)=3, h(B)=3, h(A)=0, h(G)=0. Every h is admissible.</small>
+          <svg className="m6-reopen-graph" viewBox="0 0 480 220" role="img" aria-labelledby="m6-reopen-title m6-reopen-desc">
+            <title id="m6-reopen-title">Example graph for reopening A</title>
+            <desc id="m6-reopen-desc">Directed edges: S to A costs 3; S to B costs 1; B to A costs 1; A to goal G costs 2. Heuristics: S 3, B 3, A 0, G 0.</desc>
+            <defs><marker id="m6-reopen-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#52627a" /></marker></defs>
+            <g fill="none" stroke="#52627a" strokeWidth="2.5" markerEnd="url(#m6-reopen-arrow)">
+              <path d="M88 96 L191 53" /><path d="M88 120 L191 163" />
+              <path d="M220 147 L220 79" /><path d="M250 46 L385 46 L410 78" />
+            </g>
+            <g fill="#6740d9" fontSize="19" fontWeight="800" textAnchor="middle">
+              <text x="133" y="66">3</text><text x="132" y="160">1</text><text x="203" y="118">1</text><text x="328" y="35">2</text>
+            </g>
+            {[{name:"S",h:3,x:60,y:108},{name:"A",h:0,x:220,y:46},{name:"B",h:3,x:220,y:178},{name:"G",h:0,x:425,y:108}].map(node => (
+              <g key={node.name}>
+                <circle cx={node.x} cy={node.y} r="30" fill={state.selected.startsWith(node.name + ":") ? "#e4dcff" : "#f2f6fc"} stroke={node.name === "G" ? "#168578" : "#52627a"} strokeWidth="2" />
+                <text x={node.x} y={node.y - 2} textAnchor="middle" fill="#1d2b45" fontSize="22" fontWeight="800">{node.name}</text>
+                <text x={node.x} y={node.y + 17} textAnchor="middle" fill="#52627a" fontSize="14">h={node.h}</text>
+              </g>
+            ))}
+          </svg>
+          <small>Arrows show legal moves; numbers on edges are costs. G is the goal. Shaded node = selected node.</small>
         </article>
         <article>
           <span>OPEN</span>
@@ -276,7 +294,7 @@ function AStarReopenDemo() {
         <article>
           <span>CLOSED</span>
           <strong>{state.closed}</strong>
-          <small>Consistency fails on B→A: 3 &gt; 1+0. A better g must reopen A.</small>
+          <small>Consistency fails on B→A: 3 &gt; 1+0. S→A→G costs 5; S→B→A→G costs 4.</small>
         </article>
       </div>
     </div>
