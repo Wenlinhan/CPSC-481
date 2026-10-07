@@ -9996,7 +9996,7 @@ kbd {
 .m6-question-sorter {
   display: grid;
   gap: 10px;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: 1fr;
 }
 
 .m6-question-sorter nav {
