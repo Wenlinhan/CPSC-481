@@ -417,7 +417,6 @@ function AStarApplicationPractice() {
 
 const propertyQuestions = [
   { prompt: "Is h1 admissible?", lens: "HEURISTIC h", answer: "Check 0 ≤ h1(n) ≤ h*(n) for every state." },
-  { prompt: "Is h2 consistent?", lens: "HEURISTIC h", answer: "Check h2(n) ≤ c(n,n′)+h2(n′) on every edge." },
   { prompt: "Is DFS consistent?", lens: "CATEGORY MISMATCH", answer: "Consistency here is a property of h. Evaluate DFS for completeness, optimality, time, and space instead." },
   { prompt: "Is best-first search complete?", lens: "SEARCH ALGORITHM", answer: "State which best-first variant and the space, cycle, and termination assumptions." },
   { prompt: "Is algorithm A admissible?", lens: "SEARCH ALGORITHM", answer: "In the classical algorithm sense, ask whether A is guaranteed to return an optimal solution." },
