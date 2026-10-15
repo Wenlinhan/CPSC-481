@@ -441,6 +441,7 @@ const slides: SourceLessonSlide[] = [
             {["HHH", "HHT", "HTH", "HTT", "THH", "THT", "TTH", "TTT"].map(value => <span key={value}>{value}</span>)}
           </div>
           <p><strong>Event A:</strong> more heads than tails · <strong>Event B:</strong> first toss is H</p>
+          <p><strong>Random variable X:</strong> the number of heads in three independent fair coin tosses. X can be 0, 1, 2, or 3. For example, X(HHT)=2 and X(TTT)=0. Q4 asks for the probability of each possible value of X.</p>
         </div>
         <ProbabilityPractice ariaLabel="Choose a coin-toss exercise question" eyebrow="Five-part probability lab" items={coinCases} />
       </div>
