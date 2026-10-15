@@ -454,8 +454,14 @@ const slides: SourceLessonSlide[] = [
     title: "One observation can support several hidden causes",
     content: (
       <div className={styles.twoColumn}>
-        <SourceFragment file="image58.png" alt="Dependency sketch linking construction and accident to bad traffic and related evidence" caption="Observed evidence can discriminate between competing causes." contain />
-        <div className={styles.stack}>
+        <div className={styles.trafficScenePanel}>
+          <figure className={styles.trafficScene}>
+            <img src="/lesson-visuals/lesson11-construction-traffic.png" alt="Orange-and-white construction barrels close a lane beside workers and an excavator, while cars queue in heavy traffic." />
+            <figcaption>Construction closes a lane. Orange barrels mark the work zone. Cars back up into bad traffic.</figcaption>
+          </figure>
+          <SourceFragment file="image58.png" alt="Dependency sketch linking construction and accident to bad traffic and related evidence" contain />
+        </div>
+        <div className={`${styles.stack} ${styles.trafficEvidence}`}>
           <ConceptCard label="Observed now" title="Bad traffic"><p>The vehicle slows because traffic is congested.</p></ConceptCard>
           <ConceptCard label="Competing hypotheses" title="Construction or accident"><p>Either hidden cause could explain the same observation.</p></ConceptCard>
           <ConceptCard label="Discriminating evidence" title="Barrels or flashing lights"><p>Additional observations can shift belief between explanations.</p></ConceptCard>
