@@ -498,6 +498,13 @@
 
 .dealerPanel { align-content: start; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
 .dealerPanel .formula { grid-column: 1 / -1; }
+.exampleContext { background: #f2f6fc; border: 1px solid #cfdaeb; border-radius: 12px; padding: 10px 12px; display: grid; gap: 7px; }
+.exampleContext p { color: #24324a; font-size: 14px; line-height: 1.35; margin: 0; }
+.medicalContext { grid-template-rows: minmax(90px, 1fr) auto auto; gap: 8px; }
+.medicalContext .fragment { max-height: 145px; min-height: 0; padding: 4px; }
+.medicalContext .givens span { padding: 7px 4px; font-size: 12px; }
+.dealerContext { gap: 8px; }
+.dealerContext > .exampleContext { grid-column: 1 / -1; }
 
 .exit {
   display: grid;

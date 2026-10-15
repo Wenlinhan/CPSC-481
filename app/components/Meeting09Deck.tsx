@@ -589,11 +589,17 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Worked example · Rare-disease diagnosis",
-    title: "A strong likelihood may still produce a small posterior when the prior is tiny",
+    title: "Does a stiff neck imply meningitis?",
     content: (
       <div className={styles.twoColumn}>
-        <div className={styles.medicalPanel}>
-          <SourceFragment file="image82.jpeg" alt="Medical illustration of inflamed meninges and stiff-neck symptoms" caption="Clinical illustration of inflamed meninges and stiff-neck symptoms." contain />
+        <div className={`${styles.medicalPanel} ${styles.medicalContext}`}>
+          <SourceFragment file="image82.jpeg" alt="Cutaway showing the bony skull outside the meninges, protective membranes around the brain, with inflamed meninges and stiff-neck symptoms" contain />
+          <div className={styles.exampleContext}>
+            <p><strong>Medical scene:</strong> A person has a stiff neck. Could meningitis explain the symptom?</p>
+            <p><strong>Skull → meninges → brain:</strong> the skull is the bony case; the meninges are protective membranes around the brain and spinal cord. <strong>Meningitis</strong> is inflammation of these membranes and can cause a stiff neck. <a href="https://www.cdc.gov/meningitis/about/index.html" target="_blank" rel="noreferrer">Medical context: CDC</a></p>
+            <p><strong>M = meningitis; S = stiff neck.</strong> +m means disease present; −m means absent. +s means stiff neck present; −s means absent. These are true/false values, not arithmetic signs.</p>
+            <p><strong>Question:</strong> Given a stiff neck, what is P(+m | +s)? Use the illustrative probabilities below.</p>
+          </div>
           <div className={styles.givens}><span>P(+m)=0.0001</span><span>P(+s | +m)=0.8</span><span>P(+s | −m)=0.01</span></div>
         </div>
         <ProbabilityPractice ariaLabel="Choose a meningitis calculation step" eyebrow="Work the posterior" items={meningitisCases} />
@@ -653,10 +659,15 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Worked example · Dealer inference",
-    title: "The evidence normalizer combines all ways the observed purchase could occur",
+    title: "Which dealer sold the purchased car?",
     content: (
       <div className={styles.twoColumn}>
-        <div className={styles.dealerPanel}>
+        <div className={`${styles.dealerPanel} ${styles.dealerContext}`}>
+          <div className={styles.exampleContext}>
+            <p><strong>Scene:</strong> You visit exactly one of three car dealers. All three sell car model a₁, but your chance of buying it differs by dealer.</p>
+            <p><strong>D = dealer visited.</strong> d₁, d₂, d₃ name the three possible dealers; dᵢ means “dealer i.” <strong>a₁ = the event that you buy car model 1.</strong></p>
+            <p><strong>Question:</strong> You bought model a₁. What is the probability you bought it at dealer d₂—that is, P(d₂ | a₁)?</p>
+          </div>
           <ProbabilityTable caption="Prior dealer probability" headers={["Dealer", "P(dᵢ)"]} rows={[{ values: ["d₁", "0.2"] }, { values: ["d₂", "0.4"], tone: "focus" }, { values: ["d₃", "0.4"] }]} />
           <ProbabilityTable caption="Purchase likelihood" headers={["Dealer", "P(a₁ | dᵢ)"]} rows={[{ values: ["d₁", "0.2"] }, { values: ["d₂", "0.4"], tone: "focus" }, { values: ["d₃", "0.3"] }]} />
           <Formula>P(d₂ | a₁) = 0.16 / 0.32 = 0.5</Formula>
