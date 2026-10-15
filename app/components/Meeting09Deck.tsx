@@ -594,15 +594,17 @@ const slides: SourceLessonSlide[] = [
       <div className={styles.twoColumn}>
         <div className={`${styles.medicalPanel} ${styles.medicalContext}`}>
           <SourceFragment file="image82.jpeg" alt="Cutaway showing the bony skull outside the meninges, protective membranes around the brain, with inflamed meninges and stiff-neck symptoms" contain />
+          <div className={styles.givens}><span>P(+m)=0.0001</span><span>P(+s | +m)=0.8</span><span>P(+s | −m)=0.01</span></div>
+        </div>
+        <div className={styles.medicalDetails}>
           <div className={styles.exampleContext}>
             <p><strong>Medical scene:</strong> A person has a stiff neck. Could meningitis explain the symptom?</p>
             <p><strong>Skull → meninges → brain:</strong> the skull is the bony case; the meninges are protective membranes around the brain and spinal cord. <strong>Meningitis</strong> is inflammation of these membranes and can cause a stiff neck. <a href="https://www.cdc.gov/meningitis/about/index.html" target="_blank" rel="noreferrer">Medical context: CDC</a></p>
             <p><strong>M = meningitis; S = stiff neck.</strong> +m means disease present; −m means absent. +s means stiff neck present; −s means absent. These are true/false values, not arithmetic signs.</p>
             <p><strong>Question:</strong> Given a stiff neck, what is P(+m | +s)? Use the illustrative probabilities below.</p>
           </div>
-          <div className={styles.givens}><span>P(+m)=0.0001</span><span>P(+s | +m)=0.8</span><span>P(+s | −m)=0.01</span></div>
+          <ProbabilityPractice ariaLabel="Choose a meningitis calculation step" eyebrow="Work the posterior" items={meningitisCases} />
         </div>
-        <ProbabilityPractice ariaLabel="Choose a meningitis calculation step" eyebrow="Work the posterior" items={meningitisCases} />
       </div>
     ),
     note: "Timing: 4 minutes. Compute the normalizer and posterior. Discuss why action also depends on consequences and follow-up tests.",
