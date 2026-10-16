@@ -142,19 +142,19 @@ const networkFactors = [
   {
     label: "J",
     factor: "P(J | A)",
-    meaning: "JohnCalls needs only Alarm in its local conditional table.",
+    meaning: "John Calls needs only Alarm in its local conditional table.",
   },
   {
     label: "M",
     factor: "P(M | A)",
-    meaning: "MaryCalls also needs only Alarm in its local conditional table.",
+    meaning: "Mary Calls also needs only Alarm in its local conditional table.",
   },
 ];
 
 function BurglaryNetworkDiagram({
   active = [],
   height = 150,
-  label = "Bayesian network with Burglary and Earthquake pointing to Alarm, and Alarm pointing to JohnCalls and MaryCalls",
+  label = "Bayesian network with Burglary and Earthquake pointing to Alarm, and Alarm pointing to John Calls and Mary Calls",
 }: {
   active?: string | string[];
   height?: number;
@@ -168,8 +168,8 @@ function BurglaryNetworkDiagram({
       <div className={`${styles.networkArrow} ${styles.down1}`}>↘ &nbsp;&nbsp; ↙</div>
       <div className={`${styles.networkNode} ${styles.a} ${highlighted.has("A") ? styles.active : ""}`}>Alarm</div>
       <div className={`${styles.networkArrow} ${styles.down2}`}>↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
-      <div className={`${styles.networkNode} ${styles.j} ${highlighted.has("J") ? styles.active : ""}`}>JohnCalls</div>
-      <div className={`${styles.networkNode} ${styles.m} ${highlighted.has("M") ? styles.active : ""}`}>MaryCalls</div>
+      <div className={`${styles.networkNode} ${styles.j} ${highlighted.has("J") ? styles.active : ""}`}>John Calls</div>
+      <div className={`${styles.networkNode} ${styles.m} ${highlighted.has("M") ? styles.active : ""}`}>Mary Calls</div>
     </div>
   );
 }
@@ -194,9 +194,14 @@ function NetworkFactorizationExplorer() {
       </nav>
       <div className={styles.networkPanel}>
         <BurglaryNetworkDiagram active={item.label} height={188} />
-        <p><strong>DAG:</strong> Burglary → Alarm ← Earthquake; Alarm → JohnCalls; Alarm → MaryCalls.</p>
+        <p><strong>DAG:</strong> Burglary → Alarm ← Earthquake; Alarm → John Calls; Alarm → Mary Calls.</p>
       </div>
       <section className={styles.factorPanel}>
+        <div className={styles.cptDefinition}>
+          <strong>CPT = conditional probability table; CPTs = plural.</strong>
+          <p>A node’s CPT lists the probability of each value of that variable for every combination of its parents’ values. Each row sums to 1.</p>
+          <p><b>Example:</b> if Alarm=true, P(John Calls=true | Alarm=true)=0.90, so P(John Calls=false | Alarm=true)=0.10. Root nodes have no parents and use prior tables.</p>
+        </div>
         <span className={styles.kicker}>Local factor · {item.label}</span>
         <h3>{item.factor}</h3>
         <p>{item.meaning}</p>
@@ -213,7 +218,7 @@ function NetworkFactorizationExplorer() {
 const separationCases = [
   {
     label: "Common cause",
-    question: "Are JohnCalls and MaryCalls independent after Alarm is known?",
+    question: "Are John Calls and Mary Calls independent after Alarm is known?",
     answer: "Yes in this network: J ⟂ M | A.",
     why: "Conditioning on their common parent blocks the only path between them.",
   },
@@ -703,12 +708,12 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook-grounded supplement · Bayesian-network semantics",
-    title: "A Bayesian network is a DAG plus one local conditional distribution per node",
+    title: "A Bayesian network: graph + local probabilities",
     content: (
       <div className="algorithm-definition">
         <section>
           <span>Representation</span>
-          <h3>Parents identify the variables a node conditions on locally</h3>
+          <h3>Each node conditions on its parents</h3>
           <BurglaryNetworkDiagram active="A" height={164} />
           <p>
             A directed acyclic graph orders dependencies. Each node Xᵢ has a
@@ -731,7 +736,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook-grounded supplement · DAG and CPT factorization",
-    title: "Local CPTs multiply into the complete joint distribution",
+    title: "CPTs: local tables form the joint distribution",
     content: <NetworkFactorizationExplorer />,
     note: "Timing: 3 minutes. Use the canonical burglary–earthquake–alarm–calls network. Students select each node, state its parents, and assemble P(B,E,A,J,M)=P(B)P(E)P(A|B,E)P(J|A)P(M|A).",
     sourceSlides: [],
@@ -763,7 +768,7 @@ const slides: SourceLessonSlide[] = [
             intermediate factors instead of repeating products.
           </p>
           <SearchCallout label="Pair task" tone="cyan">
-            For P(Burglary|JohnCalls,MaryCalls), identify the hidden variables
+            For P(Burglary|John Calls,Mary Calls), identify the hidden variables
             before doing arithmetic.
           </SearchCallout>
         </section>
@@ -1091,7 +1096,7 @@ const lesson14KeyPoints = [
   [
     "A Bayesian network consists of random variables, a directed acyclic graph, and one local conditional distribution per node.",
     "A node's parents specify the variables on which its local probability table conditions.",
-    "The burglary example separates Burglary, Earthquake, Alarm, JohnCalls, and MaryCalls into local mechanisms.",
+    "The burglary example separates Burglary, Earthquake, Alarm, John Calls, and Mary Calls into local mechanisms.",
   ],
   [
     "Root nodes use priors P(B) and P(E); Alarm uses P(A|B,E); each call uses a probability conditioned on Alarm.",
@@ -1109,7 +1114,7 @@ const lesson14KeyPoints = [
     "The resulting unnormalized values are divided by their sum to produce a posterior distribution.",
   ],
   [
-    "For P(Burglary|JohnCalls,MaryCalls), Earthquake and Alarm are hidden and must be summed out.",
+    "For P(Burglary|John Calls,Mary Calls), Earthquake and Alarm are hidden and must be summed out.",
     "Compute one unnormalized mass for Burglary=true and another for Burglary=false, then normalize.",
     "With the displayed CPTs, two calls raise the burglary probability from 0.001 to about 0.284, not to certainty.",
   ],
