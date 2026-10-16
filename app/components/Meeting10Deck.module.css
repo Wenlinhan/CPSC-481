@@ -24,6 +24,9 @@
 .imagePanel { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#fff; overflow:hidden; }
 .imagePanel img { display:block; max-width:100%; max-height:280px; width:auto; height:auto; object-fit:contain; }
 .imagePanel figcaption { margin-top:.55rem; color:#53637d; font-size:.82rem; text-align:center; }
+.dentalContext { display:grid; gap:9px; align-content:start; }
+.dentalContext img { width:100%; height:150px; object-fit:contain; }
+.dentalContext p { margin:0; font-size:14px; line-height:1.35; color:#24324a; }
 .cause { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; align-items:center; }
 .causeImage { width:100%; max-height:285px; object-fit:contain; }
 .fork { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:1.2rem 3rem; align-items:center; justify-items:center; position:relative; padding:1rem; }

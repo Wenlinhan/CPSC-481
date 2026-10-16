@@ -618,10 +618,13 @@ const slides: SourceLessonSlide[] = [
     title: "Cavity can screen Toothache from Catch",
     content: (
       <div className={styles.nativeGrid} data-l12-source-slide="7">
-        <figure className={`${styles.panel} ${styles.imagePanel}`}>
+        <div className={`${styles.panel} ${styles.dentalContext}`}>
           <img alt="Dental probe checking a tooth for a cavity" src={`${L12_MEDIA_ROOT}/image18.png`} />
-          <figcaption>Cavity can jointly explain Toothache and a probe Catch.</figcaption>
-        </figure>
+          <p><strong>Scene:</strong> A patient visits a dentist. The patient may report tooth pain, and the dentist examines the tooth with a small pointed instrument called a dental probe or explorer.</p>
+          <p><strong>“Probe catch”:</strong> the instrument’s tip catches or sticks at a spot on the tooth instead of moving smoothly. In this example, that observation is evidence about a possible cavity.</p>
+          <p><strong>Three true/false variables:</strong> <b>Cavity</b> = a decayed hole is present; <b>Toothache</b> = the patient has tooth pain; <b>Catch</b> = the probe catches. + means present/yes; − means absent/no.</p>
+          <p><strong>Why this example?</strong> A cavity can help explain both pain and a probe catch. The model asks whether pain still adds information about Catch once cavity status is known.</p>
+        </div>
         <section className={styles.panel}>
           <span className={styles.kicker}>Translate the notation</span>
           <h3>Once Cavity is known, Toothache does not change Catch</h3>
