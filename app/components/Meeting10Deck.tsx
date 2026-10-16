@@ -216,157 +216,89 @@ function NetworkFactorizationExplorer() {
 }
 
 const separationCases = [
-  {
-    label: "Common cause",
-    question: "Are John Calls and Mary Calls independent after Alarm is known?",
-    answer: "Yes in this network: J ⟂ M | A.",
-    why: "Conditioning on their common parent blocks the only path between them.",
-  },
-  {
-    label: "Collider closed",
-    question: "Are Burglary and Earthquake independent before observing Alarm or its descendants?",
-    answer: "Yes in the represented distribution: B ⟂ E.",
-    why: "The path B→A←E is blocked by the unobserved collider A.",
-  },
-  {
-    label: "Explaining away",
-    question: "Are Burglary and Earthquake independent after Alarm is observed?",
-    answer: "No. Conditioning on collider A opens the path.",
-    why: "Evidence for one cause can explain away the other once their common effect is known.",
-  },
+  { label: "1 · Two calls", path: "John Calls ← Alarm → Mary Calls", question: "If John calls, does that make Mary’s call more likely?", before: "Before knowing Alarm: yes, it can. John’s call is evidence that the alarm sounded, which also makes Mary’s call more likely.", after: "After Alarm is known: no extra information in this model. Once we know whether the alarm sounded, John’s call does not change the probability of Mary’s call.", rule: "J ⟂ M | A means: John Calls and Mary Calls are independent GIVEN Alarm.", term: "Common cause: Alarm influences both calls. Knowing the shared cause blocks this information path." },
+  { label: "2 · Two possible causes", path: "Burglary → Alarm ← Earthquake", question: "Does learning about an earthquake change burglary belief?", before: "Before any alarm evidence: no, in this model. Burglary and Earthquake are modeled as independent root variables.", after: "If the alarm is known to have sounded: the causes become related. Evidence of an earthquake supplies another explanation for that alarm and can reduce belief in a burglary.", rule: "B ⟂ E before alarm evidence; B and E need not be independent GIVEN Alarm.", term: "Collider: two arrows meet at Alarm. Observing this shared effect opens an information path; competing causes can explain it away." },
 ];
 
 function GraphicalIndependenceStudio() {
   const [active, setActive] = useState(0);
   const item = separationCases[active];
-  const highlighted = active === 0 ? ["A", "J", "M"] : ["B", "E", "A"];
-
-  return (
-    <div className="search-review-studio">
-      <nav aria-label="Choose a graphical-independence case">
-        {separationCases.map((entry, index) => (
-          <button
-            className={active === index ? "active" : ""}
-            key={entry.label}
-            onClick={() => setActive(index)}
-            type="button"
-          >
-            {entry.label}
-          </button>
-        ))}
-      </nav>
-      <ol>
-        <li style={{ gridTemplateColumns: "1fr" }}>
-          <BurglaryNetworkDiagram
-            active={highlighted}
-            height={136}
-            label={`Graph for ${item.label}: ${item.question}`}
-          />
-        </li>
-        <li>
-          <span>ASK</span>
-          <p><strong>{item.question}</strong></p>
-        </li>
-        <li>
-          <span>CLAIM</span>
-          <p>{item.answer}</p>
-        </li>
-        <li>
-          <span>PATH</span>
-          <p>{item.why}</p>
-        </li>
-        <li>
-          <span>CHECK</span>
-          <p>State the conditioning set; a graphical claim without it is incomplete.</p>
-        </li>
-      </ol>
-    </div>
-  );
+  return <div className={styles.explainGrid}>
+    <section className={styles.explainPanel}>
+      <h3>The alarm-and-phone-call story</h3>
+      <p>A house alarm may sound because of a burglary or an earthquake. John and Mary are neighbors who may telephone when they hear it.</p>
+      <BurglaryNetworkDiagram active={active === 0 ? ["A", "J", "M"] : ["B", "E", "A"]} height={170} />
+      <p><b>B</b> = Burglary; <b>E</b> = Earthquake; <b>A</b> = Alarm; <b>J</b> = John Calls; <b>M</b> = Mary Calls. Each is true or false.</p>
+      <p><b>“Given”</b> means we already know the value. “Independent given A” means one observation adds no information about the other once A is known.</p>
+    </section>
+    <section className={styles.explainPanel}>
+      <nav className={styles.explainTabs} aria-label="Choose an independence story">{separationCases.map((entry,index)=><button key={entry.label} type="button" aria-pressed={active===index} onClick={()=>setActive(index)}>{entry.label}</button>)}</nav>
+      <h3>{item.question}</h3><div className={styles.storyPath}>{item.path}</div>
+      <p><b>Without the shared evidence:</b> {item.before}</p>
+      <p><b>With the shared evidence:</b> {item.after}</p>
+      <div className={styles.explainTakeaway}>{item.rule}</div><p>{item.term}</p>
+      <small>These conclusions follow the proposed network assumptions; the graph alone does not establish real-world causation.</small>
+    </section>
+  </div>;
 }
 
-const enumerationTrace = [
-  {
-    label: "Parse the query",
-    selected: "Query B; evidence j,m",
-    hidden: "E, A",
-    value: "Two unobserved binary variables",
-    detail: "Compute one unnormalized number for B=true and another for B=false.",
-  },
-  {
-    label: "Expand the factors",
-    selected: "P(B)P(E)P(A|B,E)P(j|A)P(m|A)",
-    hidden: "Σe Σa",
-    value: "Four rows per B value",
-    detail: "Each complete assignment contributes a product of five local factors.",
-  },
-  {
-    label: "Enumerate B=true",
-    selected: "Σe Σa P(b,e,a,j,m)",
-    hidden: "E, A",
-    value: "0.000592243",
-    detail: "Sum all four rows compatible with burglary and both calls.",
-  },
-  {
-    label: "Enumerate B=false",
-    selected: "Σe Σa P(¬b,e,a,j,m)",
-    hidden: "E, A",
-    value: "0.001491858",
-    detail: "The no-burglary mass is larger even after both calls are observed.",
-  },
-  {
-    label: "Normalize",
-    selected: "α〈0.000592243, 0.001491858〉",
-    hidden: "Evidence total = 0.002084100",
-    value: "P(b|j,m) ≈ 0.284",
-    detail: "Normalize the two unnormalized entries so they sum to one.",
-  },
-];
+function EnumerationPlan() {
+  return <div className={styles.explainGrid}>
+    <section className={styles.explainPanel}>
+      <h3>Both neighbors have called. Was there a burglary?</h3>
+      <p>John and Mary report the alarm. We know their calls occurred, but have not observed the earthquake or the alarm directly.</p>
+      <div className={styles.variableCards}>
+        <p><b>Question (query):</b> B = Burglary. Find P(B=true | J=true, M=true).</p>
+        <p><b>Known evidence:</b> J = John Calls = true; M = Mary Calls = true.</p>
+        <p><b>Hidden variables:</b> E = Earthquake and A = Alarm. Their values are unknown, so consider both true and false.</p>
+      </div>
+      <table className={styles.studyTable}><caption>Four hidden possibilities for EACH burglary value</caption><thead><tr><th>Earthquake E</th><th>Alarm A</th></tr></thead><tbody>{[["true","true"],["true","false"],["false","true"],["false","false"]].map(([e,a])=><tr key={e+a}><td>{e}</td><td>{a}</td></tr>)}</tbody></table>
+    </section>
+    <section className={styles.explainPanel}>
+      <h3>Enumeration = list, multiply, add, compare</h3>
+      <ol className={styles.explainSteps}>
+        <li><b>Fix B=true.</b> List the four E,A possibilities shown on the left. Keep both calls true.</li>
+        <li><b>Multiply</b> the five probabilities for each complete scenario, using the network’s local tables.</li>
+        <li><b>Add</b> the four products. This is the probability of burglary AND both calls.</li>
+        <li><b>Repeat for B=false.</b> Add its four products to get the no-burglary AND both-calls probability.</li>
+        <li><b>Normalize:</b> divide the burglary total by the sum of both totals. The two posterior probabilities must sum to 1.</li>
+      </ol>
+      <div className={styles.storyPath}>One row = P(B) × P(E) × P(A | B,E) × P(J=true | A) × P(M=true | A)</div>
+      <p>Use the true OR false entry matching each row. Σ means “add all possibilities”; normalization means “divide by their total.”</p>
+      <small>With k hidden binary variables there are 2ᵏ combinations. Variable elimination saves work by reusing partial sums.</small>
+    </section>
+  </div>;
+}
 
 function EnumerationTrace() {
-  const [step, setStep] = useState(0);
-  const state = enumerationTrace[step];
-
-  return (
-    <div className="frontier-trace">
-      <section>
-        <span>Exact inference · {step + 1} of {enumerationTrace.length}</span>
-        <h3>{state.label}</h3>
-        <p>{state.detail}</p>
-        <div>
-          <button
-            disabled={step === 0}
-            onClick={() => setStep(value => Math.max(0, value - 1))}
-            type="button"
-          >
-            Previous
-          </button>
-          <button
-            disabled={step === enumerationTrace.length - 1}
-            onClick={() => setStep(value => Math.min(enumerationTrace.length - 1, value + 1))}
-            type="button"
-          >
-            Next
-          </button>
-          <button onClick={() => setStep(0)} type="button">Reset</button>
-        </div>
-      </section>
-      <div className="frontier-queues">
-        <article>
-          <span>Current expression</span>
-          <strong>{state.selected}</strong>
-        </article>
-        <article>
-          <span>Hidden variables or normalization</span>
-          <strong>{state.hidden}</strong>
-        </article>
-        <article>
-          <span>Result</span>
-          <strong>{state.value}</strong>
-          <small>Numbers use the canonical burglary–alarm CPTs from the course textbook example.</small>
-        </article>
+  const [burglary, setBurglary] = useState(true);
+  const rows = [true,false].flatMap(e=>[true,false].map(a=>{
+    const pb=burglary ? .001 : .999, pe=e ? .002 : .998;
+    const alarm=burglary ? (e ? .95 : .94) : (e ? .29 : .001);
+    const pa=a ? alarm : 1-alarm, pj=a ? .90 : .05, pm=a ? .70 : .01;
+    return {e,a,pb,pe,pa,pj,pm,value:pb*pe*pa*pj*pm};
+  }));
+  const yes=.00059224259, no=.001491857649, total=yes+no;
+  return <div className={`${styles.explainGrid} ${styles.workedNumbers}`}>
+    <section className={styles.explainPanel}>
+      <h3>Where do the numbers come from?</h3>
+      <p>Evidence: <b>John Calls=true and Mary Calls=true</b>. B=Burglary; E=Earthquake; A=Alarm. These are illustrative textbook probabilities.</p>
+      <div className={styles.explainTakeaway}><b>Prior tables:</b> P(B=true)=0.001; P(E=true)=0.002.<br/>False entries are 0.999 and 0.998: use 1 − P(true).</div>
+      <div className={styles.inputTables}>
+        <table className={styles.studyTable}><caption>Alarm CPT</caption><thead><tr><th>B</th><th>E</th><th>P(A=true)</th></tr></thead><tbody>{[["true","true",".95"],["true","false",".94"],["false","true",".29"],["false","false",".001"]].map(r=><tr key={r.join()}>{r.map((v,i)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>
+        <table className={styles.studyTable}><caption>Call CPTs</caption><thead><tr><th>A</th><th>P(J=true)</th><th>P(M=true)</th></tr></thead><tbody><tr><td>true</td><td>.90</td><td>.70</td></tr><tr><td>false</td><td>.05</td><td>.01</td></tr></tbody></table>
       </div>
-    </div>
-  );
+      <p><b>CPT</b> = conditional probability table. Each Alarm row fixes B and E; each call row fixes A. In every row, P(false)=1−P(true).</p>
+    </section>
+    <section className={styles.explainPanel}>
+      <nav className={styles.explainTabs} aria-label="Choose the burglary hypothesis"><button type="button" aria-pressed={burglary} onClick={()=>setBurglary(true)}>B=true</button><button type="button" aria-pressed={!burglary} onClick={()=>setBurglary(false)}>B=false</button></nav>
+      <h3>Four scenarios with B={String(burglary)}</h3>
+      <table className={styles.studyTable}><caption>Multiply P(B) × P(E) × P(A|B,E) × P(J=true|A) × P(M=true|A)</caption><thead><tr><th>E</th><th>A</th><th>Five factors → row probability</th></tr></thead><tbody>{rows.map(r=><tr key={String(r.e)+String(r.a)}><td>{String(r.e)}</td><td>{String(r.a)}</td><td><small>{r.pb} × {r.pe} × {r.pa.toFixed(3)} × {r.pj} × {r.pm}</small><br/><b>{r.value.toFixed(12)}</b></td></tr>)}</tbody></table>
+      <p><b>Add these four rows:</b> {rows.reduce((v,r)=>v+r.value,0).toFixed(12)}.</p>
+      <div className={styles.explainTakeaway}><b>Normalize the two totals</b><br/>P(B=true | both calls) = {yes.toFixed(9)} ÷ ({yes.toFixed(9)} + {no.toFixed(9)}) ≈ <b>{(100*yes/total).toFixed(1)}%</b>.</div>
+      <p>Burglary rises from 0.1% to 28.4%; no burglary has {(100*no/total).toFixed(1)}%. The two results sum to 100%.</p>
+    </section>
+  </div>;
 }
 
 const modelAuditCases = [
@@ -743,43 +675,21 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook-grounded supplement · Graphical independence",
-    title: "Blocked and opened paths determine which evidence remains relevant",
+    title: "When does one observation change another belief?",
     content: <GraphicalIndependenceStudio />,
     note: "Timing: 3 minutes. Introduce only the d-separation patterns needed here: common cause and collider. Make conditioning sets explicit and demonstrate explaining away at Alarm.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · Exact inference",
-    title: "Enumeration sums hidden assignments and normalizes the query distribution",
-    content: (
-      <div className="algorithm-source-layout">
-        <ol>
-          <li>Choose query variables and fix the observed evidence.</li>
-          <li>List every hidden variable not in the query or evidence.</li>
-          <li>Use the network factorization for each complete assignment.</li>
-          <li>Sum over all hidden-variable assignments.</li>
-          <li>Repeat for each query value and normalize the resulting vector.</li>
-        </ol>
-        <section>
-          <h3>P(X|e)=α Σᵧ ∏ᵢP(xᵢ|paᵢ)</h3>
-          <p>
-            Enumeration is conceptually direct, but the number of hidden
-            assignments can grow exponentially. Variable elimination reuses
-            intermediate factors instead of repeating products.
-          </p>
-          <SearchCallout label="Pair task" tone="cyan">
-            For P(Burglary|John Calls,Mary Calls), identify the hidden variables
-            before doing arithmetic.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
+    title: "Both neighbors called: what must we calculate?",
+    content: <EnumerationPlan />,
     note: "Timing: 3 minutes. Textbook-grounded supplement. Students identify Earthquake and Alarm as hidden. Connect exponential enumeration to the value of factor structure.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · Worked network",
-    title: "Two calls raise burglary belief, but the low prior still matters",
+    title: "From two phone calls to a burglary probability",
     content: <EnumerationTrace />,
     note: "Timing: 5 minutes. Use canonical CPTs: P(B)=.001, P(E)=.002; Alarm .95/.94/.29/.001; John .90/.05; Mary .70/.01. Predict before each step. The posterior is approximately .284, not near one.",
     sourceSlides: [],
