@@ -265,7 +265,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Probability foundations · Variables and distributions",
-    title: "Random variables name uncertain aspects; distributions assign probability to their values",
+    title: "Random variables and probability distributions",
     content: (
       <div className={styles.twoColumn}>
         <div className={styles.variablePanel}>
@@ -432,16 +432,19 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "In-class practice · Three coin tosses",
-    title: "Connect outcomes, events, random variables, distributions, and conditioning",
+    title: "Three coin tosses: outcomes, events, and X",
     content: (
       <div className={styles.twoColumn}>
         <div className={styles.coinPanel}>
-          <SourceFragment file="image5.png" alt="Robot tossing a coin" contain />
+          <figure className={styles.threeTosses} aria-label="Three independent fair coin tosses; the illustrated example is heads, heads, tails">
+            <div className={styles.tossRow}>{["H", "H", "T"].map((face,index) => <div className={styles.tossStep} key={index}><strong>Toss {index+1}</strong><span className={styles.tossCoin}>{face}</span><small>H or T · ½ each</small></div>)}</div>
+            <figcaption>Example: HHT → two heads → X=2. H = heads; T = tails.</figcaption>
+          </figure>
           <div className={styles.outcomes}>
             {["HHH", "HHT", "HTH", "HTT", "THH", "THT", "TTH", "TTT"].map(value => <span key={value}>{value}</span>)}
           </div>
           <p><strong>Event A:</strong> more heads than tails · <strong>Event B:</strong> first toss is H</p>
-          <p><strong>Random variable X:</strong> the number of heads in three independent fair coin tosses. X can be 0, 1, 2, or 3. For example, X(HHT)=2 and X(TTT)=0. Q4 asks for the probability of each possible value of X.</p>
+          <p className={styles.coinDefinition}><strong>Random variable X = number of heads.</strong> Three independent fair tosses give X ∈ {'{0, 1, 2, 3}'}. For example, X(HHT)=2 and X(TTT)=0. The eight outcomes above are equally likely (⅛ each). Q4 asks for the probability of each value of X.</p>
         </div>
         <ProbabilityPractice ariaLabel="Choose a coin-toss exercise question" eyebrow="Five-part probability lab" items={coinCases} />
       </div>
