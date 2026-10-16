@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 import { SearchCallout } from "./SearchLessonPrimitives";
 import styles from "./Meeting10Deck.module.css";
+import { MAPExplanation, FruitClassificationFlow, ClassifierTrustPanel } from "./Lesson12FruitPanels";
 
 const L11_RENDER_ROOT = "/course-source/l11-probability-bayes/slide-renders";
 const L12_RENDER_ROOT = "/course-source/l12-conditional-independence/slide-renders";
@@ -299,73 +300,6 @@ function EnumerationTrace() {
       <p>Burglary rises from 0.1% to 28.4%; no burglary has {(100*no/total).toFixed(1)}%. The two results sum to 100%.</p>
     </section>
   </div>;
-}
-
-const modelAuditCases = [
-  {
-    label: "Assumption",
-    claim: "Naive Bayes assumes features are marginally independent.",
-    correction:
-      "No. It assumes features are conditionally independent given the class: P(F₁,…,Fₙ|C)=∏ᵢP(Fᵢ|C).",
-  },
-  {
-    label: "Decision",
-    claim: "The classifier formula with a class prior is maximum likelihood.",
-    correction:
-      "With P(C) included, the argmax is maximum a posteriori (MAP). Maximum likelihood omits the class prior.",
-  },
-  {
-    label: "Parameters",
-    claim: "Training Naive Bayes always means estimating means and variances.",
-    correction:
-      "Only Gaussian Naive Bayes uses class-conditional means and variances. Bernoulli, multinomial, and categorical variants estimate different statistics.",
-  },
-  {
-    label: "Robustness",
-    claim: "Irrelevant features can never hurt Naive Bayes.",
-    correction:
-      "Weakly informative features may have little effect, but correlated or duplicated features can count the same evidence repeatedly and distort confidence.",
-  },
-];
-
-function NaiveBayesModelAudit() {
-  const [active, setActive] = useState(0);
-  const item = modelAuditCases[active];
-
-  return (
-    <div className="search-review-studio">
-      <nav aria-label="Choose a Naive Bayes evaluation claim">
-        {modelAuditCases.map((entry, index) => (
-          <button
-            className={active === index ? "active" : ""}
-            key={entry.label}
-            onClick={() => setActive(index)}
-            type="button"
-          >
-            {entry.label}
-          </button>
-        ))}
-      </nav>
-      <ol>
-        <li>
-          <span>CLAIM</span>
-          <p><strong>{item.claim}</strong></p>
-        </li>
-        <li>
-          <span>VERDICT</span>
-          <p>Revise before using this statement as evidence.</p>
-        </li>
-        <li>
-          <span>CORRECT</span>
-          <p>{item.correction}</p>
-        </li>
-        <li>
-          <span>TEST</span>
-          <p>Compare held-out accuracy, calibration, error types, and performance under feature dependence or distribution shift.</p>
-        </li>
-      </ol>
-    </div>
-  );
 }
 
 const slides: SourceLessonSlide[] = [
@@ -692,14 +626,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Naive Bayes · Class-conditional factorization",
-    title: "Given the class, treat feature likelihoods as independent factors",
+    title: "Naive Bayes: classify fruit using its features",
     content: (
       <div className={styles.nativeGrid}>
         <section className={styles.panel}>
           <span className={styles.kicker}>From chain rule to the shortcut</span>
           <Formula small>P(F₁,…,Fₙ|C) ≈ ∏ᵢP(Fᵢ|C)</Formula>
           <div className={styles.featureFlow}>
-            <div className={styles.classBox}><strong>Class C</strong><br/>apple / not apple</div><div className={styles.arrow}>→</div>
+            <div className={`${styles.classBox} ${styles.appleClass}`}><img src="/lesson-visuals/lesson12-apple.svg" alt="Red apple with a green leaf" /><strong>Class C</strong><br/>apple / not apple</div><div className={styles.arrow}>→</div>
             <div className={styles.featureStack}><span>size</span><span>color</span><span>shape</span></div>
           </div>
           <p>Every feature is conditioned on the same class. The approximation drops dependencies among features within each class.</p>
@@ -724,63 +658,15 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Naive Bayes · Classifier decision",
-    title: "The class prior and feature likelihoods produce a MAP decision",
-    content: (
-      <div className={styles.nativeGrid}>
-        <section className={styles.panel}>
-          <span className={styles.kicker}>Decision rule</span>
-          <Formula small>ĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)</Formula>
-          <div className={styles.scoreCards}>
-            <article><span>Maximum likelihood</span><strong>∏P(eᵢ|C)</strong><p>uses feature likelihood only</p></article>
-            <article><span>MAP</span><strong>P(C)∏P(eᵢ|C)</strong><p>also uses the class prior</p></article>
-          </div>
-        </section>
-        <section className={styles.panel}>
-          <span className={styles.kicker}>Compute in log space</span>
-          <h3>ĉ = argmaxᶜ P(C)∏ᵢP(eᵢ|C)</h3>
-          <ul>
-            <li>Estimate P(C) from class frequency or a justified prior.</li>
-            <li>Estimate P(eᵢ|C) within each class.</li>
-            <li>Use log probabilities in software to avoid numerical underflow.</li>
-            <li>Text classification and spam filtering are common fits.</li>
-          </ul>
-        </section>
-      </div>
-    ),
+    title: "MAP: choose the most probable class after evidence",
+    content: <MAPExplanation />,
     note: "Timing: 3 minutes. Correct terminology: including the class prior yields MAP. Ask why multiplying many small probabilities motivates log-space computation.",
     sourceSlides: [38],
   },
   {
     eyebrow: "Naive Bayes · Fruit example",
-    title: "Training estimates local probabilities; testing compares class scores",
-    content: (
-      <div className={styles.nativeGrid}>
-        <section className={styles.panel}>
-          <span className={styles.kicker}>Training → testing</span>
-          <div className={styles.timeline}>
-            <article><strong>1 · Data</strong>apples, grapes, other fruit</article>
-            <article><strong>2 · Estimate</strong>priors and feature likelihoods</article>
-            <article><strong>3 · Score</strong>apple vs not-apple</article>
-            <article><strong>4 · Decide</strong>0.8 vs 0.2 → apple</article>
-          </div>
-          <Formula small>score(C)=P(C)P(size|C)P(color|C)P(shape|C)</Formula>
-        </section>
-        <section className={styles.panel}>
-          <span className={styles.kicker}>Example structure</span>
-          <h3>Apple versus not-apple</h3>
-          <ul>
-            <li>Training data: apples, grapes, and other fruits.</li>
-            <li>Features: size, color, and shape.</li>
-            <li>Classes: apple and not-apple.</li>
-            <li>Testing: compare posterior class scores; 0.8 versus 0.2 selects apple.</li>
-          </ul>
-          <SearchCallout label="Do not overread 0.8" tone="amber">
-            A normalized model score is not automatically calibrated as an 80%
-            real-world chance. Check held-out calibration and data shift.
-          </SearchCallout>
-        </section>
-      </div>
-    ),
+    title: "From labeled fruit to an apple prediction",
+    content: <FruitClassificationFlow />,
     note: "Timing: 4 minutes. Retain the training/features/hypotheses/testing sequence and correct its 'maximum likelihood' wording to posterior or MAP classification.",
     sourceSlides: [39],
   },
@@ -905,8 +791,8 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "In-class assessment · Audit the model claim",
-    title: "A useful shortcut must state exactly what it assumes",
-    content: <NaiveBayesModelAudit />,
+    title: "Can we trust this Naive Bayes classifier?",
+    content: <ClassifierTrustPanel />,
     note: "Timing: 4 minutes. Run all four claims. Students revise one claim, identify evidence needed to test it, and explain when a Bayesian network or richer sequence model would be preferable.",
     sourceSlides: [],
   },
