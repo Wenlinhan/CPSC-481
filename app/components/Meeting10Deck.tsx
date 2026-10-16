@@ -499,18 +499,26 @@ const slides: SourceLessonSlide[] = [
             <div><strong>2n</strong><span>marginal entries if independent</span></div>
             <div><strong>∀</strong><span>every assignment must satisfy the equality</span></div>
           </div>
+          <div className={styles.countVisual}>
+            <strong>Example: three binary variables X, Y, Z</strong>
+            <span>Joint table: 2 × 2 × 2 = 8 rows</span>
+            <div className={styles.assignmentGrid}>{["000", "001", "010", "011", "100", "101", "110", "111"].map(row => <code key={row}>{row}</code>)}</div>
+            <span>If independent: 2 + 2 + 2 = 6 entries</span>
+            <div className={styles.marginalGrid}>{["X", "Y", "Z"].map(v => <div key={v}><b>{v}</b><span>P({v}=0)</span><span>P({v}=1)</span></div>)}</div>
+          </div>
         </section>
-        <section className={styles.panel}>
+        <section className={`${styles.panel} ${styles.countExplanation}`}>
           <span className={styles.kicker}>Representation consequence</span>
-          <h3>Store P(X) and P(Y), not every pair</h3>
+          <h3>Multiply choices; add stored entries</h3>
           <p>
-            If X and Y are independent, every joint cell is reconstructed from
-            two marginal entries. For n independent binary variables, a 2ⁿ-row
-            joint becomes n two-entry tables.
+            Each binary variable has two values. Listing all combinations gives
+            2 × 2 × ··· × 2 = 2ⁿ joint rows. With mutual independence, store one
+            two-entry probability table per variable: n × 2 = 2n entries.
           </p>
+          <p><strong>Reconstruct any row:</strong> P(X=1,Y=0,Z=1) = P(X=1)P(Y=0)P(Z=1). All 8 outcomes still exist; their probabilities need not be stored separately.</p>
+          <p><strong>Scale:</strong> 10 binary variables need 1,024 joint rows, or 20 marginal entries if mutually independent. Counting free parameters instead gives 2ⁿ−1 versus n, because probabilities normalize.</p>
           <SearchCallout label="Ask before factoring" tone="cyan">
-            Does the assumption hold for every assignment, and is the resulting
-            approximation accurate enough for the intended decision?
+            Use this reduction only when all variables are mutually independent.
           </SearchCallout>
         </section>
       </div>
@@ -648,7 +656,7 @@ const slides: SourceLessonSlide[] = [
     title: "Rain can screen Traffic from Umbrella",
     content: (
       <div className={styles.nativeGrid} data-l12-source-slide="9">
-        <div className={styles.panel}><CommonCauseDiagram cause="Raining" left="Traffic" right="Umbrella" /><Formula small>Traffic ⟂ Umbrella | Raining</Formula></div>
+        <div className={`${styles.panel} ${styles.scenePanel}`}><img src="/lesson-visuals/lesson12-rain-traffic-umbrella.svg" alt="Rain falling over a queue of slow-moving cars and a pedestrian holding an umbrella" /><CommonCauseDiagram cause="Raining" left="Traffic" right="Umbrella" /><Formula small>Traffic ⟂ Umbrella | Raining</Formula></div>
         <CommonCauseCheck x="Traffic" y="Umbrella" cause="Raining" />
       </div>
     ),
@@ -660,7 +668,7 @@ const slides: SourceLessonSlide[] = [
     title: "Fire can screen Smoke from Alarm—but only under a simplified model",
     content: (
       <div className={styles.nativeGrid} data-l12-source-slide="10">
-        <div className={styles.panel}><CommonCauseDiagram cause="Fire" left="Smoke" right="Alarm" /><Formula small>Smoke ⟂ Alarm | Fire</Formula></div>
+        <div className={`${styles.panel} ${styles.scenePanel}`}><img src="/lesson-visuals/lesson12-fire-smoke-alarm.svg" alt="A fire producing smoke near a sounding alarm, illustrating the variables Fire, Smoke, and Alarm" /><CommonCauseDiagram cause="Fire" left="Smoke" right="Alarm" /><Formula small>Smoke ⟂ Alarm | Fire</Formula></div>
         <CommonCauseCheck x="Smoke" y="Alarm" cause="Fire" />
       </div>
     ),
