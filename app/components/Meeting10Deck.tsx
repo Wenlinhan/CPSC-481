@@ -563,25 +563,21 @@ const slides: SourceLessonSlide[] = [
     title: "Cavity can screen Toothache from Catch",
     content: (
       <div className={styles.nativeGrid} data-l12-source-slide="7">
-        <div className={`${styles.panel} ${styles.dentalContext}`}>
+        <div className={`${styles.panel} ${styles.scenePanel} ${styles.dentalScene}`}>
           <img alt="Dental probe checking a tooth for a cavity" src={`${L12_MEDIA_ROOT}/image18.png`} />
-          <p><strong>Scene:</strong> A patient visits a dentist. The patient may report tooth pain, and the dentist examines the tooth with a small pointed instrument called a dental probe or explorer.</p>
-          <p><strong>“Probe catch”:</strong> the instrument’s tip catches or sticks at a spot on the tooth instead of moving smoothly. In this example, that observation is evidence about a possible cavity.</p>
-          <p><strong>Three true/false variables:</strong> <b>Cavity</b> = a decayed hole is present; <b>Toothache</b> = the patient has tooth pain; <b>Catch</b> = the probe catches. + means present/yes; − means absent/no.</p>
-          <p><strong>Why this example?</strong> A cavity can help explain both pain and a probe catch. The model asks whether pain still adds information about Catch once cavity status is known.</p>
+          <CommonCauseDiagram cause="Cavity" left="Toothache" right="Catch" />
+          <Formula small>Toothache ⟂ Catch | Cavity</Formula>
+          <p className={styles.symbolReading}>Read: Toothache is independent of Catch, <strong>given Cavity</strong>.</p>
         </div>
-        <section className={styles.panel}>
-          <span className={styles.kicker}>Translate the notation</span>
-          <h3>Once Cavity is known, Toothache does not change Catch</h3>
-          <ul>
-            <li>P(Catch|Toothache,Cavity)=P(Catch|Cavity)</li>
-            <li>P(Toothache|Catch,Cavity)=P(Toothache|Cavity)</li>
-            <li>P(Toothache,Catch|Cavity)=P(Toothache|Cavity)P(Catch|Cavity)</li>
-          </ul>
-          <SearchCallout label="Model claim" tone="amber">
-            The equations are equivalent under valid probabilities; whether the
-            claim fits real dental data is empirical.
-          </SearchCallout>
+        <section className={`${styles.panel} ${styles.dentalReasoning}`}>
+          <span className={styles.kicker}>Same common-cause pattern as rain</span>
+          <h3>One possible cause, two observations</h3>
+          <p><strong>Scene:</strong> A dentist examines a patient’s tooth. A <strong>cavity</strong> is a decayed hole; <strong>Toothache</strong> records tooth pain. A <strong>probe</strong> is the dentist’s small examining instrument; <strong>Catch</strong> means its tip catches or sticks at a spot on the tooth.</p>
+          <p><strong>Before cavity status is known:</strong> tooth pain may suggest a cavity, which can also make a probe catch more likely. The observations can therefore be associated.</p>
+          <p><strong>Once cavity status is known:</strong> in this simplified model, knowing whether the patient has tooth pain adds no further information about whether the probe catches. This applies both when a cavity is present and when it is absent.</p>
+          <div className={styles.explainTakeaway}><strong>The claim:</strong> P(Catch | Toothache, Cavity) = P(Catch | Cavity).<br/>⟂ means “independent”; | means “given / already known.”</div>
+          <details><summary>Variables and equivalent equations</summary><p>All three variables are true/false. + means present/yes; − means absent/no.</p><p>P(Toothache | Catch, Cavity) = P(Toothache | Cavity)</p><p>P(Toothache, Catch | Cavity) = P(Toothache | Cavity)P(Catch | Cavity)</p></details>
+          <small>This is a modeling assumption to test against dental data; it does not say a catch proves a cavity.</small>
         </section>
       </div>
     ),
