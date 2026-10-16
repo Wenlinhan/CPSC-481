@@ -30,7 +30,7 @@ export function FruitClassificationFlow() {
   return <div className={styles.explainGrid}>
     <section className={styles.explainPanel}>
       <h3>1 · Train on fruit with known labels</h3>
-      <img className={styles.trainingFruit} src="/lesson-visuals/lesson12-fruit-training.svg" alt="Apple, grapes, and a banana: labeled fruit used for training" />
+      <img className={styles.trainingFruit} src="/lesson-visuals/lesson12-fruit-training-spaced.svg" alt="Apple, grapes, and a banana: labeled fruit used for training" />
       <p><b>Known classes:</b> apple and not-apple. Grapes and other fruit belong to not-apple in this two-class model.</p>
       <p><b>Measure features:</b> size, color, and shape. Labels tell the model which class each training fruit belongs to.</p>
       <div className={styles.explainTakeaway}><b>Learn two kinds of numbers:</b><br/>P(C): class frequencies (priors).<br/>P(feature value | C): feature likelihoods within each class.</div>
@@ -60,7 +60,7 @@ export function ClassifierTrustPanel() {
   return <div className={styles.explainGrid}>
     <section className={styles.explainPanel}>
       <h3>Check a classifier before trusting it</h3>
-      <img className={styles.auditFruit} src="/lesson-visuals/lesson12-fruit-training.svg" alt="Labeled fruit used to train a classifier" />
+      <img className={styles.auditFruit} src="/lesson-visuals/lesson12-fruit-training-spaced.svg" alt="Labeled fruit used to train a classifier" />
       <div className={styles.storyPath}>Observed features → class scores → predicted label</div>
       <p>A fruit model can output “apple” with a high score. This page checks whether its assumptions, training, and confidence justify using that prediction.</p>
       <ol className={styles.explainSteps}><li><b>Assumption:</b> what dependencies did we simplify?</li><li><b>Decision:</b> did we use a prior?</li><li><b>Training:</b> do the probability models fit the features?</li><li><b>Trust:</b> does it work on fresh examples?</li></ol>
