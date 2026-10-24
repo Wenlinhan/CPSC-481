@@ -1,0 +1,44 @@
+- generic [ref=e2]:
+  - link "All modules" [ref=e3] [cursor=pointer]:
+    - /url: /
+  - main [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: "481"
+        - generic [ref=e8]:
+          - strong [ref=e9]: CPSC 481
+          - generic [ref=e10]: Introduction to Artificial Intelligence
+      - generic [ref=e11]:
+        - button "Motion on" [pressed] [ref=e12] [cursor=pointer]
+        - button "Notes" [ref=e13] [cursor=pointer]
+        - button "Overview" [ref=e14] [cursor=pointer]
+        - button "Print" [ref=e15] [cursor=pointer]
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: Module 10 · Lesson 13 · Sequential decisions
+        - heading "From predicting the next state to choosing an action" [level=1] [ref=e19]
+        - paragraph [ref=e20]: How does an agent choose now when actions change uncertain future opportunities?
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Driving problem
+          - heading "Prediction tells us what may happen. An MDP asks what we should do." [level=3] [ref=e25]
+          - paragraph [ref=e26]: We begin with Markov-chain foundations, clarify two claims in context, and then add the decision layer from the course textbooks.
+        - list [ref=e27]:
+          - listitem [ref=e28]:
+            - strong [ref=e29]: Model
+            - generic [ref=e30]: state, action, transition, reward, discount
+          - listitem [ref=e31]:
+            - strong [ref=e32]: Evaluate
+            - generic [ref=e33]: policy, return, value, Bellman expectation
+          - listitem [ref=e34]:
+            - strong [ref=e35]: Optimize
+            - generic [ref=e36]: Bellman optimality, value iteration, policy extraction
+          - listitem [ref=e37]:
+            - strong [ref=e38]: Audit
+            - generic [ref=e39]: state sufficiency, reward design, model error
+    - generic [ref=e40]:
+      - button "Previous slide" [disabled] [ref=e41]: ←
+      - generic [ref=e43]:
+        - generic [ref=e44]: Markov Decision Processes, Policies, and Value Iteration
+        - generic [ref=e45]: 1 / 25
+      - button "Next slide" [ref=e48] [cursor=pointer]: →

@@ -640,18 +640,19 @@ function MarkovFactorizationLesson() {
           <span>1 · Chain rule identity</span>
           <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | x₁:ᵢ₋₁)</p>
           <small>Valid for every joint distribution.</small>
-          <small className="m11-inline-notation"><strong>Notation:</strong> x<sub>i</sub> is the state at step i; x<sub>1:T</sub> is the whole sequence; ∏ means multiply the factors.</small>
+          <div className="m11-notation-box"><strong>Notation:</strong> x<sub>i</sub> = state at step i; x<sub>1:T</sub> = states from step 1 through T; ∏ = multiply all factors.</div>
         </article>
         <article>
           <span>2 · First-order assumption</span>
           <p>Xᵢ ⟂ X₁:ᵢ₋₂ | Xᵢ₋₁</p>
           <small>The present state screens off earlier history.</small>
+          <div className="m11-notation-box"><strong>Notation:</strong> ⟂ = conditionally independent; the vertical bar | means “given.”</div>
         </article>
         <article>
           <span>3 · Markov factorization</span>
           <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | xᵢ₋₁)</p>
           <small>A modeling assumption makes the factors local.</small>
-          <small className="m11-inline-notation"><strong>Notation:</strong> P means probability, and T is the final time step.</small>
+          <div className="m11-notation-box"><strong>Notation:</strong> P = probability; T = final time step; x<sub>i−1</sub> = previous state.</div>
         </article>
       </div>
       <SearchCallout label="In-class check" tone="green">
@@ -723,6 +724,7 @@ function OneStepWeatherLesson() {
         <p>P₂(sun) = P(sun|sun)P₁(sun) + P(sun|rain)P₁(rain)</p>
         <strong>= 0.9(1.0) + 0.3(0.0) = 0.9</strong>
         <p>P₂(rain) = 0.1(1.0) + 0.7(0.0) = 0.1</p>
+        <div className="m11-notation-box"><strong>Notation:</strong> P₁ = today’s probability distribution; P₂ = tomorrow’s distribution; P(next | current) = probability of the next weather given the current weather.</div>
         <SearchCallout label="Predict before revealing" tone="cyan">Why must both next-state probabilities add to 1?</SearchCallout>
       </section>
     </div>
@@ -750,10 +752,10 @@ function StationaryDistributionLesson() {
     <div className="m11-stationary-lesson">
       <section>
         <img alt="Sequence converging from mixed blobs to one stable purple blob" src={`${L12_MDP_MEDIA_ROOT}/image68.png`} />
-        <article><span>Definition</span><h3>A stationary distribution π is unchanged by one transition</h3><p>π = πT, or π(x′)=ΣₓP(x′|x)π(x).</p><small className="m11-inline-notation"><strong>Notation:</strong> π is a probability distribution; T is the transition matrix; Σ means add over possible previous states.</small></article>
+        <article><span>Definition</span><h3>A stationary distribution π is unchanged by one transition</h3><p>π = πT, or π(x′)=ΣₓP(x′|x)π(x).</p><div className="m11-notation-box"><strong>Notation:</strong> π (pi) = probability distribution; T = transition matrix; x′ = next state; Σ = add over all possible current states.</div></article>
       </section>
       <div className="m11-stationary-work">
-        <article><span>Weather equations</span><p>π(sun)=.9π(sun)+.3π(rain)</p><p>π(rain)=.1π(sun)+.7π(rain)</p><p>π(sun)+π(rain)=1</p><small className="m11-inline-notation"><strong>Notation:</strong> π(sun) and π(rain) are long-run probabilities; π = πT means one update leaves them unchanged.</small></article>
+        <article><span>Weather equations</span><p>π(sun)=.9π(sun)+.3π(rain)</p><p>π(rain)=.1π(sun)+.7π(rain)</p><p>π(sun)+π(rain)=1</p><div className="m11-notation-box"><strong>Notation:</strong> π(sun) and π(rain) = long-run probabilities. The equation π=πT means one update leaves them unchanged.</div></article>
         <article><span>Solve</span><strong>π(sun)=¾</strong><strong>π(rain)=¼</strong></article>
         <SearchCallout label="Convergence condition" tone="amber">This chain converges because it is finite, irreducible, and aperiodic. A stationary distribution alone does not guarantee convergence from every start.</SearchCallout>
       </div>
