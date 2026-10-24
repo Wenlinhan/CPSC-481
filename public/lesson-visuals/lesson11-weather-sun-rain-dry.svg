@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-labelledby="title desc">
+  <title id="title">Three weather outcomes</title>
+  <desc id="desc">Three simple panels show sunny, rainy, and dry weather.</desc>
+  <rect width="720" height="250" rx="24" fill="#f2f6fb"/>
+  <g transform="translate(65 35)">
+    <circle cx="75" cy="70" r="42" fill="#ffd34d"/>
+    <g stroke="#e4a92f" stroke-width="7" stroke-linecap="round">
+      <path d="M75 12v-18M75 128v18M17 70H-1M151 70h18M34 29 21 16M116 111l13 13M116 29l13-13M34 111l-13 13"/>
+    </g>
+    <path d="M42 103h67c16 0 25-10 25-22 0-13-11-23-25-23-4-19-20-30-38-30-21 0-37 15-40 36-15 1-25 10-25 23 0 9 8 16 36 16Z" fill="#fff" stroke="#b9c9dc" stroke-width="5"/>
+    <text x="75" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#213250">SUN</text>
+  </g>
+  <g transform="translate(280 35)">
+    <path d="M42 103h67c16 0 25-10 25-22 0-13-11-23-25-23-4-19-20-30-38-30-21 0-37 15-40 36-15 1-25 10-25 23 0 9 8 16 36 16Z" fill="#cbd8e8" stroke="#879bb5" stroke-width="5"/>
+    <g stroke="#3d81c3" stroke-width="7" stroke-linecap="round"><path d="M38 125v26M75 125v26M112 125v26"/></g>
+    <text x="75" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#213250">RAIN</text>
+  </g>
+  <g transform="translate(500 35)">
+    <path d="M25 115h120" stroke="#d7b467" stroke-width="10" stroke-linecap="round"/>
+    <path d="M35 105h100" stroke="#f0ca72" stroke-width="7" stroke-linecap="round"/>
+    <path d="M75 32 52 92h46Z" fill="#ffd86d" stroke="#d3a544" stroke-width="5"/>
+    <text x="85" y="190" text-anchor="middle" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#213250">DRY</text>
+  </g>
+</svg>

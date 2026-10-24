@@ -68,7 +68,7 @@ function SourceFragment({
       <img
         alt={alt}
         className={contain ? styles.contain : ""}
-        src={`${SOURCE_ROOT}/raw-media/${file}`}
+        src={file.startsWith("/") ? file : `${SOURCE_ROOT}/raw-media/${file}`}
       />
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
@@ -627,7 +627,7 @@ const slides: SourceLessonSlide[] = [
     content: (
       <div className={styles.twoColumn}>
         <div className={styles.weatherPanel}>
-          <SourceFragment file="image9.png" alt="Sun and rain among four possible weather states" contain />
+          <SourceFragment file="/lesson-visuals/lesson11-weather-sun-rain-dry.svg" alt="Three weather outcomes: sun, rain, and dry" caption="Only the three outcomes used in this Bayes example: sun, rain, and dry." contain />
           <ProbabilityTable caption="Prior P(W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.8"] }, { values: ["rain", "0.2"] }]} />
           <ProbabilityTable caption="Likelihood P(dry | W)" headers={["W", "P"]} rows={[{ values: ["sun", "0.9"] }, { values: ["rain", "0.3"] }]} />
         </div>
