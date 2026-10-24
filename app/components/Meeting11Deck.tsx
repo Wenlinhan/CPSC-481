@@ -587,9 +587,10 @@ function SequenceMotivation() {
       <div>
         {cases.map(([name, state, observation]) => (
           <article key={name}>
+            <img className="m11-application-image" src={`/lesson-visuals/lesson13-${name.toLowerCase().replaceAll(" ", "-")}.svg`} alt="" aria-hidden="true" />
             <strong>{name}</strong>
-            <p><b>State:</b> {state}</p>
-            <p><b>Observation:</b> {observation}</p>
+            <p><b>Hidden state:</b> {state}</p>
+            <p><b>What we observe:</b> {observation}</p>
           </article>
         ))}
       </div>
@@ -751,7 +752,7 @@ function StationaryDistributionLesson() {
 const baseSlides: SourceLessonSlide[] = [
   {
     eyebrow: "Module 10 · Lesson 13 · Sequential decisions",
-    title: "Markov Decision Processes, Policies, and Value Iteration",
+    title: "From predicting the next state to choosing an action",
     subtitle: "How does an agent choose now when actions change uncertain future opportunities?",
     content: (
       <div className="m11-opening">
@@ -776,21 +777,21 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · L12 Part B",
-    title: "Sequence models connect observations across time or space",
+    title: "Some problems make more sense as a sequence",
     content: <SequenceMotivation />,
     note: "Timing: 2 minutes. Ask students to name the state variable and observation for one of the four source applications.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Course foundation · State and dynamics",
-    title: "A Markov model starts with state, an initial distribution, and transitions",
+    title: "A Markov model needs a state, a starting belief, and a one-step rule",
     content: <MarkovModelFoundation />,
     note: "Timing: 3 minutes. Contrast time-homogeneous transitions with a stationary distribution.",
     sourceSlides: [13],
   },
   {
     eyebrow: "Course foundation · Factorization",
-    title: "The Markov assumption shortens the chain-rule history",
+    title: "The present state carries the history we need",
     content: (
       <div className="m11-source-triptych">
         {[14, 15, 16].map(number => (
@@ -815,7 +816,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Conditional independence",
-    title: "Given the present, earlier history adds no information about the next state",
+    title: "Once we know the present, the distant past is no longer needed",
     content: (
       <div className="m11-source-triptych">
         {[17, 18, 19].map(number => (
@@ -839,7 +840,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Representation",
-    title: "An unrolled first-order chain is a Bayesian network",
+    title: "A sequence can be drawn as a simple Bayesian network",
     content: (
       <div className="tree-layout m11-source-pair">
         <SearchSourceImage
@@ -868,7 +869,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Weather chain",
-    title: "One transition model has three equivalent representations",
+    title: "The same weather model can be shown three ways",
     content: (
       <div className="tree-layout m11-source-pair">
         <SearchSourceImage
@@ -897,7 +898,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Worked prediction",
-    title: "From all sun, one step produces 0.9 sun and 0.1 rain",
+    title: "Starting with sun, predict tomorrow’s weather",
     content: (
       <div className="tree-layout">
         <SearchSourceImage
@@ -914,7 +915,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Distribution propagation",
-    title: "Forward prediction repeatedly applies the same transition operator",
+    title: "Repeat the one-step rule to look farther ahead",
     content: (
       <div className="iteration-comparison">
         <article>
@@ -942,7 +943,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · Long-run behavior",
-    title: "A stationary distribution is a fixed point—not a universal convergence promise",
+    title: "A stationary distribution is a balance point",
     content: (
       <div className="iteration-comparison">
         <article>
@@ -975,7 +976,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Prediction versus control",
-    title: "A Markov chain predicts; an MDP adds choices and consequences",
+    title: "A Markov chain predicts; an MDP lets the agent choose",
     content: (
       <div className="m11-chain-mdp">
         <article>
@@ -1006,7 +1007,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · MDP definition",
-    title: "An MDP is the tuple ⟨S, A, P, R, γ⟩",
+    title: "An MDP names five things the agent needs",
     content: (
       <div className="m11-tuple">
         <article><strong>S</strong><h3>States</h3><p>Information the model treats as sufficient for predicting the next transition and reward.</p></article>
@@ -1026,7 +1027,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Transition semantics",
-    title: "Actions change transition distributions; they do not guarantee outcomes",
+    title: "An action changes the odds; it does not guarantee the result",
     content: (
       <div className="m11-transition-demo">
         <section>
@@ -1053,7 +1054,7 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Reward design",
-    title: "Reward is the formal objective—not a label for what humans value",
+    title: "The reward tells the agent what counts as success",
     content: (
       <div className="m11-reward-design">
         <section>
@@ -1078,14 +1079,14 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Return and discount",
-    title: "Return adds immediate and discounted future rewards",
+    title: "Return adds today’s reward to later rewards",
     content: <DiscountReturnExplorer />,
     note: "Timing: 3 minutes. Define G_t=R_{t+1}+γR_{t+2}+γ²R_{t+3}+…. Students predict which gamma values make the later reward of 8 influential before selecting each button.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Policy and value",
-    title: "A policy chooses; a value function predicts long-run return",
+    title: "A policy chooses, while a value estimates what comes next",
     content: (
       <div className="m11-policy-value">
         <article>
@@ -1113,14 +1114,14 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Bellman expectation",
-    title: "Bellman expectation decomposes value into one step plus the remainder",
+    title: "The Bellman equation breaks a long-term value into one step",
     content: <BellmanExpectationBackup />,
     note: "Timing: 4 minutes. Work the three lines only after predictions. State Vπ(s)=Σ_aπ(a|s)Σ_s′P(s′|s,a)[R(s,a,s′)+γVπ(s′)]. This is numeric backup 1.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Expectation versus optimality",
-    title: "Policy evaluation averages; optimal control maximizes",
+    title: "Evaluation averages actions; control keeps the best one",
     content: (
       <div className="m11-bellman-compare">
         <article>
@@ -1150,14 +1151,14 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Numeric backup 2",
-    title: "A Bellman optimality backup compares every action at one state",
+    title: "At one state, compare every possible action",
     content: <OptimalBackupExplorer />,
     note: "Timing: 3 minutes. Use γ=.9, living reward −.04, and displayed successor values. Students calculate one action each, then compare. Numeric backup 2 yields V_new(s)=.59 and greedy action Right.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Value-iteration algorithm",
-    title: "Value iteration applies Bellman optimality synchronously until change is small",
+    title: "Value iteration repeats the comparison until values settle",
     content: (
       <div className="m11-algorithm">
         <ol>
@@ -1179,14 +1180,14 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Dynamic lab",
-    title: "Watch value information move through a 3×3 gridworld",
+    title: "Watch the goal’s value spread through a small grid",
     content: <GridworldValueIteration />,
     note: "Timing: 5 minutes. Advance sweeps 0–4 one at a time, then run to 30. Students predict which cells change next and toggle the greedy policy. Explain that this lab uses deterministic transitions while the general equation supports stochastic dynamics.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Convergence and stopping",
-    title: "A small Bellman residual is solver evidence, not real-world validation",
+    title: "A stable calculation does not prove the real system is safe",
     content: (
       <div className="m11-convergence">
         <section>
@@ -1214,21 +1215,21 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Policy extraction",
-    title: "Once values stabilize, one-step lookahead yields a greedy policy",
+    title: "When values settle, choose the best next action",
     content: <PolicyExtractionLab />,
     note: "Timing: 3 minutes. Students select two states, predict the best action, and compare all Q backups. Discuss ties and why extracted arrows depend on the modeled transitions and reward.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class assessment · Model and evidence audit",
-    title: "An elegant solution can still optimize the wrong model",
+    title: "A polished answer can still solve the wrong problem",
     content: <MdpAssumptionAudit />,
     note: "Timing: 3 minutes. Run all four tabs. Teams choose one claim, give a diagnosis, and propose evidence. Collect one response that clearly separates state sufficiency, reward design, dynamics shift, and solver convergence.",
     sourceSlides: [],
   },
   {
     eyebrow: "Cumulative assessment · Readings and exit ticket",
-    title: "Model the future, choose a policy, and defend the assumptions",
+    title: "Use the model, choose a policy, and explain your assumptions",
     content: (
       <div className="m11-exit">
         <ol>
