@@ -53,6 +53,7 @@ function WeatherPredictionStudio() {
           </p>
           <strong>= {current.rain.toFixed(3)}</strong>
         </div>
+        <p className="m11-inline-notation"><strong>Notation:</strong> P<sub>t</sub>(sun/rain) is the probability of that weather at day t; the numbers 0.9, 0.3, 0.1, and 0.7 are transition probabilities from the current weather.</p>
         <div className="m11-controls">
           <button
             disabled={step === 1}
@@ -639,6 +640,7 @@ function MarkovFactorizationLesson() {
           <span>1 · Chain rule identity</span>
           <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | x₁:ᵢ₋₁)</p>
           <small>Valid for every joint distribution.</small>
+          <small className="m11-inline-notation"><strong>Notation:</strong> x<sub>i</sub> is the state at step i; x<sub>1:T</sub> is the whole sequence; ∏ means multiply the factors.</small>
         </article>
         <article>
           <span>2 · First-order assumption</span>
@@ -649,6 +651,7 @@ function MarkovFactorizationLesson() {
           <span>3 · Markov factorization</span>
           <p>P(x₁:ₜ) = P(x₁) ∏<sub>i=2</sub><sup>T</sup> P(xᵢ | xᵢ₋₁)</p>
           <small>A modeling assumption makes the factors local.</small>
+          <small className="m11-inline-notation"><strong>Notation:</strong> P means probability, and T is the final time step.</small>
         </article>
       </div>
       <SearchCallout label="In-class check" tone="green">
@@ -747,10 +750,10 @@ function StationaryDistributionLesson() {
     <div className="m11-stationary-lesson">
       <section>
         <img alt="Sequence converging from mixed blobs to one stable purple blob" src={`${L12_MDP_MEDIA_ROOT}/image68.png`} />
-        <article><span>Definition</span><h3>A stationary distribution π is unchanged by one transition</h3><p>π = πT, or π(x′)=ΣₓP(x′|x)π(x).</p></article>
+        <article><span>Definition</span><h3>A stationary distribution π is unchanged by one transition</h3><p>π = πT, or π(x′)=ΣₓP(x′|x)π(x).</p><small className="m11-inline-notation"><strong>Notation:</strong> π is a probability distribution; T is the transition matrix; Σ means add over possible previous states.</small></article>
       </section>
       <div className="m11-stationary-work">
-        <article><span>Weather equations</span><p>π(sun)=.9π(sun)+.3π(rain)</p><p>π(rain)=.1π(sun)+.7π(rain)</p><p>π(sun)+π(rain)=1</p></article>
+        <article><span>Weather equations</span><p>π(sun)=.9π(sun)+.3π(rain)</p><p>π(rain)=.1π(sun)+.7π(rain)</p><p>π(sun)+π(rain)=1</p><small className="m11-inline-notation"><strong>Notation:</strong> π(sun) and π(rain) are long-run probabilities; π = πT means one update leaves them unchanged.</small></article>
         <article><span>Solve</span><strong>π(sun)=¾</strong><strong>π(rain)=¼</strong></article>
         <SearchCallout label="Convergence condition" tone="amber">This chain converges because it is finite, irreducible, and aperiodic. A stationary distribution alone does not guarantee convergence from every start.</SearchCallout>
       </div>

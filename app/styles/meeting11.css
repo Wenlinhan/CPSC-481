@@ -54,6 +54,18 @@
   color: #087582;
 }
 
+.m11-inline-notation {
+  color: #087582 !important;
+  display: block;
+  font-size: 12px;
+  line-height: 1.35;
+  margin-top: 7px !important;
+}
+
+.m11-inline-notation strong {
+  font-weight: 900;
+}
+
 .m11-opening {
   align-items: stretch;
   display: grid;
