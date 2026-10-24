@@ -131,6 +131,9 @@ function DiscountReturnExplorer() {
           </p>
         </div>
       </section>
+      <SearchCallout label="Symbol key" tone="cyan">
+        G<sub>t</sub> is the return starting at time t; r is a reward; γ (gamma) is the discount factor; and γ<sup>i</sup> means apply the discount i steps into the future.
+      </SearchCallout>
     </div>
   );
 }
@@ -190,6 +193,9 @@ function BellmanExpectationBackup() {
           </li>
         ))}
       </ol>
+      <SearchCallout label="Symbol key" tone="cyan">
+        π is the policy, Qπ(s,a) is the expected return after taking action a in state s, Vπ(s) is the policy’s average value at s, and E means take an expectation over possible outcomes.
+      </SearchCallout>
     </div>
   );
 }
@@ -230,6 +236,9 @@ function OptimalBackupExplorer() {
         >
           Bellman optimality keeps the largest action backup. Here,
           V<sub>new</sub>(s)=max(0.32, 0.59, 0.32, 0.14)=0.59, so Right is greedy.
+        </SearchCallout>
+        <SearchCallout label="Symbol key" tone="cyan">
+          Q(s,a) is the value of taking action a in state s; V<sub>new</sub>(s) is the updated value of s; and max means keep the largest action value.
         </SearchCallout>
       </section>
     </div>
@@ -809,6 +818,9 @@ const baseSlides: SourceLessonSlide[] = [
           P(x<sub>i</sub>|x₁:ᵢ₋₁)=P(x<sub>i</sub>|x<sub>i−1</sub>), so
           P(x₁:ₜ)=P(x₁)∏<sub>i=2</sub><sup>T</sup>P(x<sub>i</sub>|x<sub>i−1</sub>).
         </SearchCallout>
+        <SearchCallout label="Symbol key" tone="cyan">
+          xᵢ is the state at step i; x₁:ₜ means the sequence from step 1 through T; T is the time horizon; and ∏ means multiply all of the listed factors.
+        </SearchCallout>
       </div>
     ),
     note: "Timing: 4 minutes. Start with the full chain rule: every new state could depend on the entire earlier history. Then trace the highlighted simplification. The first-order Markov assumption says that once Xₜ₋₁ is known, older states do not add information about Xₜ, so each factor becomes P(xᵢ|xᵢ₋₁). Emphasize that the chain rule is always true; the shorter factorization is an assumption about the process. Ask students what information the state must retain for that assumption to be reasonable.",
@@ -890,6 +902,9 @@ const baseSlides: SourceLessonSlide[] = [
             The CPT is easiest to audit, the graph highlights paths, and the
             matrix supports repeated linear-algebra updates.
           </SearchCallout>
+          <SearchCallout label="Symbol key" tone="cyan">
+            W is the weather state, T is the transition matrix, and P(next state | current state) is the probability of the next weather condition given the current one. An arrow such as sun→rain means one possible transition.
+          </SearchCallout>
         </section>
       </div>
     ),
@@ -908,6 +923,9 @@ const baseSlides: SourceLessonSlide[] = [
           sourceRoot={L12_MDP_RENDER_ROOT}
         />
         <WeatherPredictionStudio />
+        <SearchCallout label="Symbol key" tone="cyan">
+          P₁ is the starting distribution, P₂ is the distribution after one step, and P(s′|s) is the chance of next state s′ when the current state is s. The subscript marks the time step.
+        </SearchCallout>
       </div>
     ),
     note: "Timing: 4 minutes. Begin with the all-sun starting belief: P₁(sun)=1 and P₁(rain)=0. Ask students to predict tomorrow before revealing the calculation. The sun term is .9(1)+.3(0)=.9; the rain term is .1(1)+.7(0)=.1. Explain that each next-state probability adds contributions from every possible current state. Advance the studio one day and ask what changed: the model is now mixing both the previous sun and rain probabilities.",
@@ -969,6 +987,9 @@ const baseSlides: SourceLessonSlide[] = [
           aperiodic. In general, stationary distributions may be nonunique and a
           chain may fail to converge from every initial distribution.
         </SearchCallout>
+        <SearchCallout label="Symbol key" tone="cyan">
+          π (pi) is a probability distribution; π=πT says one transition leaves it unchanged; T is the transition matrix; and t→∞ means the long-run limit as time grows.
+        </SearchCallout>
       </div>
     ),
     note: "Timing: 4 minutes. Define a stationary distribution as a balance point: after one transition, the probabilities are unchanged. Let p be the sun probability, so p=.9p+.3(1−p); solving gives p=.75 and rain=.25. Distinguish the fixed point from the process reaching it: this finite chain converges because its states communicate and it is not locked into a cycle. Ask students why the phrase ‘at time infinity’ is less precise than ‘the limit as t approaches infinity.’",
@@ -1000,6 +1021,9 @@ const baseSlides: SourceLessonSlide[] = [
             <li>Question: what should the agent do?</li>
           </ul>
         </article>
+        <SearchCallout label="Symbol key" tone="cyan">
+          s is the current state, a is the action chosen by the agent, s′ is the next state, P is the transition probability, and R is the immediate reward for that state-action-outcome combination.
+        </SearchCallout>
       </div>
     ),
     note: "Timing: 3 minutes. Draw the boundary between prediction and decision. A Markov chain says what the environment may do next. An MDP adds an action chosen by the agent, a transition model that depends on that action, and a reward that describes the objective. Use the delivery example: the robot can choose a route, and each route changes both risk and progress. Ask students which question belongs to a chain and which belongs to an MDP.",
@@ -1144,6 +1168,9 @@ const baseSlides: SourceLessonSlide[] = [
           ]}
           question="Which change turns Bellman expectation into Bellman optimality?"
         />
+        <SearchCallout label="Symbol key" tone="cyan">
+          Vπ(s) is value under a fixed policy π; V*(s) is the best achievable value; Σ means add across possible actions or successor states; and max means choose the best action.
+        </SearchCallout>
       </div>
     ),
     note: "Timing: 3 minutes. Use the comparison to make the operator words memorable. When uncertainty comes from the environment, average over its possible outcomes. When the agent controls the action, choose the largest action value. Ask students to point to the average in the expectation equation and the maximum in the optimality equation.",
@@ -1172,6 +1199,9 @@ const baseSlides: SourceLessonSlide[] = [
           Every V<sub>k+1</sub>(s) uses V<sub>k</sub>, not values already updated
           during the same sweep. In-place variants can work, but they are a
           different update schedule.
+        </SearchCallout>
+        <SearchCallout label="Symbol key" tone="cyan">
+          V<sub>k</sub> is the value table before sweep k, V<sub>k+1</sub> is the next table, Δ (delta) is the largest change, ε (epsilon) is a chosen tolerance, and argmax means choose the action with the largest backup.
         </SearchCallout>
       </div>
     ),
