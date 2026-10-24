@@ -772,21 +772,21 @@ const baseSlides: SourceLessonSlide[] = [
         </ol>
       </div>
     ),
-    note: "Timing: 1 minute. Preview the prediction-to-control bridge. Tell students that exact historical evidence is visibly separated from textbook/modern supplement material.",
+    note: "Timing: 2 minutes. Open with the central question: if an agent can predict several possible futures, how should it choose its next move? Point to the four-part path: describe the model, evaluate a policy, improve the policy, and audit the assumptions. Tell students that the first pages build Markov-chain intuition and the later pages add actions, rewards, and value iteration. Ask: what could go wrong if the model leaves out something important?",
     sourceSlides: [],
   },
   {
     eyebrow: "Course foundation · L12 Part B",
     title: "Some problems make more sense as a sequence",
     content: <SequenceMotivation />,
-    note: "Timing: 2 minutes. Ask students to name the state variable and observation for one of the four source applications.",
+    note: "Timing: 3 minutes. Use the four pictures as concrete examples. In speech recognition, the hidden state is the phoneme or word position and the audio frame is the observation. In robot localization, location and heading are hidden while sensors provide readings. For user attention and medical monitoring, clicks or vital signs are observations, not the underlying condition itself. Ask students to choose one example and say why a single observation may be ambiguous without its sequence history.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Course foundation · State and dynamics",
     title: "A Markov model needs a state, a starting belief, and a one-step rule",
     content: <MarkovModelFoundation />,
-    note: "Timing: 3 minutes. Contrast time-homogeneous transitions with a stationary distribution.",
+    note: "Timing: 3 minutes. Point to the three ingredients: the state X at time t, the starting probabilities P(X₁), and the transition rule P(Xₜ|Xₜ₋₁). Explain that the transition rule answers one local question: given the current state, what can happen next? Clarify the common confusion: reusing the same transition rule is a modeling choice, while a stationary distribution is a probability distribution that remains unchanged after a transition. Ask students which of the three ingredients describes uncertainty before the process starts.",
     sourceSlides: [13],
   },
   {
@@ -811,7 +811,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve source pages 14–16 in full. First identify the chain rule as an identity, then name the first-order conditional-independence assumption that permits the shorter factors.",
+    note: "Timing: 4 minutes. Start with the full chain rule: every new state could depend on the entire earlier history. Then trace the highlighted simplification. The first-order Markov assumption says that once Xₜ₋₁ is known, older states do not add information about Xₜ, so each factor becomes P(xᵢ|xᵢ₋₁). Emphasize that the chain rule is always true; the shorter factorization is an assumption about the process. Ask students what information the state must retain for that assumption to be reasonable.",
     sourceSlides: [14, 15, 16],
   },
   {
@@ -835,7 +835,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve source pages 17–19. State X_t ⟂ X_1:t−2 | X_t−1, then ask students to explain what information is discarded and what the state must retain.",
+    note: "Timing: 4 minutes. Read the statement in words before reading the symbols: given the present state, the distant past does not change the distribution of the next state. Point out the conditioning bar carefully; the past and future become independent only after the present is known. Ask: what would be lost if the state omitted battery level, heading, or another variable that affects the next step? Use the answer to connect the Markov assumption to state design.",
     sourceSlides: [17, 18, 19],
   },
   {
@@ -864,7 +864,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Use d-separation language lightly. Students distinguish marginal dependence along the chain from conditional independence after an intermediate state is known.",
+    note: "Timing: 3 minutes. Follow the arrows from X₁ to X₂ to X₃ to X₄. Without observing the middle, X₁ and X₄ can still be related. If X₂ is known, the path is blocked for predicting X₄ from X₁. Say this plainly as ‘the middle state carries the relevant information forward.’ Ask students whether the endpoints are unconditionally independent, then ask how their answer changes when X₂ is given.",
     sourceSlides: [19],
   },
   {
@@ -893,7 +893,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve source page 20 and all three representations. Have students map one CPT row to graph edges and to a matrix row before continuing.",
+    note: "Timing: 3 minutes. Use the weather example to show that a CPT, a graph, and a matrix are three views of one model. Read the sun row: from sun, the next state is sun with probability .9 and rain with probability .1. Then match those numbers to the outgoing arrows and the matrix row. Repeat briefly for rain and check that each row sums to one. Ask which representation is easiest for checking probabilities and which is easiest for repeated calculation.",
     sourceSlides: [20],
   },
   {
@@ -910,7 +910,7 @@ const baseSlides: SourceLessonSlide[] = [
         <WeatherPredictionStudio />
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve source page 21. Students first calculate day 2 from the all-sun initial distribution, then advance the studio and verbalize the law of total probability.",
+    note: "Timing: 4 minutes. Begin with the all-sun starting belief: P₁(sun)=1 and P₁(rain)=0. Ask students to predict tomorrow before revealing the calculation. The sun term is .9(1)+.3(0)=.9; the rain term is .1(1)+.7(0)=.1. Explain that each next-state probability adds contributions from every possible current state. Advance the studio one day and ask what changed: the model is now mixing both the previous sun and rain probabilities.",
     sourceSlides: [21],
   },
   {
@@ -938,7 +938,7 @@ const baseSlides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve source pages 22–23. Correct “mini-forward algorithm” to Markov-chain forward prediction; HMM filtering adds an observation update that is absent here.",
+    note: "Timing: 3 minutes. Read the recursion as an instruction: to predict the next distribution, multiply the current distribution by the transition model and add the compatible paths. Compare the all-sun and all-rain rows; both move toward the same long-run pattern. Call attention to what is missing: there is no new observation being incorporated here, so this is prediction rather than filtering. Ask why different starting beliefs can still approach the same limit.",
     sourceSlides: [22, 23],
   },
   {
@@ -971,7 +971,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve source pages 24–25. Solve p_sun=.9p_sun+.3(1−p_sun)=.75. Replace “time equals infinity” with the limit as t approaches infinity and state the convergence conditions.",
+    note: "Timing: 4 minutes. Define a stationary distribution as a balance point: after one transition, the probabilities are unchanged. Let p be the sun probability, so p=.9p+.3(1−p); solving gives p=.75 and rain=.25. Distinguish the fixed point from the process reaching it: this finite chain converges because its states communicate and it is not locked into a cycle. Ask students why the phrase ‘at time infinity’ is less precise than ‘the limit as t approaches infinity.’",
     sourceSlides: [24, 25],
   },
   {
@@ -1002,7 +1002,7 @@ const baseSlides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Label this and every following MDP slide as textbook/modern supplement because the selected historical deck contains Markov chains but no actions, rewards, policies, Bellman equations, or value iteration.",
+    note: "Timing: 3 minutes. Draw the boundary between prediction and decision. A Markov chain says what the environment may do next. An MDP adds an action chosen by the agent, a transition model that depends on that action, and a reward that describes the objective. Use the delivery example: the robot can choose a route, and each route changes both risk and progress. Ask students which question belongs to a chain and which belongs to an MDP.",
     sourceSlides: [],
   },
   {
@@ -1022,7 +1022,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. AIMA 3e Chapter 17 supplement. Have students instantiate all five components for a campus delivery robot. Mention finite-horizon or episodic variants where γ=1 can be well-defined.",
+    note: "Timing: 4 minutes. Walk through the tuple one symbol at a time. S is the information state, A is the available choice, P is the probability of each next state, R is the immediate objective signal, and γ controls how much later rewards matter. Instantiate it for a campus delivery robot: location and battery in S, move actions in A, noisy motion in P, delivery and safety in R. Ask which missing variable would make the state insufficient.",
     sourceSlides: [],
   },
   {
@@ -1049,7 +1049,7 @@ const baseSlides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Students identify the three successor probabilities for one nonterminal cell and explain what happens when a slip collides with a wall.",
+    note: "Timing: 3 minutes. Focus on the phrase P(s′|s,a): the action changes a distribution, not a guaranteed destination. For Right, the intended move may succeed with .80 while slips go up or down with .10 each. If a slip points into a wall, this model sends the agent back to the same cell. Have students add the three probabilities and explain why the sum must be one.",
     sourceSlides: [],
   },
   {
@@ -1074,14 +1074,14 @@ const baseSlides: SourceLessonSlide[] = [
         </ol>
       </div>
     ),
-    note: "Timing: 3 minutes. Ask pairs for one reward-hacking behavior in delivery routing. Make clear that an optimal policy is optimal only for the specified model and reward.",
+    note: "Timing: 3 minutes. Explain that the reward is the formal objective the algorithm will optimize. The grid gives +1 for the goal, −1 for the hazard, and a small step cost. Ask pairs to invent a delivery behavior that earns the stated reward while violating what a person really wants. Close by saying that ‘optimal’ always means optimal for this model and this reward, not automatically safe or fair in the world.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Return and discount",
     title: "Return adds today’s reward to later rewards",
     content: <DiscountReturnExplorer />,
-    note: "Timing: 3 minutes. Define G_t=R_{t+1}+γR_{t+2}+γ²R_{t+3}+…. Students predict which gamma values make the later reward of 8 influential before selecting each button.",
+    note: "Timing: 3 minutes. Read the timeline from left to right. Return starts with the next reward, then adds later rewards after multiplying them by γ, γ², and so on. Ask students which button makes the reward of 8 matter most. Use γ=0 to show only the immediate reward, γ=.9 to keep substantial future value, and γ=1 to treat every listed reward equally. Clarify that γ expresses time preference, not uncertainty.",
     sourceSlides: [],
   },
   {
@@ -1109,14 +1109,14 @@ const baseSlides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Use one grid cell to distinguish reward, state value, and action value. Ask why a high immediate reward need not imply the highest Q-value.",
+    note: "Timing: 3 minutes. Separate three ideas students often mix up. Reward is what happens immediately. Qπ(s,a) is the expected return after choosing one action. Vπ(s) averages those action values according to the policy. Point to the formulas and ask why an action with a modest immediate reward could still have a high Q-value if it leads to a valuable future state.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Bellman expectation",
     title: "The Bellman equation breaks a long-term value into one step",
     content: <BellmanExpectationBackup />,
-    note: "Timing: 4 minutes. Work the three lines only after predictions. State Vπ(s)=Σ_aπ(a|s)Σ_s′P(s′|s,a)[R(s,a,s′)+γVπ(s′)]. This is numeric backup 1.",
+    note: "Timing: 4 minutes. Ask students to predict the order of the three lines before revealing them. First compute the value of Right by averaging its two possible successor values. Then compute Left. Finally weight those action values by the policy probabilities .75 and .25. Say aloud that this is a policy evaluation backup: the policy chooses the action probabilities, while the environment supplies the stochastic outcomes.",
     sourceSlides: [],
   },
   {
@@ -1146,14 +1146,14 @@ const baseSlides: SourceLessonSlide[] = [
         />
       </div>
     ),
-    note: "Timing: 3 minutes. Students answer before revealing feedback. Emphasize: maximize over controllable actions; average over uncontrollable stochastic outcomes.",
+    note: "Timing: 3 minutes. Use the comparison to make the operator words memorable. When uncertainty comes from the environment, average over its possible outcomes. When the agent controls the action, choose the largest action value. Ask students to point to the average in the expectation equation and the maximum in the optimality equation.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Numeric backup 2",
     title: "At one state, compare every possible action",
     content: <OptimalBackupExplorer />,
-    note: "Timing: 3 minutes. Use γ=.9, living reward −.04, and displayed successor values. Students calculate one action each, then compare. Numeric backup 2 yields V_new(s)=.59 and greedy action Right.",
+    note: "Timing: 3 minutes. Have students choose one of the four actions and calculate −.04+.9V(successor). Compare the four results: Up=.32, Right=.59, Down=.32, and Left=.14. The maximum is .59, so the greedy action is Right. Emphasize that this is a one-state backup; value iteration applies the same calculation across every state.",
     sourceSlides: [],
   },
   {
@@ -1175,14 +1175,14 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Walk line by line. Have students identify initialization, backup, residual, stopping, and policy extraction before the interactive sweep.",
+    note: "Timing: 4 minutes. Read the algorithm as a loop. Initialize values, update every nonterminal state from the previous sweep, measure the largest change, stop when that change is small, and then extract a policy. Ask students to identify why all states use the previous sweep: synchronous updates make each iteration a clear, repeatable snapshot rather than a mixture of old and new values.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Dynamic lab",
     title: "Watch the goal’s value spread through a small grid",
     content: <GridworldValueIteration />,
-    note: "Timing: 5 minutes. Advance sweeps 0–4 one at a time, then run to 30. Students predict which cells change next and toggle the greedy policy. Explain that this lab uses deterministic transitions while the general equation supports stochastic dynamics.",
+    note: "Timing: 5 minutes. Start at sweep 0 and advance one sweep at a time. Ask which cells should change first; the positive goal’s value moves through neighboring cells, while the wall remains unavailable. Run to sweep 30 and toggle the policy arrows. Point out that this demonstration uses deterministic moves, even though the Bellman equation also handles stochastic transitions. Ask what would change if a move could slip.",
     sourceSlides: [],
   },
   {
@@ -1210,21 +1210,21 @@ const baseSlides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. State the discounted finite-MDP conditions. Ask students which error a Bellman residual measures and name two errors it cannot detect.",
+    note: "Timing: 3 minutes. Define the Bellman residual as the largest change left after an update. A small residual says the numerical solver is close to a fixed point of the specified model. It does not reveal a missing state variable, a badly designed reward, a changed environment, or unsafe behavior. Ask students to name one solver error and one model error, then explain why they require different tests.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Policy extraction",
     title: "When values settle, choose the best next action",
     content: <PolicyExtractionLab />,
-    note: "Timing: 3 minutes. Students select two states, predict the best action, and compare all Q backups. Discuss ties and why extracted arrows depend on the modeled transitions and reward.",
+    note: "Timing: 3 minutes. Select a state in the grid and ask students to predict the best arrow before looking at the four Q values. Compare the backups, then explain argmax: choose the action with the largest expected return. If two actions tie, either can be selected by a deterministic policy, or a stochastic policy can share probability between them. Remind students that the arrows depend on the chosen model and reward.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class assessment · Model and evidence audit",
     title: "A polished answer can still solve the wrong problem",
     content: <MdpAssumptionAudit />,
-    note: "Timing: 3 minutes. Run all four tabs. Teams choose one claim, give a diagnosis, and propose evidence. Collect one response that clearly separates state sufficiency, reward design, dynamics shift, and solver convergence.",
+    note: "Timing: 4 minutes. Use the four tabs as an audit exercise. For State, ask whether the representation remembers everything needed for prediction. For Reward, ask whether the objective can be gamed. For Dynamics, ask whether conditions changed from training to deployment. For Planning, ask whether a small residual is being mistaken for real-world success. Give teams one claim, then require a diagnosis and a concrete evidence plan.",
     sourceSlides: [],
   },
   {
@@ -1254,7 +1254,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Collect the four-part exit ticket. Total planned meeting time is 75 minutes. Use the reading boundary to reinforce what came from the exact course deck and what was added from the textbooks.",
+    note: "Timing: 4 minutes. Close with four short prompts: represent a two-state decision problem, calculate one Bellman backup, explain why an MDP is more than a Markov chain, and name one assumption that should be audited. Ask students to answer in their own words rather than copy notation. Point to the reading list for the next step and remind them that the Markov-chain foundations and the MDP/value-iteration material are clearly identified on this page.",
     sourceSlides: [],
   },
 ];
