@@ -419,6 +419,7 @@ function GridworldValueIteration() {
           γ=0.9, terminal values +1 and −1. Every nonterminal cell uses only
           values from the previous sweep.
         </p>
+        <div className="m11-notation-box"><strong>Notation:</strong> sweep = one update of every state; Δ (delta) = largest value change in that sweep; γ (gamma) = discount factor; s<sub>rc</sub> identifies the state at row r, column c.</div>
         <div className="m11-controls">
           <button
             disabled={sweep === 0}
@@ -476,6 +477,7 @@ function PolicyExtractionLab() {
       <section>
         <span>Selected state · {selected}</span>
         <h3>Extract π*(s) by taking argmax<sub>a</sub> Q(s,a)</h3>
+        <div className="m11-notation-box"><strong>Notation:</strong> π*(s) = optimal action at state s; Q(s,a) = value of taking action a at s; argmax<sub>a</sub> = choose the action with the largest Q-value.</div>
         <ol>
           {actionRows.map((action, index) => (
             <li className={index === 0 ? "best" : ""} key={action.id}>
@@ -551,6 +553,7 @@ function MdpAssumptionAudit() {
       <section>
         <span>Claim to audit</span>
         <h3>{item.claim}</h3>
+        <div className="m11-notation-box"><strong>Terms:</strong> state = information used to describe the current situation; reward = immediate objective signal; dynamics = transition behavior; Bellman residual = remaining numerical change after a backup.</div>
         <div>
           <article>
             <strong>Diagnosis</strong>
@@ -1238,6 +1241,7 @@ const baseSlides: SourceLessonSlide[] = [
             converge to a unique V*. The residual Δ measures numerical change
             under the model.
           </p>
+          <div className="m11-notation-box"><strong>Notation:</strong> γ (gamma) = discount factor; V* = optimal value function; Δ (delta) = largest change between two value tables; γ-contraction = each backup shrinks value error by at least the factor γ.</div>
         </section>
         <div>
           <article><strong>Iteration rule</strong><p>Stop after a fixed compute budget; simple, but no direct accuracy guarantee.</p></article>
@@ -1281,6 +1285,7 @@ const baseSlides: SourceLessonSlide[] = [
         <section>
           <span>Required and supplemental reading</span>
           <h3>Continue beyond the classroom demo</h3>
+          <div className="m11-notation-box"><strong>Notation recap:</strong> ⟨S,A,P,R,γ⟩ = states, actions, transition probabilities, rewards, and discount factor; π = policy; V = state value; Q = action value.</div>
           <ul>
             <li>Course source: L12 Part B, pages 12–25 — Markov-chain foundations.</li>
             <li>Russell &amp; Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Chapter 17.</li>
