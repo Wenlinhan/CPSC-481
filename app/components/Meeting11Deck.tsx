@@ -781,21 +781,21 @@ const baseSlides: SourceLessonSlide[] = [
         </ol>
       </div>
     ),
-    note: "Timing: 2 minutes. Open with the central question: if an agent can predict several possible futures, how should it choose its next move? Point to the four-part path: describe the model, evaluate a policy, improve the policy, and audit the assumptions. Tell students that the first pages build Markov-chain intuition and the later pages add actions, rewards, and value iteration. Ask: what could go wrong if the model leaves out something important?",
+    note: "An agent often has several possible futures. The central problem in this lesson is deciding what to do now when each action can change what happens later. We begin with a model of states and transitions, then add actions and rewards so the agent can make choices. A policy describes those choices. A value tells us how useful a state or action is over time. Value iteration repeatedly improves these estimates until they settle. The final part of the lesson is an audit: even a mathematically elegant policy can fail if the state, reward, or transition model leaves out something important.",
     sourceSlides: [],
   },
   {
     eyebrow: "Course foundation · L12 Part B",
     title: "Some problems make more sense as a sequence",
     content: <SequenceMotivation />,
-    note: "Timing: 3 minutes. Use the four pictures as concrete examples. In speech recognition, the hidden state is the phoneme or word position and the audio frame is the observation. In robot localization, location and heading are hidden while sensors provide readings. For user attention and medical monitoring, clicks or vital signs are observations, not the underlying condition itself. Ask students to choose one example and say why a single observation may be ambiguous without its sequence history.",
+    note: "Many problems become easier when we treat them as sequences. In speech recognition, the hidden state may be the phoneme or word position, while the microphone gives us acoustic frames. In robot localization, the hidden state is the robot’s location and heading, while sensors provide noisy readings. For user attention, clicks and gaze are observations of an attention state. In medical monitoring, vital signs are observations of a patient’s underlying condition. A single observation can be ambiguous, but a sequence gives context. The key idea is that the past helps us interpret the present and predict what comes next.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Course foundation · State and dynamics",
     title: "A Markov model needs a state, a starting belief, and a one-step rule",
     content: <MarkovModelFoundation />,
-    note: "Timing: 3 minutes. Point to the three ingredients: the state X at time t, the starting probabilities P(X₁), and the transition rule P(Xₜ|Xₜ₋₁). Explain that the transition rule answers one local question: given the current state, what can happen next? Clarify the common confusion: reusing the same transition rule is a modeling choice, while a stationary distribution is a probability distribution that remains unchanged after a transition. Ask students which of the three ingredients describes uncertainty before the process starts.",
+    note: "A Markov model has three basic pieces. First, Xₜ is the state at time t: the information we use to describe the situation now. Second, P(X₁) is the initial distribution, which describes our uncertainty before the sequence begins. Third, P(Xₜ|Xₜ₋₁) is the transition rule. It tells us how likely the next state is, given the current state. These are different ideas from a stationary distribution. Reusing the same transition rule at each step is a modeling choice. A stationary distribution is a probability pattern that remains unchanged after the transition is applied.",
     sourceSlides: [13],
   },
   {
@@ -823,7 +823,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Start with the full chain rule: every new state could depend on the entire earlier history. Then trace the highlighted simplification. The first-order Markov assumption says that once Xₜ₋₁ is known, older states do not add information about Xₜ, so each factor becomes P(xᵢ|xᵢ₋₁). Emphasize that the chain rule is always true; the shorter factorization is an assumption about the process. Ask students what information the state must retain for that assumption to be reasonable.",
+    note: "The chain rule lets us write the probability of an entire sequence by multiplying conditional probabilities. In the unrestricted version, the next state can depend on every earlier state. A first-order Markov model makes a simplifying assumption: once we know the immediately previous state, the older history adds no extra information about the next state. That changes each factor from P(xᵢ|x₁:ᵢ₋₁) to P(xᵢ|xᵢ₋₁). The chain rule itself is always correct. The shorter expression is correct only when the state contains the information needed to summarize the past.",
     sourceSlides: [14, 15, 16],
   },
   {
@@ -847,7 +847,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Read the statement in words before reading the symbols: given the present state, the distant past does not change the distribution of the next state. Point out the conditioning bar carefully; the past and future become independent only after the present is known. Ask: what would be lost if the state omitted battery level, heading, or another variable that affects the next step? Use the answer to connect the Markov assumption to state design.",
+    note: "The Markov condition says that the distant past and the future become conditionally independent once the present state is known. The word conditionally matters: the past and future can still be related when the present is hidden. Once Xₜ₋₁ is given, however, older states should not improve our prediction of Xₜ. This places a responsibility on state design. If battery level, heading, or traffic conditions affect the next transition but are omitted from the state, the Markov assumption is false for that representation. A good state keeps the information needed for prediction and leaves irrelevant history behind.",
     sourceSlides: [17, 18, 19],
   },
   {
@@ -876,7 +876,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Follow the arrows from X₁ to X₂ to X₃ to X₄. Without observing the middle, X₁ and X₄ can still be related. If X₂ is known, the path is blocked for predicting X₄ from X₁. Say this plainly as ‘the middle state carries the relevant information forward.’ Ask students whether the endpoints are unconditionally independent, then ask how their answer changes when X₂ is given.",
+    note: "The chain X₁→X₂→X₃→X₄ can also be viewed as a Bayesian network. The arrows show local dependence: each state is generated from the state just before it. X₁ and X₄ are generally related because information can travel along the path. If an intermediate state such as X₂ is known, that state carries the relevant information forward, so the distant past does not add predictive information about the future. The important distinction is between ordinary independence and conditional independence. The endpoints are not necessarily independent until the appropriate middle state is observed.",
     sourceSlides: [19],
   },
   {
@@ -908,7 +908,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Use the weather example to show that a CPT, a graph, and a matrix are three views of one model. Read the sun row: from sun, the next state is sun with probability .9 and rain with probability .1. Then match those numbers to the outgoing arrows and the matrix row. Repeat briefly for rain and check that each row sums to one. Ask which representation is easiest for checking probabilities and which is easiest for repeated calculation.",
+    note: "The weather example shows the same transition model in three forms. The conditional probability table lists the numbers directly. The graph emphasizes possible paths. The matrix makes repeated updates convenient. From sun, the next state is sun with probability 0.9 and rain with probability 0.1. From rain, the next state is sun with probability 0.3 and rain with probability 0.7. Each row describes all possible next states, so its probabilities must add to one. Changing the representation does not change the model; it only changes how we read or calculate with it.",
     sourceSlides: [20],
   },
   {
@@ -928,7 +928,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Begin with the all-sun starting belief: P₁(sun)=1 and P₁(rain)=0. Ask students to predict tomorrow before revealing the calculation. The sun term is .9(1)+.3(0)=.9; the rain term is .1(1)+.7(0)=.1. Explain that each next-state probability adds contributions from every possible current state. Advance the studio one day and ask what changed: the model is now mixing both the previous sun and rain probabilities.",
+    note: "Suppose today is certainly sunny, so P₁(sun)=1 and P₁(rain)=0. To predict tomorrow, we add the contribution from each possible current state. The probability of sun tomorrow is 0.9(1)+0.3(0)=0.9. The probability of rain tomorrow is 0.1(1)+0.7(0)=0.1. These two values form the complete next distribution. After one update, the model no longer starts from certainty: both sun and rain have positive probability. Later updates mix the transition probabilities from both parts of the current distribution.",
     sourceSlides: [21],
   },
   {
@@ -956,7 +956,7 @@ const baseSlides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Read the recursion as an instruction: to predict the next distribution, multiply the current distribution by the transition model and add the compatible paths. Compare the all-sun and all-rain rows; both move toward the same long-run pattern. Call attention to what is missing: there is no new observation being incorporated here, so this is prediction rather than filtering. Ask why different starting beliefs can still approach the same limit.",
+    note: "Forward prediction repeats the same one-step calculation. For every possible next state, we multiply each current-state probability by the appropriate transition probability and add the results. Starting from all sun, all rain, or a mixed distribution produces different early predictions. Over repeated updates, these starting differences become smaller and the distributions move toward the same long-run pattern. This page describes prediction only. We are not incorporating a new observation, so this is different from filtering in a hidden Markov model.",
     sourceSlides: [22, 23],
   },
   {
@@ -992,7 +992,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Define a stationary distribution as a balance point: after one transition, the probabilities are unchanged. Let p be the sun probability, so p=.9p+.3(1−p); solving gives p=.75 and rain=.25. Distinguish the fixed point from the process reaching it: this finite chain converges because its states communicate and it is not locked into a cycle. Ask students why the phrase ‘at time infinity’ is less precise than ‘the limit as t approaches infinity.’",
+    note: "A stationary distribution is a balance point of the transition process. If π is stationary, applying the transition matrix T leaves π unchanged, so π=πT. For this weather model, let p be the long-run probability of sun. The equation is p=0.9p+0.3(1−p), which gives p=0.75. The remaining probability is rain, 0.25. This fixed point is different from saying that the process literally reaches a time called infinity. We mean that as the number of updates grows, the distribution approaches this balance point.",
     sourceSlides: [24, 25],
   },
   {
@@ -1026,7 +1026,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Draw the boundary between prediction and decision. A Markov chain says what the environment may do next. An MDP adds an action chosen by the agent, a transition model that depends on that action, and a reward that describes the objective. Use the delivery example: the robot can choose a route, and each route changes both risk and progress. Ask students which question belongs to a chain and which belongs to an MDP.",
+    note: "A Markov chain describes how a process changes when no one is choosing an action. An MDP adds a decision layer. In state s, the agent chooses an action a. That action affects the probability of the next state s′ and produces a reward. A delivery robot might be at an intersection, choose Right or Left, and then experience noisy motion, delay, or progress. The chain asks, ‘What is likely to happen?’ The MDP asks, ‘What should the agent choose, given the future consequences?’",
     sourceSlides: [],
   },
   {
@@ -1046,7 +1046,7 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Walk through the tuple one symbol at a time. S is the information state, A is the available choice, P is the probability of each next state, R is the immediate objective signal, and γ controls how much later rewards matter. Instantiate it for a campus delivery robot: location and battery in S, move actions in A, noisy motion in P, delivery and safety in R. Ask which missing variable would make the state insufficient.",
+    note: "An MDP is summarized by five components. S is the set of states, or the information the agent uses to describe the current situation. A is the set of available actions. P(s′|s,a) gives the probability of each next state after action a in state s. R(s,a,s′) is the immediate reward for that transition. Gamma, written γ, discounts rewards that arrive later. For a campus delivery robot, S might include location and battery, A might include movement choices, P describes noisy motion, and R can represent delivery progress and safety.",
     sourceSlides: [],
   },
   {
@@ -1073,7 +1073,7 @@ const baseSlides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Focus on the phrase P(s′|s,a): the action changes a distribution, not a guaranteed destination. For Right, the intended move may succeed with .80 while slips go up or down with .10 each. If a slip points into a wall, this model sends the agent back to the same cell. Have students add the three probabilities and explain why the sum must be one.",
+    note: "The expression P(s′|s,a) means the probability of ending in next state s′ when the current state is s and the chosen action is a. The action changes the odds, but it does not guarantee a result. In this example, moving Right succeeds with probability 0.80, slips Up with probability 0.10, and slips Down with probability 0.10. Those outcomes add to 1. If a slip points into a wall, the model sends the agent back to its current cell. Deterministic motion is just the special case where one successor has probability 1.",
     sourceSlides: [],
   },
   {
@@ -1098,14 +1098,14 @@ const baseSlides: SourceLessonSlide[] = [
         </ol>
       </div>
     ),
-    note: "Timing: 3 minutes. Explain that the reward is the formal objective the algorithm will optimize. The grid gives +1 for the goal, −1 for the hazard, and a small step cost. Ask pairs to invent a delivery behavior that earns the stated reward while violating what a person really wants. Close by saying that ‘optimal’ always means optimal for this model and this reward, not automatically safe or fair in the world.",
+    note: "The reward is the objective the algorithm actually optimizes. In this gridworld, reaching the goal gives +1, reaching the hazard gives −1, and every nonterminal step costs −0.04. The step cost encourages shorter routes, but changing it can change the agent’s risk preference. A reward can also be incomplete. An agent might earn the stated score while causing delays, wasting energy, or taking an unsafe shortcut. Therefore, an optimal policy is optimal only for the modeled states, transitions, and rewards. It is not automatically safe, fair, or aligned with every human goal.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Return and discount",
     title: "Return adds today’s reward to later rewards",
     content: <DiscountReturnExplorer />,
-    note: "Timing: 3 minutes. Read the timeline from left to right. Return starts with the next reward, then adds later rewards after multiplying them by γ, γ², and so on. Ask students which button makes the reward of 8 matter most. Use γ=0 to show only the immediate reward, γ=.9 to keep substantial future value, and γ=1 to treat every listed reward equally. Clarify that γ expresses time preference, not uncertainty.",
+    note: "The return Gₜ is the total reward viewed from time t. It starts with the next reward and adds later rewards after discounting them. The discount factor γ controls how quickly future rewards lose weight: γⁱ means the reward i steps ahead is multiplied by γ raised to i. With γ=0, only the immediate reward matters. With γ=0.9, later rewards still matter substantially. With γ=1, the listed rewards receive equal weight. Gamma expresses how the objective values time; it is not a measure of uncertainty in the environment.",
     sourceSlides: [],
   },
   {
@@ -1133,14 +1133,14 @@ const baseSlides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Separate three ideas students often mix up. Reward is what happens immediately. Qπ(s,a) is the expected return after choosing one action. Vπ(s) averages those action values according to the policy. Point to the formulas and ask why an action with a modest immediate reward could still have a high Q-value if it leads to a valuable future state.",
+    note: "A policy π describes how the agent chooses actions in each state. The state value Vπ(s) is the expected long-term return when the agent starts in s and follows that policy. The action value Qπ(s,a) is more specific: it is the expected return after taking action a now and following π afterward. Reward is only the immediate signal, while value includes future consequences. An action with a small immediate reward can still have a high Q-value if it leads to a valuable state later.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Bellman expectation",
     title: "The Bellman equation breaks a long-term value into one step",
     content: <BellmanExpectationBackup />,
-    note: "Timing: 4 minutes. Ask students to predict the order of the three lines before revealing them. First compute the value of Right by averaging its two possible successor values. Then compute Left. Finally weight those action values by the policy probabilities .75 and .25. Say aloud that this is a policy evaluation backup: the policy chooses the action probabilities, while the environment supplies the stochastic outcomes.",
+    note: "The Bellman expectation equation breaks a long-term value into one step. For Right, the immediate reward is −0.1, then the possible successor values 4 and 2 are averaged using probabilities 0.8 and 0.2. For Left, the successor value is 1. These calculations produce Qπ for each action. Finally, the policy chooses Right with probability 0.75 and Left with probability 0.25, so Vπ(s) is the weighted average of the two action values. This is policy evaluation: the policy is fixed, and we average over its choices and the environment’s outcomes.",
     sourceSlides: [],
   },
   {
@@ -1173,14 +1173,14 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Use the comparison to make the operator words memorable. When uncertainty comes from the environment, average over its possible outcomes. When the agent controls the action, choose the largest action value. Ask students to point to the average in the expectation equation and the maximum in the optimality equation.",
+    note: "The two Bellman equations differ in one important place. Policy evaluation uses π(a|s), the probability that the fixed policy chooses action a, so it averages across actions. Bellman optimality removes that policy average and uses max over actions, because the agent is allowed to choose the best action. We still average over successor states because the environment may be stochastic. In other words, average over uncertainty the agent cannot control, and maximize over the choice the agent can control.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Numeric backup 2",
     title: "At one state, compare every possible action",
     content: <OptimalBackupExplorer />,
-    note: "Timing: 3 minutes. Have students choose one of the four actions and calculate −.04+.9V(successor). Compare the four results: Up=.32, Right=.59, Down=.32, and Left=.14. The maximum is .59, so the greedy action is Right. Emphasize that this is a one-state backup; value iteration applies the same calculation across every state.",
+    note: "Here we perform one optimality backup at a single state. For each action, we add the living reward −0.04 to 0.9 times the value of the successor state. Up gives 0.32, Right gives 0.59, Down gives 0.32, and Left gives 0.14. The updated value is the maximum, 0.59, and the greedy action is Right. This is one local calculation. Value iteration applies the same comparison to every nonterminal state and repeats the process.",
     sourceSlides: [],
   },
   {
@@ -1205,14 +1205,14 @@ const baseSlides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 4 minutes. Read the algorithm as a loop. Initialize values, update every nonterminal state from the previous sweep, measure the largest change, stop when that change is small, and then extract a policy. Ask students to identify why all states use the previous sweep: synchronous updates make each iteration a clear, repeatable snapshot rather than a mixture of old and new values.",
+    note: "Value iteration is a repeated backup procedure. We begin with an initial value table, often setting nonterminal values to zero. During a sweep, each state receives a new value by choosing the best action and averaging over its possible successors. We measure delta, the largest difference between the old and new tables. We repeat until the change is small enough or a justified iteration limit is reached. Finally, argmax extracts the action with the largest one-step lookahead. In the synchronous version, every new value uses the previous complete table.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Dynamic lab",
     title: "Watch the goal’s value spread through a small grid",
     content: <GridworldValueIteration />,
-    note: "Timing: 5 minutes. Start at sweep 0 and advance one sweep at a time. Ask which cells should change first; the positive goal’s value moves through neighboring cells, while the wall remains unavailable. Run to sweep 30 and toggle the policy arrows. Point out that this demonstration uses deterministic moves, even though the Bellman equation also handles stochastic transitions. Ask what would change if a move could slip.",
+    note: "This grid shows value iteration as a moving wave of information. At sweep zero, most values are zero. As sweeps proceed, the positive terminal state influences neighboring cells, then cells farther away. The wall is unavailable, and the negative terminal state discourages paths that approach it. After many sweeps, the arrows show the greedy policy obtained from the settled values. This demonstration uses deterministic moves, but the same Bellman backup can average over slips or other stochastic outcomes. The visualization makes the repeated local updates visible.",
     sourceSlides: [],
   },
   {
@@ -1240,21 +1240,21 @@ const baseSlides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Define the Bellman residual as the largest change left after an update. A small residual says the numerical solver is close to a fixed point of the specified model. It does not reveal a missing state variable, a badly designed reward, a changed environment, or unsafe behavior. Ask students to name one solver error and one model error, then explain why they require different tests.",
+    note: "A small Bellman residual means that the value table is changing very little under the specified backup. For a discounted finite MDP with bounded rewards, this supports convergence to a unique fixed point of the model. It does not prove that the model describes the real world. A missing state variable, an incorrect transition probability, a badly designed reward, or a changed deployment environment can still produce a harmful policy. Numerical stability is solver evidence. Real-world validation requires separate tests of the model, objective, and deployment behavior.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Policy extraction",
     title: "When values settle, choose the best next action",
     content: <PolicyExtractionLab />,
-    note: "Timing: 3 minutes. Select a state in the grid and ask students to predict the best arrow before looking at the four Q values. Compare the backups, then explain argmax: choose the action with the largest expected return. If two actions tie, either can be selected by a deterministic policy, or a stochastic policy can share probability between them. Remind students that the arrows depend on the chosen model and reward.",
+    note: "Once the value table has stabilized, we can extract a policy with one-step lookahead. At a selected state, we compute Q(s,a) for each available action using the final values of successor states. The policy chooses argmax, the action with the largest expected return. If two actions tie, a deterministic policy may choose either one, while a stochastic policy may divide probability between them. The resulting arrows are not universal instructions. They depend on the transition model, the reward design, the discount factor, and the state representation.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class assessment · Model and evidence audit",
     title: "A polished answer can still solve the wrong problem",
     content: <MdpAssumptionAudit />,
-    note: "Timing: 4 minutes. Use the four tabs as an audit exercise. For State, ask whether the representation remembers everything needed for prediction. For Reward, ask whether the objective can be gamed. For Dynamics, ask whether conditions changed from training to deployment. For Planning, ask whether a small residual is being mistaken for real-world success. Give teams one claim, then require a diagnosis and a concrete evidence plan.",
+    note: "A reliable decision system needs more than a correct implementation of an algorithm. The state representation must retain the information needed to predict transitions and rewards. The reward must represent the outcomes people actually care about and resist simple forms of reward hacking. The transition model must remain valid when weather, sensors, or other agents change. Finally, a small Bellman residual only shows that the numerical calculation has settled. These four audits separate representation error, reward error, dynamics error, and solver error.",
     sourceSlides: [],
   },
   {
@@ -1284,7 +1284,7 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Close with four short prompts: represent a two-state decision problem, calculate one Bellman backup, explain why an MDP is more than a Markov chain, and name one assumption that should be audited. Ask students to answer in their own words rather than copy notation. Point to the reading list for the next step and remind them that the Markov-chain foundations and the MDP/value-iteration material are clearly identified on this page.",
+    note: "The lesson brings together prediction, control, and evaluation. A Markov chain describes how states evolve. An MDP adds actions and rewards. A policy chooses actions, value functions estimate long-term return, and Bellman backups connect one-step consequences to the future. Value iteration repeatedly applies the optimality backup and then extracts a policy. The final caution is that an optimal policy is only as good as its state, transition model, and reward. The readings continue these ideas in greater depth, especially the distinction between solving a mathematical model and validating a real system.",
     sourceSlides: [],
   },
 ];
