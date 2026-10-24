@@ -15,6 +15,31 @@
   color: #111827;
 }
 
+/* Keep notation explanations visibly attached to the equations. */
+.m11-source-triptych > .search-callout,
+.m11-source-pair .search-callout,
+.tree-layout > .search-callout,
+.iteration-comparison > .search-callout,
+.m11-chain-mdp > .search-callout,
+.m11-discount > .search-callout,
+.m11-backup > .search-callout,
+.m11-bellman-compare > .search-callout,
+.m11-optimal-backup section > .search-callout,
+.m11-algorithm > .search-callout {
+  border-left-width: 6px;
+  box-shadow: 0 2px 8px rgba(31, 55, 88, 0.12);
+  font-size: clamp(13px, 1.05vw, 16px);
+  line-height: 1.42;
+  min-height: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.search-callout.cyan > strong {
+  color: #087582;
+}
+
 .m11-opening {
   align-items: stretch;
   display: grid;
