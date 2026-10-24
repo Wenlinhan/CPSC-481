@@ -385,19 +385,27 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Conditional distributions · From one value to a table",
-    title: "Fix the evidence value, then normalize every compatible row",
+    title: "Each fixed temperature gives one distribution over weather",
     content: (
       <div className={styles.threeColumn}>
-        <div className={styles.tableCard}><ProbabilityTable caption="P(W | hot)" headers={["W", "P"]} rows={[{ values: ["sun", "0.8"], tone: "focus" }, { values: ["rain", "0.2"] }]} /></div>
-        <div className={styles.tableCard}><ProbabilityTable caption="P(W | cold)" headers={["W", "P"]} rows={[{ values: ["sun", "0.4"] }, { values: ["rain", "0.6"], tone: "focus" }]} /></div>
-        <div className={styles.stack}>
-          <ConceptCard label="Question 1" title="P(+x | +y)"><p>0.2 / 0.6 = <strong>1/3</strong></p></ConceptCard>
-          <ConceptCard label="Question 2" title="P(−x | +y)"><p>0.4 / 0.6 = <strong>2/3</strong></p></ConceptCard>
-          <ConceptCard label="Question 3" title="P(−y | +x)"><p>0.3 / 0.5 = <strong>0.6</strong></p></ConceptCard>
+        <div className={styles.tableCard}>
+          <p className={styles.prompt}><strong>Given hot:</strong> compare only hot cases.</p>
+          <ProbabilityTable caption="P(W | T = hot)" headers={["Weather W", "Probability"]} rows={[{ values: ["sun", "0.8"], tone: "focus" }, { values: ["rain", "0.2"] }]} />
+          <p className={styles.prompt}>The two probabilities sum to 1.</p>
+        </div>
+        <div className={styles.tableCard}>
+          <p className={styles.prompt}><strong>Given cold:</strong> compare only cold cases.</p>
+          <ProbabilityTable caption="P(W | T = cold)" headers={["Weather W", "Probability"]} rows={[{ values: ["sun", "0.4"] }, { values: ["rain", "0.6"], tone: "focus" }]} />
+          <p className={styles.prompt}>This table also sums to 1.</p>
+        </div>
+        <div className={styles.conditionalQuestionStack}>
+          <ConceptCard label="Question 1 · Read the hot table" title="If it is hot, which weather is more likely?"><p><strong>Sun:</strong> P(sun | hot) = 0.8, compared with P(rain | hot) = 0.2.</p></ConceptCard>
+          <ConceptCard label="Question 2 · Read the cold table" title="If it is cold, which weather is more likely?"><p><strong>Rain:</strong> P(rain | cold) = 0.6, compared with P(sun | cold) = 0.4.</p></ConceptCard>
+          <ConceptCard label="Question 3 · Compare" title="What changed between the tables?"><p>Changing the fixed evidence from hot to cold shifts probability from sun toward rain. Each table is a complete distribution over <strong>W</strong>.</p></ConceptCard>
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Students compute all three questions, then compare the two weather conditionals. Each conditional table sums to one.",
+    note: "Timing: 3 minutes. Students read one probability from each table, then compare how changing the fixed temperature changes the weather distribution. Emphasize that each conditional table sums to one.",
     sourceSlides: [15, 16],
   },
   {
