@@ -130,6 +130,7 @@ function DiscountReturnExplorer() {
             γ controls how quickly later rewards lose weight; it does not express
             uncertainty and it does not repair a poorly chosen reward.
           </p>
+          <div className="m11-notation-box"><strong>Notation:</strong> G<sub>t</sub> = return starting at time t; r = reward; γ (gamma) = discount factor; γ<sup>i</sup> = discount applied i steps into the future.</div>
         </div>
       </section>
       <p className="m11-notation-footnote"><strong>Notation:</strong>
@@ -170,6 +171,7 @@ function BellmanExpectationBackup() {
           with probability 0.8 and a state valued 2 with probability 0.2.
           “Left” reaches a state valued 1.
         </p>
+        <div className="m11-notation-box"><strong>Notation:</strong> π = policy; s = current state; Q<sup>π</sup>(s,a) = expected return after action a; V<sup>π</sup>(s) = expected value of state s under policy π.</div>
         <div className="m11-controls">
           <button
             disabled={revealed === lines.length}
@@ -238,9 +240,7 @@ function OptimalBackupExplorer() {
           Bellman optimality keeps the largest action backup. Here,
           V<sub>new</sub>(s)=max(0.32, 0.59, 0.32, 0.14)=0.59, so Right is greedy.
         </SearchCallout>
-        <p className="m11-notation-footnote"><strong>Notation:</strong>
-          Q(s,a) is the value of taking action a in state s; V<sub>new</sub>(s) is the updated value of s; and max means keep the largest action value.
-        </p>
+        <div className="m11-notation-box"><strong>Notation:</strong> Q(s,a) = value of taking action a in state s; V<sub>new</sub>(s) = updated value of state s; max = keep the largest action value.</div>
       </section>
     </div>
   );
@@ -1009,6 +1009,7 @@ const baseSlides: SourceLessonSlide[] = [
           <span>Markov chain</span>
           <h3>Current state → random next state</h3>
           <p>P(s′|s)</p>
+          <div className="m11-notation-box"><strong>Notation:</strong> s = current state; s′ = next state; P(s′|s) = probability of s′ given s.</div>
           <ul>
             <li>No decision variable</li>
             <li>Models how a process evolves</li>
@@ -1020,6 +1021,7 @@ const baseSlides: SourceLessonSlide[] = [
           <span>Decision layer</span>
           <h3>Choose action a in state s</h3>
           <p>P(s′|s,a) and R(s,a,s′)</p>
+          <div className="m11-notation-box"><strong>Notation:</strong> a = chosen action; P = transition probability; R = immediate reward for the transition from s to s′.</div>
           <ul>
             <li>Policy selects actions</li>
             <li>Rewards encode the objective</li>
@@ -1157,11 +1159,13 @@ const baseSlides: SourceLessonSlide[] = [
           <span>Bellman expectation</span>
           <h3>V<sup>π</sup>(s)=Σ<sub>a</sub>π(a|s)Σ<sub>s′</sub>P(s′|s,a)[R+γV<sup>π</sup>(s′)]</h3>
           <p>Evaluate a specified policy—even if it sometimes chooses a weaker action.</p>
+          <div className="m11-notation-box"><strong>Notation:</strong> V<sup>π</sup>(s) = value under policy π; Σ = add across actions or next states; γ = discount factor.</div>
         </article>
         <article>
           <span>Bellman optimality</span>
           <h3>V*(s)=max<sub>a</sub>Σ<sub>s′</sub>P(s′|s,a)[R+γV*(s′)]</h3>
           <p>Choose the action whose expected one-step backup is largest.</p>
+          <div className="m11-notation-box"><strong>Notation:</strong> V*(s) = best achievable value from state s; max<sub>a</sub> = choose the action with the largest expected value.</div>
         </article>
         <SearchQuickCheck
           correct={1}
@@ -1204,6 +1208,7 @@ const baseSlides: SourceLessonSlide[] = [
           Every V<sub>k+1</sub>(s) uses V<sub>k</sub>, not values already updated
           during the same sweep. In-place variants can work, but they are a
           different update schedule.
+          <div className="m11-notation-box"><strong>Notation:</strong> V<sub>k</sub> = values before sweep k; V<sub>k+1</sub> = updated values; Δ (delta) = largest change; ε (epsilon) = stopping tolerance; argmax = action producing the largest value.</div>
         </SearchCallout>
         <p className="m11-notation-footnote"><strong>Notation:</strong>
           V<sub>k</sub> is the value table before sweep k, V<sub>k+1</sub> is the next table, Δ (delta) is the largest change, ε (epsilon) is a chosen tolerance, and argmax means choose the action with the largest backup.
