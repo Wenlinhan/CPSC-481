@@ -1,10 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import "../styles/meeting20.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 type SamplingTemperature = "0.3" | "1.0" | "1.8";
+
+function NotationGuide({ items }: { items: Array<[string, string]> }) {
+  return (
+    <aside className="m20-notation-guide" aria-label="Notation used on this page">
+      <strong>Notation on this page</strong>
+      <div>{items.map(([symbol, meaning]) => <span key={`${symbol}-${meaning}`}><b>{symbol}</b> = {meaning}</span>)}</div>
+    </aside>
+  );
+}
+
+function WithNotation({ children, items }: { children: ReactNode; items: Array<[string, string]> }) {
+  return <div className="m20-with-notation"><div className="m20-notation-content">{children}</div><NotationGuide items={items} /></div>;
+}
 
 const llmArchitectureStages = [
   { label: "Tokenize", owner: "runtime", detail: "Split the prompt into vocabulary IDs. The tokenizer is fixed for this model family.", artifact: "token IDs" },
@@ -568,7 +581,7 @@ function LossVisual() {
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Module 13 · Lesson 20",
-    title: "From fluent continuation to verified output",
+    title: "A fluent answer is not automatically a trustworthy answer",
     subtitle: "LLM training, inference, structured outputs, hallucination, and risk-based verification.",
     content: (
       <div className="m20-cover">
@@ -585,7 +598,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning objectives",
-    title: "Explain, distinguish, validate, audit, and route",
+    title: "By the end, you can explain how an LLM generates and how to check its output",
     content: (
       <div className="m20-objectives">
         {[
@@ -604,28 +617,28 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 1 · Pretraining objective",
-    title: "A language model learns to assign probability to the next token",
-    content: <LLMArchitectureStudio />,
+    title: "An LLM predicts one token at a time",
+    content: <WithNotation items={[["p", "probability assigned by the model"], ["N", "number of transformer layers"], ["logit", "raw score for one vocabulary token"], ["|", "given the tokens that came before"]]}><LLMArchitectureStudio /></WithNotation>,
     note: "Timing: 3 minutes. Read the factorization left to right. Connect it to Meeting 19’s causal mask: each prediction can use only preceding tokens.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked example · Cross-entropy",
-    title: "The loss rewards probability on the observed continuation",
-    content: <LossVisual />,
+    title: "Training loss falls when the observed next token gets more probability",
+    content: <WithNotation items={[["p(target)", "probability assigned to the observed next token"], ["−log", "negative natural logarithm"], ["loss", "penalty minimized during training"]]}><LossVisual /></WithNotation>,
     note: "Timing: 3 minutes. Select blue, compute −ln(0.62), then select another token. Clarify that training loss is evaluated against the observed target, not against every merely plausible continuation.",
     sourceSlides: [],
   },
   {
     eyebrow: "Demo · Inference and temperature",
-    title: "Generation repeatedly samples one token, appends it, and predicts again",
-    content: <SamplingLab />,
+    title: "Generation repeats three steps: predict, choose, and append",
+    content: <WithNotation items={[["T", "sampling temperature"], ["T < 1", "sharper distribution with less variation"], ["T > 1", "flatter distribution with more variation"]]}><SamplingLab /></WithNotation>,
     note: "Timing: 4 minutes. Toggle all three temperatures. Probabilities are illustrative, not outputs from a live model. Ask why temperature cannot repair an incorrect underlying distribution.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 3 · Scaling evidence",
-    title: "Model loss follows empirical trends with parameters, data, and compute",
+    title: "More parameters, data, and compute often lower loss in predictable trends",
     content: (
       <div className="m20-scaling-figure">
         <section>
@@ -651,21 +664,21 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Compute allocation",
-    title: "A fixed training budget must balance model size and training data",
+    title: "A fixed compute budget must be divided between model size and training data",
     content: <ScalingLab />,
     note: "Timing: 4 minutes. Compare parameter-heavy and balanced cases. Introduce Hoffmann et al.’s result conceptually: larger parameter count alone can leave a model undertrained.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 4 · Training pipeline",
-    title: "Post-training changes elicited behavior by changing the learning signal",
+    title: "Post-training changes behavior by changing examples and feedback",
     content: <TrainingPipeline />,
     note: "Timing: 2 minutes. Click through the four stages rapidly. Keep each stage’s learning signal distinct; evaluation measures behavior but does not itself update the model.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked trace · One request",
-    title: "The same example plays different roles across training stages",
+    title: "One request can be used in four different ways",
     content: (
       <div className="m20-example-trace">
         <header><span>User request</span><strong>“Explain photosynthesis to a ten-year-old.”</strong></header>
@@ -682,14 +695,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Preference depends on a rubric",
-    title: "A preference label is evidence about raters and criteria—not universal truth",
+    title: "A preference label depends on the raters and their rubric",
     content: <PreferenceLab />,
     note: "Timing: 4 minutes. Toggle the rubric and note the winner changes. Discuss coverage, disagreement, and whose preferences are represented. Do not imply this toy choice models a production optimization algorithm.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 5 · Alignment boundary",
-    title: "Instruction following, preference, and truthfulness are different properties",
+    title: "Helpful, preferred, and truthful are not the same property",
     content: (
       <div className="m20-venn">
         <article className="helpful"><strong>Helpful</strong><p>addresses the user’s request</p></article>
@@ -708,7 +721,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 6 · Truthfulness evaluation",
-    title: "Fluency can reproduce common misconceptions",
+    title: "A fluent model can repeat popular falsehoods",
     content: (
       <div className="m20-truthfulqa">
         <section>
@@ -728,7 +741,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 7 · Structured outputs",
-    title: "Constrained decoding can enforce a shape while leaving values unchecked",
+    title: "A schema can enforce structure, but it cannot guarantee truth",
     content: (
       <div className="m20-schema-concept">
         <section>
@@ -763,7 +776,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Practice · Design a contract",
-    title: "A schema is an interface contract, not a knowledge guarantee",
+    title: "A schema tells software what shape to expect—not whether the facts are right",
     content: (
       <div className="m20-contract-practice">
         <section>
@@ -785,7 +798,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 8 · Hallucination",
-    title: "Define the failure relative to a claim, task, and evidence set",
+    title: "Define hallucination by the evidence check that failed",
     content: (
       <div className="m20-definition">
         <blockquote>
@@ -804,14 +817,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Hallucination taxonomy",
-    title: "Different surface errors can share the same verification disposition",
+    title: "Different-looking errors can receive the same evidence label",
     content: <HallucinationTaxonomy />,
     note: "Timing: 3 minutes. Click all four cases. Ask whether misattribution is a separate taxonomy category, a contradicted claim, or both; categories describe failure form while dispositions record evidence status.",
     sourceSlides: [],
   },
   {
     eyebrow: "Practice · Atomic claims",
-    title: "Verification begins by splitting prose into checkable units",
+    title: "Break a response into separate claims before checking it",
     content: (
       <div className="m20-atomize">
         <section>
@@ -831,7 +844,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 9 · Verification protocol",
-    title: "A defensible review records claim, evidence, procedure, and disposition",
+    title: "A reproducible review records the claim, evidence, method, and result",
     content: (
       <div className="m20-protocol">
         {[
@@ -850,22 +863,23 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Choose an executable check",
-    title: "Different claim types require different verification procedures",
+    title: "Match the verification method to the type of claim",
     content: <VerificationMethodLab />,
     note: "Timing: 3 minutes. Cycle through citation, calculation, code, and current fact. Ask students to propose an authoritative source and a failure condition for each.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class assessment · Claim audit",
-    title: "Assign a disposition only after comparing claim and evidence",
+    title: "Compare the evidence before assigning a result",
     content: <ClaimAuditLab />,
     note: "Timing: 3 minutes. Students classify independently, compare in pairs, then reveal. The second item tests scope; the third tests the difference between absence of evidence and contradiction.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 10 · Uncertainty behavior",
-    title: "Abstention is an output policy to evaluate—not guaranteed self-knowledge",
+    title: "Abstention must be tested like any other system behavior",
     content: (
+      <WithNotation items={[["coverage", "fraction of all cases the system answers"], ["selective risk", "error rate among the cases it answered"]]}>
       <div className="m20-abstention">
         <section>
           <span>Three distinct signals</span>
@@ -881,20 +895,21 @@ const slides: SourceLessonSlide[] = [
           <aside>Lower coverage may reduce error—but only if abstention is routed to a useful next step.</aside>
         </div>
       </div>
+      </WithNotation>
     ),
     note: "Timing: 3 minutes. Keep internal-state claims modest. A model’s verbal confidence is another generated output and must be calibrated empirically.",
     sourceSlides: [],
   },
   {
     eyebrow: "Demo · Risk-based routing",
-    title: "Required evidence rises with impact and irreversibility",
+    title: "Higher-risk decisions require stronger evidence",
     content: <RiskRouter />,
     note: "Timing: 3 minutes. Compare the four cases. Ask why a refusal without escalation can still be unhelpful in a high-risk context.",
     sourceSlides: [],
   },
   {
     eyebrow: "Synthesis · End-to-end worked case",
-    title: "A safe output pipeline makes every boundary explicit",
+    title: "A safe pipeline separates generation, validation, and verification",
     content: (
       <div className="m20-end-to-end">
         <section>
@@ -916,7 +931,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Exit assessment · Readings",
-    title: "Fluency raises the burden of verification when it hides weak evidence",
+    title: "Fluent writing can hide weak evidence, so it still needs verification",
     content: (
       <div className="m20-exit">
         <section>
@@ -943,6 +958,38 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
 ];
+
+const lesson20InstructorNotes = [
+  `Let us start with a practical question: if an answer appears instantly and sounds polished, what makes it trustworthy? Choose between the two sample answers before revealing the evidence. Many people are drawn to confident wording, detail, and professional formatting. Those cues can make an answer easier to read, but they do not show that its claims are supported. Today we will separate three ideas that are often mixed together. Fluency means the text reads smoothly. Structural validity means the output follows a requested format. Verification means its claims have been compared with appropriate evidence or tests. A system may succeed at one and fail at the others. This opening choice gives us the central problem of the lesson: language-model training is designed to produce likely continuations, while trustworthiness requires additional validation, evidence, and risk-aware decision rules.`,
+  `Here is what you should be able to do by the end of the lesson. First, explain how next-token training and repeated decoding produce a response. Second, distinguish pretraining from instruction tuning, preference optimization, and evaluation. Third, separate syntax checks, schema checks, semantic checks, and factual verification. Fourth, break a response into atomic claims and match each claim with an authoritative source or executable test. Finally, choose whether a system should answer, verify, abstain, refuse, or escalate based on risk. Notice the difference between validate and verify. Validation often asks whether data obeys a rule or contract. Verification asks whether a claim is supported by evidence. We need both, but they solve different problems. The exit ticket will ask you to apply these distinctions rather than merely define the terms.`,
+  `This diagram shows the complete loop for one generated token. The runtime first tokenizes the prompt into IDs. The model looks up embeddings and sends the resulting states through N transformer layers. Here N means the number of repeated layers. The language-model head converts the final state into one logit, or raw score, for every vocabulary token. The runtime turns those scores into probabilities and chooses one token. That token is appended to the sequence, and the entire process repeats. In the notation strip, p means probability and the vertical bar means “given the earlier tokens.” The training objective multiplies the conditional probabilities of all observed tokens in a sequence. The crucial boundary is that this objective rewards prediction of text, not a separate check of whether every statement is true. Fluency emerges from learned continuation patterns; verification must be added elsewhere.`,
+  `Cross-entropy loss tells the model how much probability it assigned to the observed next token. The formula is negative log p of the target. If the observed token is “blue” and the model assigns it probability 0.62, the loss is about 0.48. Increasing the target probability lowers the loss. Select a different token and notice that it was not the observed target for this training position. Its probability still matters indirectly because all token probabilities share a normalization, but the direct loss is computed from the target token. This does not mean every alternative continuation is meaningless. It means supervised next-token training has one recorded continuation at each position. The model updates its parameters to make observed continuations more probable across many examples. Also remember that lower training loss does not automatically mean better factual reliability on every task; it measures performance on the specified prediction objective and data.`,
+  `At inference time, the model does not produce a whole paragraph in one step. It predicts a probability distribution for the next token, chooses one token, appends it, and predicts again. Temperature T changes the shape of that distribution. When T is below one, the distribution becomes sharper and repeated outputs are more similar. When T is above one, the distribution becomes flatter, so lower-ranked alternatives are selected more often. Toggle the three examples and compare both the bars and the sample tokens. These probabilities are illustrative, but the mechanism is accurate. Temperature changes variation; it does not correct the underlying knowledge. If the model gives an incorrect token the highest score, lowering temperature may make that error more consistent. Raising temperature may produce more variety, but it also increases the chance of weak alternatives. Decoding controls behavior at selection time, not factual truth.`,
+  `Scaling laws describe empirical trends between validation loss and resources such as model parameters, training data, and compute. On a log-log graph, the measured curves often look approximately like power laws over a particular range. The visual shows the general idea: adding a resource tends to reduce loss, but with diminishing improvement. Treat this as evidence about measured model families and training regimes, not a law that guarantees unlimited progress. To compare or extrapolate curves responsibly, we must keep the model family, data quality, optimization method, and evaluation definition sufficiently comparable. A lower language-model loss also does not directly prove a specific capability, truthfulness, or safety property. Scaling can make prediction more accurate on average while leaving important failure modes. The correct claim is bounded: within the studied regime, loss followed a useful empirical trend that helped researchers reason about resource allocation.`,
+  `A fixed compute budget creates a tradeoff between model size and the amount of training data. Use the controls to compare the parameter-heavy, data-heavy, and balanced cases. A very large model trained on too few tokens may be undertrained: it has capacity, but not enough learning signal to use that capacity well. A very large dataset also cannot be fully exploited if the model or compute budget is too small. Compute-optimal training asks how to allocate a fixed budget so model capacity and training tokens grow together. The bars are conceptual, not a recipe for a particular production model. The important correction is that parameter count alone is not a complete measure of training quality. When someone says one model is “bigger,” ask whether it also received enough appropriate data and optimization compute, and whether the comparison uses the same evaluation conditions.`,
+  `This pipeline separates four stages that are often described as if they were one training process. Pretraining predicts the next token across a large corpus. Instruction tuning learns from prompt-response demonstrations so requested behavior becomes easier to elicit. Preference optimization uses comparisons under a rubric to favor responses raters prefer. Evaluation measures behavior on held-out tasks or with human review. Click through the stages and read the learning signal in each one. Evaluation is different because it normally measures the model rather than updating it. Each stage has limits. Pretraining does not guarantee instruction following or truth. Instruction examples cannot cover every request. Preference data represents particular raters and criteria, not one universal value function. Evaluation supports claims only within the tested tasks and deployment conditions. Keeping the learning signals separate helps us avoid vague statements such as “the model was aligned” without saying how or for what property.`,
+  `The same photosynthesis request can play four different roles. During pretraining, the model may encounter ordinary text about photosynthesis and learn to predict its continuation. During instruction tuning, the request is paired with an example answer written for a ten-year-old. During preference work, raters compare candidate answers using criteria such as clarity and accuracy. During evaluation, a new held-out answer is scored without using it as a training target. Follow the row from left to right and notice that the text may look similar while the evidence it provides is different. A demonstration teaches a response pattern. A preference comparison says which candidate won under a rubric. An evaluation result estimates behavior on a defined sample. For a younger audience, we would also need to test age-appropriate vocabulary, conceptual accuracy, accessibility, and whether children can explain the idea back without adopting a misconception.`,
+  `Preference labels are conditional on the people and criteria that produced them. Toggle the rubric and watch the winning answer change. One rubric may reward concision, while another rewards completeness or caution. Neither winner is automatically the universally best response. Preference data can be valuable, but we should ask who the raters were, what instructions they received, how disagreement was handled, which languages and user groups were represented, and what situations were missing. This toy comparison illustrates the concept; production preference optimization uses many examples and a specific learning algorithm. The main lesson is about evidence scope. A preference label means that one response was favored under a stated process. It does not by itself establish factual truth, fairness across untested groups, or suitability for every deployment. Good reporting names the rubric and population instead of treating “human preference” as a single objective.`,
+  `Helpful, preferred, and truthful overlap, but they are not synonyms. A response can be helpful in form because it directly addresses the request, yet include invented details. A response can be true but unhelpful because it ignores what the user needs. A response can score well under a preference rubric while failing an untested audience or context. Place a polished fabricated citation in the diagram: it may look helpful and may even be preferred for its confident detail, but it is not truthful relative to evidence. This is why evaluation claims must name the property being measured. Instruction-following tests support claims about following directions. Preference comparisons support claims about rubric-based judgments. Factual evaluations support bounded claims about evidence accuracy. No single score establishes every desirable property. In deployment, we need a portfolio of tests and explicit safeguards matched to the actual use.`,
+  `TruthfulQA illustrates how a broad concern can be turned into a bounded evaluation. Its motivating question is whether a model avoids repeating false answers that people commonly give. The benchmark contains 817 questions across 38 categories and scores truthfulness together with informativeness. Those details matter because an evaluation result is always tied to its items, scoring method, and population of prompts. Strong performance is evidence for this test; it does not prove that a model is truthful everywhere. A model may perform differently on new domains, current events, languages, or adversarial prompts. The deeper lesson is operationalization. Define the behavior, construct or select test cases, specify the scoring procedure, and state the limits of the evidence. Fluency is especially dangerous here because familiar misconceptions may be statistically common and therefore easy for a language model to reproduce smoothly.`,
+  `Structured output controls the form of a response. In the schema shown here, the output must be an object with city and temperature-f fields, and those fields must have the stated types. JSON mode can ensure syntactically valid JSON. Schema-constrained decoding can go further by blocking next tokens that would violate the allowed structure. This makes downstream software safer because parsers receive predictable fields and types. But consider the value 900 for temperature-f. It may be a valid number and therefore schema-valid, while still being impossible for ordinary weather. A plausible value may also be factually unsupported. Read the sequence on the right as increasing checks: valid syntax, valid structure, meaningful values, and supported facts. Constrained decoding helps with the first two. Domain validation and evidence verification are still required for the last two. A schema is an interface contract, not a knowledge source.`,
+  `This interactive stack shows four different failure layers. A malformed string fails the JSON syntax layer. A string where the schema requires a number may be valid JSON but fail schema validation. A value such as 900 degrees may pass both syntax and type checks but fail a semantic range rule. A realistic-looking value can pass all three and still lack factual support from a weather source. Move through each case and identify the first layer that should reject it. The ordering matters because cheap structural checks can happen before expensive source verification. It also helps debugging: instead of saying only “the output is wrong,” we can say whether parsing, schema, domain logic, or evidence failed. A robust system records which checks ran and what they found. Passing an earlier layer never implies passing a later one.`,
+  `Now design a contract for an evidence-card review. The claim field should contain one nonempty proposition. The disposition should use a controlled set such as supported, contradicted, or not verified. Evidence should identify a source and the exact location used. Confidence may be included, but it cannot replace evidence. Classify the checks. Required fields, types, and enumerated labels can be enforced by a schema. Rules such as a confidence range or a valid identifier format may require semantic validation. Whether the cited passage actually supports the claim requires opening the source and comparing meaning. Good schemas reduce ambiguity and make missing information visible, but they do not perform the research task. Think of the schema as a well-designed form: it guides what must be recorded so a later reviewer or program can inspect the result consistently.`,
+  `The word hallucination can become too vague to be useful. This page defines failure relative to a specific claim, task, and required evidence set. Unsupported means the available evidence does not entail the claim. Contradicted means relevant evidence supports an incompatible claim. Not verified means the evidence is missing, inaccessible, ambiguous, or too weak to decide. Not verified is not the same as false. A reviewer may simply lack enough evidence. Preserving that uncertainty is important because forcing every claim into true or false encourages overstatement. When reporting an error, name the atomic claim, the evidence standard, and the disposition. “The model hallucinated” does not tell another reviewer what source was checked, whether the claim was contradicted, or whether the necessary evidence was unavailable. Precise labels make correction and escalation possible.`,
+  `Different surface errors may lead to the same evidence disposition. A fabricated citation, a wrong date, a misattributed quotation, and an overgeneralized conclusion look different in prose, but each must be compared with evidence. Use the controls to examine the cases. Taxonomy labels describe the form of the error: fabrication, contradiction, misattribution, or scope overreach. Dispositions describe the result of the evidence comparison: supported, contradicted, or not verified. Both views can be useful. For example, a quotation assigned to the wrong author is a misattribution and may also be contradicted by the source record. Do not classify based only on how confident or detailed the response sounds. The evidence procedure determines the disposition.`,
+  `Verification begins by splitting compound prose into atomic claims. The example sentence contains at least three propositions: the publication venue and year, the number of questions, and a broad conclusion about aligned models. One citation after the entire sentence does not automatically support every clause. Claim one should be checked against the publication record. Claim two should be checked against the paper or dataset. Claim three requires a scope analysis: a finite benchmark cannot prove that aligned models never hallucinate. This step is sometimes called atomization. It prevents one well-supported detail from lending false credibility to a neighboring unsupported statement. Before searching for evidence, rewrite each claim so it can be tested independently. Then select the evidence type suited to that claim. Clear claim boundaries make disagreements easier to resolve and revisions more precise.`,
+  `A defensible review leaves a reproducible trail. First, record one precise claim. Second, identify authoritative evidence or an executable test. Third, document the comparison procedure: where you looked, which version or date you used, and what counted as support. Fourth, assign a disposition such as supported, contradicted, or not verified. Fifth, choose a revision or action: correct the text, qualify it, add a citation, abstain, or escalate. Confidence alone is not evidence. Another reviewer should be able to repeat the procedure and understand why the disposition was assigned. This protocol is useful for human review and automated pipelines because it makes each boundary explicit. It also preserves uncertainty; if a source is unavailable, the record should say not verified instead of inventing certainty.`,
+  `Different claims require different checks. A citation claim should be compared with the cited source and bibliographic record. A calculation should be recomputed with stated inputs and units. A code claim should be tested in a controlled environment with known cases and versions. A current fact should be checked against an authoritative, up-to-date source. Cycle through the examples and propose both the evidence source and a failure condition. A web search result may help locate a source, but the result snippet is not automatically authoritative evidence. Likewise, running code once is not enough if the claim is universal. The verification procedure must match the scope of the claim. The goal is not to perform the same ritual for every sentence; it is to choose a method capable of detecting the relevant error.`,
+  `In this claim audit, classify only after reading both the claim and the evidence. Work independently first, then compare with a partner. One item is directly supported. Another uses a real fact but expands it beyond the source's scope. A third lacks enough evidence, which should lead to not verified rather than contradicted. Explain the decision with a specific comparison, not with intuition about how the sentence sounds. The exercise reinforces three habits: atomize the claim, identify the appropriate evidence, and preserve uncertainty. If partners disagree, ask whether they are using the same claim wording and evidence standard. Many apparent disagreements come from testing different propositions.`,
+  `Abstention is a system behavior, not proof that a model knows the boundaries of its knowledge. Token probability measures uncertainty over continuations at one decoding step. Verbal confidence is generated text such as “I am 90 percent sure.” Empirical calibration compares stated confidence with observed accuracy over many cases. These signals are related only through measured evidence. Coverage is the fraction of all cases the system answers. Selective risk is the error rate among answered cases. A system can reduce selective risk by abstaining more, but very low coverage may make it useless. Evaluate answerable and unanswerable cases, record when the system answers or abstains, and provide a useful next step such as requesting evidence or escalating to a qualified person.`,
+  `Verification effort should rise with potential harm and irreversibility. Compare the low-stakes and high-stakes cases in the router. A casual creative suggestion may need only basic checks. A medical, legal, financial, or safety-critical recommendation needs authoritative evidence, domain review, and often escalation. Risk depends on impact, likelihood, reversibility, user vulnerability, and whether someone can detect and correct an error. Refusal alone is not always a complete safety strategy. In a high-risk setting, a bare refusal may leave the user without a path forward. Good routing communicates limits and directs the case to an appropriate source or professional. The goal is proportional evidence: do not burden harmless tasks unnecessarily, and do not treat polished language as sufficient when decisions can cause serious harm.`,
+  `This end-to-end example separates responsibilities. Generation produces atomic claims and source IDs in a defined schema. Parsing rejects malformed output. Validation checks required fields, allowed labels, identifiers, and value ranges. Verification opens the actual research paper and compares each claim with methods and results. Communication revises unsupported language and preserves limitations for the public audience. Some steps can be automated reliably, especially parsing and simple validation. Other steps require domain judgment, source interpretation, and accountability. Structured generation organizes the review; it does not replace reading the evidence. This boundary prepares us for the next lessons on retrieval-augmented generation, where a system can obtain sources but still needs to select, interpret, cite, and evaluate them correctly.`,
+  `For the exit ticket, answer three questions in plain language. First, next-token training rewards likely continuations in the training data; it does not include an automatic truth-check for each generated claim. Second, if an output is schema-valid but gives the wrong deadline, syntax and structure passed while semantic or factual verification failed. Third, fluent writing can increase the burden of verification because confidence, detail, and good formatting may hide weak evidence and make errors harder to notice. Use the readings according to the question you want to investigate: scaling behavior, compute allocation, instruction following, truthfulness evaluation, or structured output. The lesson's central message is not that language models are unusable. It is that generation, validation, and verification are separate mechanisms, and trustworthy systems make those boundaries visible.`,
+];
+
+slides.forEach((slide, index) => {
+  slide.note = lesson20InstructorNotes[index];
+});
 
 export function Meeting20Deck() {
   return (
