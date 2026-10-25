@@ -18,6 +18,14 @@ type SlideRecord = {
   sourceSlides: number[];
 };
 
+function NotationGuide({ items }: { items: Array<[string, string]> }) {
+  return <aside className="m22-notation-guide" aria-label="Notation used on this page"><strong>Notation on this page</strong><div>{items.map(([symbol, meaning]) => <span key={`${symbol}-${meaning}`}><b>{symbol}</b> = {meaning}</span>)}</div></aside>;
+}
+
+function WithNotation({ children, items }: { children: ReactNode; items: Array<[string, string]> }) {
+  return <div className="m22-with-notation"><div className="m22-notation-content">{children}</div><NotationGuide items={items} /></div>;
+}
+
 function Tag({ children, tone = "blue" }: { children: ReactNode; tone?: string }) {
   return <span className={`tag tag-${tone}`}>{children}</span>;
 }
@@ -348,6 +356,34 @@ function InjectionDefenseLab() {
   );
 }
 
+const lesson22InstructorNotes = [
+  `A single successful demo does not establish reliability. Click from one demo to ten tests and then to failure slices. One correct answer tells us only that the system worked once. A repeatable test set reveals a failure rate, and grouping failures by cause tells us where to intervene. Here, two failures come from retrieval and one from citation handling. Reliability therefore means more than average accuracy. It means a repeatable evaluation process, evidence about boundary conditions, diagnosis of failures, and controls that reduce harm when the system is uncertain or wrong.`,
+  `Today we move from building RAG to engineering its quality. You should be able to combine lexical and dense rankings, rerank a candidate set without bypassing access rules, evaluate retrieval and generation separately, and defend the system against hostile context. You do not need to memorize every metric formula. You do need to know which layer a metric diagnoses, what evidence it requires, and when an automated answer should abstain or move to human review. The objective is a system whose behavior can be tested and explained, not merely a demo that looks convincing.`,
+  `When a RAG answer fails, identify the earliest broken stage. Use the buttons to inspect missing sources, low-ranked evidence, unsupported claims, and unusable product behavior. If the authoritative source was never indexed, changing the generator cannot fix the problem. If the source ranked below top-k, inspect retrieval and ranking. If evidence reached the prompt but the answer exceeded it, inspect generation and citation controls. This stage-by-stage view turns one bad answer into a diagnosis, a metric, and a targeted change rather than an unfocused attempt to tune everything.`,
+  `Quality improvement should follow a controlled loop. Observe the complete run, slice failures into meaningful groups, diagnose the earliest cause, change one component, and re-evaluate on the same held-out set. Record configuration, corpus version, dataset version, metrics, latency, cost, and qualitative failures. If chunking, embeddings, top-k, prompt, and model all change together, an improved score does not tell us which change helped. Controlled experiments make progress attributable and reversible. They also reveal tradeoffs, such as better recall with worse latency or more context noise.`,
+  `Start with a simple baseline that is cheap and reproducible: a small versioned corpus, transparent chunking, one retriever, a modest top-k, a clear answer contract, and a reviewed test set. This “boring” system is valuable because every later component must demonstrate an improvement over it. Complex hybrid retrieval, reranking, query rewriting, and automated judges add cost and new failure modes. They should earn their place through measured evidence. A baseline also provides a recovery point when a sophisticated pipeline becomes difficult to debug.`,
+  `Users ask conversationally, but retrieval benefits from a concise searchable intent. Query rewriting can resolve pronouns, include earlier conversation context, or add document terminology. It can also drift and quietly change what the user asked. Preserve the original query, log the rewrite, and evaluate both. A good rewrite makes implicit context explicit without inventing a new goal. For multi-turn questions, test whether the rewrite preserves names, dates, constraints, and negation. The rewritten query is another model output and therefore another stage that needs observability and evaluation.`,
+  `Lexical and dense retrievers make complementary errors. Lexical search rewards exact words and identifiers; dense search helps with paraphrases and related language. Their scores usually live on different scales, so simply adding raw scores is unreliable. Reciprocal rank fusion, or RRF, combines rank positions instead. Each retriever contributes one divided by k plus the document's rank. The constant k reduces the impact of small differences near the top. Fusion can improve coverage, but it does not make either retriever correct and does not replace freshness or permission filters.`,
+  `Use the ranking lab to compare lexical, dense, and hybrid results. Watch which needed documents move upward and which archived document remains dangerous. RRF combines the independent rankings, often lifting documents supported by both signals. The notation strip explains the fusion terms. Even a good hybrid rank can surface a stale source because relevance and currency are different properties. Inspect the moved documents rather than celebrating a single score. A reliable pipeline combines ranking evidence with metadata rules for status, version, date, tenant, and access.`,
+  `Metadata filtering should happen before irrelevant or forbidden text enters the prompt. Filter by access group, tenant, product, date, language, and document status as required by the application. This is both a correctness control and a security boundary. Retrieving private text and hoping the prompt will hide it is not authorization. Freshness rules are equally important: an archived policy may be semantically relevant while being wrong for the current term. Filters should be logged so reviewers can reproduce which candidate set was actually searched.`,
+  `The unit used for search does not have to equal the context returned to the generator. A focused child chunk can improve matching, while a larger parent section can supply surrounding definitions, exceptions, and provenance. This parent-child approach balances retrieval precision with contextual completeness. Oversized child chunks dilute the match, and oversized returned context adds noise and cost. Evaluate whether the search unit finds the right location and whether the returned unit contains enough evidence to answer without encouraging unsupported inference.`,
+  `A reranker reads the query and each candidate passage together, which can produce a sharper order than independent embeddings. Because this pairwise reading is slower, reranking is usually applied only to a shortlist from a fast first-stage retriever. It can reorder the candidates but cannot recover a document that was never retrieved. Measure both ranking quality and added latency. Also retain metadata and access controls; a powerful relevance model should not be allowed to promote forbidden or stale documents into the prompt.`,
+  `A larger context window does not remove the need for retrieval and ordering. Extra passages consume tokens, introduce distractions, and may place important evidence in a position the model uses poorly. The lost-in-the-middle finding illustrates that relevant information can be harder to use when buried inside a long context. More context may increase recall while decreasing focus and faithfulness. Treat context length as a budget. Deduplicate, order intentionally, preserve provenance, and test whether each added passage improves answers on representative cases.`,
+  `Define the answer contract before polishing prose. Specify whether the system must cite every checkable claim, state conflicts, abstain when evidence is missing, distinguish current from archived sources, and avoid claims beyond retrieved passages. A contract makes behavior observable and testable. It also shapes the evaluation set: include supported questions, conflicts, missing evidence, and requests that require escalation. Without a contract, teams often judge answers by tone or convenience and cannot agree on what counts as failure.`,
+  `Check claims individually rather than rating the answer's overall tone. Select each claim and compare it with the retrieved passage. Claim A is supported and can retain a bound citation. Claim B has no supporting evidence and should be deleted, qualified, or marked unknown. Claim C is supported. One correct citation does not cover every sentence in a response. Claim-level auditing makes unsupported additions visible and helps distinguish a generator failure from a retrieval failure. The evidence must entail the nearby claim, not merely discuss the same topic.`,
+  `A useful evaluation set includes the questions most likely to break the system. Include exact identifiers, paraphrases, multi-hop questions requiring more than one passage, current-versus-archived conflicts, ambiguous requests, unanswerable questions, permission-sensitive cases, and hostile documents. Use real user language when possible and preserve some questions as held-out tests. A small reviewed set is enough to begin if its labels and evidence are trustworthy. The goal is diagnostic coverage, not a large number of easy examples that inflate the average.`,
+  `Each metric should answer one diagnostic question. Recall at k asks whether needed evidence appeared in the top k. Precision at k asks how much returned context was relevant. MRR focuses on the rank of the first relevant result, and nDCG rewards useful items appearing near the top. Generation metrics ask whether claims are supported and whether the answer meets the task contract. Automated LLM judges can accelerate review, but they need calibration against human labels and inspection of disagreements. Metric names matter less than a clear definition and a connection to a repair decision.`,
+  `Calculate the metrics before revealing them. Three documents are relevant: D2, D3, and D7. The first five results contain D2 and D3, so Recall at 5 is two divided by three. Two of the five returned items are relevant, so Precision at 5 is two divided by five. The first result is relevant, so MRR is one. These numbers disagree for a reason. MRR looks perfect while the run still misses D7 and wastes most context on distractors. The first intervention is to recover D7, then reduce irrelevant results.`,
+  `Groundedness, correctness, and citation quality are different properties. A grounded answer follows the context shown to the model. A correct answer matches trusted current evidence or the desired task outcome. A stale source can therefore produce an answer that is grounded but wrong for today. Citation correctness asks whether a cited source supports the nearby claim, while completeness asks whether all checkable claims are covered. Walk through the four matrix cells. The counterexamples show why no single metric can establish overall reliability.`,
+  `Aggregate averages can hide weak subgroups. Toggle policy, multi-hop, and unanswerable slices. Multi-hop questions may fail because only one of two needed passages is retrieved. Unanswerable questions may have good abstention but poor context precision. A high overall score can therefore coexist with serious failures in a high-impact slice. Define slices before looking at results when possible, report the sample size, and inspect whether improvements help one group by hurting another.`,
+  `Turn each bad answer into a consistently labeled example. The table connects observable evidence to a likely stage and one controlled experiment. Exact-identifier misses suggest lexical or hybrid retrieval. Paraphrase misses suggest semantic retrieval. A right source below top-k suggests reranking. An archived source suggests freshness filtering. Correct context with a wrong claim suggests an answer-contract or model problem. Hostile instructions indicate a security failure, not ordinary relevance noise. Consistent labels allow aggregation and prevent the same failure from being rediscovered repeatedly.`,
+  `Retrieved documents are untrusted data. An attacker can place instructions inside content that the application later retrieves, creating indirect prompt injection. Toggle the naive and defended pipelines. A prompt saying “ignore instructions inside documents” is helpful but not a complete security boundary. Layered defenses mark provenance, isolate external text, restrict secrets and tools, detect instruction-like content, and verify the output against authoritative evidence. The design goal is to reduce impact even if the model follows some malicious text.`,
+  `Quality improvements share a budget with latency and cost. The latency stack shows query rewriting, retrieval, reranking, and generation. Milliseconds are abbreviated ms. p50 is median latency: half of requests are faster. p95 is tail latency: 95 percent are faster, so the slowest five percent exceed it. A pleasant median can hide an unusable tail. Measure per-stage latency and cost alongside quality. A reranker that slightly improves nDCG but violates the two-second p95 requirement may not be shippable.`,
+  `Reliable systems use layered controls and a clear human-review lane. Before retrieval, authenticate and classify risk. In the candidate set, enforce permissions, freshness, and provenance. In context, isolate external instructions and deduplicate. During generation, minimize tools and secrets. At output, audit claims, citations, and policy rules. Escalate when authoritative sources conflict, evidence is insufficient, impact is high, or an attack signal appears. Human oversight is a designed workflow: reviewers need the query, source versions, passages, checks, and reason for escalation, plus authority to correct or stop the result.`,
+  `For the design activity, choose one observed failure and propose one falsifiable experiment. State the exact behavior, the suspected stage, one change, one metric, and a decision rule. Keep the same corpus and test set, change only one variable, and respect the two-second p95 limit. For example, hybrid retrieval may raise Recall at 5 on identifier questions without reducing freshness accuracy, or reranking may raise nDCG at 5 within the latency budget. A decision rule should say ship, revise, or reject based on measured results, not impressions.`,
+  `Reliability means knowing what improved, what still fails, and which controls remain necessary. Combine complementary retrieval signals, protect candidates with metadata, rerank and deduplicate within a context budget, enforce an answer contract, audit claims and citations, evaluate by layer and slice, and treat retrieved text as untrusted. For the exit ticket, name one failure, identify its pipeline layer, cite the diagnostic evidence, and propose the next control or experiment. A strong response connects observation to action and includes abstention or human escalation when automation has reached its boundary.`,
+];
+
 export function RagQualityDeck() {
   const [current, setCurrent] = useState(0);
   const [overviewOpen, setOverviewOpen] = useState(false);
@@ -360,7 +396,7 @@ export function RagQualityDeck() {
     () => [
       {
         eyebrow: "Module 14 · Lesson 22",
-        title: "RAG Evaluation, Reliability, and Guardrails",
+        title: "A reliable RAG system must be tested, diagnosed, and controlled",
         subtitle: "From a working demo to a system whose evidence, failures, and escalation paths can be tested",
         content: (
           <div className="hero-layout">
@@ -378,7 +414,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Learning objectives",
-        title: "By the end of class, you can…",
+        title: "By the end, you can improve and evaluate a RAG system safely",
         content: (
           <div className="objective-grid">
             {[
@@ -396,14 +432,14 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Foundation recap",
-        title: "Start at the earliest broken stage",
+        title: "Diagnose the first pipeline stage that failed",
         content: <RagEvaluationArchitecture />,
         note: "Timing: 3 minutes. Reinforce the Meeting 21 diagnostic rule: do not tune the generator when the source was never retrieved.",
         sourceSlides: [],
       },
       {
         eyebrow: "Quality engineering",
-        title: "Improve RAG with a controlled loop",
+        title: "Improve RAG by changing one variable and testing again",
         content: (
           <div className="loop-slide">
             <QualityLoop />
@@ -417,7 +453,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Baseline",
-        title: "Build the boring system first",
+        title: "Begin with a simple baseline you can reproduce",
         content: (
           <div className="baseline-layout">
             <div className="baseline-stack">
@@ -443,7 +479,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Query quality",
-        title: "Users ask conversationally; retrievers need a searchable intent",
+        title: "Rewrite conversational questions into searchable intent—without changing meaning",
         content: (
           <div className="rewrite-layout">
             <div className="rewrite-before"><span>Conversation</span><p>“What about the late one?”</p><small>Ambiguous without history</small></div>
@@ -459,7 +495,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Hybrid retrieval",
-        title: "Lexical and dense search make different mistakes",
+        title: "Lexical and dense retrieval fail in different ways",
         content: (
           <div className="venn-layout">
             <div className="venn">
@@ -480,14 +516,14 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Interactive lab",
-        title: "Fuse rankings, then inspect what moved",
-        content: <FusionLab />,
+        title: "Combine rankings, then inspect which documents moved",
+        content: <WithNotation items={[["RRF", "reciprocal rank fusion"], ["r", "a document's rank in one result list"], ["k", "constant that reduces the effect of small rank differences"], ["1/(k+r)", "one retriever's contribution to the fused score"]]}><FusionLab /></WithNotation>,
         note: "Timing: 4 minutes. Switch modes and ask why the archived syllabus remains dangerous. Hybrid retrieval improves coverage, but metadata must still enforce freshness.",
         sourceSlides: [],
       },
       {
         eyebrow: "Metadata",
-        title: "Filter before irrelevant or forbidden text enters the prompt",
+        title: "Filter by freshness and permission before text reaches the prompt",
         content: (
           <div className="filter-layout">
             <div className="filter-query"><span>Query</span><strong>When is the brief due?</strong></div>
@@ -507,7 +543,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Chunking",
-        title: "Retrieve the focused chunk; return the useful context",
+        title: "Search with focused chunks, then return enough surrounding context",
         content: (
           <div className="parent-child-layout">
             <div className="document-map">
@@ -529,7 +565,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Reranking",
-        title: "A slower reader can reorder a short candidate list",
+        title: "A slower reranker can improve the order of a short candidate list",
         content: (
           <div className="rerank-layout">
             <div className="rerank-flow">
@@ -549,7 +585,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Context selection",
-        title: "More context can make the answer worse",
+        title: "More context can add distraction and make answers worse",
         content: (
           <div className="context-budget">
             <div className="budget-meter">
@@ -572,7 +608,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Grounded generation",
-        title: "Design the answer contract before tuning the prose",
+        title: "Define what a valid answer must contain before polishing its wording",
         content: (
           <div className="contract-layout">
             <div className="contract-card">
@@ -597,14 +633,14 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Interactive audit",
-        title: "Check claims, not just the answer’s overall tone",
+        title: "Check each claim against evidence—not the answer's overall tone",
         content: <CitationAudit />,
         note: "Timing: 4 minutes. Select each claim. Ask students whether the retrieved evidence entails the claim. Unsupported Claim B should be removed or explicitly marked unknown.",
         sourceSlides: [],
       },
       {
         eyebrow: "Evaluation set",
-        title: "Test the questions that can break the system",
+        title: "Build an evaluation set that includes difficult and unanswerable questions",
         content: (
           <div className="dataset-layout">
             <div className="dataset-ring">
@@ -631,8 +667,9 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Layered metrics",
-        title: "Each metric should answer a diagnostic question",
+        title: "Use each metric to diagnose one part of the pipeline",
         content: (
+          <WithNotation items={[["Recall@k", "fraction of needed evidence found in the top k"], ["Precision@k", "fraction of top-k results that are relevant"], ["MRR", "mean reciprocal rank of the first relevant result"], ["nDCG", "ranking score that rewards useful results near the top"]]}>
           <div className="evaluation-layout">
             <div className="metric-column"><span className="column-label">Retrieval</span>
               <article className="metric-card"><span>Coverage</span><h3>Did needed evidence appear?</h3><p>Recall@k · hit rate · MRR · nDCG</p></article>
@@ -644,20 +681,21 @@ export function RagQualityDeck() {
             </div>
             <Callout title="LLM judges accelerate review; they require calibration" tone="gold">Compare automated judgments with human labels and inspect disagreements.</Callout>
           </div>
+          </WithNotation>
         ),
         note: "Timing: 3 minutes. RAGAS and ARES are examples of layered automated evaluation. Emphasize that metric names and implementations vary; the diagnostic question and calibration against human labels are primary.",
         sourceSlides: [],
       },
       {
         eyebrow: "Worked example · Retrieval metrics",
-        title: "One ranking can look strong and weak at the same time",
-        content: <RetrievalMetricDemo />,
+        title: "Different metrics reveal different strengths and failures in one ranking",
+        content: <WithNotation items={[["k=5", "evaluate the first five retrieved results"], ["Recall@5", "needed items retrieved divided by all needed items"], ["Precision@5", "relevant items retrieved divided by five"], ["MRR", "1 divided by the rank of the first relevant item"]]}><RetrievalMetricDemo /></WithNotation>,
         note: "Timing: 4 minutes. Give students 60 seconds to compute Recall@5, Precision@5, and MRR before revealing the values. Ask which intervention the numbers suggest: retrieve D7, then reduce distractors. Point out that MRR alone would hide both problems.",
         sourceSlides: [],
       },
       {
         eyebrow: "Knowledge point · Grounding and citations",
-        title: "Grounded, correct, and well-cited are different claims",
+        title: "Grounded, correct, and well-cited describe different qualities",
         content: (
           <div className="m22-grounding-grid">
             <section className="m22-grounding-definitions">
@@ -681,14 +719,14 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Interactive evaluation",
-        title: "Slice the results before averaging them",
+        title: "Inspect important groups separately before trusting an average",
         content: <MetricLab />,
         note: "Timing: 3 minutes. Use the slices to show why aggregate quality can look acceptable while multi-hop or unanswerable behavior remains weak.",
         sourceSlides: [],
       },
       {
         eyebrow: "Failure analysis",
-        title: "Turn every bad answer into a labeled example",
+        title: "Label every failure so the next experiment targets the right cause",
         content: (
           <div className="failure-table" role="table" aria-label="RAG quality failure slices">
             <div className="failure-table-row header" role="row"><span>Failure slice</span><span>Evidence</span><span>Next controlled experiment</span></div>
@@ -708,7 +746,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Knowledge point · RAG security",
-        title: "Retrieved documents are data—and may contain hostile instructions",
+        title: "Retrieved documents are untrusted data and may contain hostile instructions",
         subtitle: "Indirect prompt injection crosses the boundary between evidence and control.",
         content: <InjectionDefenseLab />,
         note: "Timing: 4 minutes. Toggle the naive and defended pipeline. Explain indirect prompt injection: an attacker places instructions in content that the application later retrieves. No single prompt is a sufficient defense. Ask students which controls reduce impact even if the model still follows the text.",
@@ -716,8 +754,9 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Systems tradeoffs",
-        title: "Quality shares a budget with latency and cost",
+        title: "Quality improvements must fit the latency and cost budget",
         content: (
+          <WithNotation items={[["ms", "milliseconds"], ["p50", "median latency: half of requests are faster"], ["p95", "tail latency: 95% of requests are faster"]]}>
           <div className="tradeoff-layout">
             <div className="tradeoff-triangle">
               <span className="quality-point">quality</span><span className="latency-point">latency</span><span className="cost-point">cost</span>
@@ -734,13 +773,14 @@ export function RagQualityDeck() {
               <Callout title="Measure percentiles" tone="gold">A pleasant median can hide an unusable p95.</Callout>
             </div>
           </div>
+          </WithNotation>
         ),
         note: "Timing: 2 minutes. Ask which stage dominates. Explain p50 versus p95. A quality improvement that doubles cost or tail latency may not be acceptable for the product.",
         sourceSlides: [],
       },
       {
         eyebrow: "Guardrails and oversight",
-        title: "Reliability comes from layered controls and an explicit human lane",
+        title: "Reliable systems combine layered controls with a clear human-review path",
         content: (
           <div className="m22-guardrail-layout">
             <section className="m22-guardrail-stack" aria-label="Layered RAG guardrails">
@@ -773,7 +813,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Design studio",
-        title: "Run one defensible quality experiment",
+        title: "Design one experiment with a measurable decision rule",
         content: (
           <div className="studio-layout">
             <div className="studio-brief">
@@ -795,7 +835,7 @@ export function RagQualityDeck() {
       },
       {
         eyebrow: "Synthesis · Exit assessment · Readings",
-        title: "Reliability means knowing what improved—and what still needs control",
+        title: "Reliability means knowing what improved, what failed, and when to escalate",
         content: (
           <div className="closing-layout">
             <div className="summary-list">
@@ -822,7 +862,7 @@ export function RagQualityDeck() {
         note: "Timing: 3 minutes. Collect the exit ticket. A strong response links one observed failure to a metric or review artifact, then names a controlled experiment, guardrail, abstention, or human escalation. All 25 timings total 75 minutes.",
         sourceSlides: [],
       },
-    ],
+    ].map((slide, index) => ({ ...slide, note: lesson22InstructorNotes[index] })),
     [],
   );
 
