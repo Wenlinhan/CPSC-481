@@ -93,6 +93,12 @@ function WeatherPredictionStudio() {
 }
 
 const discountRewards = [5, 0, 8, 2];
+const discountRewardMeanings = [
+  "pick up package",
+  "travel step",
+  "complete delivery",
+  "on-time bonus",
+];
 
 function DiscountReturnExplorer() {
   const [gamma, setGamma] = useState(0.9);
@@ -113,12 +119,19 @@ function DiscountReturnExplorer() {
           </button>
         ))}
       </nav>
+      <p className="m11-example-source">
+        <strong>Where do 5, 0, 8, and 2 come from?</strong> They are invented
+        rewards for one illustrative delivery episode—not measured data and not
+        values from the weather or gridworld examples. Their only job is to show
+        how the same reward sequence is weighted differently when γ changes.
+      </p>
       <section>
         <div className="m11-reward-timeline">
           {discountRewards.map((reward, index) => (
             <article key={`${reward}-${index}`}>
               <span>t + {index}</span>
               <strong>r = {reward}</strong>
+              <em>{discountRewardMeanings[index]}</em>
               <p>{gamma.toFixed(1)}<sup>{index}</sup> × {reward} = {terms[index].toFixed(2)}</p>
             </article>
           ))}
@@ -1120,7 +1133,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Return and discount",
     title: "Return adds today’s reward to later rewards",
     content: <DiscountReturnExplorer />,
-    note: "The return Gₜ is the total reward viewed from time t. It starts with the next reward and adds later rewards after discounting them. The discount factor γ controls how quickly future rewards lose weight: γⁱ means the reward i steps ahead is multiplied by γ raised to i. With γ=0, only the immediate reward matters. With γ=0.9, later rewards still matter substantially. With γ=1, the listed rewards receive equal weight. Gamma expresses how the objective values time; it is not a measure of uncertainty in the environment.",
+    note: "The numbers 5, 0, 8, and 2 are not observations, probabilities, or values copied from the weather or gridworld examples. They are invented rewards for a small delivery episode: 5 for picking up a package, 0 for a travel step, 8 for completing the delivery, and 2 for an on-time bonus. We use this simple sequence only to see what discounting does. The return Gₜ is the total reward viewed from time t. It starts with the current reward and adds later rewards after discounting them. The discount factor γ controls how quickly future rewards lose weight: γⁱ means the reward i steps ahead is multiplied by γ raised to i. With γ=0, only the immediate reward matters. With γ=0.9, later rewards still matter substantially. With γ=1, the listed rewards receive equal weight. Gamma expresses how the objective values time; it is not a measure of uncertainty in the environment.",
     sourceSlides: [],
   },
   {

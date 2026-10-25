@@ -781,9 +781,20 @@
 
 .m11-discount {
   display: grid;
-  gap: 15px;
-  grid-template-rows: auto minmax(0, 1fr);
+  gap: 11px;
+  grid-template-rows: auto auto minmax(0, 1fr);
   height: 100%;
+}
+
+.m11-example-source {
+  background: #fff8df;
+  border-left: 4px solid #e4a400;
+  border-radius: 10px;
+  color: #243149;
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 0;
+  padding: 9px 12px;
 }
 
 .m11-discount > nav,
@@ -843,6 +854,13 @@
   color: #45536a;
   font-size: 12px;
   margin: 0;
+}
+
+.m11-reward-timeline em {
+  color: #5d6879;
+  font-size: 11px;
+  font-style: normal;
+  margin: -5px 0 9px;
 }
 
 .m11-return-total {
