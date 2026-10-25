@@ -1372,10 +1372,28 @@
   align-content: center;
 }
 
-.m11-assumption-audit > section > div {
+.m11-assumption-audit > section > .m11-audit-results {
   display: grid;
   gap: 12px;
   grid-template-columns: 1fr 1fr;
+}
+
+.m11-audit-guide {
+  color: #45536a;
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 0 0 8px;
+}
+
+.m11-audit-bottom {
+  background: #fff8df;
+  border-left: 4px solid #e4a400;
+  border-radius: 9px;
+  color: #45360a;
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 10px 0 0;
+  padding: 8px 10px;
 }
 
 .m11-assumption-audit article {
@@ -1511,7 +1529,7 @@
     grid-row: auto;
   }
 
-  .m11-assumption-audit > section > div {
+  .m11-assumption-audit > section > .m11-audit-results {
     grid-template-columns: 1fr;
   }
 }

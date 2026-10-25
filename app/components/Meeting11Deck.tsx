@@ -572,36 +572,36 @@ function PolicyExtractionLab() {
 
 const assumptionCases = [
   {
-    label: "State",
-    claim: "Location alone is a sufficient state for a delivery robot.",
+    label: "Information",
+    claim: "“The robot’s location is all the information we need.”",
     diagnosis:
-      "Usually incomplete: remaining battery, payload, time, and relevant traffic conditions can change transition or reward predictions.",
+      "That may be false. Battery level, package weight, time, and traffic can change what happens after the robot acts.",
     evidence:
-      "Test whether next-state and reward distributions still depend on omitted history after conditioning on the proposed state.",
+      "Compare situations with the same location but different battery, load, time, or traffic. If the result changes, add that information to the state.",
   },
   {
-    label: "Reward",
-    claim: "Give +1 for every package delivered; the learned policy will be safe.",
+    label: "Goal",
+    claim: "“Reward every delivery, and the robot will learn safe behavior.”",
     diagnosis:
-      "The reward omits collision, delay, energy, and equity costs. The optimizer can satisfy the stated objective while violating the intended one.",
+      "The robot may maximize deliveries while taking unsafe shortcuts, wasting energy, or delaying some customers. It follows the score we wrote, not every goal we intended.",
     evidence:
-      "Run adversarial scenarios, inspect failure trajectories, and elicit stakeholder constraints before deployment.",
+      "Test difficult routes and inspect bad outcomes. Add safety constraints and costs for collisions, delays, and wasted energy where appropriate.",
   },
   {
-    label: "Dynamics",
-    claim: "A transition model measured in clear weather can be reused unchanged in rain.",
+    label: "World model",
+    claim: "“A movement model learned on dry roads will also work in rain.”",
     diagnosis:
-      "That assumes a stationary environment. Rain may change braking, sensor reliability, and other agents’ behavior.",
+      "Rain can change braking distance, sensor accuracy, and how other vehicles move. The old transition probabilities may no longer describe the world.",
     evidence:
-      "Stratify transition estimates by operating condition and monitor model drift.",
+      "Measure performance separately in dry and rainy conditions. Update or switch models when the operating conditions change.",
   },
   {
-    label: "Planning",
-    claim: "A tiny Bellman residual guarantees the real system performs well.",
+    label: "Calculation",
+    claim: "“The values stopped changing, so the real robot must work well.”",
     diagnosis:
-      "It only says the numerical iteration is near a fixed point of the specified model. Model error or reward misspecification can still dominate.",
+      "Values that stop changing only show that the algorithm solved the model we supplied. The model or goal may still be wrong.",
     evidence:
-      "Separate solver error from model error; validate the extracted policy in held-out and stress-test environments.",
+      "Test the final policy in new and stressful situations. Check the model and reward separately from checking whether the math converged.",
   },
 ];
 
@@ -624,19 +624,21 @@ function MdpAssumptionAudit() {
         ))}
       </nav>
       <section>
-        <span>Claim to audit</span>
+        <span>Click a tab and challenge the claim</span>
         <h3>{item.claim}</h3>
-        <div className="m11-notation-box"><strong>Terms:</strong> state = information used to describe the current situation; reward = immediate objective signal; dynamics = transition behavior; Bellman residual = remaining numerical change after a backup.</div>
-        <div>
+        <p className="m11-audit-guide">The algorithm can calculate correctly and still make a poor decision when its description of the situation, goal, or world is incomplete.</p>
+        <div className="m11-notation-box"><strong>Terms:</strong> state = information describing the current situation; reward = the score being optimized; transition model = prediction of what happens after an action; convergence = the calculations have stopped changing.</div>
+        <div className="m11-audit-results">
           <article>
-            <strong>Diagnosis</strong>
+            <strong>Why this can fail</strong>
             <p>{item.diagnosis}</p>
           </article>
           <article>
-            <strong>Evidence plan</strong>
+            <strong>What should we check?</strong>
             <p>{item.evidence}</p>
           </article>
         </div>
+        <p className="m11-audit-bottom"><strong>Remember:</strong> solving an MDP correctly does not prove that the MDP is a correct description of the real problem.</p>
       </section>
     </div>
   );
@@ -1362,9 +1364,9 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "In-class assessment · Model and evidence audit",
-    title: "A polished answer can still solve the wrong problem",
+    title: "Correct math can still start from the wrong assumptions",
     content: <MdpAssumptionAudit />,
-    note: "A reliable decision system needs more than a correct implementation of an algorithm. The state representation must retain the information needed to predict transitions and rewards. The reward must represent the outcomes people actually care about and resist simple forms of reward hacking. The transition model must remain valid when weather, sensors, or other agents change. Finally, a small Bellman residual only shows that the numerical calculation has settled. These four audits separate representation error, reward error, dynamics error, and solver error.",
+    note: "The main message on this page is simple: correct mathematics does not guarantee a correct real-world decision. An MDP is a simplified description that we create, so we must check the assumptions inside that description. Use the four tabs as four questions. First, did we include enough information? If a delivery robot knows only its location but ignores battery, package weight, time, or traffic, two situations labeled as the same state may behave very differently. Second, did we write the right goal? Rewarding only the number of deliveries can encourage unsafe shortcuts or wasted energy because the robot optimizes the score we wrote, not every outcome we care about. Third, does the transition model still match the world? Probabilities measured on dry roads may be wrong in rain because braking, sensing, and surrounding traffic change. Fourth, did the calculation merely converge? Values that stop changing show that the algorithm has solved the mathematical model. They do not prove that the state, reward, or transition probabilities are realistic. For each tab, read the claim, explain why it might fail, and then identify evidence that could test it. The final distinction is between solving the model correctly and validating that the model represents the real problem well enough for its intended use.",
     sourceSlides: [],
   },
   {
