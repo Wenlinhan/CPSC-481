@@ -925,8 +925,8 @@ function ModernWorkflowCheck() {
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Machine learning · Part A",
-    title: "Learning as concept formation and search",
-    subtitle: "From human learning actions to Winston's arch-learning program.",
+    title: "How examples help a system form a concept",
+    subtitle: "Start with examples, build a description, and test what it covers.",
     content: (
       <div className="m13-cover">
         <div className="m13-cover-visual">
@@ -947,7 +947,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning objectives · Knowledge map",
-    title: "Explain, operate, model, and audit",
+    title: "Four things you will be able to do",
     content: (
       <div className="m13-objectives">
         <article><span>01</span><strong>Explain</strong><p>learning, concepts, meaning, knowledge, and the Simon definition of machine learning</p></article>
@@ -961,7 +961,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning · Definition and evidence",
-    title: "Learning acquires knowledge, skills, values, or understanding",
+    title: "Learning means gaining knowledge or improving a skill",
     content: (
       <div className="m13-explain-source">
         <SourceFrame
@@ -984,7 +984,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Human learning · Cognitive process",
-    title: "Learning actions transform experience into knowledge",
+    title: "People learn by taking in, processing, and using experience",
     content: (
       <CognitiveProcessExplorer />
     ),
@@ -993,7 +993,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning outcomes · Concepts and knowledge",
-    title: "Class concepts: a label names a class; a concept carries reusable meaning",
+    title: "A label names a category; a concept explains what belongs",
     content: (
       <div className="m13-explain-source">
         <SourceFrame
@@ -1012,7 +1012,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Concept learning · Inquiry",
-    title: "A baby's animal classes expose the central learning questions",
+    title: "How does a child learn that different animals belong to different groups?",
     content: (
       <AnimalConceptLab />
     ),
@@ -1021,7 +1021,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning methods · Taxonomy",
-    title: "Different methods transform information in different ways",
+    title: "Seven ways a learner can turn information into knowledge",
     content: (
       <div className="m13-source-practice">
         <SourceFrame
@@ -1037,7 +1037,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Machine learning · Historical definition",
-    title: "Machine learning is a change that improves repeated or related performance",
+    title: "A system has learned when experience improves later performance",
     content: (
       <div className="m13-definition">
         <SourceFrame
@@ -1059,7 +1059,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Machine learning · Motivation and uses",
-    title: "Learning addresses the knowledge-engineering bottleneck",
+    title: "Learning reduces the need to write every rule by hand",
     content: (
       <div className="m13-motivation">
         <section>
@@ -1086,7 +1086,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Generalization · Operators I",
-    title: "Generalization increases the set of instances a description covers",
+    title: "Generalization lets one description cover more examples",
     content: (
       <div className="m13-explain-source">
         <SourceFrame
@@ -1098,6 +1098,7 @@ const slides: SourceLessonSlide[] = [
           <article className="m13-formula-card">
             <span>Replace a constant with a variable</span>
             <code>Obj(round, red, ball) → Obj(round, X, ball)</code>
+            <small><b>Notation:</b> Obj lists an object’s properties; X is a variable that may match any color; → means “change the description to.”</small>
           </article>
           <article className="m13-formula-card">
             <span>Drop a conjunctive condition</span>
@@ -1117,14 +1118,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Generalization · Operators II",
-    title: "Disjunction and class hierarchies widen concepts systematically",
+    title: "OR rules and parent categories also make a concept broader",
     content: <GeneralizationOperatorLab />,
     note: "Timing: 4 minutes. Use all four tabs. Spend most time on adding a disjunct and replacing a property with its parent. Preserve the source ontology note: the representation connects an object or concept to different symbols and types.",
     sourceSlides: [8],
   },
   {
     eyebrow: "Concept learning · Worked example",
-    title: "Two different balls preserve roundness while size and color vary",
+    title: "Two balls differ in size and color but are both round",
     content: (
       <div className="m13-source-practice">
         <SourceFrame
@@ -1134,6 +1135,7 @@ const slides: SourceLessonSlide[] = [
         />
         <div className="m13-ball-column">
           <BallGeneralizationLab />
+          <div className="m13-notation-strip"><b>Notation:</b> Ball₁ and Ball₂ are two examples; Y and Z are variables for values that differ; a fixed word such as <i>round</i> must still match.</div>
           <SearchCallout label="Version space learning" tone="cyan">
             The candidate descriptions consistent with the examples form a version space; learning searches that space for the right concept.
           </SearchCallout>
@@ -1145,7 +1147,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Concept space · Coverage",
-    title: "Learning searches among candidate concepts ordered by coverage",
+    title: "Concept learning searches from narrow descriptions to broad ones",
     content: (
       <div className="m13-coverage-layout">
         <section>
@@ -1154,6 +1156,7 @@ const slides: SourceLessonSlide[] = [
           <p>A set of candidate concepts that can be created by the learning methods.</p>
           <h3>Coverage</h3>
           <p>If concept p is more general than q, the source writes p covers q, p ⇐ q; equivalently, q(x) is a logical consequence of p(x).</p>
+          <div className="m13-notation-strip"><b>Notation:</b> p and q are candidate concepts; x is an instance; p ⇐ q means every example covered by q is also covered by p.</div>
           <SearchCallout label="Learning as search" tone="cyan">
             Operators move through the concept space; examples help select a useful boundary.
           </SearchCallout>
@@ -1166,14 +1169,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Concept space · Visual model",
-    title: "Generalize upward; specialize downward",
+    title: "Move up to cover more examples; move down to exclude examples",
     content: <ConceptSpaceExplorer />,
     note: "Timing: 2 minutes. Trace the direction arrows on the exact diagram. Preserve the speaker-note clarification about ball as a shape category.",
     sourceSlides: [10],
   },
   {
     eyebrow: "Learning-system design · Questions first",
-    title: "A learning system needs a target, representation, method, and evidence",
+    title: "Before learning, define the goal, representation, method, and evidence",
     content: (
       <div className="m13-explain-source">
         <SourceFrame
@@ -1189,56 +1192,56 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Winston 1975 · Program architecture",
-    title: "Winston's program learned an arch concept in a semantic network",
+    title: "Winston represented an arch as parts connected by relations",
     content: <ArchArchitectureExplorer />,
     note: "Timing: 4 minutes. Use all three representation-layer controls. First identify the three physical parts, then match each part to its type node, then trace both supports relations. Emphasize that Winston learns a relational semantic network rather than a visual pixel template. Name the learning goal and the generalization and specialization operators.",
     sourceSlides: [12],
   },
   {
     eyebrow: "Training evidence · Positive and negative examples",
-    title: "Positive examples expand coverage; near misses constrain it",
+    title: "Positive examples broaden the concept; near misses add limits",
     content: <ArchEvidenceExplorer />,
     note: "Timing: 4 minutes. Select all four examples. Before each selection, ask students to classify it as positive or near miss and predict the smallest network change. Require the verbs cover, exclude, generalize, and specialize. The exact course figure keeps the two valid arches above the two near misses.",
     sourceSlides: [13],
   },
   {
     eyebrow: "Winston demo · Positive examples",
-    title: "Generalize only the property that differs across valid arches",
+    title: "When two valid arches differ, generalize only that difference",
     content: <PositiveGeneralizationDemo />,
     note: "Timing: 5 minutes. Advance through compare, differ, and generalize. Students must name every invariant before changing the top node. At step 3, reveal the exact hierarchy figure: brick isa polygon and pyramid isa polygon. Generalize only the top-part type; preserve the part count and both support relations.",
     sourceSlides: [14, 15],
   },
   {
     eyebrow: "Background knowledge · Generalization hierarchy",
-    title: "Examples alone do not say that brick and pyramid share the parent polygon",
+    title: "The learner needs background knowledge to connect brick and pyramid",
     content: <HierarchyExplorer />,
     note: "Timing: 4 minutes. Select brick, pyramid, and polygon in order. Distinguish observed example types from the supplied parent relation. Ask whether top isa object would cover both positives and why it is less constrained than top isa polygon. A different hierarchy can yield a different candidate from the same examples.",
     sourceSlides: [15],
   },
   {
     eyebrow: "Winston demo · Near misses",
-    title: "Specialization adds the smallest constraints needed to reject non-arches",
+    title: "Specialization adds only enough detail to reject a near miss",
     content: <NegativeSpecializationDemo />,
     note: "Timing: 5 minutes. Advance through loose pieces, touching supports, and final candidate. Students diagnose the first failed relation before seeing the update. For the second near miss, add must-not-touch between supports. Emphasize that minimal specialization keeps all existing positive matches and does not memorize the complete negative example.",
     sourceSlides: [16, 17],
   },
   {
     eyebrow: "Decision boundary · Overgeneralization",
-    title: "Negative examples carve away regions that positive examples alone leave ambiguous",
+    title: "Negative examples show which cases the concept must reject",
     content: <BoundaryExplorer />,
     note: "Timing: 4 minutes. Toggle between positives only and positives plus near misses while keeping the exact side-by-side boundary figure visible. Ask students to explain one question mark and propose the most informative next negative. Reinforce that the learned boundary is justified only relative to the examples, hierarchy, and representation supplied so far.",
     sourceSlides: [18],
   },
   {
     eyebrow: "Guided practice · Build the arch concept",
-    title: "Process each example as an operator on the current semantic network",
+    title: "Update the arch description one example at a time",
     content: <ArchLearningLab />,
     note: "Timing: 4 minutes. Visit all four evidence tabs. Students predict each update before selecting it. Require them to separate observed evidence, background hierarchy, generalization, and specialization.",
     sourceSlides: [12, 13, 14, 15, 16, 17, 18],
   },
   {
     eyebrow: "Lessons learned · Search and data quality",
-    title: "A hill-climbing learner without backtracking is sensitive to its examples",
+    title: "Without backtracking, example order can change what is learned",
     content: (
       <div className="m13-source-practice">
         <SourceFrame
@@ -1254,7 +1257,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook / modern supplement · Evaluation workflow",
-    title: "Separate model development from the evidence used for final evaluation",
+    title: "Keep final test evidence separate from model development",
     content: (
       <div className="m13-modern-workflow">
         <ol>
@@ -1269,6 +1272,7 @@ const slides: SourceLessonSlide[] = [
           <SearchCallout label="Leakage" tone="amber">
             Leakage occurs when information unavailable at prediction time—or information from validation or test examples—influences training.
           </SearchCallout>
+          <div className="m13-notation-strip"><b>Terms:</b> training fits the model; validation helps choose among models; testing estimates final performance after all choices are fixed.</div>
           <ModernWorkflowCheck />
         </section>
       </div>
@@ -1278,7 +1282,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Cumulative assessment · Readings",
-    title: "Define the concept, update it with evidence, then audit the claim",
+    title: "Explain what was learned, how it changed, and why we should trust it",
     content: (
       <div className="m13-exit">
         <ol>
@@ -1435,14 +1439,119 @@ const lesson15KeyPoints = [
   ],
 ] as const;
 
-slides.forEach((slide, index) => { slide.keyPoints = lesson15KeyPoints[index]; });
+const lesson15InstructorNotes = [
+  `Today we will study learning as a change in what a system can describe and recognize. The concept map shows the basic cycle. We begin with examples, build a candidate description, test what that description covers, and revise it when new evidence arrives. Our main historical example is Winston's arch learner. It does not learn from pixels. It represents an arch as parts and relations, then changes that symbolic description through generalization and specialization.
+
+Generalization makes a description broader so that it can cover a new positive example. Specialization adds a necessary restriction so that a near miss is rejected. These two moves turn concept learning into a search through possible descriptions. As we work, keep asking three questions: What representation is available? Which examples have been observed? What background knowledge is supplied? The learned concept depends on all three. Later courses such as CPSC 483 and CPSC 585 examine implementation in greater depth; here our goal is to understand the reasoning clearly enough to trace and critique it.`,
+
+  `These four verbs describe what you should be able to do, not merely what vocabulary you should remember. Explain means distinguish learning, a class label, a concept, meaning, and knowledge in plain language. Operate means apply generalization and specialization rules to an actual description and state which examples become covered or excluded. Model means trace Winston's semantic network as positive examples and near misses arrive. Audit means question whether the result is supported by the data.
+
+The sequence matters. We first need a definition of learning and a representation of concepts. Then we can study operators that change a concept's coverage. After that, the arch example gives us a complete worked process. Finally, we examine example order, data quality, and leakage. The exit task will ask you to connect all four abilities: define what was learned, show one update, identify the evidence that caused it, and name a reason the resulting claim might fail.`,
+
+  `Learning means acquiring knowledge, skills, values, or understanding through education, development, or experience. The small learning-curve activity asks us to be precise about evidence. A curve cannot demonstrate improvement until we know what each axis measures. The horizontal axis might be practice attempts, training examples, or time. The vertical axis must be a meaningful performance measure such as accuracy, task time, or error rate.
+
+Now compare repeated and transfer performance. Becoming faster on the exact same item may reflect memorization. Improvement on different items drawn from the same kind of task is stronger evidence that something reusable was learned. A rising curve is therefore not automatically proof of deep understanding. We must ask what population of tasks was sampled, whether the measure captures the desired ability, and whether the improvement persists. This careful reading of evidence will return later when we separate training, validation, and test data.`,
+
+  `The explorer organizes human learning into a simple flow: experience enters, cognitive processes operate on it, memory changes, and later behavior provides evidence of learning. Reading, observing, touching, doing, and thinking are different ways of obtaining or transforming experience. Attention determines what information is selected. Working processes connect new information with what is already known, and long-term memory stores changes that may be retrieved later.
+
+We use this as a comparison, not as a claim that a computer learns exactly like a human brain. In a computer system, observations become data, internal processing becomes an algorithmic update, and later performance becomes measurable output. The useful parallel is functional: both require input, transformation, storage, and evidence in later behavior. The limitation is equally important: matching this flow does not establish human-like understanding or consciousness. When evaluating any learner, specify the experience it received, the internal representation it changed, and the later task on which improvement was observed.`,
+
+  `A class label and a concept are related but different. A label such as “ball” is a name. A concept supplies reusable meaning: the properties or relations that determine when the label applies. The source definition calls a concept a cognitive unit of meaning, an abstract idea, or a mental symbol that functions as a unit of knowledge. For a computer, the concept must be represented in some usable form.
+
+The examples Ball, Ball Game, and Sports illustrate levels of meaning. A physical ball may be an object. A ball game is an activity involving such objects and rules. Sport is a broader category that includes many activities. A useful representation connects these ideas so the system can recognize, infer, or act. Merely storing the word “ball” is not enough. Use the explorer to ask what each concept means, how it could be represented, and what operation the representation supports.`,
+
+  `Imagine a child seeing dogs, cats, and birds that vary in size, color, and shape. The stable categories cannot come from memorizing one visual template. The page's five questions expose the learning problem. Which similarities matter? Who supplies the labels? What happens when no label is given? How does feedback correct a mistaken category? How can a rule learned from a few examples apply to a new animal?
+
+Click through the animal examples and distinguish an instance from a category. One dog is an instance; dog is a concept that should cover many dogs. Similarity helps, but similarity alone is ambiguous because two animals can share color while belonging to different categories. Labels and corrective feedback help identify which features matter. The broader lesson is that examples do not speak for themselves. Concept learning depends on representation, prior categories, and the kind of feedback available.`,
+
+  `This page compares seven learning methods. Rote learning stores an instance or answer. Instruction receives an explicit statement from a teacher. Analogy transfers a relationship from one case to a similar case. Induction builds a general rule from examples. Deduction applies an existing general rule to reach a particular conclusion. Discovery identifies structure without being directly told the answer. Practice improves performance through repeated execution and feedback.
+
+Use the tabs to compare what each method receives and what it produces. Memorizing that one campus is smoke-free stores a fact. Applying a general smoke-free policy to a particular location is deduction. Observing many examples and proposing a broader pattern is induction. No single method is best for every purpose. The claim we can justify depends on how the information was transformed. This matters for Winston's learner because it uses examples, background hierarchy, and explicit operators rather than one undifferentiated idea of “learning.”`,
+
+  `Herbert Simon's definition gives us an observable test for machine learning. A system learns when it changes in a way that lets it perform better the next time it repeats the same task or performs another task drawn from the same population. Four phrases matter. Change means something in the system must be updated. Better requires a performance measure. Task tells us what behavior is being evaluated. Same population limits the generalization claim to related cases.
+
+More stored data or more computation does not by itself prove learning. We must compare performance before and after experience. The interactive criteria help test possible claims. If a classifier improves only on memorized training examples, it may not perform better on another task from the same population. If accuracy increases on an untouched sample of comparable cases, the claim is stronger. Simon's definition connects this historical foundation to modern evaluation: define the task, metric, experience, and comparison population before saying a system learned.`,
+
+  `Traditional expert systems require people to write large amounts of domain knowledge by hand. That creates a knowledge-engineering bottleneck: experts may have difficulty stating every rule, conditions change, and the number of cases becomes too large to encode manually. Machine learning offers another path by deriving useful regularities from examples or experience.
+
+The application cards show different uses. Pattern and speech recognition emphasize analysis and classification. Forecasting predicts later outcomes. Unmanned vehicles combine perception with sequential decision making. Data mining discovers patterns, while big-data analytics performs analysis at scale. Many real systems combine these roles. For each application, ask what the task is, what experience is available, and how “better” will be measured. Learning does not remove the need for human design; people still choose the target, representation, data, metric, and acceptable failure conditions.`,
+
+  `Generalization makes a description less restrictive so it covers more instances. The first formula uses Obj as a predicate listing properties. In Obj round, red, ball, red is a fixed constant. Replacing red with X creates a variable that can match other colors. The arrow means we changed the candidate description. Every object covered before is still covered, and additional colors may now match.
+
+The second operator drops a conjunct. AND means every listed condition must hold. Removing “small” changes round AND small AND red into round AND red. Large red round objects can now match. These operators always move toward greater coverage, but greater coverage is not automatically better. It may introduce false positives. After each update, name one newly covered object and test whether it truly belongs. Generalization is useful only when the broader description remains consistent with the concept we intend to learn.`,
+
+  `The first two operators broadened a concept by replacing a constant or removing a condition. This page adds two more. A disjunction uses OR to add an alternative. A description can cover red balls OR blue balls without discarding either group. A hierarchy-based operator replaces a property with its parent category. If brick and pyramid are both polygons, changing a specific type to polygon covers both systematically.
+
+The parent relation is background knowledge, often represented by an ontology or class hierarchy. It is not discovered automatically from the two words alone. Use each tab and compare the covered set before and after the operator. A variable may become extremely broad, a removed condition may admit many cases, a disjunction adds a named alternative, and a parent category follows a supplied hierarchy. All move upward in coverage, but they make different assumptions and create different possible errors.`,
+
+  `We now generalize from two positive ball examples. Ball one is small, red, and round. Ball two is large, blue, and round. Compare the three positions. Size differs, so replace it with variable Y. Color differs, so replace it with variable Z. Roundness is shared, so keep the fixed value round. The candidate becomes Ball equals Y, Z, round.
+
+Y and Z do not mean particular values; each is a placeholder that may match values allowed by the representation. The result covers both observed balls and other objects with any size and color that are round. This is a candidate, not a final truth. A counterexample such as a round plate may show that round alone is too broad. A non-round object that should still count as a ball would show it is too narrow. The set of candidates consistent with current evidence is called a version space, and further examples shrink or reshape it.`,
+
+  `A concept space is the set of candidate concepts that our representation and operators can express. Coverage orders those candidates from narrow to broad. Here p and q are candidate concepts, and x is an instance. The source notation p left-double-arrow q means p is more general: every instance covered by q is also covered by p. In logical terms, if q of x is true, then p of x must also be true.
+
+Use the coverage lab to judge candidates by the examples they include, not by how complex the formula looks. A candidate can be too specific and miss positives. It can be provisionally useful and cover current positives. It can be too general and include obvious negatives. Learning becomes a search through this ordered space. The search is limited by the language available: if the representation cannot express an important relation, no operator can discover the correct concept using that relation.`,
+
+  `The diagram gives a spatial metaphor for concept search. Moving upward removes restrictions and increases coverage; this is generalization. Moving downward adds restrictions and reduces coverage; this is specialization. A boundary is a candidate region that includes known positives while excluding known negatives.
+
+Click the modes and trace the arrows. An upward neighbor might replace red with color, or ball with shape. A downward neighbor might require small or add a relation. These moves are not arbitrary. The representation and hierarchy determine which neighboring descriptions exist. The speaker-note clarification matters: ball may be placed under a shape category in this teaching hierarchy, even though everyday language may organize it differently. A hierarchy is a modeling choice. Different background structures can lead a learner from the same examples to different generalizations, so the structure itself must be documented and evaluated.`,
+
+  `Before building a learning system, answer four questions. First, what is the target? It might be recognizing a face, identifying a voice, learning an arch, choosing a chess move, predicting credit risk, or supporting investment decisions. Second, how will the target be represented? Possible representations include feature vectors, rules, trees, graphs, images, audio sequences, or semantic networks.
+
+Third, what learning method will change that representation? Fourth, what evidence will establish success? Accuracy may suit some recognition tasks, but games need outcome measures and financial decisions need calibration, cost, fairness, and risk analysis. Use the design lab to select a problem and answer all four questions. The same algorithm can behave very differently under a different representation or metric. A learning claim is incomplete if it says only that a model was trained; we need the target, representation, update method, and evaluation evidence.`,
+
+  `Winston's program represents an arch as a semantic network. A semantic network is a graph whose nodes represent objects or types and whose labeled links represent relationships. Here the physical arch has three parts: two supports and one top piece. Type links say what each part is, and support links record that each upright supports the top.
+
+Use the three controls to move from physical parts to typed nodes and then to relations. The representation is relational, not a stored picture or pixel template. That distinction allows the learner to recognize arches that differ visually while preserving the important structure. The learning goal is to produce a network description that covers valid arches. Positive examples motivate generalization of node types. Near misses motivate specialization of missing or incorrect relations. Because the representational vocabulary determines what can be expressed, the learner can discover only distinctions available in its nodes, links, and hierarchy.`,
+
+  `Training evidence plays two roles. A positive example is something the concept should cover. If a valid arch differs from the current description, the learner may need to generalize. A near miss is almost a valid example but differs in one important way. It helps reveal a missing constraint and motivates specialization.
+
+Select all four examples. Before revealing the explanation, classify the case and predict the smallest update. The two valid arches share the structural idea even though their top types differ. Loose pieces show that the part types alone are insufficient because the support relations are missing. Touching supports show another relational constraint. A good update preserves every known positive while excluding the diagnosed near miss. We do not copy the entire negative example into a rule; we identify the smallest relevant difference. Near misses are especially informative because they isolate a boundary feature more clearly than an unrelated negative.`,
+
+  `Compare the two positive arches carefully. Both have three parts, two supports, and two support relations. The support pieces remain bricks. Only the top changes: one example uses a brick and the other a pyramid. Minimal generalization means changing only the property that differs while preserving every shared invariant.
+
+Advance through compare, differ, and generalize. The type hierarchy tells us that brick is a polygon and pyramid is also a polygon. Therefore the least common parent available is polygon, so the top type becomes polygon. The words “isa” mean “is a kind of.” This update covers both examples without discarding the part count or support relations. Replacing the top with the much broader type object would also cover both examples, but it would make a less constrained claim and admit more false positives. Minimal change helps avoid unnecessary overgeneralization.`,
+
+  `The two examples show a brick top and a pyramid top, but they do not by themselves state that both are polygons. That connection comes from the supplied hierarchy. Click brick, pyramid, and then polygon to see how the learner moves upward. The relation brick isa polygon means brick belongs to the parent category polygon; pyramid isa polygon states the same for pyramid.
+
+This background knowledge determines the available generalization. If the hierarchy used a different parent, the same examples could lead to a different candidate. The learner could move all the way to object, but object is broader than necessary and therefore less informative. The preferred step is the least general category that covers both observed types. This page demonstrates a general principle: examples constrain learning, but representation and prior knowledge shape what can be inferred from those examples. Always distinguish observed evidence from relationships supplied in advance.`,
+
+  `Specialization makes the candidate more restrictive so that a near miss no longer matches. Begin with the loose-pieces example. It may contain the right types of parts, but the pieces do not have the support relationships required for an arch. The smallest repair is to require both supports to support the top. We do not memorize the exact positions or colors of the negative case.
+
+The second near miss has support relations, but the uprights touch each other. If valid arches in this representation require separated supports, add a must-not-touch relation. Follow the stages and diagnose the failed relation before revealing the update. Minimal specialization means adding only the constraint necessary to reject the negative while retaining all known positives. An overly detailed rule might exclude valid arches that vary in irrelevant ways. This is the downward movement in concept space: coverage shrinks because additional conditions must now be satisfied.`,
+
+  `Positive examples tell us which regions must be included, but they leave many unobserved cases undecided. A broad boundary can cover every known positive and still include many invalid objects. Near misses carve away specific regions by showing which almost-matching structures must be rejected.
+
+Toggle between positives only and positives plus near misses. The question marks represent cases for which current evidence gives no decisive answer. They are not automatically positive or negative. Ask what next example would be most informative: ideally, it lies near the current boundary and tests one unresolved condition. The learned boundary is justified only relative to the representation, hierarchy, and evidence seen so far. It is not a universal truth about arches. This visual also connects symbolic concept learning to modern classification: both require evidence near the boundary to distinguish useful generalization from overgeneralization.`,
+
+  `This guided practice combines the complete arch-learning sequence. Start from the first positive example and build a semantic network with typed parts and support relations. When the second positive changes only the top type, generalize that node through the hierarchy from brick or pyramid to polygon. Then process the loose-pieces near miss and specialize by requiring the two support relations. Finally, process the touching-supports near miss and add the must-not-touch constraint.
+
+Before selecting each tab, predict the operator and the smallest network change. Keep four sources of information separate. Observed evidence is the positive or near-miss example. Background knowledge is the supplied type hierarchy. Generalization broadens a node type to cover a positive. Specialization adds a relation or condition to exclude a near miss. At every stage, verify both sides of the boundary: all known positives should remain covered, and the diagnosed negative should be rejected for the intended reason.`,
+
+  `Winston's learner performs a form of hill climbing. It makes a local minimal generalization or specialization and moves forward without backtracking to reconsider every earlier choice. That makes the result sensitive to example order. An early unusual example can lead the learner into a region of concept space that later local updates cannot repair well.
+
+Use the audit tabs to examine data quality. Relevant examples match the intended task. Correct labels prevent contradictory updates. Representative data include important variation from the population. Noncontradictory evidence avoids impossible requirements. Boundary-informative examples distinguish nearby candidate concepts. Quantity alone is not sufficient; many redundant examples may teach less than one carefully chosen near miss. The operational lesson is that training data are part of the algorithm's behavior. To trust the final candidate, document example order, labels, coverage gaps, and which boundary cases were actually tested.`,
+
+  `This modern workflow separates model development from final evaluation. First define the problem, population, and metric. Next establish a baseline so improvement has a comparison point. Use the training set to fit parameters and any preprocessing learned from data. Use validation data to compare representations, hyperparameters, or model choices. Only after those choices are fixed should the untouched test set estimate final performance.
+
+Training, validation, and test are roles, not merely file names. If test results influence another round of model selection, the test set has effectively become validation data. Leakage occurs when information unavailable at prediction time, or information from validation or test cases, influences training. Run the check and choose the proper source for scaling parameters: compute them from training data, then apply the fixed transformation elsewhere. The untouched test set connects to Simon's phrase “another task drawn from the same population,” because it provides evidence beyond the examples used to build and tune the system.`,
+
+  `Use this final page to tell the whole story in four sentences. First define what the concept is and distinguish the label from its represented meaning. Second describe a generalization operator and name which new instances it covers. Third describe a specialization prompted by an arch near miss and state which invalid structure it excludes. Fourth audit the claim by naming a possible failure involving example order, data quality, boundary coverage, or leakage.
+
+The reading list provides two layers. The historical source and Winston paper develop symbolic concept learning through structured descriptions. The textbooks connect these foundations to broader machine-learning theory and practice. As you review, keep asking: What was learned? How was it represented? Which evidence caused the update? What evidence would challenge the result? Those questions apply far beyond arches. They are a durable framework for explaining and evaluating any learning system rather than accepting the word “learned” as a complete claim.`,
+] as const;
+
+slides.forEach((slide, index) => {
+  slide.keyPoints = lesson15KeyPoints[index];
+  slide.note = lesson15InstructorNotes[index];
+});
 
 export function Meeting13Deck() {
   return (
     <SourceDeckShell
       meetingLabel="Module 11 · Lesson 15"
       meetingTitle="Machine Learning Foundations and Concept Learning"
-      notesMode="key-points"
+      notesMode="instructor"
       resolveSourceReference={resolveMeeting13SourceReference}
       slides={slides}
       sourceCollectionLabel={SOURCE_DECK_LABEL}
