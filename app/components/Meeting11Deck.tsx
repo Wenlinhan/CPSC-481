@@ -166,14 +166,17 @@ function BellmanExpectationBackup() {
   const lines = [
     {
       label: "Right action",
+      prompt: "Compute Qπ(s,right) from its two possible next states.",
       detail: `Qπ(s,right) = −0.1 + 0.9[0.8(4) + 0.2(2)] = ${right.toFixed(2)}`,
     },
     {
       label: "Left action",
+      prompt: "Compute Qπ(s,left) from its certain next state.",
       detail: `Qπ(s,left) = −0.1 + 0.9[1.0(1)] = ${left.toFixed(2)}`,
     },
     {
       label: "Policy average",
+      prompt: "Weight the two action values by the policy probabilities.",
       detail: `Vπ(s) = 0.75(${right.toFixed(2)}) + 0.25(${left.toFixed(2)}) = ${value.toFixed(3)}`,
     },
   ];
@@ -181,13 +184,15 @@ function BellmanExpectationBackup() {
   return (
     <div className="m11-backup">
       <section>
-        <span>Policy π at state s</span>
+        <span>Invented worked example · policy π at state s</span>
         <h3>π(right|s)=0.75 · π(left|s)=0.25</h3>
-        <p>
-          Immediate reward is −0.1 and γ=0.9. “Right” reaches a state valued 4
-          with probability 0.8 and a state valued 2 with probability 0.2.
-          “Left” reaches a state valued 1.
-        </p>
+        <p className="m11-example-origin"><strong>Where do the numbers come from?</strong> They are synthesized assumptions chosen only to illustrate the page 16 equations—not measured data and not values from another example.</p>
+        <ul className="m11-backup-givens">
+          <li><strong>Both actions:</strong> immediate reward −0.1; discount γ=0.9.</li>
+          <li><strong>Right:</strong> 80% chance of next value 4; 20% chance of next value 2.</li>
+          <li><strong>Left:</strong> 100% chance of next value 1.</li>
+          <li><strong>Policy:</strong> choose Right 75% of the time and Left 25%.</li>
+        </ul>
         <div className="m11-controls">
           <button
             disabled={revealed === lines.length}
@@ -206,8 +211,8 @@ function BellmanExpectationBackup() {
           <li className={index < revealed ? "visible" : ""} key={line.label}>
             <span>{index + 1}</span>
             <div>
-              <strong>{index < revealed ? line.label : "Predict this line"}</strong>
-              <p>{index < revealed ? line.detail : "Name the expectation before revealing it."}</p>
+              <strong>{index < revealed ? line.label : "Try this calculation"}</strong>
+              <p>{index < revealed ? line.detail : line.prompt}</p>
             </div>
           </li>
         ))}
@@ -1180,7 +1185,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Bellman expectation",
     title: "The Bellman equation breaks a long-term value into one step",
     content: <BellmanExpectationBackup />,
-    note: "The Bellman expectation equation breaks a long-term value into one step. For Right, the immediate reward is −0.1, then the possible successor values 4 and 2 are averaged using probabilities 0.8 and 0.2. For Left, the successor value is 1. These calculations produce Qπ for each action. Finally, the policy chooses Right with probability 0.75 and Left with probability 0.25, so Vπ(s) is the weighted average of the two action values. This is policy evaluation: the policy is fixed, and we average over its choices and the environment’s outcomes.",
+    note: "This page is a worked example of the policy and value equations on page 16. Every number is a synthesized assumption chosen to make the arithmetic visible; the numbers are not measured data and do not come from the earlier gridworld. Both actions receive an immediate reward of negative 0.1, and gamma is 0.9. If the agent chooses Right, the environment reaches a next state valued at 4 with probability 0.8 or a state valued at 2 with probability 0.2. The expected next-state value is therefore 0.8 times 4 plus 0.2 times 2, which equals 3.6. Discounting gives 0.9 times 3.6, or 3.24, and adding the immediate reward gives Qπ of s comma Right equal to 3.14. Left certainly reaches a state valued at 1, so negative 0.1 plus 0.9 times 1 gives 0.80. Finally, the fixed policy chooses Right with probability 0.75 and Left with probability 0.25. The policy value is therefore 0.75 times 3.14 plus 0.25 times 0.80, which equals 2.555. The hidden prompt now asks students to perform each specific calculation instead of vaguely saying ‘predict this line.’ This is policy evaluation: the policy is fixed, and we average over both environmental outcomes and the policy’s action choices.",
     sourceSlides: [],
   },
   {

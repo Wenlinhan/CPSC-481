@@ -963,6 +963,25 @@
   line-height: 1.4;
 }
 
+.m11-backup > section > .m11-example-origin {
+  background: #fff8df;
+  border-left: 4px solid #e4a400;
+  border-radius: 9px;
+  font-size: 12px;
+  margin: 8px 0;
+  padding: 8px 10px;
+}
+
+.m11-backup-givens {
+  color: #45536a;
+  display: grid;
+  font-size: 12px;
+  gap: 4px;
+  line-height: 1.3;
+  margin: 7px 0 11px;
+  padding-left: 19px;
+}
+
 .m11-backup > ol {
   align-content: center;
   display: grid;
