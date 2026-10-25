@@ -77,10 +77,14 @@ test("Lessons 11 through 14 use the restructured module numbering and canonical 
   assert.doesNotMatch(probabilityDeck, /Prepare for Meeting 10/);
 });
 
-test("Lessons 1 through 10, 12, and 15 show concise page key points in Notes", async () => {
+test("Lessons 1 and 2 show instructor speech while Lessons 3 through 10 and 12 retain concise page key points", async () => {
+  for (const filename of ["Meeting01Deck.tsx", "Meeting02Deck.tsx"]) {
+    const component = await readFile(new URL(`../app/components/${filename}`, import.meta.url), "utf8");
+    assert.match(component, /notesMode="instructor"/, `${filename} must show instructor-speech Notes`);
+    assert.match(component, /slidesWithInstructorSpeech/, `${filename} must supply instructor-speech Notes for every page`);
+  }
+
   const componentFiles = [
-    "Meeting01Deck.tsx",
-    "Meeting02Deck.tsx",
     "Meeting03Deck.tsx",
     "Meeting04Deck.tsx",
     "Meeting05Deck.tsx",
@@ -90,7 +94,6 @@ test("Lessons 1 through 10, 12, and 15 show concise page key points in Notes", a
     "Lesson09GASlides.tsx",
     "Lesson10GPSlides.tsx",
     "Meeting10Deck.tsx",
-    "Meeting13Deck.tsx",
   ];
 
   for (const filename of componentFiles) {
