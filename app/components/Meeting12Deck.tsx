@@ -581,7 +581,7 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: source slide 30 supplies trial-and-error, feedback, reward, policy, cumulative reward, and exploration. Preview the formal supplements without claiming that they appear in the historical deck.",
+    note: "Reinforcement learning begins with interaction. An agent observes its situation, chooses an action, and then sees what happens. The environment changes and returns a reward that scores the immediate consequence. The agent uses repeated experience to improve its policy, which is the rule it uses to choose actions. Unlike supervised learning, the agent is not usually shown the correct action for every situation. It must try actions, experience delayed consequences, and learn which choices produce high total reward over time. This lesson follows that loop from interaction, to return, to value estimates, and finally to Q-learning and policy improvement.",
     sourceSlides: [30],
   },
   {
@@ -607,7 +607,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: exact L10 Machine Learning Part B slide 30. Ask students to locate trial-and-error, reward, policy, cumulative reward, and exploration in the source image before discussing qualifications.",
+    note: "This page introduces five ideas that appear throughout reinforcement learning. First, learning happens through trial and error. Second, feedback is given as reward rather than as a labeled correct action. Third, a policy connects a situation to an action choice. Fourth, success depends on cumulative reward, so a decision can be useful even when its immediate reward is small. Fifth, exploration matters because the agent cannot learn about an action it never tries. These ideas work together: exploration creates experience, reward evaluates consequences, and the policy changes as the agent learns from that experience.",
     sourceSlides: [30],
   },
   {
@@ -635,7 +635,7 @@ const slides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: source slide 30 plus the package correction ledger. Preserve the source claim in the exact image while using expected return as the technically careful objective.",
+    note: "It is common to say that reinforcement learning finds an optimal policy, but that wording can sound like a guarantee. A more careful statement is that the algorithm tries to learn a policy that maximizes expected return. Whether it succeeds depends on the state representation, the amount and quality of exploration, the data collected, and the assumptions of the learning algorithm. In a large problem, the agent may also use an approximate value function rather than an exact table. Therefore, optimality is a mathematical objective. It is not proof that the learned policy is perfect, safe, or even well tested in every relevant situation.",
     sourceSlides: [30],
   },
   {
@@ -669,7 +669,7 @@ const slides: SourceLessonSlide[] = [
         </article>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: speaker notes attached to source slide 30. Preserve game playing, two-player self-play or human play, elevator scheduling, simulation, retraining, and continued updating. Ask what constitutes state, action, and reward in each domain.",
+    note: "Games and elevator control illustrate the same learning pattern in different settings. In a game, the state is the current position, the actions are legal moves, and the final result can provide reward. The agent may learn through self-play or by playing people. In elevator control, the state includes elevator locations and waiting calls, while actions include moving, stopping, or assigning a car. Reward might reflect waiting time, travel time, or energy use. In both cases, the action changes what happens next, so the agent’s decisions also influence the experience from which it learns.",
     sourceSlides: [30],
   },
   {
@@ -684,7 +684,7 @@ const slides: SourceLessonSlide[] = [
         />
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: exact source slide 32. Have students trace data, model, prediction, true response, and model update. Do not yet treat this supervised online loop as an RL loop.",
+    note: "Batch and online learning describe when a model is updated. In batch learning, the system first collects a fixed dataset, trains on that dataset, and then uses the trained model. In online learning, examples arrive over time and the model is updated incrementally. A prediction can be followed by a true response, and that new evidence changes the model before the next prediction. This distinction is about the update schedule. It does not by itself determine whether the task is supervised learning or reinforcement learning. An online supervised model can receive labels without choosing actions that affect the future data source.",
     sourceSlides: [32],
   },
   {
@@ -716,7 +716,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: exact embedded image25.png from source slide 32, plus the correction ledger for slide 33. The figure itself is a knowledge object and remains fully visible.",
+    note: "Online learning and reinforcement learning can occur together, but they answer different questions. Online learning asks when the model updates: it updates as new examples arrive. Reinforcement learning asks how an agent should act when actions affect future states and rewards. An RL agent may update immediately after every transition, or it may learn later from stored experience. Similarly, an online supervised learner may update continuously without controlling the process that generates its labeled examples. The key distinction is that reinforcement learning involves sequential decisions, action-dependent data, and consequences that can be delayed.",
     sourceSlides: [32, 33],
   },
   {
@@ -731,7 +731,7 @@ const slides: SourceLessonSlide[] = [
         />
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: exact source slide 33. Preserve symbolic/non-symbolic, supervised/unsupervised, batch/online, analogical, deep, reinforcement, and hybrid or universal learning categories.",
+    note: "Machine-learning systems can be classified along several independent dimensions. A method can use symbolic rules, statistical representations, neural networks, or a hybrid. It can learn from labels, discover structure without labels, or learn from reward. It can train from a fixed batch or update online. Deep learning describes a kind of representation, while reinforcement learning describes a sequential decision setting. Because these categories answer different questions, one system can belong to several categories at once. For example, a robot can use deep neural networks, learn from reward, and update its model online.",
     sourceSlides: [33],
   },
   {
@@ -765,7 +765,7 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: source slide 33 plus correction ledger. Explicitly correct the claim that online learning and RL differ only slightly: one concerns update timing; the other concerns sequential action under reward.",
+    note: "This page separates four questions that are often mixed together. Feedback asks what learning signal is available: labels, discovered structure, or reward. Update schedule asks whether learning happens in batches or incrementally. Representation asks whether knowledge is stored symbolically, statistically, neurally, or through a hybrid. Decision setting asks whether the system predicts, plans, or controls a sequence of actions. Reinforcement learning belongs primarily to the decision-setting and reward-feedback dimensions. Online learning belongs to the update-schedule dimension. A reinforcement-learning robot can therefore be online, neural, and reward-based at the same time.",
     sourceSlides: [33],
   },
   {
@@ -788,14 +788,14 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement: the source package explicitly documents that slide 30 has no MDP definition. Map source terminology to S, A, P, R, and gamma; distinguish transition dynamics from the reward function.",
+    note: "A Markov decision process, or MDP, gives us a precise vocabulary for a reinforcement-learning problem. S is the set of states the agent can distinguish. A is the set of available actions. P describes the transition probabilities: what next state may follow an action. R gives the immediate reward. Gamma, written γ, discounts rewards that arrive later. The state should contain enough information to predict the next transition and reward once the action is known. Transition probabilities describe what may happen, while rewards describe how the objective scores what happened. They are related, but they are not the same object.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · observable interaction",
     title: "The agent acts; the environment returns a state and reward",
     content: <InteractionLoopExplorer />,
-    note: "Timing: 3 minutes. Textbook/modern supplement. Walk through s_t, a_t, r_{t+1}, s_{t+1}. Ask which arrow makes RL data action-dependent and why a reward is not equivalent to a supervised target.",
+    note: "At time t, the agent observes state sₜ and selects action aₜ using its policy π. The environment responds with the next state sₜ₊₁ and reward rₜ₊₁. The reward evaluates the consequence, but it does not tell the agent which action would have been correct. The learner updates its value estimates or policy and repeats the loop. The action arrow is crucial because the selected action changes the next experience. This makes reinforcement-learning data action-dependent: the agent partly determines which states and rewards it will observe in the future.",
     sourceSlides: [],
   },
   {
@@ -829,7 +829,7 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Students identify two transition tuples in the displayed elevator episode and contrast episodic games with continuing control.",
+    note: "A trajectory is an ordered record of interaction: state, action, reward, next state, and so on. In this elevator example, the system begins in the lobby, takes the action go up, receives a step cost, reaches floor two, serves a call, and then receives a positive reward. Each transition can be written as a tuple containing the current state, action, reward, and next state. An episode is a trajectory with a natural ending, such as finishing a game. Elevator control may instead be a continuing task with no terminal state, so its objective needs discounting or an average-reward formulation.",
     sourceSlides: [],
   },
   {
@@ -854,14 +854,14 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Define discounted return and expected return. Ask why immediate-reward maximization can fail in a task with delayed consequences.",
+    note: "Return combines the reward received next with rewards that arrive later. Gₜ is the return viewed from time t. Gamma, γ, controls how strongly delayed rewards count. When γ is zero, only the immediate reward matters. When γ lies between zero and one, later rewards still matter but receive progressively smaller weights. For a finite episode, γ can sometimes be one so that all rewards count equally. A policy is evaluated by expected return because transitions and rewards may be uncertain. Maximizing only the immediate reward can fail when a temporary cost leads to a much larger future benefit.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked demonstration · discounting",
     title: "The discount factor changes how much future rewards matter",
     content: <ReturnExplorer />,
-    note: "Timing: 3 minutes. Textbook/modern supplement. Students predict the return for gamma 0, 0.5, 0.9, and 1 before selecting each value. Connect smaller gamma to shorter planning horizons without calling gamma a probability.",
+    note: "The reward sequence stays fixed on this page, but the return changes when γ changes. The first reward is a cost of minus one, followed by zero, and then a goal reward of ten. With γ equal to zero, the agent ignores the delayed goal and sees only minus one. As γ increases, the future goal contributes more to the present return. Gamma is not a probability. It is a weighting factor chosen as part of the objective. A smaller γ creates a shorter effective planning horizon, while a value near one makes distant consequences more important.",
     sourceSlides: [],
   },
   {
@@ -896,21 +896,21 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Contrast policy, V, and Q. Ask which object is sufficient to choose among actions without separately knowing the transition model.",
+    note: "A policy and value function answer different questions. The policy π(a|s) describes how actions are chosen in state s. The state-value function Vπ(s) estimates the expected return from state s when policy π is followed. The action-value function Qπ(s,a) estimates the return after taking action a in state s and then following π. Q is especially useful for control because actions can be compared directly. If the Q-values are accurate, the agent can choose an action with the largest Q(s,a) without separately calculating the transition model at decision time.",
     sourceSlides: [],
   },
   {
     eyebrow: "Live demonstration · exploration as information gathering",
     title: "Should the agent use its best action or test another one?",
     content: <BanditLab />,
-    note: "Timing: 4 minutes. Modern supplement and live demo. Invite students to choose 8-12 pulls. Distinguish reward earned now from information that may improve later choices. A bandit is the one-state special case, not a full gridworld.",
+    note: "This three-arm bandit isolates the exploration problem. Each arm represents an action with an unknown reward pattern. Pulling an arm has two effects: it may earn reward now, and it produces evidence that improves the estimate for that arm. Always choosing the current best estimate exploits existing knowledge, but an early lucky result can cause the agent to ignore a better arm. Trying another arm explores and may improve later choices. A bandit has no changing state, so it is a simplified one-state reinforcement-learning problem rather than a full sequential environment.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · ε-greedy exploration",
     title: "ε-greedy usually exploits and sometimes explores",
     content: <EpsilonGreedyExplorer />,
-    note: "Timing: 3 minutes. Textbook/modern supplement. Compare epsilon 0, 0.1, and 0.5. The dot counts are illustrative, not guaranteed frequencies in every 20-step sample.",
+    note: "The ε-greedy rule balances exploitation and exploration. With probability one minus ε, the agent chooses an action with the largest current Q-value. With probability ε, it chooses an action at random. If ε is zero, the agent never deliberately explores. If ε is 0.1, exploration occurs about ten percent of the time over many decisions. If ε is 0.5, exploration is frequent, producing more information but sacrificing many currently preferred choices. The dots illustrate typical proportions; a short random sequence will not always contain exactly those counts.",
     sourceSlides: [],
   },
   {
@@ -935,21 +935,21 @@ const slides: SourceLessonSlide[] = [
         </SearchCallout>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Parse current estimate, target, temporal-difference error, and step size. Note that terminal successors conventionally contribute zero future value.",
+    note: "The Q-learning equation updates one stored action value after observing a transition. Q(s,a) is the current estimate. The bracketed expression compares that estimate with a one-step target: the immediate reward plus discounted value of the best estimated action in the next state. Their difference is the temporal-difference error. Alpha, α, is the learning rate and controls how far the estimate moves toward the target. Because the target uses the maximum next-action value, Q-learning learns about a greedy target policy even when the behavior policy explores. For a terminal next state, the future-value term is conventionally zero.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked demonstration · one numeric Q update",
     title: "Work a Q-learning update in three steps",
     content: <QUpdateStepper />,
-    note: "Timing: 4 minutes. Textbook/modern supplement. Students predict the sign of the update before arithmetic. Verify the target 3.5, TD error 1.5, and updated Q value 2.3.",
+    note: "Here the current Q-value is 2. The observed reward is minus one, gamma is 0.9, and the best next-state Q-value is 5. First compute the target: minus one plus 0.9 times 5 equals 3.5. Next compute the temporal-difference error: 3.5 minus the current estimate 2 equals 1.5. Because the error is positive, the estimate should move upward. Finally, multiply the error by the learning rate 0.2 and add it to the old value. The new Q-value is 2.3, which moves partway—not all the way—toward the target.",
     sourceSlides: [],
   },
   {
     eyebrow: "Interactive demonstration · tabular gridworld",
     title: "Repeated experience spreads goal information through the Q-table",
     content: <GridworldStudio />,
-    note: "Timing: 4 minutes. Modern classroom demo. The displayed Q values are pedagogical snapshots rather than a claim of exact convergence under a specified stochastic process. Ask why unsampled actions remain uncertain.",
+    note: "The gridworld shows how reward information moves backward through experience. Initially, every action at Start has the same estimate. A failed route lowers estimates for actions along that path. A successful route produces a positive goal reward, and later updates make actions leading toward that route more valuable. After repeated episodes, moving right becomes the greedy choice at Start. The table learns only from sampled transitions, so actions that have not been tried remain uncertain. These snapshots illustrate the learning pattern; they are not claiming exact convergence for a fully specified stochastic environment.",
     sourceSlides: [],
   },
   {
@@ -980,14 +980,14 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Textbook/modern supplement. Trace one loop with the Lesson 14 gridworld. Keep behavior policy, target policy, terminal handling, and table-size limitation explicit.",
+    note: "Tabular Q-learning repeats a local update. Initialize a Q-value for each state-action pair. Observe the current state and select an action using a behavior policy such as ε-greedy. Execute the action, then observe the reward and next state. Update the one Q-entry toward the reward plus discounted maximum next-state Q-value. Move to the next state and repeat until the episode ends. The behavior policy explores, while the target in the update is greedy, which makes Q-learning off-policy. A table works only when the state-action space is small enough to enumerate.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Q-learning versus SARSA",
     title: "Q-learning and SARSA use different next-action targets",
     content: <TDComparison />,
-    note: "Timing: 3 minutes. Textbook/modern supplement. Compare only the one-step targets. Use a risky path example: SARSA can price in exploratory actions, while Q-learning evaluates the greedy next action.",
+    note: "Q-learning and SARSA differ in the next-action value placed in the target. Q-learning uses the maximum estimated Q-value at the next state, so it evaluates what a greedy policy would do next. SARSA uses the Q-value of the action that the behavior policy actually selected. This makes Q-learning off-policy and SARSA on-policy. In a risky environment, an exploratory policy may occasionally take unsafe actions. SARSA can incorporate that exploratory risk into its values, while Q-learning evaluates the greedy next action even if the observed behavior continues to explore.",
     sourceSlides: [],
   },
   {
@@ -1007,14 +1007,14 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Modern supplement. Use the elevator case to surface reward design, fairness, safety, and simulation-to-reality shift. Emphasize that reward is a specification and can be incomplete.",
+    note: "A high training reward is not enough to establish that a policy is useful or safe. Interaction may be expensive or dangerous, and an agent can exploit a poorly designed reward rather than accomplish the intended goal. Learning can also become unstable, especially when bootstrapping, off-policy data, and function approximation interact. A policy trained in simulation may fail when real dynamics change. Exploration that is acceptable in a game may be unacceptable in an elevator or medical system. Evaluation should therefore include baselines, multiple scenarios, variation across runs, safety constraints, and checks for reward loopholes—not only the best training score.",
     sourceSlides: [],
   },
   {
     eyebrow: "Guided practice · calculate, classify, diagnose",
     title: "Practice the calculation and explain what each result means",
     content: <GuidedPracticeStudio />,
-    note: "Timing: 4 minutes. Run the four cases in pairs. Require visible work for return and Q update, exact terminology for policy selection, and an evidence-based reward-function diagnosis.",
+    note: "This practice page brings together four skills. For the return problem, attach the correct power of gamma to each delayed reward before adding. For the Q-learning update, separate the target, temporal-difference error, and learning-rate step. For the policy problem, identify the largest Q-value and then consider how a nonzero epsilon would change action selection. For the diagnosis problem, distinguish an algorithm error from a reward-design error. If a robot earns points by spinning instead of delivering, the optimizer may be working correctly while the reward is an incomplete proxy for the intended task.",
     sourceSlides: [],
   },
   {
@@ -1045,7 +1045,7 @@ const slides: SourceLessonSlide[] = [
         </aside>
       </div>
     ),
-    note: "Timing: 3 minutes. Collect the three-part response after students commit to the multiple-choice distinction. Calculation: target 4, error 4, update 1. Require one concrete reward-specification risk.",
+    note: "The strongest distinction is that reinforcement-learning actions affect future data and rewards can be delayed. Online supervised learning can update from arriving labeled examples without controlling their source. For the calculation, the target is r plus gamma times the largest next Q-value: 2 plus 0.5 times 4 equals 4. The old Q-value is zero, so the error is 4. With alpha equal to 0.25, the update adds one, producing a new Q-value of 1. A complete answer should also name a concrete risk that reward misses, such as safety, fairness, energy cost, or undesirable shortcuts.",
     sourceSlides: [],
   },
   {
@@ -1079,7 +1079,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: exact source slide 36. Correct George F. Luger and McGraw-Hill in course text while leaving the exact historical render untouched. Assign the synthesis paragraph and the specified textbook chapters.",
+    note: "The lesson can now be summarized as one connected loop. Interaction produces transitions and rewards. Return combines immediate and delayed rewards into the objective. Value functions estimate the long-term consequences of states and actions. Q-learning updates an action value from one observed transition, and a policy improves by favoring actions with larger Q-values while preserving enough exploration to keep learning. The readings extend this foundation with formal convergence arguments, alternative control methods, and broader treatment of reinforcement learning. As you read, keep asking which assumptions concern the environment, which concern the objective, and which concern the learning algorithm.",
     sourceSlides: [36],
   },
 ];
