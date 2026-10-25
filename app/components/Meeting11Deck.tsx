@@ -137,16 +137,21 @@ function DiscountReturnExplorer() {
           ))}
         </div>
         <div className="m11-return-total">
-          <span>Discounted return</span>
-          <strong>G<sub>t</sub> = {total.toFixed(2)}</strong>
-          <p>
-            γ controls how quickly later rewards lose weight; it does not express
-            uncertainty and it does not repair a poorly chosen reward.
+          <span>Discounted return from the current step t</span>
+          <p className="m11-return-formula">
+            G<sub>t</sub> = r<sub>t</sub> + γr<sub>t+1</sub> + γ<sup>2</sup>r<sub>t+2</sub> + …
           </p>
+          <strong>G<sub>t</sub> = {total.toFixed(2)}</strong>
+          <p className="m11-return-working">
+            {gamma.toFixed(1) === "0.9"
+              ? "5 + 0.9(0) + 0.9²(8) + 0.9³(2) = 12.938 ≈ 12.94"
+              : `${terms.map(value => value.toFixed(2)).join(" + ")} = ${total.toFixed(2)}`}
+          </p>
+          <p>“Starting at t” means begin with the reward received now, then add every later reward with an increasing power of γ.</p>
         </div>
       </section>
       <p className="m11-notation-footnote"><strong>Notation:</strong>
-        G<sub>t</sub> is the return starting at time t; r is a reward; γ (gamma) is the discount factor; and γ<sup>i</sup> means apply the discount i steps into the future.
+        G<sub>t</sub> is the total discounted reward counted from time t onward; r<sub>t+i</sub> is the reward i steps after t; γ (gamma) is the discount factor; i counts how many steps into the future a reward occurs; and γ<sup>i</sup> applies the corresponding discount.
       </p>
     </div>
   );
@@ -1133,7 +1138,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Return and discount",
     title: "Return adds today’s reward to later rewards",
     content: <DiscountReturnExplorer />,
-    note: "The numbers 5, 0, 8, and 2 are not observations, probabilities, or values copied from the weather or gridworld examples. They are invented rewards for a small delivery episode: 5 for picking up a package, 0 for a travel step, 8 for completing the delivery, and 2 for an on-time bonus. We use this simple sequence only to see what discounting does. The return Gₜ is the total reward viewed from time t. It starts with the current reward and adds later rewards after discounting them. The discount factor γ controls how quickly future rewards lose weight: γⁱ means the reward i steps ahead is multiplied by γ raised to i. With γ=0, only the immediate reward matters. With γ=0.9, later rewards still matter substantially. With γ=1, the listed rewards receive equal weight. Gamma expresses how the objective values time; it is not a measure of uncertainty in the environment.",
+    note: "The numbers 5, 0, 8, and 2 are not observations, probabilities, or values copied from the weather or gridworld examples. They are invented rewards for a small delivery episode: 5 for picking up a package, 0 for a travel step, 8 for completing the delivery, and 2 for an on-time bonus. We use this sequence only to see what discounting does. The return Gₜ means the total discounted reward counted from the current time t onward. Under the convention on this page, the formula is Gₜ=rₜ+γrₜ₊₁+γ²rₜ₊₂ and so on. The reward received now has exponent zero, so it keeps its full weight. Each reward one step farther away receives one more factor of gamma. With gamma equal to 0.9, the calculation is 5 plus 0.9 times 0, plus 0.9 squared times 8, plus 0.9 cubed times 2. Those terms are 5, 0, 6.48, and 1.458. Their sum is 12.938, which the page rounds to 12.94. With γ=0, only the immediate reward matters. With γ=1, the listed rewards receive equal weight. Gamma expresses how the objective values time; it is not a measure of uncertainty in the environment.",
     sourceSlides: [],
   },
   {

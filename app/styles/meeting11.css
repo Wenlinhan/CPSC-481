@@ -874,14 +874,30 @@
 }
 
 .m11-return-total > strong {
-  font-size: clamp(26px, 2.8vw, 42px);
-  margin: 12px 0;
+  font-size: clamp(24px, 2.5vw, 38px);
+  margin: 8px 0;
 }
 
 .m11-return-total > p {
   color: #eeebff;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.35;
   margin: 0;
+}
+
+.m11-return-total > .m11-return-formula {
+  color: white;
+  font-size: clamp(14px, 1.15vw, 18px);
+  margin-top: 9px;
+}
+
+.m11-return-total > .m11-return-working {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff7bd;
+  font-weight: 800;
+  margin-bottom: 8px;
+  padding: 7px;
 }
 
 .m11-policy-value {
