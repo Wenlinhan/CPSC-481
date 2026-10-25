@@ -1,3 +1,4 @@
+import { lesson10InstructorSpeech } from "../data/lesson10InstructorSpeech";
 "use client";
 /* eslint-disable @next/next/no-img-element -- course-source assets are versioned static files */
 
@@ -25,7 +26,7 @@ function resolveSource(sourceSlide: number): CourseSourceReference {
 
 function slide(eyebrow: string, title: string, content: ReactNode, sourceSlides: number[], minutes: number, subtitle?: string): SourceLessonSlide {
   const refs = sourceSlides.map(page => page >= 100 ? `L08-${page - 100}` : `L07-${page}`).join(", ");
-  return { eyebrow, title, content, sourceSlides, minutes, subtitle, note: `Timing: ${minutes} minutes. Explain the mechanism from ${refs}; prompt a prediction before revealing the next state.` };
+  return { eyebrow, title, content, sourceSlides, minutes, subtitle, note: "Let’s explain the mechanism, predict what happens next, and then compare the prediction with the revealed state." };
 }
 
 function Tag({ children, tone = "indigo" }: { children: ReactNode; tone?: "indigo" | "teal" | "amber" | "coral" }) {
@@ -381,8 +382,10 @@ export const lesson10Slides: SourceLessonSlide[] = [
   slide("Synthesis · Exit ticket", "A population method is only as meaningful as its representation and feedback", <Exit/>, alife(28), 2),
 ];
 
+const lesson10SlidesWithSpeech = lesson10Slides.map((slide, index) => ({ ...slide, note: lesson10InstructorSpeech[index] }));
+
 export function Lesson10Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" notesMode="key-points" resolveSourceReference={resolveSource} slides={lesson10Slides} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
+  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 10" meetingTitle="Genetic Programming, Artificial Life, and Swarm Intelligence" notesMode="key-points" resolveSourceReference={resolveSource} slides={lesson10SlidesWithSpeech} sourceCollectionLabel="L07_GP + L08_ArtificialLife" sourceCollectionPath="l07-gp-l08-alife"/>;
 }
 
 

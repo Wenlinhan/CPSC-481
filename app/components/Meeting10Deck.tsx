@@ -326,7 +326,7 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 2 minutes. Retrieve joint, conditional, product, and chain rules. Frame the lesson as representation plus inference, not merely formula manipulation.",
+    note: "We are moving from raw probability tables to structured probability models. The central question is which variables still matter after the right evidence is known. Independence removes factors globally; conditional independence removes them only inside a stated context. Bayesian networks turn local conditional-independence claims into a directed acyclic graph plus compact local tables. Inference then multiplies those local factors, sums hidden variables, and normalizes. Naive Bayes uses an especially strong version of this idea for fast classification. Think of a crowded group chat. A rumor may connect everyone until the original announcement is revealed; after that, some messages add no new information. The conditioning variable is the announcement, not a magical delete button. By the end, you should be able to test independence, read a network factorization, trace exact enumeration, compute a Naive Bayes score, and defend every simplifying assumption. A graph is a model claim, not decorative arrow confetti.",
     sourceSlides: [],
   },
   {
@@ -354,7 +354,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. State the positive-probability condition for conditional forms and distinguish exact mathematical independence from an approximation.",
+    note: "Independence is a statement about a probability distribution, not a statement that two English words sound unrelated. Start with X independent of Y, written X perpendicular to Y. The first conditional form says P of x given y equals P of x whenever P of y is positive. In plain language, learning y does not move our belief about x. The positive-denominator condition matters because conditioning on an impossible event is undefined, not mysterious. The second form reverses the roles: P of y given x equals P of y. The third form removes conditioning entirely: P of x and y equals P of x times P of y for every pair x comma y. To see the equivalence, substitute the product rule P of x and y equals P of x given y times P of y. If the conditional is unchanged, replace P of x given y with P of x, and the factorized joint appears. Divide the factorized joint by P of y and the conditional form returns. For a finite table, independence is an all-cells claim. Imagine a quality inspector checking a carton of eggs: one cracked egg disproves 'all intact,' while one intact egg proves almost nothing. Likewise, a single cell where P of x comma y differs from P of x times P of y disproves independence. Establishing independence requires the equality for every assignment, subject to ordinary rounding tolerance when probabilities are estimated. Exact independence is often rare in empirical data, so distinguish three positions: mathematically independent in the specified distribution, approximately independent for a decision tolerance, or simply assumed independent for tractability. A professional report states which position it takes and what evidence could overturn it. The symbol is compact; the burden of justification is not.",
     sourceSlides: [35],
   },
   {
@@ -394,7 +394,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: L12 Part B slide 3. Preserve the formula and the modeling-assumption warning. Contrast parameter counts without claiming real variables are usually independent.",
+    note: "Factorization is a compression rule. Without assumptions, a joint distribution over n binary variables assigns probability mass to two to the n complete assignments. With mutual independence, the joint becomes the product over i of P of X sub i, so a complete row can be reconstructed by multiplying one local probability from each variable. The storage comparison on screen is two to the n joint rows versus two n marginal entries. For twenty binary variables, that is one million forty-eight thousand five hundred seventy-six joint rows versus forty marginal entries. That dramatic reduction is why independence is computationally tempting. It is also why an unjustified independence assumption can be dramatically wrong: one small sentence controls an enormous number of reconstructed cells. Think of a restaurant menu. Listing every possible meal combination grows explosively. If drink, side, and dessert choices are independent, we store three short menus and combine them. But if the soup always comes with bread, multiplying separate menus invents orders the kitchen never serves. Factorization saves representation by asserting regularity; it does not manufacture truth. The universal quantifier is the guardrail: every assignment must satisfy the product equality. Before accepting the compressed representation, test the assumption, measure approximation error, and ask whether mistakes affect the downstream decision. Saving memory is useful; saving memory by forgetting dependence is less charming.",
     sourceSlides: [3],
   },
   {
@@ -410,7 +410,7 @@ const slides: SourceLessonSlide[] = [
         <IndependenceTableCheck />
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: L12 Part B slide 4. Students test hot,sun first, then verify the remaining P2 cells. Emphasize that proof requires all cells but disproof needs one counterexample.",
+    note: "We now test three tables, not three vibes. The rightmost table is the product model P of T times P of W. From the displayed marginals, P of hot is point five, P of cold is point five, P of sun is point six, and P of rain is point four. Multiplication predicts four cells: hot-sun point three, hot-rain point two, cold-sun point three, and cold-rain point two. Compare P one with that product table. Its hot-sun cell is point four, but independence predicts point three because point five times point six equals point three. That one mismatch is enough: P one does not factorize. We could stop the disproof there, though the remaining cells also differ. One counterexample breaks a universal claim with the efficiency of a single banana peel in a dignified hallway. Now compare P two cell by cell. Hot-sun is point three, hot-rain point two, cold-sun point three, and cold-rain point two. All four entries match P of T times P of W. The rows and columns also reproduce the stated marginals. Therefore P two factorizes, while P one does not. This conclusion comes from equality of distributions, not from P two merely looking more symmetric. Make the logical asymmetry explicit before revealing the answer: one mismatch disproves independence; every cell match is needed to establish it. Then reveal the analysis and connect the arithmetic to the formal definition from the previous slides. The example is the definition running on actual numbers. Reveal the analysis. P two factorizes because all four cells match the marginal products. P one fails immediately at hot and sun: point four is not point three. Keep the asymmetric rule visible—one counterexample disproves, while every cell is needed to establish independence.",
     sourceSlides: [4],
   },
   {
@@ -434,7 +434,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Ask students for P(H,T,H)=0.5^3 and why fairness alone does not logically imply independence.",
+    note: "For three fair independent flips, the sequence heads, tails, heads has probability one half cubed, or point one two five. Fairness supplies the marginals; independence is the additional permission to multiply them. For n flips, the sequence probability factorizes into a product of n local terms. We avoid listing two to the n complete sequences, even though all those outcomes still exist. The model stores the repeatable mechanism. A fair coin can still be dependent over time. Imagine a device that chooses the first flip fairly and then copies it. Every individual flip may look balanced, but sequences are highly constrained. Fair marginals do not guarantee independent trials. When someone multiplies probabilities, ask what independence statement licenses the multiplication. The multiplication sign often hides the most important modeling decision on the page.",
     sourceSlides: [36, 5],
   },
   {
@@ -457,7 +457,7 @@ const slides: SourceLessonSlide[] = [
         </figure>
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: L12 Part B slide 6. Elicit candidate variables before naming conditional independence. Avoid claiming the relationship without a model or data.",
+    note: "Smoke and an alarm may be associated because both respond to fire. Before we observe fire, smoke changes our belief about the alarm because it provides indirect evidence about their shared cause. After the fire state is known, a simplified model may say smoke adds no further information about the alarm. Fire screens the two effects off. That is conditional independence, not unconditional independence. Picture two students arriving late because the same bus broke down. Their arrival times move together until the bus status is known. Once the shared cause is fixed, one student's delay may tell us nothing additional about the other. The word may is essential. Real alarms can respond directly to smoke, and hidden sensor faults can create extra dependence. Conditional independence follows from a proposed model and must be tested.",
     sourceSlides: [6],
   },
   {
@@ -489,7 +489,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: L12 Part B slide 8. Preserve both equivalent equations. Ask why unconditional independence is rare and why conditioning can create a more useful claim.",
+    note: "Conditional independence adds a context. X independent of Y given Z means that inside each fixed Z stratum, the conditional joint factorizes: P of x comma y given z equals P of x given z times P of y given z. The vertical bar means 'given,' so Z is not decoration; it changes the distribution being tested. The two equivalent conditional forms say P of x given y comma z equals P of x given z, and symmetrically P of y given x comma z equals P of y given z. Once z is known, learning the other variable adds no further information. Derive the first form by dividing the conditional joint factorization by P of y given z whenever that denominator is positive. Operationally, partition or model the data by Z, then test the relationship inside every valid stratum. A pooled association can disappear after conditioning because Z explains it. This is the statistical version of discovering that two coworkers always arrive together because they ride the same bus; after bus status is known, one arrival may add nothing about the other. Read the quantifier carefully: the equality must hold for all relevant x, y, and z values. Conditional independence is neither 'sometimes unrelated' nor a license to choose only the convenient stratum. These local claims are the representational engine behind Bayesian networks and the class-conditional shortcut in Naive Bayes.",
     sourceSlides: [8],
   },
   {
@@ -515,7 +515,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: L12 Part B slide 7. Derive one equivalent statement from another with the product rule. Preserve both cavity and no-cavity cases shown in the figure.",
+    note: "Let Cavity be the conditioning variable, Toothache one effect, and Catch the event that a dental probe catches in the tooth. Toothache and Catch may be associated before cavity status is known because both provide evidence about the same underlying condition. The first equation says P of Catch given Toothache and Cavity equals P of Catch given Cavity. Once cavity status is fixed, Toothache adds no information about Catch. The second equation is the symmetric statement with Toothache and Catch exchanged. These are not two different assumptions; with valid denominators they describe the same conditional independence relation. The third equation is the factorized conditional joint: P of Toothache comma Catch given Cavity equals P of Toothache given Cavity times P of Catch given Cavity. Apply the conditional product rule, then replace P of Catch given Toothache comma Cavity with P of Catch given Cavity. The algebra makes the screening-off claim explicit. The equality must be considered for cavity present and cavity absent. Real dental data can violate it through inflammation, probe technique, or an unmodeled condition affecting both observations. The mathematics tells us what the model asserts; clinical evidence tells us whether the assertion survives contact with teeth, which are famously uncooperative data structures.",
     sourceSlides: [7],
   },
   {
@@ -527,7 +527,7 @@ const slides: SourceLessonSlide[] = [
         <CommonCauseCheck x="Traffic" y="Umbrella" cause="Raining" />
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: L12 Part B slide 9. Students draw Rain→Traffic and Rain→Umbrella, then state Traffic independent of Umbrella given Rain as a testable assumption.",
+    note: "Traffic and umbrella use can move together because rain influences both. Before rain is known, an umbrella is evidence about weather and therefore indirectly about traffic. In the simple fork graph, Raining points to Traffic and Umbrella. Conditioning on the common cause blocks that path, yielding Traffic independent of Umbrella given Raining. The arrow picture is a compressed set of probability claims. It does not mean every umbrella causes traffic or every traffic jam causes umbrellas. The common parent explains the observed association. Reveal the defensible claim only after predicting it. Then identify possible violations such as a stadium event that simultaneously changes traffic and umbrella use even within the same rain condition. Reveal the defensible rain claim. Traffic and Umbrella may be associated before conditioning because both carry evidence about Rain. In the proposed fork model, fixing Rain blocks the path. This remains a claim to test against events, geography, and behavior outside the simple graph.",
     sourceSlides: [9],
   },
   {
@@ -539,7 +539,7 @@ const slides: SourceLessonSlide[] = [
         <CommonCauseCheck x="Smoke" y="Alarm" cause="Fire" />
       </div>
     ),
-    note: "Timing: 3 minutes. Provenance: L12 Part B slide 10. Surface counterexamples: smoke can directly trigger a detector, and a latent sensor fault may affect Alarm. Conditional independence follows the proposed model, not the nouns alone.",
+    note: "The same fork pattern uses Fire as a common cause of Smoke and Alarm. In the simplified graph, observing fire blocks the only path connecting the two effects. Conditional independence therefore reads Smoke independent of Alarm given Fire. Notice that this is a property of the represented distribution, not a conclusion extracted from the English nouns. A real smoke detector often has a direct smoke-to-alarm mechanism. Add that edge and the screening-off claim changes. A latent sensor fault could also couple smoke readings and alarm behavior. Use the reveal to state the simplified claim, then critique it. Good probabilistic modeling alternates between exploiting a structure and asking which real mechanisms the structure omitted. Reveal the simplified fire claim. Smoke is independent of Alarm given Fire only in a model with no direct smoke-to-alarm mechanism and no hidden common fault. The reveal demonstrates the formal graph; our critique demonstrates responsible use of it.",
     sourceSlides: [10],
   },
   {
@@ -565,7 +565,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Provenance: L12 Part B slide 11. Have students name which formulas are identities and which are modeling assumptions.",
+    note: "Conditional probability is a definition: P of x given y equals P of x comma y divided by P of y. Rearranging gives the product rule, P of x comma y equals P of x given y times P of y. These are identities whenever the denominator exists; no independence assumption has entered yet. The chain rule repeatedly applies the product rule. For an ordered list x one through x n, multiply P of x i conditioned on all earlier variables. Any joint distribution can be written this way in any order, although different orders produce different-looking factors. Independence is the simplifying assumption. If X is independent of Y, P of x given y becomes P of x, so the product rule shortens to P of x times P of y. Conditional independence similarly removes selected variables from a conditioning set. Think of the chain rule as a guaranteed full packing list; independence is permission to cross out items proven irrelevant. When reading a derivation, label each step identity, arithmetic, or assumption. The most dangerous line is often the innocent-looking one where a conditioning variable disappears. If no independence claim justifies that disappearance, the algebra has performed a magic trick and hidden the rabbit in the model assumptions.",
     sourceSlides: [11],
   },
   {
@@ -593,35 +593,35 @@ const slides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "Timing: 3 minutes. Clearly label this as a textbook-grounded supplement: Russell and Norvig, 3e, Chapters 13-14. L11 Part A and selected L12 slides do not themselves teach Bayesian-network semantics.",
+    note: "A Bayesian network is a directed acyclic graph, or DAG, plus one local probability distribution per node. Each node is a random variable with a defined domain. Each directed edge says that the child distribution is represented as depending locally on that parent. Acyclic means no directed path can loop back to where it started, so the factorization has a consistent ordering. Burglary is a root variable, so it has a prior P of B. Earthquake is another root with prior P of E. Both point to Alarm, giving the conditional table P of A given B comma E. Alarm points to JohnCalls and MaryCalls, producing P of J given A and P of M given A. The graph is a compact index of which conditioning variables each local table needs. The thief who appears for Burglary is a memory cue, not a claim that cartoon criminals follow probability theory. The screen shake at Earthquake marks the second root cause. Alarm is their shared effect, while the two calls are downstream observations. This five-node story will let us compute a posterior without storing all thirty-two binary assignments as an undifferentiated table. An arrow does not automatically prove causation. A Bayesian network always defines probabilistic factorization; causal interpretation requires stronger assumptions about mechanisms and interventions. Read each node operationally: name its domain, parents, and local table. If those are missing, the arrows are decorative spaghetti with excellent posture.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · DAG and CPT factorization",
     title: "CPTs: local tables form the joint distribution",
     content: <NetworkFactorizationExplorer />,
-    note: "Timing: 3 minutes. Use the canonical burglary–earthquake–alarm–calls network. Students select each node, state its parents, and assemble P(B,E,A,J,M)=P(B)P(E)P(A|B,E)P(J|A)P(M|A).",
+    note: "The complete joint has one local factor for each node. Burglary contributes P of B and Earthquake contributes P of E because roots have no parents. Alarm contributes P of A given B comma E. JohnCalls contributes P of J given A, and MaryCalls contributes P of M given A. Multiplying those five terms gives P of B comma E comma A comma J comma M. Every variable appears once as the left-hand variable of a local factor, and every factor conditions only on the node's parents. This is not an arbitrary recipe; it is the Bayesian-network semantics. The representation saves parameters. A full five-variable binary joint has thirty-two rows and thirty-one free parameters after normalization. The local tables need one parameter for each root, four for Alarm's parent configurations, and two each for JohnCalls and MaryCalls: nine free parameters total in this binary example. Walk through every control. For each selected node, identify its parents and say why its factor has that conditioning set. Then rebuild the product from memory. A missing factor loses probability mass; a duplicated factor counts evidence twice; an extra parent throws away the very compactness the graph was designed to provide. Select E. Earthquake is a root, so its local factor is the prior P of E. Select A. Alarm has Burglary and Earthquake as parents, so its table is P of A given B and E. Select J. JohnCalls has only Alarm as a parent, giving P of J given A. Select M. MaryCalls likewise contributes P of M given A. We have now visited every local factor in the joint.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · Graphical independence",
     title: "When does one observation change another belief?",
     content: <GraphicalIndependenceStudio />,
-    note: "Timing: 3 minutes. Introduce only the d-separation patterns needed here: common cause and collider. Make conditioning sets explicit and demonstrate explaining away at Alarm.",
+    note: "Graphical independence depends on path structure and the conditioning set. A common cause is blocked when the cause is observed. A collider behaves oppositely: it blocks a path until the collider or one of its descendants is observed. In the burglary network, JohnCalls and MaryCalls become independent given Alarm. Burglary and Earthquake are independent before Alarm is observed because Alarm is a collider. Observing Alarm opens the path and creates explaining away. If the alarm sounds and we learn there was an earthquake, burglary becomes less necessary as an explanation. Competing causes become dependent once their shared effect is known. Cycle through all three cases and say the conditioning set every time. The phrase independent in the graph is incomplete unless we know which nodes are observed. Choose Collider closed. Burglary and Earthquake are independent before Alarm or its descendants are observed because the unobserved collider blocks their path. Choose Explaining away. Observing Alarm opens the collider path, so evidence for Earthquake changes belief in Burglary. Competing causes become dependent through their observed effect. Return to Common cause. Conditioning on Alarm blocks the fork from Alarm to the two callers, making JohnCalls independent of MaryCalls given Alarm in this network.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · Exact inference",
     title: "Both neighbors called: what must we calculate?",
     content: <EnumerationPlan />,
-    note: "Timing: 3 minutes. Textbook-grounded supplement. Students identify Earthquake and Alarm as hidden. Connect exponential enumeration to the value of factor structure.",
+    note: "Exact enumeration separates variables into three roles. The query is what we want to know, evidence is fixed by observation, and hidden variables are neither queried nor observed. For P of Burglary given JohnCalls and MaryCalls, B is the query, j and m are evidence, and Earthquake plus Alarm are hidden. For each query value, enumerate every assignment of the hidden variables. With two hidden binary variables, that means four products for B true and four more for B false. Each product uses the network factorization P of B, P of E, P of A given B comma E, P of j given A, and P of m given A. The formula P of X given e equals alpha times the sum over hidden y of the product of local factors compresses that procedure. Sigma means add compatible hidden worlds. Pi means multiply one local probability per node. Alpha is the normalization constant that makes the query values sum to one. Enumeration is conceptually transparent but repeats work exponentially. Variable elimination improves the mechanics by multiplying and summing factors in a useful order, caching intermediate results instead of recomputing every storyline. Before arithmetic, always name query, evidence, hidden variables, and the number of hidden assignments.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook-grounded supplement · Worked network",
     title: "From two phone calls to a burglary probability",
     content: <EnumerationTrace />,
-    note: "Timing: 5 minutes. Use canonical CPTs: P(B)=.001, P(E)=.002; Alarm .95/.94/.29/.001; John .90/.05; Mary .70/.01. Predict before each step. The posterior is approximately .284, not near one.",
+    note: "The canonical burglary network uses P of B equal point zero zero one and P of E equal point zero zero two. Alarm is very likely when burglary or earthquake occurs, but false alarms remain possible. John and Mary are likely to call when Alarm is true, yet each can also call without an alarm. Two calls are strong evidence, not a notarized confession from the universe. For B true, sum four terms over e and a. Each term multiplies P of b, P of e, P of a given b comma e, P of j given a, and P of m given a. The resulting unnormalized mass is zero point zero zero zero five nine two two four three. Repeat for B false. The unnormalized no-burglary mass is zero point zero zero one four nine one eight five eight, which is larger because the no-burglary prior is enormous even though the calls favor an alarm. Evidence updates a prior; it does not erase it. Normalize the two masses by their sum, zero point zero zero two zero eight four one zero zero. The posterior P of burglary given both calls is about zero point two eight four. Belief jumps from point one percent to twenty-eight point four percent—a huge update, but still far from certainty. Walk every Next step and connect the displayed number to the operation that produced it. Click Next to expand the five local network factors and the two hidden sums. Click Next to sum the four hidden assignments compatible with burglary and both calls. Click Next to compute the larger no-burglary mass. Evidence raises burglary belief without erasing alternative explanations. Click Next to normalize both masses. The burglary posterior is about point two eight four, a large update from the prior but far from certainty.",
     sourceSlides: [],
   },
   {
@@ -653,21 +653,21 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Retain the apple/not-apple hypotheses; size, color, shape features; trained class priors and class-conditional feature probabilities. Correct marginal independence to conditional independence.",
+    note: "Naive Bayes starts with the class C and features F one through F n. The exact conditional joint could use a chain rule with growing conditioning sets. The naive approximation replaces it with the product over i of P of F i given C, asserting that features are conditionally independent once the class is fixed. This is not marginal independence. Size, color, and shape can be strongly associated across all fruit because apples, grapes, and bananas occur in different proportions. The model says that within a fixed class, the remaining dependencies are small enough to ignore for the intended prediction. The classification score is P of C times the product of feature likelihoods. The evidence denominator P of the observed features is identical for every class, so it can be omitted when computing an argmax. That is why unnormalized scores are sufficient to choose a label. The approximation can work surprisingly well, but correlated features may double-count evidence. If 'contains the word free' and 'contains the phrase free money' are nearly duplicates, multiplying both likelihoods can make spam confidence shout through a megaphone. Inspect dependence and calibration, not only accuracy.",
     sourceSlides: [37],
   },
   {
     eyebrow: "Naive Bayes · Classifier decision",
     title: "MAP: choose the most probable class after evidence",
     content: <MAPExplanation />,
-    note: "Timing: 3 minutes. Correct terminology: including the class prior yields MAP. Ask why multiplying many small probabilities motivates log-space computation.",
+    note: "The decision rule chooses the class c hat that maximizes P of C times the product of P of evidence item i given C. Because the class prior P of C is included, this is maximum a posteriori, or MAP, classification. Maximum likelihood would compare only the feature likelihood product. The prior acts like a starting-line advantage. A common class begins with more probability mass; a rare class can still win if its features are much more diagnostic. Priors can come from class frequencies or justified domain knowledge, but they should match the deployment population rather than yesterday's convenient spreadsheet. Multiplying many probabilities can underflow to zero in floating-point arithmetic. Software therefore computes log scores: log P of C plus the sum over i of log P of e i given C. Logarithms turn products into sums while preserving the maximizing class. Unseen feature values can also create zeros, so use an appropriate smoothing method such as Laplace or additive smoothing. Report the likelihood model, prior, smoothing, and evaluation data. 'We used Naive Bayes' is a family name, not a reproducible model specification.",
     sourceSlides: [38],
   },
   {
     eyebrow: "Naive Bayes · Fruit example",
     title: "From labeled fruit to an apple prediction",
     content: <FruitClassificationFlow />,
-    note: "Timing: 4 minutes. Retain the training/features/hypotheses/testing sequence and correct its 'maximum likelihood' wording to posterior or MAP classification.",
+    note: "Training counts classes and feature values within each class, or estimates distribution parameters for a chosen variant. Testing plugs a new example into those learned local probabilities and compares posterior scores. The statistics depend on the variant. Gaussian Naive Bayes estimates means and variances; multinomial models estimate token counts; Bernoulli models estimate binary presence; categorical models estimate value frequencies. A model labeled Naive Bayes is a family name, not a complete specification. Asking which likelihood model was used is like asking what kind of vehicle arrived after hearing only that it was transportation. Use held-out data to compare accuracy, calibration, and error types. Training likelihood is evidence about fit to observed data, not a guarantee of reliable future decisions.",
     sourceSlides: [39],
   },
   {
@@ -694,7 +694,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the phone-state graph and speaker note. Explicitly correct the label: a probabilistic finite-state acceptor is not evidence of a Naive Bayes factorization.",
+    note: "The phone graph represents sequential alternatives and transition probabilities. It is useful probabilistic structure, but it is not itself evidence of a Naive Bayes feature factorization. Each state summarizes position in a phone sequence; arcs carry possible observations or transitions. Decoding searches paths whose local probabilities combine into a sequence score. This is closer to route planning through a pronunciation network than to placing independent feature cards under a class. The graph remembers order, which ordinary bag-of-features Naive Bayes discards. Name the model you actually have. Probabilistic does not mean Naive Bayes, and a graph does not automatically mean Bayesian network. Representation and factorization determine the category.",
     sourceSlides: [40],
   },
   {
@@ -724,7 +724,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Preserve the candidate list, Brown/Switchboard corpus sizes, and why 'the' appears. Ask students to distinguish prior from likelihood.",
+    note: "We score candidate words using Bayes: P of word given the phone evidence ni is proportional to P of ni given word times P of word. The first factor is a phone or acoustic likelihood; the second is a corpus prior. The omitted evidence denominator is shared across candidates and therefore does not affect the ranking. Read the prior table. Knee appears sixty-one times, giving about point zero zero zero zero two four. Need appears one thousand four hundred seventeen times, and new two thousand six hundred twenty-five times. The word the is extremely common at point zero four six, but a high prior cannot rescue a zero likelihood for the observed phone sequence. A perfect local phone match can lose to a more frequent candidate with a slightly weaker match. This is the same prior-versus-likelihood negotiation used in medical diagnosis and spam filtering. The prior whispers 'usually'; the likelihood replies 'this evidence.' The posterior score decides which voice is louder. Predict before seeing the product table. Then state which column is prior, which will be likelihood, and why their product is only an unnormalized posterior. Also ask whether the corpus matches the speaker and domain; a courtroom, a kitchen, and a gaming stream do not share identical word priors.",
     sourceSlides: [41],
   },
   {
@@ -753,7 +753,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Preserve all note answers: P(ni|the)=0; phone-only winner new; 'I new' is implausible; two-word context favors 'I need'; the displayed score omits I.",
+    note: "Multiply each phone likelihood by its word prior. New scores point three six times point zero zero one, giving point zero zero zero three six, the largest displayed product. Neat yields about point zero zero zero zero six eight, need about point zero zero zero zero six two, knee point zero zero zero zero two four, and the receives zero because its phone likelihood is zero. The local winner is therefore new. Notice that knee has a perfect phone likelihood of one, but its tiny prior makes its product smaller. A perfect match to a rare candidate need not beat a good match to a more common candidate. Now add the preceding word I. 'I need' is plausible; 'I new' is not standard English. The displayed calculation omits that contextual factor, so a sequence or language model can rerank the candidates. Local evidence proposes; context disposes. Even Sherlock Holmes would ask what came before the suspicious syllable. The repair is representational: include contextual variables or use a sequence model. Do not merely tune the same phone-only table harder. Track every factor and every omitted dependency, then test on held-out speech from the intended domain. The best isolated word score need not produce the best sentence.",
     sourceSlides: [42],
   },
   {
@@ -786,14 +786,14 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 3 minutes. Retain efficiency, irrelevant-feature, real/discrete/streaming, dependency violation, and relationship-aware solution ideas while applying the documented qualifications.",
+    note: "Naive Bayes trains quickly, predicts quickly, and works with discrete, continuous, or streaming data through different likelihood variants. Its small local statistics are often strong baselines. The main weakness is dependence among features after conditioning on class. Correlated or duplicated features can multiply similar evidence several times, producing overconfident scores even when accuracy remains reasonable. Irrelevant features are not magically harmless. Weak features may wash out, but noisy estimation, duplication, and distribution shift can still hurt. Simplicity is a benefit, not an immunity certificate. Compare variants, use smoothing, inspect calibration, and consider richer networks or sequence models when relationships matter. The right question is not whether Naive Bayes is naive; it is whether its assumptions are useful enough here.",
     sourceSlides: [43],
   },
   {
     eyebrow: "In-class assessment · Audit the model claim",
     title: "Can we trust this Naive Bayes classifier?",
     content: <ClassifierTrustPanel />,
-    note: "Timing: 4 minutes. Run all four claims. Students revise one claim, identify evidence needed to test it, and explain when a Bayesian network or richer sequence model would be preferable.",
+    note: "The audit presents four tempting claims about Naive Bayes. Each is close enough to sound plausible and wrong enough to damage a report. Good model literacy means repairing the exact statement. The assumption is conditional, not marginal, independence. Including a prior yields MAP. Parameter estimates depend on the variant. Irrelevant or duplicated features can hurt through noise and repeated evidence. Treat the audit like code review for equations. A claim can run without throwing a syntax error and still produce the wrong scientific result. Precise terminology is part of model correctness. Cycle through all four claims. For each, state the correction, identify evidence needed to test it, and name when a Bayesian network or richer sequence model would be preferable. Choose Decision. With a class prior included, the classifier is MAP; maximum likelihood omits the prior. Choose Parameters. Only Gaussian Naive Bayes estimates means and variances; other variants learn counts or categorical probabilities. Choose Robustness. Correlated or duplicated features can repeat evidence and distort confidence, so irrelevant does not mean harmless. Return to Assumption. Features are conditionally independent given the class, not marginally independent across the full population.",
     sourceSlides: [],
   },
   {
@@ -824,7 +824,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 4 minutes. Correct George F. Luger and Stuart Russell. Collect the four-part exit ticket. Close by connecting conditional independence to later probabilistic and sequential models.",
+    note: "The lesson's through-line is structured simplification. Independence and conditional independence remove unnecessary dependencies; Bayesian networks encode local structure; inference recombines factors; Naive Bayes trades realism for efficient classification. A complete explanation names variables and domains, the factorization, observed evidence, hidden variables, the query, and the assumption that licenses each simplification. Leaving out the conditioning set is leaving out the model. The practical habit is assumption accounting. Every time a product becomes shorter, write down why. Every time a graph omits an edge, ask what independence that omission asserts. Every time a classifier is confident, inspect repeated evidence. Exit with four abilities: test a table, read a DAG, trace enumeration, and audit a classifier. If you can defend the structure instead of merely reciting a formula, you can transfer this lesson to much larger probabilistic systems.",
     sourceSlides: [44],
   },
 ];

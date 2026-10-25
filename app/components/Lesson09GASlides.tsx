@@ -1,3 +1,4 @@
+import { lesson09InstructorSpeech } from "../data/lesson09InstructorSpeech";
 "use client";
 
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
@@ -15,7 +16,7 @@ function slide(eyebrow: string, title: string, content: ReactNode, sourceSlides:
     sourceSlides,
     minutes,
     subtitle,
-    note: `Timing: ${minutes} minutes. Use the visual to explain the mechanism, prompt a prediction, and connect the answer to source pages ${sourceSlides.join(", ")}.`,
+    note: `Let’s use this visual to understand the mechanism, make a prediction, and explain what the result means.`,
   };
 }
 
@@ -204,6 +205,8 @@ export const lesson09Slides: SourceLessonSlide[] = [
   slide("Synthesis · exit", "Representation determines what evolution can discover", <Synthesis/>, [21,22], 2),
 ];
 
+const lesson09SlidesWithSpeech = lesson09Slides.map((slide, index) => ({ ...slide, note: lesson09InstructorSpeech[index] }));
+
 export function Lesson09Deck({ forcePrintAll = false }: { forcePrintAll?: boolean }) {
-  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" notesMode="key-points" slides={lesson09Slides} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
+  return <SourceDeckShell forcePrintAll={forcePrintAll} meetingLabel="Module 6 · Lesson 9" meetingTitle="Evolutionary Computation and Genetic Algorithms" notesMode="key-points" slides={lesson09SlidesWithSpeech} sourceCollectionLabel="L06_Bio&GA" sourceCollectionPath="l06-bio-ga"/>;
 }
