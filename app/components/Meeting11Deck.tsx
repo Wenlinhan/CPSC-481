@@ -514,6 +514,7 @@ function GridworldValueIteration() {
 function PolicyExtractionLab() {
   const values = gridSweeps[30];
   const [selected, setSelected] = useState("2-0");
+  const selectedLabel = `s${selected.replace("-", "")}`;
   const actionRows = gridActions
     .map(action => ({
       ...action,
@@ -531,14 +532,23 @@ function PolicyExtractionLab() {
         values={values}
       />
       <section>
-        <span>Selected state · {selected}</span>
+        <span>Selected state · {selectedLabel} (row {selected[0]}, column {selected[2]})</span>
         <h3>Extract π*(s) by taking argmax<sub>a</sub> Q(s,a)</h3>
+        <div className="m11-policy-instructions">
+          <strong>How to use the grid</strong>
+          <ol>
+            <li><b>Click an ordinary square.</b> The purple outline marks the selected state. The wall and terminal states cannot be selected.</li>
+            <li><b>Read the square.</b> Its number is the settled value V*(s); its arrow is the currently extracted best action.</li>
+            <li><b>Compare the four rows.</b> Each Q-value uses −0.04 + 0.9V*(successor) because moves are deterministic here.</li>
+            <li><b>Find the green row.</b> It has the largest Q-value, so its action becomes π*(s).</li>
+          </ol>
+        </div>
         <div className="m11-notation-box"><strong>Notation:</strong> π*(s) = optimal action at state s; Q(s,a) = value of taking action a at s; argmax<sub>a</sub> = choose the action with the largest Q-value.</div>
         <ol>
           {actionRows.map((action, index) => (
             <li className={index === 0 ? "best" : ""} key={action.id}>
               <strong>{action.symbol} {action.label}</strong>
-              <span>to {action.successor}</span>
+              <span>to s{action.successor.replace("-", "")}</span>
               <b>{action.q.toFixed(3)}</b>
             </li>
           ))}
@@ -1340,7 +1350,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Policy extraction",
     title: "When values settle, choose the best next action",
     content: <PolicyExtractionLab />,
-    note: "Once the value table has stabilized, we can extract a policy with one-step lookahead. At a selected state, we compute Q(s,a) for each available action using the final values of successor states. The policy chooses argmax, the action with the largest expected return. If two actions tie, a deterministic policy may choose either one, while a stochastic policy may divide probability between them. The resulting arrows are not universal instructions. They depend on the transition model, the reward design, the discount factor, and the state representation.",
+    note: "Once the value table has stabilized, this page lets us extract a policy with one-step lookahead. Start by clicking any ordinary grid square. The selected state receives a purple outline. The wall cannot be entered, and the plus-1 and minus-1 terminal cells end the episode, so those cells are not selectable. Inside each ordinary square, the decimal number is the settled optimal state value V-star of s. The arrow is the action currently selected by the greedy policy. After a cell is selected, the panel on the right evaluates Up, Right, Down, and Left. Because this demonstration has deterministic movement, each action has one successor and its action value is negative 0.04 plus 0.9 times the settled value of that successor. If an action hits the grid edge or wall, the successor is the same current state, which models staying in place. The action rows are sorted from highest to lowest Q-value. The green row is the maximum, so its action becomes pi-star of s. Try several cells and notice that the arrow usually follows the high-value route toward plus 1 while avoiding minus 1. If two actions tie, a deterministic policy may choose either maximizer, while a stochastic policy may divide probability between them. The arrows are not universal instructions: changing the transition model, reward, discount factor, or state representation can change the extracted policy.",
     sourceSlides: [],
   },
   {
