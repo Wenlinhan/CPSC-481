@@ -20,6 +20,19 @@ type SlideRecord = {
   minutes: number;
 };
 
+function NotationGuide({ items }: { items: Array<[string, string]> }) {
+  return (
+    <aside className="m21-notation-guide" aria-label="Notation used on this page">
+      <strong>Notation on this page</strong>
+      <div>{items.map(([symbol, meaning]) => <span key={`${symbol}-${meaning}`}><b>{symbol}</b> = {meaning}</span>)}</div>
+    </aside>
+  );
+}
+
+function WithNotation({ children, items }: { children: ReactNode; items: Array<[string, string]> }) {
+  return <div className="m21-with-notation"><div className="m21-notation-content">{children}</div><NotationGuide items={items} /></div>;
+}
+
 const retrievalDocs = [
   {
     id: "D1",
@@ -475,6 +488,34 @@ function MetricCard({
   );
 }
 
+const lesson21InstructorNotes = [
+  `RAG stands for retrieval-augmented generation. Before an LLM answers, the application searches an external collection and places relevant passages into the model's input. Model weights provide broad learned patterns; retrieved evidence provides specific, current, or private information. Retrieval changes the input at inference time and does not retrain the model. Think of this as giving a writer an approved source folder before asking for an answer. The writer can still misunderstand the sources, so access to evidence is helpful but not sufficient. Today we will trace the full path from governed documents to retrieved passages, an assembled prompt, an answer, and citations.`,
+  `The goal is to understand a complete evidence pipeline, not only memorize the acronym RAG. You should be able to trace a question through ingestion, retrieval, and generation; explain parsing, chunking, embeddings, and indexes; control what reaches the model with top-k, filters, and metadata; and diagnose the earliest failed stage. Keep asking two questions: what object exists here, and what evidence shows that this stage worked? A testable RAG system exposes source identity, chunks, scores, retrieved IDs, prompt contents, answer claims, and citation links instead of showing only a polished final response.`,
+  `A fluent model may lack the fact needed for a question. The fact may be newer than training, private, expressed differently across sources, or difficult to trace after generation. RAG retrieves evidence at request time and places it in the model's context. That can reduce unsupported answers, but it does not guarantee truth. A missing document, scrambled parse, weak ranking, stale version, or unfaithful generator can still produce an error. We therefore evaluate the pipeline stage by stage rather than assuming that retrieval automatically creates reliability.`,
+  `Choose the architecture based on what must change. RAG fits facts that are external, frequently updated, private, or must be cited. Fine-tuning fits repeated behavior, style, or task patterns encoded in model parameters. Long context fits a bounded set of documents already in hand. These approaches can be combined. A tuned model can retrieve, and a RAG system still uses a context window. Retrieval also adds latency, cost, security boundaries, and new failure modes, so it should be justified by the task rather than added by default.`,
+  `Use the controls to inspect ingestion, retrieval, and generation. Ingestion happens before the query: collect, parse, chunk, embed, and index documents. Retrieval encodes a particular question and returns top-ranked passages. Generation packages instructions, the question, and those passages for the LLM. Notice that the external index is outside the model. At each phase ask a concrete check: are sources current and permitted, did the needed passage enter top-k, and does every generated claim follow from the supplied evidence?`,
+  `Our worked example uses course-policy documents. Begin by choosing authoritative sources such as the current syllabus and assignment page. Record ownership, version, date, access rules, and a stable identifier. If two versions disagree, the system needs a rule for which one is current. If a source is private, authorization must be enforced before its text enters retrieval or a prompt. A sophisticated index built from stale or unauthorized files is still a poor knowledge system. Retrieval quality cannot exceed the coverage and governance of its source collection.`,
+  `Ingestion makes evidence retrievable. Collect authoritative documents and provenance, parse them while preserving reading order and structure, split them into useful chunks, and attach metadata such as title, section, date, access group, and source URL. Very small chunks may be precise but incomplete. Very large chunks preserve context but add unrelated text. There is no universal best chunk size. Test the ingestion design against representative questions and the structure of the source type—policy, FAQ, scientific article, table, or code.`,
+  `A PDF records page layout, not guaranteed reading order. Toggle raw and structure-aware parsing. Raw extraction may interleave columns, repeat headers, or detach labels from values. Structure-aware parsing tries to preserve sections, tables, pages, and source locations. Scanned pages may require OCR, while equations and code need specialized handling. A PDF that looks correct to a reader can still produce corrupted retrieval text. Inspect extracted content before tuning embeddings or ranking; if parsing broke the evidence, every later stage works from the wrong representation.`,
+  `Chunking defines the units retrieval can return. Start with meaningful boundaries such as headings, paragraph groups, tables, or code blocks, then apply token limits when necessary. Carry document ID, version, section path, page, and permissions with each chunk. A useful chunk should preserve enough context to answer a target question. Fixed windows are simple but can separate a rule from its exception. Structure-aware splitting reduces that risk. Choose the strategy from retrieval tests on real questions, not by copying one token count from another system.`,
+  `Use this interaction to see the chunk tradeoff. Smaller fixed chunks can match a narrow phrase, but an answer may be split across boundaries. Section-based chunks preserve meaning but may include extra text. Overlap repeats boundary content and can repair a split, but it increases duplication, index size, prompt cost, and repeated evidence. Predict the result before changing each control. The goal is not maximum overlap; it is a complete and focused evidence unit. Record the chunk strategy so results can be reproduced and compared.`,
+  `An embedding model maps queries and passages to fixed-length vectors. The two-dimensional scene is only an intuition; real embeddings have many dimensions. Nearby vectors indicate similar use in context, so “When is the brief due?” may retrieve a passage containing “submission deadline.” Use compatible embedding models for queries and passages, normalize when the metric expects it, and re-index after changing the model or chunks. Proximity creates candidates, not proof. We still need the readable passage and an evidence check to decide whether a nearby result answers the question.`,
+  `Sparse retrieval matches weighted terms and is strong for exact identifiers, names, and rare words. Dense retrieval embeds queries and passages and helps with paraphrases. Hybrid retrieval combines both and may rerank a shortlist. In the notation guide, q is the query, d is a document, e is the embedding function, sim is a ranking score, and cos means cosine similarity. Dense retrieval is not automatically better than lexical search. A course number or API name may require exact matching, while a phrase such as “turn in” versus “submission” benefits from semantic search.`,
+  `Cosine similarity compares vector direction. The dot product q dot d is divided by the vector lengths, and theta is the angle between them. A larger score may rank a passage earlier. It is not a probability of relevance and not a truth score. A score such as 0.88 depends on the model, metric, corpus, normalization, index settings, and query. Read the bars as relative ordering in this setup. Relevance thresholds and ranking choices must be calibrated with judged examples from the actual application.`,
+  `A large corpus is expensive to scan completely for every question. A vector index organizes approximate neighborhoods so search visits promising regions first. It stores vectors and metadata behind stable chunk IDs. The query returns IDs and scores, and the application resolves those IDs to readable passages. Approximate search trades some recall for speed, so its settings must be evaluated. Keep vector search separate from evidence storage: the source store preserves original text, provenance, version, and permissions needed for review and citation.`,
+  `Top-k means the k highest-ranked passages. Start with k equal to one and ask whether the evidence packet answers both parts of the question. Increasing k may improve coverage, but it also adds noise and prompt cost. The notation guide defines k, top-k, and stable chunk IDs. A larger k is not always better, and it is never a substitute for authorization. Course, term, document version, and access filters should be applied before prompt assembly. Choose k by measuring retrieval and answer behavior on representative tasks.`,
+  `Users and documents may describe the same idea with different words. A user says “turn in,” while the policy says “submission.” Dense retrieval can help with paraphrase; lexical retrieval may be stronger for CPSC 481 or an exact API name. Query rewriting can add likely document terminology, but it may change intent, so keep the original query and test rewrites. Retrieval failure may come from vocabulary mismatch rather than missing evidence. Inspect the query, document wording, and candidate list before changing the generator.`,
+  `Many systems retrieve a broad candidate set quickly, then rerank a smaller shortlist with a more expensive model. A bi-encoder supports efficient search; a cross-encoder reads each query-passage pair together and can improve ordering. Reranking cannot recover a passage that the first stage never found. Metadata filtering should occur before sensitive text enters the prompt. Time, product, tenant, language, and permission fields are control mechanisms, not decoration. This page previews the quality methods developed in Lesson 22.`,
+  `The prompt is a controlled evidence package containing system instructions, retrieved passages with stable IDs, and the user's question. The example answer addresses both parts and cites D2 and D3. But citation strings are generated text unless the application binds them to actual retrieved records. The backend should know which source IDs were supplied, and the interface should resolve them to readable passages. Instructions such as “answer only from evidence” help, but the application must still check whether claims are supported and whether unsupported details were added.`,
+  `A useful citation leads from a specific claim to the exact supporting passage. Check entailment, completeness, resolution, and abstention. Entailment asks whether the passage supports the claim. Completeness asks whether every checkable claim is covered. Resolution asks whether the reader can open the correct version and location. Abstention asks whether the answer stops when evidence runs out. Decorative citations can look trustworthy while pointing to irrelevant text. Stable IDs, section paths, page locations, and version data make attribution inspectable.`,
+  `Evaluate retrieval separately from generation. Recall at k measures how much needed evidence appeared in the top k; precision at k measures how much of those results was relevant. MRR rewards placing the first relevant result high, while nDCG scores ranked usefulness. At the generation layer, faithfulness asks whether claims follow from context, and task quality asks whether the answer is correct, complete, and appropriately abstains. Perfect retrieval can still be followed by an unfaithful answer, and a good answer can hide weak retrieval on an easy question.`,
+  `When the final answer is wrong, debug from the earliest stage. If the correct source never appears, inspect corpus coverage and parsing. If it exists but ranks low, inspect query wording, chunking, embeddings, lexical search, and filters. If evidence reaches the prompt but the answer contradicts it, inspect generation. If a citation resolves incorrectly, inspect attribution binding. Retain the query, filters, retrieved IDs and scores, prompt version, response, latency, and cost. These artifacts make the failure testable rather than mysterious.`,
+  `Retrieved text crosses a trust boundary. A malicious document can contain instructions aimed at the model, creating indirect prompt injection. Treat passages as quoted data, not trusted instructions. Enforce permissions before retrieval, separate system directions from external content, allow-list tools and actions, validate outputs, and log source IDs without exposing secrets. RAG adds capability by connecting the model to external sources, but it also expands the attack surface. Relevant text is not automatically safe text.`,
+  `For guided practice, design the smallest experiment that can reveal failures. Choose a narrow authoritative corpus and write answerable, unanswerable, paraphrased, and permission-sensitive questions. Define parsing and chunking, choose retrieval, record top-k and filters, and specify how evidence enters the prompt. Decide which intermediate artifacts and outcomes you will score. The goal is not a production platform today. It is a controlled loop where a failure can be traced to corpus, parsing, retrieval, ranking, generation, attribution, or security.`,
+  `RAG can improve freshness, access to private sources, and attribution, but it cannot create certainty. Success depends on governance, parsing, chunking, retrieval coverage, focused ranking, faithful generation, resolvable citations, evaluation, and security. Many of these stages lie outside the LLM, which is why RAG is best understood as an evidence pipeline. When presenting a result, state what corpus was searched, which passages were retrieved, how claims were checked, and what remains uncertain.`,
+  `The next lesson develops hybrid retrieval, reranking, grounding, citation verification, and evaluation design. Use the readings according to the mechanism you want to study: original RAG, dense passage retrieval, sentence embeddings, or RAG evaluation. The one-sentence summary is: prepare governed evidence, retrieve relevant passages, package them with the question, generate an answer, and verify claims and citations. RAG makes evidence available and inspectable; it creates opportunities for reliability, not an automatic guarantee of truth.`,
+];
+
 export function RagDeck() {
   const [current, setCurrent] = useState(0);
   const [overviewOpen, setOverviewOpen] = useState(false);
@@ -488,7 +529,7 @@ export function RagDeck() {
       {
         eyebrow: "Module 14 · Lesson 21",
         minutes: 2,
-        title: "RAG Foundations",
+        title: "RAG gives an LLM external evidence before it answers",
         subtitle: "Retrieval-Augmented Generation as an evidence pipeline",
         content: (
           <div className="hero-layout">
@@ -526,7 +567,7 @@ export function RagDeck() {
       {
         eyebrow: "Learning objectives",
         minutes: 1,
-        title: "By the end of class, you can…",
+        title: "By the end, you can trace and diagnose a complete RAG pipeline",
         content: (
           <div className="objective-grid">
             {[
@@ -549,7 +590,7 @@ export function RagDeck() {
       {
         eyebrow: "The problem",
         minutes: 3,
-        title: "A fluent answer is not necessarily an informed answer",
+        title: "A fluent answer may still be missing current or private evidence",
         content: (
           <div className="split">
             <div>
@@ -585,7 +626,7 @@ export function RagDeck() {
       {
         eyebrow: "Architecture choice",
         minutes: 3,
-        title: "RAG is one tool—not the answer to every problem",
+        title: "Use RAG when the missing information should come from external sources",
         subtitle: "Choose the mechanism that matches what must change",
         content: <StrategyCompare />,
         note:
@@ -594,7 +635,7 @@ export function RagDeck() {
       {
         eyebrow: "System view",
         minutes: 3,
-        title: "RAG is a pipeline, not a single model",
+        title: "RAG is a sequence of evidence-handling steps—not one model",
         content: <Pipeline />,
         note:
           "Walk left to right. Ask which stages require an LLM. Retrieval can use learned encoders, but the pipeline is not simply 'ask one LLM twice.'",
@@ -602,7 +643,7 @@ export function RagDeck() {
       {
         eyebrow: "Worked example · 1 of 3",
         minutes: 3,
-        title: "Build a governed course-policy corpus",
+        title: "Start with a controlled collection of course-policy sources",
         content: (
           <div className="media-split">
             <figure className="photo-card">
@@ -635,7 +676,7 @@ export function RagDeck() {
       {
         eyebrow: "Ingestion",
         minutes: 3,
-        title: "Before retrieval: make evidence retrievable",
+        title: "Before searching, prepare documents so evidence can be found",
         content: (
           <div className="ingestion-grid">
             <article>
@@ -679,7 +720,7 @@ export function RagDeck() {
       {
         eyebrow: "Document parsing",
         minutes: 3,
-        title: "A PDF is a layout—not a clean text stream",
+        title: "A PDF preserves page layout, but retrieval needs clean reading order",
         subtitle: "Retrieval begins with reading order, structure, and provenance",
         content: <ParsingVisual />,
         note:
@@ -688,7 +729,7 @@ export function RagDeck() {
       {
         eyebrow: "Structure-aware chunking",
         minutes: 4,
-        title: "Chunk around meaning, not just a token count",
+        title: "Split documents at meaningful boundaries, not only by token count",
         content: (
           <div className="chunk-principles">
             <div className="section-document">
@@ -716,7 +757,7 @@ export function RagDeck() {
       {
         eyebrow: "Interactive checkpoint",
         minutes: 4,
-        title: "Chunk size and overlap trade precision for continuity",
+        title: "Smaller chunks improve focus; overlap helps preserve continuity",
         content: <ChunkingLab />,
         note:
           "Have students predict the result before toggling each control. Smaller chunks are focused but may fragment an answer. Larger chunks preserve context but add noise. Overlap can repair boundaries while increasing duplication, cost, and repeated evidence.",
@@ -724,7 +765,7 @@ export function RagDeck() {
       {
         eyebrow: "Representation",
         minutes: 3,
-        title: "Embeddings turn meaning into a neighborhood",
+        title: "Embeddings place similarly used text near each other",
         content: (
           <div className="embedding-layout">
             <EmbeddingScene />
@@ -749,8 +790,9 @@ export function RagDeck() {
       {
         eyebrow: "Retrieval",
         minutes: 3,
-        title: "Three ways to find evidence",
+        title: "Lexical, dense, and hybrid search find evidence differently",
         content: (
+          <WithNotation items={[["q", "query"], ["d", "document or passage"], ["e(·)", "embedding function"], ["sim(q,d)", "similarity score used to rank d for q"], ["cos", "cosine similarity"]]}>
           <div className="retriever-grid">
             <article className="retriever sparse">
               <Tag tone="gray">Lexical</Tag>
@@ -774,6 +816,7 @@ export function RagDeck() {
               <small>Strength: coverage · Risk: more tuning and cost</small>
             </article>
           </div>
+          </WithNotation>
         ),
         note:
           "Do not frame dense retrieval as an automatic replacement for BM25. Ask for examples where an exact course number or API name should dominate semantic similarity.",
@@ -781,8 +824,9 @@ export function RagDeck() {
       {
         eyebrow: "Vector search",
         minutes: 3,
-        title: "Similarity creates a ranking—not a truth score",
+        title: "Similarity ranks candidates; it does not measure truth",
         content: (
+          <WithNotation items={[["q", "query vector"], ["d", "document vector"], ["q · d", "dot product"], ["‖q‖, ‖d‖", "vector lengths"], ["θ", "angle between the vectors"]]}>
           <div className="similarity-layout">
             <SimilarityVisual />
             <div className="ranking-notes">
@@ -796,6 +840,7 @@ export function RagDeck() {
               </ol>
             </div>
           </div>
+          </WithNotation>
         ),
         note:
           "Stress that 0.88 is not 88 percent relevant. Similarity scores are useful for ordering candidates and must be calibrated empirically for the specific application.",
@@ -803,7 +848,7 @@ export function RagDeck() {
       {
         eyebrow: "Vector index",
         minutes: 3,
-        title: "Search the neighborhood without scanning the corpus",
+        title: "A vector index searches promising neighborhoods instead of every chunk",
         content: <VectorIndexVisual />,
         note:
           "Keep index internals conceptual: vectors and metadata are stored behind stable chunk IDs, approximate search visits promising neighborhoods, and returned IDs resolve to readable evidence. HNSW details belong in an advanced systems course.",
@@ -811,15 +856,15 @@ export function RagDeck() {
       {
         eyebrow: "Worked example · 2 of 3",
         minutes: 4,
-        title: "Top-k decides which evidence reaches the model",
-        content: <RetrievalLab />,
+        title: "Top-k controls how many retrieved passages reach the model",
+        content: <WithNotation items={[["k", "number of passages returned"], ["top-k", "the k highest-ranked candidates"], ["ID", "stable identifier used to recover the original chunk"]]}><RetrievalLab /></WithNotation>,
         note:
           "Start at k=1. Ask students to predict whether the generator can answer before changing k. Then discuss the precision-recall tradeoff. Metadata filters such as course, term, and access should run before prompt assembly; top-k is not a substitute for authorization.",
       },
       {
         eyebrow: "Query–document mismatch",
         minutes: 4,
-        title: "Users and documents often describe the same idea differently",
+        title: "A user and a document may describe the same idea with different words",
         content: <MismatchVisual />,
         note:
           "Toggle keyword, dense, and rewritten queries. Ask which approach helps a course number such as CPSC 481 and which helps a paraphrase such as turn in versus submission. Hybrid retrieval and reranking are previewed next and developed in Meeting 22.",
@@ -827,7 +872,7 @@ export function RagDeck() {
       {
         eyebrow: "Meeting 22 preview",
         minutes: 1,
-        title: "Retrieve wide, then spend effort on the shortlist",
+        title: "Retrieve many candidates quickly, then rerank a smaller list carefully",
         content: (
           <div className="rerank-layout">
             <RerankVisual />
@@ -850,7 +895,7 @@ export function RagDeck() {
       {
         eyebrow: "Worked example · 3 of 3",
         minutes: 3,
-        title: "The prompt is a controlled evidence package",
+        title: "The prompt packages instructions, the question, and retrieved evidence",
         content: (
           <div className="prompt-layout">
             <div className="prompt-stack">
@@ -889,7 +934,7 @@ export function RagDeck() {
       {
         eyebrow: "Grounding and attribution",
         minutes: 3,
-        title: "A citation is useful only when the claim resolves to evidence",
+        title: "A useful citation must lead from a claim to the exact supporting passage",
         content: (
           <div className="citation-layout">
             <div className="claim-card">
@@ -921,8 +966,9 @@ export function RagDeck() {
       {
         eyebrow: "Quality boundary",
         minutes: 3,
-        title: "Evaluate the retriever and generator separately",
+        title: "Measure retrieval quality separately from answer quality",
         content: (
+          <WithNotation items={[["Recall@k", "fraction of needed evidence found in the top k"], ["Precision@k", "fraction of top-k results that are relevant"], ["MRR", "mean reciprocal rank of the first relevant result"], ["nDCG", "ranking score that rewards useful results near the top"]]}>
           <div className="evaluation-layout">
             <div className="metric-column">
               <span className="column-label">Retrieval layer</span>
@@ -955,6 +1001,7 @@ export function RagDeck() {
               Meeting 22 develops hybrid retrieval, reranking, citation checks, and evaluation.
             </Callout>
           </div>
+          </WithNotation>
         ),
         note:
           "Keep this as a boundary-setting preview. Students need only distinguish retrieval coverage from answer faithfulness today. Meeting 22 develops the metrics and experimental design.",
@@ -962,7 +1009,7 @@ export function RagDeck() {
       {
         eyebrow: "Failure analysis",
         minutes: 3,
-        title: "Debug the earliest broken stage",
+        title: "When an answer fails, inspect the earliest broken pipeline stage",
         content: (
           <div className="failure-table" role="table" aria-label="RAG failures and interventions">
             <div className="failure-table-row header" role="row">
@@ -995,7 +1042,7 @@ export function RagDeck() {
       {
         eyebrow: "Security and trust",
         minutes: 3,
-        title: "Retrieved text is untrusted input",
+        title: "Retrieved documents are data—not trusted instructions",
         content: (
           <div className="security-layout">
             <figure className="photo-card security-photo">
@@ -1026,7 +1073,7 @@ export function RagDeck() {
       {
         eyebrow: "Guided practice",
         minutes: 6,
-        title: "A minimum viable RAG experiment",
+        title: "Build the smallest RAG experiment that can reveal where it fails",
         content: (
           <div className="studio-layout">
             <div className="studio-brief">
@@ -1057,7 +1104,7 @@ export function RagDeck() {
       {
         eyebrow: "Synthesis",
         minutes: 2,
-        title: "RAG adds evidence—not certainty",
+        title: "RAG can add evidence, but it cannot guarantee a correct answer",
         content: (
           <div className="summary-layout">
             <div className="summary-list">
@@ -1086,7 +1133,7 @@ export function RagDeck() {
       {
         eyebrow: "Sources and next class",
         minutes: 2,
-        title: "Continue from foundations to RAG quality",
+        title: "Next: improve retrieval, citations, and evaluation",
         content: (
           <div className="references-layout">
             <div>
@@ -1130,7 +1177,7 @@ export function RagDeck() {
         note:
           "Close by connecting the next meeting to the weaknesses students identified today. The references are primary sources and suitable starting points for technical reading.",
       },
-    ],
+    ].map((slide, index) => ({ ...slide, note: lesson21InstructorNotes[index] })),
     [],
   );
 
