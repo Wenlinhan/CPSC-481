@@ -434,8 +434,8 @@ function MetricsLab() {
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Machine learning · Part A",
-    title: "Decision trees: from examples to explainable rules",
-    subtitle: "Loan-risk classification, ID3, entropy, information gain, and responsible evaluation.",
+    title: "How a decision tree turns examples into understandable rules",
+    subtitle: "Use loan records to build, read, calculate, and evaluate a classifier.",
     content: (
       <div className="m14-cover">
         <SourceFrame
@@ -455,14 +455,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning objectives · Knowledge map",
-    title: "Represent, induce, calculate, interpret, and evaluate",
+    title: "Five things you will learn to do",
     content: <LessonRoadmapExplorer />,
     note: "Timing: 1 minute. The assessment evidence will be one tree trace, one information-gain explanation, one rule, and one justified metric choice.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 1 · Learning problem",
-    title: "The target is risk; the evidence is past loan applications",
+    title: "Past loan applications provide examples for predicting risk",
     content: (
       <SourceExplanation
         alt="Loan-risk learning problem and credit-history data table"
@@ -482,7 +482,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 1 · Training examples",
-    title: "A training table is a set of labeled input–output examples",
+    title: "Each training row contains inputs and a known answer",
     content: (
       <div className="m14-table-focus">
         <LoanDataTable label="Four predictors and one class label" />
@@ -492,6 +492,7 @@ const slides: SourceLessonSlide[] = [
             <article><span>y</span><strong>Class label</strong><p>financial risk ∈ {`{high, moderate, low}`}</p></article>
             <article><span>D</span><strong>Training set</strong><p>14 observed pairs (xᵢ, yᵢ)</p></article>
           </div>
+          <div className="m14-notation-box"><b>Notation:</b> x is one applicant’s input values; y is that applicant’s known risk label; D is the complete training dataset; i identifies one row.</div>
           <SearchCallout label="Think · pair · share" tone="cyan">Select a column, compare its values against risk, and justify which attribute looks most predictive.</SearchCallout>
         </section>
       </div>
@@ -501,7 +502,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 2 · Decision Tree Induction",
-    title: "ID3 learns a tree that describes class patterns",
+    title: "ID3 builds a decision tree from labeled examples",
     content: (
       <SourceExplanation
         alt="Historical definition and provenance of decision-tree induction and ID3"
@@ -520,7 +521,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 2 · Tree anatomy",
-    title: "Internal nodes test attributes; leaves decide classes",
+    title: "A node asks a question; a branch answers it; a leaf predicts",
     content: (
       <SourceExplanation
         alt="Picnic decision tree and definitions of internal nodes and leaf nodes"
@@ -548,7 +549,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 2 · Learned risk representation",
-    title: "A risk tree turns attribute values into a class",
+    title: "Follow one path through the tree to predict a risk class",
     content: (
       <SourceExplanation
         alt="Decision tree for loan-risk assessment"
@@ -570,14 +571,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Tree traversal",
-    title: "Change an applicant and watch the decision path change",
+    title: "Changing one input can send an applicant down a different path",
     content: <RiskTreeTrace />,
     note: "Timing: 4 minutes. Invite students to choose attribute values. Before each change, ask them to predict the leaf and identify which attributes will be ignored.",
     sourceSlides: [24, 33],
   },
   {
     eyebrow: "Knowledge point 3 · ID3 algorithm",
-    title: "ID3 recursively turns impure partitions into subtrees",
+    title: "ID3 keeps splitting mixed groups until it can make a decision",
     content: (
       <SourceExplanation
         alt="Complete historical ID3 decision-tree induction pseudocode"
@@ -598,7 +599,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 3 · Top-down induction",
-    title: "Select, partition, test purity, then recurse",
+    title: "Choose a test, divide the rows, and repeat on mixed groups",
     content: (
       <div className="m14-source-practice">
         <SourceFrame
@@ -614,7 +615,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 4 · Simplicity",
-    title: "If several trees fit the data, which one should we prefer?",
+    title: "When several trees fit, prefer simplicity—but verify it",
     content: (
       <SourceExplanation
         alt="A simpler decision tree and the question of model choice"
@@ -635,7 +636,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 4 · Minimal Message Length",
-    title: "A useful pattern compresses the data it explains",
+    title: "A good rule is short but still explains the data",
     content: (
       <SourceExplanation
         alt="Historical minimum-message-length motivation and even-number example"
@@ -644,6 +645,7 @@ const slides: SourceLessonSlide[] = [
       >
         <div className="m14-mml">
           <code>Choose Hᵢ minimizing Mlength(Hᵢ) + Mlength(D | Hᵢ)</code>
+          <div className="m14-notation-box"><b>Notation:</b> Hᵢ is one candidate hypothesis; D is the dataset; Mlength means the number of bits needed to describe something; D | Hᵢ means the data after using that hypothesis.</div>
           <article><span>Model cost</span><p>bits needed to specify the hypothesis</p></article>
           <article><span>Residual cost</span><p>bits needed to describe the data given the hypothesis</p></article>
         </div>
@@ -657,7 +659,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 5 · Entropy",
-    title: "Entropy measures uncertainty in a class distribution",
+    title: "Entropy tells us how mixed the class labels are",
     content: (
       <SourceExplanation
         alt="Historical entropy formulas and class-distribution diagrams"
@@ -669,6 +671,7 @@ const slides: SourceLessonSlide[] = [
           <code>I(c) = −log₂ p(c)</code>
           <code>H(S) = −Σ p(c) log₂ p(c)</code>
         </div>
+        <div className="m14-notation-box"><b>Notation:</b> c is a class; p(c) is its proportion; S is a set of examples; Σ means add one term for every class; log₂ measures information in bits.</div>
         <div className="m14-entropy-cases">
           <article><strong>H = 0</strong><p>one class only; no uncertainty</p></article>
           <article><strong>H is high</strong><p>classes are balanced; the label is uncertain</p></article>
@@ -681,14 +684,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Demo · Entropy",
-    title: "Purity lowers entropy; a 50/50 split maximizes it",
+    title: "A pure group has zero entropy; an even mix has the most",
     content: <EntropyLab />,
     note: "Timing: 4 minutes. Move the slider from 10/0 through 5/5. Ask students to predict the curve before showing numeric values.",
     sourceSlides: [29],
   },
   {
     eyebrow: "Knowledge point 6 · Attribute selection",
-    title: "Choose the test that removes the most expected uncertainty",
+    title: "Choose the question that removes the most uncertainty",
     content: (
       <SourceExplanation
         alt="Historical formulas for information-theoretic test selection"
@@ -700,6 +703,7 @@ const slides: SourceLessonSlide[] = [
           <code>E(X) = Σᵥ |Tᵥ| / |T| · H(Tᵥ)</code>
           <code>Gain(X) = H(T) − E(X)</code>
         </div>
+        <div className="m14-notation-box"><b>Notation:</b> T is the current training subset; X is a candidate attribute; v is one value of X; Tᵥ contains rows where X=v; E(X) is expected entropy after splitting; Gain(X) is uncertainty removed.</div>
         <ol className="m14-path-steps">
           <li><span>1</span>Measure uncertainty before the split.</li>
           <li><span>2</span>Compute each branch&apos;s entropy.</li>
@@ -714,7 +718,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Worked example · Loan data",
-    title: "Income reduces uncertainty by 0.967 bits",
+    title: "For these records, income gives the largest uncertainty reduction",
     content: (
       <SourceExplanation
         alt="Complete historical calculation of information gain for all loan attributes"
@@ -735,14 +739,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Practice · Information gain",
-    title: "Rank every candidate test before selecting the root",
+    title: "Compare every attribute before choosing the root question",
     content: <GainReveal />,
     note: "Timing: 5 minutes. Students calculate or verify one candidate in pairs, predict the rank, then reveal the comparison row by row. Ask why the same parent entropy appears in every gain calculation.",
     sourceSlides: [31],
   },
   {
     eyebrow: "Knowledge point 7 · Partial trees",
-    title: "One greedy choice creates new, smaller learning problems",
+    title: "After the first split, each branch becomes a smaller problem",
     content: (
       <SourceExplanation
         alt="Historical stage A and stage B partial decision trees"
@@ -761,7 +765,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 7 · Final tree",
-    title: "The completed tree encodes three risk concepts",
+    title: "The finished tree predicts high, moderate, or low risk",
     content: (
       <SourceExplanation
         alt="Complete final loan-risk decision tree"
@@ -782,7 +786,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 8 · Tree-to-rule conversion",
-    title: "Each root-to-leaf path becomes one conjunction",
+    title: "Each complete path can be written as one IF–THEN rule",
     content: (
       <SourceExplanation
         alt="Historical high-risk and low-risk rules derived from the decision tree"
@@ -802,14 +806,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Practice · Rule extraction",
-    title: "Write the moderate-risk concept as rules",
+    title: "Convert the moderate-risk paths into rules",
     content: <RulePractice />,
     note: "Timing: 3 minutes. Give students two minutes to derive the missing rule and one minute to compare with the model answer. Accept equivalent parenthesization.",
     sourceSlides: [33, 34],
   },
   {
     eyebrow: "Knowledge point 9 · Learning as search",
-    title: "ID3 greedily searches a concept space of possible trees",
+    title: "ID3 chooses the best next split without revisiting earlier choices",
     content: (
       <SourceExplanation
         alt="Historical description of decision-tree induction as concept-space search"
@@ -831,7 +835,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook / modern supplement · Task and capacity",
-    title: "Classification predicts categories; regression predicts quantities",
+    title: "Classification predicts categories; regression predicts numbers",
     content: (
       <div className="m14-modern-grid">
         <article><span>Classification</span><strong>categorical target</strong><p>risk ∈ high, moderate, low; evaluate class errors and probabilities</p></article>
@@ -846,14 +850,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook / modern supplement · Error analysis",
-    title: "A confusion matrix turns errors into precision, recall, and F1",
+    title: "A confusion matrix separates correct predictions from two error types",
     content: <MetricsLab />,
     note: "Timing: 3 minutes. Let students switch operating points. Ask which preset is preferable if failing to flag a truly high-risk application is the costlier error, then challenge that premise from a lending-fairness perspective.",
     sourceSlides: [],
   },
   {
     eyebrow: "Assessment · Responsible evaluation",
-    title: "One score is not enough evidence for deployment",
+    title: "Responsible evaluation needs more than one overall score",
     content: (
       <div className="m14-exit">
         <section>
@@ -885,6 +889,114 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
 ];
+
+const lesson16InstructorNotes = [
+  `This lesson follows one complete classification problem from data to evaluation. The table shows fourteen past loan applications. Each row contains applicant attributes and a historical risk label. Our goal is to build a decision tree that predicts high, moderate, or low risk for a new application. The opening question—what should the tree ask first—is the central problem solved by information gain.
+
+We will move through five stages. First, identify inputs and the target label. Second, learn how a tree represents a sequence of questions. Third, trace the ID3 algorithm that builds the tree. Fourth, calculate entropy and information gain to select a split. Finally, evaluate what the tree can and cannot support. Because this is a lending example, we must also question the labels and attributes themselves. A transparent path is useful, but explainability does not automatically make a model accurate, fair, or ready for deployment.`,
+
+  `These five verbs describe the work you should be able to perform. Represent means read the root, internal nodes, branches, and leaves of a decision tree. Induce means trace how ID3 builds that representation from labeled examples. Calculate means find entropy, expected entropy, and information gain. Interpret means convert a root-to-leaf path into an understandable IF–THEN rule. Evaluate means choose evidence appropriate to the cost of different errors.
+
+Use the roadmap interactively and connect every verb to an artifact. The training table supports calculation. The tree supports representation and interpretation. The recursive procedure supports induction. The confusion matrix supports evaluation. By the end, a complete explanation should include one tree trace, why a particular root was selected, one extracted rule, and one metric chosen for a stated consequence.`,
+
+  `Before naming an algorithm, define the learning problem. The target is financial risk with three possible labels: high, moderate, and low. The predictors are credit history, debt, collateral, and income. Past applications provide examples in which both predictor values and a historical target label are recorded.
+
+The target and predictors play different roles. Predictors are information available when the model must make a decision. The target is the outcome the learner tries to predict. A record number is only an identifier and should not be treated as a meaningful predictor. We should also ask where the historical risk labels came from. If they reflect inconsistent judgments, old policy, or unequal treatment, a tree may reproduce those problems accurately. Learning a pattern in recorded labels is not the same as discovering an objective truth about a person.`,
+
+  `Each row is a labeled example. We write x for the input vector: credit history, debt, collateral, and income. We write y for the known class label, which is one of high, moderate, or low risk. The dataset D contains fourteen pairs, x-sub-i and y-sub-i, where i identifies a row.
+
+Use the table controls to select a row and read the complete example. Then select a column and compare its values with the risk labels. Visual inspection may suggest that income is predictive, but a few conspicuous rows can mislead us. ID3 needs a consistent numerical rule for comparing candidate attributes. That rule will be information gain. Notice that every probability we calculate later comes from class counts in these rows or in a subset created by a split.`,
+
+  `A decision tree is a representation. ID3 is an algorithm for learning that representation. This distinction is important because many different algorithms can build trees, and a tree can also be written manually. Quinlan introduced ID3 in 1986 as an early top-down decision-tree induction procedure.
+
+The learner begins with labeled data and selects an attribute test. Each possible attribute value creates a branch, and the examples are partitioned among those branches. If a branch contains only one class, it can become a leaf. Otherwise the process repeats on the smaller subset. The resulting tree describes conditional patterns in the data and can be translated into rules. ID3 is greedy: it chooses the best available split now rather than testing every possible complete tree.`,
+
+  `A tree has four parts. The root is the first question asked of every example. An internal node is another attribute test. A branch represents one possible value of that tested attribute. A leaf stores the final predicted class. Trace the picnic example from the root to a leaf and say each step aloud: test the attribute, choose the matching value branch, and continue until a class is reached.
+
+The quick check asks what a branch represents. The answer is an attribute value, not the attribute test itself. This distinction helps when reading rules. A node contributes the name of a condition, while a branch contributes the value used in that condition. One path therefore becomes a conjunction such as outlook equals sunny AND humidity equals high.`,
+
+  `Classification uses one path through the tree. Begin at the root, evaluate that attribute for the applicant, follow the branch matching the observed value, and repeat until reaching a leaf. The leaf supplies the predicted risk class. The model does not vote over every available attribute.
+
+Trace record 2 and another contrasting record. Notice that some applicants reach a leaf early, so later attributes are never examined. Collateral appears in the training table but is absent from this learned tree. That does not prove collateral is universally irrelevant. It means that, given this dataset and the greedy splits selected, collateral did not provide enough additional uncertainty reduction to be chosen. A different sample or algorithm could produce a different tree.`,
+
+  `Use the controls to change an applicant's income, credit history, and debt. Before each click, predict the next node and final leaf. This turns the tree from a static picture into an executable decision procedure. Changing income may redirect the example at the root, after which an entirely different set of attributes is considered.
+
+Pay attention to ignored features. Once a path reaches a leaf, every unvisited attribute has no effect on that prediction. This creates simple local explanations: the prediction occurred because this specific sequence of tests was satisfied. However, the explanation describes the model's logic, not necessarily a causal reason for financial risk. A transparent model can still rely on questionable inputs or biased labels.`,
+
+  `ID3 is recursive because it applies the same procedure to progressively smaller subsets. The first base case occurs when all examples in the current subset have the same class. No additional question is needed, so the algorithm returns that class as a leaf. A second base case occurs when no attributes remain. The algorithm must then use a default, commonly the majority class.
+
+In the recursive case, ID3 selects a candidate test, partitions the examples by its values, and calls itself on every mixed branch. The greedy step is the local choice of the attribute with highest information gain. Noise, missing values, unseen values, and ties require implementation decisions beyond this compact pseudocode. The core idea is nevertheless simple: stop when a decision is justified; otherwise ask the most informative available question and repeat.`,
+
+  `The staged diagram converts the pseudocode into a visible cycle. First select the best test for the current examples. Second partition the rows by the values of that attribute. Third inspect each partition. A pure group contains only one class and becomes a leaf. A mixed group remains uncertain and becomes a smaller learning problem. Fourth repeat the procedure on each mixed group using the remaining attributes.
+
+Purity matters because a pure branch already has an unambiguous class label in the training data. Further splitting would add complexity without changing those labels. Each recursive call receives only the local subset, so the best next attribute can differ between branches. The completed tree is therefore not one global ranking of attributes; it is a sequence of locally selected tests.`,
+
+  `Several different trees may classify all fourteen training records correctly. Which should we prefer? A smaller tree is easier to inspect and often less likely to encode accidental detail. This reflects a general preference for simple explanations, but simplicity is not a guarantee of better prediction.
+
+A larger tree can fit rare cases or noise and perform worse on new applications. A tree that is too small can miss a real distinction and underfit. We therefore combine a simplicity preference with validation evidence. Ask students for one reason training accuracy may improve while performance on new data declines. The key answer is that additional branches can memorize peculiarities of the training sample instead of capturing stable patterns from the population.`,
+
+  `Minimum Message Length gives a compression view of model selection. H-sub-i denotes one candidate hypothesis or tree. D is the dataset. Mlength is the number of bits required to describe something. The expression D given H-sub-i means the remaining information needed to describe the data after the hypothesis is known.
+
+We seek a balance. A tiny hypothesis has low model cost but may leave many exceptions, producing a large residual cost. A huge memorizing tree has a large model cost even if it explains every training row. A useful pattern keeps the combined description short. The source's even-number example contains a counting error: the even integers from 2 through 100 number fifty, not forty-nine. The compression point remains valid because one short rule replaces a long list.`,
+
+  `Entropy measures uncertainty in a set of class labels. For a class c, p of c is its proportion in the set. I of c equals negative log base two of p of c, which measures information in bits. H of S adds p of c times that information across all classes. Sigma means sum one term for every class.
+
+If all examples have one label, the distribution is pure and entropy is zero. There is no uncertainty about the class of a randomly selected member. Entropy is largest when the classes are evenly balanced. We use the convention that zero times log zero contributes zero. Entropy describes the label distribution in a dataset or branch; it does not describe the visual complexity or size of the tree.`,
+
+  `Move the slider from a pure ten-to-zero distribution toward five-to-five. At ten-to-zero, the class is known with certainty and entropy is zero. As the minority class grows, uncertainty increases. At five-to-five, neither label is more likely, so binary entropy reaches its maximum of one bit.
+
+Now continue toward zero-to-ten. The curve is symmetric because entropy depends on the proportions, not on which class is named positive. Ask students to predict the direction before revealing each value. This visual prepares us for tree induction: a useful split creates child groups that are more pure than the parent. ID3 measures the remaining uncertainty after a split and prefers the attribute that removes the most.`,
+
+  `Information gain compares uncertainty before and after a candidate split. T is the current training subset. X is an attribute under consideration. For each value v of X, T-sub-v contains the rows having that value. Compute the entropy of each branch and weight it by the branch's fraction of the data. Their sum E of X is the expected entropy after testing X.
+
+Gain of X equals the parent entropy H of T minus that expected entropy. Larger gain means the question removes more uncertainty about the class labels. The weights are essential: a tiny pure branch should not dominate a large mixed branch. ID3 chooses the candidate with maximum information gain. Raw gain can favor attributes with many distinct values, which motivates alternatives such as gain ratio in other tree algorithms.`,
+
+  `The parent dataset contains six high-risk, three moderate-risk, and five low-risk records. Substituting those proportions into the entropy equation gives 1.531 bits. Now split by income. The lowest-income branch is pure high risk, so its entropy is zero. Other income branches contribute according to both their impurity and their size.
+
+The weighted expected entropy after the income split is 0.564. Subtracting from the parent entropy gives a gain of 0.967 bits. Compare this with credit history at 0.266, collateral at 0.206, and debt at 0.063. Income removes the most expected uncertainty, so ID3 selects it as the root. The number 0.967 is not accuracy; it is the reduction in label uncertainty produced by this split on the training data.`,
+
+  `This practice page compares every candidate root test. The parent entropy is identical in every calculation because all attributes are being evaluated on the same fourteen records. What changes is the expected entropy after each proposed split.
+
+Choose one attribute and verify its branch counts and weighted entropy. Predict the rank before revealing the values. Income should rank first because it produces the lowest expected uncertainty and therefore the highest gain. Credit history, collateral, and debt remove less. Ranking all candidates prevents us from selecting a visually appealing attribute without comparison. After the first split, the calculation must be repeated locally within each mixed branch rather than reusing this global ranking.`,
+
+  `The root split on income divides one fourteen-row problem into smaller problems. The low-income branch is already pure high risk and becomes a leaf. Other branches contain mixed labels and require additional tests. Each child receives only the records whose income follows that branch.
+
+Use the record identifiers in the source figure to verify the subsets. Within each subset, recompute class proportions and information gain using the remaining attributes. An attribute that was weak globally may become useful locally because the distribution has changed. This is the recursive character of tree induction. It is also greedy: once income is chosen at the root, ID3 does not backtrack and reconsider an entirely different first split after seeing later consequences.`,
+
+  `The finished tree contains leaves for three risk classes. Income is the root because it produced the largest initial gain. Credit history and debt appear only on branches where they help resolve remaining uncertainty. Debt is tested specifically for middle-income applicants with unknown credit history. Collateral never appears.
+
+Count the leaves and trace at least one path to each class. A feature's absence from the tree means the learner did not select it under this data and greedy procedure; it does not establish that the feature has no relationship to risk in the wider population. The final tree perfectly summarizes patterns in this small table, but its performance on new applications remains an empirical question requiring separate data.`,
+
+  `Every root-to-leaf path can be translated into an IF–THEN rule. The conditions encountered along one path are joined with AND because all must hold for that leaf to be reached. If several different leaves predict the same class, their complete paths are joined with OR.
+
+The left-hand side, or LHS, contains the attribute conditions. The right-hand side, or RHS, contains the predicted class. Read one high-risk path directly from the tree, then compare it with the corresponding rule. This translation makes the model easier to inspect and implement. It also shows that attributes not encountered on the path impose no condition for that rule. Equivalent rules may use different parentheses, but they must preserve the same logical grouping of AND within paths and OR across paths.`,
+
+  `Now derive the moderate-risk concept. Locate every leaf labeled moderate and trace backward to the root. Write one conjunction for each path, preserving every test and branch value. Then join the path rules with OR because any one of them is sufficient to predict moderate risk.
+
+Do not combine conditions merely because they look similar unless the resulting rule covers exactly the same cases. After writing the expression, test it against the original rows and one imagined new applicant. The model answer may use different parentheses or ordering, but it should represent the same set of root-to-leaf paths. Rule extraction is interpretation of the learned tree, not a new learning step.`,
+
+  `ID3 can be understood as heuristic search. A search state is a partially built tree. The concept space contains the trees constructible from the available examples and attributes. An operator adds an attribute test and its branches. The heuristic is information gain, which ranks the possible next tests.
+
+The algorithm is greedy because it chooses the locally best split and does not backtrack. This makes learning practical, but the highest-gain next step does not guarantee the globally smallest tree or the best generalization. Connect this to earlier search lessons: representation determines the possible states, operators determine legal moves, and the heuristic guides which move is chosen. The final result depends on all three as well as on the training examples.`,
+
+  `Decision trees can support different prediction tasks. Classification predicts categories such as high, moderate, or low risk. Regression predicts a numeric quantity such as expected financial loss. The target type changes the split criterion and evaluation measures.
+
+Overfitting occurs when branches capture noise, rare coincidences, or mislabeled records rather than stable patterns. Pruning controls complexity. Pre-pruning stops growth using conditions such as minimum sample size or maximum depth. Post-pruning grows a larger tree and then removes branches that lack validation support. Keep data roles separate: fit the tree on training data, choose pruning or depth using validation data, and report final performance on an untouched test set. This modern workflow makes the earlier simplicity argument operational.`,
+
+  `A confusion matrix separates four outcomes for a chosen positive class. True positives are correctly flagged positives. False negatives are actual positives the model misses. False positives are negative cases incorrectly flagged. True negatives are correctly rejected negatives. Precision equals true positives divided by all predicted positives. Recall equals true positives divided by all actual positives. F1 is the harmonic mean of precision and recall.
+
+Switch operating points and watch the tradeoff. If missing a truly high-risk case is considered more costly, higher recall may be preferred, but that policy assumption must be justified. In lending, falsely flagging applicants can also create serious harm and unequal access. Metrics do not decide values for us; they quantify consequences under a stated definition of the positive class and chosen threshold.`,
+
+  `One aggregate score cannot establish readiness for deployment. ROC analysis compares true-positive and false-positive rates across thresholds. Precision–recall analysis is often more revealing when the positive class is rare. Calibration asks whether predicted probabilities match observed frequencies—for example, whether cases assigned probability 0.7 occur about seventy percent of the time.
+
+Subgroup evaluation reports errors, recall, calibration, and sample size for relevant groups rather than hiding variation inside an overall average. For the exit ticket, explain why income was selected first, write one complete root-to-leaf rule, and name evidence needed beyond accuracy. A strong final answer connects the mathematical calculation to the tree representation and then limits the claim using evaluation on unseen, representative data.`,
+] as const;
+
+const lesson16Timing = [1, 1, 3, 4, 3, 3, 4, 4, 2, 3, 3, 3, 3, 4, 3, 4, 5, 3, 3, 3, 2, 3, 3, 3, 2] as const;
+
+slides.forEach((slide, index) => {
+  slide.note = `Timing: ${lesson16Timing[index]} minutes. ${lesson16InstructorNotes[index]}`;
+});
 
 export function Meeting14Deck() {
   return (

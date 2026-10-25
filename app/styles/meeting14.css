@@ -644,6 +644,21 @@
   grid-column: 1 / -1;
 }
 
+.m14-notation-box {
+  background: #eef9fc;
+  border: 1px solid #9fd8e3;
+  border-left: 4px solid #168fa2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #17243d;
+  font-size: clamp(0.72rem, 0.82vw, 0.88rem);
+  line-height: 1.35;
+  padding: 8px 10px;
+}
+
+.m14-notation-box b { color: #0b6572; }
+.m14-mml > .m14-notation-box { grid-column: 1 / -1; }
+
 .m14-mml article {
   padding: 11px 12px;
 }
