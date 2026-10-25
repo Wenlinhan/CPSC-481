@@ -519,9 +519,11 @@ function PolicyExtractionLab() {
     .map(action => ({
       ...action,
       successor: gridSuccessor(selected, action.id),
+      successorValue: values[gridSuccessor(selected, action.id)],
       q: gridActionValue(selected, action.id, values),
     }))
     .sort((a, b) => b.q - a.q);
+  const bestAction = actionRows[0];
 
   return (
     <div className="m11-policy-lab">
@@ -548,15 +550,20 @@ function PolicyExtractionLab() {
           {actionRows.map((action, index) => (
             <li className={index === 0 ? "best" : ""} key={action.id}>
               <strong>{action.symbol} {action.label}</strong>
-              <span>to s{action.successor.replace("-", "")}</span>
-              <b>{action.q.toFixed(3)}</b>
+              <span>
+                {action.successor === selected
+                  ? "blocked or edge → stay"
+                  : `move to s${action.successor.replace("-", "")}`}
+                <small>−0.04 + 0.9({action.successorValue.toFixed(3)})</small>
+              </span>
+              <b>Q={action.q.toFixed(3)}</b>
             </li>
           ))}
         </ol>
-        <SearchCallout label="Tie policy" tone="amber">
-          If multiple actions share the maximum, a deterministic policy may
-          choose any maximizer; a stochastic policy may distribute probability
-          among them.
+        <SearchCallout label={`Why ${bestAction.label} becomes the arrow`} tone="green">
+          Its Q-value, {bestAction.q.toFixed(3)}, is the largest of the four.
+          Therefore argmax selects {bestAction.label} for π*({selectedLabel}). If
+          actions tie, any tied maximizer may be chosen.
         </SearchCallout>
       </section>
     </div>
@@ -1350,7 +1357,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Policy extraction",
     title: "When values settle, choose the best next action",
     content: <PolicyExtractionLab />,
-    note: "Once the value table has stabilized, this page lets us extract a policy with one-step lookahead. Start by clicking any ordinary grid square. The selected state receives a purple outline. The wall cannot be entered, and the plus-1 and minus-1 terminal cells end the episode, so those cells are not selectable. Inside each ordinary square, the decimal number is the settled optimal state value V-star of s. The arrow is the action currently selected by the greedy policy. After a cell is selected, the panel on the right evaluates Up, Right, Down, and Left. Because this demonstration has deterministic movement, each action has one successor and its action value is negative 0.04 plus 0.9 times the settled value of that successor. If an action hits the grid edge or wall, the successor is the same current state, which models staying in place. The action rows are sorted from highest to lowest Q-value. The green row is the maximum, so its action becomes pi-star of s. Try several cells and notice that the arrow usually follows the high-value route toward plus 1 while avoiding minus 1. If two actions tie, a deterministic policy may choose either maximizer, while a stochastic policy may divide probability between them. The arrows are not universal instructions: changing the transition model, reward, discount factor, or state representation can change the extracted policy.",
+    note: "Once the value table has stabilized, this page lets us extract a policy with one-step lookahead. Start by clicking any ordinary grid square. The selected state receives a purple outline, and the action calculations on the right immediately change to match that state. The wall cannot be entered, and the plus-1 and minus-1 terminal cells end the episode, so those cells are not selectable. Inside each ordinary square, the decimal number is the settled optimal state value V-star of s produced by the sweeps on page 21. The arrow is the greedy action extracted from those settled values; clicking does not rerun value iteration. After a cell is selected, the panel evaluates Up, Right, Down, and Left. This demonstration has deterministic movement, so each action has exactly one successor. Every row now shows whether the move reaches another state or is blocked by an edge or wall, the successor’s settled value, and the complete calculation negative 0.04 plus 0.9 times V-star of the successor. A blocked move stays in the current state, so it uses the current state’s value as the successor value. The four rows are sorted from largest to smallest Q-value. The green first row is the maximum, and the dynamic explanation states why that action becomes pi-star of the selected state. For the initial selection s20, Up reaches s10, whose settled value is about 0.621. Therefore Q of s20 comma Up is negative 0.04 plus 0.9 times 0.621, or about 0.519, which is larger than the alternatives. Try several cells and notice that the arrows follow the highest discounted route toward plus 1 while avoiding minus 1. If two actions tie, a deterministic policy may choose either maximizer, while a stochastic policy may divide probability between them. The arrows are not universal instructions: changing the transitions, reward, discount factor, or state representation can change the extracted policy.",
     sourceSlides: [],
   },
   {

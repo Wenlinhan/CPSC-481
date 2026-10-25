@@ -1298,6 +1298,14 @@
   font-size: 12px;
 }
 
+.m11-policy-lab > section > ol > li span small {
+  color: #7a5a13;
+  display: block;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  margin-top: 2px;
+}
+
 .m11-policy-lab > section > ol > li b {
   text-align: right;
 }
