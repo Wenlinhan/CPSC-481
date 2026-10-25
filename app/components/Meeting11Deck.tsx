@@ -1190,19 +1190,29 @@ const baseSlides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Expectation versus optimality",
-    title: "Evaluation averages actions; control keeps the best one",
+    title: "Expectation evaluates a policy; optimality finds the best action",
     content: (
       <div className="m11-bellman-compare">
         <article>
           <span>Bellman expectation</span>
+          <b className="m11-bellman-question">Question: “How good is state s if we keep following policy π?”</b>
           <h3>V<sup>π</sup>(s)=Σ<sub>a</sub>π(a|s)Σ<sub>s′</sub>P(s′|s,a)[R+γV<sup>π</sup>(s′)]</h3>
-          <p>Evaluate a specified policy—even if it sometimes chooses a weaker action.</p>
+          <ol>
+            <li>For each action, average over its possible next states.</li>
+            <li>Then average the action values using the policy’s choice probabilities.</li>
+          </ol>
+          <p><strong>Plain English:</strong> score the policy as it actually behaves—even when it sometimes chooses a weaker action.</p>
           <div className="m11-notation-box"><strong>Notation:</strong> V<sup>π</sup>(s) = value under policy π; Σ = add across actions or next states; γ = discount factor.</div>
         </article>
         <article>
           <span>Bellman optimality</span>
+          <b className="m11-bellman-question">Question: “How good could state s be if we always choose the best action?”</b>
           <h3>V*(s)=max<sub>a</sub>Σ<sub>s′</sub>P(s′|s,a)[R+γV*(s′)]</h3>
-          <p>Choose the action whose expected one-step backup is largest.</p>
+          <ol>
+            <li>For each action, average over its possible next states.</li>
+            <li>Then keep the action with the largest expected value.</li>
+          </ol>
+          <p><strong>Plain English:</strong> compare the choices and keep the best one; do not average good and weak actions together.</p>
           <div className="m11-notation-box"><strong>Notation:</strong> V*(s) = best achievable value from state s; max<sub>a</sub> = choose the action with the largest expected value.</div>
         </article>
         <SearchQuickCheck
@@ -1220,7 +1230,7 @@ const baseSlides: SourceLessonSlide[] = [
         </p>
       </div>
     ),
-    note: "The two Bellman equations differ in one important place. Policy evaluation uses π(a|s), the probability that the fixed policy chooses action a, so it averages across actions. Bellman optimality removes that policy average and uses max over actions, because the agent is allowed to choose the best action. We still average over successor states because the environment may be stochastic. In other words, average over uncertainty the agent cannot control, and maximize over the choice the agent can control.",
+    note: "Bellman equations let us express a long-term value using one immediate step plus the value that remains afterward. Bellman expectation answers an evaluation question: how good is state s if the agent continues to follow a particular policy π? First, for each action, it averages over the next states that the environment might produce. Then it averages those action values using the probabilities with which the policy selects the actions. For example, if a policy chooses Right 75 percent of the time and Left 25 percent of the time, Bellman expectation uses that 75–25 average even if Left is weaker. Bellman optimality answers a control question: how good could state s be if the agent always chose the best available action? It still averages over random successor states, because the agent cannot choose which stochastic outcome occurs. But after calculating each action’s expected value, it keeps the largest one with the max operator. The memorable rule is: average over environmental uncertainty, but maximize over choices the agent controls.",
     sourceSlides: [],
   },
   {
