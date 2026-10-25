@@ -349,6 +349,41 @@ function makeGridSweeps(count: number) {
 
 const gridSweeps = makeGridSweeps(30);
 
+function explainGridSweep(sweep: number) {
+  if (sweep === 0) return {
+    label: "Round 0 · initialize",
+    detail: "No Bellman backup has run yet. Terminal values are fixed at +1 and −1; every ordinary state starts at 0.00.",
+  };
+  if (sweep === 1) return {
+    label: "Round 0 → 1 · the goal reaches its neighbor",
+    detail: "State s01 can move directly to +1, so it becomes −0.04 + 0.9(1) = 0.86. Other ordinary states only see zeros, so their best backup is −0.04.",
+  };
+  if (sweep === 2) return {
+    label: "Round 1 → 2 · one more step from the goal",
+    detail: "State s00 now sees s01=0.86 from the previous table, so it becomes −0.04 + 0.9(0.86) = 0.734. Synchronous updating prevents the new 0.734 from traveling farther during this same round.",
+  };
+  if (sweep === 3) return {
+    label: "Round 2 → 3 · the value turns downward",
+    detail: "State s10 can move up to s00=0.734, so it becomes −0.04 + 0.9(0.734) = 0.6206. The wall blocks the shorter middle route.",
+  };
+  if (sweep === 4) return {
+    label: "Round 3 → 4 · the bottom row is reached",
+    detail: "State s20 uses the previous value s10=0.6206 and becomes −0.04 + 0.9(0.6206) = 0.5185.",
+  };
+  if (sweep === 5) return {
+    label: "Round 4 → 5 · move across the bottom row",
+    detail: "State s21 uses s20=0.5185 and becomes −0.04 + 0.9(0.5185) = 0.4267.",
+  };
+  if (sweep === 6) return {
+    label: "Round 5 → 6 · the last state receives the path value",
+    detail: "State s22 uses s21=0.4267 and becomes −0.04 + 0.9(0.4267) = 0.3440. Its best route goes left, away from the −1 terminal.",
+  };
+  return {
+    label: `Round ${sweep - 1} → ${sweep} · values have settled`,
+    detail: "Every state’s best backup reproduces its current value, so max Δ is 0. The greedy arrows now describe the stable shortest safe path toward +1.",
+  };
+}
+
 function greedyGridAction(key: string, values: GridValues) {
   if (isGridTerminal(key) || key === gridWall) return "";
   return gridActions.reduce((best, action) => (
@@ -429,6 +464,7 @@ function GridworldValueIteration() {
   const delta = sweep === 0
     ? 0
     : Math.max(...Object.keys(values).map(key => Math.abs(values[key] - gridSweeps[sweep - 1][key])));
+  const sweepGuide = explainGridSweep(sweep);
 
   return (
     <div className="m11-gridworld-lab">
@@ -465,10 +501,9 @@ function GridworldValueIteration() {
             {policy ? "Hide policy" : "Show greedy policy"}
           </button>
         </div>
-        <SearchCallout label="Observe the wave" tone="cyan">
-          Positive terminal value propagates left and downward one sweep at a
-          time. Values are not rewards; they summarize expected discounted
-          future reward under the current greedy backup.
+        <SearchCallout label={sweepGuide.label} tone={sweep >= 7 ? "green" : "cyan"}>
+          {sweepGuide.detail} Values summarize discounted future reward; they
+          are not immediate rewards.
         </SearchCallout>
       </section>
       <ValueGrid showPolicy={policy} values={values} />
@@ -1269,7 +1304,7 @@ const baseSlides: SourceLessonSlide[] = [
     eyebrow: "Textbook/modern supplement · Dynamic lab",
     title: "Watch the goal’s value spread through a small grid",
     content: <GridworldValueIteration />,
-    note: "This grid shows value iteration as a moving wave of information. At sweep zero, most values are zero. As sweeps proceed, the positive terminal state influences neighboring cells, then cells farther away. The wall is unavailable, and the negative terminal state discourages paths that approach it. After many sweeps, the arrows show the greedy policy obtained from the settled values. This demonstration uses deterministic moves, but the same Bellman backup can average over slips or other stochastic outcomes. The visualization makes the repeated local updates visible.",
+    note: "This grid shows value iteration as a moving wave of information. A sweep means that every ordinary state is updated once using the complete value table from the previous round. At sweep zero, no Bellman backup has run: the terminal cells are fixed at plus 1 and minus 1, while all ordinary cells begin at zero. From round zero to one, s01 can move directly into the plus-1 terminal, so its value becomes negative 0.04 plus 0.9 times 1, which is 0.86. The other ordinary cells only see zero-valued successors, so their best value is negative 0.04. From round one to two, s00 sees the previous-round value 0.86 at s01 and becomes 0.734. Because this is synchronous value iteration, the new 0.734 cannot influence another state until the next sweep. From round two to three, s10 uses s00 and becomes 0.6206. The wall forces the useful path to turn downward on the left. From round three to four, s20 becomes 0.5185. From round four to five, s21 becomes 0.4267. From round five to six, s22 becomes 0.3440 and prefers moving left, away from the minus-1 terminal. By sweep seven, every state’s best backup reproduces its current value, so maximum delta is zero and later sweeps make no change. The greedy arrows then show the stable shortest safe route toward the positive terminal. Values are not immediate rewards; they summarize expected discounted future reward. This demonstration uses deterministic moves, but a stochastic version would average over slips or other possible outcomes inside each action backup.",
     sourceSlides: [],
   },
   {
