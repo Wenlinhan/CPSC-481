@@ -130,7 +130,6 @@ function DiscountReturnExplorer() {
             γ controls how quickly later rewards lose weight; it does not express
             uncertainty and it does not repair a poorly chosen reward.
           </p>
-          <div className="m11-notation-box"><strong>Notation:</strong> G<sub>t</sub> = return starting at time t; r = reward; γ (gamma) = discount factor; γ<sup>i</sup> = discount applied i steps into the future.</div>
         </div>
       </section>
       <p className="m11-notation-footnote"><strong>Notation:</strong>
@@ -171,7 +170,6 @@ function BellmanExpectationBackup() {
           with probability 0.8 and a state valued 2 with probability 0.2.
           “Left” reaches a state valued 1.
         </p>
-        <div className="m11-notation-box"><strong>Notation:</strong> π = policy; s = current state; Q<sup>π</sup>(s,a) = expected return after action a; V<sup>π</sup>(s) = expected value of state s under policy π.</div>
         <div className="m11-controls">
           <button
             disabled={revealed === lines.length}
@@ -1012,7 +1010,6 @@ const baseSlides: SourceLessonSlide[] = [
           <span>Markov chain</span>
           <h3>Current state → random next state</h3>
           <p>P(s′|s)</p>
-          <div className="m11-notation-box"><strong>Notation:</strong> s = current state; s′ = next state; P(s′|s) = probability of s′ given s.</div>
           <ul>
             <li>No decision variable</li>
             <li>Models how a process evolves</li>
@@ -1024,7 +1021,6 @@ const baseSlides: SourceLessonSlide[] = [
           <span>Decision layer</span>
           <h3>Choose action a in state s</h3>
           <p>P(s′|s,a) and R(s,a,s′)</p>
-          <div className="m11-notation-box"><strong>Notation:</strong> a = chosen action; P = transition probability; R = immediate reward for the transition from s to s′.</div>
           <ul>
             <li>Policy selects actions</li>
             <li>Rewards encode the objective</li>
@@ -1211,7 +1207,6 @@ const baseSlides: SourceLessonSlide[] = [
           Every V<sub>k+1</sub>(s) uses V<sub>k</sub>, not values already updated
           during the same sweep. In-place variants can work, but they are a
           different update schedule.
-          <div className="m11-notation-box"><strong>Notation:</strong> V<sub>k</sub> = values before sweep k; V<sub>k+1</sub> = updated values; Δ (delta) = largest change; ε (epsilon) = stopping tolerance; argmax = action producing the largest value.</div>
         </SearchCallout>
         <p className="m11-notation-footnote"><strong>Notation:</strong>
           V<sub>k</sub> is the value table before sweep k, V<sub>k+1</sub> is the next table, Δ (delta) is the largest change, ε (epsilon) is a chosen tolerance, and argmax means choose the action with the largest backup.
