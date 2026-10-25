@@ -1072,6 +1072,15 @@ const baseSlides: SourceLessonSlide[] = [
         </section>
         <div>
           <ValueGrid values={initialGridValues()} />
+          <aside className="m11-grid-explainer" aria-label="How to read the gridworld">
+            <strong>How to read the grid</strong>
+            <div>
+              <span><b>Each square</b> is one possible state or location.</span>
+              <span><b>0.00</b> is the current value estimate V(s); these nonterminal states start at zero.</span>
+              <span><b>s20</b> means state s at row 2, column 0. Rows count top to bottom; columns count left to right.</span>
+              <span><b>Terminal / wall</b> marks an ending state with fixed value, or a blocked location the agent cannot enter.</span>
+            </div>
+          </aside>
           <SearchCallout label="Probability audit" tone="green">
             For every state-action pair, Σ<sub>s′</sub>P(s′|s,a)=1. Deterministic
             dynamics are the special case with one successor at probability 1.
@@ -1079,7 +1088,7 @@ const baseSlides: SourceLessonSlide[] = [
         </div>
       </div>
     ),
-    note: "The expression P(s′|s,a) means the probability of ending in next state s′ when the current state is s and the chosen action is a. The action changes the odds, but it does not guarantee a result. In this example, moving Right succeeds with probability 0.80, slips Up with probability 0.10, and slips Down with probability 0.10. Those outcomes add to 1. If a slip points into a wall, the model sends the agent back to its current cell. Deterministic motion is just the special case where one successor has probability 1.",
+    note: "The expression P(s′|s,a) means the probability of ending in next state s′ when the current state is s and the chosen action is a. The grid is a map of possible states. Each ordinary cell shows its current value estimate V(s), initialized here to 0.00. A label such as s20 means row 2, column 0, with rows counted from top to bottom and columns from left to right. The green +1 and red −1 cells are terminal states, so reaching one ends the episode. The striped wall is not a state the agent may enter. In this example, moving Right succeeds with probability 0.80, slips Up with probability 0.10, and slips Down with probability 0.10. Those outcomes add to 1. If a slip points into a wall, the model sends the agent back to its current cell. Deterministic motion is the special case where one successor has probability 1.",
     sourceSlides: [],
   },
   {
