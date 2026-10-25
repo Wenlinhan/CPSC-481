@@ -138,6 +138,7 @@ function InteractionLoopExplorer() {
         <span>{item.label}</span>
         <h3>{item.state}</h3>
         <p>{item.detail}</p>
+        <div className="m12-notation-box"><strong>Notation:</strong> s<sub>t</sub> = state at time t; a<sub>t</sub> = action at time t; r<sub>t+1</sub> = reward received next; π = policy; Q = action-value estimate.</div>
       </section>
     </div>
   );
@@ -179,6 +180,7 @@ function ReturnExplorer() {
         <h3>Gₜ = −1 + {gamma.toFixed(1)}(0) + {gamma.toFixed(1)}²(10)</h3>
         <strong className="m12-result">Gₜ = {total.toFixed(2)}</strong>
         <p>Smaller γ values place less weight on the delayed goal reward.</p>
+        <div className="m12-notation-box"><strong>Notation:</strong> G<sub>t</sub> = return starting at time t; γ (gamma) = discount factor; γ² means a reward two steps later is discounted twice.</div>
       </section>
     </div>
   );
@@ -292,6 +294,7 @@ function EpsilonGreedyExplorer() {
           )}
         </div>
         <p>{item.interpretation}</p>
+        <div className="m12-notation-box"><strong>Notation:</strong> ε (epsilon) = probability of exploring; 1−ε = probability of choosing a current best action; Q(s,a) = estimated value of action a in state s.</div>
         <SearchCallout label="ε-greedy rule" tone="cyan">
           With probability 1−ε choose an action with maximal Q(s,a); with
           probability ε choose an action at random.
@@ -333,6 +336,7 @@ function QUpdateStepper() {
       <section>
         <span>Transition sample</span>
         <h3>(s, a, r, s′)</h3>
+        <div className="m12-notation-box"><strong>Notation:</strong> s = current state; a = action; r = reward; s′ = next state; α (alpha) = learning rate; γ (gamma) = discount factor; δ (delta) = TD error.</div>
         <div className="m12-transition-values">
           <article><small>Q(s,a)</small><strong>2.00</strong></article>
           <article><small>r</small><strong>−1</strong></article>
@@ -421,6 +425,7 @@ function GridworldStudio() {
         </nav>
         <span>{state.label}</span>
         <h3>Q(Start, ·)</h3>
+        <div className="m12-notation-box"><strong>Notation:</strong> Q(Start,·) lists the estimated values of every action at Start; the dot means “all available actions.”</div>
         <div className="m12-q-compass">
           <article><small>↑</small><strong>{state.q[0]}</strong></article>
           <article><small>→</small><strong>{state.q[1]}</strong></article>
@@ -471,6 +476,7 @@ function TDComparison() {
       <section>
         <span>{item.policy}</span>
         <h3>{item.target}</h3>
+        <div className="m12-notation-box"><strong>Notation:</strong> a′ = next action; max<sub>a′</sub> chooses the largest next-action value; Q(s′,a′) uses the action actually selected at the next state.</div>
         <p><strong>Target asks:</strong> {item.question}</p>
         <SearchCallout label="Learning consequence" tone={active === 0 ? "indigo" : "green"}>
           {item.consequence}
@@ -553,8 +559,8 @@ function GuidedPracticeStudio() {
 const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Module 10 · Lesson 14 · Reinforcement learning",
-    title: "Learn by acting, observing consequences, and revising a policy",
-    subtitle: "Course foundations first; formal MDP and Q-learning theory are explicitly labeled textbook/modern supplements.",
+    title: "How an agent learns from consequences",
+    subtitle: "Act, observe the result, update what seems useful, and try again.",
     content: (
       <div className="m12-cover">
         <section>
@@ -580,7 +586,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · page 30",
-    title: "The source establishes trial-and-error, feedback, reward, policy, and exploration",
+    title: "Five ideas behind reinforcement learning",
     content: (
       <div className="m12-source-and-notes">
         <SourceFrame
@@ -592,11 +598,11 @@ const slides: SourceLessonSlide[] = [
           <span>Read the source as evidence</span>
           <h3>Five durable knowledge points</h3>
           <ol>
-            <li>The agent learns through trial and error.</li>
-            <li>Feedback arrives as reward, not a labeled correct action.</li>
-            <li>A policy connects situations to actions.</li>
-            <li>Performance concerns cumulative reward.</li>
-            <li>Exploration produces the experience used to learn.</li>
+            <li><b>↻</b><span>The agent learns through trial and error.</span></li>
+            <li><b>★</b><span>Feedback arrives as reward, not a labeled correct action.</span></li>
+            <li><b>→</b><span>A policy connects situations to actions.</span></li>
+            <li><b>Σ</b><span>Performance concerns cumulative reward.</span></li>
+            <li><b>?</b><span>Exploration produces the experience used to learn.</span></li>
           </ol>
         </section>
       </div>
@@ -606,7 +612,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Source correction · qualify, do not erase",
-    title: "Reinforcement learning seeks high expected return; optimality is not automatic",
+    title: "The goal is a strong policy—not an automatic guarantee",
     content: (
       <div className="m12-claim-audit">
         <article>
@@ -634,7 +640,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Historical speaker notes · applications",
-    title: "Games and elevator control show why action-dependent experience matters",
+    title: "Games and elevators both learn from action-dependent experience",
     content: (
       <div className="m12-application-pair">
         <article>
@@ -668,7 +674,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · page 32",
-    title: "The source contrasts batch learning with incremental online learning",
+    title: "Batch learning updates later; online learning updates as data arrive",
     content: (
       <div className="m12-full-source">
         <SourceFrame
@@ -683,7 +689,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Exact embedded figure · source page 32",
-    title: "Online updating and reinforcement learning can overlap—but answer different questions",
+    title: "Online learning and reinforcement learning are not the same thing",
     content: (
       <div className="m12-media-compare">
         <SearchSourceImage
@@ -715,7 +721,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · page 33",
-    title: "The source places reinforcement learning inside a broader learning taxonomy",
+    title: "Learning methods can be grouped in several different ways",
     content: (
       <div className="m12-full-source">
         <SourceFrame
@@ -730,7 +736,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Source correction · learning categories",
-    title: "Incremental updating is a schedule; reinforcement learning is a decision problem",
+    title: "Update timing and decision making are separate questions",
     content: (
       <div className="m12-taxonomy">
         <article>
@@ -764,13 +770,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · formal problem",
-    title: "An MDP names the pieces hidden inside the source’s words “agent,” “environment,” and “policy”",
+    title: "An MDP names the five parts of a decision problem",
     content: (
       <div className="m12-mdp-map">
         <section>
           <span>Markov decision process</span>
           <h3>⟨S, A, P, R, γ⟩</h3>
           <p>The current state must contain the information needed to predict the next transition under an action.</p>
+          <div className="m12-notation-box"><strong>Notation:</strong> S = states; A = actions; P = transition probabilities; R = rewards; γ (gamma) = discount factor.</div>
         </section>
         <div>
           <article><strong>S</strong><h3>States</h3><p>situations the agent can distinguish</p></article>
@@ -786,14 +793,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · observable interaction",
-    title: "A reward labels a consequence—not the action the agent should have taken",
+    title: "The agent acts; the environment returns a state and reward",
     content: <InteractionLoopExplorer />,
     note: "Timing: 3 minutes. Textbook/modern supplement. Walk through s_t, a_t, r_{t+1}, s_{t+1}. Ask which arrow makes RL data action-dependent and why a reward is not equivalent to a supervised target.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · trajectory and episode",
-    title: "Learning data are ordered transitions, not shuffled input–label pairs",
+    title: "Reinforcement-learning experience comes in an ordered sequence",
     content: (
       <div className="m12-trajectory">
         <div className="m12-trajectory-track">
@@ -814,6 +821,7 @@ const slides: SourceLessonSlide[] = [
         <div className="m12-term-pair">
           <article><span>Trajectory</span><h3>s₀,a₀,r₁,s₁,…</h3><p>One ordered sequence of interaction.</p></article>
           <article><span>Episode</span><h3>start → terminal</h3><p>A finite trajectory with a natural ending.</p></article>
+          <div className="m12-notation-box"><strong>Notation:</strong> s<sub>0</sub> = starting state; a<sub>0</sub> = first action; r<sub>1</sub> = reward received after that action; terminal = the episode ends.</div>
           <SearchCallout label="Continuing task" tone="cyan">
             Elevator control may have no terminal state; discounting or an
             average-reward objective can keep the return well-defined.
@@ -826,13 +834,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · return",
-    title: "Return converts a stream of future rewards into one learning target",
+    title: "Return combines immediate and future rewards",
     content: (
       <div className="m12-equation-stage">
         <section>
           <span>Discounted return from time t</span>
           <h3>Gₜ = rₜ₊₁ + γrₜ₊₂ + γ²rₜ₊₃ + ···</h3>
           <p>γ ∈ [0,1] controls how strongly delayed rewards influence the present.</p>
+          <div className="m12-notation-box"><strong>Notation:</strong> G<sub>t</sub> = total discounted return from time t; r<sub>t+1</sub> = next reward; γ = discount factor; ∈ [0,1] means γ ranges from 0 through 1.</div>
         </section>
         <div>
           <article><strong>γ = 0</strong><p>Only the immediate reward matters.</p></article>
@@ -850,14 +859,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Worked demonstration · discounting",
-    title: "The same reward sequence supports different preferences as γ changes",
+    title: "The discount factor changes how much future rewards matter",
     content: <ReturnExplorer />,
     note: "Timing: 3 minutes. Textbook/modern supplement. Students predict the return for gamma 0, 0.5, 0.9, and 1 before selecting each value. Connect smaller gamma to shorter planning horizons without calling gamma a probability.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · policy and value",
-    title: "A policy chooses; value functions predict long-run consequences",
+    title: "A policy chooses; value estimates the long-term result",
     content: (
       <div className="m12-policy-values">
         <article>
@@ -865,18 +874,21 @@ const slides: SourceLessonSlide[] = [
           <h3>π(a|s)</h3>
           <p>A distribution over actions in state s.</p>
           <small>What will the agent do?</small>
+          <div className="m12-notation-box"><strong>Notation:</strong> π (pi) = policy; π(a|s) = probability of choosing action a when the state is s.</div>
         </article>
         <article>
           <span>State value</span>
           <h3>Vπ(s)=Eπ[Gₜ|sₜ=s]</h3>
           <p>Expected return from a state under policy π.</p>
           <small>How good is this situation?</small>
+          <div className="m12-notation-box"><strong>Notation:</strong> V<sup>π</sup>(s) = value of state s under policy π; E = expected average over possible futures.</div>
         </article>
         <article>
           <span>Action value</span>
           <h3>Qπ(s,a)=Eπ[Gₜ|sₜ=s,aₜ=a]</h3>
           <p>Expected return after taking action a, then following π.</p>
           <small>How good is this choice here?</small>
+          <div className="m12-notation-box"><strong>Notation:</strong> Q<sup>π</sup>(s,a) = value of taking action a in state s, then following policy π.</div>
         </article>
         <aside>
           <strong>Control idea</strong>
@@ -889,26 +901,27 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Live demonstration · exploration as information gathering",
-    title: "A bandit reveals the exploration–exploitation conflict without state transitions",
+    title: "Should the agent use its best action or test another one?",
     content: <BanditLab />,
     note: "Timing: 4 minutes. Modern supplement and live demo. Invite students to choose 8-12 pulls. Distinguish reward earned now from information that may improve later choices. A bandit is the one-state special case, not a full gridworld.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · ε-greedy exploration",
-    title: "Exploit the current estimate most of the time; explore with probability ε",
+    title: "ε-greedy usually exploits and sometimes explores",
     content: <EpsilonGreedyExplorer />,
     note: "Timing: 3 minutes. Textbook/modern supplement. Compare epsilon 0, 0.1, and 0.5. The dot counts are illustrative, not guaranteed frequencies in every 20-step sample.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · Q-learning",
-    title: "Q-learning moves one stored value toward a bootstrapped one-step target",
+    title: "Q-learning updates one action value after each transition",
     content: (
       <div className="m12-q-equation">
         <section>
           <span>Off-policy temporal-difference control</span>
           <h3>Q(s,a) ← Q(s,a) + α[r + γ maxₐ′Q(s′,a′) − Q(s,a)]</h3>
+          <div className="m12-notation-box"><strong>Notation:</strong> ← means “replace with”; α = learning rate; r = reward; s′ = next state; a′ = possible next action; max = choose the largest next-action estimate.</div>
         </section>
         <div>
           <article><strong>α</strong><h3>learning rate</h3><p>how far to move toward this sample target</p></article>
@@ -927,21 +940,21 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Worked demonstration · one numeric Q update",
-    title: "Compute target, error, and update as three separate quantities",
+    title: "Work a Q-learning update in three steps",
     content: <QUpdateStepper />,
     note: "Timing: 4 minutes. Textbook/modern supplement. Students predict the sign of the update before arithmetic. Verify the target 3.5, TD error 1.5, and updated Q value 2.3.",
     sourceSlides: [],
   },
   {
     eyebrow: "Interactive demonstration · tabular gridworld",
-    title: "Repeated transitions propagate goal reward backward through a Q-table",
+    title: "Repeated experience spreads goal information through the Q-table",
     content: <GridworldStudio />,
     note: "Timing: 4 minutes. Modern classroom demo. The displayed Q values are pedagogical snapshots rather than a claim of exact convergence under a specified stochastic process. Ask why unsampled actions remain uncertain.",
     sourceSlides: [],
   },
   {
     eyebrow: "Textbook/modern supplement · tabular algorithm",
-    title: "Q-learning alternates behavior, observation, and one local table update",
+    title: "Q-learning repeats six simple steps",
     content: (
       <div className="m12-algorithm">
         <ol>
@@ -959,6 +972,7 @@ const slides: SourceLessonSlide[] = [
             Q-learning is off-policy because the update evaluates the greedy
             target even when the sampled behavior action was exploratory.
           </p>
+          <div className="m12-notation-box"><strong>Terms:</strong> behavior policy = action rule used to collect experience; target policy = policy being learned; off-policy = these two policies may differ.</div>
           <SearchCallout label="Tabular boundary" tone="cyan">
             One table entry per state-action pair is feasible only when the
             discrete space is small enough to enumerate.
@@ -971,14 +985,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Textbook/modern supplement · Q-learning versus SARSA",
-    title: "The next-action term determines whether learning is off-policy or on-policy",
+    title: "Q-learning and SARSA use different next-action targets",
     content: <TDComparison />,
     note: "Timing: 3 minutes. Textbook/modern supplement. Compare only the one-step targets. Use a risky path example: SARSA can price in exploratory actions, while Q-learning evaluates the greedy next action.",
     sourceSlides: [],
   },
   {
     eyebrow: "Modern supplement · limits, safety, and evaluation",
-    title: "A high training reward can coexist with poor, unsafe, or brittle behavior",
+    title: "High training reward does not guarantee safe or reliable behavior",
     content: (
       <div className="m12-limit-grid">
         <article><span>01</span><h3>Sample cost</h3><p>Interaction can be slow, expensive, or dangerous.</p></article>
@@ -998,14 +1012,14 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Guided practice · calculate, classify, diagnose",
-    title: "Use the formal objects—not intuition alone—to justify each answer",
+    title: "Practice the calculation and explain what each result means",
     content: <GuidedPracticeStudio />,
     note: "Timing: 4 minutes. Run the four cases in pairs. Require visible work for return and Q update, exact terminology for policy selection, and an evidence-based reward-function diagnosis.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class assessment · independent retrieval",
-    title: "Which statement correctly distinguishes reinforcement learning from online supervised learning?",
+    title: "Check your understanding: what makes reinforcement learning different?",
     content: (
       <div className="m12-assessment">
         <SearchQuickCheck
@@ -1026,6 +1040,7 @@ const slides: SourceLessonSlide[] = [
             <li>Compute the update when Q=0, r=2, γ=0.5, max Q′=4, α=0.25.</li>
             <li>Name one risk that reward alone may fail to represent.</li>
           </ol>
+          <div className="m12-notation-box"><strong>Notation:</strong> Q′ = largest next-state action value; α = learning rate; γ = discount factor; target = r + γ max Q′.</div>
           <strong>Check value: new Q = 1.00</strong>
         </aside>
       </div>
@@ -1035,7 +1050,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Course foundation · page 36 · readings",
-    title: "Connect the course references to reinforcement-learning control",
+    title: "Review the learning loop and continue with the readings",
     content: (
       <div className="m12-source-and-readings">
         <SourceFrame
