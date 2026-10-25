@@ -1,10 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import "../styles/meeting19.css";
 import { SourceDeckShell, type SourceLessonSlide } from "./SourceDeckShell";
 
 const PRIMARY_SOURCE_LABEL = "Current primary-source reading set";
+
+function NotationGuide({ items }: { items: Array<[string, string]> }) {
+  return (
+    <aside className="m19-notation-guide" aria-label="Notation used on this page">
+      <strong>Notation on this page</strong>
+      <div>
+        {items.map(([symbol, meaning]) => (
+          <span key={`${symbol}-${meaning}`}><b>{symbol}</b> = {meaning}</span>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+function WithNotation({ children, items }: { children: ReactNode; items: Array<[string, string]> }) {
+  return (
+    <div className="m19-with-notation">
+      <div className="m19-notation-content">{children}</div>
+      <NotationGuide items={items} />
+    </div>
+  );
+}
 
 const bpeStages = [
   {
@@ -947,13 +969,13 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Learning objectives · Evidence of learning",
-    title: "By the end, you can explain the mechanism and compute its core operation",
+    title: "By the end, you can trace how text becomes a context-aware vector",
     content: (
       <div className="m19-objectives">
-        <article><span>01</span><strong>Tokenize</strong><p>run five BPE merges and compare learned segmentations</p></article>
-        <article><span>02</span><strong>Represent</strong><p>map IDs to embeddings and add positional information</p></article>
-        <article><span>03</span><strong>Calculate</strong><p>derive Q, K, V shapes and one scaled softmax attention row</p></article>
-        <article><span>04</span><strong>Assemble</strong><p>locate masks, heads, residual paths, normalization, and FFN</p></article>
+        <article><span aria-hidden="true">✂</span><strong>Split the text</strong><p>run five BPE merges and compare two possible tokenizations</p></article>
+        <article><span aria-hidden="true">▦</span><strong>Turn IDs into vectors</strong><p>look up embeddings and add information about position</p></article>
+        <article><span aria-hidden="true">◎</span><strong>Calculate attention</strong><p>follow Q, K, and V and compute one complete attention row</p></article>
+        <article><span aria-hidden="true">⇧</span><strong>Build one block</strong><p>connect masking, multiple heads, residual paths, normalization, and the FFN</p></article>
       </div>
     ),
     note: "Timing: 2 minutes. Read the four performance verbs. Students will demonstrate these objectives in the BPE lab, the attention calculation, the shape trace, and the exit ticket.",
@@ -961,7 +983,7 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Continuity · Search, learning, and representation",
-    title: "A transformer is a learned computation over a structured state",
+    title: "A transformer repeatedly updates one vector for each token position",
     content: (
       <div className="m19-continuity">
         <section>
@@ -984,20 +1006,22 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 1 · Tokenization",
-    title: "A tokenizer maps a string to vocabulary indices—not to understood words",
+    title: "A tokenizer splits text into pieces and gives each piece an ID",
     content: (
-      <div className="m19-token-definition">
-        <section>
-          <span>Function</span>
-          <code>τ: string → (t₁, t₂, …, tₙ), &nbsp; tᵢ ∈ {"{0,…,|V|−1}"}</code>
-          <p>The vocabulary V stores token strings or byte sequences. The integer ID is only an index; ID 900 is not more meaningful than ID 9.</p>
-        </section>
-        <div>
-          <article><span>Not always a word</span><strong>un · believe · able</strong><p>subwords can share evidence across related strings</p></article>
-          <article><span>Not always stable</span><strong>tokenizer A ≠ tokenizer B</strong><p>training corpus, algorithm, and vocabulary size change boundaries</p></article>
-          <article><span>Changes computation</span><strong>n tokens → O(n²) score cells</strong><p>sequence length affects attention memory and work</p></article>
+      <WithNotation items={[["τ", "the tokenizer"], ["tᵢ", "the token ID at position i"], ["n", "number of tokens"], ["V", "the tokenizer's vocabulary"], ["|V|", "number of entries in V"]]}>
+        <div className="m19-token-definition">
+          <section>
+            <span>Input → output</span>
+            <code>τ: string → (t₁, t₂, …, tₙ), &nbsp; tᵢ ∈ {"{0,…,|V|−1}"}</code>
+            <p>Read this as: the tokenizer τ turns a string into n token IDs. An ID is only a row number in a vocabulary; ID 900 is not “more meaningful” than ID 9.</p>
+          </section>
+          <div>
+            <article><span>A token may be part of a word</span><strong>un · believe · able</strong><p>subwords let related strings reuse the same pieces</p></article>
+            <article><span>Different tokenizers split differently</span><strong>tokenizer A ≠ tokenizer B</strong><p>the corpus, algorithm, and vocabulary size change the boundaries</p></article>
+            <article><span>More tokens means more score cells</span><strong>n tokens → n × n</strong><p>attention compares every position with every position</p></article>
+          </div>
         </div>
-      </div>
+      </WithNotation>
     ),
     note: "Timing: 3 minutes. Define tokenization precisely. Ask why a vocabulary ID should not be treated as an ordinal feature and how a longer tokenization changes the attention score matrix.",
     sourceSlides: [],
@@ -1065,8 +1089,9 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 2 · Embedding lookup",
-    title: "Token IDs select rows from a learned embedding matrix",
+    title: "Each token ID selects one learned row of numbers",
     content: (
+      <WithNotation items={[["E", "embedding table"], ["T", "input token IDs"], ["X", "vectors used by the model"], ["n", "number of token positions"], ["d_model", "features in each model vector"]]}>
       <div className="m19-embedding-definition">
         <section>
           <span>Parameters</span>
@@ -1086,6 +1111,7 @@ const slides: SourceLessonSlide[] = [
           <p>One dense vector per position.</p>
         </section>
       </div>
+      </WithNotation>
     ),
     note: "Timing: 3 minutes. Distinguish the learned parameter matrix E from the input indices T and the example-specific activation X. Ask which objects persist after the sentence has been processed.",
     sourceSlides: [],
@@ -1106,36 +1132,37 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 3 · Positional information",
-    title: "Without position, self-attention cannot distinguish a permutation by order alone",
-    content: <PositionStudio />,
+    title: "Position information tells the model which token came first",
+    content: <WithNotation items={[["pos", "token position"], ["i", "feature-pair index"], ["d_model", "features in each vector"], ["PE", "positional encoding added to the token vector"]]}><PositionStudio /></WithNotation>,
     note: "Timing: 3 minutes. Swap subject and object. Students explain why the token multiset is unchanged but the proposition differs. Present the sinusoidal formula from the 2017 paper and note that learned position embeddings are also common.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 4 · Query, key, and value",
-    title: "Queries select, keys advertise, and values carry information",
-    content: <QKVRoleStudio />,
+    title: "Query asks, key matches, and value carries the information",
+    content: <WithNotation items={[["X", "current token vectors"], ["W_Q, W_K, W_V", "learned projection matrices"], ["Q", "queries"], ["K", "keys"], ["V", "values"]]}><QKVRoleStudio /></WithNotation>,
     note: "Timing: 3 minutes. Visit all three roles. Keep the distinction precise: q and k form compatibility scores; v supplies the content mixed into the output. Warn against assuming a head has a permanent human-interpretable role.",
     sourceSlides: [],
   },
   {
     eyebrow: "Attention derivation · Tensor shapes",
-    title: "Shape tracing makes the information flow testable",
-    content: <ShapeTraceStudio />,
+    title: "Tracking matrix shapes shows whether every step can be multiplied",
+    content: <WithNotation items={[["n", "number of positions"], ["d_model", "features in each input vector"], ["d_k", "query/key features per head"], ["d_v", "value/output features per head"], ["A", "attention-weight matrix"]]}><ShapeTraceStudio /></WithNotation>,
     note: "Timing: 4 minutes. Step through all six tensors. Use n=4, d_model=8, d_k=d_v=2 as a verbal example. Require students to justify why QK-transpose is n by n and why multiplying A by V restores one output row per position.",
     sourceSlides: [],
   },
   {
     eyebrow: "Attention arithmetic · Compatibility",
-    title: "A dot product scores how strongly one query matches each key",
-    content: <DotProductLab />,
+    title: "A dot product gives each query–key pair a match score",
+    content: <WithNotation items={[["q", "one query vector"], ["kⱼ", "key vector at position j"], ["q · kⱼ", "their dot-product match score"], ["j", "which key position is being scored"]]}><DotProductLab /></WithNotation>,
     note: "Timing: 3 minutes. Students compute all three dot products before clicking. State that these learned-space compatibility scores can be negative and are not probabilities until normalized across the row.",
     sourceSlides: [],
   },
   {
     eyebrow: "Scaled dot-product attention · Why √d_k?",
-    title: "Scaling controls score magnitude before softmax",
+    title: "Divide by √d_k so softmax does not become too extreme",
     content: (
+      <WithNotation items={[["d_k", "number of query/key features"], ["S", "scaled score matrix"], ["M", "mask: 0 if allowed, −∞ if blocked"], ["softmax", "turns one score row into weights that sum to 1"]]}>
       <div className="m19-scaling">
         <section>
           <span>Unscaled score</span>
@@ -1150,56 +1177,57 @@ const slides: SourceLessonSlide[] = [
           <p>Keeping typical magnitudes controlled helps avoid an overly saturated softmax and very small gradients. M adds 0 to allowed positions and −∞ to blocked positions.</p>
         </section>
       </div>
+      </WithNotation>
     ),
     note: "Timing: 2 minutes. Give the variance intuition without overclaiming it as an exact distributional guarantee. Connect the scale factor to the denominator in the complete attention equation.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked calculation · Softmax row",
-    title: "Normalize one scaled score row into attention weights",
-    content: <SoftmaxWorkedExample />,
+    title: "Softmax turns one row of scores into weights that add to 1",
+    content: <WithNotation items={[["sⱼ", "scaled score for key position j"], ["eˢʲ", "positive exponentiated score"], ["αⱼ", "attention weight for position j"], ["Σ", "add across every position in the row"]]}><SoftmaxWorkedExample /></WithNotation>,
     note: "Timing: 5 minutes. Students calculate the scaled scores, exponentials, denominator, and normalized weights. Toggle scaling to compare concentration. Check that the final row sums to one, allowing for rounding.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked calculation · Weighted values",
-    title: "Attention returns a weighted mixture of value vectors",
-    content: <ValueMixLab />,
+    title: "Attention blends value vectors using the softmax weights",
+    content: <WithNotation items={[["αⱼ", "attention weight for position j"], ["vⱼ", "value vector at position j"], ["z", "output vector for the current query"], ["d_v", "number of features in z"]]}><ValueMixLab /></WithNotation>,
     note: "Timing: 3 minutes. Use the scaled weights from the prior page. Students compute each output coordinate separately, then reveal approximately [0.436, 0.708]. Reinforce that the output dimension is d_v, not n.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 5 · Causal information flow",
-    title: "A causal mask prevents a decoder from reading future target tokens",
-    content: <CausalMaskLab />,
+    title: "A causal mask hides future tokens from the decoder",
+    content: <WithNotation items={[["Mᵢⱼ", "mask entry for query row i and key column j"], ["0", "this position is allowed"], ["−∞", "this position becomes weight 0 after softmax"], ["j > i", "a future position"]]}><CausalMaskLab /></WithNotation>,
     note: "Timing: 3 minutes. Toggle the mask. Ask which cells row two may use and why future positions receive negative infinity before softmax. State the prevented failure explicitly: target leakage during next-token training.",
     sourceSlides: [],
   },
   {
     eyebrow: "Knowledge point 6 · Multi-head attention",
-    title: "Multiple heads learn different projection spaces in parallel",
-    content: <MultiHeadStudio />,
+    title: "Multiple heads make several attention mixtures in parallel",
+    content: <WithNotation items={[["h", "number of attention heads"], ["headᵢ", "output from head i"], ["Concat", "join head outputs side by side"], ["W_O", "learned matrix that mixes heads back to d_model features"]]}><MultiHeadStudio /></WithNotation>,
     note: "Timing: 3 minutes. Inspect all three illustrative heads, then read the equations. Emphasize that the examples are possible behaviors, not guaranteed labels. Concatenation combines feature channels before W_O mixes them.",
     sourceSlides: [],
   },
   {
     eyebrow: "Transformer block · Attention plus position-wise transformation",
-    title: "Residual paths, normalization, and the FFN complete the block",
-    content: <TransformerBlockDiagram />,
+    title: "A transformer block adds attention, a skip path, normalization, and an FFN",
+    content: <WithNotation items={[["x", "vector entering the block"], ["MHA", "multi-head attention"], ["LN", "layer normalization"], ["FFN", "small feed-forward network applied to each position"], ["x + …", "residual or skip connection"]]}><TransformerBlockDiagram /></WithNotation>,
     note: "Timing: 3 minutes. Walk bottom to top through all five stages. State that the 2017 architecture uses post-norm equations shown here, while many implementations use pre-norm. Ask what the residual path preserves.",
     sourceSlides: [],
   },
   {
     eyebrow: "Architecture · From the 2017 system to decoder-only models",
-    title: "The transformer is an architecture family, not one fixed language model",
-    content: <ArchitectureCompare />,
+    title: "“Transformer” names a family of architectures, not one model",
+    content: <WithNotation items={[["encoder", "reads an input sequence into contextual vectors"], ["decoder", "produces an output sequence"], ["causal", "may use only the current and earlier target positions"], ["LM", "language model"]]}><ArchitectureCompare /></WithNotation>,
     note: "Timing: 2 minutes. Compare both tabs. Preserve the historical distinction: the 2017 paper described an encoder-decoder translation model; decoder-only causal next-token prediction is one later configuration.",
     sourceSlides: [],
   },
   {
     eyebrow: "In-class practice · End-to-end shape trace",
-    title: "Follow positions and features through two attention heads",
-    content: <CumulativeShapeLab />,
+    title: "Practice: follow positions and features through two heads",
+    content: <WithNotation items={[["n", "4 token positions in this example"], ["d_model", "8 features per model vector"], ["h", "2 heads"], ["d_k = d_v", "4 features per head here"], ["W_O", "maps concatenated heads back to 8 features"]]}><CumulativeShapeLab /></WithNotation>,
     note: "Timing: 3 minutes. Work all five prompts quickly as a whole-class response sequence. Require dimension labels, not only numbers. Use the final W_O question to show how concatenated heads return to d_model.",
     sourceSlides: [],
   },
@@ -1214,6 +1242,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Exit ticket · Primary-source reading",
     title: "Explain one token's path from text to a contextual output vector",
     content: (
+      <WithNotation items={[["X", "token vectors after embedding and position are combined"], ["Q, K, V", "query, key, and value matrices"], ["FFN", "feed-forward network applied to each position"], ["norm", "layer normalization"]]}>
       <div className="m19-exit">
         <section>
           <span>Submit before leaving</span>
@@ -1241,11 +1270,44 @@ const slides: SourceLessonSlide[] = [
           <p>Next meeting: training objectives, instruction tuning, structured output, hallucination, and verification.</p>
         </section>
       </div>
+      </WithNotation>
     ),
     note: "Timing: 1 minute. Collect the six-line trace. The planned timings across all 25 pages total 75 minutes. Assign the three primary sources selectively: BPE algorithm, SentencePiece design, and Transformer sections 3.1 through 3.5.",
     sourceSlides: [],
   },
 ];
+
+const lesson19InstructorNotes = [
+  `Let us begin with the sentence on the screen: “The animal did not cross the street because it was too tired.” Before we use any technical vocabulary, decide what “it” refers to. The natural answer is the animal, because being tired is a property that makes sense for an animal. Notice what your brain just did: it connected a later word with an earlier clue and used the surrounding sentence to resolve the reference. A transformer performs a learned numerical version of that contextual linking. It does not understand the sentence in the human sense. It represents each text position with numbers, compares positions, and combines information from positions that receive larger learned attention weights. During this lesson we will make that process visible. We will start with the raw string, split it into tokens, replace token IDs with vectors, add position information, and then calculate how attention mixes information. Keep this opening example in mind. By the end, you should be able to explain how the vector at the position of “it” can incorporate evidence from “animal” and “tired.”`,
+  `Here is our roadmap. First, we will split text into tokens. A token is not necessarily a word; it may be a whole word, part of a word, punctuation, or even a byte-level piece. Second, we will turn token IDs into vectors by looking up rows in an embedding table. Third, we will calculate attention. That means following queries, keys, and values through dot products, scaling, masking, softmax, and a weighted sum. Finally, we will place attention inside a transformer block with multiple heads, residual connections, layer normalization, and a feed-forward network. These are performance goals, not vocabulary goals. You should be able to carry out a small BPE merge, state the shape of an embedding result, compute one attention row, and trace a token through one block. The icons show the same progression visually: split, represent, compare, and update. If any stage is unclear, ask where the objects come from and what shape they have. Shape tracing will be one of our best error checks today.`,
+  `Transformers connect to ideas we have already studied. In search, we defined a state, scored alternatives, and applied constraints. In neural learning, parameters changed to reduce a loss. A transformer also has a state: at any layer, each token position owns a vector. Attention scores possible information sources for that position, while a mask can forbid some sources. Learned matrices control how token vectors become queries, keys, values, and feed-forward features. The important shift is that the state is distributed across the sequence rather than stored in one symbolic node. Each layer updates every position's vector using information from other allowed positions. This does not mean the model literally searches a game tree. The comparison is conceptual: representation determines what can be distinguished, scores influence which information matters, constraints limit legal information flow, and learning adjusts parameters. As we proceed, ask four questions: What is the current representation? Which values are learned parameters? Which values are activations for this example? And what information is each position allowed to use?`,
+  `A tokenizer is a function that converts a string into a sequence of integer IDs. The Greek letter tau names the tokenizer. The symbol t sub i means the token ID at position i, n is the number of tokens, V is the vocabulary, and vertical bars around V mean the size of that vocabulary. An ID is only an index into a table. ID 900 is not larger in meaning than ID 9, just as room 900 is not better than room 9. Tokens are also not guaranteed to be words. “Unbelievable” might be split into “un,” “believe,” and “able.” Different tokenizers can split the same text differently because they were trained on different data or use different vocabulary sizes. Tokenization also affects computation. If a sequence has n positions, a full self-attention score matrix contains n times n cells. More pieces therefore mean more pairwise comparisons. Before interpreting a model response, it is often useful to inspect how the input was tokenized.`,
+  `This page demonstrates byte-pair encoding, or BPE, as a training procedure. We begin with words broken into small units and count adjacent pairs, weighted by how often each word appears. At each step, we select a most frequent neighboring pair and merge it into a reusable unit. Before advancing the demonstration, look across the current vocabulary and predict which pair has the highest weighted count. After the merge, every occurrence of that pair is replaced, and the counts are computed again. The merge order matters because a later merge can use a unit created earlier. In this example, e plus s becomes “es,” then “es” plus t becomes “est.” The end-of-word marker lets the procedure distinguish a piece at a word boundary from the same letters inside a word. If two pairs tie, an implementation needs a tie rule, so exact merge lists can differ. The key idea is simple: frequent neighboring patterns become larger units while smaller units remain available as fallback pieces.`,
+  `Now we separate two ideas that are easy to mix up. Training BPE learns an ordered list of merge rules from a corpus. Tokenization later applies those learned rules to a new string in priority order. On the left, the list says which combinations were learned first. On the right, we apply that same list to several words. “Lowest” can use both “low” and “est,” but “lower” cannot use “est,” so its remaining characters stay smaller. “Newest” can reuse “est” even though the whole word was not in the training list. This is one reason subword tokenization generalizes better than a pure whole-word vocabulary. It can reuse frequent chunks and still spell an unfamiliar string with smaller pieces. The notation slash-w marks an end-of-word boundary in this teaching example. Modern tokenizers may represent boundaries differently. Read the examples from top to bottom and explain why the merge list compresses common patterns without requiring every possible word to have its own vocabulary entry.`,
+  `SentencePiece addresses a practical problem: many pipelines first split text on spaces and then learn subwords inside those pieces. That assumes spaces reliably mark word boundaries, which is not equally suitable for every writing system. SentencePiece instead trains from raw sentences and treats whitespace as an ordinary symbol. The visible underline-like character represents a space or word-start marker. Because that boundary is encoded, the token sequence can be decoded back into text with spacing restored. SentencePiece is a toolkit, not one single segmentation algorithm. It supports both BPE and a unigram language-model approach, so two SentencePiece models can still produce different pieces. Compare the two pipelines on the page. The upper pipeline commits to words before subword processing. The lower pipeline learns pieces while preserving boundaries in the same symbol stream. The takeaway is not that SentencePiece always finds linguistically correct words. It learns useful statistical units directly from text while reducing dependence on a separate language-specific word splitter.`,
+  `Use this page as a tokenizer inspection exercise. Select each example and look first at the number of pieces, then at where boundaries occur. Ask whether the pieces reuse meaningful-looking substrings, but do not assume that every learned piece corresponds to a human morpheme. A tokenizer optimizes a statistical vocabulary objective, not a linguistics exam. Longer or unusual words often split into more pieces because their exact forms are less frequent in the training data. Different scripts, spelling variants, emojis, or domain-specific notation can also produce surprising boundaries. These examples are illustrative; the exact output depends on the trained vocabulary and algorithm. For each input, describe one benefit and one possible cost of the displayed segmentation. A reusable subword may help share evidence across related strings. Extra pieces, however, lengthen the sequence and therefore increase attention work. This is why inspecting tokenization can help explain cost, truncation, or inconsistent handling of names and technical terms before we blame the attention mechanism itself.`,
+  `The embedding table converts discrete IDs into continuous vectors. E is the learned table. It has one row for every vocabulary item and d-model columns, where d-model is the number of features in each model vector. T is the sequence of input IDs, and n is the number of positions. The expression E of T means “select the rows of E named by those IDs.” The result X has n rows and d-model columns: one vector per position. Keep parameters and activations separate. E is a learned parameter that remains part of the model after this sentence is finished. T and X belong to the current example. Also remember that lookup does not treat IDs as numerical magnitudes. The model does not multiply by token ID 900; it selects row 900. Point to each object and say its role: E stores learned rows, T says which rows are needed, and X is the ordered collection of vectors that enters the next computation.`,
+  `Let us make embedding lookup concrete. We have three token IDs, so the sequence length n is three. Each selected row contains four values, so d-model is four. Click an ID and watch the corresponding table row become the vector for that sequence position. When all three rows are selected, the output X has shape three by four. The number of rows stays equal to the number of token positions; lookup changes the representation at each position from one integer into four learned features. If the vocabulary contains fifty thousand entries, the full embedding table E would have fifty thousand rows by four columns in this toy example, but only three rows are retrieved for this input. Repeated IDs retrieve the same initial embedding row. Later layers may turn those identical starting rows into different contextual states because their neighbors and positions differ. Before moving on, state the shapes aloud: T has length three, E has vocabulary-size by four, and X is three by four.`,
+  `The word “bank” shows why we distinguish an input embedding from a contextual representation. At lookup time, the same token ID selects the same row E of bank in both sentences. In “deposit money at the bank,” surrounding words support a financial meaning. In “sit on the river bank,” the context supports land beside water. Attention and feed-forward layers update the vector at the bank position using different neighboring evidence, so the later hidden states can differ even though the starting lookup row was the same. Toggle between the sentences and inspect which contextual clues change. We should not say that one embedding table row permanently stores every dictionary definition. Instead, the row supplies a learned starting representation, and the network constructs context-sensitive states layer by layer. This also explains why the same surface token can participate in different predictions. The crucial distinction is: static lookup row first, contextual hidden vector later. The transformation depends on the entire allowed sequence, the position information, and the learned parameters.`,
+  `If self-attention received only a bag of token vectors, it would not know whether “dog bites person” or “person bites dog” came first. The same token identities are present, but order changes the proposition. Position information solves this by adding a position-dependent vector to each token embedding before attention. Here, pos means the token position, i selects a pair of features, d-model is the vector width, and PE is the positional encoding. The sine and cosine formulas assign smoothly varying values across positions and frequencies. You do not need to memorize the formula today; focus on its job. Each position receives a distinguishable pattern that attention can use alongside token content. Swap the sentence order in the demonstration and notice that the tokens remain the same while their positions change. The original 2017 transformer used sinusoidal encodings. Many later systems use learned or rotary position methods. Those methods differ, but all address the same need: the model must represent sequence order rather than treating positions as interchangeable.`,
+  `Query, key, and value are three learned views of the current token vectors. Starting from X, the model multiplies by three learned matrices: W-Q, W-K, and W-V. The results are Q, K, and V. A query represents what the current position is looking for. A key represents what each possible source position advertises for matching. Their dot product becomes a compatibility score. A value carries the information that may actually be mixed into the output. Use the metaphor carefully: it helps remember the roles, but these are learned vectors, not English questions and answers. Click through the three roles. When processing “it,” its query might match features in the key for “animal.” A high match gives that position more weight, and the corresponding value contributes more to the new representation of “it.” The query and key decide how much; the value decides what content is transferred. Never replace this distinction with the vague statement that attention simply “looks at important words.”`,
+  `Shape tracing lets us verify the attention calculation before doing arithmetic. Suppose X has n rows and d-model columns. Multiplying X by W-Q produces Q with n rows and d-k columns. K has the same shape, while V has n rows and d-v columns. Q times K transpose produces an n by n matrix because every query position receives one score for every key position. After scaling, masking, and applying softmax row by row, A is still n by n. Finally, A times V produces n by d-v: one output row for each original position. In the toy example, n is four, d-model is eight, and d-k and d-v are two. Therefore Q and K are four by two, QK transpose is four by four, and the output is four by two. Step through each object and check the inner dimensions. If two inner dimensions do not match, the multiplication is impossible. Shapes therefore reveal both computational mistakes and the information structure of attention.`,
+  `A dot product creates one compatibility score. Take one query q and compare it with each key k sub j. Multiply matching coordinates and add the products. That sum is q dot k sub j. Compute the three displayed scores before revealing them. A larger score means stronger alignment in the learned feature space for this query, not necessarily human semantic similarity. Scores may be positive, zero, or negative. They are not yet probabilities, because they do not have to be between zero and one and they do not sum to one. The index j identifies which source position is being scored. Repeating this operation against every key fills one row of the attention score matrix. Repeating it for every query fills the whole n by n matrix. This is the exact numerical step behind the phrase “compare every position with every position.” On the next page we will scale these scores, and after that softmax will convert one row into nonnegative weights that sum to one.`,
+  `Why divide by the square root of d-k? A dot product adds d-k coordinate products. Under a simple independent, zero-mean, unit-variance intuition, the variance of that sum grows with d-k. As vectors become wider, raw scores can become large in magnitude. Softmax applied to very large positive and negative values becomes extremely concentrated, which can produce very small gradients for most entries. Dividing by square root d-k keeps the typical scale more controlled. S names the scaled score matrix. M is the mask: allowed locations add zero, while blocked locations add negative infinity so their softmax weight becomes zero. Softmax then converts each row into weights that sum to one, and multiplying those weights by V returns the weighted value mixture. Read the complete equation from left to right: compare Q with K, scale, apply the mask, normalize each row, then mix V. The scaling is a stabilization device; it does not by itself determine which token should receive attention.`,
+  `Now we calculate a complete softmax row. Start with the scaled scores s sub j. Exponentiating makes every value positive. Then divide each exponent by the sum of all exponentials in the row. The resulting alpha sub j values are attention weights. Sigma means add across all candidate positions. Work through the numbers in order: scaled scores, exponentials, denominator, and normalized weights. Check the result by adding the weights; allowing for rounding, they must sum to one. Toggle the comparison with unscaled scores. The unscaled row is usually more concentrated because larger score magnitudes become larger exponential ratios. Softmax preserves order—a larger input score receives a larger weight—but it changes the values into a normalized distribution over source positions. A common mistake is to normalize each score independently. Softmax is relational: every weight depends on the entire row through the shared denominator. These alpha values will be used immediately on the next page to blend the value vectors.`,
+  `Attention weights are useful only because they control a mixture of values. For the current query, multiply each value vector v sub j by its attention weight alpha sub j, then add the vectors coordinate by coordinate. The result z is the new output vector for this query. Its width is d-v, the number of features in each value vector. It is not the sequence length n. Use the weights from the previous page and calculate the first output coordinate, then the second. The displayed result is approximately point four three six and point seven zero eight. Interpret this as a weighted blend in a learned feature space, not as a copied word. A position with weight zero contributes nothing; a position with a larger weight contributes more of its value features. Repeating the same operation for every query row gives one output vector per sequence position. This is how attention moves from pairwise compatibility scores to updated representations that contain context from other allowed positions.`,
+  `A decoder used for next-token prediction must not read future target tokens during training. The causal mask enforces that rule. M sub i j refers to the mask entry for query position i and key position j. If j is greater than i, the key lies in the future, so the mask adds negative infinity before softmax. Its resulting weight becomes zero. Allowed current and earlier positions add zero and keep their computed scores. Toggle the mask and inspect the triangular pattern. Row one can use only position one. Row two can use positions one and two. Later rows can use a longer prefix. Without this restriction, the model could cheat during training by attending directly to the answer token it is supposed to predict. That failure is called target leakage. The causal mask does not erase future tokens from the training batch; it blocks information flow in the attention calculation. Encoder-style bidirectional attention uses a different rule because it may allow every position to use both earlier and later context.`,
+  `One attention head creates one learned comparison and value-mixing space. Multi-head attention runs h such heads in parallel. Each head has its own learned projections, so it can form a different pattern of scores and a different value mixture. The head labels in this demonstration are illustrations of possible behavior, not permanent guaranteed jobs. After the heads produce their outputs, Concat joins their feature channels side by side. W-O is a learned output matrix that mixes those concatenated features back into d-model dimensions. If there are h heads and each has d-v features, concatenation has h times d-v features. Often those dimensions are chosen so the total equals d-model, but the general equations do not require every implementation to use identical widths. Explore the head views, then follow the equation: compute each head, concatenate them, and apply W-O. Multiple heads increase the number of learned relational subspaces available at the same layer; they do not mean the system contains h independent explanations.`,
+  `Attention is only one part of a transformer block. Follow the diagram from bottom to top. The input x enters multi-head attention. A residual, or skip, connection adds x back to the attention result, helping preserve the incoming representation and supporting gradient flow. Layer normalization, labeled LN, stabilizes the feature distribution. Then a feed-forward network, FFN, applies the same small neural transformation independently to every position. A second residual connection and normalization complete the block. The 2017 transformer used the post-normalization ordering shown in its equations, while many modern implementations place normalization before a sublayer. Both are transformer variants, so always check the architecture being discussed. The phrase “position-wise” means the FFN does not mix different positions directly; attention already performs that cross-position communication. The FFN transforms features within each position. Stacking many blocks repeatedly alternates information mixing across positions with nonlinear feature transformation within positions.`,
+  `The word transformer names an architecture family, not one specific language model. The 2017 paper presented an encoder-decoder system for translation. The encoder reads an input sequence using bidirectional self-attention and produces contextual representations. The decoder generates an output sequence, uses causal self-attention over its earlier outputs, and also attends to encoder representations. A decoder-only language model removes the separate encoder and repeatedly applies causal blocks to predict the next token. Encoder-only models are another common family used for representation and classification. Here, LM means language model, and causal means a position can use only itself and earlier target positions. Compare the two views and identify where the mask belongs and what information each component receives. Avoid saying “the transformer predicts the next word” as a universal definition. Some transformers encode, some decode, and some do both. Tokenization, attention, and feed-forward blocks are reusable mechanisms arranged differently for different learning objectives.`,
+  `This practice page combines the shape rules. We have n equals four token positions and d-model equals eight features per model vector. There are h equals two heads. In this example, each head uses d-k and d-v equal to four. Start with X: four by eight. Each head projects X into Q, K, and V with four rows. Q times K transpose is four by four because every query compares with every key. Multiplying the four-by-four attention matrix by the four-by-four V produces a four-by-four head output. Two head outputs are concatenated along the feature dimension, producing four by eight. W-O then maps those eight concatenated features back to eight model features, so the final result remains four by eight. Work each prompt before revealing it and explain the inner dimensions, not just the final numbers. The invariant to remember is that attention preserves one output row per token position, while projection and concatenation change feature width.`,
+  `Use these questions to diagnose the most common confusions. First, distinguish a learned parameter from an activation. The embedding table E is a parameter stored in the model; X is created for the current input. Second, remember why QK transpose is n by n: rows are query positions and columns are key positions, so the matrix contains every permitted position pair. Third, interpret masking as an information constraint. Adding negative infinity before softmax makes a blocked cell's weight zero, preventing future-token leakage in causal attention. Commit to an answer before revealing it. Then explain why each distractor is wrong. A vocabulary ID is not a feature magnitude, softmax does not change matrix shape, and a causal mask does not remove the need for position information. If one category remains weak, return to the corresponding visual: embedding lookup for parameters versus activations, the shape trace for matrix dimensions, or the triangular mask for allowed information flow.`,
+  `For the exit ticket, explain one token's entire path in six labeled lines. Begin with the string becoming token pieces and integer IDs. Next, use those IDs to select embedding rows and combine them with position information, producing X. Then project X into Q, K, and V. Compute query-key scores, divide by square root d-k, add the mask, and apply softmax to obtain weights. Multiply those weights by V to produce each head output. Finally, concatenate heads, apply W-O, and pass through residual connections, normalization, and the position-wise FFN. The notation box defines the symbols reused here: X is the sequence of token vectors, Q K V are query key and value matrices, FFN is the feed-forward network, and norm means layer normalization. Your explanation should say what each step accomplishes, not merely copy arrows. The readings below provide the primary technical sources for subword units, SentencePiece, and the transformer architecture. Next lesson will build on this mechanism to discuss training, instruction following, structured output, hallucination, and verification.`,
+];
+
+slides.forEach((slide, index) => {
+  slide.note = lesson19InstructorNotes[index];
+});
 
 export function Meeting19Deck() {
   return (
