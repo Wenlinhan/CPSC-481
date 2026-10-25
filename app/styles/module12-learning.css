@@ -86,6 +86,19 @@
   white-space: normal;
 }
 
+.m12-notation-box {
+  background: #eaf8fb;
+  border: 1px solid #9dd8e3;
+  border-left: 4px solid #168fa2;
+  border-radius: 10px;
+  color: #17243d;
+  font-size: clamp(12px, 0.86vw, 15px);
+  line-height: 1.35;
+  padding: 8px 10px;
+}
+
+.m12-notation-box strong { color: #0b6572; }
+
 .m12-source-media {
   align-content: center;
   background: #fff;
