@@ -868,7 +868,7 @@ const baseSlides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Course foundation · L12 Part B",
+    eyebrow: "Course foundation · Markov chains and sequence models",
     title: "Some problems make more sense as a sequence",
     content: <SequenceMotivation />,
     note: "Many problems become easier when we treat them as sequences. In speech recognition, the hidden state may be the phoneme or word position, while the microphone gives us acoustic frames. In robot localization, the hidden state is the robot’s location and heading, while sensors provide noisy readings. For user attention, clicks and gaze are observations of an attention state. In medical monitoring, vital signs are observations of a patient’s underlying condition. A single observation can be ambiguous, but a sequence gives context. The key idea is that the past helps us interpret the present and predict what comes next.",
@@ -1385,15 +1385,9 @@ const baseSlides: SourceLessonSlide[] = [
           <h3>Continue beyond the classroom demo</h3>
           <div className="m11-notation-box"><strong>Notation recap:</strong> ⟨S,A,P,R,γ⟩ = states, actions, transition probabilities, rewards, and discount factor; π = policy; V = state value; Q = action value.</div>
           <ul>
-            <li>Course source: L12 Part B, pages 12–25 — Markov-chain foundations.</li>
             <li>Russell &amp; Norvig, <em>Artificial Intelligence: A Modern Approach</em>, 3rd ed., Chapter 17.</li>
             <li>Sutton &amp; Barto, <em>Reinforcement Learning: An Introduction</em>, 2nd ed., Sections 3.1–4.4.</li>
           </ul>
-          <SearchCallout label="Source boundary" tone="cyan">
-            The historical deck supports the Markov-chain portion. MDP tuples,
-            actions, rewards, policies, Bellman equations, and value iteration
-            are textbook/modern supplements added for this meeting.
-          </SearchCallout>
         </section>
       </div>
     ),
