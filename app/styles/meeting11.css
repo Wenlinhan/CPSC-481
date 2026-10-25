@@ -901,6 +901,11 @@
   padding: 22px;
 }
 
+.m11-policy-value > .m11-notation-footnote {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+
 .m11-policy-value article > span,
 .m11-bellman-compare article > span {
   color: #6740d9;

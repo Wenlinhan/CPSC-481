@@ -1159,9 +1159,16 @@ const baseSlides: SourceLessonSlide[] = [
           <p>Expected return after taking a now and following π afterward.</p>
           <b>Question answered: How good is this choice?</b>
         </article>
+        <p className="m11-notation-footnote">
+          <strong>Notation:</strong> π (pi) = policy; s = current state; a =
+          action; V<sup>π</sup>(s) = value of state s under π; Q<sup>π</sup>(s,a)
+          = value of taking a in s under π; E<sub>π</sub>[ ] = expected average
+          when π is followed; G<sub>t</sub> = return from time t; S<sub>t</sub>
+          = state at time t; and | means “given that.”
+        </p>
       </div>
     ),
-    note: "A policy π describes how the agent chooses actions in each state. The state value Vπ(s) is the expected long-term return when the agent starts in s and follows that policy. The action value Qπ(s,a) is more specific: it is the expected return after taking action a now and following π afterward. Reward is only the immediate signal, while value includes future consequences. An action with a small immediate reward can still have a high Q-value if it leads to a valuable state later.",
+    note: "A policy π describes how the agent chooses actions in each state. In the notation π(a|s), a is an action, s is the current state, and the vertical bar means ‘given that,’ so the expression means the probability of choosing action a given state s. The state value Vπ(s) is the expected long-term return when the agent starts in s and follows that policy. The action value Qπ(s,a) is more specific: it is the expected return after taking action a now and following π afterward. Eπ means an expected average when policy π is followed, Gₜ is the return from time t, and Sₜ is the state at time t. Reward is only the immediate signal, while value includes future consequences. An action with a small immediate reward can still have a high Q-value if it leads to a valuable state later.",
     sourceSlides: [],
   },
   {
