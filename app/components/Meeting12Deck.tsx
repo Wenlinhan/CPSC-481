@@ -617,31 +617,32 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [30],
   },
   {
-    eyebrow: "Policy quality · conditions and limits",
-    title: "The goal is a strong policy—not an automatic guarantee",
+    eyebrow: "Policy objective · expected return",
+    title: "A strong policy maximizes expected return under stated assumptions",
     content: (
       <div className="m12-claim-audit">
         <article>
-          <span>Common shorthand</span>
-          <h3>“learns an optimal policy”</h3>
-          <p>The phrase names the objective but can sound like a guarantee.</p>
+          <span>Objective</span>
+          <h3>maximize expected return</h3>
+          <p>Choose actions so cumulative discounted reward is high on average.</p>
         </article>
         <i>→</i>
         <article className="corrected">
-          <span>Precise formulation</span>
-          <h3>learn a policy that maximizes expected return</h3>
+          <span>What affects the result</span>
+          <h3>representation · exploration · data · algorithm</h3>
           <p>
-            Reaching an optimum depends on representation, exploration, data,
-            algorithm assumptions, and whether function approximation is used.
+            These choices determine whether learning approaches the best policy
+            available within the modeled problem.
           </p>
         </article>
-        <SearchCallout label="Second qualification" tone="amber">
-          A large or unknown environment can motivate model-free RL, but size
-          alone does not make RL successful or sample-efficient.
+        <SearchCallout label="Optimality is model-relative" tone="amber">
+          A policy can score highly under the chosen state, reward, and
+          transition model without being safe or effective in every real-world
+          situation.
         </SearchCallout>
       </div>
     ),
-    note: "It is common to say that reinforcement learning finds an optimal policy, but that wording can sound like a guarantee. A more careful statement is that the algorithm tries to learn a policy that maximizes expected return. Whether it succeeds depends on the state representation, the amount and quality of exploration, the data collected, and the assumptions of the learning algorithm. In a large problem, the agent may also use an approximate value function rather than an exact table. Therefore, optimality is a mathematical objective. It is not proof that the learned policy is perfect, safe, or even well tested in every relevant situation.",
+    note: "The objective in reinforcement learning is to learn a policy that produces high expected return. Expected return means the average cumulative discounted reward we would receive if we repeatedly followed that policy. Success depends on what the state represents, how the agent explores, which experiences are collected, and what assumptions the learning algorithm makes. In a large problem, the agent may approximate values instead of storing an exact table. Therefore, an optimal policy is always optimal relative to the modeled states, actions, transitions, and rewards. It is not automatic proof that the policy is safe, fair, or effective in every real-world situation.",
     sourceSlides: [30],
   },
   {
@@ -656,7 +657,7 @@ const slides: SourceLessonSlide[] = [
             ))}
           </div>
           <section>
-            <span>Game playing</span>
+            <span>Game playing · Chess</span>
             <h3>Too many states for a hand-written rule per position</h3>
             <p>Agents can learn through play against humans or other agents.</p>
           </section>
@@ -668,7 +669,7 @@ const slides: SourceLessonSlide[] = [
             ))}
           </div>
           <section>
-            <span>Control</span>
+            <span>Control · Elevator</span>
             <h3>Scheduling balances waiting time and changing demand</h3>
             <p>Simulation supports retraining when operating conditions change.</p>
           </section>
