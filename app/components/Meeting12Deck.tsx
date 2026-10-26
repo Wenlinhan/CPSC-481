@@ -356,6 +356,7 @@ function EpsilonGreedyExplorer() {
       <section>
         <span>{item.policy}</span>
         <h3>20 illustrative decisions</h3>
+        <p className="m12-page-explainer">Assume Arm B currently has the largest Q estimate. Each dot is one decision: choosing B exploits current knowledge; choosing A or C explores an alternative.</p>
         <div className="m12-choice-dots" aria-label={`Illustrative action counts ${item.counts.join(", ")}`}>
           {item.counts.flatMap((count, arm) =>
             Array.from({ length: count }, (_, index) => (
@@ -363,12 +364,18 @@ function EpsilonGreedyExplorer() {
             )),
           )}
         </div>
+        <div className="m12-choice-legend" aria-label="Action dot legend">
+          <span><i className="arm-0" />Arm A · explore</span>
+          <span><i />Arm B · current best</span>
+          <span><i className="arm-2" />Arm C · explore</span>
+        </div>
         <p>{item.interpretation}</p>
         <div className="m12-notation-box"><strong>Notation:</strong> ε (epsilon) = probability of exploring; 1−ε = probability of choosing a current best action; Q(s,a) = estimated value of action a in state s.</div>
         <SearchCallout label="ε-greedy rule" tone="cyan">
           With probability 1−ε choose an action with maximal Q(s,a); with
           probability ε choose an action at random.
         </SearchCallout>
+        <small className="m12-demo-caveat">The dots show an easy-to-read example allocation, not a claim that every 20 random decisions will have exactly these counts.</small>
       </section>
     </div>
   );
@@ -379,21 +386,25 @@ const updateSteps = [
     label: "Current estimate",
     equation: "Q(s,a) = 2.00",
     detail: "This is the value stored before the transition.",
+    interpretation: "The learner currently predicts a long-run value of 2.00 for taking action a in state s. This is a prediction, not the reward from this single step.",
   },
   {
     label: "One-step target",
     equation: "r + γ max Q(s′,a′) = −1 + 0.9(5) = 3.50",
     detail: "Bootstrap from the best estimated action value in the successor state.",
+    interpretation: "The sample suggests 3.50: immediate reward −1 plus 90% of the best estimated future value 5.00.",
   },
   {
     label: "TD error",
     equation: "δ = 3.50 − 2.00 = 1.50",
     detail: "The target exceeds the current estimate, so the update moves upward.",
+    interpretation: "The positive error means this transition was 1.50 better than the old prediction. A negative error would move Q downward.",
   },
   {
     label: "Updated value",
     equation: "Q ← 2.00 + 0.2(1.50) = 2.30",
     detail: "The learning rate α=0.2 moves only partway toward the target.",
+    interpretation: "The learner closes 20% of the 1.50 gap, adding 0.30. It keeps some prior knowledge instead of replacing Q with one noisy sample.",
   },
 ];
 
@@ -406,6 +417,7 @@ function QUpdateStepper() {
       <section>
         <span>Transition sample</span>
         <h3>(s, a, r, s′)</h3>
+        <p className="m12-page-explainer">One action was taken in state s. It produced reward −1 and next state s′, where the best available action is currently estimated at 5.</p>
         <div className="m12-notation-box"><strong>Notation:</strong> s = current state; a = action; r = reward; s′ = next state; α (alpha) = learning rate; γ (gamma) = discount factor; δ (delta) = TD error.</div>
         <div className="m12-transition-values">
           <article><small>Q(s,a)</small><strong>2.00</strong></article>
@@ -419,6 +431,7 @@ function QUpdateStepper() {
         <span>Step {step + 1} of {updateSteps.length} · {item.label}</span>
         <h3>{item.equation}</h3>
         <p>{item.detail}</p>
+        <div className="m12-update-meaning"><strong>Interpretation:</strong> {item.interpretation}</div>
         <div>
           <button disabled={step === 0} onClick={() => setStep(value => value - 1)} type="button">Previous</button>
           <button disabled={step === updateSteps.length - 1} onClick={() => setStep(value => value + 1)} type="button">Next</button>
@@ -445,13 +458,13 @@ const gridSnapshots = [
   {
     label: "After a goal route",
     q: ["−0.2", "0.8", "0.0", "−1.0"],
-    path: [0, 3, 4, 5, 8],
+    path: [0, 1, 2, 5, 8],
     note: "Reward begins to propagate backward from the goal.",
   },
   {
     label: "After repeated episodes",
     q: ["0.6", "1.4", "0.1", "−1.0"],
-    path: [0, 3, 4, 5, 8],
+    path: [0, 1, 2, 5, 8],
     note: "The greedy choice at Start becomes Right.",
   },
 ];
@@ -464,6 +477,7 @@ function GridworldStudio() {
     <div className="m12-gridworld">
       <section>
         <span>3 × 3 classroom environment</span>
+        <p className="m12-page-explainer">The agent starts at the upper-left cell and can move up, right, down, or left. Highlighted cells show the route sampled in the selected learning snapshot.</p>
         <div className="m12-grid">
           {Array.from({ length: 9 }, (_, cell) => (
             <div
@@ -478,6 +492,13 @@ function GridworldStudio() {
               {cell === 0 ? "Start" : cell === 7 ? "−10" : cell === 8 ? "+10" : ""}
             </div>
           ))}
+        </div>
+        <div className="m12-grid-legend">
+          <span><i className="start" />Start</span>
+          <span><i />ordinary cell · small step cost</span>
+          <span><i className="path" />sampled path</span>
+          <span><i className="hazard" />hazard −10</span>
+          <span><i className="goal" />goal +10</span>
         </div>
       </section>
       <section>
@@ -503,6 +524,7 @@ function GridworldStudio() {
           <article><small>←</small><strong>{state.q[3]}</strong></article>
         </div>
         <p>{state.note}</p>
+        <small className="m12-demo-caveat"><strong>How to read the rounds:</strong> select 1→4 to compare the table after more experience. Only sampled transitions update. These values form a simplified teaching trace rather than measurements from a hidden production system.</small>
       </section>
     </div>
   );
@@ -982,7 +1004,10 @@ const slides: SourceLessonSlide[] = [
         <section>
           <span>Off-policy temporal-difference control</span>
           <h3>Q(s,a) ← Q(s,a) + α[r + γ maxₐ′Q(s′,a′) − Q(s,a)]</h3>
-          <div className="m12-notation-box"><strong>Notation:</strong> ← means “replace with”; α = learning rate; r = reward; s′ = next state; a′ = possible next action; max = choose the largest next-action estimate.</div>
+          <div className="m12-equation-translation">
+            <strong>new estimate</strong><i>=</i><strong>old estimate</strong><i>+</i><strong>learning rate</strong><i>×</i><strong>prediction surprise</strong>
+          </div>
+          <div className="m12-notation-box"><strong>Notation:</strong> Q(s,a) = estimated return for taking action a in state s; ← = replace the old value; α = learning rate; r = immediate reward; γ = discount factor; s′ = next state; a′ = a possible next action; max = use the largest next-action estimate.</div>
         </section>
         <div>
           <article><strong>α</strong><h3>learning rate</h3><p>how far to move toward this sample target</p></article>
@@ -991,9 +1016,9 @@ const slides: SourceLessonSlide[] = [
           <article><strong>max Q′</strong><h3>bootstrap</h3><p>estimated value of the greedy next action</p></article>
         </div>
         <SearchCallout label="Equation focus" tone="amber">
-          Q-learning updates an action-value estimate from one observed
-          transition by combining immediate reward with the best estimated
-          value available in the next state.
+          The target is <strong>r + γ max Q(s′,a′)</strong>. Subtracting the old
+          Q(s,a) gives the TD error: how surprising this transition was. α
+          determines how much of that error is learned now.
         </SearchCallout>
       </div>
     ),
@@ -1019,6 +1044,7 @@ const slides: SourceLessonSlide[] = [
     title: "Q-learning repeats six simple steps",
     content: (
       <div className="m12-algorithm">
+        <div className="m12-algorithm-guide"><strong>Read the loop:</strong> Step 1 prepares the table once. Steps 2–6 repeat for every transition. Only the Q entry for the experienced pair (s,a) changes on that update.</div>
         <ol>
           <li>Initialize Q(s,a), usually to zero or optimistic values.</li>
           <li>Observe the current state s.</li>
@@ -1035,6 +1061,7 @@ const slides: SourceLessonSlide[] = [
             target even when the sampled behavior action was exploratory.
           </p>
           <div className="m12-notation-box"><strong>Terms:</strong> behavior policy = action rule used to collect experience; target policy = policy being learned; off-policy = these two policies may differ.</div>
+          <div className="m12-algorithm-context"><strong>Episode boundary:</strong> if s′ is terminal, there is no next action, so the future-value term is 0. Begin a new episode from a start state.</div>
           <SearchCallout label="Tabular boundary" tone="cyan">
             One table entry per state-action pair is feasible only when the
             discrete space is small enough to enumerate.
@@ -1209,23 +1236,23 @@ Interact with the arms and watch how the estimates change. An early lucky reward
 
   `Epsilon-greedy is a simple way to balance exploitation and exploration. The Greek letter epsilon, ε, is the exploration probability. With probability one minus epsilon, the agent selects an action with the largest current Q value. With probability epsilon, it selects randomly from the available actions. Q of s comma a is the estimated long-term value of taking action a in state s.
 
-Examine the three settings. When epsilon is zero, the agent is fully greedy and performs no deliberate exploration. At epsilon 0.1, about ten percent of decisions explore over a long run. At epsilon 0.5, exploration is frequent: the learner gathers broad evidence but often ignores its current best estimate. The dots show typical proportions, not a guarantee for a short sample. Randomness can produce more or fewer exploratory choices in any small sequence. In practice, epsilon is sometimes reduced over training so that learning begins with broad exploration and later relies more on the estimates, although reducing it too quickly can leave important actions untested.`,
+Assume Arm B currently has the largest estimate. Purple dots therefore represent exploitation, while the cyan and amber dots represent exploratory selections of A and C. Examine the three settings. When epsilon is zero, the agent is fully greedy and performs no deliberate exploration. At epsilon 0.1, about ten percent of decisions explore over a long run. At epsilon 0.5, exploration is frequent: the learner gathers broad evidence but often ignores its current best estimate. The twenty dots are an illustration, not a literal random sample or a guarantee. In a real set of twenty decisions, the number of exploratory choices can be higher or lower. In practice, epsilon is sometimes reduced over training so that learning begins with broad exploration and later relies more on the estimates, although reducing it too quickly can leave important actions untested.`,
 
   `Read the Q-learning equation from the inside out. Q of s comma a is the current estimate for the state-action pair we just experienced. The one-step target is the immediate reward r plus gamma times the largest estimated Q value at the next state s-prime. The prime mark means “next,” and max over a-prime means compare all possible next actions and keep the largest estimate.
 
-Subtracting the old Q from the target gives the temporal-difference error. A positive error says the outcome was better than expected; a negative error says it was worse. Alpha, α, is the learning rate. It determines what fraction of that error is added to the old estimate. The left arrow means replace the old value with the updated one. This is called bootstrapping because the target uses another current estimate rather than waiting for the full episode to finish. It is off-policy because the target evaluates the greedy next action even if the behavior that collected the transition was exploratory. If s-prime is terminal, its future value is taken as zero.`,
+The plain-language line under the equation summarizes the same operation: new estimate equals old estimate plus learning rate times prediction surprise. Subtracting the old Q from the target gives that surprise, formally called the temporal-difference error. A positive error says the outcome was better than expected; a negative error says it was worse. Alpha, α, is the learning rate. It determines what fraction of that error is added to the old estimate. The left arrow means replace the old value with the updated one. This is called bootstrapping because the target uses another current estimate rather than waiting for the full episode to finish. It is off-policy because the target evaluates the greedy next action even if the behavior that collected the transition was exploratory. If s-prime is terminal, its future value is taken as zero.`,
 
   `Now apply the equation in three clean stages. The current Q value is 2. The reward r is minus one. Gamma is 0.9, and the largest next-state Q value is 5. First compute the target: minus one plus 0.9 times 5. That is minus one plus 4.5, which equals 3.5. Keep the target separate so we can see what value the sample suggests.
 
-Second, compute the temporal-difference error, shown as delta: target minus current estimate. That is 3.5 minus 2, or 1.5. The positive sign means this transition was better than the old estimate predicted. Third, apply the learning rate alpha equal to 0.2. Add 0.2 times 1.5 to the old value: 2 plus 0.3 equals 2.3. Notice that the new value does not jump all the way to 3.5. Alpha controls the step size, allowing many noisy samples to contribute over time. Use the buttons to reveal each stage and keep target, error, and update conceptually distinct.`,
+Second, compute the temporal-difference error, shown as delta: target minus current estimate. That is 3.5 minus 2, or 1.5. The positive sign means this transition was better than the old estimate predicted. Third, apply the learning rate alpha equal to 0.2. Add 0.2 times 1.5 to the old value: 2 plus 0.3 equals 2.3. Notice that the new value does not jump all the way to 3.5. Alpha controls the step size, allowing many noisy samples to contribute over time. Use the buttons to reveal each stage. The interpretation box changes with the selected stage so that students can distinguish an old prediction, a sample target, a prediction error, and the final partial update.`,
 
   `The gridworld makes propagation visible. At the beginning, all four actions at Start have equal Q values, so the learner has no evidence favoring a direction. During exploration, it samples routes. A path that encounters step costs or a hazard produces lower targets for the actions on that path. A successful path reaches the goal and produces a positive reward. The action immediately before the goal benefits first because its update includes that reward directly.
 
-Across later transitions and episodes, the useful information moves backward. The predecessor action bootstraps from a larger next-state Q value, and eventually the action at Start that leads toward the goal becomes more valuable. This is what the page means by reward information spreading through the table. Click through the snapshots and inspect Q of Start comma dot, the four action estimates at the starting cell. The demonstration illustrates the mechanism, not a formal convergence proof. Exact numbers depend on the transition rules, rewards, learning rate, discount, exploration schedule, and sampled experience. Untried actions remain uncertain even when one route currently looks best.`,
+Across later transitions and episodes, the useful information moves backward. The predecessor action bootstraps from a larger next-state Q value, and eventually the action Right at Start, shown by the route across the top row toward the goal, becomes more valuable. This is what the page means by reward information spreading through the table. Click through the snapshots and inspect Q of Start comma dot, the four action estimates at the starting cell. Blank cells are ordinary locations with a small movement cost; the red cell is a hazard worth minus ten, and the green goal is worth plus ten. The demonstration illustrates the mechanism, not a formal convergence proof. Exact numbers depend on the transition rules, rewards, learning rate, discount, exploration schedule, and sampled experience. Untried actions remain uncertain even when one route currently looks best.`,
 
   `Tabular Q-learning repeats these six steps. First initialize one Q value for every state-action pair. Zero is common, while optimistic initial values can encourage exploration. Second observe the current state s. Third choose action a using a behavior policy such as epsilon-greedy. The behavior policy is simply the rule used to collect experience.
 
-Fourth execute the action and observe reward r and successor state s-prime. Fifth update only the experienced entry Q of s comma a toward the target r plus gamma times the maximum next-state Q value. Sixth replace s with s-prime and continue. If the episode terminates, begin another episode and use zero as the terminal future value. Q-learning is off-policy because its behavior may explore while its target assumes the greedy next action. The target policy is the policy being learned; it can differ from the behavior policy. A literal table is practical only when the discrete state-action space is small enough to enumerate. Larger problems usually require approximation, which adds new stability and generalization concerns.`,
+Fourth execute the action and observe reward r and successor state s-prime. Fifth update only the experienced entry Q of s comma a toward the target r plus gamma times the maximum next-state Q value. Sixth replace s with s-prime and continue. Step one prepares the table once; steps two through six repeat for each transition. If the episode terminates, there is no next action, so the future-value term is zero and a new episode begins from a start state. Q-learning is off-policy because its behavior may explore while its target assumes the greedy next action. The target policy is the policy being learned; it can differ from the behavior policy. A literal table is practical only when the discrete state-action space is small enough to enumerate. Larger problems usually require approximation, which adds new stability and generalization concerns.`,
 
   `Q-learning and SARSA look almost identical, but one target term changes their meaning. Q-learning uses r plus gamma times the maximum Q value in the next state. It asks, “What value would the best estimated next action provide?” That greedy target makes Q-learning off-policy, because the update can evaluate a different action from the one the behavior policy actually takes.
 
