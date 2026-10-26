@@ -71,6 +71,61 @@ function SourceFrame({
   );
 }
 
+function ReinforcementLearningFiveAspects() {
+  const aspects = [
+    ["1", "Explore", "Try actions so the agent can discover their consequences."],
+    ["2", "Act and observe", "Trial and error produces experience in the environment."],
+    ["3", "Receive reward", "Reward evaluates the consequence; it is not a labeled action."],
+    ["4", "Update the policy", "Use experience to improve how situations map to actions."],
+    ["5", "Improve return", "Judge the policy by cumulative reward, including delayed effects."],
+  ];
+
+  return (
+    <section className="m12-five-aspects" aria-label="Five connected aspects of reinforcement learning">
+      <header>
+        <span>One connected learning loop</span>
+        <h3>Explore → act → learn → improve</h3>
+      </header>
+      <ol>
+        {aspects.map(([number, title, detail]) => (
+          <li key={title}>
+            <b>{number}</b>
+            <div><strong>{title}</strong><p>{detail}</p></div>
+          </li>
+        ))}
+      </ol>
+      <small>The next action begins another trip through the loop.</small>
+    </section>
+  );
+}
+
+function LearningCategoriesComparison() {
+  const rows = [
+    ["Feedback", "What learning signal is available?", "labels · patterns · reward", "Supervised, unsupervised, and reinforcement learning differ here."],
+    ["Update schedule", "When does the model change?", "batch · online", "A method can update once from fixed data or incrementally as data arrive."],
+    ["Representation", "How is knowledge stored?", "symbolic · statistical/neural · hybrid", "Rules, learned parameters, or a combination can represent knowledge."],
+    ["Decision setting", "What must the system do?", "prediction · analogy · sequential control", "Reinforcement learning focuses on actions whose effects unfold over time."],
+  ];
+
+  return (
+    <div className="m12-category-comparison" aria-label="Comparison of four ways to categorize machine-learning systems">
+      <header>
+        <span>Compare one dimension at a time</span>
+        <p>These categories answer different questions, so one system can belong to several at once.</p>
+      </header>
+      <div className="m12-category-table" role="table" aria-label="Machine-learning category comparison">
+        <div className="head" role="row"><b>Dimension</b><b>Question</b><b>Choices</b><b>Meaning</b></div>
+        {rows.map(([dimension, question, choices, meaning]) => (
+          <div role="row" key={dimension}>
+            <strong>{dimension}</strong><span>{question}</span><code>{choices}</code><p>{meaning}</p>
+          </div>
+        ))}
+      </div>
+      <aside><strong>Example:</strong> An RL robot can learn from reward, update online, use a neural representation, and control a sequence of actions.</aside>
+    </div>
+  );
+}
+
 const loopSteps = [
   {
     label: "Observe",
@@ -595,11 +650,7 @@ const slides: SourceLessonSlide[] = [
     title: "Five ideas behind reinforcement learning",
     content: (
       <div className="m12-source-and-notes">
-        <SourceFrame
-          slide={30}
-          alt="Five foundational ideas in reinforcement learning"
-          caption="Trial and error, cumulative reward, exploration, and disciplinary connections."
-        />
+        <ReinforcementLearningFiveAspects />
         <section>
           <span>How the ideas fit together</span>
           <h3>Five durable knowledge points</h3>
@@ -730,13 +781,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Machine-learning categories",
     title: "Learning methods can be grouped in several different ways",
     content: (
-      <div className="m12-full-source">
-        <SourceFrame
-          slide={33}
-          alt="Categories used to describe machine-learning systems"
-          caption="Learning systems can be described by feedback, update schedule, representation, and decision setting."
-        />
-      </div>
+      <LearningCategoriesComparison />
     ),
     note: "Machine-learning systems can be classified along several independent dimensions. A method can use symbolic rules, statistical representations, neural networks, or a hybrid. It can learn from labels, discover structure without labels, or learn from reward. It can train from a fixed batch or update online. Deep learning describes a kind of representation, while reinforcement learning describes a sequential decision setting. Because these categories answer different questions, one system can belong to several categories at once. For example, a robot can use deep neural networks, learn from reward, and update its model online.",
     sourceSlides: [33],
