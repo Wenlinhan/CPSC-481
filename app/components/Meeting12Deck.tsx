@@ -50,9 +50,15 @@ function SourceFrame({
       points: ["Luger, Artificial Intelligence, 6th ed.", "Russell and Norvig, Artificial Intelligence: A Modern Approach, 3rd ed.", "Course slides and speaker-note applications"],
     },
   }[slide];
+  const topicLabel = {
+    30: "Reinforcement learning foundations",
+    32: "Batch and online learning",
+    33: "Ways to classify learning",
+    36: "Readings and references",
+  }[slide];
   return (
     <article className={`m12-source-rebuilt ${className}`.trim()} aria-label={alt}>
-      <span>Course-source reconstruction · page {slide}</span>
+      <span>{topicLabel}</span>
       <h3>{sourceContent.title}</h3>
       <ul>{sourceContent.points.map(point => <li key={point}>{point}</li>)}</ul>
       {slide === 32 && (
@@ -585,17 +591,17 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [30],
   },
   {
-    eyebrow: "Course foundation · page 30",
+    eyebrow: "Reinforcement learning foundations",
     title: "Five ideas behind reinforcement learning",
     content: (
       <div className="m12-source-and-notes">
         <SourceFrame
           slide={30}
-          alt="Course source page defining reinforcement learning"
+          alt="Five foundational ideas in reinforcement learning"
           caption="Trial and error, cumulative reward, exploration, and disciplinary connections."
         />
         <section>
-          <span>Read the source as evidence</span>
+          <span>How the ideas fit together</span>
           <h3>Five durable knowledge points</h3>
           <ol>
             <li><b>↻</b><span>The agent learns through trial and error.</span></li>
@@ -611,18 +617,18 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [30],
   },
   {
-    eyebrow: "Source correction · qualify, do not erase",
+    eyebrow: "Policy quality · conditions and limits",
     title: "The goal is a strong policy—not an automatic guarantee",
     content: (
       <div className="m12-claim-audit">
         <article>
-          <span>Source wording</span>
+          <span>Common shorthand</span>
           <h3>“learns an optimal policy”</h3>
           <p>The phrase names the objective but can sound like a guarantee.</p>
         </article>
         <i>→</i>
         <article className="corrected">
-          <span>Course formulation</span>
+          <span>Precise formulation</span>
           <h3>learn a policy that maximizes expected return</h3>
           <p>
             Reaching an optimum depends on representation, exploration, data,
@@ -639,7 +645,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [30],
   },
   {
-    eyebrow: "Historical speaker notes · applications",
+    eyebrow: "Reinforcement learning applications",
     title: "Games and elevators both learn from action-dependent experience",
     content: (
       <div className="m12-application-pair">
@@ -673,13 +679,13 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [30],
   },
   {
-    eyebrow: "Course foundation · page 32",
+    eyebrow: "Batch and online learning",
     title: "Batch learning updates later; online learning updates as data arrive",
     content: (
       <div className="m12-full-source">
         <SourceFrame
           slide={32}
-          alt="Course source page comparing batch offline learning and online learning"
+          alt="Comparison of batch offline learning and online learning"
           caption="Batch and online learning compared through a complete prediction-and-update pipeline."
         />
       </div>
@@ -688,13 +694,13 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [32],
   },
   {
-    eyebrow: "Exact embedded figure · source page 32",
+    eyebrow: "Batch and online learning · visual comparison",
     title: "Online learning and reinforcement learning are not the same thing",
     content: (
       <div className="m12-media-compare">
         <SearchSourceImage
-          alt="Exact embedded source figure comparing batch and online learning"
-          caption="Exact image25.png · copied byte-for-byte from the authoritative PowerPoint."
+          alt="Diagram comparing batch and online learning"
+          caption="A prediction-and-update view of batch and online learning."
           file="media/image25.png"
           sourceRoot={SOURCE_ROOT}
         />
@@ -720,14 +726,14 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [32, 33],
   },
   {
-    eyebrow: "Course foundation · page 33",
+    eyebrow: "Machine-learning categories",
     title: "Learning methods can be grouped in several different ways",
     content: (
       <div className="m12-full-source">
         <SourceFrame
           slide={33}
-          alt="Course source page listing categories of machine learning"
-          caption="Exact PowerPoint export · including the online/RL comparison and the note that RL is important to robots."
+          alt="Categories used to describe machine-learning systems"
+          caption="Learning systems can be described by feedback, update schedule, representation, and decision setting."
         />
       </div>
     ),
@@ -735,7 +741,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [33],
   },
   {
-    eyebrow: "Source correction · learning categories",
+    eyebrow: "Learning categories · separate dimensions",
     title: "Update timing and decision making are separate questions",
     content: (
       <div className="m12-taxonomy">
@@ -769,7 +775,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [33],
   },
   {
-    eyebrow: "Textbook/modern supplement · formal problem",
+    eyebrow: "Decision model · Markov decision process",
     title: "An MDP names the five parts of a decision problem",
     content: (
       <div className="m12-mdp-map">
@@ -792,14 +798,14 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · observable interaction",
+    eyebrow: "Agent–environment interaction",
     title: "The agent acts; the environment returns a state and reward",
     content: <InteractionLoopExplorer />,
     note: "At time t, the agent observes state sₜ and selects action aₜ using its policy π. The environment responds with the next state sₜ₊₁ and reward rₜ₊₁. The reward evaluates the consequence, but it does not tell the agent which action would have been correct. The learner updates its value estimates or policy and repeats the loop. The action arrow is crucial because the selected action changes the next experience. This makes reinforcement-learning data action-dependent: the agent partly determines which states and rewards it will observe in the future.",
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · trajectory and episode",
+    eyebrow: "Experience over time · trajectories and episodes",
     title: "Reinforcement-learning experience comes in an ordered sequence",
     content: (
       <div className="m12-trajectory">
@@ -833,7 +839,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · return",
+    eyebrow: "Cumulative reward · return",
     title: "Return combines immediate and future rewards",
     content: (
       <div className="m12-equation-stage">
@@ -865,7 +871,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · policy and value",
+    eyebrow: "Policies and value functions",
     title: "A policy chooses; value estimates the long-term result",
     content: (
       <div className="m12-policy-values">
@@ -907,14 +913,14 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · ε-greedy exploration",
+    eyebrow: "Exploration strategy · ε-greedy",
     title: "ε-greedy usually exploits and sometimes explores",
     content: <EpsilonGreedyExplorer />,
     note: "The ε-greedy rule balances exploitation and exploration. With probability one minus ε, the agent chooses an action with the largest current Q-value. With probability ε, it chooses an action at random. If ε is zero, the agent never deliberately explores. If ε is 0.1, exploration occurs about ten percent of the time over many decisions. If ε is 0.5, exploration is frequent, producing more information but sacrificing many currently preferred choices. The dots illustrate typical proportions; a short random sequence will not always contain exactly those counts.",
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · Q-learning",
+    eyebrow: "Action-value learning · Q-learning",
     title: "Q-learning updates one action value after each transition",
     content: (
       <div className="m12-q-equation">
@@ -929,9 +935,10 @@ const slides: SourceLessonSlide[] = [
           <article><strong>γ</strong><h3>discount</h3><p>weight on the successor estimate</p></article>
           <article><strong>max Q′</strong><h3>bootstrap</h3><p>estimated value of the greedy next action</p></article>
         </div>
-        <SearchCallout label="Source boundary" tone="amber">
-          The historical speaker note contains only the term “Q-Learning.” This
-          equation, its terms, and the derivation are textbook supplements.
+        <SearchCallout label="Equation focus" tone="amber">
+          Q-learning updates an action-value estimate from one observed
+          transition by combining immediate reward with the best estimated
+          value available in the next state.
         </SearchCallout>
       </div>
     ),
@@ -953,7 +960,7 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · tabular algorithm",
+    eyebrow: "Q-learning algorithm · tabular form",
     title: "Q-learning repeats six simple steps",
     content: (
       <div className="m12-algorithm">
@@ -984,14 +991,14 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Textbook/modern supplement · Q-learning versus SARSA",
+    eyebrow: "Compare control methods · Q-learning and SARSA",
     title: "Q-learning and SARSA use different next-action targets",
     content: <TDComparison />,
     note: "Q-learning and SARSA differ in the next-action value placed in the target. Q-learning uses the maximum estimated Q-value at the next state, so it evaluates what a greedy policy would do next. SARSA uses the Q-value of the action that the behavior policy actually selected. This makes Q-learning off-policy and SARSA on-policy. In a risky environment, an exploratory policy may occasionally take unsafe actions. SARSA can incorporate that exploratory risk into its values, while Q-learning evaluates the greedy next action even if the observed behavior continues to explore.",
     sourceSlides: [],
   },
   {
-    eyebrow: "Modern supplement · limits, safety, and evaluation",
+    eyebrow: "Limits, safety, and evaluation",
     title: "High training reward does not guarantee safe or reliable behavior",
     content: (
       <div className="m12-limit-grid">
@@ -1049,17 +1056,17 @@ const slides: SourceLessonSlide[] = [
     sourceSlides: [],
   },
   {
-    eyebrow: "Course foundation · page 36 · readings",
+    eyebrow: "Readings and synthesis",
     title: "Review the learning loop and continue with the readings",
     content: (
       <div className="m12-source-and-readings">
         <SourceFrame
           slide={36}
-          alt="Course source reference page citing the Luger and Mitchell textbooks"
-          caption="Exact PowerPoint export · source misspellings remain visible as historical evidence."
+          alt="Recommended textbooks for reinforcement learning"
+          caption="Foundational readings for reinforcement learning and intelligent decision making."
         />
         <section>
-          <span>Corrected course reading list</span>
+          <span>Recommended reading list</span>
           <ol>
             <li>
               George F. Luger, <em>Artificial Intelligence: Structures and
