@@ -580,6 +580,13 @@ function EvaluationStudio() {
           <b>actual -</b><i className="good">TN</i><i className="bad">FP</i>
           <b>actual +</b><i className="bad">FN</i><i className="good">TP</i>
         </div>
+        <div className="m15-confusion-legend" aria-label="Confusion matrix notation">
+          <article><strong>TP · true positive</strong><p>Actual class is positive, and the model correctly predicts positive.</p></article>
+          <article><strong>TN · true negative</strong><p>Actual class is negative, and the model correctly predicts negative.</p></article>
+          <article><strong>FP · false positive</strong><p>Actual class is negative, but the model incorrectly predicts positive—a false alarm.</p></article>
+          <article><strong>FN · false negative</strong><p>Actual class is positive, but the model incorrectly predicts negative—a missed positive.</p></article>
+        </div>
+        <small className="m15-confusion-reading"><strong>How to read the abbreviations:</strong> positive/negative name the predicted class; true/false say whether that prediction agrees with the actual class.</small>
       </section>
     </div>
   );
@@ -992,7 +999,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "In-class practice - Evidence package",
     title: "A model result needs a baseline, errors, slices, and a record",
     content: <EvaluationStudio />,
-    note: "Timing: 5 minutes. Groups rotate through the four tabs and write one required artifact for each. Ask which work may use cross-validated development predictions and what happens if a test-set discovery changes the model.",
+    note: "Timing: 5 minutes. Groups rotate through the four tabs and write one required artifact for each. On the confusion-matrix view, define all four cells before discussing metrics. TP is a true positive: an actual positive correctly predicted positive. TN is a true negative: an actual negative correctly predicted negative. FP is a false positive: an actual negative incorrectly predicted positive, often called a false alarm. FN is a false negative: an actual positive incorrectly predicted negative, often called a missed detection. Explain that positive and negative identify the class decision, while true and false indicate whether the prediction agrees with reality. The cost of FP and FN depends on the application, so accuracy alone may hide the error that matters most. Ask which work may use cross-validated development predictions and what happens if a test-set discovery changes the model.",
     sourceSlides: [],
   },
   {
