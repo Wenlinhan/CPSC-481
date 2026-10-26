@@ -258,7 +258,7 @@
 .m12-logic-lab > p { background: #fff5d7; border-left: 6px solid #e2a72d; border-radius: 12px; margin: 0; padding: 15px; }
 
 .m12-perceptron-trace > section { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-.m12-perceptron-trace ol { display: grid; gap: 10px; grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; }
+.m12-perceptron-trace ol { display: grid; gap: 10px; grid-column: 1 / -1; grid-template-columns: repeat(5, 1fr); list-style: none; margin: 0; padding: 0; }
 .m12-perceptron-trace li { background: #eeeafd; border-radius: 12px; display: grid; gap: 4px; padding: 12px; }
 .m12-perceptron-trace li b { color: #5634d1; }
 .m12-perceptron-trace > section > p { grid-column: 1 / -1; margin: 0; }
