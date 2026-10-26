@@ -1592,6 +1592,17 @@
   line-height: 1.5;
 }
 
+.m12-td-example {
+  background: #f0ebff;
+  border-left: 5px solid var(--m12-purple);
+  border-radius: 11px;
+  color: #31415a;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 8px 0 12px;
+  padding: 10px 13px;
+}
+
 .m12-td-comparison > aside {
   background: #1f2d47;
   border-radius: 14px;
@@ -1608,6 +1619,16 @@
   font-weight: 900;
   justify-self: start;
   padding: 10px 14px;
+}
+
+.m12-practice-purpose {
+  background: #e9f7fb;
+  border-left: 5px solid var(--m12-cyan);
+  border-radius: 10px;
+  color: #294158;
+  font-size: 12px;
+  margin: 8px 0 0;
+  padding: 8px 11px;
 }
 
 .m12-practice .search-callout {

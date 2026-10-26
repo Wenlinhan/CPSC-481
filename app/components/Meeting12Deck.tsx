@@ -537,6 +537,7 @@ const tdAlgorithms = [
     policy: "Off-policy",
     question: "What would the greedy policy do next?",
     consequence: "Backs up the best estimated next action even if exploration selects another action.",
+    example: "At s′, suppose Left has Q=5 and exploratory behavior chooses Right with Q=2. Q-learning uses 5 in its target.",
   },
   {
     label: "SARSA",
@@ -544,6 +545,7 @@ const tdAlgorithms = [
     policy: "On-policy",
     question: "What action did the behavior policy actually select?",
     consequence: "Backs up the sampled next action, so exploratory risk can influence learned values.",
+    example: "In the same situation, SARSA uses 2 because Right is the action the behavior policy actually selected.",
   },
 ];
 
@@ -566,10 +568,12 @@ function TDComparison() {
         ))}
       </nav>
       <section>
+        <p className="m12-page-explainer"><strong>Shared setup:</strong> both methods observe the same transition (s, a, r, s′). They differ only in which next-action value they place in the target.</p>
         <span>{item.policy}</span>
         <h3>{item.target}</h3>
         <div className="m12-notation-box"><strong>Notation:</strong> a′ = next action; max<sub>a′</sub> chooses the largest next-action value; Q(s′,a′) uses the action actually selected at the next state.</div>
         <p><strong>Target asks:</strong> {item.question}</p>
+        <div className="m12-td-example"><strong>Concrete comparison:</strong> {item.example}</div>
         <SearchCallout label="Learning consequence" tone={active === 0 ? "indigo" : "green"}>
           {item.consequence}
         </SearchCallout>
@@ -585,24 +589,28 @@ function TDComparison() {
 const practiceCases = [
   {
     label: "Return",
+    purpose: "Combine immediate and delayed rewards into one discounted total.",
     prompt: "Rewards are 2, 0, 8 and γ=0.5. Compute G₀.",
-    answer: "G₀ = 2 + 0.5(0) + 0.5²(8) = 4.",
+    answer: "G₀ = 2 + 0.5(0) + 0.5²(8) = 4. The reward 8 is two steps away, so it receives weight γ² = 0.25.",
     evidence: "Show the exponent attached to each delayed reward.",
   },
   {
     label: "Update",
+    purpose: "Use one transition to revise an action-value estimate.",
     prompt: "Q=4, r=1, γ=0.9, max Q′=6, α=0.5. Compute the new Q.",
-    answer: "Target=6.4; error=2.4; new Q=4+0.5(2.4)=5.2.",
+    answer: "Target=6.4; error=6.4−4=2.4; new Q=4+0.5(2.4)=5.2. Because the target exceeds the old estimate, Q moves upward.",
     evidence: "Separate target, TD error, and learning-rate step.",
   },
   {
     label: "Policy",
+    purpose: "Turn learned action values into a choice.",
     prompt: "Q values are [1, 3, 2]. With ε=0, which action is selected?",
     answer: "The second action, because it has the maximal estimated value 3.",
     evidence: "With ε>0, any action can still be selected during exploration.",
   },
   {
     label: "Diagnosis",
+    purpose: "Distinguish an optimization failure from a reward-design failure.",
     prompt: "A robot earns points by spinning in place instead of delivering. What failed?",
     answer: "The reward function is an incomplete proxy for the intended task.",
     evidence: "Name the observed loophole and propose a measurable repair.",
@@ -633,6 +641,7 @@ function GuidedPracticeStudio() {
       </nav>
       <section>
         <span>Pair practice · case {active + 1}</span>
+        <p className="m12-practice-purpose">{item.purpose}</p>
         <h3>{item.prompt}</h3>
         <p>{item.evidence}</p>
         <button onClick={() => setRevealed(value => !value)} type="button">
@@ -1108,11 +1117,11 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "In-class assessment · independent retrieval",
-    title: "Check your understanding: what makes reinforcement learning different?",
+    title: "What makes reinforcement learning different?",
     content: (
       <div className="m12-assessment">
         <SearchQuickCheck
-          question="Choose the strongest distinction."
+          question="What makes reinforcement learning different?"
           options={[
             "RL always updates online; supervised learning always trains in batches.",
             "RL actions affect future data and rewards may be delayed; online supervised learning can update from arriving labeled examples without controlling the data source.",
@@ -1254,19 +1263,19 @@ Across later transitions and episodes, the useful information moves backward. Th
 
 Fourth execute the action and observe reward r and successor state s-prime. Fifth update only the experienced entry Q of s comma a toward the target r plus gamma times the maximum next-state Q value. Sixth replace s with s-prime and continue. Step one prepares the table once; steps two through six repeat for each transition. If the episode terminates, there is no next action, so the future-value term is zero and a new episode begins from a start state. Q-learning is off-policy because its behavior may explore while its target assumes the greedy next action. The target policy is the policy being learned; it can differ from the behavior policy. A literal table is practical only when the discrete state-action space is small enough to enumerate. Larger problems usually require approximation, which adds new stability and generalization concerns.`,
 
-  `Q-learning and SARSA look almost identical, but one target term changes their meaning. Q-learning uses r plus gamma times the maximum Q value in the next state. It asks, “What value would the best estimated next action provide?” That greedy target makes Q-learning off-policy, because the update can evaluate a different action from the one the behavior policy actually takes.
+  `Q-learning and SARSA look almost identical, but one target term changes their meaning. Both begin with the same observed transition: state s, action a, reward r, and next state s-prime. Q-learning uses r plus gamma times the maximum Q value in the next state. It asks, “What value would the best estimated next action provide?” That greedy target makes Q-learning off-policy, because the update can evaluate a different action from the one the behavior policy actually takes.
 
-SARSA uses r plus gamma times Q of s-prime comma a-prime, where a-prime is the next action actually selected by the behavior policy. Its name comes from the sequence State, Action, Reward, next State, next Action. Because it learns the value of the same policy used to act, SARSA is on-policy. The difference matters when exploration itself creates risk. Near a cliff, an epsilon-greedy behavior policy sometimes makes random dangerous moves. SARSA can account for that continuing exploratory risk and prefer a safer route. Q-learning evaluates the greedy continuation and may value a shorter path close to danger. Neither method is universally better; their targets answer different policy questions.`,
+Use the numerical comparison on the page. Suppose the next state offers Left with Q equal to 5 and Right with Q equal to 2, but exploration selects Right. Q-learning puts 5 in the target because 5 is the maximum. SARSA puts 2 in the target because Right was actually selected. SARSA uses Q of s-prime comma a-prime, where a-prime is the next action chosen by the behavior policy. Its name comes from State, Action, Reward, next State, next Action. Because it learns the value of the same policy used to act, SARSA is on-policy. Near a cliff, SARSA can account for continuing exploratory danger, while Q-learning evaluates the greedy continuation. Neither method is universally better; their targets answer different policy questions.`,
 
   `A high training reward is evidence about one measured objective, not a complete certificate of quality. Start with sample cost. Real interaction can be slow, expensive, or dangerous, so collecting enough varied experience may be difficult. Reward hacking occurs when the agent finds a way to increase the measured score without accomplishing the intended goal. A delivery robot that spins to trigger a motion reward is optimizing the proxy, not the task we meant.
 
 Instability can arise when bootstrapping, off-policy learning, and function approximation interact. Distribution shift means a policy trained under one set of dynamics—perhaps in simulation—faces different conditions after deployment. Exploration risk reminds us that trying an unknown action may be acceptable in a game but unacceptable in transportation or medicine. Evaluation should use baselines, held-out scenarios, multiple random seeds, variance across runs, and explicit safety constraints. For the elevator example, a reward might combine average wait, worst-case wait, energy use, capacity, and safety violations. Even that formula needs testing for loopholes. The broader lesson is to evaluate intended behavior, not only the scalar the optimizer was given.`,
 
-  `This practice page combines calculation with interpretation. Begin with the Return tab. Write each reward in order and attach one additional power of gamma for every step of delay. Do not treat gamma as a probability; it is the weight applied to future reward. On the Update tab, organize the work into target, temporal-difference error, and learning-rate step. That structure makes arithmetic mistakes easier to locate and explains what the result means.
+  `This practice page combines calculation with interpretation. The short purpose statement under each tab tells us which skill that case exercises. Begin with the Return tab. Write each reward in order and attach one additional power of gamma for every step of delay. Do not treat gamma as a probability; it is the weight applied to future reward. On the Update tab, organize the work into target, temporal-difference error, and learning-rate step. That structure makes arithmetic mistakes easier to locate and explains what the result means. A positive error moves the estimate upward; a negative error moves it downward.
 
 On the Policy tab, compare the Q values and choose the largest when epsilon is zero. Then explain how a nonzero epsilon changes behavior: the greedy action remains preferred, but any action may sometimes be sampled. Finally, use the Diagnosis tab to distinguish learning failure from objective failure. If a robot earns reward by spinning rather than delivering, the optimizer may be following the reward exactly. The defect is that the reward is an incomplete proxy for our intent. Reveal each solution only after producing a reasoned answer. A strong response includes the calculation, defines the symbols used, and interprets the result in the decision setting.`,
 
-  `The multiple-choice question checks the central distinction. Reinforcement learning is not defined by always updating online, and supervised learning is not restricted to batches. The strongest answer is that RL actions influence future data and rewards may be delayed. An online supervised learner can update from arriving labeled examples without controlling the process that produces them.
+  `The page asks a specific question: what makes reinforcement learning different? Reinforcement learning is not defined by always updating online, and supervised learning is not restricted to batches. The strongest answer is that an RL agent’s actions influence the future situations and data it experiences, while rewards may also be delayed. An online supervised learner can update from arriving labeled examples without controlling the process that produces them. The distinction is therefore the feedback and decision structure, not merely when parameter updates occur.
 
 Now work the numeric update. The target is r plus gamma times max Q-prime. Substitute the values: 2 plus 0.5 times 4 equals 4. The old Q value is zero, so the temporal-difference error is 4 minus 0, which is 4. Alpha is 0.25, so the update adds one quarter of the error: 0 plus 0.25 times 4 equals 1. The new Q value is therefore 1. Finally, name one important concern a reward may omit. Suitable examples include safety, fairness, energy use, rare failures, or undesirable shortcuts. This final part matters because successful optimization of an incomplete number can still produce unacceptable behavior.`,
 
