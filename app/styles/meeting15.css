@@ -1337,39 +1337,6 @@
   background: #c27a24;
 }
 
-.m15-confusion-legend {
-  display: grid;
-  gap: 7px;
-  grid-template-columns: 1fr 1fr;
-}
-
-.m15-confusion-legend article {
-  background: #f5f7fb;
-  border: 1px solid #dce3ee;
-  border-radius: 9px;
-  padding: 7px 9px;
-}
-
-.m15-confusion-legend strong {
-  color: #1b293f;
-  display: block;
-  font-size: 11px;
-}
-
-.m15-confusion-legend p,
-.m15-confusion-reading {
-  color: #526077;
-  font-size: 9px;
-  line-height: 1.35;
-  margin: 2px 0 0;
-}
-
-.m15-confusion-reading {
-  background: #fff7e8;
-  border-left: 4px solid #c27a24;
-  border-radius: 8px;
-  padding: 7px 9px;
-}
 
 .m15-exit {
   display: grid;

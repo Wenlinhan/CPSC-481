@@ -108,6 +108,39 @@ function CompactRiskTree({ picnic = false }: { picnic?: boolean }) {
   return <div className="m14-rebuilt-tree"><b>income?</b><div><span>$0–$15k → high</span><span>$15–$35k → credit / debt</span><span>&gt;$35k → credit</span></div><small>Collateral is never selected in the learned tree.</small></div>;
 }
 
+function FullRiskTree() {
+  return (
+    <div className="m14-full-risk-tree" aria-label="Complete loan-risk decision tree from the course source">
+      <div className="root">income?</div>
+      <div className="income-branches">
+        <section>
+          <span>$0–$15k</span>
+          <b className="leaf high">high risk</b>
+        </section>
+        <section>
+          <span>$15–$35k</span>
+          <b className="test">credit history?</b>
+          <div className="credit-branches middle">
+            <article><small>unknown</small><b className="test">debt?</b><div className="debt-branches"><em>high → <strong>high risk</strong></em><em>low → <strong>moderate risk</strong></em></div></article>
+            <article><small>bad</small><b className="leaf high">high risk</b></article>
+            <article><small>good</small><b className="leaf moderate">moderate risk</b></article>
+          </div>
+        </section>
+        <section>
+          <span>over $35k</span>
+          <b className="test">credit history?</b>
+          <div className="credit-branches">
+            <article><small>unknown</small><b className="leaf low">low risk</b></article>
+            <article><small>bad</small><b className="leaf moderate">moderate risk</b></article>
+            <article><small>good</small><b className="leaf low">low risk</b></article>
+          </div>
+        </section>
+      </div>
+      <small>Complete source tree: every root-to-leaf path ends in high, moderate, or low risk.</small>
+    </div>
+  );
+}
+
 function M14SourceReconstruction({ slide, alt, className = "" }: { slide: number; alt: string; caption: string; className?: string }) {
   const pageText: Record<number, { title: string; points: string[] }> = {
     20:{title:"Learning the risk level",points:["Target: financial risk", "Predictors: credit history, debt, collateral, and income"]},
@@ -131,7 +164,7 @@ function M14SourceReconstruction({ slide, alt, className = "" }: { slide: number
   const usesTable = slide === 20 || slide === 23;
   const usesTree = slide === 22 || [24,27,32,33].includes(slide);
   const visualLabel = usesTable ? "Loan-risk dataset · 14 labeled applications" : usesTree ? "Decision-tree visual" : "Decision-tree concept";
-  return <article className={`m14-source-frame m14-source-rebuilt ${className}`.trim()} aria-label={alt}><span>{visualLabel}</span><h3>{page.title}</h3>{usesTable ? <LoanDataTable label={slide === 20 ? "Loan applications and historical risk labels" : "Complete training dataset"} /> : usesTree ? <CompactRiskTree picnic={slide === 22} /> : <ol>{page.points.map(point => <li key={point}>{point}</li>)}</ol>}{(usesTable || usesTree) && <small>{page.points.join(" · ")}</small>}</article>;
+  return <article className={`m14-source-frame m14-source-rebuilt ${className}`.trim()} aria-label={alt}><span>{visualLabel}</span><h3>{page.title}</h3>{usesTable ? <LoanDataTable label={slide === 20 ? "Loan applications and historical risk labels" : "Complete training dataset"} /> : slide === 33 ? <FullRiskTree /> : usesTree ? <CompactRiskTree picnic={slide === 22} /> : <ol>{page.points.map(point => <li key={point}>{point}</li>)}</ol>}{(usesTable || usesTree) && <small>{page.points.join(" · ")}</small>}</article>;
 }
 const SOURCE_DECK_LABEL = "L09 Machine Learning · Part A";
 
@@ -421,6 +454,13 @@ function MetricsLab() {
         <b>Predicted +</b><b>Predicted −</b>
         <b>Actual +</b><i className="tp">TP {values.tp}</i><i className="fn">FN {values.fn}</i>
         <b>Actual −</b><i className="fp">FP {values.fp}</i><i className="tn">TN {values.tn}</i>
+        <div className="m14-confusion-legend">
+          <article><strong>TP · true positive</strong><small>actual positive, correctly predicted positive</small></article>
+          <article><strong>TN · true negative</strong><small>actual negative, correctly predicted negative</small></article>
+          <article><strong>FP · false positive</strong><small>actual negative, incorrectly predicted positive · false alarm</small></article>
+          <article><strong>FN · false negative</strong><small>actual positive, incorrectly predicted negative · missed positive</small></article>
+        </div>
+        <p className="m14-confusion-reading"><strong>Read each abbreviation:</strong> positive/negative names the predicted class; true/false says whether that prediction matches the actual class.</p>
       </section>
       <div>
         <article><span>Precision</span><strong>{precision.toFixed(2)}</strong><small>TP / (TP + FP)</small></article>
@@ -580,21 +620,40 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Knowledge point 3 · ID3 algorithm",
     title: "ID3 keeps splitting mixed groups until it can make a decision",
     content: (
-      <SourceExplanation
-        alt="Complete historical ID3 decision-tree induction pseudocode"
-        caption="Exact source page 25 · the algorithm image is retained full-fit so every base case and recursive step can be enlarged."
-        reverse
-        slide={25}
-      >
-        <div className="m14-pseudocode-map">
-          <article><span>Base case A</span><p>All examples have one class → return that class.</p></article>
-          <article><span>Base case B</span><p>No attributes remain → return a default or majority class.</p></article>
-          <article><span>Recursive case</span><p>Select a test, partition the examples, and induce one subtree per non-pure branch.</p></article>
-        </div>
-        <SearchCallout label="Read the source as code" tone="cyan">Circle the stopping conditions. Underline the line that makes the algorithm greedy.</SearchCallout>
-      </SourceExplanation>
+      <div className="m14-id3-page">
+        <pre className="m14-id3-pseudocode" aria-label="ID3 decision-tree induction pseudocode"><code>{`ID3(examples, attributes, defaultClass):
+  if examples is empty:
+    return Leaf(defaultClass)
+
+  if every example has the same class c:
+    return Leaf(c)
+
+  if attributes is empty:
+    return Leaf(majorityClass(examples))
+
+  A ← attribute with highest information gain
+  tree ← DecisionNode(A)
+
+  for each value v of A:
+    subset ← examples where A = v
+    child ← ID3(subset, attributes − {A},
+                majorityClass(examples))
+    attach child to tree on branch A = v
+
+  return tree`}</code></pre>
+        <section>
+          <div className="m14-pseudocode-map">
+            <article><span>Base case A</span><p>No rows reach a branch → use the parent subset’s majority class.</p></article>
+            <article><span>Base case B</span><p>Every row has one class → return that class as a leaf.</p></article>
+            <article><span>Base case C</span><p>No attributes remain → return the current majority class.</p></article>
+            <article><span>Recursive case</span><p>Choose the highest-gain attribute, partition its rows, and call ID3 on every branch.</p></article>
+          </div>
+          <div className="m14-notation-box"><strong>Notation:</strong> A = selected attribute; v = one value of A; subset = rows whose A value equals v; attributes − {`{A}`} = remaining attributes after removing A.</div>
+          <SearchCallout label="Where greediness enters" tone="cyan">ID3 commits to the attribute with the largest information gain at the current node; it does not search every possible complete tree.</SearchCallout>
+        </section>
+      </div>
     ),
-    note: "Timing: 2 minutes. Have students enlarge the exact pseudocode and locate its base cases and recursive call. Note that noise and unseen values require additional design choices.",
+    note: "Timing: 2 minutes. Read the native pseudocode from top to bottom. First locate the three stopping conditions: an empty subset uses the parent default, a pure subset becomes a class leaf, and a subset with no attributes left uses its majority class. Otherwise A denotes the attribute with the highest information gain. Each value v of A creates one branch; subset contains the rows with that value; attributes minus A prevents the same test from being selected again below that node. The recursive call builds a subtree for each branch. Point out that the highest-gain selection is the greedy step. ID3 commits to the locally best available attribute rather than enumerating and comparing all complete trees. Noise, missing values, unseen attribute values, continuous attributes, and ties require additional implementation policies.",
     sourceSlides: [25],
   },
   {
@@ -852,7 +911,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Textbook / modern supplement · Error analysis",
     title: "A confusion matrix separates correct predictions from two error types",
     content: <MetricsLab />,
-    note: "Timing: 3 minutes. Let students switch operating points. Ask which preset is preferable if failing to flag a truly high-risk application is the costlier error, then challenge that premise from a lending-fairness perspective.",
+    note: "Timing: 3 minutes. Define the positive class before reading the matrix. TP is an actual positive correctly predicted positive; TN is an actual negative correctly predicted negative; FP is an actual negative incorrectly flagged positive, a false alarm; FN is an actual positive incorrectly predicted negative, a missed positive. Positive and negative name the class decision, while true and false indicate whether the decision matches reality. Let students switch operating points. Ask which preset is preferable if failing to flag a truly high-risk application is the costlier error, then challenge that premise from a lending-fairness perspective.",
     sourceSlides: [],
   },
   {
@@ -863,7 +922,7 @@ const slides: SourceLessonSlide[] = [
         <section>
           <span>Evaluation lens</span>
           <div>
-            <article><strong>ROC vs PR</strong><p>ROC compares TPR and FPR; PR is often more revealing when the positive class is rare.</p></article>
+            <article className="m14-roc-pr"><strong>ROC vs PR</strong><p><b>ROC</b> means receiver operating characteristic. It plots true-positive rate against false-positive rate as the decision threshold changes.</p><p><b>PR</b> means precision–recall. It plots precision against recall across thresholds and focuses attention on performance for the positive class.</p><small><b>TPR = recall = TP/(TP+FN)</b> · <b>FPR = FP/(FP+TN)</b> · <b>precision = TP/(TP+FP)</b></small><p>When positives are rare, the many true negatives can make ROC performance look strong even while false positives overwhelm the detected positives. PR exposes that problem more directly.</p></article>
             <article><strong>Calibration</strong><p>Among predictions near 0.7, roughly 70% should occur if probabilities are calibrated.</p></article>
             <article><strong>Subgroups</strong><p>Report error, recall, calibration, and sample size for relevant groups—not only the aggregate.</p></article>
           </div>
@@ -885,7 +944,7 @@ const slides: SourceLessonSlide[] = [
         </section>
       </div>
     ),
-    note: "Timing: 2 minutes. Collect the three-part exit ticket. The planned timings across all 25 pages total 75 minutes. Reinforce that pages 20–35 are the historical foundation and pages 23–25 add labeled modern evaluation practice.",
+    note: "Timing: 2 minutes. Explain that ROC means receiver operating characteristic and plots true-positive rate against false-positive rate as the threshold changes. TPR is recall, TP divided by TP plus FN. FPR is FP divided by FP plus TN. PR means precision–recall and plots precision against recall across thresholds; precision is TP divided by TP plus FP. When positives are rare, the large number of true negatives can keep FPR small and make an ROC result appear strong even when many predicted positives are false alarms. A PR curve exposes that problem because precision directly asks what fraction of predicted positives are correct. Then collect the three-part exit ticket and reinforce that calibration and subgroup evaluation answer additional questions that neither curve resolves.",
     sourceSlides: [],
   },
 ];
