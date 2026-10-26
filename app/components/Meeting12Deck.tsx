@@ -274,9 +274,14 @@ function BanditLab() {
   return (
     <div className="m12-bandit">
       <section>
-        <span>Three unknown reward sources</span>
-        <h3>Which arm should receive the next trial?</h3>
-        <p>Pulling an arm both earns a reward and produces evidence about that action.</p>
+        <span>Context · repeated choices with uncertain rewards</span>
+        <h3>Which option should the agent try next?</h3>
+        <p>An agent repeatedly chooses among three actions—called <strong>arms</strong>, like the arms of slot machines. Each pull reveals a binary reward: <strong>r = 1</strong> for success or <strong>r = 0</strong> for no success.</p>
+        <p>The agent does not know which arm succeeds most often. It must learn from the outcomes it has observed.</p>
+        <div className="m12-bandit-formula">
+          <strong>Q̂(a) = R(a) ÷ N(a)</strong>
+          <small>estimated value = total reward ÷ number of pulls</small>
+        </div>
         <button onClick={reset} type="button">Reset evidence</button>
       </section>
       <div>
@@ -290,16 +295,20 @@ function BanditLab() {
               type="button"
             >
               <span>Arm {label}</span>
-              <strong>Q̂ = {counts[arm] ? estimate.toFixed(2) : "?"}</strong>
-              <small>{totals[arm]} reward / {counts[arm]} pulls</small>
+              <strong>Q̂({label}) = {counts[arm] ? estimate.toFixed(2) : "?"}</strong>
+              <small>R({label}) = {totals[arm]} total reward</small>
+              <small>N({label}) = {counts[arm]} pulls</small>
             </button>
           );
         })}
       </div>
       <aside>
-        {last
-          ? <>Arm {["A", "B", "C"][last.arm]} returned <strong>{last.reward}</strong>. Update its sample-average estimate.</>
-          : <>Start with uncertainty. A greedy policy has no evidence yet.</>}
+        <div>
+          {last
+            ? <>Arm {["A", "B", "C"][last.arm]} returned <strong>r = {last.reward}</strong>. Its pull count N, total reward R, and estimate Q̂ are updated.</>
+            : <>Before any pulls, N(a) = 0, so Q̂(a) is shown as <strong>?</strong>: there is not enough evidence to compute an average.</>}
+        </div>
+        <small><strong>Notation:</strong> a = selected action or arm; r = reward from one pull; N(a) = pulls of arm a; R(a) = rewards accumulated from arm a; Q̂(a) = current sample-average estimate of that arm’s reward. This demo uses fixed hidden 0/1 outcome sequences so it is repeatable.</small>
       </aside>
     </div>
   );
@@ -955,7 +964,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Live demonstration · exploration as information gathering",
     title: "Should the agent use its best action or test another one?",
     content: <BanditLab />,
-    note: "This three-arm bandit isolates the exploration problem. Each arm represents an action with an unknown reward pattern. Pulling an arm has two effects: it may earn reward now, and it produces evidence that improves the estimate for that arm. Always choosing the current best estimate exploits existing knowledge, but an early lucky result can cause the agent to ignore a better arm. Trying another arm explores and may improve later choices. A bandit has no changing state, so it is a simplified one-state reinforcement-learning problem rather than a full sequential environment.",
+    note: "This three-arm bandit isolates the exploration problem. Imagine three slot-machine arms, treatments, or recommendations whose success rates are unknown. The agent repeatedly chooses one action a and observes a binary reward r: one means success and zero means no success. N(a) counts how many times that arm has been pulled, and R(a) is the total reward collected from it. The displayed estimate is the sample average, Q-hat of a equals R(a) divided by N(a). Before the first pull, N(a) is zero, so the page shows a question mark instead of dividing by zero. After every click, the selected arm reveals its next hidden outcome; N and possibly R increase, so Q-hat is recalculated. For example, two successes in three pulls produce Q-hat equals two-thirds, or about 0.67. The demo uses fixed repeating zero-one sequences so the classroom result is reproducible. Pulling an arm has two effects: it may earn reward now, and it produces evidence that improves the estimate for that action. Always choosing the current best estimate exploits existing knowledge, but an early lucky result can cause the agent to ignore a better arm. Trying another arm explores and may improve later choices. A bandit has no changing state, so it is a simplified one-state reinforcement-learning problem rather than a full sequential environment.",
     sourceSlides: [],
   },
   {
