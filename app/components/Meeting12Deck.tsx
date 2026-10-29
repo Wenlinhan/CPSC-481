@@ -320,7 +320,6 @@ function BanditLab() {
           <span><b>Q̂(a)</b> = pronounced “Q-hat of a”; the current sample-average reward estimate</span>
           <span><b>?</b> = estimate not yet defined because N(a) = 0</span>
         </div>
-        <small>This demo uses fixed hidden 0/1 outcome sequences so the classroom result is repeatable.</small>
       </aside>
     </div>
   );
