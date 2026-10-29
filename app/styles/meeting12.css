@@ -953,6 +953,14 @@
   gap: 8px;
 }
 
+.m12-return-explorer .m12-gamma-symbol {
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 1.35em;
+  letter-spacing: 0;
+  line-height: 0;
+  text-transform: none;
+}
+
 .m12-return-explorer nav button,
 .m12-epsilon > nav button,
 .m12-update-stepper section > div button,
@@ -1005,6 +1013,11 @@
   color: var(--m12-purple-dark);
   font-size: clamp(22px, 2vw, 31px);
   margin: 16px 0;
+}
+
+.m12-policy-values h3 :is(sup, sub) {
+  font-size: 0.62em;
+  line-height: 0;
 }
 
 .m12-policy-values p {

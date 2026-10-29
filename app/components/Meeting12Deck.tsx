@@ -225,7 +225,7 @@ function ReturnExplorer() {
         </div>
       </section>
       <section>
-        <span>Choose γ</span>
+        <span>Choose discount factor <b className="m12-gamma-symbol">γ</b> (gamma)</span>
         <nav>
           {[0, 0.5, 0.9, 1].map(value => (
             <button
@@ -986,14 +986,14 @@ const slides: SourceLessonSlide[] = [
         </article>
         <article>
           <span>State value</span>
-          <h3>Vπ(s)=Eπ[Gₜ|sₜ=s]</h3>
+          <h3>V<sup>π</sup>(s) = E<sub>π</sub>[Gₜ | sₜ = s]</h3>
           <p>Expected return from a state under policy π.</p>
           <small>How good is this situation?</small>
           <div className="m12-notation-box"><strong>Notation:</strong> V<sup>π</sup>(s) = value of state s under policy π; E = expected average over possible futures.</div>
         </article>
         <article>
           <span>Action value</span>
-          <h3>Qπ(s,a)=Eπ[Gₜ|sₜ=s,aₜ=a]</h3>
+          <h3>Q<sup>π</sup>(s,a) = E<sub>π</sub>[Gₜ | sₜ = s, aₜ = a]</h3>
           <p>Expected return after taking action a, then following π.</p>
           <small>How good is this choice here?</small>
           <div className="m12-notation-box"><strong>Notation:</strong> Q<sup>π</sup>(s,a) = value of taking action a in state s, then following policy π.</div>
