@@ -1,0 +1,47 @@
+- generic [ref=e2]:
+  - link "All modules" [ref=e3] [cursor=pointer]:
+    - /url: /
+  - main [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - text: "481"
+        - generic [ref=e8]:
+          - strong [ref=e9]: CPSC 481
+          - text: Introduction to Artificial Intelligence
+      - generic [ref=e10]:
+        - button "Motion on" [pressed] [ref=e11]
+        - button "Notes" [ref=e12]
+        - button "Overview" [ref=e13]
+        - button "Print" [ref=e14]
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - text: Module 10 · Lesson 14 · Reinforcement learning
+        - heading "How an agent learns from consequences" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Act, observe the result, update what seems useful, and try again.
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - text: 75-minute meeting
+          - heading "Interaction → return → value → control" [level=2] [ref=e22]
+          - paragraph [ref=e23]: Trial and error motivates the mathematical machinery we will make visible through one small environment.
+        - generic "Agent environment reward interaction diagram" [ref=e24]:
+          - article [ref=e25]:
+            - text: "01"
+            - strong [ref=e26]: Agent
+            - paragraph [ref=e27]: select an action
+          - text: →
+          - article [ref=e28]:
+            - text: "02"
+            - strong [ref=e29]: World
+            - paragraph [ref=e30]: changes state
+          - text: →
+          - article [ref=e31]:
+            - text: "03"
+            - strong [ref=e32]: Reward
+            - paragraph [ref=e33]: scores consequence
+          - text: ↻
+    - generic [ref=e34]:
+      - button "Previous slide" [disabled] [ref=e35]: ←
+      - generic [ref=e37]:
+        - text: Reinforcement Learning, Q-Learning, and Exploration
+        - generic [ref=e38]: 1 / 25
+      - button "Next slide" [ref=e39]: →
