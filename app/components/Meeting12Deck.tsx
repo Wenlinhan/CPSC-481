@@ -442,6 +442,11 @@ function QUpdateStepper() {
         <span>Step {step + 1} of {updateSteps.length} · {item.label}</span>
         <h3>{item.equation}</h3>
         <p>{item.detail}</p>
+        <div className="m12-td-error-guide">
+          <strong>TD error in this example</strong>
+          <span>δ = target − old estimate = 3.50 − 2.00 = +1.50</span>
+          <p>The positive sign says the transition was better than Q predicted, so Q should increase. The learning rate α=0.2 applies only 20% of this correction now.</p>
+        </div>
         <div className="m12-update-meaning"><strong>Interpretation:</strong> {item.interpretation}</div>
         <div>
           <button disabled={step === 0} onClick={() => setStep(value => value - 1)} type="button">Previous</button>
@@ -1035,21 +1040,24 @@ const slides: SourceLessonSlide[] = [
           <article><strong>γ</strong><h3>discount</h3><p>weight on the successor estimate</p></article>
           <article><strong>max Q′</strong><h3>bootstrap</h3><p>estimated value of the greedy next action</p></article>
         </div>
-        <SearchCallout label="Equation focus" tone="amber">
-          The target is <strong>r + γ max Q(s′,a′)</strong>. Subtracting the old
-          Q(s,a) gives the TD error: how surprising this transition was. α
-          determines how much of that error is learned now.
+        <SearchCallout label="What TD error means" tone="amber">
+          <strong>TD</strong> means <strong>temporal difference</strong>. It is the
+          gap between what this one transition suggests and what Q predicted:
+          <strong> δ = [r + γ max Q(s′,a′)] − Q(s,a)</strong>. If δ is positive,
+          increase Q; if it is negative, decrease Q; if it is zero, this sample
+          suggests no correction. α determines how much of the correction is
+          applied now.
         </SearchCallout>
       </div>
     ),
-    note: "The Q-learning equation updates one stored action value after observing a transition. Q(s,a) is the current estimate. The bracketed expression compares that estimate with a one-step target: the immediate reward plus discounted value of the best estimated action in the next state. Their difference is the temporal-difference error. Alpha, α, is the learning rate and controls how far the estimate moves toward the target. Because the target uses the maximum next-action value, Q-learning learns about a greedy target policy even when the behavior policy explores. For a terminal next state, the future-value term is conventionally zero.",
+    note: "The Q-learning equation updates one stored action value after observing a transition. Q(s,a) is the current prediction. The one-step target is the immediate reward plus the discounted estimate of the best action in the next state. TD means temporal difference because the comparison links information from the current time step to an estimate at the next time step. The TD error, written delta, is target minus old prediction. It is not the reward by itself and it does not mean the computer made a programming mistake. It is a prediction discrepancy. A positive TD error says the observed transition was better than predicted, so Q should move upward. A negative TD error says it was worse than predicted, so Q should move downward. An error of zero means the target and current prediction agree for this sample. Alpha, α, is the learning rate and controls what fraction of that discrepancy is applied now. Because the target uses the maximum next-action value, Q-learning learns about a greedy target policy even when the behavior policy explores. For a terminal next state, the future-value term is conventionally zero.",
     sourceSlides: [],
   },
   {
     eyebrow: "Worked demonstration · one numeric Q update",
     title: "Work a Q-learning update in three steps",
     content: <QUpdateStepper />,
-    note: "Here the current Q-value is 2. The observed reward is minus one, gamma is 0.9, and the best next-state Q-value is 5. First compute the target: minus one plus 0.9 times 5 equals 3.5. Next compute the temporal-difference error: 3.5 minus the current estimate 2 equals 1.5. Because the error is positive, the estimate should move upward. Finally, multiply the error by the learning rate 0.2 and add it to the old value. The new Q-value is 2.3, which moves partway—not all the way—toward the target.",
+    note: "Here the current Q-value is 2. The observed reward is minus one, gamma is 0.9, and the best next-state Q-value is 5. First compute the target: minus one plus 0.9 times 5 equals 3.5. The target is what this one transition suggests the state-action value should be. Next compute the temporal-difference error, delta: target minus old estimate, or 3.5 minus 2 equals positive 1.5. This number measures the prediction gap before the learning rate is applied. The positive sign means the transition was better than Q predicted, so the correction points upward. If delta had been negative, the correction would point downward. Finally, multiply the error by the learning rate 0.2 and add it to the old value. Twenty percent of 1.5 is 0.3, so the new Q-value is 2.3. It moves partway—not all the way—toward the target, which prevents one noisy transition from completely replacing prior experience.",
     sourceSlides: [],
   },
   {

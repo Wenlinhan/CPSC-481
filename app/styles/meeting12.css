@@ -1359,6 +1359,34 @@
   padding: 10px 12px;
 }
 
+.m12-td-error-guide {
+  background: #eaf8fb;
+  border-left: 4px solid var(--m12-cyan);
+  border-radius: 10px;
+  color: #213a50;
+  display: grid;
+  gap: 4px;
+  margin: 8px 0;
+  padding: 10px 12px;
+}
+
+.m12-td-error-guide strong,
+.m12-td-error-guide span,
+.m12-td-error-guide p {
+  color: #213a50 !important;
+}
+
+.m12-td-error-guide span {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.m12-td-error-guide p {
+  font-size: 11px;
+  line-height: 1.35;
+  margin: 0;
+}
+
 .m12-update-stepper h3 {
   color: var(--m12-ink);
   font-size: clamp(24px, 2.5vw, 39px);
