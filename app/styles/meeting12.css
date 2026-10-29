@@ -1106,6 +1106,23 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.m12-bandit-instructions {
+  background: #fff7dc;
+  border-left: 5px solid #e8a313;
+  border-radius: 10px;
+  color: #344158;
+  font-size: 12px;
+  grid-column: 1 / -1;
+  line-height: 1.4;
+  margin: 0;
+  padding: 9px 12px;
+}
+
+.m12-bandit-instructions strong,
+.m12-bandit-instructions b {
+  color: var(--m12-ink);
+}
+
 .m12-bandit > div > button {
   align-content: center;
   background: white;
