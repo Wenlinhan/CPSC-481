@@ -271,6 +271,12 @@ function EmbeddingLookupLab() {
           ))}
         </div>
         <p>{item.token} → [{item.vector.map(value => value.toFixed(1)).join(", ")}]</p>
+        <aside className="m19-embedding-explanation">
+          <strong>What are these numbers?</strong>
+          <p>They are the four coordinates of this token&apos;s embedding vector (d = 4 in this small teaching example), not probabilities or ratings.</p>
+          <strong>Where do they come from?</strong>
+          <p>These displayed values are illustrative. In a real model, the row starts from initialized parameters and training updates its coordinates through gradient descent to reduce prediction loss. A single coordinate usually has no fixed meaning by itself.</p>
+        </aside>
       </section>
     </div>
   );
@@ -524,19 +530,22 @@ function SoftmaxWorkedExample() {
         <article>
           <span>1 · scores</span>
           <code>[{displayScores.map(value => value.toFixed(3)).join(", ")}]</code>
+          <small>{scaled ? "Divide each raw score by √2: 2/√2, 1/√2, 0/√2." : "Scaling is off, so copy the raw scores unchanged."}</small>
         </article>
         <article>
           <span>2 · exponentiate</span>
           <code>[{exponentials.map(value => value.toFixed(3)).join(", ")}]</code>
+          <small>Apply eˣ to each score: {displayScores.map(value => `e^${value.toFixed(3)}`).join(", ")}.</small>
         </article>
         <article>
           <span>3 · divide by Σ</span>
           <code>Σ = {denominator.toFixed(3)}</code>
+          <small>Add the exponentials: {exponentials.map(value => value.toFixed(3)).join(" + ")} = {denominator.toFixed(3)}.</small>
         </article>
         <article className="result">
           <span>4 · attention weights</span>
           <code>[{weights.map(value => value.toFixed(3)).join(", ")}]</code>
-          <small>row sum = {weights.reduce((sum, value) => sum + value, 0).toFixed(3)}</small>
+          <small>Divide each exponential by Σ: {exponentials.map(value => `${value.toFixed(3)}/${denominator.toFixed(3)}`).join(", ")}. Row sum = {weights.reduce((sum, value) => sum + value, 0).toFixed(3)}.</small>
         </article>
       </div>
     </div>
@@ -972,10 +981,10 @@ const slides: SourceLessonSlide[] = [
     title: "By the end, you can trace how text becomes a context-aware vector",
     content: (
       <div className="m19-objectives">
-        <article><span aria-hidden="true">✂</span><strong>Split the text</strong><p>run five BPE merges and compare two possible tokenizations</p></article>
+        <article><span aria-hidden="true">✂</span><strong>Split the text</strong><p>run five byte-pair encoding (BPE) merges—repeatedly joining frequent adjacent units—and compare two possible tokenizations</p></article>
         <article><span aria-hidden="true">▦</span><strong>Turn IDs into vectors</strong><p>look up embeddings and add information about position</p></article>
-        <article><span aria-hidden="true">◎</span><strong>Calculate attention</strong><p>follow Q, K, and V and compute one complete attention row</p></article>
-        <article><span aria-hidden="true">⇧</span><strong>Build one block</strong><p>connect masking, multiple heads, residual paths, normalization, and the FFN</p></article>
+        <article><span aria-hidden="true">◎</span><strong>Calculate attention</strong><p>follow query (Q: what this position seeks), key (K: what each position matches on), and value (V: information retrieved), then compute one attention row</p></article>
+        <article><span aria-hidden="true">⇧</span><strong>Build one block</strong><p>connect masking, multiple heads, residual paths, normalization, and the feed-forward network (FFN), which transforms each position independently</p></article>
       </div>
     ),
     note: "Timing: 2 minutes. Read the four performance verbs. Students will demonstrate these objectives in the BPE lab, the attention calculation, the shape trace, and the exit ticket.",
@@ -1008,11 +1017,11 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Knowledge point 1 · Tokenization",
     title: "A tokenizer splits text into pieces and gives each piece an ID",
     content: (
-      <WithNotation items={[["τ", "the tokenizer"], ["tᵢ", "the token ID at position i"], ["n", "number of tokens"], ["V", "the tokenizer's vocabulary"], ["|V|", "number of entries in V"]]}>
+      <WithNotation items={[["τ", "tau (pronounced ‘taow,’ rhyming with ‘cow’); the tokenizer"], ["tᵢ", "the token ID at position i"], ["n", "number of tokens"], ["V", "the tokenizer's vocabulary"], ["|V|", "number of entries in V"]]}>
         <div className="m19-token-definition">
           <section>
             <span>Input → output</span>
-            <code>τ: string → (t₁, t₂, …, tₙ), &nbsp; tᵢ ∈ {"{0,…,|V|−1}"}</code>
+            <code>τ (tau, pronounced “taow”): string → (t₁, t₂, …, tₙ), &nbsp; tᵢ ∈ {"{0,…,|V|−1}"}</code>
             <p>Read this as: the tokenizer τ turns a string into n token IDs. An ID is only a row number in a vocabulary; ID 900 is not “more meaningful” than ID 9.</p>
           </section>
           <div>
@@ -1091,7 +1100,7 @@ const slides: SourceLessonSlide[] = [
     eyebrow: "Knowledge point 2 · Embedding lookup",
     title: "Each token ID selects one learned row of numbers",
     content: (
-      <WithNotation items={[["E", "embedding table"], ["T", "input token IDs"], ["X", "vectors used by the model"], ["n", "number of token positions"], ["d_model", "features in each model vector"]]}>
+      <WithNotation items={[["R", "the set of real numbers"], ["E", "embedding table"], ["T", "input token IDs"], ["X", "vectors used by the model"], ["n", "number of token positions"], ["d_model", "features in each model vector"]]}>
       <div className="m19-embedding-definition">
         <section>
           <span>Parameters</span>
@@ -1140,14 +1149,14 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Knowledge point 4 · Query, key, and value",
     title: "Query asks, key matches, and value carries the information",
-    content: <WithNotation items={[["X", "current token vectors"], ["W_Q, W_K, W_V", "learned projection matrices"], ["Q", "queries"], ["K", "keys"], ["V", "values"]]}><QKVRoleStudio /></WithNotation>,
+    content: <WithNotation items={[["X", "current token vectors"], ["Q", "queries"], ["K", "keys"], ["V", "values"], ["αᵢⱼ", "normalized attention weight from query position i to source position j"]]}><QKVRoleStudio /></WithNotation>,
     note: "Timing: 3 minutes. Visit all three roles. Keep the distinction precise: q and k form compatibility scores; v supplies the content mixed into the output. Warn against assuming a head has a permanent human-interpretable role.",
     sourceSlides: [],
   },
   {
     eyebrow: "Attention derivation · Tensor shapes",
     title: "Tracking matrix shapes shows whether every step can be multiplied",
-    content: <WithNotation items={[["n", "number of positions"], ["d_model", "features in each input vector"], ["d_k", "query/key features per head"], ["d_v", "value/output features per head"], ["A", "attention-weight matrix"]]}><ShapeTraceStudio /></WithNotation>,
+    content: <WithNotation items={[["W_Q, W_K, W_V", "learned projection matrices"], ["n", "number of positions"], ["d_model", "features in each input vector"], ["d_k", "query/key features per head"], ["d_v", "value/output features per head"], ["A", "attention-weight matrix"]]}><ShapeTraceStudio /></WithNotation>,
     note: "Timing: 4 minutes. Step through all six tensors. Use n=4, d_model=8, d_k=d_v=2 as a verbal example. Require students to justify why QK-transpose is n by n and why multiplying A by V restores one output row per position.",
     sourceSlides: [],
   },
@@ -1169,7 +1178,7 @@ const slides: SourceLessonSlide[] = [
           <code>q · k = Σ<sub>r=1</sub><sup>d_k</sup> q<sub>r</sub>k<sub>r</sub></code>
           <p>Under a simple independent, zero-mean, unit-variance assumption, the variance of this sum grows with d_k.</p>
         </section>
-        <i aria-hidden="true">÷ √d<sub>k</sub></i>
+        <i aria-label="Divide by square root of d sub k"><b>÷ √d<sub>k</sub></b><small>read: “divided by square root of d sub k”</small></i>
         <section className="result">
           <span>Scaled score</span>
           <code>S = QK<sup>T</sup> / √d<sub>k</sub></code>

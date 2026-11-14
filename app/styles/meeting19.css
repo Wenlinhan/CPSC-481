@@ -785,6 +785,24 @@
   font-weight: 900;
 }
 
+.m19-scaling > i {
+  display: grid;
+  gap: 6px;
+  max-width: 135px;
+  text-align: center;
+}
+
+.m19-scaling > i b {
+  font-size: 24px;
+}
+
+.m19-scaling > i small {
+  color: #52637a;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
 .m19-embedding-definition h3 {
   color: #162941;
   font-size: clamp(18px, 1.5vw, 25px);
@@ -910,6 +928,28 @@
   color: #40526a;
   font-family: "Cascadia Code", Consolas, monospace;
   margin: 0;
+}
+
+.m19-embedding-explanation {
+  background: #f4f7fb;
+  border-left: 3px solid #7044d0;
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  margin-top: 15px;
+  padding: 10px 12px;
+}
+
+.m19-embedding-explanation strong {
+  color: #342565;
+  font-size: 12px;
+}
+
+.m19-embedding-explanation p {
+  color: #526276;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .m19-context-studio {
@@ -1354,7 +1394,7 @@
   border-radius: 12px;
   display: grid;
   gap: 10px;
-  grid-template-columns: 110px 1fr auto;
+  grid-template-columns: 105px minmax(0, 0.75fr) minmax(190px, 1.25fr);
   padding: 12px 14px;
 }
 
@@ -1369,6 +1409,8 @@
 
 .m19-softmax-steps small {
   color: #087f94;
+  font-size: 10px;
+  line-height: 1.35;
 }
 
 .m19-value-mix {
@@ -2000,6 +2042,14 @@
   .m19-scaling > i {
     justify-self: center;
     transform: rotate(90deg);
+  }
+
+  .m19-scaling > i {
+    transform: none;
+  }
+
+  .m19-softmax-steps article {
+    grid-template-columns: 1fr;
   }
 
   .m19-lookup-arrow {
