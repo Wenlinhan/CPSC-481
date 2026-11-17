@@ -1156,7 +1156,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Attention derivation · Tensor shapes",
     title: "Tracking matrix shapes shows whether every step can be multiplied",
-    content: <WithNotation items={[["W_Q, W_K, W_V", "learned projection matrices"], ["n", "number of positions"], ["d_model", "features in each input vector"], ["d_k", "query/key features per head"], ["d_v", "value/output features per head"], ["A", "attention-weight matrix"]]}><ShapeTraceStudio /></WithNotation>,
+    content: <WithNotation items={[["X", "current token vectors"], ["W_Q, W_K, W_V", "learned projection matrices"], ["n", "number of positions"], ["d_model", "features in each input vector"], ["d_k", "query/key features per head"], ["d_v", "value/output features per head"], ["A", "attention-weight matrix"]]}><ShapeTraceStudio /></WithNotation>,
     note: "Timing: 4 minutes. Step through all six tensors. Use n=4, d_model=8, d_k=d_v=2 as a verbal example. Require students to justify why QK-transpose is n by n and why multiplying A by V restores one output row per position.",
     sourceSlides: [],
   },
