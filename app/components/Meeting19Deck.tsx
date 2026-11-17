@@ -1149,7 +1149,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Knowledge point 4 · Query, key, and value",
     title: "Query asks, key matches, and value carries the information",
-    content: <WithNotation items={[["X", "current token vectors"], ["Q", "queries"], ["K", "keys"], ["V", "values"], ["αᵢⱼ", "normalized attention weight from query position i to source position j"]]}><QKVRoleStudio /></WithNotation>,
+    content: <WithNotation items={[["Q", "queries"], ["K", "keys"], ["V", "values"], ["score(i,j)", "compatibility score between query position i and key position j"], ["αᵢⱼ", "normalized attention weight from query position i to source position j"]]}><QKVRoleStudio /></WithNotation>,
     note: "Timing: 3 minutes. Visit all three roles. Keep the distinction precise: q and k form compatibility scores; v supplies the content mixed into the output. Warn against assuming a head has a permanent human-interpretable role.",
     sourceSlides: [],
   },
