@@ -766,7 +766,7 @@ function ArchitectureCompare() {
         </section>
       )}
       <p>
-        The Transformer paper presented an encoder–decoder translation system.
+        The <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noreferrer">2017 Transformer paper, “Attention Is All You Need” ↗</a>, presented an encoder–decoder translation system.
         Decoder-only next-token prediction is one later use of transformer blocks.
       </p>
     </div>

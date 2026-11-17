@@ -1771,6 +1771,13 @@
   padding: 11px 14px;
 }
 
+.m19-architecture > p a {
+  color: #5635b8;
+  font-weight: 850;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
 .m19-cumulative-shapes {
   display: grid;
   gap: 14px;
