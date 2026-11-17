@@ -1215,7 +1215,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Knowledge point 6 · Multi-head attention",
     title: "Multiple heads make several attention mixtures in parallel",
-    content: <WithNotation items={[["h", "number of attention heads"], ["headᵢ", "output from head i"], ["Concat", "join head outputs side by side"], ["W_O", "learned matrix that mixes heads back to d_model features"]]}><MultiHeadStudio /></WithNotation>,
+    content: <WithNotation items={[["MHA", "multi-head attention"], ["h", "number of attention heads"], ["headᵢ", "output from head i"], ["Concat", "join head outputs side by side"], ["W_O", "learned matrix that mixes heads back to d_model features"]]}><MultiHeadStudio /></WithNotation>,
     note: "Timing: 3 minutes. Inspect all three illustrative heads, then read the equations. Emphasize that the examples are possible behaviors, not guaranteed labels. Concatenation combines feature channels before W_O mixes them.",
     sourceSlides: [],
   },
