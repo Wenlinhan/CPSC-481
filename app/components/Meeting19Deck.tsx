@@ -1222,7 +1222,7 @@ const slides: SourceLessonSlide[] = [
   {
     eyebrow: "Transformer block · Attention plus position-wise transformation",
     title: "A transformer block adds attention, a skip path, normalization, and an FFN",
-    content: <WithNotation items={[["x", "vector entering the block"], ["MHA", "multi-head attention"], ["LN", "layer normalization"], ["FFN", "small feed-forward network applied to each position"], ["x + …", "residual or skip connection"]]}><TransformerBlockDiagram /></WithNotation>,
+    content: <WithNotation items={[["x", "vector entering the block"], ["Z", "state after attention, residual addition, and layer normalization"], ["Y", "final block output after the FFN, residual addition, and layer normalization"], ["MHA", "multi-head attention"], ["LN", "layer normalization"], ["FFN", "small feed-forward network applied to each position"], ["x + …", "residual or skip connection"]]}><TransformerBlockDiagram /></WithNotation>,
     note: "Timing: 3 minutes. Walk bottom to top through all five stages. State that the 2017 architecture uses post-norm equations shown here, while many implementations use pre-norm. Ask what the residual path preserves.",
     sourceSlides: [],
   },
