@@ -1107,7 +1107,19 @@
 .m20-contract-practice article p {
   color: #536077;
   grid-column: 1 / -1;
-  margin: 9px 0 0;
+  margin: 8px 0 0;
+}
+
+.m20-contract-practice article small {
+  background: #edf4ff;
+  border-radius: 8px;
+  color: #315885;
+  font-size: clamp(12px, 0.9vw, 14px);
+  font-weight: 800;
+  grid-column: 1 / -1;
+  line-height: 1.35;
+  margin-top: 9px;
+  padding: 7px 9px;
 }
 
 .m20-contract-practice aside,

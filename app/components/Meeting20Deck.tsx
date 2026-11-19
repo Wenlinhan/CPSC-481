@@ -784,21 +784,21 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Practice · Design a contract",
-    title: "A schema tells software what shape to expect—not whether the facts are right",
+    title: "Build a review contract: structure helps software, evidence establishes truth",
     content: (
       <div className="m20-contract-practice">
         <section>
-          <span>Task</span>
-          <h3>Return an evidence-card claim review</h3>
-          <p>Choose fields and constraints that make downstream checking safer.</p>
+          <span>Scenario</span>
+          <h3>An LLM reviews a claim and returns one evidence card</h3>
+          <p>The contract below makes every review machine-readable and tells a human where to check the evidence.</p>
         </section>
         <div>
-          <article><input aria-label="Claim field selected" defaultChecked type="checkbox" /><strong>claim</strong><p>non-empty string</p></article>
-          <article><input aria-label="Disposition field selected" defaultChecked type="checkbox" /><strong>disposition</strong><p>supported | contradicted | not_verified</p></article>
-          <article><input aria-label="Evidence field selected" defaultChecked type="checkbox" /><strong>evidence</strong><p>source ID + excerpt location</p></article>
-          <article><input aria-label="Confidence field selected" type="checkbox" /><strong>confidence</strong><p>optional estimate; never substitutes for evidence</p></article>
+          <article><input aria-label="Claim field selected" defaultChecked type="checkbox" /><strong>claim</strong><p>The exact statement being checked.</p><small>Schema check: required, non-empty text</small></article>
+          <article><input aria-label="Disposition field selected" defaultChecked type="checkbox" /><strong>disposition</strong><p>The review result: supported, contradicted, or not verified.</p><small>Domain check: only these three labels</small></article>
+          <article><input aria-label="Evidence field selected" defaultChecked type="checkbox" /><strong>evidence</strong><p>The source ID and the location of the supporting or conflicting passage.</p><small>Source check: open and compare the evidence</small></article>
+          <article><input aria-label="Confidence field selected" type="checkbox" /><strong>confidence (optional)</strong><p>A model estimate—not proof that the claim is correct.</p><small>Never replaces evidence</small></article>
         </div>
-        <aside><strong>Discuss:</strong> Which constraints are structural? Which require domain code? Which require opening the source?</aside>
+        <aside><strong>How to use the contract:</strong> 1. Parse the fields. 2. Validate allowed values. 3. Open the cited source and verify the claim. Passing steps 1–2 does not guarantee step 3.</aside>
       </div>
     ),
     note: "Timing: 3 minutes. Give pairs 90 seconds to improve the contract, then classify each check as schema, semantic, or factual. Connect to the evidence-card work later in the course without entering RAG implementation.",
