@@ -546,8 +546,19 @@
   background: #fff7e5;
   border: 1px solid #edcb7e;
   border-radius: 12px;
+  display: grid;
+  gap: 4px;
   grid-column: 1 / -1;
   padding: 12px 15px;
+}
+
+.m20-scaling-figure aside strong {
+  color: #6f4b08;
+}
+
+.m20-scaling-figure aside p {
+  color: #55472f;
+  margin: 0;
 }
 
 .m20-scaling-lab {

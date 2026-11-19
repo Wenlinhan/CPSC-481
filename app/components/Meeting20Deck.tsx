@@ -656,7 +656,10 @@ const slides: SourceLessonSlide[] = [
           <b className="label-b">data</b>
           <b className="label-c">compute</b>
         </div>
-        <aside>Empirical regularity ≠ unlimited extrapolation, capability guarantee, or safety guarantee.</aside>
+        <aside>
+          <strong>These curves show a pattern, not a promise.</strong>
+          <p>In the model types and training setups that researchers tested, adding more parameters, data, or compute usually lowered loss. The pattern may not continue forever. A lower loss also does not prove that a model can do every task or that it is safe to use.</p>
+        </aside>
       </div>
     ),
     note: "Timing: 3 minutes. Emphasize empirical fit and scope. Do not derive exponents. Ask students what must stay comparable before extrapolating a curve.",
