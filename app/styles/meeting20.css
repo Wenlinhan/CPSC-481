@@ -904,7 +904,37 @@
 
 .m20-truthfulqa > section p {
   color: #566279;
+  font-size: clamp(14px, 1vw, 16px);
   line-height: 1.45;
+  margin: 6px 0;
+}
+
+.m20-truthfulqa > section p b {
+  color: #26344e;
+}
+
+.m20-truthfulqa-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 7px;
+}
+
+.m20-truthfulqa-links a {
+  background: #eeeaff;
+  border: 1px solid #c7bcf2;
+  border-radius: 9px;
+  color: #44278f;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 7px 10px;
+  text-decoration: none;
+}
+
+.m20-truthfulqa-links a:hover,
+.m20-truthfulqa-links a:focus-visible {
+  background: #dfd8ff;
+  text-decoration: underline;
 }
 
 .m20-truthfulqa > div {

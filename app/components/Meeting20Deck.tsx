@@ -730,7 +730,12 @@ const slides: SourceLessonSlide[] = [
         <section>
           <span>TruthfulQA motivation</span>
           <blockquote>Can a model avoid imitating false answers that people commonly repeat?</blockquote>
-          <p>The benchmark contains adversarially selected questions across multiple categories. It operationalizes one bounded truthfulness test.</p>
+          <p><b>How it works:</b> TruthfulQA asks 817 questions built around common misconceptions in 38 categories, including health, law, finance, and politics. A good answer must be both truthful and informative—not merely fluent or confident.</p>
+          <p><b>What the score means:</b> It shows how a model performed on this fixed benchmark. It does not verify every claim the model might make, and it does not prove the model will be truthful in every topic, language, or new situation.</p>
+          <nav className="m20-truthfulqa-links" aria-label="TruthfulQA primary sources">
+            <a href="https://aclanthology.org/2022.acl-long.229/" target="_blank" rel="noreferrer">Read the original paper</a>
+            <a href="https://github.com/sylinrl/TruthfulQA" target="_blank" rel="noreferrer">Explore the benchmark and code</a>
+          </nav>
         </section>
         <div>
           <article><span>Measure</span><strong>truthfulness + informativeness</strong><p>not surface fluency alone</p></article>
