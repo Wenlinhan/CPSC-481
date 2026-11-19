@@ -885,22 +885,26 @@ const slides: SourceLessonSlide[] = [
   },
   {
     eyebrow: "Knowledge point 10 · Uncertainty behavior",
-    title: "Abstention must be tested like any other system behavior",
+    title: "A model saying “I am confident” is not the same as measured reliability",
     content: (
       <WithNotation items={[["coverage", "fraction of all cases the system answers"], ["selective risk", "error rate among the cases it answered"]]}>
       <div className="m20-abstention">
         <section>
-          <span>Three distinct signals</span>
-          <article><strong>Token probability</strong><p>uncertainty over continuations at a decoding step</p></article>
-          <article><strong>Verbal confidence</strong><p>generated language such as “I am 90% sure”</p></article>
-          <article><strong>Empirical calibration</strong><p>observed accuracy among cases assigned similar confidence</p></article>
+          <span>Do not confuse these three signals</span>
+          <article><strong>Token probability</strong><p>How strongly the model prefers one next token over alternatives. It is local to one decoding step—not a probability that the whole answer is true.</p></article>
+          <article><strong>Verbal confidence</strong><p>Text the model generates, such as “I am 90% sure.” It can sound precise without being accurate.</p></article>
+          <article><strong>Empirical calibration</strong><p>A measured relationship: among many answers labeled 90% confident, about 90% should actually be correct.</p></article>
         </section>
         <div>
-          <h3>Evaluate the behavior</h3>
-          <p>On answerable and unanswerable test cases, measure when the system answers, abstains, cites limits, or escalates.</p>
-          <code>coverage = answered cases / all cases</code>
-          <code>selective risk = error among answered cases</code>
-          <aside>Lower coverage may reduce error—but only if abstention is routed to a useful next step.</aside>
+          <h3>Test whether abstention actually helps</h3>
+          <p>Use both answerable and unanswerable cases. Record when the system answers, abstains, explains a limit, or escalates to a person.</p>
+          <div className="m20-abstention-example">
+            <strong>Example: 100 cases</strong>
+            <p>The system answers 60, abstains on 40, and gets 6 of its 60 answers wrong.</p>
+            <code>coverage = 60 / 100 = 60%</code>
+            <code>selective risk = 6 / 60 = 10%</code>
+          </div>
+          <aside><strong>Interpretation:</strong> Abstaining can lower error among answered cases, but the 40 unanswered cases still need a useful next step, such as requesting evidence or escalating.</aside>
         </div>
       </div>
       </WithNotation>

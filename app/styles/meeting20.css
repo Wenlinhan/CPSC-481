@@ -1406,6 +1406,23 @@
   padding: 10px;
 }
 
+.m20-abstention-example {
+  background: #f7f8fc;
+  border: 1px solid #dce2ec;
+  border-radius: 11px;
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.m20-abstention-example > p {
+  color: #536077;
+  margin: 5px 0 10px;
+}
+
+.m20-abstention-example code {
+  margin: 6px 0;
+}
+
 .m20-abstention aside {
   background: #fff5df;
   border-radius: 9px;
