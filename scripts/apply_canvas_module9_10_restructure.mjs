@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 
 const COURSE_ID = "3586560";
 const CANVAS = "https://csufullerton.instructure.com";
-const SITE = "https://cpsc481-introduction-to-ai.winniechef.chatgpt.site";
+const SITE = "https://wenlinhan.github.io/CPSC-481";
 const MODULE_9_ID = 9926402;
 const MODULE_10_ID = 9926401;
 const APPLY = process.argv.includes("--apply");

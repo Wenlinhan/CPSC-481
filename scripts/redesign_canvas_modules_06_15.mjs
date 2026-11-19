@@ -3,7 +3,7 @@ import path from "node:path";
 
 const COURSE_ID="3586560";
 const BASE="https://csufullerton.instructure.com";
-const SITE="https://cpsc481-introduction-to-ai.winniechef.chatgpt.site";
+const SITE="https://wenlinhan.github.io/CPSC-481";
 const TOKEN_FILE=path.resolve("..","Canvas API.txt");
 const apply=process.argv.includes("--apply");
 if(apply)throw new Error("This page-only redesign script is retired because it removes PDFs, videos, quizzes, and discussions. Use scripts/apply_canvas_module9_10_restructure.mjs --apply.");

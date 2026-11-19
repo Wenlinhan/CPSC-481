@@ -98,7 +98,7 @@ if (mode === "--apply-page") {
   if (!/^\d+$/.test(siteVersion ?? "")) throw new Error("Pass the deployed Sites version number after --apply-page.");
   const publication = JSON.parse(await readFile(publicationFile, "utf8"));
   const { page, module, item, pageSlug } = await context();
-  const lessonUrl = `https://cpsc481-introduction-to-ai.winniechef.chatgpt.site/lessons/06?v=${siteVersion}`;
+  const lessonUrl = `https://wenlinhan.github.io/CPSC-481/lessons/06/?v=${siteVersion}`;
   const marker = /(?:<!-- lesson-06-video:start -->\s*)?<div\b[^>]*id=["']lesson-06-video["'][^>]*>[\s\S]*?<\/div>\s*(?:<!-- lesson-06-video:end -->)?/i;
   const videoBlock = `<div id="lesson-06-video" style="margin:16px 0;padding:16px;border:1px solid #d7dde8;border-radius:10px;background:#f7f9fc;">\n  <h3 style="margin:0 0 8px;">Lesson 6 lecture video</h3>\n  <p style="margin:0 0 10px;">Best-First Search, A*, and Heuristic Quality &middot; 59 minutes &middot; captions included</p>\n  <p style="margin:0;"><a href="${publication.previewUrl}" target="_blank">Watch the lecture video in Canvas</a></p>\n</div>`;
   let body = page.body ?? "";

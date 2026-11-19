@@ -93,7 +93,7 @@ if (mode === "--apply-page") {
   if (!/^\d+$/.test(siteVersion ?? "")) throw new Error("Pass the deployed Sites version number after --apply-page.");
   const publication = JSON.parse(await readFile(publicationFile, "utf8"));
   const { page, module, item } = await context();
-  const lessonUrl = `https://cpsc481-introduction-to-ai.winniechef.chatgpt.site/lessons/04?v=${siteVersion}`;
+  const lessonUrl = `https://wenlinhan.github.io/CPSC-481/lessons/04/?v=${siteVersion}`;
   // Canvas strips HTML comments and normalizes file links. Match the visible block
   // as well as our stable id so repeated publication remains idempotent.
   const marker = /(?:<!-- lesson-04-video:start -->\s*)?<div\b[^>]*>\s*<h3\b[^>]*>Lesson 4 lecture video<\/h3>[\s\S]*?<\/div>\s*(?:<!-- lesson-04-video:end -->)?/i;

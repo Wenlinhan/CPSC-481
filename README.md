@@ -2,7 +2,7 @@
 
 Source code for the interactive CPSC 481 course website:
 
-https://cpsc481-introduction-to-ai.winniechef.chatgpt.site/
+https://wenlinhan.github.io/CPSC-481/
 
 The site contains interactive lesson decks, examples, demonstrations, practice activities, instructor notes, and supporting assets.
 
