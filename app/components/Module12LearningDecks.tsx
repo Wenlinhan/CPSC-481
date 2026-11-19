@@ -349,7 +349,13 @@ function DeltaRuleLab() {
   const [slope, setSlope] = useState(0.24);
   const eta = 0.2;
   const delta = eta * (target - activation) * slope * input;
-  return <div className="m12-delta-lab"><section>{[["input xᵢ", input, setInput], ["target tⱼ", target, setTarget], ["activation aⱼ", activation, setActivation], ["local slope f′", slope, setSlope]] .map(([label, value, setter]) => <label key={String(label)}><span>{label}</span><input max="1" min="0" onChange={event => (setter as (value:number)=>void)(Number(event.target.value))} step="0.05" type="range" value={Number(value)} /><strong>{Number(value).toFixed(2)}</strong></label>)}</section><article><Formula>Δwⱼ = η(tⱼ−aⱼ)f′(netⱼ)xᵢ</Formula><div><span>learning rate η</span><strong>{eta}</strong></div><div><span>weight change</span><strong>{delta >= 0 ? "+" : ""}{delta.toFixed(4)}</strong></div><p>Error says how wrong; slope says local sensitivity; input says how strongly this connection participated.</p></article></div>;
+  const controls: Array<[string, number, (value: number) => void]> = [
+    ["input xᵢ", input, setInput],
+    ["target tⱼ", target, setTarget],
+    ["activation aⱼ", activation, setActivation],
+    ["local slope f′", slope, setSlope],
+  ];
+  return <div className="m12-delta-lab"><section>{controls.map(([label, value, setter]) => <label key={label}><span>{label}</span><input max="1" min="0" onChange={event => setter(Number(event.target.value))} step="0.05" type="range" value={value} /><strong>{value.toFixed(2)}</strong></label>)}</section><article><Formula>Δwⱼ = η(tⱼ−aⱼ)f′(netⱼ)xᵢ</Formula><div><span>learning rate η</span><strong>{eta}</strong></div><div><span>weight change</span><strong>{delta >= 0 ? "+" : ""}{delta.toFixed(4)}</strong></div><p>Error says how wrong; slope says local sensitivity; input says how strongly this connection participated.</p></article></div>;
 }
 
 const clusterPoints = [

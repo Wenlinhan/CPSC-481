@@ -41,9 +41,9 @@ export const dynamicParams = false;
 export function generateStaticParams(){return Object.keys(lessonTitles).map(lesson=>({lesson:lesson.padStart(2,"0")}))}
 export async function generateMetadata({params}:{params:Promise<{lesson:string}>}):Promise<Metadata>{const id=Number((await params).lesson);return lessonTitles[id]?{title:`Lesson ${id}: ${lessonTitles[id]}`}:{}}
 
-export default async function LessonPage({params,searchParams}:{params:Promise<{lesson:string}>;searchParams:Promise<{print?:string}>}){
+export default async function LessonPage({params}:{params:Promise<{lesson:string}>}){
   const id=Number((await params).lesson); if(!lessonTitles[id]) notFound();
-  const forcePrintAll=(await searchParams).print==="all";
+  const forcePrintAll=false;
   const deck=id===1?<Meeting01Deck forcePrintAll={forcePrintAll}/>:id===2?<Meeting02Deck forcePrintAll={forcePrintAll}/>:id===3?<Meeting03Deck forcePrintAll={forcePrintAll}/>:id===4?<Meeting04Deck forcePrintAll={forcePrintAll}/>:id===5?<Meeting05Deck forcePrintAll={forcePrintAll}/>:id===6?<Meeting06Deck forcePrintAll={forcePrintAll}/>:id===7?<Meeting07Deck forcePrintAll={forcePrintAll}/>:id===8?<Meeting08Deck forcePrintAll={forcePrintAll}/>:id===9?<Lesson09Deck forcePrintAll={forcePrintAll}/>:id===10?<Lesson10Deck forcePrintAll={forcePrintAll}/>:id===11?<Meeting09Deck forcePrintAll={forcePrintAll}/>:id===12?<Meeting10Deck forcePrintAll={forcePrintAll}/>:id===13?<Meeting11Deck forcePrintAll={forcePrintAll}/>:id===14?<Meeting12Deck forcePrintAll={forcePrintAll}/>:id===15?<Meeting13Deck/>:id===16?<Meeting14Deck/>:id===17?<Module12Lesson17Deck/>:id===18?<Module12Lesson18Deck/>:id===19?<Meeting19Deck/>:id===20?<Meeting20Deck/>:id===21?<Meeting21Deck/>:<Meeting22Deck/>;
   return <div className="custom-lesson-route"><Link className="course-home-link" href="/">All modules</Link>{deck}</div>;
 }

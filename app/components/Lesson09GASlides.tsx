@@ -1,5 +1,6 @@
-import { lesson09InstructorSpeech } from "../data/lesson09InstructorSpeech";
 "use client";
+
+import { lesson09InstructorSpeech } from "../data/lesson09InstructorSpeech";
 
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import "../styles/evolutionary-computation.css";

@@ -1,5 +1,6 @@
-import { lesson10InstructorSpeech } from "../data/lesson10InstructorSpeech";
 "use client";
+
+import { lesson10InstructorSpeech } from "../data/lesson10InstructorSpeech";
 /* eslint-disable @next/next/no-img-element -- course-source assets are versioned static files */
 
 import { useMemo, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
